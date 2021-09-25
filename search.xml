@@ -64,5 +64,10 @@ This is a comment
         <category>Music</category>
         <category>JPmusic</category>
       </categories>
+      <tags>
+        <tag>tag1</tag>
+        <tag>tag2</tag>
+        <tag>tag with space</tag>
+      </tags>
   </entry>
 </search>
