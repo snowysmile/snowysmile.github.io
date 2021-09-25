@@ -55,12 +55,11 @@ This is a comment
     <title>Japanese Music</title>
     <url>/2021/09/26/jpmusic/</url>
     <content><![CDATA[<p>日本語の歌 (nihongo no uta)</p>
+<h1 id="Old"><a href="#Old" class="headerlink" title="Old"></a>Old</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% youtube EQ94zflNqn4 %&#125;</span><br><span class="line">&#123;% youtube 3Li-FfypZYE %&#125;</span><br></pre></td></tr></table></figure>
 <div class="video-container"><iframe src="https://www.youtube.com/embed/EQ94zflNqn4" frameborder="0" loading="lazy" allowfullscreen></iframe></div>
 
-<div class="video-container"><iframe src="https://www.youtube.com/embed/3Li-FfypZYE" frameborder="0" loading="lazy" allowfullscreen></iframe></div>
-
-<div>
-    <iframe width="960" height="540" src="https://www.youtube.com/embed/EQ94zflNqn4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h1 id="New"><a href="#New" class="headerlink" title="New"></a>New</h1><div>
+    <iframe width="480" height="270" src="https://www.youtube.com/embed/EQ94zflNqn4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>]]></content>
       <categories>
         <category>Music</category>
