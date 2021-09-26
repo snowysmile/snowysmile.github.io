@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>English Music</title>
+    <title>English Music I like</title>
     <url>/2021/09/26/enmusic/</url>
     <content><![CDATA[]]></content>
       <categories>
@@ -10,7 +10,7 @@
       </categories>
   </entry>
   <entry>
-    <title>Chinese Music</title>
+    <title>Chinese Music I like</title>
     <url>/2021/09/26/cnmusic/</url>
     <content><![CDATA[<p>.</p>
 <span id="more"></span>
@@ -106,7 +106,7 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Japanese Music</title>
+    <title>Japanese Music I like</title>
     <url>/2021/09/26/jpmusic/</url>
     <content><![CDATA[<p>日本語の歌 (nihongo no uta)</p>
 <!-- THESE ARE THE COMMENTS.
@@ -191,12 +191,28 @@ This is a comment
   <entry>
     <title>Algorithm Training for the Interview</title>
     <url>/2021/09/26/interview/</url>
-    <content><![CDATA[<h1 id="Personal-Introduction"><a href="#Personal-Introduction" class="headerlink" title="Personal Introduction"></a>Personal Introduction</h1><p>I was born and grew up in China, I went to the university in 2014 and finished it in 2018, studying programming for 4 years.</p>
-<p>After devoting 10k+ hours, I finished over 4~5k programming problems with record.</p>
+    <content><![CDATA[<h1 id="Personal-Introduction"><a href="#Personal-Introduction" class="headerlink" title="Personal Introduction"></a>Personal Introduction</h1><p>I was born and grew up in China, I went to the university in 2014 and finished it in 2018, studying programming for 4 years. After devoting 10k+ hours, I finished over 4~5k programming problems with record.</p>
 <p>During college, I won the bronze, silver, and gold medals from freshman to junior year respectively. And went to the ICPC World Finals (International Collegiate Programming Contest).</p>
 <p>I passed almost all of my interviews (Alibaba, Baidu, Bytedance, Huawei, etc.) and went to Microsoft after graduation. Then got a change to Google Tokyo.</p>
 <p>I think algorithm programming skill is one of the reasons I could pass many interviews easily. There are many ingenious problems and skills to share. Welcome to the algorithm programming world! As someone with a dream of becoming an algorithm teacher, I will be glad to help :D~</p>
-<h1 id="Basic-Knowledge"><a href="#Basic-Knowledge" class="headerlink" title="Basic Knowledge"></a>Basic Knowledge</h1><h1 id="Programing-Websites-I-Recommend"><a href="#Programing-Websites-I-Recommend" class="headerlink" title="Programing Websites I Recommend"></a>Programing Websites I Recommend</h1><p>(To be continued..)</p>
+<h1 id="Basic-Knowledge"><a href="#Basic-Knowledge" class="headerlink" title="Basic Knowledge"></a>Basic Knowledge</h1><h2 id="Conceptions"><a href="#Conceptions" class="headerlink" title="Conceptions"></a>Conceptions</h2><ul>
+<li>Time Complexity</li>
+<li>Space Complexity</li>
+</ul>
+<h2 id="Common-Algorithm-Types"><a href="#Common-Algorithm-Types" class="headerlink" title="Common Algorithm Types"></a>Common Algorithm Types</h2><ul>
+<li>Graph Theory</li>
+<li>Game Theory</li>
+<li>Number Theory</li>
+<li>Computational Geometry</li>
+<li>Greedy</li>
+<li>Search<br>…</li>
+</ul>
+<h1 id="Programing-Websites-I-Recommend"><a href="#Programing-Websites-I-Recommend" class="headerlink" title="Programing Websites I Recommend"></a>Programing Websites I Recommend</h1><ul>
+<li>Codeforces</li>
+<li>Atcoder</li>
+<li>Topcoder<br>…</li>
+</ul>
+<p>(To be continued..)</p>
 ]]></content>
   </entry>
 </search>
