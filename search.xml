@@ -197,7 +197,7 @@ This is a comment
 <p>I think algorithm programming skill is one of the reasons I could pass many interviews easily. There are many ingenious problems and skills to share. Welcome to the algorithm programming world! As someone with a dream of becoming an algorithm teacher, I will be glad to help :D~</p>
 <h1 id="Basic-Knowledge"><a href="#Basic-Knowledge" class="headerlink" title="Basic Knowledge"></a>Basic Knowledge</h1><h2 id="Conceptions"><a href="#Conceptions" class="headerlink" title="Conceptions"></a>Conceptions</h2><ul>
 <li>Time Complexity</li>
-<li>Space Complexity</li>
+<li>Space Complexity<br>…</li>
 </ul>
 <h2 id="Common-Algorithm-Types"><a href="#Common-Algorithm-Types" class="headerlink" title="Common Algorithm Types"></a>Common Algorithm Types</h2><ul>
 <li>Graph Theory</li>
