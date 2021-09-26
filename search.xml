@@ -55,7 +55,7 @@ This is a comment
     <title>Japanese Music</title>
     <url>/2021/09/26/jpmusic/</url>
     <content><![CDATA[<p>日本語の歌 (nihongo no uta)</p>
-<div style="border-width: 0; position: relative; top: 0; left: 0; width: 50%; height: 50%">
+<div style="width: 50%; height: 50%">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/EQ94zflNqn4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
 </div>
 
