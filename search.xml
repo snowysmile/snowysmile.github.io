@@ -230,7 +230,28 @@ This is a comment
 <h2 id="Strikethrough"><a href="#Strikethrough" class="headerlink" title="Strikethrough"></a>Strikethrough</h2><p><del>Stikethrough</del></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">~~Stikethrough~~</span><br></pre></td></tr></table></figure>
 
-<h1 id="Symbols"><a href="#Symbols" class="headerlink" title="Symbols"></a>Symbols</h1><h3 id="Blank-Space"><a href="#Blank-Space" class="headerlink" title="Blank Space"></a>Blank Space</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Monospaced Font is necessary</span><br><span class="line">&amp;nbsp = space[width1]  $nbsp = space[width2]  $emsp = space[width4]</span><br></pre></td></tr></table></figure>
+<h1 id="Symbols"><a href="#Symbols" class="headerlink" title="Symbols"></a>Symbols</h1><h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><blockquote>
+<ol>
+<li><ol start="2">
+<li>3.</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<ol>
+<li>This is 1-</li>
+<li>This is 2-</li>
+<li>This is 3-</li>
+</ol>
+<blockquote>
+<p>+ + +</p>
+</blockquote>
+<ul>
+<li>This is 1-</li>
+<li>This is 2-</li>
+<li>This is 3-</li>
+</ul>
+<h3 id="Blank-Space"><a href="#Blank-Space" class="headerlink" title="Blank Space"></a>Blank Space</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Monospaced Font is necessary</span><br><span class="line">&amp;nbsp = space[width1]  $nbsp = space[width2]  $emsp = space[width4]</span><br></pre></td></tr></table></figure>
 
 <h3 id="Split-Line"><a href="#Split-Line" class="headerlink" title="Split Line"></a>Split Line</h3><hr>
 <hr>
