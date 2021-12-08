@@ -1070,7 +1070,9 @@ This is a comment
   <entry>
     <title>Hello World</title>
     <url>/hello-world/</url>
-    <content><![CDATA[<span id="more"></span>
+    <content><![CDATA[<img src="/images/ccpvirus/Happy Smile Under Sky.jpg" width="90%" height="90%">
+
+<span id="more"></span>
 <p>Hi<del>!  你發現了這裏</del> !<br>喜歡流淚、熱愛生活，乐观的革命主义精神。我是 snowy_smile ~！</p>
 <p>很想要記錄下每天的經歷和心情。 想記錄下清晨溫暖燦爛的陽光，記錄下夜晚和星星一起做的夢 …… 於是就有了這裏~！</p>
 <p>自己大學畢業后先後在微軟蘇州和谷歌東京擔任軟件工程師。 夢想是成爲啓蒙算法老師和獨立游戲製作人~ 還想要製作出自己的人工智能女朋友！</p>
