@@ -1087,7 +1087,29 @@ This is a comment
     <content><![CDATA[<span id="more"></span>
 
 <p><a href="https://ja.wiktionary.org/wiki/%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA:%E6%97%A5%E6%9C%AC%E8%AA%9E_%E5%BD%A2%E5%AE%B9%E8%A9%9E">List of Japanese Adjective on Wiki</a></p>
-<h2 id="Color-色-いろ"><a href="#Color-色-いろ" class="headerlink" title="Color 色 いろ"></a>Color 色 いろ</h2><h2 id="Item-物-もの"><a href="#Item-物-もの" class="headerlink" title="Item 物 もの"></a>Item 物 もの</h2><h2 id="Human-人間-にんげん"><a href="#Human-人間-にんげん" class="headerlink" title="Human 人間 にんげん"></a>Human 人間 にんげん</h2>]]></content>
+<h2 id="Color-色-いろ"><a href="#Color-色-いろ" class="headerlink" title="Color 色 いろ"></a>Color 色 いろ</h2><h2 id="Item-物-もの"><a href="#Item-物-もの" class="headerlink" title="Item 物 もの"></a>Item 物 もの</h2><table>
+<thead>
+<tr>
+<th align="center">English</th>
+<th align="center">漢語</th>
+<th align="center">Japanese</th>
+<th align="center">Katakana</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">big</td>
+<td align="center">大的</td>
+<td align="center">大きい</td>
+<td align="center">おおきい</td>
+</tr>
+<tr>
+<td align="center">small</td>
+<td align="center">小的</td>
+<td align="center">小さい</td>
+<td align="center">ちいさい</td>
+</tr>
+</tbody></table>
+<h2 id="Human-人間-にんげん"><a href="#Human-人間-にんげん" class="headerlink" title="Human 人間 にんげん"></a>Human 人間 にんげん</h2>]]></content>
       <categories>
         <category>Japanese</category>
       </categories>
