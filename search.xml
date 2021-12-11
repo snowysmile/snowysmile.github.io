@@ -1094,6 +1094,7 @@ This is a comment
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
 <th align="center">片仮名Katakana</th>
+<th align="center">Remark</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -1101,12 +1102,28 @@ This is a comment
 <td align="center">大的</td>
 <td align="center">大きい</td>
 <td align="center">おおきい</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">small</td>
 <td align="center">小的</td>
 <td align="center">小さい</td>
 <td align="center">ちいさい</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">long</td>
+<td align="center">長的</td>
+<td align="center">長い</td>
+<td align="center">ながい</td>
+<td align="center">Time</td>
+</tr>
+<tr>
+<td align="center">short</td>
+<td align="center">短的</td>
+<td align="center">短い</td>
+<td align="center">みじかい</td>
+<td align="center"></td>
 </tr>
 </tbody></table>
 <h2 id="Human-人間-にんげん"><a href="#Human-人間-にんげん" class="headerlink" title="Human 人間 にんげん"></a>Human 人間 にんげん</h2>]]></content>
