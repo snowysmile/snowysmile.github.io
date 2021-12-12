@@ -1485,52 +1485,64 @@ This is a comment
 <td align="center">あさい</td>
 </tr>
 <tr>
-<td align="center">busy</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">noisy</td>
+<td align="center">嘈雜的</td>
+<td align="center">騒がしい - 煩い</td>
+<td align="center">さわがしい - うるさい</td>
 </tr>
 <tr>
-<td align="center">silent</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">quiet</td>
+<td align="center">安靜的</td>
+<td align="center">静かな</td>
+<td align="center">しずかな</td>
+</tr>
+<tr>
+<td align="center">busy</td>
+<td align="center">忙碌的</td>
+<td align="center">忙しい</td>
+<td align="center">いそがしい</td>
+</tr>
+<tr>
+<td align="center">leisure</td>
+<td align="center">閒暇的</td>
+<td align="center">余暇の</td>
+<td align="center">よかの</td>
 </tr>
 <tr>
 <td align="center">hot</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">炎熱的</td>
+<td align="center">暑い</td>
+<td align="center">あつい</td>
 </tr>
 <tr>
 <td align="center">cold</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">寒冷的</td>
+<td align="center">寒い</td>
+<td align="center">さむい</td>
 </tr>
 <tr>
 <td align="center">convenient</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">方便的</td>
+<td align="center">便利な</td>
+<td align="center">べんりな</td>
 </tr>
 <tr>
 <td align="center">inconvenient</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">不便的</td>
+<td align="center">不便な</td>
+<td align="center">ふべんな</td>
 </tr>
 <tr>
 <td align="center">safe</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">安全的</td>
+<td align="center">安全な</td>
+<td align="center">あんぜんな</td>
 </tr>
 <tr>
 <td align="center">dangerous</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">危險的</td>
+<td align="center">危ない</td>
+<td align="center">あぶない</td>
 </tr>
 </tbody></table>
 <h2 id="Human-人間-にんげん"><a href="#Human-人間-にんげん" class="headerlink" title="Human 人間 にんげん"></a>Human 人間 にんげん</h2><table>
@@ -1647,6 +1659,30 @@ This is a comment
 <td align="center">無趣的</td>
 <td align="center">つまらない</td>
 <td align="center">つまらない</td>
+</tr>
+<tr>
+<td align="center">right</td>
+<td align="center">正確的</td>
+<td align="center">正しい</td>
+<td align="center">ただしい</td>
+</tr>
+<tr>
+<td align="center">wrong</td>
+<td align="center">錯誤的</td>
+<td align="center">間違った</td>
+<td align="center">まちがった</td>
+</tr>
+<tr>
+<td align="center">accurate</td>
+<td align="center">準確的</td>
+<td align="center">正確な</td>
+<td align="center">せいかくな</td>
+</tr>
+<tr>
+<td align="center">inaccurate</td>
+<td align="center">不準確的</td>
+<td align="center">不正確な</td>
+<td align="center">ふせいかくな</td>
 </tr>
 </tbody></table>
 ]]></content>
