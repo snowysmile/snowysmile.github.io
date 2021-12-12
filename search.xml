@@ -1415,6 +1415,18 @@ This is a comment
 <td align="center">ふかいな</td>
 </tr>
 <tr>
+<td align="center">various</td>
+<td align="center">各種各樣的</td>
+<td align="center">色々な</td>
+<td align="center">いろいろな</td>
+</tr>
+<tr>
+<td align="center">simplex</td>
+<td align="center">單一的</td>
+<td align="center">単一の</td>
+<td align="center">たんいつの</td>
+</tr>
+<tr>
 <td align="center">liked</td>
 <td align="center">喜愛的</td>
 <td align="center">好きな</td>
@@ -1449,6 +1461,12 @@ This is a comment
 <td align="center">不重要的</td>
 <td align="center">重要でない</td>
 <td align="center">じゅようでない</td>
+</tr>
+<tr>
+<td align="center">scary</td>
+<td align="center">恐怖可怕的</td>
+<td align="center">恐ろしい - 怖ろしい</td>
+<td align="center">おそろしい</td>
 </tr>
 </tbody></table>
 <h2 id="Place-地點-ばしょ"><a href="#Place-地點-ばしょ" class="headerlink" title="Place 地點 ばしょ"></a>Place 地點 ばしょ</h2><table>
@@ -1519,6 +1537,12 @@ This is a comment
 <td align="center">污穢骯髒的</td>
 <td align="center">汚い - 穢い</td>
 <td align="center">きたない</td>
+</tr>
+<tr>
+<td align="center">lively</td>
+<td align="center">熱鬧的</td>
+<td align="center">賑やかな</td>
+<td align="center">にぎやかな</td>
 </tr>
 <tr>
 <td align="center">noisy</td>
@@ -1686,6 +1710,54 @@ This is a comment
 <td align="center">気持ち悪い</td>
 <td align="center">きもちわるい</td>
 </tr>
+<tr>
+<td align="center">pretty</td>
+<td align="center">綺麗的</td>
+<td align="center">綺麗な</td>
+<td align="center">きれいな</td>
+</tr>
+<tr>
+<td align="center">cool</td>
+<td align="center">帥氣的</td>
+<td align="center">格好いい</td>
+<td align="center">かっこういい</td>
+</tr>
+<tr>
+<td align="center">cute</td>
+<td align="center">可愛的</td>
+<td align="center">可愛い</td>
+<td align="center">かわいい</td>
+</tr>
+<tr>
+<td align="center">great</td>
+<td align="center">厲害的</td>
+<td align="center">素敵な</td>
+<td align="center">すてきな</td>
+</tr>
+<tr>
+<td align="center">splendid</td>
+<td align="center">優秀的</td>
+<td align="center">素晴らしい</td>
+<td align="center">すばらしい</td>
+</tr>
+<tr>
+<td align="center">admirable - brilliant</td>
+<td align="center">立派な</td>
+<td align="center">りっぱな</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">positive</td>
+<td align="center">積極的</td>
+<td align="center">前向きな</td>
+<td align="center">まえむきな</td>
+</tr>
+<tr>
+<td align="center">negative</td>
+<td align="center">消極的</td>
+<td align="center">否定的な</td>
+<td align="center">ひていてきな</td>
+</tr>
 </tbody></table>
 <h2 id="Behavior-行動-こうどう"><a href="#Behavior-行動-こうどう" class="headerlink" title="Behavior 行動 こうどう"></a>Behavior 行動 こうどう</h2><table>
 <thead>
@@ -1767,6 +1839,42 @@ This is a comment
 <td align="center">不準確的</td>
 <td align="center">不正確な</td>
 <td align="center">ふせいかくな</td>
+</tr>
+<tr>
+<td align="center">useful</td>
+<td align="center">有用的</td>
+<td align="center">有用な</td>
+<td align="center">ゆうような</td>
+</tr>
+<tr>
+<td align="center">useless</td>
+<td align="center">沒用的</td>
+<td align="center">無駄な</td>
+<td align="center">むだな</td>
+</tr>
+<tr>
+<td align="center">skilled</td>
+<td align="center">擅長的</td>
+<td align="center">上手な</td>
+<td align="center">じょうずな</td>
+</tr>
+<tr>
+<td align="center">unskilled</td>
+<td align="center">不擅長的</td>
+<td align="center">下手な</td>
+<td align="center">へたな</td>
+</tr>
+<tr>
+<td align="center">pride</td>
+<td align="center">得意的</td>
+<td align="center">得意な</td>
+<td align="center">とくいな</td>
+</tr>
+<tr>
+<td align="center">disliked</td>
+<td align="center">苦惱的</td>
+<td align="center">苦手な</td>
+<td align="center">にがてな</td>
 </tr>
 </tbody></table>
 ]]></content>
