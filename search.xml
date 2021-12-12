@@ -1240,6 +1240,24 @@ This is a comment
 <td align="center">古い</td>
 <td align="center">ふるい</td>
 </tr>
+<tr>
+<td align="center">sweet</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">spicy</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">sour</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
 </tbody></table>
 <h2 id="Place-地點-ばしょ"><a href="#Place-地點-ばしょ" class="headerlink" title="Place 地點 ばしょ"></a>Place 地點 ばしょ</h2><table>
 <thead>
@@ -1392,7 +1410,7 @@ This is a comment
 </tr>
 <tr>
 <td align="center">easy</td>
-<td align="center"></td>
+<td align="center">簡單的</td>
 <td align="center">簡単な - 優しい</td>
 <td align="center">かんたんな - やさしい</td>
 </tr>
@@ -1401,6 +1419,18 @@ This is a comment
 <td align="center">困難的</td>
 <td align="center">難しい</td>
 <td align="center">むずかしい</td>
+</tr>
+<tr>
+<td align="center">kind</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">strict</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">interesting</td>
