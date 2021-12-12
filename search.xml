@@ -1402,8 +1402,55 @@ This is a comment
 <td align="center">塩辛い</td>
 <td align="center">しおからい</td>
 </tr>
+<tr>
+<td align="center">tasty</td>
+<td align="center">美味的</td>
+<td align="center">美味しい - 美味い</td>
+<td align="center">おいしい - うまい</td>
+</tr>
+<tr>
+<td align="center">unsavory</td>
+<td align="center">難吃的</td>
+<td align="center">不快な</td>
+<td align="center">ふかいな</td>
+</tr>
+<tr>
+<td align="center">liked</td>
+<td align="center">喜愛的</td>
+<td align="center">好きな</td>
+<td align="center">すきな</td>
+</tr>
+<tr>
+<td align="center">disliked</td>
+<td align="center">討厭的</td>
+<td align="center">嫌い</td>
+<td align="center">きらい</td>
+</tr>
+<tr>
+<td align="center">simple - uncomplicated</td>
+<td align="center">單純的 - 簡單的</td>
+<td align="center">単純な - 簡単な</td>
+<td align="center">たんじゅんな - かんたんな</td>
+</tr>
+<tr>
+<td align="center">complicated</td>
+<td align="center">複雜的</td>
+<td align="center">複雑な</td>
+<td align="center">ふくざつな</td>
+</tr>
+<tr>
+<td align="center">important - significant</td>
+<td align="center">重要的</td>
+<td align="center">重要な - 大事な - 大切な - 肝要な</td>
+<td align="center">じゅうような - だいじな - たいせつな - かんような</td>
+</tr>
+<tr>
+<td align="center">unimportant - insignificant</td>
+<td align="center">不重要的</td>
+<td align="center">重要でない</td>
+<td align="center">じゅようでない</td>
+</tr>
 </tbody></table>
-<p>tasty|美味的|美味しい - 美味い|おいしい - うまい<br>unsavory|難吃的|不快な|ふかいな<br>liked|喜愛的|好きな|すきな<br>disliked|討厭的|嫌い|きらい<br>simple - uncomplicated|單純的 - 簡單的|単純な - 簡単な|たんじゅんな - かんたんな<br>complicated|複雜的|複雑な|ふくざつな<br>important - significant|重要的|重要な - 大事な - 大切な - 肝要な|じゅうような - だいじな - たいせつな - かんような<br>unimportant - insignificant|不重要的|重要でない|じゅようでない</p>
 <h2 id="Place-地點-ばしょ"><a href="#Place-地點-ばしょ" class="headerlink" title="Place 地點 ばしょ"></a>Place 地點 ばしょ</h2><table>
 <thead>
 <tr>
