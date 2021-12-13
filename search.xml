@@ -1902,12 +1902,45 @@ This is a comment
 </blockquote>
 <p>Suffix Array | 後綴數組 | 接尾辞配列（せつびじはいれつ）</p>
 <p>s[]: the basic string, define it starts from index 1 and ends at index n with length(s) = n<br>    s[i] means the i-th character of s<br>sa[]: the order of the all suffix of s<br>    sa[i] means the i-th smallest suffix of all<br>rk[]: the order of the i-th suffix of s<br>    rk[i] means the rank(from small to big) of the i-th suffix</p>
-<p>sa[rk[i]] = rk[sa[i]]i</p>
+<p>sa[rk[i]] = rk[sa[i]] = i</p>
 <h2 id="How-to-calculate-SA"><a href="#How-to-calculate-SA" class="headerlink" title="How to calculate SA"></a>How to calculate SA</h2><p>define ss[l][i] as a substring of s, starts from index i with length = l or ends at index n<br>define rk[l][i] as the rank of of ss[l][i] of all ss[l][x] for x in [1, n]</p>
 <p>we can calculate rk[l+l][i] like by using rk[l][i] and rk[l][l+l]</p>
 ]]></content>
       <categories>
         <category>Algorithm</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>jpnoun</title>
+    <url>/jpnoun/</url>
+    <content><![CDATA[<span id="more"></span>
+
+
+<h2 id="Food"><a href="#Food" class="headerlink" title="Food"></a>Food</h2><h3 id="Vegetables"><a href="#Vegetables" class="headerlink" title="Vegetables"></a>Vegetables</h3><h3 id="Fruits"><a href="#Fruits" class="headerlink" title="Fruits"></a>Fruits</h3><h2 id="Place-場所-場所-ばしょ"><a href="#Place-場所-場所-ばしょ" class="headerlink" title="Place 場所 場所 ばしょ"></a>Place 場所 場所 ばしょ</h2><table>
+<thead>
+<tr>
+<th align="center">English</th>
+<th align="center">漢語</th>
+<th align="center">日本語Nihongo</th>
+<th align="center">片仮名Katakana</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Place</td>
+<td align="center">場所</td>
+<td align="center">場所</td>
+<td align="center">ばしょ</td>
+</tr>
+<tr>
+<td align="center">Location</td>
+<td align="center">地點</td>
+<td align="center">所</td>
+<td align="center">ところ</td>
+</tr>
+</tbody></table>
+<h2 id="Human"><a href="#Human" class="headerlink" title="Human"></a>Human</h2><h3 id="Family"><a href="#Family" class="headerlink" title="Family"></a>Family</h3><h3 id="Body"><a href="#Body" class="headerlink" title="Body"></a>Body</h3><h3 id=""><a href="#" class="headerlink" title=""></a></h3>]]></content>
+      <categories>
+        <category>Japanese</category>
       </categories>
   </entry>
 </search>

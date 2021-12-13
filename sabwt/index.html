@@ -30,7 +30,7 @@
 <meta property="og:description" content="BWT: Burrows-Wheeler TransformSA: Suffix Array  Suffix Array | 後綴數組 | 接尾辞配列（せつびじはいれつ） s[]: the basic string, define it starts from index 1 and ends at index n with length(s) &#x3D; n    s[i] means the i-t">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-12-13T05:26:24.000Z">
-<meta property="article:modified_time" content="2021-12-13T08:22:43.558Z">
+<meta property="article:modified_time" content="2021-12-13T08:25:32.132Z">
 <meta property="article:author" content="snowy_smile">
 <meta name="twitter:card" content="summary">
 
@@ -219,7 +219,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-12-13 14:26:24 / Modified: 17:22:43" itemprop="dateCreated datePublished" datetime="2021-12-13T14:26:24+09:00">2021-12-13</time>
+              <time title="Created: 2021-12-13 14:26:24 / Modified: 17:25:32" itemprop="dateCreated datePublished" datetime="2021-12-13T14:26:24+09:00">2021-12-13</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -236,7 +236,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>543</span>
+              <span>544</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -259,7 +259,7 @@
 </blockquote>
 <p>Suffix Array | 後綴數組 | 接尾辞配列（せつびじはいれつ）</p>
 <p>s[]: the basic string, define it starts from index 1 and ends at index n with length(s) = n<br>    s[i] means the i-th character of s<br>sa[]: the order of the all suffix of s<br>    sa[i] means the i-th smallest suffix of all<br>rk[]: the order of the i-th suffix of s<br>    rk[i] means the rank(from small to big) of the i-th suffix</p>
-<p>sa[rk[i]] = rk[sa[i]]i</p>
+<p>sa[rk[i]] = rk[sa[i]] = i</p>
 <h2 id="How-to-calculate-SA"><a href="#How-to-calculate-SA" class="headerlink" title="How to calculate SA"></a>How to calculate SA</h2><p>define ss[l][i] as a substring of s, starts from index i with length = l or ends at index n<br>define rk[l][i] as the rank of of ss[l][i] of all ss[l][x] for x in [1, n]</p>
 <p>we can calculate rk[l+l][i] like by using rk[l][i] and rk[l][l+l]</p>
 
@@ -280,7 +280,10 @@
     <a href="/jpadj/" rel="prev" title="Adjective 形容詞 けいようし">
       <i class="fa fa-chevron-left"></i> Adjective 形容詞 けいようし
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/jpnoun/" rel="next" title="jpnoun">
+      jpnoun <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -355,7 +358,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
