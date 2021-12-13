@@ -1758,6 +1758,18 @@ This is a comment
 <td align="center">否定的な</td>
 <td align="center">ひていてきな</td>
 </tr>
+<tr>
+<td align="center">brave</td>
+<td align="center">勇敢的</td>
+<td align="center">勇敢な</td>
+<td align="center">ゆうかんな</td>
+</tr>
+<tr>
+<td align="center">scared</td>
+<td align="center">害怕的</td>
+<td align="center">怖い</td>
+<td align="center">こわい</td>
+</tr>
 </tbody></table>
 <h2 id="Behavior-行動-こうどう"><a href="#Behavior-行動-こうどう" class="headerlink" title="Behavior 行動 こうどう"></a>Behavior 行動 こうどう</h2><table>
 <thead>
@@ -1880,6 +1892,16 @@ This is a comment
 ]]></content>
       <categories>
         <category>Japanese</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>sabwt</title>
+    <url>/sabwt/</url>
+    <content><![CDATA[<p>Suffix Array | 後綴數組 | 接尾辞配列（せつびじはいれつ）</p>
+<p>sa[]<br>rk[]</p>
+]]></content>
+      <categories>
+        <category>Algorithm</category>
       </categories>
   </entry>
 </search>
