@@ -1926,16 +1926,82 @@ This is a comment
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">Place</td>
+<td align="center">place</td>
 <td align="center">場所</td>
 <td align="center">場所</td>
 <td align="center">ばしょ</td>
 </tr>
 <tr>
-<td align="center">Location</td>
+<td align="center">location</td>
 <td align="center">地點</td>
 <td align="center">所</td>
 <td align="center">ところ</td>
+</tr>
+<tr>
+<td align="center">country</td>
+<td align="center">國</td>
+<td align="center">国</td>
+<td align="center">くに</td>
+</tr>
+<tr>
+<td align="center">prefecture</td>
+<td align="center">州</td>
+<td align="center">県</td>
+<td align="center">けん</td>
+</tr>
+<tr>
+<td align="center">city</td>
+<td align="center">市</td>
+<td align="center">市</td>
+<td align="center">し</td>
+</tr>
+<tr>
+<td align="center">village</td>
+<td align="center">村</td>
+<td align="center">村</td>
+<td align="center">むら</td>
+</tr>
+<tr>
+<td align="center">town</td>
+<td align="center">街區</td>
+<td align="center">町 - 街 - 坊</td>
+<td align="center">まち</td>
+</tr>
+<tr>
+<td align="center">hospital</td>
+<td align="center">病院</td>
+<td align="center">病院</td>
+<td align="center">びょういん</td>
+</tr>
+<tr>
+<td align="center">drugstore</td>
+<td align="center">藥局</td>
+<td align="center">薬局</td>
+<td align="center">やっきょく</td>
+</tr>
+<tr>
+<td align="center">school</td>
+<td align="center">學校</td>
+<td align="center">学校</td>
+<td align="center">がっこう</td>
+</tr>
+<tr>
+<td align="center">post office</td>
+<td align="center">郵政局</td>
+<td align="center">郵便局</td>
+<td align="center">ゆうびんきょく</td>
+</tr>
+<tr>
+<td align="center">cafeteria</td>
+<td align="center">食堂</td>
+<td align="center">食堂</td>
+<td align="center">しょくどう</td>
+</tr>
+<tr>
+<td align="center">restaurant</td>
+<td align="center">餐廳</td>
+<td align="center">飲食店</td>
+<td align="center">いんしょくてん</td>
 </tr>
 </tbody></table>
 <h2 id="Human"><a href="#Human" class="headerlink" title="Human"></a>Human</h2><h3 id="Family"><a href="#Family" class="headerlink" title="Family"></a>Family</h3><h3 id="Body"><a href="#Body" class="headerlink" title="Body"></a>Body</h3><h3 id=""><a href="#" class="headerlink" title=""></a></h3>]]></content>
