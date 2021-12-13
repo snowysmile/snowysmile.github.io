@@ -2181,37 +2181,37 @@ This is a comment
 </thead>
 <tbody><tr>
 <td align="center">up</td>
-<td align="center"></td>
+<td align="center">上</td>
 <td align="center">上</td>
 <td align="center">うえ</td>
 </tr>
 <tr>
 <td align="center">down</td>
-<td align="center"></td>
+<td align="center">下</td>
 <td align="center">下</td>
 <td align="center">した</td>
 </tr>
 <tr>
 <td align="center">left</td>
-<td align="center"></td>
+<td align="center">左</td>
 <td align="center">左</td>
 <td align="center">ひだり</td>
 </tr>
 <tr>
 <td align="center">right</td>
-<td align="center"></td>
+<td align="center">右</td>
 <td align="center">右</td>
 <td align="center">みぎ</td>
 </tr>
 <tr>
 <td align="center">front</td>
-<td align="center"></td>
+<td align="center">前</td>
 <td align="center">前</td>
 <td align="center">まえ</td>
 </tr>
 <tr>
 <td align="center">back</td>
-<td align="center"></td>
+<td align="center">後</td>
 <td align="center">後ろ</td>
 <td align="center">うしろ</td>
 </tr>
@@ -2282,7 +2282,8 @@ This is a comment
 <td align="center">なんせい</td>
 </tr>
 </tbody></table>
-<h2 id="Human"><a href="#Human" class="headerlink" title="Human"></a>Human</h2><h3 id="Family"><a href="#Family" class="headerlink" title="Family"></a>Family</h3><h3 id="Body"><a href="#Body" class="headerlink" title="Body"></a>Body</h3><h3 id=""><a href="#" class="headerlink" title=""></a></h3><h2 id="Food"><a href="#Food" class="headerlink" title="Food"></a>Food</h2><h3 id="Vegetables"><a href="#Vegetables" class="headerlink" title="Vegetables"></a>Vegetables</h3><h3 id="Fruits"><a href="#Fruits" class="headerlink" title="Fruits"></a>Fruits</h3>]]></content>
+<h2 id="Human"><a href="#Human" class="headerlink" title="Human"></a>Human</h2><h3 id="Family"><a href="#Family" class="headerlink" title="Family"></a>Family</h3><h3 id="Profession"><a href="#Profession" class="headerlink" title="Profession"></a>Profession</h3><h3 id="Body"><a href="#Body" class="headerlink" title="Body"></a>Body</h3><p>head|頭|頭|あたま<br>hair|髮|髪|髪<br>neck|脖 - 頸|首 - 頸|くび<br>eye|眼 - 目|眼 - 目|め<br>ear|耳|耳|みみ<br>nose|鼻|鼻|はな<br>mouth|口 - 嘴|口|くち<br>lip|脣|リップ|りっぷ<br>tongue|舌|舌|した<br>tooth|牙 - 齒|歯|は<br>hand|手|手|て<br>foot|足 - 脚|足 - 脚|あし<br>arm|臂|腕|うで<br>leg|腿|足 - 脚|あし<br>finger|指|指|ゆび<br>toe|趾|つま先|つまさき<br>heart|心|心臓 - 心|しんぞう - こころ<br>brain|腦|脳|のう</p>
+<h2 id="Food"><a href="#Food" class="headerlink" title="Food"></a>Food</h2><h3 id="Vegetables"><a href="#Vegetables" class="headerlink" title="Vegetables"></a>Vegetables</h3><h3 id="Fruits"><a href="#Fruits" class="headerlink" title="Fruits"></a>Fruits</h3>]]></content>
       <categories>
         <category>Japanese</category>
       </categories>
