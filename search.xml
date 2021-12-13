@@ -1895,10 +1895,15 @@ This is a comment
       </categories>
   </entry>
   <entry>
-    <title>sabwt</title>
+    <title>From Suffix Array To Burrows-Wheeler Transform</title>
     <url>/sabwt/</url>
-    <content><![CDATA[<p>Suffix Array | 後綴數組 | 接尾辞配列（せつびじはいれつ）</p>
-<p>sa[]<br>rk[]</p>
+    <content><![CDATA[<blockquote>
+<p>BWT: Burrows-Wheeler Transform<br>SA: Suffix Array</p>
+</blockquote>
+<p>Suffix Array | 後綴數組 | 接尾辞配列（せつびじはいれつ）</p>
+<p>s[]: the basic string, define it starts from index 1 and ends at index n with length(s) = n<br>    s[i] means the i-th character of s<br>sa[]: the order of the all suffix of s<br>    sa[i] means the i-th smallest suffix of all<br>rk[]: the order of the i-th suffix of s<br>    rk[i] means the rank(from small to big) of the i-th suffix</p>
+<p>sa[rk[i]] = rk[sa[i]]i</p>
+<h2 id="How-to-calculate-SA"><a href="#How-to-calculate-SA" class="headerlink" title="How to calculate SA"></a>How to calculate SA</h2><p>define rk[l][i] as the rk</p>
 ]]></content>
       <categories>
         <category>Algorithm</category>
