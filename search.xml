@@ -2561,13 +2561,21 @@ This is a comment
 <p>TODO 曾經的高考沒有考上，自己寫了一本書去求學希望大學破格錄取，有遇到的人勸說我出國留學。但是我卻希望自己留在中國</p>
 </blockquote>
 <blockquote>
-<p>TODO 在大學算法競賽的時候</p>
+<p>TODO 在大學參加算法競賽的時候</p>
 </blockquote>
 <blockquote>
 <p>TODO 在Google Tokyo工作的時候</p>
 </blockquote>
 <p>我並非是在一瞬間就完成了反轉，<br>先是愛中國人、愛中國卻憎惡中國共產黨；<br>後來愛中國人、恨中國和憎恨中國共產黨；<br>再到討厭不抗爭的中國人、恨中國、更憎恨中國共產黨。</p>
 <p>如今呢，比較平淡。<br>我還是討厭那一切。<br>但是我已經感到很寒心和疲憊，而不願為那片充滿謊言和暴力的土地、為那些虎作倀的人們再做些什麼……</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Start to Use Python to Solve Algorithm Problems</title>
+    <url>/pybasic/</url>
+    <content><![CDATA[<h2 id="Basic-Type"><a href="#Basic-Type" class="headerlink" title="Basic Type"></a>Basic Type</h2><p>123</p>
+<h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>123</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>string</p>
 ]]></content>
   </entry>
 </search>
