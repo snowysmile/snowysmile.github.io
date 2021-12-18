@@ -2573,7 +2573,11 @@ This is a comment
   <entry>
     <title>Start to Use Python to Solve Algorithm Problems</title>
     <url>/pybasic/</url>
-    <content><![CDATA[<h2 id="Basic-Type"><a href="#Basic-Type" class="headerlink" title="Basic Type"></a>Basic Type</h2><h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>123</p>
+    <content><![CDATA[<h2 id="Basic-Types-and-Useful-Types"><a href="#Basic-Types-and-Useful-Types" class="headerlink" title="Basic Types and Useful Types"></a>Basic Types and Useful Types</h2><h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>Escape Character</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">\&#x27;      Single Quote</span><br><span class="line">\\	    Backslash	</span><br><span class="line">\n	    New Line	</span><br><span class="line">\r	    Carriage Return</span><br><span class="line">\t      Tab</span><br><span class="line"></span><br><span class="line">s = &#x27;\# \&#x27; \\ &quot;&quot;&quot;&#x27;</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
+<p>output: # ‘ \ “””</p>
+<h3 id="queue-PriorityQueue"><a href="#queue-PriorityQueue" class="headerlink" title="queue.PriorityQueue"></a>queue.PriorityQueue</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from queue import PriorityQueue</span><br><span class="line">q = PriorityQueue()</span><br><span class="line"></span><br><span class="line">q.put((2, &quot;eat&quot;))</span><br><span class="line">q.put((1, &quot;get up&quot;))</span><br><span class="line">q.put((3, &quot;sleep&quot;))</span><br><span class="line"></span><br><span class="line">while not q.empty():</span><br><span class="line">    next_item = q.get()</span><br><span class="line">    print(next_item)</span><br></pre></td></tr></table></figure>
+
 <h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">s = input()</span><br><span class="line">print(type(s))</span><br></pre></td></tr></table></figure>
 <p>output: &lt;class ‘str’&gt;</p>
 <hr>
