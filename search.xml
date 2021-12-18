@@ -2573,36 +2573,66 @@ This is a comment
   <entry>
     <title>Start to Use Python to Solve Algorithm Problems</title>
     <url>/pybasic/</url>
-    <content><![CDATA[<h1 id="Basic-functions"><a href="#Basic-functions" class="headerlink" title="Basic functions"></a>Basic functions</h1><h2 id="For"><a href="#For" class="headerlink" title="For"></a>For</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">a = [&quot;hello&quot;, 1, 0.5]</span><br><span class="line">for i, v in enumerate(a):</span><br></pre></td></tr></table></figure>
-
+    <content><![CDATA[<h1 id="Basic-functions"><a href="#Basic-functions" class="headerlink" title="Basic functions"></a>Basic functions</h1><h2 id="For"><a href="#For" class="headerlink" title="For"></a>For</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">a = [&quot;hello&quot;, 1, 0.5]</span><br><span class="line">for i, v in enumerate(a):</span><br><span class="line">    print(i, v)</span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<blockquote>
+<p>0 hello<br>1 1<br>2 0.5</p>
+</blockquote>
 <h1 id="Basic-Types-and-Useful-Types"><a href="#Basic-Types-and-Useful-Types" class="headerlink" title="Basic Types and Useful Types"></a>Basic Types and Useful Types</h1><h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><h3 id="Escape-Character"><a href="#Escape-Character" class="headerlink" title="Escape Character"></a>Escape Character</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">\&#x27;      Single Quote</span><br><span class="line">\\	    Backslash	</span><br><span class="line">\n	    New Line	</span><br><span class="line">\r	    Carriage Return</span><br><span class="line">\t      Tab</span><br><span class="line"></span><br><span class="line">s = &#x27;\# \&#x27; \\ &quot;&quot;&quot;&#x27;</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
-<p>output: # ‘ \ “””</p>
+<p>Output:</p>
+<blockquote>
+<p># ‘ \ “””</p>
+</blockquote>
 <hr>
 <h3 id="String-Cut"><a href="#String-Cut" class="headerlink" title="String Cut"></a>String Cut</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">v = 12345</span><br><span class="line">s = str(v)</span><br><span class="line">print(s[1:], s[2:3], s[:-1], s[-2], s[::2], s[::-1])</span><br></pre></td></tr></table></figure>
-<p>output: 2345 3 1234 4 135 54321</p>
+<p>Output:</p>
+<blockquote>
+<p>2345 3 1234 4 135 54321</p>
+</blockquote>
 <hr>
 <h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">l = [&quot;hello&quot;, 1, [2, 3]]</span><br><span class="line">la = [2, 1, 0, -1, -2]</span><br><span class="line">lb = [&quot;apple&quot;, &quot;banana&quot;, &quot;orange&quot;]</span><br><span class="line">la.sort()</span><br><span class="line">lb.sort(reverse=True)</span><br><span class="line">print(la)</span><br><span class="line">print(lb)</span><br></pre></td></tr></table></figure>
-<p>output:<br>[-2, -1, 0, 1, 2]<br>[‘orange’, ‘banana’, ‘apple’]</p>
+<p>Output: </p>
+<blockquote>
+<p>[-2, -1, 0, 1, 2]<br>[‘orange’, ‘banana’, ‘apple’]</p>
+</blockquote>
 <hr>
 <h2 id="queue-PriorityQueue"><a href="#queue-PriorityQueue" class="headerlink" title="queue.PriorityQueue"></a>queue.PriorityQueue</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from queue import PriorityQueue</span><br><span class="line">q = PriorityQueue()</span><br><span class="line"></span><br><span class="line">q.put((2, &quot;eat&quot;))</span><br><span class="line">q.put((1, &quot;get up&quot;))</span><br><span class="line">q.put((3, &quot;sleep&quot;))</span><br><span class="line"></span><br><span class="line">while not q.empty():</span><br><span class="line">    next_item = q.get()</span><br><span class="line">    print(next_item)</span><br></pre></td></tr></table></figure>
 <hr>
 <h2 id="Array-Numpy"><a href="#Array-Numpy" class="headerlink" title="Array (Numpy)"></a>Array (Numpy)</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">n, m = 2, 3</span><br><span class="line">a = np.zeros((n, m), dtype=int)</span><br><span class="line">print(type(a))</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
 <hr>
-<p>output:<br>&lt;class ‘numpy.ndarray’&gt;<br>[ [0 0 0]<br>&emsp;[0 0 0] ]</p>
+<p>Output:</p>
+<blockquote>
+<p>&lt;class ‘numpy.ndarray’&gt;<br>[ [0 0 0]<br>&emsp;[0 0 0] ]</p>
+</blockquote>
 <h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class A:</span><br><span class="line">    def __init__(self, cnt, chr):</span><br><span class="line">        self.cnt = cnt</span><br><span class="line">        self.chr = chr</span><br><span class="line">    def __lt__(self, other):</span><br><span class="line">        if self.cnt != other.cnt:</span><br><span class="line">            return self.cnt &gt; other.cnt</span><br><span class="line">        else:</span><br><span class="line">            return self.chr &lt; other.chr</span><br><span class="line">    def __str__(self):</span><br><span class="line">        return str(self.cnt) + &quot; &quot; + str(self.chr)</span><br><span class="line"></span><br><span class="line">a = []</span><br><span class="line">a.append(A(1, &quot;apple&quot;))</span><br><span class="line">a.append(A(2, &quot;banana&quot;))</span><br><span class="line">a.sort()</span><br><span class="line">for i in range(len(a)):</span><br><span class="line">    print(a[i])</span><br></pre></td></tr></table></figure>
-<p>output:<br>2 banana<br>1 apple</p>
+<p>Output: </p>
+<blockquote>
+<p>2 banana<br>1 apple</p>
+</blockquote>
 <hr>
 <h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><h2 id="String-1"><a href="#String-1" class="headerlink" title="String"></a>String</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">s = input()</span><br><span class="line">print(type(s))</span><br><span class="line">sa, sb = input().split(maxsplit=1)</span><br></pre></td></tr></table></figure>
-<p>output: &lt;class ‘str’&gt;</p>
+<p>Output:</p>
+<blockquote>
+<p>&lt;class ‘str’&gt;</p>
+</blockquote>
 <hr>
 <h2 id="List-1"><a href="#List-1" class="headerlink" title="List"></a>List</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">l = []</span><br><span class="line">print(type(l))</span><br><span class="line">l = list(map(int, input().split()))</span><br><span class="line">lm = [[[0 for i in range(3)] for j in range(4)] for k in range(5)]</span><br><span class="line">print(lm[4][3][2])</span><br></pre></td></tr></table></figure>
-<p>output:<br>&lt;class ‘list’&gt;<br>0</p>
+<p>Output: </p>
+<blockquote>
+<p>&lt;class ‘list’&gt;<br>0</p>
+</blockquote>
 <hr>
 <h2 id="Dict"><a href="#Dict" class="headerlink" title="Dict"></a>Dict</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">d = &#123;&#125;</span><br><span class="line">print(type(d))</span><br></pre></td></tr></table></figure>
-<p>output: &lt;class ‘dict’&gt;</p>
+<p>Output:</p>
+<blockquote>
+<p>&lt;class ‘dict’&gt;</p>
+</blockquote>
 <hr>
 <h2 id="Int"><a href="#Int" class="headerlink" title="Int"></a>Int</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">n, m = map(int, input().split())</span><br><span class="line">print(type(n))</span><br></pre></td></tr></table></figure>
-<p>output:&lt;class ‘int’&gt;</p>
+<p>Output:</p>
+<blockquote>
+<p>&lt;class ‘int’&gt;</p>
+</blockquote>
 <hr>
 ]]></content>
   </entry>
