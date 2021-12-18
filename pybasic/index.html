@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Basic Types and Useful TypesStringEscape Character 12345678\&amp;#x27;      Single Quote\\	    Backslash	\n	    New Line	\r	    Carriage Return\t      Tabs &#x3D; &amp;#x27;\# \&amp;#x27; \\ &quot;&quot;&quot;&amp;#x27;pr">
+  <meta name="description" content="Basic Types and Useful TypesStringEscape Character12345678\&amp;#x27;      Single Quote\\	    Backslash	\n	    New Line	\r	    Carriage Return\t      Tabs &#x3D; &amp;#x27;\# \&amp;#x27; \\ &quot;&quot;&quot;&amp;#x27;pri">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Start to Use Python to Solve Algorithm Problems">
 <meta property="og:url" content="http://example.com/pybasic/index.html">
 <meta property="og:site_name" content="Snowy Stories">
-<meta property="og:description" content="Basic Types and Useful TypesStringEscape Character 12345678\&amp;#x27;      Single Quote\\	    Backslash	\n	    New Line	\r	    Carriage Return\t      Tabs &#x3D; &amp;#x27;\# \&amp;#x27; \\ &quot;&quot;&quot;&amp;#x27;pr">
+<meta property="og:description" content="Basic Types and Useful TypesStringEscape Character12345678\&amp;#x27;      Single Quote\\	    Backslash	\n	    New Line	\r	    Carriage Return\t      Tabs &#x3D; &amp;#x27;\# \&amp;#x27; \\ &quot;&quot;&quot;&amp;#x27;pri">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-12-16T11:22:48.000Z">
-<meta property="article:modified_time" content="2021-12-18T08:52:49.236Z">
+<meta property="article:modified_time" content="2021-12-18T08:53:22.321Z">
 <meta property="article:author" content="snowy_smile">
 <meta name="twitter:card" content="summary">
 
@@ -225,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-12-18 17:52:49" itemprop="dateModified" datetime="2021-12-18T17:52:49+09:00">2021-12-18</time>
+                <time title="Modified: 2021-12-18 17:53:22" itemprop="dateModified" datetime="2021-12-18T17:53:22+09:00">2021-12-18</time>
               </span>
 
           
@@ -251,8 +251,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Basic-Types-and-Useful-Types"><a href="#Basic-Types-and-Useful-Types" class="headerlink" title="Basic Types and Useful Types"></a>Basic Types and Useful Types</h2><h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>Escape Character</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">\&#x27;      Single Quote</span><br><span class="line">\\	    Backslash	</span><br><span class="line">\n	    New Line	</span><br><span class="line">\r	    Carriage Return</span><br><span class="line">\t      Tab</span><br><span class="line"></span><br><span class="line">s = &#x27;\# \&#x27; \\ &quot;&quot;&quot;&#x27;</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
+        <h2 id="Basic-Types-and-Useful-Types"><a href="#Basic-Types-and-Useful-Types" class="headerlink" title="Basic Types and Useful Types"></a>Basic Types and Useful Types</h2><h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><h4 id="Escape-Character"><a href="#Escape-Character" class="headerlink" title="Escape Character"></a>Escape Character</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">\&#x27;      Single Quote</span><br><span class="line">\\	    Backslash	</span><br><span class="line">\n	    New Line	</span><br><span class="line">\r	    Carriage Return</span><br><span class="line">\t      Tab</span><br><span class="line"></span><br><span class="line">s = &#x27;\# \&#x27; \\ &quot;&quot;&quot;&#x27;</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
 <p>output: # ‘ \ “””</p>
 <h3 id="queue-PriorityQueue"><a href="#queue-PriorityQueue" class="headerlink" title="queue.PriorityQueue"></a>queue.PriorityQueue</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from queue import PriorityQueue</span><br><span class="line">q = PriorityQueue()</span><br><span class="line"></span><br><span class="line">q.put((2, &quot;eat&quot;))</span><br><span class="line">q.put((1, &quot;get up&quot;))</span><br><span class="line">q.put((3, &quot;sleep&quot;))</span><br><span class="line"></span><br><span class="line">while not q.empty():</span><br><span class="line">    next_item = q.get()</span><br><span class="line">    print(next_item)</span><br></pre></td></tr></table></figure>
 
@@ -342,7 +341,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Types-and-Useful-Types"><span class="nav-number">1.</span> <span class="nav-text">Basic Types and Useful Types</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-number">1.1.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#queue-PriorityQueue"><span class="nav-number">1.2.</span> <span class="nav-text">queue.PriorityQueue</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Input"><span class="nav-number">2.</span> <span class="nav-text">Input</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Types-and-Useful-Types"><span class="nav-number">1.</span> <span class="nav-text">Basic Types and Useful Types</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-number">1.1.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Escape-Character"><span class="nav-number">1.1.1.</span> <span class="nav-text">Escape Character</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#queue-PriorityQueue"><span class="nav-number">1.2.</span> <span class="nav-text">queue.PriorityQueue</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Input"><span class="nav-number">2.</span> <span class="nav-text">Input</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
