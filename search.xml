@@ -2558,7 +2558,7 @@ This is a comment
 <p>其實這個邏輯還滿順暢的，而中國的信息防火牆和篩刪制度讓很多人都一直以為這就是世界的真相。<br>對於我自己，雖然一直喜歡電腦，大學也是計算機專業，卻並沒怎麼產生過翻牆的需求。在小學的時候，Google還未退出中國，其實曾經不記緣由地瀏覽過相關「六四屠殺」的一些信息。但是那時候我並沒有勇氣看下去和追究下去。我並不喜歡政治，有時間用電腦更願意多打會兒遊戲。而讀書時一直為高考或者為理想所佔走了時間，而真的開始去探索政治與歷史的真相，已是2019年在COVID-19爆發後了……</p>
 <h2 id="我也曾是個愛國青年"><a href="#我也曾是個愛國青年" class="headerlink" title="我也曾是個愛國青年"></a>我也曾是個愛國青年</h2><p>一直以來，語文都算是自己最喜歡的科目（之一），而我還很喜歡一些課文，閱讀下去，有時會沉浸得察覺不到周圍的人和聲音，有時會情緒感染而淚流哽咽。在小學的時候，課本裏有很多戰爭相關的課文，什麼狼牙山五壯士，什麼抗美援朝英雄之類的…… 我是情緒很飽滿的人，在那個年齡讀這些課文，聲音裏想必也是充滿了所謂「英雄」犧牲前的「信仰的勇氣」和「憤怒的仇恨」吧。有個什麼朗讀活動，要讀相關的東西，我自以為朗讀很好、充滿了「感情」而卻沒有被選上，曾一度覺得非常遺憾和難過。現在回頭想來，也許是老師比較理性的保護？總之，是少了個「愚昧無知小戰狼」的一次丟人現眼吧。</p>
 <blockquote>
-<p>TODO 曾經的高考沒有考上，自己寫了一本書去求學希望大學破格錄取，有遇到的人勸說我出國留學。但是我卻希望自己留在中國</p>
+<p>TODO 曾經的高考沒有考上理想的大學，自己寫了一本書去求學希望大學破格錄取，有遇到的人勸說我出國留學。但是我卻希望自己留在中國</p>
 </blockquote>
 <blockquote>
 <p>TODO 在大學參加算法競賽的時候</p>
@@ -2573,9 +2573,16 @@ This is a comment
   <entry>
     <title>Start to Use Python to Solve Algorithm Problems</title>
     <url>/pybasic/</url>
-    <content><![CDATA[<h2 id="Basic-Type"><a href="#Basic-Type" class="headerlink" title="Basic Type"></a>Basic Type</h2><p>123</p>
-<h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>123</p>
-<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>string</p>
+    <content><![CDATA[<h2 id="Basic-Type"><a href="#Basic-Type" class="headerlink" title="Basic Type"></a>Basic Type</h2><h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>123</p>
+<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">s = input()</span><br><span class="line">print(type(s))</span><br></pre></td></tr></table></figure>
+<p>output: &lt;class ‘str’&gt;</p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">l = []</span><br><span class="line">print(type(l))</span><br><span class="line">l = list(map(int, input().split()))</span><br></pre></td></tr></table></figure>
+<p>output: &lt;class ‘list’&gt;</p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">d = &#123;&#125;</span><br><span class="line">print(type(d))</span><br></pre></td></tr></table></figure>
+<p>output: &lt;class ‘dict’&gt;</p>
+<hr>
 ]]></content>
   </entry>
 </search>
