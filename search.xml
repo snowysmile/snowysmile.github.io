@@ -1492,6 +1492,12 @@ This is a comment
 <td align="center">主な</td>
 <td align="center">おもな</td>
 </tr>
+<tr>
+<td align="center">strange</td>
+<td align="center">異常</td>
+<td align="center">おかしい</td>
+<td align="center">おかしい</td>
+</tr>
 </tbody></table>
 <h2 id="Place-地點-ばしょ"><a href="#Place-地點-ばしょ" class="headerlink" title="Place 地點 ばしょ"></a>Place 地點 ばしょ</h2><table>
 <thead>
@@ -2709,11 +2715,188 @@ This is a comment
 <td align="center">さつじんはん</td>
 </tr>
 </tbody></table>
-<h2 id="Food-食べ物-たべもの"><a href="#Food-食べ物-たべもの" class="headerlink" title="Food 食べ物 たべもの"></a>Food 食べ物 たべもの</h2><p>.</p>
-<h3 id="Vegetable-野菜-やさい"><a href="#Vegetable-野菜-やさい" class="headerlink" title="Vegetable 野菜 やさい"></a>Vegetable 野菜 やさい</h3><p>.</p>
-<h3 id="Fruit-果物-くだもの"><a href="#Fruit-果物-くだもの" class="headerlink" title="Fruit 果物 くだもの"></a>Fruit 果物 くだもの</h3><p>.</p>
-<h3 id="Others-他のもの-ほかのもの"><a href="#Others-他のもの-ほかのもの" class="headerlink" title="Others 他のもの ほかのもの"></a>Others 他のもの ほかのもの</h3><p>|English|漢語|日本語Nihongo|片仮名Katakana|<br>oil|油|油|あぶら<br>salt|鹽|塩|しお<br>crop|農作物|作物|さくもつ<br>wheat|小麥|小麦|こむぎ<br>flour|小麥粉 - 麪粉|小麦粉|こむぎこ<br>bread|麪包|パン|ぱん</p>
-<h3 id="Tool-工具-どうぐ"><a href="#Tool-工具-どうぐ" class="headerlink" title="Tool 工具 どうぐ"></a>Tool 工具 どうぐ</h3><p>|English|漢語|日本語Nihongo|片仮名Katakana|<br>brush|畫筆|筆|ふで<br>picture|繪畫|絵|え<br>map|地圖|地図|ちず<br>forecast|預報|予報|よほう<br>wallet|錢包|財布|さいふ<br>thermometer|溫度計|温度計|おんどけい<br>material|材料|材料|ざいりょう</p>
+<h2 id="Food-食べ物-たべもの"><a href="#Food-食べ物-たべもの" class="headerlink" title="Food 食べ物 たべもの"></a>Food 食べ物 たべもの</h2><h3 id="Vegetable-野菜-やさい"><a href="#Vegetable-野菜-やさい" class="headerlink" title="Vegetable 野菜 やさい"></a>Vegetable 野菜 やさい</h3><table>
+<thead>
+<tr>
+<th align="center">English</th>
+<th align="center">漢語</th>
+<th align="center">日本語Nihongo</th>
+<th align="center">片仮名Katakana</th>
+</tr>
+</thead>
+</table>
+<h3 id="Fruit-果物-くだもの"><a href="#Fruit-果物-くだもの" class="headerlink" title="Fruit 果物 くだもの"></a>Fruit 果物 くだもの</h3><table>
+<thead>
+<tr>
+<th align="center">English</th>
+<th align="center">漢語</th>
+<th align="center">日本語Nihongo</th>
+<th align="center">片仮名Katakana</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">carrot</td>
+<td align="center">胡蘿蔔</td>
+<td align="center">人参🥕</td>
+<td align="center">にんじん</td>
+</tr>
+</tbody></table>
+<h3 id="Cuisine-料理-りょうり"><a href="#Cuisine-料理-りょうり" class="headerlink" title="Cuisine 料理 りょうり"></a>Cuisine 料理 りょうり</h3><table>
+<thead>
+<tr>
+<th align="center">English</th>
+<th align="center">漢語</th>
+<th align="center">日本語Nihongo</th>
+<th align="center">片仮名Katakana</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">chicken</td>
+<td align="center">雞肉</td>
+<td align="center">鶏肉</td>
+<td align="center">とりにく</td>
+</tr>
+<tr>
+<td align="center">fish</td>
+<td align="center">魚</td>
+<td align="center">魚🐡</td>
+<td align="center">さかな</td>
+</tr>
+<tr>
+<td align="center">sashimi</td>
+<td align="center">刺身</td>
+<td align="center">刺身</td>
+<td align="center">さしみ</td>
+</tr>
+<tr>
+<td align="center">squid</td>
+<td align="center">章魚 - 烏賊</td>
+<td align="center">烏賊</td>
+<td align="center">イカ</td>
+</tr>
+<tr>
+<td align="center">tuna</td>
+<td align="center">金槍魚</td>
+<td align="center">鮪 - マグロ</td>
+<td align="center">まぐろ</td>
+</tr>
+<tr>
+<td align="center">soba</td>
+<td align="center">蕎麥麪</td>
+<td align="center">蕎麦</td>
+<td align="center">そば</td>
+</tr>
+<tr>
+<td align="center">wheat noodles</td>
+<td align="center">烏冬麪</td>
+<td align="center">饂飩</td>
+<td align="center">うどん</td>
+</tr>
+</tbody></table>
+<h3 id="Others-他のもの-ほかのもの"><a href="#Others-他のもの-ほかのもの" class="headerlink" title="Others 他のもの ほかのもの"></a>Others 他のもの ほかのもの</h3><table>
+<thead>
+<tr>
+<th align="center">English</th>
+<th align="center">漢語</th>
+<th align="center">日本語Nihongo</th>
+<th align="center">片仮名Katakana</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">oil</td>
+<td align="center">油</td>
+<td align="center">油</td>
+<td align="center">あぶら</td>
+</tr>
+<tr>
+<td align="center">salt</td>
+<td align="center">鹽</td>
+<td align="center">塩</td>
+<td align="center">しお</td>
+</tr>
+<tr>
+<td align="center">crop</td>
+<td align="center">農作物</td>
+<td align="center">作物</td>
+<td align="center">さくもつ</td>
+</tr>
+<tr>
+<td align="center">wheat</td>
+<td align="center">小麥</td>
+<td align="center">小麦</td>
+<td align="center">こむぎ</td>
+</tr>
+<tr>
+<td align="center">potato</td>
+<td align="center">土豆</td>
+<td align="center">ポテト - じゃがいも🥔</td>
+<td align="center">じゃがいも</td>
+</tr>
+<tr>
+<td align="center">flour</td>
+<td align="center">小麥粉 - 麪粉</td>
+<td align="center">小麦粉</td>
+<td align="center">こむぎこ</td>
+</tr>
+<tr>
+<td align="center">bread</td>
+<td align="center">麪包</td>
+<td align="center">パン</td>
+<td align="center">ぱん</td>
+</tr>
+</tbody></table>
+<h3 id="Tool-工具-どうぐ"><a href="#Tool-工具-どうぐ" class="headerlink" title="Tool 工具 どうぐ"></a>Tool 工具 どうぐ</h3><table>
+<thead>
+<tr>
+<th align="center">English</th>
+<th align="center">漢語</th>
+<th align="center">日本語Nihongo</th>
+<th align="center">片仮名Katakana</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">brush</td>
+<td align="center">畫筆</td>
+<td align="center">筆</td>
+<td align="center">ふで</td>
+</tr>
+<tr>
+<td align="center">picture</td>
+<td align="center">繪畫</td>
+<td align="center">絵</td>
+<td align="center">え</td>
+</tr>
+<tr>
+<td align="center">map</td>
+<td align="center">地圖</td>
+<td align="center">地図</td>
+<td align="center">ちず</td>
+</tr>
+<tr>
+<td align="center">forecast</td>
+<td align="center">預報</td>
+<td align="center">予報</td>
+<td align="center">よほう</td>
+</tr>
+<tr>
+<td align="center">wallet</td>
+<td align="center">錢包</td>
+<td align="center">財布</td>
+<td align="center">さいふ</td>
+</tr>
+<tr>
+<td align="center">thermometer</td>
+<td align="center">溫度計</td>
+<td align="center">温度計</td>
+<td align="center">おんどけい</td>
+</tr>
+<tr>
+<td align="center">material</td>
+<td align="center">材料</td>
+<td align="center">材料</td>
+<td align="center">ざいりょう</td>
+</tr>
+</tbody></table>
 <h3 id="Hobby-フービー-趣味-しゅみ"><a href="#Hobby-フービー-趣味-しゅみ" class="headerlink" title="Hobby フービー - 趣味 しゅみ"></a>Hobby フービー - 趣味 しゅみ</h3><table>
 <thead>
 <tr>
@@ -2949,6 +3132,27 @@ This is a comment
 <td align="center">べんきょう</td>
 <td align="center">勉強します</td>
 </tr>
+<tr>
+<td align="center">freeze</td>
+<td align="center">冷凍</td>
+<td align="center">冷凍する</td>
+<td align="center">れいとう</td>
+<td align="center">冷凍します</td>
+</tr>
+<tr>
+<td align="center">unfreeze</td>
+<td align="center">解凍</td>
+<td align="center">解凍する</td>
+<td align="center">かいとう</td>
+<td align="center">解凍します</td>
+</tr>
+<tr>
+<td align="center">save</td>
+<td align="center">保存</td>
+<td align="center">保存</td>
+<td align="center">ほぞん</td>
+<td align="center">保存します</td>
+</tr>
 </tbody></table>
 <hr>
 <h2 id="五段動詞-Ⅰ-godan"><a href="#五段動詞-Ⅰ-godan" class="headerlink" title="五段動詞 Ⅰ godan"></a>五段動詞 Ⅰ godan</h2><p>語幹が子音で終わる。原形は -u で終わる<br><del>ru</del> | a-ru | u-ru | o-ru</p>
@@ -2982,6 +3186,13 @@ This is a comment
 <td align="center">あう</td>
 <td align="center">会う</td>
 <td align="center">会います</td>
+</tr>
+<tr>
+<td align="center">wash</td>
+<td align="center">洗</td>
+<td align="center">洗う</td>
+<td align="center">あらう</td>
+<td align="center">洗います</td>
 </tr>
 </tbody></table>
 <h3 id="ku-く"><a href="#ku-く" class="headerlink" title="ku く"></a>ku く</h3><table>
@@ -3032,6 +3243,13 @@ This is a comment
 <td align="center">話す</td>
 <td align="center">はなす</td>
 <td align="center">話します</td>
+</tr>
+<tr>
+<td align="center">steam</td>
+<td align="center">蒸</td>
+<td align="center">蒸す</td>
+<td align="center">むす</td>
+<td align="center">蒸します</td>
 </tr>
 </tbody></table>
 <h3 id="tsu-つ"><a href="#tsu-つ" class="headerlink" title="tsu つ"></a>tsu つ</h3><table>
@@ -3130,6 +3348,20 @@ This is a comment
 <td align="center">貼る</td>
 <td align="center">はる</td>
 <td align="center">貼ります</td>
+</tr>
+<tr>
+<td align="center">finish</td>
+<td align="center">完成</td>
+<td align="center">仕上がる</td>
+<td align="center">しあがる</td>
+<td align="center">仕上がります</td>
+</tr>
+<tr>
+<td align="center">rise</td>
+<td align="center">上升</td>
+<td align="center">上がる</td>
+<td align="center">あがる</td>
+<td align="center">上がります</td>
 </tr>
 </tbody></table>
 <h3 id="u-ru"><a href="#u-ru" class="headerlink" title="u-ru"></a>u-ru</h3><table>
@@ -3263,7 +3495,28 @@ This is a comment
 <td align="center">睡覺</td>
 <td align="center">寝る</td>
 <td align="center">ねる</td>
-<td align="center">ねます</td>
+<td align="center">寝ます</td>
+</tr>
+<tr>
+<td align="center">boil</td>
+<td align="center">煮</td>
+<td align="center">ゆでる</td>
+<td align="center">茹でます</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">fry</td>
+<td align="center">煎煮</td>
+<td align="center">揚げる</td>
+<td align="center">あげる</td>
+<td align="center">揚げます</td>
+</tr>
+<tr>
+<td align="center">add - plus</td>
+<td align="center">加</td>
+<td align="center">加える</td>
+<td align="center">くわえる</td>
+<td align="center">加えます</td>
 </tr>
 </tbody></table>
 <h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>forgive|原諒|許します<br>commmit|施行|犯します<br>use|使用|使います<br>start|開始|始めます<br>measure|測量|測ります<br>make|製作|作ります</p>
@@ -3275,7 +3528,7 @@ This is a comment
 <p><strong>終止形 Terminal | i、e - ruる</strong><br>（とき・の・こと･名詞）<br>五段： 言う iu | 作る tsukuru<br>一段：見る miru | 始める hajimeru</p>
 <p><strong>仮定形 Hypothetical | i、e - reれ</strong><br>（ば）<br>五段：言え ie | 作れ tsukure<br>一段：見 mi | 始め hajime</p>
 <p><strong>命令形 Imperative | i、e - roろ、yoよ</strong><br>（「！」・と・「。」）<br>五段：言え ie | 作れ tsukure<br>一段：見 mi | 始め hajime</p>
-<h3 id="Conjugation-Example"><a href="#Conjugation-Example" class="headerlink" title="Conjugation Example"></a>Conjugation Example</h3><p>辞書形<br>書く</p>
+<h3 id="Conjugation-Example"><a href="#Conjugation-Example" class="headerlink" title="Conjugation Example"></a>Conjugation Example</h3><p>辞書形 じしょけい<br>書く</p>
 <p><a href="https://ja.wikipedia.org/wiki/%E6%9C%AA%E7%84%B6%E5%BD%A2">未然形</a><br>書か、書こ</p>
 <p><a href="https://ja.wikipedia.org/wiki/%E9%80%A3%E7%94%A8%E5%BD%A2">連用形</a><br>書き、書い</p>
 <p><a href="https://ja.wikipedia.org/wiki/%E7%B5%82%E6%AD%A2%E5%BD%A2_(%E6%96%87%E6%B3%95)">終止形</a><br>書く</p>
