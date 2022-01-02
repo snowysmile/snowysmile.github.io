@@ -230,6 +230,7 @@ This is a comment
 <li>This is 2-</li>
 <li>This is 3-</li>
 </ul>
+<h3 id="Symbols-⏸"><a href="#Symbols-⏸" class="headerlink" title="Symbols ⏸"></a>Symbols ⏸</h3><p><a href="https://unicode-table.com/en/">unicode-table</a><br>Symbol ~ Punctuation|UTF-8 Code|English|漢語|日語|<br>|:-:|:-:|:-:|:-:|:-:|<br>¦ | U+00A6 |Broken Bar|間斷線|壊れたバー = こわれたバー<br>| | U+007C |Vertical Line|垂線|垂直線 = すいちょくせん<br>‖ | U+2016 |Double Vertical Line|雙垂線|二重縦線 = にじゅうじゅうせん</p>
 <h3 id="Blank-Space"><a href="#Blank-Space" class="headerlink" title="Blank Space"></a>Blank Space</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Monospaced Font is necessary</span><br><span class="line">&amp;nbsp; = space[width1]  &amp;nbsp; = space[width2]  &amp;emsp; = space[width4]</span><br></pre></td></tr></table></figure>
 
 <h3 id="Blank-Line"><a href="#Blank-Line" class="headerlink" title="Blank Line"></a>Blank Line</h3><blockquote>
@@ -2290,6 +2291,24 @@ This is a comment
 <td align="center">きょうしつ</td>
 </tr>
 <tr>
+<td align="center">primary school - elementary school</td>
+<td align="center">小學</td>
+<td align="center">小学校</td>
+<td align="center">しょうがっこう</td>
+</tr>
+<tr>
+<td align="center">middle school - junior high school</td>
+<td align="center">初中</td>
+<td align="center">中学校</td>
+<td align="center">ちゅうがっこう</td>
+</tr>
+<tr>
+<td align="center">high school</td>
+<td align="center">高中</td>
+<td align="center">高校</td>
+<td align="center">こうこう</td>
+</tr>
+<tr>
 <td align="center">bank</td>
 <td align="center">銀行</td>
 <td align="center">銀行</td>
@@ -2314,7 +2333,7 @@ This is a comment
 <td align="center">えいがかん</td>
 </tr>
 <tr>
-<td align="center">Theater</td>
+<td align="center">theater</td>
 <td align="center">劇場</td>
 <td align="center">劇場</td>
 <td align="center">げきじょう</td>
@@ -2384,6 +2403,12 @@ This is a comment
 <td align="center">公司</td>
 <td align="center">会社</td>
 <td align="center">かいしゃ</td>
+</tr>
+<tr>
+<td align="center">factory</td>
+<td align="center">工廠</td>
+<td align="center">工場</td>
+<td align="center">こうじょう</td>
 </tr>
 <tr>
 <td align="center">entrance</td>
@@ -2456,10 +2481,22 @@ This is a comment
 <td align="center">たいふ</td>
 </tr>
 <tr>
+<td align="center">storm</td>
+<td align="center">暴風</td>
+<td align="center">嵐</td>
+<td align="center">あらし</td>
+</tr>
+<tr>
 <td align="center">tsunami - tidal wave</td>
 <td align="center">海嘯</td>
 <td align="center">津波</td>
 <td align="center">つなみ</td>
+</tr>
+<tr>
+<td align="center">flood</td>
+<td align="center">洪水</td>
+<td align="center">洪水</td>
+<td align="center">こうずい</td>
 </tr>
 </tbody></table>
 <h3 id="World-世界🗺-セかい"><a href="#World-世界🗺-セかい" class="headerlink" title="World 世界🗺 セかい"></a>World 世界🗺 セかい</h3><table>
@@ -2892,7 +2929,7 @@ This is a comment
 <td align="center">おしっこ</td>
 </tr>
 </tbody></table>
-<h3 id="Role"><a href="#Role" class="headerlink" title="Role"></a>Role</h3><table>
+<h3 id="Role-役割-やくわり"><a href="#Role-役割-やくわり" class="headerlink" title="Role 役割 やくわり"></a>Role 役割 やくわり</h3><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -2926,6 +2963,7 @@ This is a comment
 <td align="center">てき</td>
 </tr>
 </tbody></table>
+<h3 id="Group-Organization-組織-そしき"><a href="#Group-Organization-組織-そしき" class="headerlink" title="Group - Organization 組織 そしき"></a>Group - Organization 組織 そしき</h3><p>army|軍隊|軍隊|ぐんたい</p>
 <h3 id="Family-家族-かぞく"><a href="#Family-家族-かぞく" class="headerlink" title="Family 家族 かぞく"></a>Family 家族 かぞく</h3><table>
 <thead>
 <tr>
@@ -3000,6 +3038,22 @@ This is a comment
 <td align="center">女兒</td>
 <td align="center">娘</td>
 <td align="center">むすめ</td>
+</tr>
+</tbody></table>
+<h3 id="Plant-植物-しょくぶつ"><a href="#Plant-植物-しょくぶつ" class="headerlink" title="Plant 植物 しょくぶつ"></a>Plant 植物 しょくぶつ</h3><table>
+<thead>
+<tr>
+<th align="center">English</th>
+<th align="center">漢語</th>
+<th align="center">日本語Nihongo</th>
+<th align="center">片仮名Katakana</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">branch</td>
+<td align="center">枝</td>
+<td align="center">枝</td>
+<td align="center">えだ</td>
 </tr>
 </tbody></table>
 <h3 id="Animal-動物-どうぶつ"><a href="#Animal-動物-どうぶつ" class="headerlink" title="Animal 動物 どうぶつ"></a>Animal 動物 どうぶつ</h3><table>
@@ -3086,6 +3140,12 @@ This is a comment
 <td align="center">藝術家</td>
 <td align="center">芸術家 げいじゅつか</td>
 <td align="center"></td>
+</tr>
+<tr>
+<td align="center">singer</td>
+<td align="center">歌手</td>
+<td align="center">歌手</td>
+<td align="center">かしゅ</td>
 </tr>
 <tr>
 <td align="center">audience</td>
@@ -3619,6 +3679,12 @@ This is a comment
 <td align="center">スタッフ</td>
 <td align="center">すたっふ</td>
 </tr>
+<tr>
+<td align="center">bomb</td>
+<td align="center">炸彈</td>
+<td align="center">爆弾💣</td>
+<td align="center">ばくだん</td>
+</tr>
 </tbody></table>
 <h3 id="Travel-旅行-りょこう"><a href="#Travel-旅行-りょこう" class="headerlink" title="Travel 旅行 りょこう"></a>Travel 旅行 りょこう</h3><table>
 <thead>
@@ -3788,6 +3854,13 @@ This is a comment
 <td align="center">必要</td>
 <td align="center">必要</td>
 <td align="center">ひつよう</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">anger</td>
+<td align="center">憤怒</td>
+<td align="center">怒り</td>
+<td align="center">いかり</td>
 <td align="center"></td>
 </tr>
 </tbody></table>
@@ -4080,133 +4153,8 @@ This is a comment
 <td align="center"></td>
 <td align="center"></td>
 </tr>
-<tr>
-<td align="center">doyoubi</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">for 1 year</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">for 2 year</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">for 3 year</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">for 4 year</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">for 5 year</td>
-<td align="center">五年間</td>
-<td align="center">五年間</td>
-<td align="center">ごねんかん</td>
-</tr>
-<tr>
-<td align="center">for 6 year</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">for 7 year</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">for 8 year</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">for 9 year</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">for 10 year</td>
-<td align="center">十年間</td>
-<td align="center">十年間</td>
-<td align="center">じゅうねんかん</td>
-</tr>
-<tr>
-<td align="center">1 day ago</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">2 days ago</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">3 days ago</td>
-<td align="center">三日前</td>
-<td align="center">三日前に</td>
-<td align="center">みっかまえに</td>
-</tr>
-<tr>
-<td align="center">4 days ago</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">5 days ago</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">6 days ago</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">7 days ago</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">8 days ago</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">9 days ago</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">10 days ago</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
 </tbody></table>
+<h3 id="Time-with-numbers"><a href="#Time-with-numbers" class="headerlink" title="Time with numbers"></a>Time with numbers</h3><p>doyoubi<br><a href="https://blog.amazingtalker.com/zh-tw/zh-jap/%E6%97%A5%E6%96%87%E6%95%B8%E5%AD%97%E8%AE%80%E9%9F%B3/11497/">link</a><br>for 1 year|<br>for 2 year|<br>for 3 year|<br>for 4 year|<br>for 5 year|五年間|五年間|ごねんかん<br>for 6 year|<br>for 7 year|<br>for 8 year|<br>for 9 year|<br>for 10 year|十年間|十年間|じゅうねんかん<br>1 day ago|<br>2 days ago|<br>3 days ago|三日前|三日前に|みっかまえに<br>4 days ago|<br>5 days ago|<br>6 days ago|<br>7 days ago|<br>8 days ago|<br>9 days ago|<br>10 days ago|</p>
 <h2 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h2>]]></content>
       <categories>
         <category>Japanese</category>
@@ -4496,9 +4444,23 @@ This is a comment
 <tr>
 <td align="center">succeed</td>
 <td align="center">成功</td>
-<td align="center">成功</td>
 <td align="center">成功する</td>
+<td align="center">せいこうする</td>
 <td align="center">成功します</td>
+</tr>
+<tr>
+<td align="center">training - practice</td>
+<td align="center">訓練</td>
+<td align="center">訓練する</td>
+<td align="center">くんれんする</td>
+<td align="center">訓練します</td>
+</tr>
+<tr>
+<td align="center">explode</td>
+<td align="center">爆炸</td>
+<td align="center">爆発する</td>
+<td align="center">ばくはつする</td>
+<td align="center">爆発します</td>
 </tr>
 </tbody></table>
 <hr>
@@ -4561,6 +4523,20 @@ This is a comment
 <td align="center">失う</td>
 <td align="center">うしなう</td>
 <td align="center">失います</td>
+</tr>
+<tr>
+<td align="center">use</td>
+<td align="center">使用</td>
+<td align="center">使う</td>
+<td align="center">つかう</td>
+<td align="center">使います</td>
+</tr>
+<tr>
+<td align="center">acompany</td>
+<td align="center">陪伴</td>
+<td align="center">伴う</td>
+<td align="center">ともなう</td>
+<td align="center">伴い</td>
 </tr>
 </tbody></table>
 <h3 id="ku-く"><a href="#ku-く" class="headerlink" title="ku く"></a>ku く</h3><table>
@@ -4674,6 +4650,20 @@ This is a comment
 <td align="center">ころす</td>
 <td align="center">殺します</td>
 <td align="center"></td>
+</tr>
+<tr>
+<td align="center">forgive</td>
+<td align="center">原諒</td>
+<td align="center">許す</td>
+<td align="center">ゆるす</td>
+<td align="center">許します</td>
+</tr>
+<tr>
+<td align="center">commmit</td>
+<td align="center">施行</td>
+<td align="center">犯す</td>
+<td align="center">おかす</td>
+<td align="center">犯します</td>
 </tr>
 </tbody></table>
 <h3 id="tsu-つ"><a href="#tsu-つ" class="headerlink" title="tsu つ"></a>tsu つ</h3><table>
@@ -4842,6 +4832,20 @@ This is a comment
 <td align="center">足る</td>
 <td align="center">たる</td>
 <td align="center">たります</td>
+</tr>
+<tr>
+<td align="center">measure</td>
+<td align="center">測量</td>
+<td align="center">測る</td>
+<td align="center">はかる</td>
+<td align="center">測ります</td>
+</tr>
+<tr>
+<td align="center">hit</td>
+<td align="center">擊中</td>
+<td align="center">当たる</td>
+<td align="center">あたる</td>
+<td align="center">当たります</td>
 </tr>
 </tbody></table>
 <h3 id="u-ru"><a href="#u-ru" class="headerlink" title="u-ru"></a>u-ru</h3><table>
@@ -5063,10 +5067,17 @@ This is a comment
 </tr>
 <tr>
 <td align="center">break</td>
-<td align="center">壞</td>
+<td align="center">破壞</td>
 <td align="center">壊れる</td>
 <td align="center">こわれる</td>
 <td align="center">壊れます</td>
+</tr>
+<tr>
+<td align="center">break(into two parts)</td>
+<td align="center">折れる</td>
+<td align="center">おれる</td>
+<td align="center">折れます</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">boil</td>
@@ -5138,8 +5149,21 @@ This is a comment
 <td align="center">まける</td>
 <td align="center">負けます</td>
 </tr>
+<tr>
+<td align="center">resort</td>
+<td align="center">付諸</td>
+<td align="center">訴える</td>
+<td align="center">うったえる</td>
+<td align="center">訴えます</td>
+</tr>
+<tr>
+<td align="center">start</td>
+<td align="center">開始</td>
+<td align="center">始める</td>
+<td align="center">はじめる</td>
+<td align="center">始めます</td>
+</tr>
 </tbody></table>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>forgive|原諒|許します<br>commmit|施行|犯します<br>use|使用|使います<br>start|開始|始めます<br>measure|測量|測ります</p>
 <hr>
 <h2 id="動詞の活用形"><a href="#動詞の活用形" class="headerlink" title="動詞の活用形"></a><a href="https://en.wikipedia.org/wiki/Japanese_verb_conjugation">動詞の活用形</a></h2><p><strong>辞書形(じしょけい) Dictionary Form</strong><br>Verbs are named and listed in dictionaries according to their “dictionary form” (辞書形, jishokei). This is also called the “plain form” (since this is the plain, non‑polite, non‑past conjugation), and it is the same as the modern “terminal form” (終止形, shūshikei), and the “attributive form” (連体形, rentaikei)</p>
 <p><strong>未然形(みぜんけい) Irrealis | i~e</strong><br>（ない・う・よう・ぬ・れる・られる・せる・させる）<br>not-否定助動詞「-ない」 <a href="https://www.sigure.tw/learn-japanese/mix/difference/nai-nai.php">link</a><br>will|may-意志、推量助動詞「う」 <a href="https://www.sigure.tw/learn-japanese/grammar/n4/31.php">link</a><br>get|can-被動、可能助動詞「-(ら)れる」 <a href="https://www.sigure.tw/learn-japanese/grammar/n4/15.php">link</a><br>make-使役助動詞「(さ)せる」<a href="https://www.sigure.tw/learn-japanese/grammar/n4/14.php">link</a></p>
@@ -5161,13 +5185,13 @@ This is a comment
       </categories>
   </entry>
   <entry>
-    <title>Adverb 副詞 ふくし</title>
+    <title>Adverb 副詞 ふくし | Conjunction 接続詞 せつぞくし</title>
     <url>/jpadverb/</url>
     <content><![CDATA[<p>.</p>
 <span id="more"></span>
 
 <p><strong>NOT SURE</strong></p>
-<h2 id="Time"><a href="#Time" class="headerlink" title="Time"></a>Time</h2><table>
+<h1 id="Adverb-副詞-副詞-ふくし"><a href="#Adverb-副詞-副詞-ふくし" class="headerlink" title="Adverb 副詞 副詞 ふくし"></a>Adverb 副詞 副詞 ふくし</h1><h2 id="Time"><a href="#Time" class="headerlink" title="Time"></a>Time</h2><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -5184,12 +5208,12 @@ This is a comment
 </tr>
 <tr>
 <td align="center">usually</td>
-<td align="center">大抵上 - 通常</td>
+<td align="center">大抵上 ~ 通常</td>
 <td align="center">大抵</td>
 <td align="center">たいてい</td>
 </tr>
 <tr>
-<td align="center">rarely - occasionly - once in a while</td>
+<td align="center">rarely ~ occasionly ~ once in a while</td>
 <td align="center">偶爾</td>
 <td align="center">偶に</td>
 <td align="center">たまに</td>
@@ -5203,17 +5227,51 @@ This is a comment
 <tr>
 <td align="center">just now</td>
 <td align="center">剛才</td>
-<td align="center">さっき - ばかり</td>
-<td align="center">さっき - ばかり</td>
+<td align="center">さっき ~ ばかり</td>
+<td align="center">さっき ~ ばかり</td>
 </tr>
 <tr>
-<td align="center">again - once more</td>
+<td align="center">again ~ once more</td>
 <td align="center">再一次再び</td>
 <td align="center">ふたたび</td>
 <td align="center"></td>
 </tr>
 </tbody></table>
-<h2 id="Conjunction"><a href="#Conjunction" class="headerlink" title="Conjunction"></a>Conjunction</h2><h3 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h3><table>
+<h1 id="Conjunction-連詞-接続詞-せつぞくし"><a href="#Conjunction-連詞-接続詞-せつぞくし" class="headerlink" title="Conjunction 連詞 接続詞 せつぞくし"></a>Conjunction 連詞 接続詞 せつぞくし</h1><h3 id="Status"><a href="#Status" class="headerlink" title="Status"></a>Status</h3><table>
+<thead>
+<tr>
+<th align="center">English</th>
+<th align="center">漢語</th>
+<th align="center">辞書形</th>
+<th align="center">片仮名Katakana</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">I think</td>
+<td align="center">我認為</td>
+<td align="center">と思います</td>
+<td align="center">とおもいます</td>
+</tr>
+<tr>
+<td align="center">I say</td>
+<td align="center">我說</td>
+<td align="center">と言います</td>
+<td align="center">といいます</td>
+</tr>
+<tr>
+<td align="center">I hope ~ It’s good</td>
+<td align="center">我希望</td>
+<td align="center">といいです</td>
+<td align="center">といいです</td>
+</tr>
+<tr>
+<td align="center">as expected ~ anyway</td>
+<td align="center">正如預料那樣</td>
+<td align="center">やっぱり</td>
+<td align="center">やっぱり</td>
+</tr>
+</tbody></table>
+<h3 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h3><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -5231,20 +5289,20 @@ This is a comment
 <tr>
 <td align="center">so</td>
 <td align="center">所以</td>
-<td align="center">ので - それで - だから</td>
-<td align="center">ので - それで - だから</td>
-</tr>
-<tr>
-<td align="center">as expected - anyway</td>
-<td align="center">正如預料那樣</td>
-<td align="center">やっぱり</td>
-<td align="center">やっぱり</td>
+<td align="center">ので ~ それで ~ だから</td>
+<td align="center">ので ~ それで ~ だから</td>
 </tr>
 <tr>
 <td align="center">after all</td>
 <td align="center">到最後</td>
 <td align="center">矢張り</td>
 <td align="center">やはり</td>
+</tr>
+<tr>
+<td align="center">after</td>
+<td align="center">在之後</td>
+<td align="center">お後</td>
+<td align="center">のあと</td>
 </tr>
 </tbody></table>
 <h2 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h2><table>
@@ -5267,5 +5325,40 @@ This is a comment
       <categories>
         <category>Japanese</category>
       </categories>
+  </entry>
+  <entry>
+    <title>sentence 分 ぶん</title>
+    <url>/jpsentence/</url>
+    <content><![CDATA[<p>.</p>
+<span id="more"></span>
+
+<h2 id="Greeting-挨拶する-あい-さつ"><a href="#Greeting-挨拶する-あい-さつ" class="headerlink" title="Greeting 挨拶する あい さつ"></a>Greeting 挨拶する あい さつ</h2><blockquote>
+<p>Happy New Year 新年快樂<br>明けましておめでとう あけましておめでとう</p>
+</blockquote>
+<blockquote>
+<p>Good morning 早安<br>お早うございます おはようございます</p>
+</blockquote>
+<blockquote>
+<p>Hello - Good afternoon 你好 - 午安<br>こんにちは</p>
+</blockquote>
+<blockquote>
+<p>Good evening 晚安</p>
+</blockquote>
+<h2 id="Daily-Life-日常生活-にちじょうせいかつ"><a href="#Daily-Life-日常生活-にちじょうせいかつ" class="headerlink" title="Daily Life 日常生活 にちじょうせいかつ"></a>Daily Life 日常生活 にちじょうせいかつ</h2><blockquote>
+<p>Please wait a little bit 請稍等<br>少々お待ちください しょうしょうおまちください</p>
+</blockquote>
+<h2 id="頑張る"><a href="#頑張る" class="headerlink" title="頑張る"></a>頑張る</h2><blockquote>
+<p>頑張れ<br>Keep it up | Go for it | Good luck</p>
+</blockquote>
+<blockquote>
+<p>頑張って<br>Do you best<br>(Used on friends or families or someone close)</p>
+</blockquote>
+<blockquote>
+<p>頑張ろう<br>Let’s do our best</p>
+</blockquote>
+<blockquote>
+<p>頑張ります<br>I will do my best</p>
+</blockquote>
+]]></content>
   </entry>
 </search>
