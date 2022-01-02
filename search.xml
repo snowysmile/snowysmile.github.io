@@ -1536,6 +1536,18 @@ This is a comment
 <td align="center">十分な - 充分な</td>
 <td align="center">じゅうぶんな</td>
 </tr>
+<tr>
+<td align="center">partial</td>
+<td align="center">部分的</td>
+<td align="center">部分的な</td>
+<td align="center">ぶぶんてきな</td>
+</tr>
+<tr>
+<td align="center">complete</td>
+<td align="center">完全的</td>
+<td align="center">完全な</td>
+<td align="center">かんぜんな</td>
+</tr>
 </tbody></table>
 <h2 id="Place-地點-ばしょ"><a href="#Place-地點-ばしょ" class="headerlink" title="Place 地點 ばしょ"></a>Place 地點 ばしょ</h2><table>
 <thead>
@@ -2117,10 +2129,10 @@ This is a comment
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">place</td>
-<td align="center">場所</td>
-<td align="center">場所</td>
-<td align="center">ばしょ</td>
+<td align="center">region</td>
+<td align="center">地區</td>
+<td align="center">地方</td>
+<td align="center">ちほう</td>
 </tr>
 <tr>
 <td align="center">location</td>
@@ -2962,6 +2974,12 @@ This is a comment
 <td align="center">敵</td>
 <td align="center">てき</td>
 </tr>
+<tr>
+<td align="center">victim</td>
+<td align="center">犧牲者</td>
+<td align="center">犠牲者</td>
+<td align="center">ぎせいしゃ</td>
+</tr>
 </tbody></table>
 <h3 id="Group-Organization-組織-そしき"><a href="#Group-Organization-組織-そしき" class="headerlink" title="Group - Organization 組織 そしき"></a>Group - Organization 組織 そしき</h3><p>army|軍隊|軍隊|ぐんたい</p>
 <h3 id="Family-家族-かぞく"><a href="#Family-家族-かぞく" class="headerlink" title="Family 家族 かぞく"></a>Family 家族 かぞく</h3><table>
@@ -3713,6 +3731,18 @@ This is a comment
 <td align="center">飛行機🛫</td>
 <td align="center">ひこうき</td>
 </tr>
+<tr>
+<td align="center">fire engine - fire truck</td>
+<td align="center">消防車</td>
+<td align="center">消防車🚒</td>
+<td align="center">しょうぼうしゃ</td>
+</tr>
+<tr>
+<td align="center">ambulance</td>
+<td align="center">救護車</td>
+<td align="center">救急車🚑</td>
+<td align="center">きゅうきゅうしゃ</td>
+</tr>
 </tbody></table>
 <h2 id="Hobby-フービー-趣味-しゅみ"><a href="#Hobby-フービー-趣味-しゅみ" class="headerlink" title="Hobby フービー - 趣味 しゅみ"></a>Hobby フービー - 趣味 しゅみ</h2><table>
 <thead>
@@ -3775,6 +3805,12 @@ This is a comment
 <td align="center">成績</td>
 <td align="center">せいせき</td>
 </tr>
+<tr>
+<td align="center">economy</td>
+<td align="center">經濟</td>
+<td align="center">経済</td>
+<td align="center">けいざい</td>
+</tr>
 </tbody></table>
 <h2 id="Daily-Life-生活-せいかつ"><a href="#Daily-Life-生活-せいかつ" class="headerlink" title="(Daily) Life 生活 せいかつ"></a>(Daily) Life 生活 せいかつ</h2><table>
 <thead>
@@ -3787,6 +3823,13 @@ This is a comment
 </tr>
 </thead>
 <tbody><tr>
+<td align="center">word</td>
+<td align="center">詞語</td>
+<td align="center">言葉</td>
+<td align="center">ことば</td>
+<td align="center"></td>
+</tr>
+<tr>
 <td align="center">question - issue</td>
 <td align="center">問題</td>
 <td align="center">問題</td>
@@ -3861,6 +3904,20 @@ This is a comment
 <td align="center">憤怒</td>
 <td align="center">怒り</td>
 <td align="center">いかり</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">damage</td>
+<td align="center">損害</td>
+<td align="center">被害 - 損傷</td>
+<td align="center">ひがい - そんしょう</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">sacrifice</td>
+<td align="center">犧牲</td>
+<td align="center">犠牲</td>
+<td align="center">ぎせい</td>
 <td align="center"></td>
 </tr>
 </tbody></table>
@@ -4365,6 +4422,13 @@ This is a comment
 <td align="center">予約します</td>
 </tr>
 <tr>
+<td align="center">drive</td>
+<td align="center">駕駛</td>
+<td align="center">運転する</td>
+<td align="center">うんてんする</td>
+<td align="center">運転します</td>
+</tr>
+<tr>
 <td align="center">departure</td>
 <td align="center">出發</td>
 <td align="center">出発する</td>
@@ -4462,6 +4526,34 @@ This is a comment
 <td align="center">ばくはつする</td>
 <td align="center">爆発します</td>
 </tr>
+<tr>
+<td align="center">destory</td>
+<td align="center">破壞</td>
+<td align="center">破壊する</td>
+<td align="center">はかいする</td>
+<td align="center">破壊します</td>
+</tr>
+<tr>
+<td align="center">reform</td>
+<td align="center">改革</td>
+<td align="center">改革する</td>
+<td align="center">かいかくする</td>
+<td align="center">改革します</td>
+</tr>
+<tr>
+<td align="center">revolutionize</td>
+<td align="center">革命</td>
+<td align="center">革命する</td>
+<td align="center">かくめいする</td>
+<td align="center">革命します</td>
+</tr>
+<tr>
+<td align="center">evacuate</td>
+<td align="center">避難</td>
+<td align="center">避難する</td>
+<td align="center">ひなんする</td>
+<td align="center">避難します</td>
+</tr>
 </tbody></table>
 <hr>
 <h2 id="五段動詞-Ⅰ-godan"><a href="#五段動詞-Ⅰ-godan" class="headerlink" title="五段動詞 Ⅰ godan"></a>五段動詞 Ⅰ godan</h2><p>語幹が子音で終わる。原形は -u で終わる<br><del>ru</del> | a-ru | u-ru | o-ru</p>
@@ -4532,8 +4624,8 @@ This is a comment
 <td align="center">使います</td>
 </tr>
 <tr>
-<td align="center">acompany</td>
-<td align="center">陪伴</td>
+<td align="center">accompany - entail</td>
+<td align="center">伴隨</td>
 <td align="center">伴う</td>
 <td align="center">ともなう</td>
 <td align="center">伴い</td>
@@ -4846,6 +4938,20 @@ This is a comment
 <td align="center">当たる</td>
 <td align="center">あたる</td>
 <td align="center">当たります</td>
+</tr>
+<tr>
+<td align="center">suffer - be bothered</td>
+<td align="center">受困</td>
+<td align="center">困る</td>
+<td align="center">こまる</td>
+<td align="center">困ります</td>
+</tr>
+<tr>
+<td align="center">rob</td>
+<td align="center">搶奪</td>
+<td align="center">奪う</td>
+<td align="center">うばう</td>
+<td align="center">奪います</td>
 </tr>
 </tbody></table>
 <h3 id="u-ru"><a href="#u-ru" class="headerlink" title="u-ru"></a>u-ru</h3><table>
@@ -5163,6 +5269,13 @@ This is a comment
 <td align="center">はじめる</td>
 <td align="center">始めます</td>
 </tr>
+<tr>
+<td align="center">mistake</td>
+<td align="center">搞錯</td>
+<td align="center">間違える</td>
+<td align="center">まちがえる</td>
+<td align="center">間違えます</td>
+</tr>
 </tbody></table>
 <hr>
 <h2 id="動詞の活用形"><a href="#動詞の活用形" class="headerlink" title="動詞の活用形"></a><a href="https://en.wikipedia.org/wiki/Japanese_verb_conjugation">動詞の活用形</a></h2><p><strong>辞書形(じしょけい) Dictionary Form</strong><br>Verbs are named and listed in dictionaries according to their “dictionary form” (辞書形, jishokei). This is also called the “plain form” (since this is the plain, non‑polite, non‑past conjugation), and it is the same as the modern “terminal form” (終止形, shūshikei), and the “attributive form” (連体形, rentaikei)</p>
@@ -5332,7 +5445,7 @@ This is a comment
     <content><![CDATA[<p>.</p>
 <span id="more"></span>
 
-<h2 id="Greeting-挨拶する-あい-さつ"><a href="#Greeting-挨拶する-あい-さつ" class="headerlink" title="Greeting 挨拶する あい さつ"></a>Greeting 挨拶する あい さつ</h2><blockquote>
+<h2 id="Greeting-問候-挨拶する-あい-さつ"><a href="#Greeting-問候-挨拶する-あい-さつ" class="headerlink" title="Greeting 問候 挨拶する あい さつ"></a>Greeting 問候 挨拶する あい さつ</h2><blockquote>
 <p>Happy New Year 新年快樂<br>明けましておめでとう あけましておめでとう</p>
 </blockquote>
 <blockquote>
@@ -5342,12 +5455,21 @@ This is a comment
 <p>Hello - Good afternoon 你好 - 午安<br>こんにちは</p>
 </blockquote>
 <blockquote>
-<p>Good evening 晚安</p>
+<p>Good evening 晚安<br>こんばんは</p>
 </blockquote>
-<h2 id="Daily-Life-日常生活-にちじょうせいかつ"><a href="#Daily-Life-日常生活-にちじょうせいかつ" class="headerlink" title="Daily Life 日常生活 にちじょうせいかつ"></a>Daily Life 日常生活 にちじょうせいかつ</h2><blockquote>
+<blockquote>
+<p>Goodbye 再見<br>またね　- さようなら</p>
+</blockquote>
+<h2 id="Daily-Life-日常生活-日常生活-にちじょうせいかつ"><a href="#Daily-Life-日常生活-日常生活-にちじょうせいかつ" class="headerlink" title="Daily Life 日常生活 日常生活 にちじょうせいかつ"></a>Daily Life 日常生活 日常生活 にちじょうせいかつ</h2><blockquote>
 <p>Please wait a little bit 請稍等<br>少々お待ちください しょうしょうおまちください</p>
 </blockquote>
-<h2 id="頑張る"><a href="#頑張る" class="headerlink" title="頑張る"></a>頑張る</h2><blockquote>
+<blockquote>
+<p>Chears - Hooray - I did it! 太好啦<br>やった</p>
+</blockquote>
+<h3 id="Study-學習-勉強-べんきょう"><a href="#Study-學習-勉強-べんきょう" class="headerlink" title="Study 學習 勉強 べんきょう"></a>Study 學習 勉強 べんきょう</h3><blockquote>
+<p>Is it right? - Am I right? </p>
+</blockquote>
+<h3 id="頑張る"><a href="#頑張る" class="headerlink" title="頑張る"></a>頑張る</h3><blockquote>
 <p>頑張れ<br>Keep it up | Go for it | Good luck</p>
 </blockquote>
 <blockquote>
@@ -5359,6 +5481,12 @@ This is a comment
 <blockquote>
 <p>頑張ります<br>I will do my best</p>
 </blockquote>
+<h3 id="Yes-or-No"><a href="#Yes-or-No" class="headerlink" title="Yes or No"></a>Yes or No</h3><blockquote>
+<p>I made a mistake<br>間違えました まちがえました</p>
+</blockquote>
 ]]></content>
+      <categories>
+        <category>Japanese</category>
+      </categories>
   </entry>
 </search>
