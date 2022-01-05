@@ -1987,14 +1987,14 @@ This is a comment
 <tr>
 <td align="center">useful</td>
 <td align="center">有用的</td>
-<td align="center">有用な</td>
-<td align="center">ゆうような</td>
+<td align="center">有用な ~ 役に立つ</td>
+<td align="center">ゆうような ~ やくにたつ</td>
 </tr>
 <tr>
 <td align="center">useless</td>
 <td align="center">沒用的</td>
-<td align="center">無駄な</td>
-<td align="center">むだな</td>
+<td align="center">無駄な ~ 役に立たない</td>
+<td align="center">むだな ~ やくにたたない</td>
 </tr>
 <tr>
 <td align="center">serious</td>
@@ -2092,6 +2092,12 @@ This is a comment
 <td align="center">義務的な</td>
 <td align="center">ぎむてきな</td>
 </tr>
+<tr>
+<td align="center">regular</td>
+<td align="center">規則的</td>
+<td align="center">規則的な</td>
+<td align="center">きそくてきな</td>
+</tr>
 </tbody></table>
 <h2 id="no-adj-の形容詞"><a href="#no-adj-の形容詞" class="headerlink" title="no-adj の形容詞 *"></a>no-adj の形容詞 *</h2><table>
 <thead>
@@ -2156,6 +2162,18 @@ This is a comment
 <td align="center">公共の</td>
 <td align="center">こうきょうの</td>
 </tr>
+<tr>
+<td align="center">total ~ complete</td>
+<td align="center">完全的</td>
+<td align="center">全くの</td>
+<td align="center">まったくの</td>
+</tr>
+<tr>
+<td align="center">largest ~ bigist</td>
+<td align="center">最大的</td>
+<td align="center">最大の</td>
+<td align="center">さいだいの</td>
+</tr>
 </tbody></table>
 ]]></content>
       <categories>
@@ -2218,9 +2236,9 @@ This is a comment
 </tr>
 <tr>
 <td align="center">city</td>
-<td align="center">市</td>
-<td align="center">市</td>
-<td align="center">し</td>
+<td align="center">市 ~ 都市</td>
+<td align="center">市 ~ 都市</td>
+<td align="center">し ~ とし</td>
 </tr>
 <tr>
 <td align="center">village</td>
@@ -2571,7 +2589,7 @@ This is a comment
 <td align="center">きち</td>
 </tr>
 </tbody></table>
-<h3 id="Nature-自然-しぜん"><a href="#Nature-自然-しぜん" class="headerlink" title="Nature 自然 しぜん"></a>Nature 自然 しぜん</h3><table>
+<h3 id="Nature-自然-自然-しぜん"><a href="#Nature-自然-自然-しぜん" class="headerlink" title="Nature 自然 自然 しぜん"></a>Nature 自然 自然 しぜん</h3><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -2689,7 +2707,7 @@ This is a comment
 <td align="center">ながめ</td>
 </tr>
 </tbody></table>
-<h3 id="World-世界🗺-セかい"><a href="#World-世界🗺-セかい" class="headerlink" title="World 世界🗺 セかい"></a>World 世界🗺 セかい</h3><table>
+<h3 id="World-世界-世界🗺-セかい"><a href="#World-世界-世界🗺-セかい" class="headerlink" title="World 世界 世界🗺 セかい"></a>World 世界 世界🗺 セかい</h3><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -2729,7 +2747,7 @@ This is a comment
 <td align="center">なごや</td>
 </tr>
 </tbody></table>
-<h2 id="Direction-方向-ほうこう"><a href="#Direction-方向-ほうこう" class="headerlink" title="Direction 方向 ほうこう"></a>Direction 方向 ほうこう</h2><table>
+<h2 id="Direction-方向-方向-ほうこう"><a href="#Direction-方向-方向-ほうこう" class="headerlink" title="Direction 方向 方向 ほうこう"></a>Direction 方向 方向 ほうこう</h2><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -2847,29 +2865,7 @@ This is a comment
 <td align="center">なんせい</td>
 </tr>
 </tbody></table>
-<h2 id="Human-人間-にんげん"><a href="#Human-人間-にんげん" class="headerlink" title="Human 人間 にんげん"></a>Human 人間 にんげん</h2><table>
-<thead>
-<tr>
-<th align="center">English</th>
-<th align="center">漢語</th>
-<th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">I ~ me</td>
-<td align="center">我 ~ 俺</td>
-<td align="center">私 ~ 俺</td>
-<td align="center">わたし ~ おれ</td>
-</tr>
-<tr>
-<td align="center">you</td>
-<td align="center">你</td>
-<td align="center">貴方</td>
-<td align="center">あなた</td>
-</tr>
-</tbody></table>
-<h3 id="Body-身体-からだ"><a href="#Body-身体-からだ" class="headerlink" title="Body 身体 からだ"></a>Body 身体 からだ</h3><table>
+<h2 id="Human-人類-人間-にんげん"><a href="#Human-人類-人間-にんげん" class="headerlink" title="Human 人類 人間 にんげん"></a>Human 人類 人間 にんげん</h2><h3 id="Body-身体-からだ"><a href="#Body-身体-からだ" class="headerlink" title="Body 身体 からだ"></a>Body 身体 からだ</h3><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -3118,15 +3114,21 @@ This is a comment
 </thead>
 <tbody><tr>
 <td align="center">I</td>
-<td align="center">我</td>
-<td align="center">私 ~ 僕</td>
-<td align="center">わたし ~ ぼく</td>
+<td align="center">我 ~ 俺</td>
+<td align="center">私 ~ 僕 ~ 俺</td>
+<td align="center">わたし ~ ぼく ~ おれ</td>
+</tr>
+<tr>
+<td align="center">we</td>
+<td align="center">我們</td>
+<td align="center">私たち ~ 我々</td>
+<td align="center">わたしたち ~ われわれ</td>
 </tr>
 <tr>
 <td align="center">oneself</td>
 <td align="center">自己</td>
-<td align="center">自分</td>
-<td align="center">じぶん</td>
+<td align="center">自分 ~ 自己</td>
+<td align="center">じぶん ~ じこ</td>
 </tr>
 <tr>
 <td align="center">you</td>
@@ -3158,9 +3160,15 @@ This is a comment
 <td align="center">上司</td>
 <td align="center">じょうし</td>
 </tr>
+<tr>
+<td align="center">representative ~ delegate</td>
+<td align="center">代表</td>
+<td align="center">代表</td>
+<td align="center">だいひょう</td>
+</tr>
 </tbody></table>
-<h3 id="Group-Organization-組織-そしき"><a href="#Group-Organization-組織-そしき" class="headerlink" title="Group ~ Organization 組織 そしき"></a>Group ~ Organization 組織 そしき</h3><p>army|軍隊|軍隊|ぐんたい</p>
-<h3 id="Family-家族-かぞく"><a href="#Family-家族-かぞく" class="headerlink" title="Family 家族 かぞく"></a>Family 家族 かぞく</h3><table>
+<h3 id="Group-Organization-組織-組織-そしき"><a href="#Group-Organization-組織-組織-そしき" class="headerlink" title="Group ~ Organization 組織 組織 そしき"></a>Group ~ Organization 組織 組織 そしき</h3><p>army|軍隊|軍隊|ぐんたい</p>
+<h3 id="Family-家族-家族-かぞく"><a href="#Family-家族-家族-かぞく" class="headerlink" title="Family 家族 家族 かぞく"></a>Family 家族 家族 かぞく</h3><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -3236,7 +3244,7 @@ This is a comment
 <td align="center">むすめ</td>
 </tr>
 </tbody></table>
-<h3 id="Plant-植物-しょくぶつ"><a href="#Plant-植物-しょくぶつ" class="headerlink" title="Plant 植物 しょくぶつ"></a>Plant 植物 しょくぶつ</h3><table>
+<h3 id="Plant-植物-植物-しょくぶつ"><a href="#Plant-植物-植物-しょくぶつ" class="headerlink" title="Plant 植物 植物 しょくぶつ"></a>Plant 植物 植物 しょくぶつ</h3><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -3252,7 +3260,7 @@ This is a comment
 <td align="center">えだ</td>
 </tr>
 </tbody></table>
-<h3 id="Animal-動物-どうぶつ"><a href="#Animal-動物-どうぶつ" class="headerlink" title="Animal 動物 どうぶつ"></a>Animal 動物 どうぶつ</h3><table>
+<h3 id="Animal-動物-動物-どうぶつ"><a href="#Animal-動物-動物-どうぶつ" class="headerlink" title="Animal 動物 動物 どうぶつ"></a>Animal 動物 動物 どうぶつ</h3><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -3297,8 +3305,26 @@ This is a comment
 <td align="center">鮪 ~ マグロ</td>
 <td align="center">まぐろ</td>
 </tr>
+<tr>
+<td align="center">dolphin</td>
+<td align="center">海豚</td>
+<td align="center">海豚 ~ イルカ🐬</td>
+<td align="center">いるか</td>
+</tr>
+<tr>
+<td align="center">camel</td>
+<td align="center">駱駝</td>
+<td align="center">駱駝 ~ ラクダ🐪</td>
+<td align="center">らくだ</td>
+</tr>
+<tr>
+<td align="center">fly</td>
+<td align="center">蒼蠅</td>
+<td align="center">蝿</td>
+<td align="center">はえ</td>
+</tr>
 </tbody></table>
-<h3 id="Profession-職業-しょくぎょう"><a href="#Profession-職業-しょくぎょう" class="headerlink" title="Profession 職業 しょくぎょう"></a>Profession 職業 しょくぎょう</h3><table>
+<h3 id="Profession-職業-職業しょくぎょう"><a href="#Profession-職業-職業しょくぎょう" class="headerlink" title="Profession 職業 職業しょくぎょう"></a>Profession 職業 職業しょくぎょう</h3><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -3312,6 +3338,12 @@ This is a comment
 <td align="center">工作</td>
 <td align="center">仕事</td>
 <td align="center">しごと</td>
+</tr>
+<tr>
+<td align="center">occupation ~ profession</td>
+<td align="center">職業</td>
+<td align="center">職業</td>
+<td align="center">しょくぎょう</td>
 </tr>
 <tr>
 <td align="center">student</td>
@@ -3464,7 +3496,7 @@ This is a comment
 <td align="center">だいとうりょう</td>
 </tr>
 </tbody></table>
-<h2 id="Food-食べ物-たべもの"><a href="#Food-食べ物-たべもの" class="headerlink" title="Food 食べ物 たべもの"></a>Food 食べ物 たべもの</h2><h3 id="Vegetable-野菜-やさい"><a href="#Vegetable-野菜-やさい" class="headerlink" title="Vegetable 野菜 やさい"></a>Vegetable 野菜 やさい</h3><table>
+<h2 id="Food-食物-食べ物-たべもの"><a href="#Food-食物-食べ物-たべもの" class="headerlink" title="Food 食物 食べ物 たべもの"></a>Food 食物 食べ物 たべもの</h2><h3 id="Vegetable-蔬菜-野菜-やさい"><a href="#Vegetable-蔬菜-野菜-やさい" class="headerlink" title="Vegetable 蔬菜 野菜 やさい"></a>Vegetable 蔬菜 野菜 やさい</h3><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -3480,7 +3512,7 @@ This is a comment
 <td align="center">のり</td>
 </tr>
 </tbody></table>
-<h3 id="Fruit-果物-くだもの"><a href="#Fruit-果物-くだもの" class="headerlink" title="Fruit 果物 くだもの"></a>Fruit 果物 くだもの</h3><table>
+<h3 id="Fruit-水果-果物-くだもの"><a href="#Fruit-水果-果物-くだもの" class="headerlink" title="Fruit 水果 果物 くだもの"></a>Fruit 水果 果物 くだもの</h3><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -3508,7 +3540,7 @@ This is a comment
 <td align="center">にんじん</td>
 </tr>
 </tbody></table>
-<h3 id="Cuisine-料理-りょうり"><a href="#Cuisine-料理-りょうり" class="headerlink" title="Cuisine 料理 りょうり"></a>Cuisine 料理 りょうり</h3><table>
+<h3 id="Cuisine-料理-料理-りょうり"><a href="#Cuisine-料理-料理-りょうり" class="headerlink" title="Cuisine 料理 料理 りょうり"></a>Cuisine 料理 料理 りょうり</h3><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -3560,7 +3592,7 @@ This is a comment
 <td align="center">うどん</td>
 </tr>
 </tbody></table>
-<h3 id="Snack-Confection-お菓子-おかし"><a href="#Snack-Confection-お菓子-おかし" class="headerlink" title="Snack ~ Confection お菓子 おかし"></a>Snack ~ Confection お菓子 おかし</h3><table>
+<h3 id="Snack-Confection-零食-お菓子-おかし"><a href="#Snack-Confection-零食-お菓子-おかし" class="headerlink" title="Snack ~ Confection 零食 お菓子 おかし"></a>Snack ~ Confection 零食 お菓子 おかし</h3><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -3600,7 +3632,7 @@ This is a comment
 <td align="center">なっとう</td>
 </tr>
 </tbody></table>
-<h3 id="Drinks-飲み物-のみもの"><a href="#Drinks-飲み物-のみもの" class="headerlink" title="Drinks 飲み物 のみもの"></a>Drinks 飲み物 のみもの</h3><table>
+<h3 id="Drinks-飲料-飲み物-のみもの"><a href="#Drinks-飲料-飲み物-のみもの" class="headerlink" title="Drinks 飲料 飲み物 のみもの"></a>Drinks 飲料 飲み物 のみもの</h3><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -3646,7 +3678,7 @@ This is a comment
 <td align="center">びーる</td>
 </tr>
 </tbody></table>
-<h3 id="Crop-作物-さくもつ"><a href="#Crop-作物-さくもつ" class="headerlink" title="Crop 作物 さくもつ"></a>Crop 作物 さくもつ</h3><table>
+<h3 id="Crop-農作物-作物-さくもつ"><a href="#Crop-農作物-作物-さくもつ" class="headerlink" title="Crop 農作物 作物 さくもつ"></a>Crop 農作物 作物 さくもつ</h3><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -3698,7 +3730,7 @@ This is a comment
 <td align="center">さつまいも</td>
 </tr>
 </tbody></table>
-<h3 id="Others-他のもの-ほかのもの"><a href="#Others-他のもの-ほかのもの" class="headerlink" title="Others 他のもの ほかのもの"></a>Others 他のもの ほかのもの</h3><table>
+<h3 id="Others-其他-他のもの-ほかのもの"><a href="#Others-其他-他のもの-ほかのもの" class="headerlink" title="Others 其他 他のもの ほかのもの"></a>Others 其他 他のもの ほかのもの</h3><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -3750,7 +3782,7 @@ This is a comment
 <td align="center">ぱん</td>
 </tr>
 </tbody></table>
-<h2 id="Tool-工具-どうぐ"><a href="#Tool-工具-どうぐ" class="headerlink" title="Tool 工具 どうぐ"></a>Tool 工具 どうぐ</h2><table>
+<h2 id="Tool-工具-道具-どうぐ"><a href="#Tool-工具-道具-どうぐ" class="headerlink" title="Tool 工具 道具 どうぐ"></a>Tool 工具 道具 どうぐ</h2><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -3788,6 +3820,18 @@ This is a comment
 <td align="center">信件</td>
 <td align="center">手紙💌</td>
 <td align="center">てがみ</td>
+</tr>
+<tr>
+<td align="center">paper</td>
+<td align="center">紙</td>
+<td align="center">紙📜</td>
+<td align="center">かみ</td>
+</tr>
+<tr>
+<td align="center">book</td>
+<td align="center">書籍</td>
+<td align="center">本 ~ 書籍</td>
+<td align="center">ほん ~ しょせき</td>
 </tr>
 <tr>
 <td align="center">picture</td>
@@ -3880,6 +3924,12 @@ This is a comment
 <td align="center">けいほう</td>
 </tr>
 <tr>
+<td align="center">bill</td>
+<td align="center">法案</td>
+<td align="center">法案</td>
+<td align="center">ほうあん</td>
+</tr>
+<tr>
 <td align="center">blanket</td>
 <td align="center">毛毯</td>
 <td align="center">毛布</td>
@@ -3898,7 +3948,7 @@ This is a comment
 <td align="center">ぬいぐるみ</td>
 </tr>
 </tbody></table>
-<h3 id="Furniture-家具-かぐ"><a href="#Furniture-家具-かぐ" class="headerlink" title="Furniture 家具 かぐ"></a>Furniture 家具 かぐ</h3><table>
+<h3 id="Furniture-家具-家具-かぐ"><a href="#Furniture-家具-家具-かぐ" class="headerlink" title="Furniture 家具 家具 かぐ"></a>Furniture 家具 家具 かぐ</h3><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -3944,7 +3994,7 @@ This is a comment
 <td align="center">まくら</td>
 </tr>
 </tbody></table>
-<h3 id="Weapon-武器-ぶき"><a href="#Weapon-武器-ぶき" class="headerlink" title="Weapon 武器 ぶき"></a>Weapon 武器 ぶき</h3><table>
+<h3 id="Weapon-武器-武器-ぶき"><a href="#Weapon-武器-武器-ぶき" class="headerlink" title="Weapon 武器 武器 ぶき"></a>Weapon 武器 武器 ぶき</h3><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -4008,7 +4058,7 @@ This is a comment
 <td align="center">ばくだん</td>
 </tr>
 </tbody></table>
-<h3 id="Travel-旅行-りょこう"><a href="#Travel-旅行-りょこう" class="headerlink" title="Travel 旅行 りょこう"></a>Travel 旅行 りょこう</h3><table>
+<h3 id="Travel-旅行-旅行-りょこう"><a href="#Travel-旅行-旅行-りょこう" class="headerlink" title="Travel 旅行 旅行 りょこう"></a>Travel 旅行 旅行 りょこう</h3><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -4048,7 +4098,23 @@ This is a comment
 <td align="center">きゅうきゅうしゃ</td>
 </tr>
 </tbody></table>
-<h2 id="Hobby-フービー-趣味-しゅみ"><a href="#Hobby-フービー-趣味-しゅみ" class="headerlink" title="Hobby フービー ~ 趣味 しゅみ"></a>Hobby フービー ~ 趣味 しゅみ</h2><table>
+<h1 id="Activity-活動-活動-かつどう"><a href="#Activity-活動-活動-かつどう" class="headerlink" title="Activity 活動 活動 かつどう"></a>Activity 活動 活動 かつどう</h1><table>
+<thead>
+<tr>
+<th align="center">English</th>
+<th align="center">漢語</th>
+<th align="center">日本語Nihongo</th>
+<th align="center">片仮名Katakana</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">meeting ~ conference</td>
+<td align="center">會議</td>
+<td align="center">会議</td>
+<td align="center">かいぎ</td>
+</tr>
+</tbody></table>
+<h2 id="Hobby-興趣愛好-フービー-趣味-しゅみ"><a href="#Hobby-興趣愛好-フービー-趣味-しゅみ" class="headerlink" title="Hobby 興趣愛好 フービー ~ 趣味 しゅみ"></a>Hobby 興趣愛好 フービー ~ 趣味 しゅみ</h2><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -4062,6 +4128,12 @@ This is a comment
 <td align="center">藝術</td>
 <td align="center">芸術</td>
 <td align="center">げいじゅつ</td>
+</tr>
+<tr>
+<td align="center">anime</td>
+<td align="center">漫畫</td>
+<td align="center">映画</td>
+<td align="center">えいが</td>
 </tr>
 <tr>
 <td align="center">work</td>
@@ -4094,7 +4166,7 @@ This is a comment
 <td align="center">かがく</td>
 </tr>
 </tbody></table>
-<h2 id="Knowledge-知識-ちしき"><a href="#Knowledge-知識-ちしき" class="headerlink" title="Knowledge 知識 ちしき"></a>Knowledge 知識 ちしき</h2><table>
+<h2 id="Knowledge-知識-知識-ちしき"><a href="#Knowledge-知識-知識-ちしき" class="headerlink" title="Knowledge 知識 知識 ちしき"></a>Knowledge 知識 知識 ちしき</h2><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -4104,16 +4176,94 @@ This is a comment
 </tr>
 </thead>
 <tbody><tr>
+<td align="center">information</td>
+<td align="center">情報 ~ 信息</td>
+<td align="center">情報</td>
+<td align="center">じょうほう</td>
+</tr>
+<tr>
+<td align="center">sentence ~ text</td>
+<td align="center">句子</td>
+<td align="center">文章</td>
+<td align="center">ぶんしょう</td>
+</tr>
+<tr>
+<td align="center">article</td>
+<td align="center">文章</td>
+<td align="center">記事</td>
+<td align="center">きじ</td>
+</tr>
+<tr>
 <td align="center">grades</td>
 <td align="center">成績</td>
 <td align="center">成績</td>
 <td align="center">せいせき</td>
 </tr>
 <tr>
+<td align="center">exam ~ examination ~ test</td>
+<td align="center">測試 ~ 測驗</td>
+<td align="center">試験</td>
+<td align="center">しけん</td>
+</tr>
+<tr>
+<td align="center">civilization</td>
+<td align="center">文明</td>
+<td align="center">文明</td>
+<td align="center">ぶんめい</td>
+</tr>
+<tr>
+<td align="center">society</td>
+<td align="center">社會</td>
+<td align="center">社会</td>
+<td align="center">しゃかい</td>
+</tr>
+<tr>
+<td align="center">industry</td>
+<td align="center">產業</td>
+<td align="center">産業</td>
+<td align="center">さんぎょう</td>
+</tr>
+<tr>
 <td align="center">economy</td>
 <td align="center">經濟</td>
 <td align="center">経済</td>
 <td align="center">けいざい</td>
+</tr>
+<tr>
+<td align="center">history</td>
+<td align="center">歷史</td>
+<td align="center">歴史</td>
+<td align="center">れきし</td>
+</tr>
+<tr>
+<td align="center">science</td>
+<td align="center">科學</td>
+<td align="center">科学 ~ 理科</td>
+<td align="center">かがく ~ りか</td>
+</tr>
+<tr>
+<td align="center">chemistry</td>
+<td align="center">化學</td>
+<td align="center">化学</td>
+<td align="center">かがく</td>
+</tr>
+<tr>
+<td align="center">biology</td>
+<td align="center">生物學</td>
+<td align="center">生物学</td>
+<td align="center">せいぶつ</td>
+</tr>
+<tr>
+<td align="center">geography</td>
+<td align="center">地理學</td>
+<td align="center">地理学</td>
+<td align="center">ちりがく</td>
+</tr>
+<tr>
+<td align="center">geometry</td>
+<td align="center">幾何學</td>
+<td align="center">幾何学 ~ ジオメトリ</td>
+<td align="center">きかがく</td>
 </tr>
 <tr>
 <td align="center">religion</td>
@@ -4140,7 +4290,7 @@ This is a comment
 <td align="center">しいん</td>
 </tr>
 </tbody></table>
-<h2 id="Daily-Life-生活-せいかつ"><a href="#Daily-Life-生活-せいかつ" class="headerlink" title="(Daily) Life 生活 せいかつ"></a>(Daily) Life 生活 せいかつ</h2><table>
+<h2 id="Daily-Life-生活-生活-せいかつ"><a href="#Daily-Life-生活-生活-せいかつ" class="headerlink" title="(Daily) Life 生活 生活 せいかつ"></a>(Daily) Life 生活 生活 せいかつ</h2><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -4169,6 +4319,13 @@ This is a comment
 <td align="center">事情</td>
 <td align="center">事</td>
 <td align="center">こと</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">promise</td>
+<td align="center">承諾</td>
+<td align="center">約束</td>
+<td align="center">やくそく</td>
 <td align="center"></td>
 </tr>
 <tr>
@@ -4305,10 +4462,24 @@ This is a comment
 <td align="center"></td>
 </tr>
 <tr>
+<td align="center">contact address</td>
+<td align="center">聯絡地址</td>
+<td align="center">連絡先</td>
+<td align="center">れんらくさき</td>
+<td align="center"></td>
+</tr>
+<tr>
 <td align="center">housework</td>
 <td align="center">家務</td>
 <td align="center">家事</td>
 <td align="center">かじ</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">business ~ errand</td>
+<td align="center">生意 ~ 事情</td>
+<td align="center">用事</td>
+<td align="center">ようじ</td>
 <td align="center"></td>
 </tr>
 <tr>
@@ -4396,6 +4567,13 @@ This is a comment
 <td align="center"></td>
 </tr>
 <tr>
+<td align="center">rule</td>
+<td align="center">規則</td>
+<td align="center">規則</td>
+<td align="center">きそく</td>
+<td align="center"></td>
+</tr>
+<tr>
 <td align="center">answer</td>
 <td align="center">答案</td>
 <td align="center">答え</td>
@@ -4410,23 +4588,7 @@ This is a comment
 <td align="center"></td>
 </tr>
 </tbody></table>
-<h1 id="Activity-活動-かつどう"><a href="#Activity-活動-かつどう" class="headerlink" title="Activity 活動 かつどう"></a>Activity 活動 かつどう</h1><table>
-<thead>
-<tr>
-<th align="center">English</th>
-<th align="center">漢語</th>
-<th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">meeting</td>
-<td align="center">會議</td>
-<td align="center">会議</td>
-<td align="center">かいぎ</td>
-</tr>
-</tbody></table>
-<h2 id="Weather-天気-てんき"><a href="#Weather-天気-てんき" class="headerlink" title="Weather 天気 てんき"></a>Weather 天気 てんき</h2><table>
+<h2 id="Weather-天氣-天気-てんき"><a href="#Weather-天氣-天気-てんき" class="headerlink" title="Weather 天氣 天気 てんき"></a>Weather 天氣 天気 てんき</h2><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -4442,7 +4604,7 @@ This is a comment
 <td align="center">きおん ~ おんど</td>
 </tr>
 </tbody></table>
-<h2 id="Time-時間-じかん"><a href="#Time-時間-じかん" class="headerlink" title="Time 時間 じかん"></a>Time 時間 じかん</h2><table>
+<h2 id="Time-時間-時間-じかん"><a href="#Time-時間-時間-じかん" class="headerlink" title="Time 時間 時間 じかん"></a>Time 時間 時間 じかん</h2><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -4808,7 +4970,8 @@ This is a comment
 
 <p><strong>Transitive Verb 及物動詞 他動詞 たどうし</strong><br>(を)開ける (を)あける<br>(場所 + を + 移動動詞 = 自動詞)<br><strong>InTrasitive Verb 不及物動詞 自動詞 じどうし</strong><br>開ける ひらける </p>
 <p><strong>Subject 主語 主語 しゅご</strong><br><strong>Object 賓語 目的語 もくてきご</strong></p>
-<p><strong>Passive Voice 被動語態 受動態 じゅどうたい</strong><br><a href="https://www.sigure.tw/learn-japanese/grammar/n4/15.php">study link</a><br>受身助動詞 うけみじょどうし<br>可能助動詞 かのうじょどうし<br>自発助動詞 じはつじょどうし<br>尊敬助動詞 そんけいじょどうし</p>
+<p><strong>Passive Voice 被動語態 受動態 じゅどうたい</strong></p>
+<p>It is not only for the passive voice, there are four uses.<br>四つの用途があります。<br><a href="https://www.sigure.tw/learn-japanese/grammar/n4/15.php">study link</a><br>受身助動詞 うけみじょどうし<br>可能助動詞 かのうじょどうし<br>自発助動詞 じはつじょどうし<br>尊敬助動詞 そんけいじょどうし</p>
 <p><strong>Past Tense 過去式 過去形 かこけい</strong></p>
 <h2 id="Tense-Transformation-時制-変換-じせい-へんかん"><a href="#Tense-Transformation-時制-変換-じせい-へんかん" class="headerlink" title="Tense Transformation (時制)変換 (じせい)へんかん"></a>Tense Transformation (時制)変換 (じせい)へんかん</h2><blockquote>
 <p>辞書形 to てけい<br>I類 「う、つ、る」→「って」<br>I類 「ぬ、ぶ、む」→「んで」<br>I類 「く」→「いて」<br>I類 「ぐ」→「いで」<br>I類 「す」→「して」<br>I類 「行く (いく)」→「行って (いって)」<br>Ⅱ類 「る」→「て」<br>Ⅲ類「来る(くる)」→「来て(きて)」<br>Ⅲ類「する」→「して」</p>
@@ -4870,7 +5033,7 @@ This is a comment
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
 <th align="center">片仮名Katakana</th>
-<th align="center">ます形</th>
+<th align="center">目的語</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -4878,315 +5041,364 @@ This is a comment
 <td align="center">做</td>
 <td align="center">する</td>
 <td align="center">する</td>
-<td align="center">します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">study</td>
 <td align="center">學習</td>
 <td align="center">勉強</td>
 <td align="center">べんきょう</td>
-<td align="center">勉強します</td>
+<td align="center">自他</td>
 </tr>
 <tr>
 <td align="center">freeze</td>
 <td align="center">冷凍</td>
 <td align="center">冷凍</td>
 <td align="center">れいとう</td>
-<td align="center">冷凍します</td>
+<td align="center">他</td>
 </tr>
 <tr>
 <td align="center">unfreeze</td>
 <td align="center">解凍</td>
 <td align="center">解凍</td>
 <td align="center">かいとう</td>
-<td align="center">解凍します</td>
+<td align="center">他</td>
 </tr>
 <tr>
 <td align="center">save</td>
 <td align="center">保存</td>
 <td align="center">保存</td>
 <td align="center">ほぞん</td>
-<td align="center">保存します</td>
+<td align="center">他</td>
 </tr>
 <tr>
 <td align="center">attend</td>
 <td align="center">出席</td>
 <td align="center">出席</td>
 <td align="center">しゅっせき</td>
-<td align="center">出席します</td>
+<td align="center">自</td>
 </tr>
 <tr>
 <td align="center">book ~ reverse</td>
 <td align="center">預約</td>
 <td align="center">予約</td>
 <td align="center">よやく</td>
-<td align="center">予約します</td>
+<td align="center">他</td>
 </tr>
 <tr>
 <td align="center">drive</td>
 <td align="center">駕駛</td>
 <td align="center">運転</td>
 <td align="center">うんてん</td>
-<td align="center">運転します</td>
+<td align="center">自他</td>
 </tr>
 <tr>
 <td align="center">park</td>
 <td align="center">停車</td>
 <td align="center">駐車</td>
 <td align="center">ちゅうしゃ</td>
-<td align="center">駐車します</td>
+<td align="center">&gt;.&lt;</td>
 </tr>
 <tr>
 <td align="center">departure</td>
 <td align="center">出發</td>
 <td align="center">出発</td>
 <td align="center">しゅっぱつ</td>
-<td align="center">出発します</td>
+<td align="center">自</td>
 </tr>
 <tr>
 <td align="center">arrive</td>
 <td align="center">到達</td>
 <td align="center">到着</td>
 <td align="center">とうちゃく</td>
-<td align="center">到着します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">visit</td>
 <td align="center">遊歷</td>
 <td align="center">見物</td>
 <td align="center">けんぶつ</td>
-<td align="center">見物します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">sightsee</td>
 <td align="center">觀光</td>
 <td align="center">観光</td>
 <td align="center">かんこう</td>
-<td align="center">観光します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">dine</td>
 <td align="center">吃飯</td>
 <td align="center">食事</td>
 <td align="center">しょくじ</td>
-<td align="center">食事します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">graduate</td>
 <td align="center">畢業</td>
 <td align="center">卒業</td>
 <td align="center">そつぎょう</td>
-<td align="center">卒業します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">comfirm ~ check</td>
 <td align="center">確認</td>
 <td align="center">確認</td>
 <td align="center">かくにん</td>
-<td align="center">確認します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">prepare</td>
 <td align="center">準備</td>
 <td align="center">準備</td>
 <td align="center">じゅんび</td>
-<td align="center">準備します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">attack</td>
 <td align="center">攻擊</td>
 <td align="center">攻撃</td>
 <td align="center">こうげき</td>
-<td align="center">攻撃します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">negotiate</td>
 <td align="center">交涉</td>
 <td align="center">交渉</td>
 <td align="center">こうしょう</td>
-<td align="center">交渉します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">move ~ touch</td>
 <td align="center">感動</td>
 <td align="center">感動</td>
 <td align="center">かんどう</td>
-<td align="center">感動します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">succeed</td>
 <td align="center">成功</td>
 <td align="center">成功</td>
 <td align="center">せいこう</td>
-<td align="center">成功します</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">fail</td>
+<td align="center">失敗</td>
+<td align="center">失敗</td>
+<td align="center">しっぱい</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">training ~ practice</td>
 <td align="center">訓練</td>
 <td align="center">訓練</td>
 <td align="center">くんれん</td>
-<td align="center">訓練します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">explode</td>
 <td align="center">爆炸</td>
 <td align="center">爆発</td>
 <td align="center">ばくはつ</td>
-<td align="center">爆発します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">destory</td>
 <td align="center">破壞</td>
 <td align="center">破壊</td>
 <td align="center">はかい</td>
-<td align="center">破壊します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">reform</td>
 <td align="center">改革</td>
 <td align="center">改革</td>
 <td align="center">かいかく</td>
-<td align="center">改革します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">revolutionize</td>
 <td align="center">革命</td>
 <td align="center">革命</td>
 <td align="center">かくめい</td>
-<td align="center">革命します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">evacuate</td>
 <td align="center">避難</td>
 <td align="center">避難</td>
 <td align="center">ひなん</td>
-<td align="center">避難します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">beaware ~ pay attention to</td>
 <td align="center">注意</td>
 <td align="center">注意</td>
 <td align="center">ちゅうい</td>
-<td align="center">注意します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">pronounce</td>
 <td align="center">發音</td>
 <td align="center">発音</td>
 <td align="center">はつおん</td>
-<td align="center">発音します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">happen ~ occur</td>
 <td align="center">發生</td>
 <td align="center">発生</td>
 <td align="center">はっせい</td>
-<td align="center">発生します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">loan</td>
 <td align="center">融資</td>
 <td align="center">融資</td>
 <td align="center">ゆうし</td>
-<td align="center">融資します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">grow up</td>
 <td align="center">成長</td>
 <td align="center">成長</td>
 <td align="center">せいちょう</td>
-<td align="center">成長します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">organize</td>
 <td align="center">整理</td>
 <td align="center">整理すろ</td>
 <td align="center">せいりすろ</td>
-<td align="center">整理します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">clean</td>
 <td align="center">掃除</td>
 <td align="center">掃除</td>
 <td align="center">そうじ</td>
-<td align="center">掃除します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">take charge of</td>
 <td align="center">掌管</td>
 <td align="center">担当</td>
-<td align="center">担当</td>
-<td align="center">担当します</td>
+<td align="center">たんとう</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">work hard ~ make effort</td>
 <td align="center">努力</td>
 <td align="center">努力</td>
 <td align="center">どりょく</td>
-<td align="center">努力します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">share(hard things) ~ divide</td>
 <td align="center">分擔</td>
 <td align="center">分担</td>
 <td align="center">ぶんたん</td>
-<td align="center">分担します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">smoke</td>
 <td align="center">吸菸</td>
 <td align="center">喫煙</td>
 <td align="center">きつえん</td>
-<td align="center">喫煙します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">drink</td>
 <td align="center">飲酒</td>
 <td align="center">飲酒</td>
 <td align="center">いんしゅ</td>
-<td align="center">飲酒します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">arrest</td>
 <td align="center">逮捕</td>
 <td align="center">逮捕</td>
 <td align="center">たいほ</td>
-<td align="center">逮捕します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">request ~ demand</td>
 <td align="center">要求</td>
 <td align="center">要求</td>
 <td align="center">ようきゅう</td>
-<td align="center">要求します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">persuade</td>
 <td align="center">勸說</td>
 <td align="center">説得</td>
 <td align="center">せっとく</td>
-<td align="center">説得します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">greet</td>
 <td align="center">問候</td>
 <td align="center">挨拶</td>
 <td align="center">あいさつ</td>
-<td align="center">挨拶します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">annoy ~ trouble</td>
 <td align="center">麻煩</td>
 <td align="center">迷惑</td>
 <td align="center">めいわく</td>
-<td align="center">迷惑します</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">permit ~ authorize</td>
 <td align="center">許可</td>
 <td align="center">許可</td>
 <td align="center">きょか</td>
-<td align="center">許可します</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">deplay</td>
+<td align="center">遅刻</td>
+<td align="center">ちこく</td>
+<td align="center">遅刻します</td>
+<td align="center">自</td>
+</tr>
+<tr>
+<td align="center">cooperate</td>
+<td align="center">合作</td>
+<td align="center">協力</td>
+<td align="center">きょうりょく</td>
+<td align="center">自</td>
+</tr>
+<tr>
+<td align="center">exercise</td>
+<td align="center">運動</td>
+<td align="center">運動</td>
+<td align="center">うんどう</td>
+<td align="center">自</td>
+</tr>
+<tr>
+<td align="center">contact</td>
+<td align="center">聯絡</td>
+<td align="center">連絡</td>
+<td align="center">れんらく</td>
+<td align="center">自他</td>
+</tr>
+<tr>
+<td align="center">introduce</td>
+<td align="center">介紹</td>
+<td align="center">紹介</td>
+<td align="center">しょうかい</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">vote</td>
+<td align="center">投票</td>
+<td align="center">投票</td>
+<td align="center">とうひょう</td>
+<td align="center"></td>
 </tr>
 </tbody></table>
 <hr>
@@ -5201,6 +5413,9 @@ This is a comment
 <th align="center">ます形</th>
 <th align="center">て形</th>
 <th align="center">ない形</th>
+<th align="center">過去形</th>
+<th align="center">受動態</th>
+<th align="center">目的語</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -5211,15 +5426,9 @@ This is a comment
 <td align="center">言います</td>
 <td align="center">言って</td>
 <td align="center">言わない</td>
-</tr>
-<tr>
-<td align="center">think</td>
-<td align="center">思考</td>
-<td align="center">思う</td>
-<td align="center">おもう</td>
-<td align="center">思います</td>
-<td align="center">思って</td>
-<td align="center">思わない</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">buy</td>
@@ -5229,6 +5438,33 @@ This is a comment
 <td align="center">買います</td>
 <td align="center">買って</td>
 <td align="center">買わない</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">think</td>
+<td align="center">思考</td>
+<td align="center">思う</td>
+<td align="center">おもう</td>
+<td align="center">思います</td>
+<td align="center">思って</td>
+<td align="center">思わない</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">wish</td>
+<td align="center">希望</td>
+<td align="center">願う</td>
+<td align="center">ねがう</td>
+<td align="center">願います</td>
+<td align="center">願わない</td>
+<td align="center">願わない</td>
+<td align="center">願った</td>
+<td align="center">願われる</td>
+<td align="center">他動詞</td>
 </tr>
 <tr>
 <td align="center">help</td>
@@ -5238,6 +5474,9 @@ This is a comment
 <td align="center">手伝います</td>
 <td align="center">手伝って</td>
 <td align="center">手伝わない</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">pay</td>
@@ -5247,6 +5486,9 @@ This is a comment
 <td align="center">払います</td>
 <td align="center">払って</td>
 <td align="center">払わない</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">meet</td>
@@ -5256,6 +5498,9 @@ This is a comment
 <td align="center">会います</td>
 <td align="center">会って</td>
 <td align="center">会わない</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">wash</td>
@@ -5265,6 +5510,9 @@ This is a comment
 <td align="center">洗います</td>
 <td align="center">洗って</td>
 <td align="center">洗わない</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">fight</td>
@@ -5274,6 +5522,9 @@ This is a comment
 <td align="center">戦いま</td>
 <td align="center">戦って</td>
 <td align="center">戦わない</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">lose(thing)</td>
@@ -5283,6 +5534,9 @@ This is a comment
 <td align="center">失います</td>
 <td align="center">失って</td>
 <td align="center">失わない</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">use</td>
@@ -5292,6 +5546,9 @@ This is a comment
 <td align="center">使います</td>
 <td align="center">使って</td>
 <td align="center">使わない</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">accompany ~ entail</td>
@@ -5301,6 +5558,9 @@ This is a comment
 <td align="center">伴い</td>
 <td align="center">伴って</td>
 <td align="center">伴わない</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 </tbody></table>
 <h3 id="ku-く"><a href="#ku-く" class="headerlink" title="ku く"></a>ku く</h3><table>
@@ -5470,109 +5730,7 @@ This is a comment
 <td align="center">防がれる</td>
 </tr>
 </tbody></table>
-<h3 id="su-す"><a href="#su-す" class="headerlink" title="su す"></a>su す</h3><table>
-<thead>
-<tr>
-<th align="center">English</th>
-<th align="center">漢語</th>
-<th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
-<th align="center">ます形</th>
-<th align="center">て形</th>
-<th align="center">ない形</th>
-<th align="center">過去形</th>
-<th align="center">受動態</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">speak</td>
-<td align="center">說</td>
-<td align="center">話す</td>
-<td align="center">はなす</td>
-<td align="center">話します</td>
-<td align="center">話して</td>
-<td align="center">話さない</td>
-<td align="center">話した</td>
-<td align="center">話される</td>
-</tr>
-<tr>
-<td align="center">look for</td>
-<td align="center">尋找</td>
-<td align="center">探す</td>
-<td align="center">さがす</td>
-<td align="center">探します</td>
-<td align="center">探して</td>
-<td align="center">探さない</td>
-<td align="center">探した</td>
-<td align="center">探される</td>
-</tr>
-<tr>
-<td align="center">move(house)</td>
-<td align="center">搬家</td>
-<td align="center">引っ越す</td>
-<td align="center">ひっこす</td>
-<td align="center">引っ越します</td>
-<td align="center">引っ越して</td>
-<td align="center">引っ越さない</td>
-<td align="center">引っ越し</td>
-<td align="center">引っ越される</td>
-</tr>
-<tr>
-<td align="center">steam</td>
-<td align="center">蒸</td>
-<td align="center">蒸す</td>
-<td align="center">むす</td>
-<td align="center">蒸します</td>
-<td align="center">蒸して</td>
-<td align="center">蒸さない</td>
-<td align="center">蒸した</td>
-<td align="center">蒸される</td>
-</tr>
-<tr>
-<td align="center">kill</td>
-<td align="center">殺</td>
-<td align="center">殺す</td>
-<td align="center">ころす</td>
-<td align="center">殺します</td>
-<td align="center">殺して</td>
-<td align="center">殺さない</td>
-<td align="center">殺した</td>
-<td align="center">殺される</td>
-</tr>
-<tr>
-<td align="center">forgive</td>
-<td align="center">原諒</td>
-<td align="center">許す</td>
-<td align="center">ゆるす</td>
-<td align="center">許します</td>
-<td align="center">許して</td>
-<td align="center">許さない</td>
-<td align="center">許した</td>
-<td align="center">許される</td>
-</tr>
-<tr>
-<td align="center">commmit</td>
-<td align="center">施行</td>
-<td align="center">犯す</td>
-<td align="center">おかす</td>
-<td align="center">犯します</td>
-<td align="center">犯して</td>
-<td align="center">犯さない</td>
-<td align="center">犯した</td>
-<td align="center">犯される</td>
-</tr>
-<tr>
-<td align="center">lend</td>
-<td align="center">借貸</td>
-<td align="center">貸す</td>
-<td align="center">かす</td>
-<td align="center">貸します</td>
-<td align="center">貸して</td>
-<td align="center">貸さない</td>
-<td align="center">貸した</td>
-<td align="center">貸される</td>
-</tr>
-</tbody></table>
+<h3 id="su-す"><a href="#su-す" class="headerlink" title="su す"></a>su す</h3><p>|English|漢語|辞書形|片仮名Katakana|ます形|て形|ない形|過去形|受動態|目的語|<br>|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|<br>speak|說|話す|はなす|話します|話して|話さない|話した|話される|<br>look for|尋找|探す|さがす|探します|探して|探さない|探した|探される|<br>move(house)|搬家|引っ越す|ひっこす|引っ越します|引っ越して|引っ越さない|引っ越し|引っ越される|<br>steam|蒸|蒸す|むす|蒸します|蒸して|蒸さない|蒸した|蒸される|<br>kill|殺|殺す|ころす|殺します|殺して|殺さない|殺した|殺される|<br>forgive|原諒|許す|ゆるす|許します|許して|許さない|許した|許される|<br>commmit|施行|犯す|おかす|犯します|犯して|犯さない|犯した|犯される|<br>lend|借貸|貸す|かす|貸します|貸して|貸さない|貸した|貸される|<br>live|生活|暮らす|くらす|暮します|暮して|暮さない|暮した|暮される|自</p>
 <h3 id="tsu-つ"><a href="#tsu-つ" class="headerlink" title="tsu つ"></a>tsu つ</h3><table>
 <thead>
 <tr>
@@ -5693,6 +5851,16 @@ This is a comment
 <td align="center">呼んで</td>
 <td align="center">呼ばない</td>
 <td align="center">呼んだ</td>
+</tr>
+<tr>
+<td align="center">study ~ learn</td>
+<td align="center">学ぶ</td>
+<td align="center">まなぶ</td>
+<td align="center">学びます</td>
+<td align="center">学んで</td>
+<td align="center">学ばない</td>
+<td align="center">学んだ</td>
+<td align="center">学ばれる</td>
 </tr>
 </tbody></table>
 <h3 id="mu-む"><a href="#mu-む" class="headerlink" title="mu む"></a>mu む</h3><table>
@@ -6058,6 +6226,9 @@ This is a comment
 <th align="center">片仮名Katakana</th>
 <th align="center">ます形</th>
 <th align="center">て形</th>
+<th align="center">ない形</th>
+<th align="center">過去形</th>
+<th align="center">受動態</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -6067,6 +6238,9 @@ This is a comment
 <td align="center">はいる</td>
 <td align="center">入ります</td>
 <td align="center">入って</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">run</td>
@@ -6075,6 +6249,9 @@ This is a comment
 <td align="center">はしる</td>
 <td align="center">走ります</td>
 <td align="center">走って</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">cut</td>
@@ -6083,6 +6260,9 @@ This is a comment
 <td align="center">きる</td>
 <td align="center">切ります</td>
 <td align="center">切って</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">know</td>
@@ -6091,6 +6271,9 @@ This is a comment
 <td align="center">しる</td>
 <td align="center">知ります</td>
 <td align="center">知って</td>
+<td align="center">知らない</td>
+<td align="center">知った</td>
+<td align="center">知られる</td>
 </tr>
 <tr>
 <td align="center">return ~ go home</td>
@@ -6099,6 +6282,9 @@ This is a comment
 <td align="center">かえる</td>
 <td align="center">帰ります</td>
 <td align="center">帰って</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 </tbody></table>
 <hr>
@@ -6212,6 +6398,10 @@ This is a comment
 <th align="center">片仮名Katakana</th>
 <th align="center">ます形</th>
 <th align="center">て形</th>
+<th align="center">ない形</th>
+<th align="center">過去形</th>
+<th align="center">受動態</th>
+<th align="center">目的語</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -6221,6 +6411,10 @@ This is a comment
 <td align="center">たべ</td>
 <td align="center">食べます</td>
 <td align="center">食べて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">speak</td>
@@ -6229,6 +6423,10 @@ This is a comment
 <td align="center">はなせる</td>
 <td align="center">話せます</td>
 <td align="center">話せて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">think ~ consider</td>
@@ -6237,6 +6435,10 @@ This is a comment
 <td align="center">かんがえる</td>
 <td align="center">考えます</td>
 <td align="center">考えて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">help</td>
@@ -6245,6 +6447,22 @@ This is a comment
 <td align="center">たすける</td>
 <td align="center">助けます</td>
 <td align="center">助けて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">give</td>
+<td align="center">給(我)</td>
+<td align="center">呉れる</td>
+<td align="center">くれる</td>
+<td align="center">呉れます</td>
+<td align="center">呉れて</td>
+<td align="center">呉れない</td>
+<td align="center">呉れた</td>
+<td align="center">呉れられる</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">tire</td>
@@ -6253,6 +6471,10 @@ This is a comment
 <td align="center">つかれる</td>
 <td align="center">疲れます</td>
 <td align="center">疲れて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">sleep ~ lay down</td>
@@ -6261,6 +6483,10 @@ This is a comment
 <td align="center">ねる</td>
 <td align="center">寝ます</td>
 <td align="center">寝て</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">continue</td>
@@ -6269,6 +6495,10 @@ This is a comment
 <td align="center">つづける</td>
 <td align="center">続けます</td>
 <td align="center">続けて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">quit</td>
@@ -6277,6 +6507,10 @@ This is a comment
 <td align="center">やめる</td>
 <td align="center">辞めます</td>
 <td align="center">辞めて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">break</td>
@@ -6285,6 +6519,10 @@ This is a comment
 <td align="center">こわれる</td>
 <td align="center">壊れます</td>
 <td align="center">壊れて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">break(into two parts)</td>
@@ -6293,6 +6531,10 @@ This is a comment
 <td align="center">おれる</td>
 <td align="center">折れます</td>
 <td align="center">折れて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">boil</td>
@@ -6301,6 +6543,10 @@ This is a comment
 <td align="center">ゆでる</td>
 <td align="center">茹でます</td>
 <td align="center">茹でて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">fry</td>
@@ -6309,6 +6555,10 @@ This is a comment
 <td align="center">あげる</td>
 <td align="center">揚げます</td>
 <td align="center">揚げて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">add ~ plus</td>
@@ -6317,6 +6567,10 @@ This is a comment
 <td align="center">くわえる</td>
 <td align="center">加えます</td>
 <td align="center">加えて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">visit(people)</td>
@@ -6325,6 +6579,10 @@ This is a comment
 <td align="center">たずねる</td>
 <td align="center">訪ねます</td>
 <td align="center">訪ねて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">visit(place)</td>
@@ -6333,6 +6591,10 @@ This is a comment
 <td align="center">おとずれる</td>
 <td align="center">訪れます</td>
 <td align="center">訪れて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">accompany</td>
@@ -6341,6 +6603,10 @@ This is a comment
 <td align="center">つれる</td>
 <td align="center">連れます</td>
 <td align="center">連れて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">be used to</td>
@@ -6349,6 +6615,10 @@ This is a comment
 <td align="center">なれる</td>
 <td align="center">慣れます</td>
 <td align="center">慣れて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">prepare</td>
@@ -6357,6 +6627,10 @@ This is a comment
 <td align="center">そなえる</td>
 <td align="center">備えます</td>
 <td align="center">備えて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">find</td>
@@ -6365,6 +6639,10 @@ This is a comment
 <td align="center">みつける</td>
 <td align="center">見つけます</td>
 <td align="center">見つけて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">lose(fight)</td>
@@ -6373,6 +6651,10 @@ This is a comment
 <td align="center">まける</td>
 <td align="center">負けます</td>
 <td align="center">負けて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">resort</td>
@@ -6381,6 +6663,10 @@ This is a comment
 <td align="center">うったえる</td>
 <td align="center">訴えます</td>
 <td align="center">訴えて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">start</td>
@@ -6389,6 +6675,10 @@ This is a comment
 <td align="center">はじめる</td>
 <td align="center">始めます</td>
 <td align="center">始めて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">mistake</td>
@@ -6397,6 +6687,10 @@ This is a comment
 <td align="center">まちがえる</td>
 <td align="center">間違えます</td>
 <td align="center">間違えて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">disappear</td>
@@ -6405,6 +6699,10 @@ This is a comment
 <td align="center">きえる</td>
 <td align="center">消えります</td>
 <td align="center">消えて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">raise ~ carry up</td>
@@ -6413,6 +6711,10 @@ This is a comment
 <td align="center">そだてる</td>
 <td align="center">育てます</td>
 <td align="center">育てて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">hang</td>
@@ -6421,6 +6723,10 @@ This is a comment
 <td align="center">かける</td>
 <td align="center">掛けます</td>
 <td align="center">掛けて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">tighten ~ fasten</td>
@@ -6429,6 +6735,10 @@ This is a comment
 <td align="center">締めます</td>
 <td align="center">締めて</td>
 <td align="center">しめて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">accept ~ respond ~ dispose</td>
@@ -6437,6 +6747,10 @@ This is a comment
 <td align="center">おうじる</td>
 <td align="center">応じます</td>
 <td align="center">応じて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">tidy up ~ clean ~ settle</td>
@@ -6445,6 +6759,22 @@ This is a comment
 <td align="center">かたつける</td>
 <td align="center">片付けます</td>
 <td align="center">片付けて</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">collect ~ gather</td>
+<td align="center">收集</td>
+<td align="center">集める</td>
+<td align="center">あつめる</td>
+<td align="center">集めます</td>
+<td align="center">集めて</td>
+<td align="center">集めない</td>
+<td align="center">集めた</td>
+<td align="center">集められる</td>
+<td align="center">他</td>
 </tr>
 </tbody></table>
 <hr>
@@ -6547,6 +6877,18 @@ This is a comment
 <td align="center">本当に</td>
 <td align="center">ほんとうに</td>
 </tr>
+<tr>
+<td align="center">surely ~ undoutblely ~ definitely ~ certainly</td>
+<td align="center">必然地</td>
+<td align="center">きっと</td>
+<td align="center">きっと</td>
+</tr>
+<tr>
+<td align="center">at all ~ entirely</td>
+<td align="center">完全(不)</td>
+<td align="center">全然</td>
+<td align="center">ぜんぜん</td>
+</tr>
 </tbody></table>
 <h2 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h2><table>
 <thead>
@@ -6571,7 +6913,23 @@ This is a comment
 </tr>
 </tbody></table>
 <h2 id="Tense"><a href="#Tense" class="headerlink" title="Tense"></a>Tense</h2><p>did|過去做了|かった|かった<br>did not|過去沒有做|(ない→)なかった|なかった<br>tried to|曾嘗試去做|しようとしました ~ しようとした|しようとしました ~ しようとした</p>
-<h1 id="Conjunction-連詞-接続詞-せつぞくし"><a href="#Conjunction-連詞-接続詞-せつぞくし" class="headerlink" title="Conjunction 連詞 接続詞 せつぞくし"></a>Conjunction 連詞 接続詞 せつぞくし</h1><h3 id="Status"><a href="#Status" class="headerlink" title="Status"></a>Status</h3><table>
+<h1 id="Conjunction-連詞-接続詞-せつぞくし"><a href="#Conjunction-連詞-接続詞-せつぞくし" class="headerlink" title="Conjunction 連詞 接続詞 せつぞくし"></a>Conjunction 連詞 接続詞 せつぞくし</h1><table>
+<thead>
+<tr>
+<th align="center">English</th>
+<th align="center">漢語</th>
+<th align="center">辞書形</th>
+<th align="center">片仮名Katakana</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">about</td>
+<td align="center">關於</td>
+<td align="center">について</td>
+<td align="center">について</td>
+</tr>
+</tbody></table>
+<h3 id="Status"><a href="#Status" class="headerlink" title="Status"></a>Status</h3><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -6603,6 +6961,12 @@ This is a comment
 <td align="center">正如預料那樣</td>
 <td align="center">やっぱり</td>
 <td align="center">やっぱり</td>
+</tr>
+<tr>
+<td align="center">if ~</td>
+<td align="center">如果~</td>
+<td align="center">~たら</td>
+<td align="center">たら</td>
 </tr>
 </tbody></table>
 <h3 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h3><table>
@@ -6680,6 +7044,9 @@ This is a comment
 </blockquote>
 <blockquote>
 <p>Goodbye 再見<br>またね　- さようなら</p>
+</blockquote>
+<h3 id="自己紹介-自我介紹-じこしょうかい"><a href="#自己紹介-自我介紹-じこしょうかい" class="headerlink" title="自己紹介 自我介紹 じこしょうかい"></a>自己紹介 自我介紹 じこしょうかい</h3><blockquote>
+<p>Please let me introduce myself<br>自己紹介をさせてください</p>
 </blockquote>
 <h2 id="Daily-Life-日常生活-日常生活-にちじょうせいかつ"><a href="#Daily-Life-日常生活-日常生活-にちじょうせいかつ" class="headerlink" title="Daily Life 日常生活 日常生活 にちじょうせいかつ"></a>Daily Life 日常生活 日常生活 にちじょうせいかつ</h2><blockquote>
 <p>Please wait a little bit 請稍等<br>少々お待ちください しょうしょうおまちください</p>
