@@ -1214,7 +1214,6 @@ This is a comment
 <td align="center">きんいろの</td>
 </tr>
 </tbody></table>
-<h2 id="Count-数量-すうりょう"><a href="#Count-数量-すうりょう" class="headerlink" title="Count 数量 すうりょう"></a>Count 数量 すうりょう</h2><p>most|大多數|大抵|たいてい</p>
 <h2 id="Item-物-もの"><a href="#Item-物-もの" class="headerlink" title="Item 物 もの"></a>Item 物 もの</h2><table>
 <thead>
 <tr>
@@ -1559,6 +1558,12 @@ This is a comment
 <td align="center">完全的</td>
 <td align="center">完全な</td>
 <td align="center">かんぜんな</td>
+</tr>
+<tr>
+<td align="center">considerable ~ substantial</td>
+<td align="center">相當的</td>
+<td align="center">相当な</td>
+<td align="center">そうとうな</td>
 </tr>
 </tbody></table>
 <h2 id="Place-地點-ばしょ"><a href="#Place-地點-ばしょ" class="headerlink" title="Place 地點 ばしょ"></a>Place 地點 ばしょ</h2><table>
@@ -2131,6 +2136,12 @@ This is a comment
 <td align="center">不在的</td>
 <td align="center">不在の</td>
 <td align="center">ふざいの</td>
+</tr>
+<tr>
+<td align="center">most</td>
+<td align="center">大多數的</td>
+<td align="center">大抵の</td>
+<td align="center">たいていの</td>
 </tr>
 <tr>
 <td align="center">many</td>
@@ -2753,6 +2764,12 @@ This is a comment
 <td align="center">なごや</td>
 </tr>
 <tr>
+<td align="center">foreign country</td>
+<td align="center">外國</td>
+<td align="center">外国</td>
+<td align="center">がいこく</td>
+</tr>
+<tr>
 <td align="center">China</td>
 <td align="center">中國</td>
 <td align="center">中国</td>
@@ -3178,6 +3195,12 @@ This is a comment
 <td align="center">代表</td>
 <td align="center">だいひょう</td>
 </tr>
+<tr>
+<td align="center">opponent ~ partner</td>
+<td align="center">對手 ~ 夥伴</td>
+<td align="center">相手</td>
+<td align="center">あいて</td>
+</tr>
 </tbody></table>
 <h3 id="Group-Organization-組織-組織-そしき"><a href="#Group-Organization-組織-組織-そしき" class="headerlink" title="Group ~ Organization 組織 組織 そしき"></a>Group ~ Organization 組織 組織 そしき</h3><p>army|軍隊|軍隊|ぐんたい</p>
 <h3 id="Family-家族-家族-かぞく"><a href="#Family-家族-家族-かぞく" class="headerlink" title="Family 家族 家族 かぞく"></a>Family 家族 家族 かぞく</h3><table>
@@ -3507,6 +3530,12 @@ This is a comment
 <td align="center">大統領</td>
 <td align="center">だいとうりょう</td>
 </tr>
+<tr>
+<td align="center">manufacturer ~ producer ~ maker</td>
+<td align="center">製造者 ~ 生產者</td>
+<td align="center">製造者 ~ 生産者 ~ メーカー</td>
+<td align="center">せいぞうしゃ ~ せいさんしゃ ~ めーかー</td>
+</tr>
 </tbody></table>
 <h2 id="Food-食物-食べ物-たべもの"><a href="#Food-食物-食べ物-たべもの" class="headerlink" title="Food 食物 食べ物 たべもの"></a>Food 食物 食べ物 たべもの</h2><h3 id="Vegetable-蔬菜-野菜-やさい"><a href="#Vegetable-蔬菜-野菜-やさい" class="headerlink" title="Vegetable 蔬菜 野菜 やさい"></a>Vegetable 蔬菜 野菜 やさい</h3><table>
 <thead>
@@ -3724,6 +3753,12 @@ This is a comment
 <td align="center">げんまい</td>
 </tr>
 <tr>
+<td align="center">soybean</td>
+<td align="center">大豆</td>
+<td align="center">大豆</td>
+<td align="center">だいず</td>
+</tr>
+<tr>
 <td align="center">azuki</td>
 <td align="center">紅豆</td>
 <td align="center">小豆</td>
@@ -3910,6 +3945,12 @@ This is a comment
 <td align="center">材料</td>
 <td align="center">材料</td>
 <td align="center">ざいりょう</td>
+</tr>
+<tr>
+<td align="center">key</td>
+<td align="center">鑰匙</td>
+<td align="center">鍵🔑🔓</td>
+<td align="center">かぎ</td>
 </tr>
 <tr>
 <td align="center">umbrella</td>
@@ -4437,6 +4478,13 @@ This is a comment
 <td align="center"></td>
 </tr>
 <tr>
+<td align="center">procedure</td>
+<td align="center">手續</td>
+<td align="center">手続 ~ 手続き</td>
+<td align="center">てつづき</td>
+<td align="center"></td>
+</tr>
+<tr>
 <td align="center">rent</td>
 <td align="center">房租</td>
 <td align="center">家賃</td>
@@ -4549,10 +4597,24 @@ This is a comment
 <td align="center"></td>
 </tr>
 <tr>
+<td align="center">reason</td>
+<td align="center">理由</td>
+<td align="center">訳 ~ 理由</td>
+<td align="center">わけ ~ りゆう</td>
+<td align="center"></td>
+</tr>
+<tr>
 <td align="center">need</td>
 <td align="center">必要</td>
 <td align="center">必要</td>
 <td align="center">ひつよう</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">joke</td>
+<td align="center">玩笑</td>
+<td align="center">冗談</td>
+<td align="center">じょうだん</td>
 <td align="center"></td>
 </tr>
 <tr>
@@ -7104,6 +7166,9 @@ This is a comment
 </blockquote>
 <blockquote>
 <p>Please refill it<br>お代わりください おかわりください</p>
+</blockquote>
+<blockquote>
+<p>It’s impossible<br>無理だよ むりだよ</p>
 </blockquote>
 <h2 id="Important-Part-of-some-sentences"><a href="#Important-Part-of-some-sentences" class="headerlink" title="Important Part of some sentences"></a>Important Part of some sentences</h2><blockquote>
 <p>Would you like ~?<br>How is it going?　~はいかがですか</p>
