@@ -7914,4 +7914,11 @@ This is a comment
         <category>Japanese</category>
       </categories>
   </entry>
+  <entry>
+    <title>multilanguages</title>
+    <url>/multilanguages/</url>
+    <content><![CDATA[<h1 id="Hi"><a href="#Hi" class="headerlink" title="Hi"></a>Hi</h1><p>Japnaese:   こんにちは=konnichiwa<br>Korean:     안녕하세요=annyeonghaseyo<br>Chinese:    你好=nihao<br>Italian:    Ciao=/tʃaʊ/</p>
+<h1 id="Goodbye"><a href="#Goodbye" class="headerlink" title="Goodbye"></a>Goodbye</h1><p>Japnaese:   さようなら=sayounara<br>Korean:     안녕=annyeong<br>Chinese:    再見=zaijian<br>Italian:    Ciao=/tʃaʊ/ ~ arrivederci=ar·ri·ve·dér·ci</p>
+]]></content>
+  </entry>
 </search>
