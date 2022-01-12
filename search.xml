@@ -1848,6 +1848,12 @@ This is a comment
 <td align="center">きもちわるい</td>
 </tr>
 <tr>
+<td align="center">painful</td>
+<td align="center">痛苦的</td>
+<td align="center">痛い</td>
+<td align="center">いたい</td>
+</tr>
+<tr>
 <td align="center">pretty</td>
 <td align="center">綺麗的</td>
 <td align="center">綺麗な</td>
@@ -2134,6 +2140,34 @@ This is a comment
 <td align="center">きそくてきな</td>
 </tr>
 </tbody></table>
+<h3 id="Society-社会-しゃかい"><a href="#Society-社会-しゃかい" class="headerlink" title="Society 社会 しゃかい"></a>Society 社会 しゃかい</h3><table>
+<thead>
+<tr>
+<th align="center">English</th>
+<th align="center">漢語</th>
+<th align="center">日本語Nihongo</th>
+<th align="center">片仮名Katakana</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">democratic /‘dɛmə’krætɪk/</td>
+<td align="center">民主的</td>
+<td align="center">民主的な</td>
+<td align="center">みんしゅてきな</td>
+</tr>
+<tr>
+<td align="center">tyrannic /tɪ’rænɪkl/</td>
+<td align="center">專制獨裁的</td>
+<td align="center">専制君主的な</td>
+<td align="center">せんせいくんしゅてきな</td>
+</tr>
+<tr>
+<td align="center">totalitarian /to,tælə’tɛrɪən/</td>
+<td align="center">極權的</td>
+<td align="center">全体主義の</td>
+<td align="center">ぜんたいしゅぎの</td>
+</tr>
+</tbody></table>
 <h2 id="no-adj-の形容詞"><a href="#no-adj-の形容詞" class="headerlink" title="no-adj の形容詞 *"></a>no-adj の形容詞 *</h2><table>
 <thead>
 <tr>
@@ -2386,8 +2420,8 @@ This is a comment
 <tr>
 <td align="center">room</td>
 <td align="center">房間</td>
-<td align="center">部屋</td>
-<td align="center">へや</td>
+<td align="center">部屋 ~ 室</td>
+<td align="center">へや ~ しつ</td>
 </tr>
 <tr>
 <td align="center">roof</td>
@@ -2550,6 +2584,12 @@ This is a comment
 <td align="center">旅館</td>
 <td align="center">ホテル</td>
 <td align="center">ほてる</td>
+</tr>
+<tr>
+<td align="center">inn ~ resort</td>
+<td align="center">民宿</td>
+<td align="center">宿</td>
+<td align="center">やど</td>
 </tr>
 <tr>
 <td align="center">movie theater ~ cinema</td>
@@ -2746,6 +2786,12 @@ This is a comment
 <td align="center">海</td>
 <td align="center">海</td>
 <td align="center">うみ</td>
+</tr>
+<tr>
+<td align="center">hot spring</td>
+<td align="center">溫泉</td>
+<td align="center">温泉♨</td>
+<td align="center">おんせん</td>
 </tr>
 <tr>
 <td align="center">sky</td>
@@ -3164,43 +3210,43 @@ This is a comment
 <tr>
 <td align="center">eye</td>
 <td align="center">眼 ~ 目</td>
-<td align="center">眼 ~ 目</td>
+<td align="center">眼 ~ 目👀</td>
 <td align="center">め</td>
 </tr>
 <tr>
 <td align="center">ear</td>
 <td align="center">耳</td>
-<td align="center">耳</td>
+<td align="center">耳👂</td>
 <td align="center">みみ</td>
 </tr>
 <tr>
 <td align="center">nose</td>
 <td align="center">鼻</td>
-<td align="center">鼻</td>
+<td align="center">鼻👃</td>
 <td align="center">はな</td>
 </tr>
 <tr>
 <td align="center">mouth</td>
 <td align="center">口 ~ 嘴</td>
-<td align="center">口</td>
+<td align="center">口👄</td>
 <td align="center">くち</td>
 </tr>
 <tr>
 <td align="center">lip</td>
 <td align="center">脣</td>
-<td align="center">リップ</td>
+<td align="center">リップ💄</td>
 <td align="center">りっぷ</td>
 </tr>
 <tr>
 <td align="center">tongue</td>
 <td align="center">舌</td>
-<td align="center">舌</td>
+<td align="center">舌👅</td>
 <td align="center">した</td>
 </tr>
 <tr>
 <td align="center">tooth</td>
 <td align="center">牙 ~ 齒</td>
-<td align="center">歯</td>
+<td align="center">歯🦷</td>
 <td align="center">は</td>
 </tr>
 <tr>
@@ -3230,13 +3276,13 @@ This is a comment
 <tr>
 <td align="center">hand</td>
 <td align="center">手</td>
-<td align="center">手</td>
+<td align="center">手👍</td>
 <td align="center">て</td>
 </tr>
 <tr>
 <td align="center">foot</td>
 <td align="center">足 ~ 脚</td>
-<td align="center">足 ~ 脚</td>
+<td align="center">足 ~ 脚👣</td>
 <td align="center">あし</td>
 </tr>
 <tr>
@@ -3310,6 +3356,12 @@ This is a comment
 <td align="center">肩</td>
 <td align="center">肩</td>
 <td align="center">かた</td>
+</tr>
+<tr>
+<td align="center">back</td>
+<td align="center">後背</td>
+<td align="center">背中</td>
+<td align="center">せなか</td>
 </tr>
 <tr>
 <td align="center">chest</td>
@@ -3687,6 +3739,12 @@ This is a comment
 <td align="center">醫生</td>
 <td align="center">医者</td>
 <td align="center">いしゃ</td>
+</tr>
+<tr>
+<td align="center">patient</td>
+<td align="center">患者</td>
+<td align="center">患者</td>
+<td align="center">かんじゃ</td>
 </tr>
 <tr>
 <td align="center">artist</td>
@@ -4112,6 +4170,12 @@ This is a comment
 <td align="center">パン</td>
 <td align="center">ぱん</td>
 </tr>
+<tr>
+<td align="center">medicine</td>
+<td align="center">藥💊</td>
+<td align="center">薬</td>
+<td align="center">くすり</td>
+</tr>
 </tbody></table>
 <h2 id="Tool-工具-道具-どうぐ"><a href="#Tool-工具-道具-どうぐ" class="headerlink" title="Tool 工具 道具 どうぐ"></a>Tool 工具 道具 どうぐ</h2><table>
 <thead>
@@ -4459,6 +4523,12 @@ This is a comment
 </tr>
 </thead>
 <tbody><tr>
+<td align="center">traffic ~ trasportation</td>
+<td align="center">交通</td>
+<td align="center">交通</td>
+<td align="center">こうつう</td>
+</tr>
+<tr>
 <td align="center">car</td>
 <td align="center">車</td>
 <td align="center">車🚙</td>
@@ -4533,6 +4603,36 @@ This is a comment
 <td align="center">犯罪</td>
 <td align="center">犯罪</td>
 <td align="center">はんざい</td>
+</tr>
+<tr>
+<td align="center">couph</td>
+<td align="center">咳嗽</td>
+<td align="center">咳</td>
+<td align="center">せき</td>
+</tr>
+<tr>
+<td align="center">sneeze</td>
+<td align="center">噴嚏</td>
+<td align="center">くしゃみ</td>
+<td align="center">くしゃみ</td>
+</tr>
+<tr>
+<td align="center">fever</td>
+<td align="center">發熱 ~ 發燒</td>
+<td align="center">熱</td>
+<td align="center">ねつ</td>
+</tr>
+<tr>
+<td align="center">headache</td>
+<td align="center">頭痛</td>
+<td align="center">頭痛</td>
+<td align="center">ずつう</td>
+</tr>
+<tr>
+<td align="center">wound</td>
+<td align="center">創傷</td>
+<td align="center">創 ~ 傷</td>
+<td align="center">きず</td>
 </tr>
 </tbody></table>
 <h2 id="Hobby-興趣愛好-フービー-趣味-しゅみ"><a href="#Hobby-興趣愛好-フービー-趣味-しゅみ" class="headerlink" title="Hobby 興趣愛好 フービー ~ 趣味 しゅみ"></a>Hobby 興趣愛好 フービー ~ 趣味 しゅみ</h2><table>
@@ -4728,6 +4828,24 @@ This is a comment
 <td align="center">距離</td>
 <td align="center">きょり</td>
 </tr>
+<tr>
+<td align="center">width</td>
+<td align="center">寬度</td>
+<td align="center">幅</td>
+<td align="center">はば</td>
+</tr>
+<tr>
+<td align="center">height</td>
+<td align="center">高度</td>
+<td align="center">高さ</td>
+<td align="center">たかさ</td>
+</tr>
+<tr>
+<td align="center">weight</td>
+<td align="center">重量</td>
+<td align="center">重さ</td>
+<td align="center">おもさ</td>
+</tr>
 </tbody></table>
 <h2 id="Daily-Life-生活-生活-せいかつ"><a href="#Daily-Life-生活-生活-せいかつ" class="headerlink" title="(Daily) Life 生活 生活 せいかつ"></a>(Daily) Life 生活 生活 せいかつ</h2><table>
 <thead>
@@ -4853,9 +4971,9 @@ This is a comment
 </tr>
 <tr>
 <td align="center">accident</td>
-<td align="center">事故</td>
-<td align="center">事故</td>
-<td align="center">じこ</td>
+<td align="center">事故 ~ 事件</td>
+<td align="center">事故 ~ 事件</td>
+<td align="center">じこ ~ じけん</td>
 <td align="center"></td>
 </tr>
 <tr>
@@ -5083,6 +5201,20 @@ This is a comment
 <td align="center"></td>
 </tr>
 <tr>
+<td align="center">body’s temperature</td>
+<td align="center">體溫</td>
+<td align="center">体温</td>
+<td align="center">たいおん</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">holiday ~ vacation</td>
+<td align="center">休假</td>
+<td align="center">休暇</td>
+<td align="center">きゅうか</td>
+<td align="center"></td>
+</tr>
+<tr>
 <td align="center">means</td>
 <td align="center">手段</td>
 <td align="center">手段</td>
@@ -5226,7 +5358,7 @@ This is a comment
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">temperature</td>
+<td align="center">(weather’s) temperature</td>
 <td align="center">氣溫</td>
 <td align="center">気温 ~ 温度</td>
 <td align="center">きおん ~ おんど</td>
@@ -6204,6 +6336,27 @@ This is a comment
 <td align="center">けいやく</td>
 <td align="center"></td>
 </tr>
+<tr>
+<td align="center">reassure</td>
+<td align="center">安撫</td>
+<td align="center">安心</td>
+<td align="center">あんしん</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">sleep</td>
+<td align="center">睡眠</td>
+<td align="center">睡眠</td>
+<td align="center">すいみん</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">pregnant</td>
+<td align="center">懷孕 ~ 妊娠</td>
+<td align="center">妊娠</td>
+<td align="center">にんしん</td>
+<td align="center"></td>
+</tr>
 </tbody></table>
 <hr>
 <h2 id="五段動詞-Ⅰ-godan"><a href="#五段動詞-Ⅰ-godan" class="headerlink" title="五段動詞 Ⅰ godan"></a>五段動詞 Ⅰ godan</h2><p>語幹が子音で終わる。原形は -u で終わる<br><del>ru</del> | a-ru | u-ru | o-ru</p>
@@ -6662,6 +6815,18 @@ This is a comment
 <td align="center">届かれる</td>
 <td align="center"></td>
 </tr>
+<tr>
+<td align="center">work ~ act</td>
+<td align="center">有效</td>
+<td align="center">効く</td>
+<td align="center">きく</td>
+<td align="center">効きます</td>
+<td align="center">効いて</td>
+<td align="center">効いた</td>
+<td align="center">効かない</td>
+<td align="center">効かれる</td>
+<td align="center"></td>
+</tr>
 </tbody></table>
 <h3 id="gu-ぐ"><a href="#gu-ぐ" class="headerlink" title="gu ぐ"></a>gu ぐ</h3><table>
 <thead>
@@ -6792,6 +6957,18 @@ This is a comment
 <td align="center">探した</td>
 <td align="center">探さない</td>
 <td align="center">探される</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">finish</td>
+<td align="center">済ます</td>
+<td align="center">すます</td>
+<td align="center">済まします</td>
+<td align="center">済まして</td>
+<td align="center">済ました</td>
+<td align="center">済まさない</td>
+<td align="center">済まされる</td>
+<td align="center">他</td>
 <td align="center"></td>
 </tr>
 <tr>
@@ -6948,6 +7125,30 @@ This is a comment
 <td align="center">取り消した</td>
 <td align="center">取り消さない</td>
 <td align="center">取り消される</td>
+<td align="center">他</td>
+</tr>
+<tr>
+<td align="center">wake (up) ~ awake</td>
+<td align="center">覚ます</td>
+<td align="center">さます</td>
+<td align="center">覚まします</td>
+<td align="center">覚まして</td>
+<td align="center">覚ました</td>
+<td align="center">覚まさない</td>
+<td align="center">覚まさせる</td>
+<td align="center">他</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">spend ~ have</td>
+<td align="center">度過</td>
+<td align="center">過ごす</td>
+<td align="center">すごす</td>
+<td align="center">過ごします</td>
+<td align="center">過ごして</td>
+<td align="center">過ごした</td>
+<td align="center">過ごさない</td>
+<td align="center">過ごされる</td>
 <td align="center">他</td>
 </tr>
 </tbody></table>
@@ -7223,6 +7424,18 @@ This is a comment
 <td align="center">含まれる</td>
 <td align="center"></td>
 </tr>
+<tr>
+<td align="center">hurt</td>
+<td align="center">痛苦</td>
+<td align="center">痛む</td>
+<td align="center">いたむ</td>
+<td align="center">痛みます</td>
+<td align="center">痛んで</td>
+<td align="center">痛んだ</td>
+<td align="center">痛まない</td>
+<td align="center">痛まれる</td>
+<td align="center">自</td>
+</tr>
 </tbody></table>
 <h2 id="ru-る"><a href="#ru-る" class="headerlink" title="ru る"></a>ru る</h2><table>
 <thead>
@@ -7332,9 +7545,9 @@ This is a comment
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">stop</td>
+<td align="center">stop ~ stay</td>
 <td align="center">停止</td>
-<td align="center">止まる</td>
+<td align="center">止まる ~ 泊まる</td>
 <td align="center">とまる</td>
 <td align="center">止まります</td>
 <td align="center">止まって</td>
@@ -7580,7 +7793,7 @@ This is a comment
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">take</td>
+<td align="center">take ~ get</td>
 <td align="center">拿取</td>
 <td align="center">取る</td>
 <td align="center">とる</td>
@@ -8672,6 +8885,12 @@ This is a comment
 <td align="center">如果~</td>
 <td align="center">…たら</td>
 <td align="center">たら</td>
+</tr>
+<tr>
+<td align="center">if you (would) like</td>
+<td align="center">良かったら</td>
+<td align="center">よかったら</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">by mistake</td>
