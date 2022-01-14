@@ -3684,6 +3684,12 @@ This is a comment
 <td align="center">蝿</td>
 <td align="center">はえ</td>
 </tr>
+<tr>
+<td align="center">turtle</td>
+<td align="center">龜</td>
+<td align="center">亀🐢</td>
+<td align="center">かめ</td>
+</tr>
 </tbody></table>
 <h3 id="Legendary"><a href="#Legendary" class="headerlink" title="Legendary"></a>Legendary</h3><table>
 <thead>
@@ -4043,6 +4049,12 @@ This is a comment
 </tr>
 </thead>
 <tbody><tr>
+<td align="center">(hot) water</td>
+<td align="center">熱水</td>
+<td align="center">御湯</td>
+<td align="center">おゆ</td>
+</tr>
+<tr>
 <td align="center">milk</td>
 <td align="center">牛奶</td>
 <td align="center">牛乳</td>
@@ -5257,6 +5269,13 @@ This is a comment
 <td align="center">理由</td>
 <td align="center">訳 ~ 理由</td>
 <td align="center">わけ ~ りゆう</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">cause</td>
+<td align="center">原因</td>
+<td align="center">原因</td>
+<td align="center">げんいん</td>
 <td align="center"></td>
 </tr>
 <tr>
@@ -9229,19 +9248,23 @@ This is a comment
 </tr>
 <tr>
 <td align="center">delete one line</td>
-<td align="center"></td>
+<td align="center">dd</td>
 </tr>
 <tr>
-<td align="center">delete</td>
-<td align="center"></td>
+<td align="center">delete one line after cursor</td>
+<td align="center">d$</td>
 </tr>
 </tbody></table>
-]]></content>
+<h1 id="Cut"><a href="#Cut" class="headerlink" title="Cut"></a>Cut</h1><h1 id="Copy"><a href="#Copy" class="headerlink" title="Copy"></a>Copy</h1><h1 id="Paste"><a href="#Paste" class="headerlink" title="Paste"></a>Paste</h1>]]></content>
   </entry>
   <entry>
     <title>world</title>
     <url>/world/</url>
-    <content><![CDATA[<h2 id="Time-Zone-時區時間帯-じかんたい"><a href="#Time-Zone-時區時間帯-じかんたい" class="headerlink" title="Time Zone 時區時間帯 じかんたい"></a>Time Zone 時區時間帯 じかんたい</h2><p>UTC = Coordinated Universal Time<br>ETC = Eastern Standard Time = UTC-5<br>EDT = Eastern Daylight Time = UTC-4</p>
+    <content><![CDATA[<img src="/images/world/Worldwide TimeZone.jpg" width="100%" height="100%">
+
+<span id="more"></span>
+
+<h2 id="Time-Zone-時區時間帯-じかんたい"><a href="#Time-Zone-時區時間帯-じかんたい" class="headerlink" title="Time Zone 時區時間帯 じかんたい"></a>Time Zone 時區時間帯 じかんたい</h2><p>UTC = Coordinated Universal Time<br>ETC = Eastern Standard Time = UTC-5<br>EDT = Eastern Daylight Time = UTC-4</p>
 <h3 id="UTC-Cities"><a href="#UTC-Cities" class="headerlink" title="UTC Cities"></a>UTC Cities</h3>]]></content>
   </entry>
 </search>
