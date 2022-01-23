@@ -3812,6 +3812,12 @@ This is a comment
 <td align="center">ともだち</td>
 </tr>
 <tr>
+<td align="center">fellow ~ buddy ~ companion</td>
+<td align="center">夥伴</td>
+<td align="center">仲間</td>
+<td align="center">なかま</td>
+</tr>
+<tr>
 <td align="center">older brother</td>
 <td align="center">哥哥</td>
 <td align="center">兄 ~ お兄さん</td>
@@ -3926,6 +3932,12 @@ This is a comment
 <td align="center">鴿子</td>
 <td align="center">鳩 ~ ハト🕊</td>
 <td align="center">はと</td>
+</tr>
+<tr>
+<td align="center">monkey</td>
+<td align="center">猿猴</td>
+<td align="center">猿🐵</td>
+<td align="center">さる</td>
 </tr>
 <tr>
 <td align="center">deer</td>
@@ -4786,8 +4798,14 @@ This is a comment
 <tr>
 <td align="center">photo</td>
 <td align="center">照片 ~ 相片</td>
-<td align="center">写真 ~</td>
-<td align="center">しゃしん ~</td>
+<td align="center">写真</td>
+<td align="center">しゃしん</td>
+</tr>
+<tr>
+<td align="center">selfie</td>
+<td align="center">自拍</td>
+<td align="center">自撮り</td>
+<td align="center">じどり</td>
 </tr>
 <tr>
 <td align="center">video</td>
@@ -4916,6 +4934,12 @@ This is a comment
 <td align="center">だんべる</td>
 </tr>
 <tr>
+<td align="center">toy</td>
+<td align="center">玩具</td>
+<td align="center">玩具</td>
+<td align="center">おもちゃ</td>
+</tr>
+<tr>
 <td align="center">soft toy ~ stuffed animial</td>
 <td align="center">毛絨玩具</td>
 <td align="center">縫いぐるみ</td>
@@ -4976,6 +5000,12 @@ This is a comment
 <td align="center">電視</td>
 <td align="center">テレビ📺</td>
 <td align="center">てれび</td>
+</tr>
+<tr>
+<td align="center">(light) bulb</td>
+<td align="center">電燈泡</td>
+<td align="center">電球💡</td>
+<td align="center">でんきゅう</td>
 </tr>
 <tr>
 <td align="center">screen</td>
@@ -5537,6 +5567,12 @@ This is a comment
 <td align="center">存在∃</td>
 <td align="center">そんざい</td>
 </tr>
+<tr>
+<td align="center">smell</td>
+<td align="center">氣味</td>
+<td align="center">匂い ~ 香り</td>
+<td align="center">におい ~ かおり</td>
+</tr>
 </tbody></table>
 <h2 id="Fantasy-ファンタジー-空想-狂想-くうそう-きょうそう"><a href="#Fantasy-ファンタジー-空想-狂想-くうそう-きょうそう" class="headerlink" title="Fantasy ファンタジー 空想 ~ 狂想 くうそう ~ きょうそう"></a>Fantasy ファンタジー 空想 ~ 狂想 くうそう ~ きょうそう</h2><table>
 <thead>
@@ -5642,6 +5678,12 @@ This is a comment
 <td align="center">でんぱ ~ しんごう</td>
 </tr>
 <tr>
+<td align="center">battery</td>
+<td align="center">電池</td>
+<td align="center">電池</td>
+<td align="center">でんち</td>
+</tr>
+<tr>
 <td align="center">robot</td>
 <td align="center">機器人</td>
 <td align="center">ロボット</td>
@@ -5664,6 +5706,12 @@ This is a comment
 <td align="center">按鈕</td>
 <td align="center">ボタン🔘</td>
 <td align="center">ぼたん</td>
+</tr>
+<tr>
+<td align="center">malfunction ~ failure</td>
+<td align="center">故障</td>
+<td align="center">故障</td>
+<td align="center">こしょう</td>
 </tr>
 </tbody></table>
 <h2 id="Daily-Life-生活-生活-せいかつ"><a href="#Daily-Life-生活-生活-せいかつ" class="headerlink" title="(Daily) Life 生活 生活 せいかつ"></a>(Daily) Life 生活 生活 せいかつ</h2><table>
@@ -6052,6 +6100,13 @@ This is a comment
 <td align="center">勇氣</td>
 <td align="center">勇気</td>
 <td align="center">ゆうき</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">enthusiasm ~ passion</td>
+<td align="center">熱情</td>
+<td align="center">熱意 ~ 情熱</td>
+<td align="center">ねつい ~ じょうねつ</td>
 <td align="center"></td>
 </tr>
 <tr>
@@ -6657,7 +6712,11 @@ This is a comment
 <h2 id="悲涼"><a href="#悲涼" class="headerlink" title="悲涼"></a>悲涼</h2><p>在2020年的2月份前後，我的心底裏感到無比地悲涼。當時一方面看到<br>我甚至不畏流血、甚至是犧牲自己的生命，而希望為中國的變革做些什麼。<br>但是到今天，或者早在2020年底時，已經是悲涼和絕望了。<br>我真的曾經愛那片我想象中的土地和人們愛得深沉和熾熱，有一份「橫眉冷對千夫指，扶手敢為孺子牛」的決心和行動，卻真的最終基本上只是收穫了失望與悲傷。</p>
 <p>一方面是對一些歐美政商團體的失望，包括對於這次病毒源頭的調查無疾而終，儘管全世界大部分人都保守煎熬，真正希望和努力去找尋真相的人們寥寥無幾；中國目前大量老百姓被剝削的現狀也並非只是飽了紅色家族們的錢包，而一樣是一些西方利益集團看中了中國的低人權優勢，有些不方便在文明社會裏做的事情，他們也會巴不得有中國這麼一片土壤。</p>
 <p>另一方面，是對大量越來越多的中國失望，我慢慢地開始意識到，中華文化並不是曾經我所理解的那些多麼值得驕傲，反而就如同魯迅先生所寫的一樣 —— 「我翻開歷史一查，這歷史沒有年代，歪歪斜斜的每頁上都寫著『仁義道德』幾個字。我橫豎睡不著， 仔細看了半夜，才從字縫裡看出字來，滿本都寫著兩個字是『吃人』！」</p>
-<p>雖然很多事情</p>
+<p>沒有年代的歷史，一頁頁上都寫滿了吃人。</p>
+<h2 id="那些現實裏我曾無法理解的事情"><a href="#那些現實裏我曾無法理解的事情" class="headerlink" title="那些現實裏我曾無法理解的事情"></a>那些現實裏我曾無法理解的事情</h2><p>在我看到一些糟糕的社會狀況、社會事件的時候，也會多少認為是經濟發展水平較低、社會制度不夠完善的背景下，大量地方官員的腐敗造成的亂象。<br>（記得初中在歷史課上……）<br>不理解為什麼國民黨認為「攘外必先安內」<br>不理解為什麼中共一方面免除了日本侵華的債務、另一方面卻煽動民族主義情緒，製造反日浪潮<br>不理解為什麼中國不去推行民主投票制度<br>不理解為什麼有錢有權的人們都喜歡移民國外<br>不理解為什麼中國的互聯網設牆，<br>不理解為什麼官員們嘴上說人為民服務，實際作威作福，與老百姓距離好似天上人間。</p>
+<h2 id="第一步，憎恨中共"><a href="#第一步，憎恨中共" class="headerlink" title="第一步，憎恨中共"></a>第一步，憎恨中共</h2><p>第一步，是中共。<br>在我曾經接受的教育裏，在我生活的信息圈子下 —— 中共被描繪為拯救民族國家于生死存亡之際的光輝英雄般的存在。我單純地相信了。<br>後來了解到 ——<br>原來抗日戰爭對毛澤東來說是隔岸觀火、韜光養晦三國志。<br>原來在延安時期是躲避戰火、肅清異己的整風運動。<br>原來曾經許諾給老百姓美式民主，後來卻撕毀了承諾。<br>原來朝鮮戰爭只是把將士去送死，保衛了獨裁體制的金家王朝。<br>原來所謂三年自然災害時期封條雨順，國庫充盈，毛澤東整日山珍海味、周恩來大釀美酒、對外無償援助。<br>原來十年文革鬥死害死了那麼多人。<br>原來曾經有那麼一群年輕人希望推動中國的民主化進程，結果卻在廣場死在了車輪之下。<br>原來互聯網上架牆是為了洗腦民主。</p>
+<h2 id="第二步，憎恨中國"><a href="#第二步，憎恨中國" class="headerlink" title="第二步，憎恨中國"></a>第二步，憎恨中國</h2><p>第二步，是</p>
+<h2 id="第三步，憎恨中華"><a href="#第三步，憎恨中華" class="headerlink" title="第三步，憎恨中華"></a>第三步，憎恨中華</h2><p>第三步，是了解了<br>自己參與過為一些小衆民運團體做了些文字整理的志願活動</p>
 ]]></content>
       <categories>
         <category>MyLife</category>
@@ -7389,6 +7448,34 @@ This is a comment
 <td align="center">創造 ~ 創作</td>
 <td align="center">作成</td>
 <td align="center">さくせい</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">charge ~ electrify</td>
+<td align="center">充電</td>
+<td align="center">充電</td>
+<td align="center">じゅうでん</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">print</td>
+<td align="center">印刷</td>
+<td align="center">印刷</td>
+<td align="center">いんさつ</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">delete</td>
+<td align="center">刪除</td>
+<td align="center">削除 ~ 消去</td>
+<td align="center">さくじょ ~ しょうきょ</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">adjust</td>
+<td align="center">調節 ~ 調整</td>
+<td align="center">調節</td>
+<td align="center">ちょうせつ</td>
 <td align="center"></td>
 </tr>
 </tbody></table>
@@ -9059,6 +9146,13 @@ This is a comment
 <td align="center">調查</td>
 <td align="center">調べる</td>
 <td align="center">しらべる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">crack ~ snap ~ run out</td>
+<td align="center">損壞</td>
+<td align="center">切れる</td>
+<td align="center">きれる</td>
 <td align="center"></td>
 </tr>
 </tbody></table>
