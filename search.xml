@@ -2903,6 +2903,18 @@ This is a comment
 <td align="center">塔</td>
 <td align="center">とう</td>
 </tr>
+<tr>
+<td align="center">scene</td>
+<td align="center">情景 ~ 場面 ~ 画面</td>
+<td align="center">じょうけい ~ ばめん ~ がめん</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">scenery</td>
+<td align="center">景色</td>
+<td align="center">景色</td>
+<td align="center">けしき</td>
+</tr>
 </tbody></table>
 <h3 id="Nature-自然-自然-しぜん"><a href="#Nature-自然-自然-しぜん" class="headerlink" title="Nature 自然 自然 しぜん"></a>Nature 自然 自然 しぜん</h3><table>
 <thead>
@@ -4017,6 +4029,12 @@ This is a comment
 <td align="center">こうちょう</td>
 </tr>
 <tr>
+<td align="center">engineer</td>
+<td align="center">工程師</td>
+<td align="center">技術者</td>
+<td align="center">じゅつしゃ</td>
+</tr>
+<tr>
 <td align="center">doctor</td>
 <td align="center">醫生</td>
 <td align="center">医者</td>
@@ -4289,7 +4307,7 @@ This is a comment
 <td align="center">きゅうり</td>
 </tr>
 </tbody></table>
-<h3 id="Cuisine-料理-料理-りょうり"><a href="#Cuisine-料理-料理-りょうり" class="headerlink" title="Cuisine 料理 料理 りょうり"></a>Cuisine 料理 料理 りょうり</h3><table>
+<h3 id="Cuisine-kwɪˈzin-料理-料理-りょうり"><a href="#Cuisine-kwɪˈzin-料理-料理-りょうり" class="headerlink" title="Cuisine/kwɪˈzin/ 料理 料理 りょうり"></a>Cuisine/kwɪˈzin/ 料理 料理 りょうり</h3><table>
 <thead>
 <tr>
 <th align="center">English</th>
@@ -4733,6 +4751,24 @@ This is a comment
 <td align="center">え</td>
 </tr>
 <tr>
+<td align="center">image</td>
+<td align="center">圖片</td>
+<td align="center">画像</td>
+<td align="center">がぞう</td>
+</tr>
+<tr>
+<td align="center">photo</td>
+<td align="center">照片 ~ 相片</td>
+<td align="center">写真 ~</td>
+<td align="center">しゃしん ~</td>
+</tr>
+<tr>
+<td align="center">video</td>
+<td align="center">影片</td>
+<td align="center">ビデオ🎥</td>
+<td align="center">びでお</td>
+</tr>
+<tr>
 <td align="center">plan</td>
 <td align="center">計劃</td>
 <td align="center">予定 ~ 計画</td>
@@ -4915,6 +4951,12 @@ This is a comment
 <td align="center">てれび</td>
 </tr>
 <tr>
+<td align="center">screen</td>
+<td align="center">屏幕</td>
+<td align="center">画面</td>
+<td align="center">がめん</td>
+</tr>
+<tr>
 <td align="center">refrigerator</td>
 <td align="center">冷蔵庫</td>
 <td align="center">れいぞうこ</td>
@@ -4949,6 +4991,12 @@ This is a comment
 <td align="center">位置</td>
 <td align="center">席</td>
 <td align="center">せき</td>
+</tr>
+<tr>
+<td align="center">window</td>
+<td align="center">窗戶</td>
+<td align="center">窓</td>
+<td align="center">まど</td>
 </tr>
 </tbody></table>
 <h3 id="Weapon-武器-武器-ぶき"><a href="#Weapon-武器-武器-ぶき" class="headerlink" title="Weapon 武器 武器 ぶき"></a>Weapon 武器 武器 ぶき</h3><table>
@@ -5149,6 +5197,12 @@ This is a comment
 <td align="center">はんざい</td>
 </tr>
 <tr>
+<td align="center">disease ~ sick ~ illness</td>
+<td align="center">疾病</td>
+<td align="center">疾患 ~ 病気</td>
+<td align="center">しっかん ~ びょうき</td>
+</tr>
+<tr>
 <td align="center">couph</td>
 <td align="center">咳嗽</td>
 <td align="center">咳</td>
@@ -5196,6 +5250,18 @@ This is a comment
 <td align="center">腹筋運動</td>
 <td align="center">ふっきんうんどう</td>
 </tr>
+<tr>
+<td align="center">marriage</td>
+<td align="center">結婚</td>
+<td align="center">結婚👰</td>
+<td align="center">けっこん</td>
+</tr>
+<tr>
+<td align="center">wedding</td>
+<td align="center">婚禮</td>
+<td align="center">結婚式</td>
+<td align="center">けっこんしき</td>
+</tr>
 </tbody></table>
 <h2 id="Hobby-興趣愛好-フービー-趣味-しゅみ"><a href="#Hobby-興趣愛好-フービー-趣味-しゅみ" class="headerlink" title="Hobby 興趣愛好 フービー ~ 趣味 しゅみ"></a>Hobby 興趣愛好 フービー ~ 趣味 しゅみ</h2><table>
 <thead>
@@ -5242,12 +5308,6 @@ This is a comment
 <td align="center">役 ~ 役割</td>
 <td align="center">やく ~ やくわり</td>
 </tr>
-<tr>
-<td align="center">science</td>
-<td align="center">科學</td>
-<td align="center">科学</td>
-<td align="center">かがく</td>
-</tr>
 </tbody></table>
 <h2 id="Knowledge-知識-知識-ちしき"><a href="#Knowledge-知識-知識-ちしき" class="headerlink" title="Knowledge 知識 知識 ちしき"></a>Knowledge 知識 知識 ちしき</h2><table>
 <thead>
@@ -5293,6 +5353,12 @@ This is a comment
 <td align="center">聲音</td>
 <td align="center">声</td>
 <td align="center">こえ</td>
+</tr>
+<tr>
+<td align="center">volumn</td>
+<td align="center">音量</td>
+<td align="center">音量🔊</td>
+<td align="center">おんりょう</td>
 </tr>
 <tr>
 <td align="center">civilization</td>
@@ -5359,6 +5425,12 @@ This is a comment
 <td align="center">幾何學</td>
 <td align="center">幾何学 ~ ジオメトリ</td>
 <td align="center">きかがく</td>
+</tr>
+<tr>
+<td align="center">medical science</td>
+<td align="center">醫學</td>
+<td align="center">医学</td>
+<td align="center">いがく</td>
 </tr>
 <tr>
 <td align="center">PE ~ phisical education</td>
@@ -5557,8 +5629,14 @@ This is a comment
 <tr>
 <td align="center">internet</td>
 <td align="center">因特網 ~ 互聯網</td>
-<td align="center">インターネット</td>
-<td align="center">いんたーねっと</td>
+<td align="center">ネット ~ インターネット</td>
+<td align="center">ネッと ~ いんたーねっと</td>
+</tr>
+<tr>
+<td align="center">button</td>
+<td align="center">按鈕</td>
+<td align="center">ボタン🔘</td>
+<td align="center">ぼたん</td>
 </tr>
 </tbody></table>
 <h2 id="Daily-Life-生活-生活-せいかつ"><a href="#Daily-Life-生活-生活-せいかつ" class="headerlink" title="(Daily) Life 生活 生活 せいかつ"></a>(Daily) Life 生活 生活 せいかつ</h2><table>
@@ -6544,7 +6622,7 @@ This is a comment
 <hr>
 <h2 id="悲涼"><a href="#悲涼" class="headerlink" title="悲涼"></a>悲涼</h2><p>在2020年的2月份前後，我的心底裏感到無比地悲涼。<br>我甚至不畏流血、甚至是犧牲自己的生命，而希望為中國的變革做些什麼。<br>但是到今天，或者早在2020年底時，已經是悲涼和絕望了。<br>我真的曾經愛那片我想象中的土地和人們愛得深沉和熾熱，有一份「橫眉冷對千夫指，扶手敢為孺子牛」的決心和行動，卻真的最終基本上只是收穫了失望與悲傷。</p>
 <p>一方面是對一些歐美政商團體的失望，包括對於這次病毒源頭的調查無疾而終，儘管全世界大部分人都保守煎熬，真正希望和努力去找尋真相的人們寥寥無幾；中國目前大量老百姓被剝削的現狀也並非只是飽了紅色家族們的錢包，而一樣是一些西方利益集團看中了中國的低人權優勢，有些不方便在文明社會裏做的事情，他們也會巴不得有中國這麼一片土壤。</p>
-<p>另一方面，是對大量越來越多的中國失望，我慢慢地開始意識到，</p>
+<p>另一方面，是對大量越來越多的中國失望，我慢慢地開始意識到，中華文化並不是曾經我所理解的那些多麼值得驕傲，反而就如同魯迅先生所寫的一樣 —— 翻開吃人的歷史，淨是寫滿了「吃人」二字。</p>
 <p>雖然很多事情</p>
 ]]></content>
   </entry>
@@ -8291,6 +8369,13 @@ This is a comment
 <td align="center">ねむる</td>
 <td align="center"></td>
 </tr>
+<tr>
+<td align="center">reflect ~ show</td>
+<td align="center">映射</td>
+<td align="center">映る</td>
+<td align="center">うつる</td>
+<td align="center"></td>
+</tr>
 </tbody></table>
 <h3 id="o-ru"><a href="#o-ru" class="headerlink" title="o-ru"></a><strong>o-ru</strong></h3><table>
 <thead>
@@ -8430,6 +8515,13 @@ This is a comment
 <td align="center">拜訪</td>
 <td align="center">参る</td>
 <td align="center">まいる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">rise ~ turn up</td>
+<td align="center">舉起 ~ 調高</td>
+<td align="center">上げる</td>
+<td align="center">あげる</td>
 <td align="center"></td>
 </tr>
 </tbody></table>
@@ -9106,8 +9198,8 @@ This is a comment
 <tbody><tr>
 <td align="center">soon</td>
 <td align="center">很快地</td>
-<td align="center">直ぐに</td>
-<td align="center">すぐに</td>
+<td align="center">(もう)直ぐに</td>
+<td align="center">(もう)すぐに</td>
 </tr>
 <tr>
 <td align="center">fianlly</td>
@@ -9120,6 +9212,12 @@ This is a comment
 <td align="center">首先</td>
 <td align="center">先ず</td>
 <td align="center">まず</td>
+</tr>
+<tr>
+<td align="center">just ~ precisely</td>
+<td align="center">只是 ~ 恰好的</td>
+<td align="center">ちょうど</td>
+<td align="center">ちょうど</td>
 </tr>
 </tbody></table>
 <h2 id="Tense"><a href="#Tense" class="headerlink" title="Tense"></a>Tense</h2><p>did|過去做了|かった|かった<br>did not|過去沒有做|(ない→)なかった|なかった<br>tried to|曾嘗試去做|しようとしました ~ しようとした|しようとしました ~ しようとした</p>
