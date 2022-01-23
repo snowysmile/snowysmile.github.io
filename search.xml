@@ -3000,7 +3000,7 @@ This is a comment
 <tr>
 <td align="center">cloud</td>
 <td align="center">雲</td>
-<td align="center">雲</td>
+<td align="center">雲🌥</td>
 <td align="center">くも</td>
 </tr>
 <tr>
@@ -3136,7 +3136,7 @@ This is a comment
 <tbody><tr>
 <td align="center">earth</td>
 <td align="center">地球</td>
-<td align="center">地球</td>
+<td align="center">地球🌎</td>
 <td align="center">ちきゅう</td>
 </tr>
 <tr>
@@ -3272,25 +3272,25 @@ This is a comment
 <tbody><tr>
 <td align="center">up</td>
 <td align="center">上</td>
-<td align="center">上</td>
+<td align="center">上👆</td>
 <td align="center">うえ</td>
 </tr>
 <tr>
 <td align="center">down</td>
 <td align="center">下</td>
-<td align="center">下</td>
+<td align="center">下👇</td>
 <td align="center">した</td>
 </tr>
 <tr>
 <td align="center">left</td>
 <td align="center">左</td>
-<td align="center">左</td>
+<td align="center">左👈</td>
 <td align="center">ひだり</td>
 </tr>
 <tr>
 <td align="center">right</td>
 <td align="center">右</td>
-<td align="center">右</td>
+<td align="center">右👉</td>
 <td align="center">みぎ</td>
 </tr>
 <tr>
@@ -3552,7 +3552,7 @@ This is a comment
 <tr>
 <td align="center">finger</td>
 <td align="center">指</td>
-<td align="center">指</td>
+<td align="center">指✌</td>
 <td align="center">ゆび</td>
 </tr>
 <tr>
@@ -3570,7 +3570,7 @@ This is a comment
 <tr>
 <td align="center">brain</td>
 <td align="center">腦</td>
-<td align="center">脳</td>
+<td align="center">脳🧠</td>
 <td align="center">のう</td>
 </tr>
 <tr>
@@ -3630,25 +3630,25 @@ This is a comment
 <tr>
 <td align="center">blood</td>
 <td align="center">血 ~ 血液</td>
-<td align="center">血-血液</td>
+<td align="center">血-血</td>
 <td align="center">ち-けつえき</td>
 </tr>
 <tr>
 <td align="center">tears</td>
 <td align="center">淚</td>
-<td align="center">涙</td>
+<td align="center">涙😢</td>
 <td align="center">なみだ</td>
 </tr>
 <tr>
 <td align="center">sweat</td>
 <td align="center">汗水</td>
-<td align="center">汗</td>
+<td align="center">汗💦</td>
 <td align="center">あせ</td>
 </tr>
 <tr>
 <td align="center">shit</td>
 <td align="center">屎</td>
-<td align="center">うんち</td>
+<td align="center">うんち💩</td>
 <td align="center">うんち</td>
 </tr>
 <tr>
@@ -3973,7 +3973,7 @@ This is a comment
 <tbody><tr>
 <td align="center">devil</td>
 <td align="center">惡魔</td>
-<td align="center">悪魔</td>
+<td align="center">悪魔👿</td>
 <td align="center">あくま</td>
 </tr>
 <tr>
@@ -4422,14 +4422,14 @@ This is a comment
 </thead>
 <tbody><tr>
 <td align="center">(hot) water</td>
-<td align="center">熱水</td>
+<td align="center">熱水♨</td>
 <td align="center">御湯</td>
 <td align="center">おゆ</td>
 </tr>
 <tr>
 <td align="center">milk</td>
 <td align="center">牛奶</td>
-<td align="center">牛乳</td>
+<td align="center">牛乳🥛</td>
 <td align="center">ぎゅうにゅう</td>
 </tr>
 <tr>
@@ -4446,20 +4446,20 @@ This is a comment
 </tr>
 <tr>
 <td align="center">liquor ~</td>
-<td align="center">(お)酒🍺</td>
+<td align="center">(お)酒</td>
 <td align="center">(お)さけ</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">wine</td>
-<td align="center">葡萄酒</td>
+<td align="center">葡萄酒🍷</td>
 <td align="center">ワイン</td>
 <td align="center">わいん</td>
 </tr>
 <tr>
 <td align="center">beer</td>
 <td align="center">啤酒</td>
-<td align="center">ビール</td>
+<td align="center">ビール🍺</td>
 <td align="center">びーる</td>
 </tr>
 <tr>
@@ -4897,7 +4897,7 @@ This is a comment
 <tr>
 <td align="center">chair</td>
 <td align="center">椅子</td>
-<td align="center">椅子</td>
+<td align="center">椅子💺</td>
 <td align="center">いす</td>
 </tr>
 <tr>
