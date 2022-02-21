@@ -10582,11 +10582,11 @@ QQ空间已经有三年没有开放过了，嘻嘻~_~是整整一个高中的长
 <tr>
 <td align="center">U+0023</td>
 <td align="center">#</td>
-<td align="center">hash ~ pond ~ number sign</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">number sign ~ hash ~ pond</td>
+<td align="center">井號</td>
+<td align="center">番号記号</td>
+<td align="center">ばんごうきごう</td>
+<td align="center">&amp;#35 ;</td>
 </tr>
 <tr>
 <td align="center">U+0024</td>
@@ -10594,26 +10594,26 @@ QQ空间已经有三年没有开放过了，嘻嘻~_~是整整一个高中的长
 <td align="center">dollar sign</td>
 <td align="center"></td>
 <td align="center"></td>
-<td align="center"></td>
+<td align="center">&#37;</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">U+0025</td>
 <td align="center">%</td>
-<td align="center">PERCENT SIGN</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">percent sign</td>
+<td align="center">百分號</td>
+<td align="center">パーセント記号</td>
+<td align="center">ぱーせんとぎごう</td>
+<td align="center">&amp;#37 ;</td>
 </tr>
 <tr>
 <td align="center">U+0026</td>
 <td align="center">&amp;</td>
-<td align="center">AMPERSAND</td>
+<td align="center">ampersand</td>
 <td align="center"></td>
 <td align="center"></td>
 <td align="center"></td>
-<td align="center"></td>
+<td align="center">&amp;#38 ;</td>
 </tr>
 <tr>
 <td align="center">U+0027</td>
