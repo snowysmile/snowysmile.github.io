@@ -10533,7 +10533,45 @@ QQ空间已经有三年没有开放过了，嘻嘻~_~是整整一个高中的长
   <entry>
     <title>Coding English 編程英語 コーディング英語</title>
     <url>/CodingEnglish/</url>
-    <content><![CDATA[<h2 id="Keyboard-Symbols"><a href="#Keyboard-Symbols" class="headerlink" title="(Keyboard) Symbols"></a>(Keyboard) Symbols</h2><p>Symbol|English|漢語|日本語|ひらがな|<br>|:-:|:-:|:-:|:-:|:-:|<br>,|comma /‘kɑmə/|逗號|コンマ ~ 読点|とうてん|<br>.|period ~ dot|句號|句点|くてん|<br>?|question mark|問號|疑問符|ぎもんふ|<br>!|exclamation point /ˌɛksklə’meʃən/|感歎號|感嘆符|かんたんふ|</p>
+    <content><![CDATA[<h2 id="Keyboard-Symbols"><a href="#Keyboard-Symbols" class="headerlink" title="(Keyboard) Symbols"></a>(Keyboard) Symbols</h2><table>
+<thead>
+<tr>
+<th align="center">Symbol</th>
+<th align="center">English</th>
+<th align="center">漢語</th>
+<th align="center">日本語</th>
+<th align="center">ひらがな</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">,</td>
+<td align="center">comma /‘kɑmə/</td>
+<td align="center">逗號</td>
+<td align="center">コンマ ~ 読点</td>
+<td align="center">とうてん</td>
+</tr>
+<tr>
+<td align="center">.</td>
+<td align="center">period ~ dot</td>
+<td align="center">句號</td>
+<td align="center">句点</td>
+<td align="center">くてん</td>
+</tr>
+<tr>
+<td align="center">?</td>
+<td align="center">question mark</td>
+<td align="center">問號</td>
+<td align="center">疑問符</td>
+<td align="center">ぎもんふ</td>
+</tr>
+<tr>
+<td align="center">!</td>
+<td align="center">exclamation point /ˌɛksklə’meʃən/</td>
+<td align="center">感歎號</td>
+<td align="center">感嘆符</td>
+<td align="center">かんたんふ</td>
+</tr>
+</tbody></table>
 <h2 id="Verb-動詞"><a href="#Verb-動詞" class="headerlink" title="Verb 動詞"></a>Verb 動詞</h2><p>|English|漢語|日本語|ひらがな|<br>|:-:|:-:|:-:|:-:|:-:|<br>add 2 to 3|把2加上3|2から3を追加|ついか<br>subtract 3 from 2|把2減去3|2から3を引く|ひく<br>multiply 2 by 3|把2乘上3|2に3を掛ける|かける<br>divide 2 by 3|把2除以3|2を3で割る|わる</p>
 <table>
 <thead>
