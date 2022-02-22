@@ -10849,29 +10849,29 @@ QQ空间已经有三年没有开放过了，嘻嘻~_~是整整一个高中的长
 <tr>
 <td align="center">U+007B</td>
 <td align="center">{</td>
-<td align="center">LEFT CURLY BRACKET</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">left curly bracket</td>
+<td align="center">左花括號</td>
+<td align="center">左中括弧</td>
+<td align="center">ひだりちゅうかっこ</td>
+<td align="center">&amp;#123 ;</td>
 </tr>
 <tr>
 <td align="center">U+007C</td>
 <td align="center">&#124;</td>
-<td align="center">TILDE</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">vertical bar</td>
+<td align="center">豎線</td>
+<td align="center">垂直線 ~ バーティカルバー</td>
+<td align="center">~</td>
+<td align="center">&amp;#124 ;</td>
 </tr>
 <tr>
 <td align="center">U+007D</td>
 <td align="center">}</td>
-<td align="center">RIGHT CURLY BRACKET</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">right curly bracket</td>
+<td align="center">右花括號</td>
+<td align="center">右中括弧</td>
+<td align="center">みぎちゅうかっこ</td>
+<td align="center">&amp;#125 ;</td>
 </tr>
 <tr>
 <td align="center">U+007E</td>
@@ -10879,7 +10879,7 @@ QQ空间已经有三年没有开放过了，嘻嘻~_~是整整一个高中的长
 <td align="center">tilde</td>
 <td align="center">波浪號</td>
 <td align="center">チルダ</td>
-<td align="center"></td>
+<td align="center">ちるだ</td>
 <td align="center">&amp;#126 ;</td>
 </tr>
 <tr>
