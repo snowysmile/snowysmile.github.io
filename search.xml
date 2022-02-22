@@ -10596,12 +10596,12 @@ QQ空间已经有三年没有开放过了，嘻嘻~_~是整整一个高中的长
 </tr>
 <tr>
 <td align="center">U+0022</td>
-<td align="center">?</td>
-<td align="center">question mark</td>
-<td align="center">問號</td>
-<td align="center">疑問符</td>
-<td align="center">ぎもんふ</td>
-<td align="center">&amp;#63 ;</td>
+<td align="center">“</td>
+<td align="center">quotation mark</td>
+<td align="center">引號</td>
+<td align="center">引用符</td>
+<td align="center">いいにょうふ</td>
+<td align="center">&amp;#34 ;</td>
 </tr>
 <tr>
 <td align="center">U+0023</td>
@@ -10616,9 +10616,9 @@ QQ空间已经有三年没有开放过了，嘻嘻~_~是整整一个高中的长
 <td align="center">U+0024</td>
 <td align="center">$</td>
 <td align="center">dollar sign</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">美元符號</td>
+<td align="center">ドル記号</td>
+<td align="center">どるきごう</td>
 <td align="center">&amp;#36 ;</td>
 </tr>
 <tr>
@@ -10786,11 +10786,11 @@ QQ空间已经有三年没有开放过了，嘻嘻~_~是整整一个高中的长
 <tr>
 <td align="center">U+003F</td>
 <td align="center">?</td>
-<td align="center">QUESTION MARK</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">question mark</td>
+<td align="center">問號</td>
+<td align="center">疑問符</td>
+<td align="center">ぎもんふ</td>
+<td align="center">&amp;#63 ;</td>
 </tr>
 <tr>
 <td align="center">U+0040</td>
