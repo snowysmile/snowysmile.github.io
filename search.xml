@@ -10578,7 +10578,7 @@ QQ空间已经有三年没有开放过了，嘻嘻~_~是整整一个高中的长
 </thead>
 <tbody><tr>
 <td align="center">U+0020</td>
-<td align="center">‘ ‘</td>
+<td align="center"></td>
 <td align="center">space</td>
 <td align="center">空格</td>
 <td align="center">スペース</td>
@@ -10644,9 +10644,9 @@ QQ空间已经有三年没有开放过了，嘻嘻~_~是整整一个高中的长
 <td align="center">‘</td>
 <td align="center">apostrophe/əˈpästrəfē/</td>
 <td align="center">撇號</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">アポストロフィー</td>
+<td align="center">あぽすとろふぃー</td>
+<td align="center">&amp;#39 ;</td>
 </tr>
 <tr>
 <td align="center">U+0028</td>
@@ -10901,12 +10901,305 @@ QQ空间已经有三年没有开放过了，嘻嘻~_~是整整一个高中的长
 <td align="center">&amp;#169 ;</td>
 </tr>
 </tbody></table>
-<p>…</p>
-<p>Ellipsis</p>
-<p>省略符號/點點點</p>
-<p>U+03B1| α |&alpha;|||<br>U+03B2| β |&eta;|||<br>U+03B3| γ |&gamma;|||<br>U+03B4| δ |&delta;|||<br>U+03B5| ε |epsilon|||<br>U+03B6| ζ |zeta|||<br>U+03B7| η |eta|||<br>U+03B8| θ |theta|||<br>U+03B9| ι |iota|||<br>U+03BA| κ |kappa|||<br>U+03BB| λ |lambda|||<br>U+03BC| μ |mu|||<br>U+03BD| ν |nu|||<br>U+03BE| ξ |xi|||<br>U+03BF| ο |omicron|||<br>U+03C0| pi|||<br>ρ    U+03C1    \u03C1    &#961;    &rho;    small rho|||<br>σ    U+03C3    \u03C3    &#963;    &sigma;    small sigma|||<br>τ    U+03C4    \u03C4    &#964;    &tau;    small tau|||<br>υ    U+03C5    \u03C5    &#965;    &upsilon;    small upsilon|||<br>φ    U+03C6    \u03C6    &#966;    &phi;    small phi|||<br>χ    U+03C7    \u03C7    &#967;    &chi;    small chi|||<br>ψ    U+03C8    \u03C8    &#968;    &psi;    small psi|||<br>ω    U+03C9    \u03C9    &#969;    &omega;    small omega|||<br>Α    U+0391    \u0391    &#913;    &Alpha;    capital alpha|||<br>Β    U+0392    \u0392    &#914;    &Beta;    capital beta|||<br>Γ    U+0393    \u0393    &#915;    &Gamma;    capital gamma|||<br>Δ    U+0394    \u0394    &#916;    &Delta;    capital delta|||<br>Ε    U+0395    \u0395    &#917;    &Epsilon;    capital epsilon|||<br>Ζ    U+0396    \u0396    &#918;    &Zeta;    capital zeta|||<br>Η    U+0397    \u0397    &#919;    &Eta;    capital eta|||<br>Θ    U+0398    \u0398    &#920;    &Theta;    capital theta|||<br>Ι    U+0399    \u0399    &#921;    &Iota;    capital iota|||<br>Κ    U+039A    \u039A    &#922;    &Kappa;    capital kappa|||<br>Λ    U+039B    \u039B    &#923;    &Lambda;    capital lambda|||<br>Μ    U+039C    \u039C    &#924;    &Mu;    capital mu|||<br>Ν    U+039D    \u039D    &#925;    &Nu;    capital nu|||<br>Ξ    U+039E    \u039E    &#926;    &Xi;    capital xi|||<br>Ο    U+039F    \u039F    &#927;    &Omicron;    capital omicron|||<br>Π    U+03A0    \u03A0    &#928;    &Pi;    capital pi|||<br>Ρ    U+03A1    \u03A1    &#929;    &Rho;    capital rho|||<br>Σ    U+03A3    \u03A3    &#931;    &Sigma;    capital sigma|||<br>Τ    U+03A4    \u03A4    &#932;    &Tau;    capital tau|||<br>Υ    U+03A5    \u03A5    &#933;    &Upsilon;    capital upsilon|||<br>Φ    U+03A6    \u03A6    &#934;    &Phi;    capital phi|||<br>Χ    U+03A7    \u03A7    &#935;    &Chi;    capital chi|||<br>Ψ    U+03A8    \u03A8    &#936;    &Psi;    capital psi|||<br>Ω    U+03A9    \u03A9    &#937;    &Omega;    capital omega|||</p>
-<dl><dt>, U+002C|comma<br>. U+002E|</dt><dd>|colon||||<br>; |semicolon /‘sɛmɪkolən/||||<br>` |||||<br>~ |tilde|波浪符|||</dd></dl><p>‘+’ U+002B|||||<br>‘-‘ U+002D|||||<br>‘×’ |multiplication (sign)||||<br>‘÷’ |division (sign)||||<br>‘*’ |||||<br>‘/‘ |slash||||<br>‘&#39; |backslash||||<br>‘@’ |||||</p>
-<p>‘-‘ |hyphen||||<br>‘&amp;’ |||||<br>‘^’ |||||<br>() |||||<br>α Α<br>β Β<br>γ Γ<br>δ Δ<br>ε Ε<br>ζ</p>
+<p>… Ellipsis 省略符號</p>
+<table>
+<thead>
+<tr>
+<th align="center">Symbol</th>
+<th align="center">Unicode</th>
+<th align="center">HTML</th>
+<th align="center">English</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">α</td>
+<td align="center">U+03B1</td>
+<td align="center">&amp;alpha ;</td>
+<td align="center">alpha</td>
+</tr>
+<tr>
+<td align="center">β</td>
+<td align="center">U+03B2</td>
+<td align="center">&amp;eta ;</td>
+<td align="center">eta</td>
+</tr>
+<tr>
+<td align="center">γ</td>
+<td align="center">U+03B3</td>
+<td align="center">&amp;gamma ;</td>
+<td align="center">gamma</td>
+</tr>
+<tr>
+<td align="center">δ</td>
+<td align="center">U+03B4</td>
+<td align="center">&amp;delta ;</td>
+<td align="center">delta</td>
+</tr>
+<tr>
+<td align="center">ε</td>
+<td align="center">U+03B5</td>
+<td align="center">&amp;epsilon ;</td>
+<td align="center">epsilon</td>
+</tr>
+<tr>
+<td align="center">ζ</td>
+<td align="center">U+03B6</td>
+<td align="center">&amp;zeta ;</td>
+<td align="center">zeta</td>
+</tr>
+<tr>
+<td align="center">η</td>
+<td align="center">U+03B7</td>
+<td align="center">&amp;eta ;</td>
+<td align="center">eta</td>
+</tr>
+<tr>
+<td align="center">θ</td>
+<td align="center">U+03B8</td>
+<td align="center">&amp;theta ;</td>
+<td align="center">theta</td>
+</tr>
+<tr>
+<td align="center">ι</td>
+<td align="center">U+03B9</td>
+<td align="center">&amp;iota ;</td>
+<td align="center">iota</td>
+</tr>
+<tr>
+<td align="center">κ</td>
+<td align="center">U+03BA</td>
+<td align="center">&amp;kappa ;</td>
+<td align="center">kappa</td>
+</tr>
+<tr>
+<td align="center">λ</td>
+<td align="center">U+03BB</td>
+<td align="center">&amp;lambda ;</td>
+<td align="center">lambda</td>
+</tr>
+<tr>
+<td align="center">μ</td>
+<td align="center">U+03BC</td>
+<td align="center">&amp;mu ;</td>
+<td align="center">mu</td>
+</tr>
+<tr>
+<td align="center">ν</td>
+<td align="center">U+03BD</td>
+<td align="center">&amp;nu ;</td>
+<td align="center">nu</td>
+</tr>
+<tr>
+<td align="center">ξ</td>
+<td align="center">U+03BE</td>
+<td align="center">&amp;xi ;</td>
+<td align="center">xi</td>
+</tr>
+<tr>
+<td align="center">ο</td>
+<td align="center">U+03BF</td>
+<td align="center">&amp;omicron ;</td>
+<td align="center">omicron</td>
+</tr>
+<tr>
+<td align="center">pi</td>
+<td align="center">U+03C0</td>
+<td align="center">&amp;pi ;</td>
+<td align="center">pi</td>
+</tr>
+<tr>
+<td align="center">ρ</td>
+<td align="center">U+03C1</td>
+<td align="center">&rho;</td>
+<td align="center">rho</td>
+</tr>
+<tr>
+<td align="center">σ</td>
+<td align="center">U+03C3</td>
+<td align="center">&sigma;</td>
+<td align="center">sigma</td>
+</tr>
+<tr>
+<td align="center">τ</td>
+<td align="center">U+03C4</td>
+<td align="center">&tau;</td>
+<td align="center">tau</td>
+</tr>
+<tr>
+<td align="center">υ</td>
+<td align="center">U+03C5</td>
+<td align="center">&upsilon;</td>
+<td align="center">upsilon</td>
+</tr>
+<tr>
+<td align="center">φ</td>
+<td align="center">U+03C6</td>
+<td align="center">&phi;</td>
+<td align="center">phi</td>
+</tr>
+<tr>
+<td align="center">χ</td>
+<td align="center">U+03C7</td>
+<td align="center">&chi;</td>
+<td align="center">chi</td>
+</tr>
+<tr>
+<td align="center">ψ</td>
+<td align="center">U+03C8</td>
+<td align="center">&psi;</td>
+<td align="center">psi</td>
+</tr>
+<tr>
+<td align="center">ω</td>
+<td align="center">U+03C9</td>
+<td align="center">&omega;</td>
+<td align="center">omega</td>
+</tr>
+<tr>
+<td align="center">Α</td>
+<td align="center">U+0391</td>
+<td align="center">&Alpha;</td>
+<td align="center">alpha</td>
+</tr>
+<tr>
+<td align="center">Β</td>
+<td align="center">U+0392</td>
+<td align="center">&Beta;</td>
+<td align="center">beta</td>
+</tr>
+<tr>
+<td align="center">Γ</td>
+<td align="center">U+0393</td>
+<td align="center">&Gamma;</td>
+<td align="center">gamma</td>
+</tr>
+<tr>
+<td align="center">Δ</td>
+<td align="center">U+0394</td>
+<td align="center">&Delta;</td>
+<td align="center">delta</td>
+</tr>
+<tr>
+<td align="center">Ε</td>
+<td align="center">U+0395</td>
+<td align="center">&Epsilon;</td>
+<td align="center">epsilon</td>
+</tr>
+<tr>
+<td align="center">Ζ</td>
+<td align="center">U+0396</td>
+<td align="center">&Zeta;</td>
+<td align="center">zeta</td>
+</tr>
+<tr>
+<td align="center">Η</td>
+<td align="center">U+0397</td>
+<td align="center">&Eta;</td>
+<td align="center">eta</td>
+</tr>
+<tr>
+<td align="center">Θ</td>
+<td align="center">U+0398</td>
+<td align="center">&Theta;</td>
+<td align="center">theta</td>
+</tr>
+<tr>
+<td align="center">Ι</td>
+<td align="center">U+0399</td>
+<td align="center">&Iota;</td>
+<td align="center">iota</td>
+</tr>
+<tr>
+<td align="center">Κ</td>
+<td align="center">U+039A</td>
+<td align="center">&Kappa;</td>
+<td align="center">kappa</td>
+</tr>
+<tr>
+<td align="center">Λ</td>
+<td align="center">U+039B</td>
+<td align="center">&Lambda;</td>
+<td align="center">lambda</td>
+</tr>
+<tr>
+<td align="center">Μ</td>
+<td align="center">U+039C</td>
+<td align="center">&Mu;</td>
+<td align="center">mu</td>
+</tr>
+<tr>
+<td align="center">Ν</td>
+<td align="center">U+039D</td>
+<td align="center">&Nu;</td>
+<td align="center">nu</td>
+</tr>
+<tr>
+<td align="center">Ξ</td>
+<td align="center">U+039E</td>
+<td align="center">&Xi;</td>
+<td align="center">xi</td>
+</tr>
+<tr>
+<td align="center">Ο</td>
+<td align="center">U+039F</td>
+<td align="center">&Omicron;</td>
+<td align="center">omicron</td>
+</tr>
+<tr>
+<td align="center">Π</td>
+<td align="center">U+03A0</td>
+<td align="center">&Pi;</td>
+<td align="center">pi</td>
+</tr>
+<tr>
+<td align="center">Ρ</td>
+<td align="center">U+03A1</td>
+<td align="center">&Rho;</td>
+<td align="center">rho</td>
+</tr>
+<tr>
+<td align="center">Σ</td>
+<td align="center">U+03A3</td>
+<td align="center">&Sigma;</td>
+<td align="center">sigma</td>
+</tr>
+<tr>
+<td align="center">Τ</td>
+<td align="center">U+03A4</td>
+<td align="center">&Tau;</td>
+<td align="center">tau</td>
+</tr>
+<tr>
+<td align="center">Υ</td>
+<td align="center">U+03A5</td>
+<td align="center">&Upsilon;</td>
+<td align="center">upsilon</td>
+</tr>
+<tr>
+<td align="center">Φ</td>
+<td align="center">U+03A6</td>
+<td align="center">&Phi;</td>
+<td align="center">phi</td>
+</tr>
+<tr>
+<td align="center">Χ</td>
+<td align="center">U+03A7</td>
+<td align="center">&Chi;</td>
+<td align="center">chi</td>
+</tr>
+<tr>
+<td align="center">Ψ</td>
+<td align="center">U+03A8</td>
+<td align="center">&Psi;</td>
+<td align="center">psi</td>
+</tr>
+<tr>
+<td align="center">Ω</td>
+<td align="center">U+03A9</td>
+<td align="center">&Omega;</td>
+<td align="center">omega</td>
+</tr>
+</tbody></table>
 <h2 id="Verb-動詞-どうし"><a href="#Verb-動詞-どうし" class="headerlink" title="Verb 動詞 どうし"></a>Verb 動詞 どうし</h2><table>
 <thead>
 <tr>
