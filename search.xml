@@ -1886,6 +1886,28 @@ This is a comment
 <td align="center">きゅうな</td>
 </tr>
 </tbody></table>
+<h2 id="Knowledge"><a href="#Knowledge" class="headerlink" title="Knowledge"></a>Knowledge</h2><table>
+<thead>
+<tr>
+<th align="center">English</th>
+<th align="center">漢語</th>
+<th align="center">日本語Nihongo</th>
+<th align="center">片仮名Katakana</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">phonetic/fəˈnɛtɪk/ ~ furigana</td>
+<td align="center">語音(學)的</td>
+<td align="center">ふりがな ~ 音声</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">phonetic symbols</td>
+<td align="center">注音符號</td>
+<td align="center">発音記号</td>
+<td align="center">はつおんきごう</td>
+</tr>
+</tbody></table>
 <h3 id="Weather-天気-てんき"><a href="#Weather-天気-てんき" class="headerlink" title="Weather 天気 てんき"></a>Weather 天気 てんき</h3><table>
 <thead>
 <tr>
@@ -8057,6 +8079,12 @@ This is a comment
 <td align="center">あさ</td>
 </tr>
 <tr>
+<td align="center">morning (before noon)</td>
+<td align="center">午前</td>
+<td align="center">午前中</td>
+<td align="center">ごぜんちゅん</td>
+</tr>
+<tr>
 <td align="center">noon</td>
 <td align="center">昼 ~ 正午</td>
 <td align="center">ひる ~ しょうご</td>
@@ -8073,6 +8101,12 @@ This is a comment
 <td align="center">傍晚</td>
 <td align="center">夕方</td>
 <td align="center">ゆうがた</td>
+</tr>
+<tr>
+<td align="center">midnight</td>
+<td align="center">午夜</td>
+<td align="center">深夜 ~ 夜中 ~ 真夜中</td>
+<td align="center">しんや ~ やちゅ ~ まよなか</td>
 </tr>
 <tr>
 <td align="center">this morning</td>
@@ -8201,6 +8235,12 @@ This is a comment
 <td align="center">じかい</td>
 </tr>
 <tr>
+<td align="center">final time</td>
+<td align="center">最後</td>
+<td align="center">最後</td>
+<td align="center">さいご</td>
+</tr>
+<tr>
 <td align="center">the day before yesterday</td>
 <td align="center">前天</td>
 <td align="center">一昨日</td>
@@ -8294,6 +8334,72 @@ This is a comment
 <td align="center">星期六</td>
 <td align="center">土曜日</td>
 <td align="center">どようび</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">first day ~ one day</td>
+<td align="center">一日</td>
+<td align="center">ついたち</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">second day ~ two days</td>
+<td align="center">二日</td>
+<td align="center">ふつか</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">third day ~ three days</td>
+<td align="center">三日</td>
+<td align="center">みっか</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">fourth day ~ four days</td>
+<td align="center">四日</td>
+<td align="center">よっか</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">fifth day ~ five days</td>
+<td align="center">五日</td>
+<td align="center">いつか</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">sixth day ~ six days</td>
+<td align="center">六日</td>
+<td align="center">むいか</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">seventh day ~ seven days</td>
+<td align="center">七日</td>
+<td align="center">なのか</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">eighth day ~ eight days</td>
+<td align="center">八日</td>
+<td align="center">ようか</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">ninth day ~ nine days</td>
+<td align="center">九日</td>
+<td align="center">ここのか</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">tenth day ~ ten days</td>
+<td align="center">十日</td>
+<td align="center">とおか</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">twentieth ~ twenty days</td>
+<td align="center">二十日</td>
+<td align="center">はつか</td>
 <td align="center"></td>
 </tr>
 </tbody></table>
@@ -8431,6 +8537,13 @@ This is a comment
 <td align="center">勉強</td>
 <td align="center">べんきょう</td>
 <td align="center">自他</td>
+</tr>
+<tr>
+<td align="center">travel</td>
+<td align="center">旅行</td>
+<td align="center">旅行</td>
+<td align="center">りょこう</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">freeze</td>
@@ -9203,6 +9316,20 @@ This is a comment
 <td align="center"></td>
 </tr>
 <tr>
+<td align="center">kiss</td>
+<td align="center">親吻</td>
+<td align="center">キス😘</td>
+<td align="center">きす</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">hug</td>
+<td align="center">擁抱</td>
+<td align="center">ハグ🤗</td>
+<td align="center">はぐ</td>
+<td align="center"></td>
+</tr>
+<tr>
 <td align="center">marry</td>
 <td align="center">結婚</td>
 <td align="center">結婚</td>
@@ -9228,6 +9355,34 @@ This is a comment
 <td align="center">犧牲</td>
 <td align="center">犠牲</td>
 <td align="center">ぎせい</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">confirm</td>
+<td align="center">確認</td>
+<td align="center">確認</td>
+<td align="center">かくにん</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">beware/bɪ’wɛr/ ~ warn</td>
+<td align="center">注意</td>
+<td align="center">注意</td>
+<td align="center">ちゅうい</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">fracture ~ break a bone</td>
+<td align="center">骨折</td>
+<td align="center">骨折</td>
+<td align="center">こっせつ</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">stay up late</td>
+<td align="center">熬夜</td>
+<td align="center">夜更かし</td>
+<td align="center">よふかし</td>
 <td align="center"></td>
 </tr>
 </tbody></table>
@@ -9933,6 +10088,13 @@ This is a comment
 <td align="center">そだつ</td>
 <td align="center"></td>
 </tr>
+<tr>
+<td align="center">help</td>
+<td align="center">幫助</td>
+<td align="center">役立つ</td>
+<td align="center">やくだつ</td>
+<td align="center"></td>
+</tr>
 </tbody></table>
 <h3 id="nu-ぬ"><a href="#nu-ぬ" class="headerlink" title="nu ぬ"></a><strong>nu</strong> ぬ</h3><table>
 <thead>
@@ -10380,6 +10542,13 @@ This is a comment
 <td align="center">けしょう</td>
 <td align="center"></td>
 </tr>
+<tr>
+<td align="center">pass (test)</td>
+<td align="center">通過</td>
+<td align="center">受かる</td>
+<td align="center">うかる</td>
+<td align="center"></td>
+</tr>
 </tbody></table>
 <h3 id="u-ru"><a href="#u-ru" class="headerlink" title="u-ru"></a><strong>u-ru</strong></h3><table>
 <thead>
@@ -10507,6 +10676,13 @@ This is a comment
 <td align="center">いのる</td>
 <td align="center"></td>
 </tr>
+<tr>
+<td align="center">gain weight</td>
+<td align="center">增重</td>
+<td align="center">太る</td>
+<td align="center">ふとる</td>
+<td align="center"></td>
+</tr>
 </tbody></table>
 <h3 id="Special-i-ru-amp-amp-e-ru"><a href="#Special-i-ru-amp-amp-e-ru" class="headerlink" title="Special i-ru &amp;&amp; e-ru"></a>Special <strong>i-ru</strong> &amp;&amp; <strong>e-ru</strong></h3><table>
 <thead>
@@ -10600,6 +10776,13 @@ This is a comment
 <td align="center">見る</td>
 <td align="center">みる</td>
 <td align="center">他</td>
+</tr>
+<tr>
+<td align="center">watch</td>
+<td align="center">看</td>
+<td align="center">観る</td>
+<td align="center">みる</td>
+<td align="center"></td>
 </tr>
 <tr>
 <td align="center">get up</td>
@@ -10724,8 +10907,504 @@ This is a comment
 <td align="center">たすける</td>
 <td align="center"></td>
 </tr>
+<tr>
+<td align="center">show</td>
+<td align="center">展示</td>
+<td align="center">見せる</td>
+<td align="center">みせる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">recommend</td>
+<td align="center">推薦</td>
+<td align="center">勧める</td>
+<td align="center">すすめる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">forget</td>
+<td align="center">忘記</td>
+<td align="center">忘れる</td>
+<td align="center">わすれる</td>
+<td align="center">他</td>
+</tr>
+<tr>
+<td align="center">sleep ~ lay down</td>
+<td align="center">睡覺</td>
+<td align="center">寝る</td>
+<td align="center">ねる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">come out ~ appear</td>
+<td align="center">出去</td>
+<td align="center">出る</td>
+<td align="center">でる</td>
+<td align="center">自</td>
+</tr>
+<tr>
+<td align="center">give ~ receive</td>
+<td align="center">給(我)</td>
+<td align="center">呉れる</td>
+<td align="center">くれる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">change ~ convert ~ turn</td>
+<td align="center">轉變</td>
+<td align="center">変える</td>
+<td align="center">かえる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">teach ~ instruct ~ tell</td>
+<td align="center">教授 ~ 告訴</td>
+<td align="center">教える</td>
+<td align="center">おしえる</td>
+<td align="center">他</td>
+</tr>
+<tr>
+<td align="center">tire</td>
+<td align="center">疲憊</td>
+<td align="center">疲れる</td>
+<td align="center">つかれる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">continue</td>
+<td align="center">繼續</td>
+<td align="center">続ける</td>
+<td align="center">つづける</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">quit</td>
+<td align="center">辭職 ~ 退出</td>
+<td align="center">辞める</td>
+<td align="center">やめる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">stop</td>
+<td align="center">停止</td>
+<td align="center">止める</td>
+<td align="center">とめる</td>
+<td align="center"><strong>他</strong></td>
+</tr>
+<tr>
+<td align="center">break</td>
+<td align="center">破壞</td>
+<td align="center">壊れる</td>
+<td align="center">こわれる</td>
+<td align="center"><strong>自</strong></td>
+</tr>
+<tr>
+<td align="center">break(into two parts)</td>
+<td align="center">折斷</td>
+<td align="center">折れる</td>
+<td align="center">おれる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">boil</td>
+<td align="center">煮</td>
+<td align="center">茹でる</td>
+<td align="center">ゆでる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">fry</td>
+<td align="center">煎煮</td>
+<td align="center">揚げる</td>
+<td align="center">あげる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">add ~ plus</td>
+<td align="center">加</td>
+<td align="center">加える</td>
+<td align="center">くわえる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">ask ~ query ~ question ~ inquire ~ enquire</td>
+<td align="center">諮詢</td>
+<td align="center">尋ねる</td>
+<td align="center">尋ね</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">visit(people)</td>
+<td align="center">訪問</td>
+<td align="center">訪ねる</td>
+<td align="center">たずねる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">visit(place)</td>
+<td align="center">遊歷</td>
+<td align="center">訪れる</td>
+<td align="center">おとずれる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">cross</td>
+<td align="center">穿過</td>
+<td align="center">越える</td>
+<td align="center">こえる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">run ~ race ~ canter</td>
+<td align="center">奔跑 ~ 競速</td>
+<td align="center">駆ける</td>
+<td align="center">かける</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">accompany ~ take</td>
+<td align="center">陪伴</td>
+<td align="center">連れる</td>
+<td align="center">つれる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">be used to</td>
+<td align="center">習慣</td>
+<td align="center">慣れる</td>
+<td align="center">なれる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">prepare</td>
+<td align="center">準備</td>
+<td align="center">備える</td>
+<td align="center">そなえる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">turn to ~ aim to ~ toward to</td>
+<td align="center">朝向</td>
+<td align="center">向ける</td>
+<td align="center">むける</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">find</td>
+<td align="center">找到</td>
+<td align="center">見つける</td>
+<td align="center">みつける</td>
+<td align="center">他</td>
+</tr>
+<tr>
+<td align="center">lose(fight)</td>
+<td align="center">戰敗</td>
+<td align="center">負ける</td>
+<td align="center">まける</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">resort</td>
+<td align="center">付諸</td>
+<td align="center">訴える</td>
+<td align="center">うったえる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">start</td>
+<td align="center">開始</td>
+<td align="center">始める</td>
+<td align="center">はじめる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">mistake</td>
+<td align="center">搞錯</td>
+<td align="center">間違える</td>
+<td align="center">まちがえる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">disappear</td>
+<td align="center">消失</td>
+<td align="center">消える</td>
+<td align="center">きえる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">leave</td>
+<td align="center">離開</td>
+<td align="center">離れる</td>
+<td align="center">はなれる</td>
+<td align="center">他</td>
+</tr>
+<tr>
+<td align="center">leave ~ reply ~ trust ~ submit</td>
+<td align="center">交付 ~ 託任</td>
+<td align="center">任せる</td>
+<td align="center">まかせる</td>
+<td align="center">他</td>
+</tr>
+<tr>
+<td align="center">bear→born</td>
+<td align="center">出生</td>
+<td align="center">生まれる</td>
+<td align="center">うまれる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">raise ~ carry up</td>
+<td align="center">養育</td>
+<td align="center">育てる</td>
+<td align="center">そだてる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">hang</td>
+<td align="center">搭掛</td>
+<td align="center">掛ける</td>
+<td align="center">かける</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">tighten ~ fasten</td>
+<td align="center">收緊</td>
+<td align="center">締める</td>
+<td align="center">しめる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">accept ~ respond ~ dispose</td>
+<td align="center">接受 ~ 響應</td>
+<td align="center">応じる</td>
+<td align="center">おうじる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">tidy up ~ clean ~ settle</td>
+<td align="center">整理 ~ 放好</td>
+<td align="center">片付ける</td>
+<td align="center">かたつける</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">collect ~ gather</td>
+<td align="center">收集</td>
+<td align="center">集める</td>
+<td align="center">あつめる</td>
+<td align="center">他</td>
+</tr>
+<tr>
+<td align="center">occupy ~ constitute</td>
+<td align="center">佔據</td>
+<td align="center">占める</td>
+<td align="center">しめる</td>
+<td align="center">他</td>
+</tr>
+<tr>
+<td align="center">go out</td>
+<td align="center">出去</td>
+<td align="center">出かける</td>
+<td align="center">でかける</td>
+<td align="center">自</td>
+</tr>
+<tr>
+<td align="center">mistaken ~ confuse</td>
+<td align="center">弄錯 ~ 搞混</td>
+<td align="center">間違える</td>
+<td align="center">まちがえる</td>
+<td align="center">他</td>
+</tr>
+<tr>
+<td align="center">puzzle ~ confuse</td>
+<td align="center">困惑</td>
+<td align="center">混乱</td>
+<td align="center">こんらん</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">flow ~ stream</td>
+<td align="center">流淌</td>
+<td align="center">流れる</td>
+<td align="center">ながれる</td>
+<td align="center">自</td>
+</tr>
+<tr>
+<td align="center">gather ~ earn ~ profit</td>
+<td align="center">賺取</td>
+<td align="center">儲ける</td>
+<td align="center">もうける</td>
+<td align="center">他</td>
+</tr>
+<tr>
+<td align="center">decide ~ determine</td>
+<td align="center">決める</td>
+<td align="center">きめる</td>
+<td align="center">他</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">accept ~ receive ~ suffer ~ undergo</td>
+<td align="center">受ける</td>
+<td align="center">うける</td>
+<td align="center">他</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">put in ~ include ~ insert</td>
+<td align="center">放入</td>
+<td align="center">入れる</td>
+<td align="center">いれる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">exercise ~ train</td>
+<td align="center">鍛鍊</td>
+<td align="center">鍛える</td>
+<td align="center">きたえる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">bend ~ twist</td>
+<td align="center">彎曲</td>
+<td align="center">曲げる</td>
+<td align="center">まげる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">relieve ~ ease</td>
+<td align="center">緩解</td>
+<td align="center">和らげる</td>
+<td align="center">やわらげる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">match ~ suit ~ adapt</td>
+<td align="center">適應</td>
+<td align="center">合わせる</td>
+<td align="center">あわせる</td>
+<td align="center"><strong>他</strong></td>
+</tr>
+<tr>
+<td align="center">expire</td>
+<td align="center">過期</td>
+<td align="center">切れる</td>
+<td align="center">きれる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">change (clothes)</td>
+<td align="center">換裝</td>
+<td align="center">着替える</td>
+<td align="center">きがえる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">research ~ investigate ~ explore</td>
+<td align="center">調查</td>
+<td align="center">調べる</td>
+<td align="center">しらべる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">crack ~ snap ~ run out</td>
+<td align="center">損壞</td>
+<td align="center">切れる</td>
+<td align="center">きれる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">convey ~ communicate ~ pass on</td>
+<td align="center">傳遞 ~ 轉達</td>
+<td align="center">仕える</td>
+<td align="center">つかえる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">liven up</td>
+<td align="center">活躍起來</td>
+<td align="center">盛り上げる</td>
+<td align="center">もりあげる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">welcome</td>
+<td align="center">歡迎</td>
+<td align="center">迎える</td>
+<td align="center">むかえる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">dirty</td>
+<td align="center">弄髒</td>
+<td align="center">汚れる</td>
+<td align="center">よごれる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">sell out</td>
+<td align="center">售罄</td>
+<td align="center">売り切れる</td>
+<td align="center">うりきれる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">to be late ~ delay ~ overdue</td>
+<td align="center">遲到</td>
+<td align="center">遅れる</td>
+<td align="center">おくれる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">fall in love</td>
+<td align="center">相愛 ~ 墜入愛河</td>
+<td align="center">惚れる</td>
+<td align="center">ほれる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">dump ~ refuse ~ reject</td>
+<td align="center">拒絕 ~ 拋棄</td>
+<td align="center">振られる</td>
+<td align="center">ふられる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">break up ~ disjoint</td>
+<td align="center">分手 ~ 分別</td>
+<td align="center">別れる</td>
+<td align="center">わかれる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">refrain</td>
+<td align="center">控制 ~ 制止 ~ 剋制</td>
+<td align="center">控える</td>
+<td align="center">ひかえる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">relieve</td>
+<td align="center">緩解</td>
+<td align="center">和らげる</td>
+<td align="center">やわらげる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">slim ~ lose weight</td>
+<td align="center">減肥</td>
+<td align="center">痩せる</td>
+<td align="center">やせる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">count</td>
+<td align="center">技術</td>
+<td align="center">数える</td>
+<td align="center">かぞえる</td>
+<td align="center"></td>
+</tr>
 </tbody></table>
-<p>forget|忘記|忘れる|わすれる|他<br>come out ~ appear|出去|出る|でる|自<br>give ~ receive|給(我)|呉れる|くれる|<br>change ~ convert ~ turn|轉變|変える|かえる|<br>teach ~ instruct ~ tell|教授 ~ 告訴|教える|おしえる|他<br>tire|疲憊|疲れる|つかれる|<br>sleep ~ lay down|睡覺|寝る|ねる|<br>continue|繼續|続ける|つづける|<br>quit|辭職 ~ 退出|辞める|やめる|<br>stop|停止|止める|とめる|<strong>他</strong><br>break|破壞|壊れる|こわれる|<strong>自</strong><br>break(into two parts)|折斷|折れる|おれる|<br>boil|煮|茹でる|ゆでる|<br>fry|煎煮|揚げる|あげる|<br>add ~ plus|加|加える|くわえる|<br>ask ~ query ~ question ~ inquire ~ enquire|諮詢|尋ねる|尋ね|<br>visit(people)|訪問|訪ねる|たずねる|<br>visit(place)|遊歷|訪れる|おとずれる|<br>cross|穿過|越える|こえる|<br>run ~ race ~ canter|奔跑 ~ 競速|駆ける|かける<br>accompany|陪伴|連れる|つれる|<br>be used to|習慣|慣れる|なれる|<br>prepare|準備|備える|そなえる|<br>turn to ~ aim to ~ toward to|朝向|向ける|むける|<br>find|找到|見つける|みつける|他<br>lose(fight)|戰敗|負ける|まける|<br>resort|付諸|訴える|うったえる|<br>start|開始|始める|はじめる|<br>mistake|搞錯|間違える|まちがえる|<br>disappear|消失|消える|きえる|<br>leave|離開|離れる|はなれる|他<br>leave ~ reply ~ trust ~ submit|交付 ~ 託任|任せる|まかせる|他<br>bear→born|出生|生まれる|うまれる<br>raise ~ carry up|養育|育てる|そだてる|<br>hang|搭掛|掛ける|かける|<br>tighten ~ fasten|收緊|締める|しめる|<br>accept ~ respond ~ dispose|接受 ~ 響應|応じる|おうじる|<br>tidy up ~ clean ~ settle|整理 ~ 放好|片付ける|かたつける|<br>collect ~ gather|收集|集める|あつめる|他<br>occupy ~ constitute|佔據|占める|しめる|他<br>go out|出去|出かける|でかける|自<br>mistaken ~ confuse|弄錯 ~ 搞混|間違える|まちがえる|他<br>puzzle ~ confuse|困惑|混乱|こんらん<br>flow ~ stream|流淌|流れる|ながれる|自<br>gather ~ earn ~ profit|賺取|儲ける|もうける|他<br>decide ~ determine|決める|きめる|他<br>accept ~ receive ~ suffer ~ undergo|受ける|うける|他<br>put in ~ include ~ insert|放入|入れる|いれる|<br>exercise ~ train|鍛鍊|鍛える|きたえる|<br>bend ~ twist|彎曲|曲げる|まげる|<br>relieve ~ ease|緩解|和らげる|やわらげる|<br>match ~ suit ~ adapt|適應|合わせる|あわせる|<strong>他</strong><br>expire|過期|切れる|きれる|<br>change (clothes)|換裝|着替える|きがえる<br>research ~ investigate ~ explore|調查|調べる|しらべる<br>crack ~ snap ~ run out|損壞|切れる|きれる<br>convey ~ communicate ~ pass on|傳遞 ~ 轉達|仕える|つかえる<br>liven up|活躍起來|盛り上げる|もりあげる|<br>welcome|歡迎|迎える|むかえる|<br>dirty|弄髒|汚れる|よごれる<br>sell out|售罄|売り切れる|うりきれる<br>to be late ~ delay ~ overdue|遲到|遅れる|おくれる<br>fall in love|相愛 ~ 墜入愛河|惚れる|ほれる<br>dump ~ refuse ~ reject|拒絕 ~ 拋棄|振られる|ふられる<br>break up ~ disjoint|分手 ~ 分別|別れる|わかれる<br>refrain|控制 ~ 制止 ~ 剋制|控える|ひかえる<br>relieve|緩解|和らげる|やわらげる</p>
 <hr>
 <h2 id="動詞の活用形"><a href="#動詞の活用形" class="headerlink" title="動詞の活用形"></a><a href="https://en.wikipedia.org/wiki/Japanese_verb_conjugation">動詞の活用形</a></h2><p><strong>辞書形(じしょけい) Dictionary Form</strong><br>Verbs are named and listed in dictionaries according to their “dictionary form” (辞書形, jishokei). This is also called the “plain form” (since this is the plain, non‑polite, non‑past conjugation), and it is the same as the modern “terminal form” (終止形, shūshikei), and the “attributive form” (連体形, rentaikei)</p>
 <p><strong>未然形(みぜんけい) Irrealis | i~e</strong><br>（ない・う・よう・ぬ・れる・られる・せる・させる）<br>not-否定助動詞「-ない」 <a href="https://www.sigure.tw/learn-japanese/mix/difference/nai-nai.php">link</a><br>will|may-意志、推量助動詞「う」 <a href="https://www.sigure.tw/learn-japanese/grammar/n4/31.php">link</a><br>get|can-被動、可能助動詞「-(ら)れる」 <a href="https://www.sigure.tw/learn-japanese/grammar/n4/15.php">link</a><br>make-使役助動詞「(さ)せる」<a href="https://www.sigure.tw/learn-japanese/grammar/n4/14.php">link</a></p>
@@ -11091,6 +11770,12 @@ This is a comment
 <td align="center">…でしょう</td>
 <td align="center"></td>
 </tr>
+<tr>
+<td align="center">already</td>
+<td align="center">已經</td>
+<td align="center">既に</td>
+<td align="center">すでに</td>
+</tr>
 </tbody></table>
 <h2 id="Behavior"><a href="#Behavior" class="headerlink" title="Behavior"></a>Behavior</h2><table>
 <thead>
@@ -11371,7 +12056,7 @@ This is a comment
 <p>Have to ~ Must<br>You must keep your promise<br>約束は守ら<strong>なければならない</strong> やくそくはまもら<strong>なければならない</strong><br>約束は守ら<strong>なければなりません</strong> やくそくはまもら<strong>なければなりません</strong></p>
 </blockquote>
 <blockquote>
-<p>Must I come here again tomorrow? ~ Do I have to come here again tomorrow?<br>明日もここへ来なくてはいけませんか<br>ashita—–ko<br>(買わなくてはいけませんか)</p>
+<p>Must I come here again tomorrow? ~ Do I have to come here again tomorrow?<br>明日もここへ来<strong>なくてはいけません</strong>か<br>ashita—–ko<br>(買わなくてはいけません) have to buy<br>(乗らなくてはいけません) have to ride<br>(見せなくてはいけません) have to show<br>(持っていなくてはいけません) have to take</p>
 </blockquote>
 <h2 id="Emotional-感情的な-かんじょうてきな"><a href="#Emotional-感情的な-かんじょうてきな" class="headerlink" title="Emotional 感情的な かんじょうてきな"></a>Emotional 感情的な かんじょうてきな</h2><blockquote>
 <p>Damn ~ Darn /dɑrn/<br>ちくしょう！</p>
