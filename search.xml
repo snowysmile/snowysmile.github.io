@@ -907,7 +907,7 @@ This is a comment
     <url>/gamelist/</url>
     <content><![CDATA[<img src="/images/Zelda-wallpapers.jpg" width="90%" height="90%">
 
-<img src="coldcdn.com/api/cdn/2pzszg/images/Zelda-wallpapers.jpg" width="90%" height="90%">
+<img src="https://coldcdn.com/api/cdn/2pzszg/images/Zelda-wallpapers.jpg" width="90%" height="90%">
 
 
 
