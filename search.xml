@@ -1422,8 +1422,119 @@
 <th align="center">Kanji</th>
 </tr>
 </thead>
-</table>
-<p>♬|266C|Beamed Sixteenth Notes| ~ | ~<br>🌌|0x1F30C|Milky Way|：ほしぞら：よぞら：ぎんが：てんのかわ|星空 ~ 夜空 ~ 銀河 ~ 天の川<br>🎮|0x1F3AE|Video Game|：びでおげーむ| ~<br>🎵|0x1F3B5|Musical Note|：おんぷ|音符<br>😇|0x1F607|Smiling Face with Halo|：てんしのわ|天使の輪<br>😳|0x1F633|Flushed Face ~ Face with Wide Open Eyes|：せきめん|赤面<br>🥰|0x1F970|Smiling Face with Hearts|：むちゅ：はーとのえがお|夢中<br>🦠|0x1F9A0|Microbe|：さいきん：ウイルス|細菌<br>🧒|0x1F9D2|Child|：こども|子供<br>🎤|0x1F3A4|\1F3A4|Microphone|：うた|歌<br>🗾|0x1F5FE|Silhouette&#x2F;ˌsɪl.uˈet&#x2F; of Japan|：にほんちず|日本地図<br>👿|0x1F47F|Imp ~ Angry Face with Horns|：あくま|悪魔<br>||||<br>🇨🇳|0x1F1E8 0x1F1F3|China|：ちゅうごく|中国<br>🇬🇧|0x1F1EC 0x1F1E7|England|：イギリス| ~<br>🇯🇵|0x1F1EF 0x1F1F5|Japan|：にほん|日本</p>
+<tbody><tr>
+<td align="center">♬</td>
+<td align="center">266C</td>
+<td align="center">Beamed Sixteenth Notes</td>
+<td align="center">~</td>
+<td align="center">~</td>
+</tr>
+<tr>
+<td align="center">🌌</td>
+<td align="center">0x1F30C</td>
+<td align="center">Milky Way</td>
+<td align="center">：ほしぞら：よぞら：ぎんが：てんのかわ</td>
+<td align="center">星空 ~ 夜空 ~ 銀河 ~ 天の川</td>
+</tr>
+<tr>
+<td align="center">🎮</td>
+<td align="center">0x1F3AE</td>
+<td align="center">Video Game</td>
+<td align="center">：びでおげーむ</td>
+<td align="center">~</td>
+</tr>
+<tr>
+<td align="center">🎵</td>
+<td align="center">0x1F3B5</td>
+<td align="center">Musical Note</td>
+<td align="center">：おんぷ</td>
+<td align="center">音符</td>
+</tr>
+<tr>
+<td align="center">😇</td>
+<td align="center">0x1F607</td>
+<td align="center">Smiling Face with Halo</td>
+<td align="center">：てんしのわ</td>
+<td align="center">天使の輪</td>
+</tr>
+<tr>
+<td align="center">😳</td>
+<td align="center">0x1F633</td>
+<td align="center">Flushed Face ~ Face with Wide Open Eyes</td>
+<td align="center">：せきめん</td>
+<td align="center">赤面</td>
+</tr>
+<tr>
+<td align="center">🥰</td>
+<td align="center">0x1F970</td>
+<td align="center">Smiling Face with Hearts</td>
+<td align="center">：むちゅ：はーとのえがお</td>
+<td align="center">夢中</td>
+</tr>
+<tr>
+<td align="center">🦠</td>
+<td align="center">0x1F9A0</td>
+<td align="center">Microbe</td>
+<td align="center">：さいきん：ウイルス</td>
+<td align="center">細菌</td>
+</tr>
+<tr>
+<td align="center">🧒</td>
+<td align="center">0x1F9D2</td>
+<td align="center">Child</td>
+<td align="center">：こども</td>
+<td align="center">子供</td>
+</tr>
+<tr>
+<td align="center">🎤</td>
+<td align="center">0x1F3A4</td>
+<td align="center">\1F3A4</td>
+<td align="center">Microphone</td>
+<td align="center">：うた</td>
+</tr>
+<tr>
+<td align="center">🗾</td>
+<td align="center">0x1F5FE</td>
+<td align="center">Silhouette&#x2F;ˌsɪl.uˈet&#x2F; of Japan</td>
+<td align="center">：にほんちず</td>
+<td align="center">日本地図</td>
+</tr>
+<tr>
+<td align="center">👿</td>
+<td align="center">0x1F47F</td>
+<td align="center">Imp ~ Angry Face with Horns</td>
+<td align="center">：あくま</td>
+<td align="center">悪魔</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">🇨🇳</td>
+<td align="center">0x1F1E8 0x1F1F3</td>
+<td align="center">China</td>
+<td align="center">：ちゅうごく</td>
+<td align="center">中国</td>
+</tr>
+<tr>
+<td align="center">🇬🇧</td>
+<td align="center">0x1F1EC 0x1F1E7</td>
+<td align="center">England</td>
+<td align="center">：イギリス</td>
+<td align="center">~</td>
+</tr>
+<tr>
+<td align="center">🇯🇵</td>
+<td align="center">0x1F1EF 0x1F1F5</td>
+<td align="center">Japan</td>
+<td align="center">：にほん</td>
+<td align="center">日本</td>
+</tr>
+</tbody></table>
 <p>REMARK:<br>( U+[] | 0x[] ) for Unicode<br>( &amp;#x[]; ) for HTML<br>( [] ) for CSS</p>
 <span id="more"></span>
 <p><a href="https://unicode-table.com/en/1F970/">Check Code 1</a><br><a href="https://emojipedia.org/smiling-face-with-hearts/">Check Code 2</a><br><a href="https://www.compart.com/en/unicode/U+1F970">Check Code 3</a></p>
