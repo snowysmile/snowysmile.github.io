@@ -1535,7 +1535,10 @@
 <td align="center">日本</td>
 </tr>
 </tbody></table>
-<p>REMARK:<br>( U+[] | 0x[] ) for Unicode<br>( &amp;#x[]; ) for HTML<br>( [] ) for CSS</p>
+<p>REMARK: </p>
+<blockquote>
+<p>( U+[] | 0x[] ) for Unicode<br>( &amp;#x[]; ) for HTML<br>( [] ) for CSS</p>
+</blockquote>
 <span id="more"></span>
 <p><a href="https://unicode-table.com/en/1F970/">Check Code 1</a><br><a href="https://emojipedia.org/smiling-face-with-hearts/">Check Code 2</a><br><a href="https://www.compart.com/en/unicode/U+1F970">Check Code 3</a></p>
 ]]></content>
