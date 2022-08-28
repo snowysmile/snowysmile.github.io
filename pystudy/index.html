@@ -289,7 +289,7 @@
 <hr>
 <p>Output:</p>
 <blockquote>
-<p>&lt;class ‘numpy.ndarray’&gt;<br>[ [0 0 0]<br>&emsp;[0 0 0] ]</p>
+<p>&lt;class ‘numpy.ndarray’&gt;<br>[ [0 0 0]<br>&amp;emsp;[0 0 0] ]</p>
 </blockquote>
 <h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class A:</span><br><span class="line">    def __init__(self, cnt, chr):</span><br><span class="line">        self.cnt = cnt</span><br><span class="line">        self.chr = chr</span><br><span class="line">    def __lt__(self, other):</span><br><span class="line">        if self.cnt != other.cnt:</span><br><span class="line">            return self.cnt &gt; other.cnt</span><br><span class="line">        else:</span><br><span class="line">            return self.chr &lt; other.chr</span><br><span class="line">    def __str__(self):</span><br><span class="line">        return str(self.cnt) + &quot; &quot; + str(self.chr)</span><br><span class="line"></span><br><span class="line">a = []</span><br><span class="line">a.append(A(1, &quot;apple&quot;))</span><br><span class="line">a.append(A(2, &quot;banana&quot;))</span><br><span class="line">a.sort()</span><br><span class="line">for i in range(len(a)):</span><br><span class="line">    print(a[i])</span><br></pre></td></tr></table></figure>
 <p>Output: </p>
@@ -422,7 +422,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
