@@ -1,969 +1,2743 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Snowy Study</title><meta name="author" content="snowy_smile"><meta name="copyright" content="snowy_smile"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/sky_smile32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/sky_smile16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":20},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="website">
 <meta property="og:title" content="Snowy Study">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="Snowy Study">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
 <meta property="article:author" content="snowy_smile">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/%5Bobject%20Object%5D"><link rel="canonical" href="http://example.com/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script async="async" src="https://www.googletagmanager.com/gtag/js?id=[object Object]"></script><script>window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '[object Object]');
-</script><script>const GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
-  copy: {
-    success: 'Copy successfully',
-    error: 'Copy error',
-    noSupport: 'The browser does not support'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  date_suffix: {
-    just: 'Just',
-    min: 'minutes ago',
-    hour: 'hours ago',
-    day: 'days ago',
-    month: 'months ago'
-  },
-  copyright: undefined,
-  lightbox: 'null',
-  Snackbar: undefined,
-  source: {
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
-    }
-  },
-  isPhotoFigcaption: false,
-  islazyload: ,
-  isAnchor: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'Snowy Study',
-  isPost: false,
-  isHome: true,
-  isHighlightShrink: false,
-  isToc: false,
-  postUpdate: '2022-09-06 21:51:41'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
 
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
+<link rel="canonical" href="http://example.com/">
 
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
 
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'en'
+  };
+</script>
 
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
-    }
+  <title>Snowy Study</title>
   
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
-  
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Snowy Study</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
     
-    const detectApple = () => {
-      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/mottos/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/snowy_smile.jpg">
+      <meta itemprop="name" content="snowy_smile">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Snowy Study">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/mottos/" class="post-title-link" itemprop="url">Mottos</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-09-06 20:34:29 / Modified: 20:41:11" itemprop="dateCreated datePublished" datetime="2022-09-06T20:34:29+09:00">2022-09-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022-August/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/snowy_smile.jpg">
+      <meta itemprop="name" content="snowy_smile">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Snowy Study">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022-August/" class="post-title-link" itemprop="url">2022 August</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-09-04 18:54:36" itemprop="dateCreated datePublished" datetime="2022-09-04T18:54:36+09:00">2022-09-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-09-06 20:40:36" itemprop="dateModified" datetime="2022-09-06T20:40:36+09:00">2022-09-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MyLife/" itemprop="url" rel="index"><span itemprop="name">MyLife</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Prologue"><a href="#Prologue" class="headerlink" title="Prologue"></a>Prologue</h1><p>I have a habit to write down something every day, it’s private and sometimes very short and unorganized.<br>But I think, I should start to write something better and more formal.<br>Even it can’t be every day, at least every month.<br>Okay, this is the plan now 😳</p>
+<p>It has been more than 2 years since I moved here, the peaceful beautiful small town in Yonago, Japan.<br>I didn’t feel happy for the past two years; on the contrary, I felt extremely lonely. It is my choice anyway, and also, getting tricked of destiny by the horrible pandemic. I tried my best to help stop the pandemic but most people didn’t care and many might wanted to have it. It totally changed my plan, it not only changed my view of China where I was born, but also destroyed my trust in this world.</p>
+<p>But recently, I have made more changes. Actually, I felt better dropping the hope that the world changes better soon by someone or some organization.<br>The world is heavy, complicated, and filled with large areas of grey and even black. I am fighting against them, but I know I can never win as humanity has both good and evil sides in everyone, it is the same for me. I should live with them, I have to. the most thing I could do is to avoid doing the bad things myself. Different people have different standards of bad things, unluckily I think many things many people are doing are bad things. Seriously trying to be a good person is not easy and sometimes got hurt a lot. But anyway, it has been my choice.<br>The good thing is, I started to focus on my dreams again. I am going to achieve them. I am going to achieve them. I am going to achieve my dreams one day. </p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022-August/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/emoji/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/snowy_smile.jpg">
+      <meta itemprop="name" content="snowy_smile">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Snowy Study">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/emoji/" class="post-title-link" itemprop="url">Emoji 絵文字</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-08-28 15:27:24 / Modified: 20:33:00" itemprop="dateCreated datePublished" datetime="2022-08-28T15:27:24+09:00">2022-08-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Emoji-x2F-iˈmoʊ-dʒi-x2F-表情符號-繪文字-絵文字-えもじ"><a href="#Emoji-x2F-iˈmoʊ-dʒi-x2F-表情符號-繪文字-絵文字-えもじ" class="headerlink" title="Emoji &#x2F;iˈmoʊ.dʒi&#x2F; | 表情符號 ~ 繪文字 | 絵文字 | えもじ"></a>Emoji &#x2F;iˈmoʊ.dʒi&#x2F; | 表情符號 ~ 繪文字 | 絵文字 | えもじ</h2><table>
+<thead>
+<tr>
+<th align="center">Emoji</th>
+<th align="center">Unicode(HTML~CSS)</th>
+<th align="center">Name</th>
+<th align="center">IME Input</th>
+<th align="center">Kanji</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">♬</td>
+<td align="center">266C</td>
+<td align="center">Beamed Sixteenth Notes</td>
+<td align="center">~</td>
+<td align="center">~</td>
+</tr>
+<tr>
+<td align="center">🌌</td>
+<td align="center">0x1F30C</td>
+<td align="center">Milky Way</td>
+<td align="center">：ほしぞら：よぞら：ぎんが：てんのかわ</td>
+<td align="center">星空 ~ 夜空 ~ 銀河 ~ 天の川</td>
+</tr>
+<tr>
+<td align="center">🎮</td>
+<td align="center">0x1F3AE</td>
+<td align="center">Video Game</td>
+<td align="center">：びでおげーむ</td>
+<td align="center">~</td>
+</tr>
+<tr>
+<td align="center">🎵</td>
+<td align="center">0x1F3B5</td>
+<td align="center">Musical Note</td>
+<td align="center">：おんぷ</td>
+<td align="center">音符</td>
+</tr>
+<tr>
+<td align="center">😇</td>
+<td align="center">0x1F607</td>
+<td align="center">Smiling Face with Halo</td>
+<td align="center">：てんしのわ</td>
+<td align="center">天使の輪</td>
+</tr>
+<tr>
+<td align="center">😳</td>
+<td align="center">0x1F633</td>
+<td align="center">Flushed Face ~ Face with Wide Open Eyes</td>
+<td align="center">：せきめん</td>
+<td align="center">赤面</td>
+</tr>
+<tr>
+<td align="center">🥰</td>
+<td align="center">0x1F970</td>
+<td align="center">Smiling Face with Hearts</td>
+<td align="center">：むちゅ：はーとのえがお</td>
+<td align="center">夢中</td>
+</tr>
+<tr>
+<td align="center">🦠</td>
+<td align="center">0x1F9A0</td>
+<td align="center">Microbe</td>
+<td align="center">：さいきん：ウイルス</td>
+<td align="center">細菌</td>
+</tr>
+<tr>
+<td align="center">🧒</td>
+<td align="center">0x1F9D2</td>
+<td align="center">Child</td>
+<td align="center">：こども</td>
+<td align="center">子供</td>
+</tr>
+<tr>
+<td align="center">🎤</td>
+<td align="center">0x1F3A4</td>
+<td align="center">Microphone</td>
+<td align="center">：うた</td>
+<td align="center">歌</td>
+</tr>
+<tr>
+<td align="center">🗾</td>
+<td align="center">0x1F5FE</td>
+<td align="center">Silhouette&#x2F;ˌsɪl.uˈet&#x2F; of Japan</td>
+<td align="center">：にほんちず</td>
+<td align="center">日本地図</td>
+</tr>
+<tr>
+<td align="center">👿</td>
+<td align="center">0x1F47F</td>
+<td align="center">Imp ~ Angry Face with Horns</td>
+<td align="center">：あくま</td>
+<td align="center">悪魔</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">🇦🇷</td>
+<td align="center">0x1F1E6 0x1F1F7</td>
+<td align="center">Argentina</td>
+<td align="center">あるぜんちん</td>
+<td align="center">アルゼンチン</td>
+</tr>
+<tr>
+<td align="center">🇧🇷</td>
+<td align="center">0x1F1E7 0x1F1F7</td>
+<td align="center">Brazil</td>
+<td align="center">ブラジル</td>
+<td align="center">伯剌西爾</td>
+</tr>
+<tr>
+<td align="center">🇨🇳</td>
+<td align="center">0x1F1E8 0x1F1F3</td>
+<td align="center">China</td>
+<td align="center">：ちゅうごく</td>
+<td align="center">中国</td>
+</tr>
+<tr>
+<td align="center">🇬🇧</td>
+<td align="center">0x1F1EC 0x1F1E7</td>
+<td align="center">England</td>
+<td align="center">：イギリス</td>
+<td align="center">~</td>
+</tr>
+<tr>
+<td align="center">🇯🇵</td>
+<td align="center">0x1F1EF 0x1F1F5</td>
+<td align="center">Japan</td>
+<td align="center">：にほん</td>
+<td align="center">日本</td>
+</tr>
+<tr>
+<td align="center">🌐</td>
+<td align="center">0x1F310</td>
+<td align="center">Globe with Meridians&#x2F;məˈrɪd.i.ən&#x2F;</td>
+<td align="center">：しごせん</td>
+<td align="center">子午線</td>
+</tr>
+<tr>
+<td align="center">💰</td>
+<td align="center">0x1F4B0</td>
+<td align="center">Money Bag</td>
+<td align="center">：きんふくろ：しょうきん</td>
+<td align="center">金袋 ~ 賞金</td>
+</tr>
+<tr>
+<td align="center">🪙</td>
+<td align="center">0x1FA99</td>
+<td align="center">Coin</td>
+<td align="center">~</td>
+<td align="center">~</td>
+</tr>
+<tr>
+<td align="center">💸</td>
+<td align="center">1F4B8</td>
+<td align="center">Money with Wings</td>
+<td align="center">：さつたば</td>
+<td align="center">札束</td>
+</tr>
+</tbody></table>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/emoji/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/jpnoun/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/snowy_smile.jpg">
+      <meta itemprop="name" content="snowy_smile">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Snowy Study">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/jpnoun/" class="post-title-link" itemprop="url">Noun 名詞 めいし</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-08-13 17:43:52" itemprop="dateCreated datePublished" datetime="2022-08-13T17:43:52+09:00">2022-08-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-09-04 18:40:17" itemprop="dateModified" datetime="2022-09-04T18:40:17+09:00">2022-09-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Japanese-Study/" itemprop="url" rel="index"><span itemprop="name">Japanese Study</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/jpnoun/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+
+
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/jpmusic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/snowy_smile.jpg">
+      <meta itemprop="name" content="snowy_smile">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Snowy Study">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/jpmusic/" class="post-title-link" itemprop="url">Japanese Music I like</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-22 01:21:56" itemprop="dateCreated datePublished" datetime="2022-02-22T01:21:56+09:00">2022-02-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-08-24 02:20:01" itemprop="dateModified" datetime="2022-08-24T02:20:01+09:00">2022-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Music/" itemprop="url" rel="index"><span itemprop="name">Music</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Music/JPmusic/" itemprop="url" rel="index"><span itemprop="name">JPmusic</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>日本語の歌 (nihongo no uta) ~</p>
+<!-- THESE ARE THE COMMENTS.
+<div style=margin-left:auto; margin-right:auto;"> ... </div>
+the above code for the center align
+-->
+
+
+<h1 id="愛にできることはまだあるかい"><a href="#愛にできることはまだあるかい" class="headerlink" title="愛にできることはまだあるかい"></a>愛にできることはまだあるかい</h1><p>ai ni dekiru koto wa mada aru kai<br>Is There Still Anything That Love Can Do?<br>還有什麼事是愛能夠做到的嗎？<br>🎤by RADWIMPS</p>
+<div style="width:90%; height:90%; margin-left:auto; margin-right:auto;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EQ94zflNqn4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+</div>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/jpmusic/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/enmusic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/snowy_smile.jpg">
+      <meta itemprop="name" content="snowy_smile">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Snowy Study">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/enmusic/" class="post-title-link" itemprop="url">English Music I like</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-02-13 11:48:19" itemprop="dateCreated datePublished" datetime="2022-02-13T11:48:19+09:00">2022-02-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-08-24 02:20:02" itemprop="dateModified" datetime="2022-08-24T02:20:02+09:00">2022-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Music/" itemprop="url" rel="index"><span itemprop="name">Music</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Music/ENmusic/" itemprop="url" rel="index"><span itemprop="name">ENmusic</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Try-Everything"><a href="#Try-Everything" class="headerlink" title="Try Everything"></a>Try Everything</h1><p>🎤by Shakira</p>
+<div style="width:90%; height:90%; margin-left:auto; margin-right:auto;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/c6rP-YP4c5I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+</div>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/enmusic/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+
+
+
+
+
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/jpsentence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/snowy_smile.jpg">
+      <meta itemprop="name" content="snowy_smile">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Snowy Study">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/jpsentence/" class="post-title-link" itemprop="url">Sentence 文 ぶん</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-01-01 19:41:31" itemprop="dateCreated datePublished" datetime="2022-01-01T19:41:31+09:00">2022-01-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-07-28 20:35:42" itemprop="dateModified" datetime="2022-07-28T20:35:42+09:00">2022-07-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Japanese-Study/" itemprop="url" rel="index"><span itemprop="name">Japanese Study</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/jpsentence/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/jpadverb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/snowy_smile.jpg">
+      <meta itemprop="name" content="snowy_smile">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Snowy Study">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/jpadverb/" class="post-title-link" itemprop="url">Adverb 副詞 ふくし | Conjunction 接続詞 せつぞくし</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-12-30 20:25:09" itemprop="dateCreated datePublished" datetime="2021-12-30T20:25:09+09:00">2021-12-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-08-14 01:52:34" itemprop="dateModified" datetime="2022-08-14T01:52:34+09:00">2022-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Japanese-Study/" itemprop="url" rel="index"><span itemprop="name">Japanese Study</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/jpadverb/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/jpverb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/snowy_smile.jpg">
+      <meta itemprop="name" content="snowy_smile">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Snowy Study">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/jpverb/" class="post-title-link" itemprop="url">Verb 動詞 どうし</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-12-27 17:59:24" itemprop="dateCreated datePublished" datetime="2021-12-27T17:59:24+09:00">2021-12-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-09-05 11:41:37" itemprop="dateModified" datetime="2022-09-05T11:41:37+09:00">2022-09-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Japanese-Study/" itemprop="url" rel="index"><span itemprop="name">Japanese Study</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <img src="/images/nihongo/AMB_Japanese_Verbs_Page_1.png" width="100%" height="100%">
+
+<img src="/images/nihongo/AMB_Japanese_Verbs_Page_2.png" width="100%" height="100%">
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/jpverb/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+
+
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/jpadj/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/snowy_smile.jpg">
+      <meta itemprop="name" content="snowy_smile">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Snowy Study">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/jpadj/" class="post-title-link" itemprop="url">Adjective 形容詞 けいようし</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-12-11 23:33:33" itemprop="dateCreated datePublished" datetime="2021-12-11T23:33:33+09:00">2021-12-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-09-05 12:11:39" itemprop="dateModified" datetime="2022-09-05T12:11:39+09:00">2022-09-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Japanese-Study/" itemprop="url" rel="index"><span itemprop="name">Japanese Study</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://ja.wiktionary.org/wiki/%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA:%E6%97%A5%E6%9C%AC%E8%AA%9E_%E5%BD%A2%E5%AE%B9%E8%A9%9E">List of Japanese Adjective on Wiki</a></p>
+<p>Synonym(s)[ˈsinəˌnim] &#x3D; 近義詞 &#x3D; 同義語[どうぎご]</p>
+<p>Antonym(s)[ˈan(t)əˌnim] &#x3D; 反義詞 &#x3D; 対義語[たいぎご]</p>
+<h2 id="Color-色-いろ"><a href="#Color-色-いろ" class="headerlink" title="Color 色 いろ"></a>Color 色 いろ</h2><table>
+<thead>
+<tr>
+<th align="center">English</th>
+<th align="center">漢語</th>
+<th align="center">日本語Nihongo</th>
+<th align="center">片仮名Katakana</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">black</td>
+<td align="center">黑色的</td>
+<td align="center">黒い⬛</td>
+<td align="center">くろい</td>
+</tr>
+<tr>
+<td align="center">white</td>
+<td align="center">白色的</td>
+<td align="center">白い⬜</td>
+<td align="center">しろい</td>
+</tr>
+<tr>
+<td align="center">dark</td>
+<td align="center">灰暗的</td>
+<td align="center">暗い</td>
+<td align="center">くらい</td>
+</tr>
+<tr>
+<td align="center">bright</td>
+<td align="center">明亮的 ~ 光明的</td>
+<td align="center">明るい</td>
+<td align="center">あかるい</td>
+</tr>
+<tr>
+<td align="center">red</td>
+<td align="center">紅色的</td>
+<td align="center">赤い ~ 紅い🟥</td>
+<td align="center">あかい</td>
+</tr>
+<tr>
+<td align="center">orange</td>
+<td align="center">橙色的</td>
+<td align="center">オレンジ<strong>色の</strong>🟧</td>
+<td align="center">~</td>
+</tr>
+<tr>
+<td align="center">yellow</td>
+<td align="center">黃色的</td>
+<td align="center">黄色い🟨</td>
+<td align="center">きいろい</td>
+</tr>
+<tr>
+<td align="center">green</td>
+<td align="center">綠色的</td>
+<td align="center">緑<strong>色の</strong>🟩</td>
+<td align="center">みどりいろの</td>
+</tr>
+<tr>
+<td align="center">blue</td>
+<td align="center">藍色的</td>
+<td align="center">青い ~ 碧い🟦</td>
+<td align="center">あおい</td>
+</tr>
+<tr>
+<td align="center">dark blue ~ navy&#x2F;ˈneɪ.vi&#x2F; blue</td>
+<td align="center">紺色的</td>
+<td align="center">紺<strong>色の</strong></td>
+<td align="center">こんいろの</td>
+</tr>
+<tr>
+<td align="center">purple</td>
+<td align="center">紫色的</td>
+<td align="center">紫<strong>色の</strong>🟪</td>
+<td align="center">むらさきいろの</td>
+</tr>
+<tr>
+<td align="center">dark brown ~ tobi</td>
+<td align="center">鳶色的</td>
+<td align="center">鳶<strong>色の</strong></td>
+<td align="center">とびいろの</td>
+</tr>
+<tr>
+<td align="center">gray</td>
+<td align="center">灰色的</td>
+<td align="center">灰<strong>色の</strong>：</td>
+<td align="center">はいいろの</td>
+</tr>
+<tr>
+<td align="center">skin color</td>
+<td align="center">肌色的</td>
+<td align="center">肌<strong>色の</strong> 膚<strong>色の</strong></td>
+<td align="center">はだいろの</td>
+</tr>
+<tr>
+<td align="center">beige&#x2F;beɪʒ&#x2F;</td>
+<td align="center">米色</td>
+<td align="center">ベージュ</td>
+<td align="center">~</td>
+</tr>
+<tr>
+<td align="center">light blue</td>
+<td align="center">水色的</td>
+<td align="center">水<strong>色の</strong></td>
+<td align="center">みずいろの</td>
+</tr>
+<tr>
+<td align="center">pink</td>
+<td align="center">粉色的</td>
+<td align="center">ピンク<strong>色の</strong></td>
+<td align="center">ぴんくいろの</td>
+</tr>
+<tr>
+<td align="center">brown</td>
+<td align="center">茶色的</td>
+<td align="center">茶<strong>色の</strong>🟫</td>
+<td align="center">ちゃいろの</td>
+</tr>
+<tr>
+<td align="center">silvery ~ silver</td>
+<td align="center">銀色的</td>
+<td align="center">銀<strong>色の</strong></td>
+<td align="center">ぎんいろの</td>
+</tr>
+<tr>
+<td align="center">golden ~ aureate</td>
+<td align="center">金色的</td>
+<td align="center">金<strong>色の</strong></td>
+<td align="center">きんいろの</td>
+</tr>
+<tr>
+<td align="center">translucent&#x2F;trænˈsluː.sənt&#x2F;</td>
+<td align="center">半透明的</td>
+<td align="center">はんとうめいの</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">transparent&#x2F;trænˈsper.ənt&#x2F;</td>
+<td align="center">透明的</td>
+<td align="center">透明な</td>
+<td align="center">とうめいな</td>
+</tr>
+</tbody></table>
+<h2 id="Item-物-もの"><a href="#Item-物-もの" class="headerlink" title="Item 物 もの"></a>Item 物 もの</h2><table>
+<thead>
+<tr>
+<th align="center">English</th>
+<th align="center">漢語</th>
+<th align="center">日本語Nihongo</th>
+<th align="center">片仮名Katakana</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">good</td>
+<td align="center">好的</td>
+<td align="center">好い ~ 良い ~ 善い</td>
+<td align="center">よい ~ いい</td>
+</tr>
+<tr>
+<td align="center">bad</td>
+<td align="center">壞的</td>
+<td align="center">悪い</td>
+<td align="center">わるい</td>
+</tr>
+<tr>
+<td align="center">horrible ~ amazing</td>
+<td align="center">非常</td>
+<td align="center">凄い</td>
+<td align="center">すごい</td>
+</tr>
+<tr>
+<td align="center">glorious ~ splendid</td>
+<td align="center">美麗的 ~ 壯麗的 ~ 極好的</td>
+<td align="center">素晴らしい</td>
+<td align="center">すばらしい</td>
+</tr>
+<tr>
+<td align="center">big</td>
+<td align="center">大的</td>
+<td align="center">大きい</td>
+<td align="center">おおきい</td>
+</tr>
+<tr>
+<td align="center">big</td>
+<td align="center">大的</td>
+<td align="center">大きな</td>
+<td align="center">おおきな</td>
+</tr>
+<tr>
+<td align="center">small</td>
+<td align="center">小的</td>
+<td align="center">小さい</td>
+<td align="center">ちいさい</td>
+</tr>
+<tr>
+<td align="center">small</td>
+<td align="center">小的</td>
+<td align="center">小さな</td>
+<td align="center">ちいさな</td>
+</tr>
+<tr>
+<td align="center">many ~ numerous</td>
+<td align="center">多量的</td>
+<td align="center">多い</td>
+<td align="center">おおい</td>
+</tr>
+<tr>
+<td align="center">a few</td>
+<td align="center">少量的</td>
+<td align="center">少ない</td>
+<td align="center">すくない</td>
+</tr>
+<tr>
+<td align="center">long</td>
+<td align="center">長的</td>
+<td align="center">長い</td>
+<td align="center">ながい</td>
+</tr>
+<tr>
+<td align="center">short</td>
+<td align="center">短的</td>
+<td align="center">短い</td>
+<td align="center">みじかい</td>
+</tr>
+<tr>
+<td align="center">thick</td>
+<td align="center">粗的</td>
+<td align="center">太い</td>
+<td align="center">ふとい</td>
+</tr>
+<tr>
+<td align="center">thin</td>
+<td align="center">細的</td>
+<td align="center">細い</td>
+<td align="center">ほそい</td>
+</tr>
+<tr>
+<td align="center">thick</td>
+<td align="center">厚的</td>
+<td align="center">厚い</td>
+<td align="center">あつい</td>
+</tr>
+<tr>
+<td align="center">thin</td>
+<td align="center">薄的 ~ 瘦的</td>
+<td align="center">薄い</td>
+<td align="center">うすい</td>
+</tr>
+<tr>
+<td align="center">fat</td>
+<td align="center">胖的</td>
+<td align="center">太い ~ 太っている</td>
+<td align="center">ふとい ~ ふとっている</td>
+</tr>
+<tr>
+<td align="center">hard ~ solid ~ stiff</td>
+<td align="center">堅硬的</td>
+<td align="center">堅い ~ 硬い ~ 固い</td>
+<td align="center">かたい</td>
+</tr>
+<tr>
+<td align="center">soft</td>
+<td align="center">柔軟的</td>
+<td align="center">柔らかい ~ 軟らかい</td>
+<td align="center">やわらかい</td>
+</tr>
+<tr>
+<td align="center">fragile&#x2F;ˈfrædʒ.əl&#x2F;</td>
+<td align="center">脆的</td>
+<td align="center">脆い</td>
+<td align="center">もろい</td>
+</tr>
+<tr>
+<td align="center">hot</td>
+<td align="center">熱的</td>
+<td align="center">熱い</td>
+<td align="center">あつい</td>
+</tr>
+<tr>
+<td align="center">cold (things)</td>
+<td align="center">冷たい</td>
+<td align="center">つめたい</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">warm</td>
+<td align="center">溫的</td>
+<td align="center">温かい</td>
+<td align="center">あたたかい</td>
+</tr>
+<tr>
+<td align="center">warm ~ fearful ~ kind ~ cowardly</td>
+<td align="center">溫和的</td>
+<td align="center">温い</td>
+<td align="center">ぬるい</td>
+</tr>
+<tr>
+<td align="center">cool</td>
+<td align="center">涼的</td>
+<td align="center">涼しい</td>
+<td align="center">すずしい</td>
+</tr>
+<tr>
+<td align="center">wet</td>
+<td align="center">潮溼的</td>
+<td align="center">湿った ~ 濡れった</td>
+<td align="center">しめった ~ ぬれった</td>
+</tr>
+<tr>
+<td align="center">dry</td>
+<td align="center">乾燥的</td>
+<td align="center">乾いた</td>
+<td align="center">かわいた</td>
+</tr>
+<tr>
+<td align="center">cheap</td>
+<td align="center">輕的</td>
+<td align="center">安い</td>
+<td align="center">やすい</td>
+</tr>
+<tr>
+<td align="center">expensive</td>
+<td align="center">貴的</td>
+<td align="center">高い ~ 高価な</td>
+<td align="center">たかい ~ こうかな</td>
+</tr>
+<tr>
+<td align="center">valuable ~ precious</td>
+<td align="center">貴重的</td>
+<td align="center">貴重な ~ 高価な</td>
+<td align="center">きちょうな ~ こうかな</td>
+</tr>
+<tr>
+<td align="center">rare</td>
+<td align="center">稀少的</td>
+<td align="center">稀な</td>
+<td align="center">まれな</td>
+</tr>
+<tr>
+<td align="center">new</td>
+<td align="center">新的</td>
+<td align="center">新しい</td>
+<td align="center">あたらしい</td>
+</tr>
+<tr>
+<td align="center">old</td>
+<td align="center">舊的</td>
+<td align="center">古い</td>
+<td align="center">ふるい</td>
+</tr>
+<tr>
+<td align="center">fashionable ~ stylish</td>
+<td align="center">時尚的</td>
+<td align="center">おしゃっれな</td>
+<td align="center">~</td>
+</tr>
+<tr>
+<td align="center">nostalgic&#x2F;nə’stældʒɪk&#x2F; ~ missed</td>
+<td align="center">值得懷念的</td>
+<td align="center">懐かしい</td>
+<td align="center">なつかしい</td>
+</tr>
+<tr>
+<td align="center">memorable (neutral) ~ unforgettable</td>
+<td align="center">難忘的</td>
+<td align="center">忘れられない ~ 記憶すべき</td>
+<td align="center">わすれられない ~ きおくすべき</td>
+</tr>
+<tr>
+<td align="center">used</td>
+<td align="center">使用過的</td>
+<td align="center">中古の</td>
+<td align="center">ちゅうこの</td>
+</tr>
+<tr>
+<td align="center">chrono ~ chronic</td>
+<td align="center">慢性的 ~ 長期的</td>
+<td align="center">慢性的 ~ 長期的</td>
+<td align="center">まんせいてき ~ ちょうきてき</td>
+</tr>
+<tr>
+<td align="center">light ~ lightweight</td>
+<td align="center">輕的 ~ 清淡的</td>
+<td align="center">軽い</td>
+<td align="center">かるい</td>
+</tr>
+<tr>
+<td align="center">heavy</td>
+<td align="center">重的 ~ 濃厚的</td>
+<td align="center">重い ~ 濃厚な</td>
+<td align="center">おもい</td>
+</tr>
+<tr>
+<td align="center">sweet</td>
+<td align="center">甘甜的</td>
+<td align="center">甘い</td>
+<td align="center">あまい</td>
+</tr>
+<tr>
+<td align="center">spicy</td>
+<td align="center">辛辣的</td>
+<td align="center">辛い</td>
+<td align="center">からい</td>
+</tr>
+<tr>
+<td align="center">sour&#x2F;‘saʊɚ&#x2F;</td>
+<td align="center">酸的</td>
+<td align="center">酸っぱい</td>
+<td align="center">すっぱい</td>
+</tr>
+<tr>
+<td align="center">bitter</td>
+<td align="center">苦的</td>
+<td align="center">苦い</td>
+<td align="center">にがい</td>
+</tr>
+<tr>
+<td align="center">salty</td>
+<td align="center">鹹的</td>
+<td align="center">塩辛い ~ 塩っぱい</td>
+<td align="center">しおからい ~ しょっぱい</td>
+</tr>
+<tr>
+<td align="center">tasty ~ delicious</td>
+<td align="center">美味的</td>
+<td align="center">美味しい ~ 美味い</td>
+<td align="center">おいしい ~ うまい</td>
+</tr>
+<tr>
+<td align="center">unsavory ~ tasteless ~ disgusting</td>
+<td align="center">難吃的</td>
+<td align="center">不味い ~ 不快な</td>
+<td align="center">まずい ~ ふかいな</td>
+</tr>
+<tr>
+<td align="center">smelly ~ stinky</td>
+<td align="center">臭的 - 難聞的</td>
+<td align="center">臭い ~ べたべた</td>
+<td align="center">くさい</td>
+</tr>
+<tr>
+<td align="center">hungry</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">thirsty</td>
+<td align="center">喉が渇いている</td>
+<td align="center">のどがかわいている</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">fresh</td>
+<td align="center">新鮮的</td>
+<td align="center">新鮮な</td>
+<td align="center">しんせんな</td>
+</tr>
+<tr>
+<td align="center">huge ~ large ~ enormous</td>
+<td align="center">巨大的</td>
+<td align="center">巨大な</td>
+<td align="center">きょだいな</td>
+</tr>
+<tr>
+<td align="center">various&#x2F;ˈver.i.əs&#x2F; ~ diverse</td>
+<td align="center">各種各樣的</td>
+<td align="center">色々な ~ 多様な ~ 様々な</td>
+<td align="center">いろいろな ~ たような ~ さまざまな</td>
+</tr>
+<tr>
+<td align="center">unique</td>
+<td align="center">獨特的</td>
+<td align="center">個性的な</td>
+<td align="center">こせいてきな</td>
+</tr>
+<tr>
+<td align="center">simplex</td>
+<td align="center">單一的</td>
+<td align="center">単一の</td>
+<td align="center">たんいつの</td>
+</tr>
+<tr>
+<td align="center">liked</td>
+<td align="center">喜愛的</td>
+<td align="center">好きな</td>
+<td align="center">すきな</td>
+</tr>
+<tr>
+<td align="center">disliked ~ disgusted</td>
+<td align="center">討厭的</td>
+<td align="center">嫌いな</td>
+<td align="center">きらいな</td>
+</tr>
+<tr>
+<td align="center">hateful</td>
+<td align="center">憎惡的</td>
+<td align="center">憎い</td>
+<td align="center">にくい</td>
+</tr>
+<tr>
+<td align="center">wanted</td>
+<td align="center">想要的</td>
+<td align="center">欲しい</td>
+<td align="center">ほしい</td>
+</tr>
+<tr>
+<td align="center">simple ~ uncomplicated</td>
+<td align="center">單純的 ~ 簡單的</td>
+<td align="center">単純な ~ 簡単な</td>
+<td align="center">たんじゅんな ~ かんたんな</td>
+</tr>
+<tr>
+<td align="center">complicated</td>
+<td align="center">複雜的</td>
+<td align="center">複雑な</td>
+<td align="center">ふくざつな</td>
+</tr>
+<tr>
+<td align="center">important ~ significant ~ imperative</td>
+<td align="center">重要的</td>
+<td align="center">重要な ~ 大事な ~ 大切な ~ 肝要な</td>
+<td align="center">じゅうような ~ だいじな ~ たいせつな ~ かんような</td>
+</tr>
+<tr>
+<td align="center">unimportant ~ insignificant</td>
+<td align="center">不重要的</td>
+<td align="center">重要でない</td>
+<td align="center">じゅようでない</td>
+</tr>
+<tr>
+<td align="center">scary ~ awful ~  frightening&#x2F;ˈfraɪ.tən.ɪŋ&#x2F;</td>
+<td align="center">恐怖可怕的</td>
+<td align="center">恐ろしい ~ 怖ろしい</td>
+<td align="center">おそろしい</td>
+</tr>
+<tr>
+<td align="center">restricted</td>
+<td align="center">有限制的</td>
+<td align="center">制限された</td>
+<td align="center">せいげんされた</td>
+</tr>
+<tr>
+<td align="center">limited</td>
+<td align="center">有限的</td>
+<td align="center">限られた</td>
+<td align="center">かぎられた</td>
+</tr>
+<tr>
+<td align="center">unlimited</td>
+<td align="center">無限的</td>
+<td align="center">無制限の</td>
+<td align="center">むせいげんの</td>
+</tr>
+<tr>
+<td align="center">boundless&#x2F;ˈbaʊnd.ləs&#x2F;</td>
+<td align="center">無邊界的</td>
+<td align="center">無限の</td>
+<td align="center">むげんの</td>
+</tr>
+<tr>
+<td align="center">forbidden</td>
+<td align="center">禁忌的</td>
+<td align="center">禁じられた</td>
+<td align="center">きんじられた</td>
+</tr>
+<tr>
+<td align="center">main&#x2F;meɪn&#x2F;</td>
+<td align="center">主要的</td>
+<td align="center">主な ~ 主要な</td>
+<td align="center">おもな ~ しゅような</td>
+</tr>
+<tr>
+<td align="center">strange ~ bizarre&#x2F;bɪzάː&#x2F;</td>
+<td align="center">奇怪的 ~ 異常的 ~ 異常的</td>
+<td align="center">奇妙な ~ おかしい ~ 異様な</td>
+<td align="center">きみょうな ~ おかしい ~ いような</td>
+</tr>
+<tr>
+<td align="center">amusing ~ odd ~ funny ~ unusual ~ queer</td>
+<td align="center">滑稽的 ~ 好笑的</td>
+<td align="center">可笑しい</td>
+<td align="center">おかしい</td>
+</tr>
+<tr>
+<td align="center">puzzling ~ confusing</td>
+<td align="center">困惑的 ~ 令人費解的</td>
+<td align="center">不可解な</td>
+<td align="center">ふかかいな</td>
+</tr>
+<tr>
+<td align="center">weird ~ queer ~ odd</td>
+<td align="center">怪異的</td>
+<td align="center">変な</td>
+<td align="center">へんな</td>
+</tr>
+<tr>
+<td align="center">creepy</td>
+<td align="center">令人毛骨悚然的 ~ 詭異的</td>
+<td align="center">不気味な</td>
+<td align="center">ぶきみな</td>
+</tr>
+<tr>
+<td align="center">weird ~ gross ~ yucky ~ creepy</td>
+<td align="center">令人厭惡的 ~ 令人噁心的 ~ 令人不快的</td>
+<td align="center">キモイ</td>
+<td align="center">きもい</td>
+</tr>
+<tr>
+<td align="center">traditional</td>
+<td align="center">傳統的</td>
+<td align="center">伝統的な</td>
+<td align="center">でんとうてきな</td>
+</tr>
+<tr>
+<td align="center">innovative&#x2F;ˈɪn.ə.veɪ.t̬ɪv&#x2F;</td>
+<td align="center">革新的</td>
+<td align="center">革新的な</td>
+<td align="center">かくしんてきな</td>
+</tr>
+<tr>
+<td align="center">rich ~ plentiful ~ abundant</td>
+<td align="center">富足的</td>
+<td align="center">豊富な</td>
+<td align="center">ほうふな</td>
+</tr>
+<tr>
+<td align="center">enough ~ adequate&#x2F;ˈæd.ə.kwət&#x2F; ~ sufficient&#x2F;səˈfɪʃ.ənt&#x2F;</td>
+<td align="center">充分的</td>
+<td align="center">十分な ~ 充分な</td>
+<td align="center">じゅうぶんな</td>
+</tr>
+<tr>
+<td align="center">partial</td>
+<td align="center">部分的</td>
+<td align="center">部分的な</td>
+<td align="center">ぶぶんてきな</td>
+</tr>
+<tr>
+<td align="center">complete</td>
+<td align="center">完全的</td>
+<td align="center">完全な</td>
+<td align="center">かんぜんな</td>
+</tr>
+<tr>
+<td align="center">exhaustive&#x2F;ɪɡˈzɑː.stɪv&#x2F; ~ absolute</td>
+<td align="center">徹底的 ~ 詳盡的 ~ 全面的</td>
+<td align="center">徹底的な</td>
+<td align="center">てっていてきな</td>
+</tr>
+<tr>
+<td align="center">broken ~ destroyed</td>
+<td align="center">損壞的 ~ 崩壞的</td>
+<td align="center">壊れた</td>
+<td align="center">こわれた</td>
+</tr>
+<tr>
+<td align="center">considerable&#x2F;kənˈsɪd.ɚ.ə.bəl&#x2F; ~ substantial</td>
+<td align="center">相當的</td>
+<td align="center">相当な</td>
+<td align="center">そうとうな</td>
+</tr>
+<tr>
+<td align="center">surprising</td>
+<td align="center">驚人的</td>
+<td align="center">驚くべき ~ 意外な</td>
+<td align="center">おどろくべき ~ いがいな</td>
+</tr>
+<tr>
+<td align="center">valid ~ effective</td>
+<td align="center">有效的</td>
+<td align="center">有効な ~ 効果的な</td>
+<td align="center">ゆうこうな ~ こうかてきな</td>
+</tr>
+<tr>
+<td align="center">automatic</td>
+<td align="center">自動的</td>
+<td align="center">自動的な</td>
+<td align="center">じどうてきな</td>
+</tr>
+<tr>
+<td align="center">sharp ~ clear ~ vivid</td>
+<td align="center">鮮明的</td>
+<td align="center">鮮明な</td>
+<td align="center">せんめいな</td>
+</tr>
+<tr>
+<td align="center">blurry&#x2F;ˈblɜ˞ː.i&#x2F;</td>
+<td align="center">模糊的 ~ 不清楚的</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">definite ~ clear</td>
+<td align="center">明確的</td>
+<td align="center">明確な</td>
+<td align="center">めいかくな</td>
+</tr>
+<tr>
+<td align="center">ambiguous&#x2F;æmˈbɪɡ.ju.əs&#x2F;</td>
+<td align="center">含糊不清的 ~ 引起歧義的 ~ 模棱兩可的 ~ 不明確的</td>
+<td align="center">曖昧な ~ 多義の ~ 不明瞭な</td>
+<td align="center">あいまいな ~ たぎの ~ ふめいりょうな</td>
+</tr>
+<tr>
+<td align="center">appropriate&#x2F;əˈproʊ.pri.ət</td>
+<td align="center">適當的，妥當的</td>
+<td align="center">妥当な</td>
+<td align="center">だとうな</td>
+</tr>
+<tr>
+<td align="center">perfect</td>
+<td align="center">合適的</td>
+<td align="center">ぴったりな</td>
+<td align="center">~</td>
+</tr>
+<tr>
+<td align="center">worth</td>
+<td align="center">值得的 ~ 值錢的</td>
+<td align="center">値して</td>
+<td align="center">あたいした</td>
+</tr>
+<tr>
+<td align="center">perfect ~ ideal&#x2F;aɪˈdiː.əl&#x2F;</td>
+<td align="center">理想的</td>
+<td align="center">理想的な ~ 完璧な</td>
+<td align="center">りそうてきな ~</td>
+</tr>
+<tr>
+<td align="center">omnipotent&#x2F;ɑːmˈnɪp.ə.t̬ənt&#x2F;</td>
+<td align="center">全能的 ~ 萬能的 ~無所不能的</td>
+<td align="center">全能の</td>
+<td align="center">ぜんのうの</td>
+</tr>
+<tr>
+<td align="center">tight</td>
+<td align="center">緊身的</td>
+<td align="center">ピチピチな</td>
+<td align="center">ぴちぴちな</td>
+</tr>
+<tr>
+<td align="center">baggy</td>
+<td align="center">寬鬆的</td>
+<td align="center">ブカブカな</td>
+<td align="center">ぶかぶかな</td>
+</tr>
+<tr>
+<td align="center">some ~ several</td>
+<td align="center">幾個</td>
+<td align="center">幾つかの</td>
+<td align="center">いくつかの</td>
+</tr>
+<tr>
+<td align="center">luxurious</td>
+<td align="center">奢華的</td>
+<td align="center">贅沢な</td>
+<td align="center">ぜいたくな</td>
+</tr>
+<tr>
+<td align="center">contrastive</td>
+<td align="center">對照的</td>
+<td align="center">対照的な</td>
+<td align="center">たいしょうてきな</td>
+</tr>
+<tr>
+<td align="center">literal</td>
+<td align="center">文字上的 ~ 字面上的 ~ 不誇張的</td>
+<td align="center">文字通り</td>
+<td align="center">もじどおり</td>
+</tr>
+<tr>
+<td align="center">round</td>
+<td align="center">圓的</td>
+<td align="center">丸い</td>
+<td align="center">まるい</td>
+</tr>
+<tr>
+<td align="center">square</td>
+<td align="center">方的</td>
+<td align="center">方形の</td>
+<td align="center">ほうけいの</td>
+</tr>
+<tr>
+<td align="center">flexible&#x2F;ˈflek.sə.bəl&#x2F;</td>
+<td align="center">可變動的 ~ 靈活的 ~可變通的</td>
+<td align="center">柔軟な</td>
+<td align="center">じゅうなんな</td>
+</tr>
+<tr>
+<td align="center">resilient&#x2F;rɪˈzɪl.jənt&#x2F; ~ elastic</td>
+<td align="center">有彈力的</td>
+<td align="center">弾力のある ~ 弾力性がある</td>
+<td align="center">だんりょくのある ~ だんりょくせいがある</td>
+</tr>
+<tr>
+<td align="center">applied</td>
+<td align="center">申請的</td>
+<td align="center">申し込んだ</td>
+<td align="center">もうしこんだ</td>
+</tr>
+</tbody></table>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/jpadj/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/jpstudy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/snowy_smile.jpg">
+      <meta itemprop="name" content="snowy_smile">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Snowy Study">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/jpstudy/" class="post-title-link" itemprop="url">SNOWY SMILEは日本語の勉強を頑張ります！</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-12-06 23:56:21" itemprop="dateCreated datePublished" datetime="2021-12-06T23:56:21+09:00">2021-12-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-01-23 14:00:27" itemprop="dateModified" datetime="2022-01-23T14:00:27+09:00">2022-01-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Japanese-Study/" itemprop="url" rel="index"><span itemprop="name">Japanese Study</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="五十音-あいうえお"><a href="#五十音-あいうえお" class="headerlink" title="五十音 - あいうえお"></a>五十音 - あいうえお</h1><p>Practical Japanese Study with English and Chinese Comparision</p>
+<div style="width:90%; height:90%; margin-left:auto; margin-right:auto;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GRESaMB4iAQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+</div>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/interview/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/snowy_smile.jpg">
+      <meta itemprop="name" content="snowy_smile">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Snowy Study">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/interview/" class="post-title-link" itemprop="url">Algorithm Training for the Interview</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-09-26 20:23:18" itemprop="dateCreated datePublished" datetime="2021-09-26T20:23:18+09:00">2021-09-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-01-23 13:54:38" itemprop="dateModified" datetime="2022-01-23T13:54:38+09:00">2022-01-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Welcome to the algorithm programming world! As someone with a dream of becoming an algorithm teacher, I will be glad to help :D~</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/interview/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/chinese/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/snowy_smile.jpg">
+      <meta itemprop="name" content="snowy_smile">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Snowy Study">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/chinese/" class="post-title-link" itemprop="url">Chinese> Traditional ↔ Simplified 繁簡漢字</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-09-26 16:57:49" itemprop="dateCreated datePublished" datetime="2021-09-26T16:57:49+09:00">2021-09-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-01-23 13:58:31" itemprop="dateModified" datetime="2022-01-23T13:58:31+09:00">2022-01-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Chinese-Study/" itemprop="url" rel="index"><span itemprop="name">Chinese Study</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>I don't deny there are characters I like better in Simplified Chinese, but there are many more reasons to use Traditional Chinese for me.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/chinese/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/jpcharacters/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/snowy_smile.jpg">
+      <meta itemprop="name" content="snowy_smile">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Snowy Study">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/jpcharacters/" class="post-title-link" itemprop="url">Japansese Baisc Characters</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-09-26 12:09:01" itemprop="dateCreated datePublished" datetime="2021-09-26T12:09:01+09:00">2021-09-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-01-23 13:59:32" itemprop="dateModified" datetime="2022-01-23T13:59:32+09:00">2022-01-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Japanese-Study/" itemprop="url" rel="index"><span itemprop="name">Japanese Study</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>日本語を勉強しましょう！</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/jpcharacters/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/cnmusic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/snowy_smile.jpg">
+      <meta itemprop="name" content="snowy_smile">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Snowy Study">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/cnmusic/" class="post-title-link" itemprop="url">Chinese Music I like</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-09-26 11:48:25" itemprop="dateCreated datePublished" datetime="2021-09-26T11:48:25+09:00">2021-09-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-12-07 00:16:45" itemprop="dateModified" datetime="2021-12-07T00:16:45+09:00">2021-12-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Music/" itemprop="url" rel="index"><span itemprop="name">Music</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Music/CNmusic/" itemprop="url" rel="index"><span itemprop="name">CNmusic</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="平凡之路-朴樹"><a href="#平凡之路-朴樹" class="headerlink" title="平凡之路 - 朴樹"></a>平凡之路 - 朴樹</h1><div style="width:90%; height:90%; margin-left:auto; margin-right:auto;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PBSUSO0t6QQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+</div>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/cnmusic/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/markdown/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/snowy_smile.jpg">
+      <meta itemprop="name" content="snowy_smile">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Snowy Study">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/markdown/" class="post-title-link" itemprop="url">Markdown</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-09-19 20:26:33" itemprop="dateCreated datePublished" datetime="2021-09-19T20:26:33+09:00">2021-09-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-01-11 14:23:24" itemprop="dateModified" datetime="2022-01-11T14:23:24+09:00">2022-01-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Coding-Language/" itemprop="url" rel="index"><span itemprop="name">Coding Language</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Coding-Language/Markdown/" itemprop="url" rel="index"><span itemprop="name">Markdown</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Hi there ~</p>
+<!--
+This is a comment
+-->
+
+<h1 id="Font"><a href="#Font" class="headerlink" title="Font"></a>Font</h1><h2 id="Head"><a href="#Head" class="headerlink" title="Head"></a>Head</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># h1 Heading</span><br><span class="line">## h2 Heading</span><br><span class="line">### h3 Heading</span><br><span class="line">#### h4 Heading</span><br><span class="line">##### h5 Heading</span><br><span class="line">###### h6 Heading</span><br></pre></td></tr></table></figure>
+
+<h2 id="Bold"><a href="#Bold" class="headerlink" title="Bold"></a>Bold</h2><p><strong>Bold</strong>  or  <strong>Bold</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**Bold**  or  __Bold__</span><br></pre></td></tr></table></figure>
+
+<h2 id="Italics"><a href="#Italics" class="headerlink" title="Italics"></a>Italics</h2><p><em>Bold</em>  or  <em>Bold</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*Bold*  or  _Bold_</span><br></pre></td></tr></table></figure>
+
+<h2 id="Bold-amp-amp-Italics"><a href="#Bold-amp-amp-Italics" class="headerlink" title="Bold &amp;&amp; Italics"></a>Bold &amp;&amp; Italics</h2><p><em><strong>Bold</strong></em>  or  <em><strong>Bold</strong></em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">***Bold***  or  ___Bold___</span><br></pre></td></tr></table></figure>
+
+<h2 id="Strikethrough"><a href="#Strikethrough" class="headerlink" title="Strikethrough"></a>Strikethrough</h2><p><del>Stikethrough</del></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~~Stikethrough~~</span><br></pre></td></tr></table></figure>
+
+<h1 id="Symbols"><a href="#Symbols" class="headerlink" title="Symbols"></a>Symbols</h1><h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><blockquote>
+<ol>
+<li><ol start="2">
+<li><ol start="3">
+<li></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<ol>
+<li>This is 1-</li>
+<li>This is 2-</li>
+<li>This is 3-</li>
+</ol>
+<blockquote>
+<p>+ + +</p>
+</blockquote>
+<ul>
+<li>This is 1-</li>
+<li>This is 2-</li>
+<li>This is 3-</li>
+</ul>
+<h3 id="Symbols-⏸"><a href="#Symbols-⏸" class="headerlink" title="Symbols ⏸"></a>Symbols ⏸</h3><p><a target="_blank" rel="noopener" href="https://unicode-table.com/en/">unicode-table</a></p>
+<table>
+<thead>
+<tr>
+<th align="center">Symbol ~ Punctuation</th>
+<th align="center">UTF-8 Code</th>
+<th align="center">English</th>
+<th align="center">漢語</th>
+<th align="center">日語</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">¦</td>
+<td align="center">U+00A6</td>
+<td align="center">Broken Bar</td>
+<td align="center">間斷線</td>
+<td align="center">壊れたバー &#x3D; こわれたバー</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">U+007C</td>
+<td align="center">Vertical Line</td>
+<td align="center">垂線</td>
+<td align="center">垂直線 &#x3D; すいちょくせん</td>
+</tr>
+<tr>
+<td align="center">‖</td>
+<td align="center">U+2016</td>
+<td align="center">Double Vertical Line</td>
+<td align="center">雙垂線</td>
+<td align="center">二重縦線 &#x3D; にじゅうじゅうせん</td>
+</tr>
+</tbody></table>
+<h3 id="Blank-Space"><a href="#Blank-Space" class="headerlink" title="Blank Space"></a>Blank Space</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Monospaced Font is necessary</span><br><span class="line">&amp;nbsp; = space[width1]  &amp;nbsp; = space[width2]  &amp;emsp; = space[width4]</span><br></pre></td></tr></table></figure>
+
+<h3 id="Blank-Line"><a href="#Blank-Line" class="headerlink" title="Blank Line"></a>Blank Line</h3><blockquote>
+<p>&lt; br&#x2F;&gt;</p>
+</blockquote>
+<h3 id="Split-Line"><a href="#Split-Line" class="headerlink" title="Split Line"></a>Split Line</h3><hr>
+<hr>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">---  or  ***  or  ___</span><br></pre></td></tr></table></figure>
+
+<p>This is the <a target="_blank" rel="noopener" href="https://www.markdownguide.org/basic-syntax/">referrence</a></p>
+<blockquote>
+<p>[name]’(url) </p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
       }
     }
-    detectApple()
-    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">38</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">12</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> about</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-th"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> archives</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Snowy Study</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> home</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-user"></i><span> about</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-th"></i><span> categories</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> archives</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Snowy Study</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/mottos/" title="Mottos"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mottos"></a></div><div class="recent-post-info"><a class="article-title" href="/mottos/" title="Mottos">Mottos</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-06T11:34:29.000Z" title="Created 2022-09-06 20:34:29">2022-09-06</time></span></div><div class="content"></div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022-August/" title="2022 August"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2022 August"></a></div><div class="recent-post-info"><a class="article-title" href="/2022-August/" title="2022 August">2022 August</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-04T09:54:36.000Z" title="Created 2022-09-04 18:54:36">2022-09-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/MyLife/">MyLife</a></span></div><div class="content">PrologueI have a habit to write down something every day, it’s private and sometimes very short and unorganized.But I think, I should start to write something better and more formal.Even it can’t be every day, at least every month.Okay, this is the plan now 😳
-It has been more than 2 years since I moved here, the peaceful beautiful small town in Yonago, Japan.I didn’t feel happy for the past two years; on the contrary, I felt extremely lonely. It is my choice anyway, and also, getting tricked of ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/emoji/" title="Emoji 絵文字">Emoji 絵文字</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-28T06:27:24.000Z" title="Created 2022-08-28 15:27:24">2022-08-28</time></span></div><div class="content">Emoji &#x2F;iˈmoʊ.dʒi&#x2F; | 表情符號 ~ 繪文字 | 絵文字 | えもじ
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
 
+  <aside class="sidebar">
+    <div class="sidebar-inner">
 
-Emoji
-Unicode(HTML~CSS)
-Name
-IME Input
-Kanji
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
 
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
 
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="snowy_smile"
+      src="/images/snowy_smile.jpg">
+  <p class="site-author-name" itemprop="name">snowy_smile</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+  </nav>
+</div>
 
-♬
-266C
-Beamed Sixteenth Notes
-~
-~
 
 
-🌌
-0x1F30C
-Milky Way
-：ほしぞら：よぞら：ぎんが：てんのかわ
-星空 ~ 夜空 ~ 銀河 ~ 天の川
+      </div>
 
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
 
-🎮
-0x1F3AE
-Video Game
-：びでおげーむ
-~
 
+      </div>
+    </main>
 
-🎵
-0x1F3B5
-Musical Note
-：おんぷ
-音符
+    <footer class="footer">
+      <div class="footer-inner">
+        
 
+        
 
-😇
-0x1F607
-Smiling Face with Halo
-：てんしのわ
-天使の輪
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">snowy_smile</span>
+</div>
 
+        
 
-😳
-0x1F633
-Flushed Face ~ Face with Wide Open Eyes
-：せきめん
-赤面
 
 
-🥰
-0x1F970
-Smiling Face with Hearts
-：むちゅ：はーとのえがお
-夢中
 
 
-🦠
-0x1F9A0
-Microbe
-：さいきん：ウイルス
-細菌
 
 
-🧒
-0x1F9D2
-Child
-：こども
-子供
 
+      </div>
+    </footer>
+  </div>
 
-🎤
-0x ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/jpnoun/" title="Noun 名詞 めいし">Noun 名詞 めいし</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-13T08:43:52.000Z" title="Created 2022-08-13 17:43:52">2022-08-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Japanese-Study/">Japanese Study</a></span></div><div class="content">.
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-Place 場所 場所 ばしょ
+<script src="/js/utils.js"></script>
 
+<script src="/js/motion.js"></script>
 
-English
-漢語
-日本語Nihongo
-片仮名Katakana
 
+<script src="/js/schemes/pisces.js"></script>
 
 
-place
-場所
-場所
-ばしょ
+<script src="/js/next-boot.js"></script>
 
 
-environment ~ surroundings
-環境
-環境
-かんきょう
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
 
 
-atmosphere
-氛圍
-雰囲気
-ふんいき
+  
 
 
-region
-地區
-地方
-ちほう
 
 
-location
-地點
-所
-ところ
+  
+<script src="/js/local-search.js"></script>
 
 
-country
-國
-国
-くに
 
 
-prefecture
-省
-県
-けん
 
 
-state
-州
-州
-しゅ
 
 
-city
-市 ~ 都市
-市 ~ 都市 ~ 都会
-し ~ とし ~ とかい
 
 
-village
-村
-村
-むら
 
 
-countryside ~ suburb&#x2F;ˈsʌb.ɝːb&#x2F;
-鄉村
-田舎 ~ 郊外
-いなか ~ こうがい
 
+  
 
-field
-農田 ~ 稻田
-田んぼ
-たんぼ
+  
 
-
-castle
-城堡
-城🏰
-しろ
-
-
-town
-街區
-町 ~ 街 ~ 坊
-まち
-
-
-neibo(u)rhood
-街坊
-近所
-きんじょ
-
-
-road ~ way ~ path ~ street
-道路
-道 ~ 路 ~ 道路
-みち ~ どうろ
-
-
-s ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/test/" title="Accelerate Test">Accelerate Test</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-05-23T03:17:39.000Z" title="Created 2022-05-23 12:17:39">2022-05-23</time></span></div><div class="content">
-
-</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/mycpp/" title="Mycpp Study">Mycpp Study</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-02-22T13:22:22.000Z" title="Created 2022-02-22 22:22:22">2022-02-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Coding-Language/">Coding Language</a></span></div><div class="content">make_pair
-for (auto &amp;it : ) {
-}
-</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/CodingEnglish/" title="Coding English 編程英語 コーディング英語">Coding English 編程英語 コーディング英語</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-02-22T01:00:00.000Z" title="Created 2022-02-22 10:00:00">2022-02-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Algorithm/">Algorithm</a></span></div><div class="content">https://unicode-table.com/en/Unicode Characters
-(Keyboard) Symbols ~ Punctuation Marks 記号 きごう ~ 句読点 くとうてん
-
-
-Unicode
-Symbol
-English
-漢語
-日本語
-ひらがな
-HTML
-
-
-
-U+0020
-
-space
-空格
-スペース
-すべーす
-&amp;#32 ;
-
-
-U+0021
-!
-exclamation mark&#x2F;ˌɛksklə’meʃən&#x2F;
-感歎號
-感嘆符
-かんたんふ
-&amp;#33 ;
-
-
-U+0022
-“
-quotation mark
-引號
-引用符
-いいにょうふ
-&amp;#34 ;
-
-
-U+0023
-#
-number sign ~ hash ~ pond
-井號
-番号記号
-ばんごうきごう
-&amp;#35 ;
-
-
-U+0024
-$
-dollar sign
-美元符號
-ドル記号
-どるきごう
-&amp;#36 ;
-
-
-U+0025
-%
-percent sign
-百分號
-パーセント記号
-ぱーせんとぎごう
-&amp;#37 ;
-
-
-U+0026
-&am ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/jpmusic/" title="Japanese Music I like">Japanese Music I like</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-02-21T16:21:56.000Z" title="Created 2022-02-22 01:21:56">2022-02-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Music/">Music</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Music/JPmusic/">JPmusic</a></span></div><div class="content">日本語の歌 (nihongo no uta) ~
-
-
-
-愛にできることはまだあるかいai ni dekiru koto wa mada aru kaiIs There Still Anything That Love Can Do?還有什麼事是愛能夠做到的嗎？🎤by RADWIMPS
-
-
-
-
-
-
-Lyrics
-Secret Base 〜君がくれたもの〜Secret Base (Kimi ga Kureta Mono)Secret Base ～你對我的意義～
-
-
-
-
-
-打上花火Uchiage Hanabi放煙火🎤by DAOKO×米津玄師
-
-
-
-
-
-なんでもないやNan demonai ya沒什麼大不了🎤by Akie秋繪 -RADWIMPS(cover)
-
-
-
-
-
-スパークル [original ver.] Your name
-
-
-
-
-ハレハレヤhare hare yasunny sunny yo朗朗晴天🎤by 貓瑾醒了嗎
-
-
-
-
-
-約束yaku sokurestraint約束🎤by Akie秋繪
-
-
-
-
-
-心做しkokoro nashi心做し🎤by 雙笙
-
-
-
-
-心拍数  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/enmusic/" title="English Music I like">English Music I like</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-02-13T02:48:19.000Z" title="Created 2022-02-13 11:48:19">2022-02-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Music/">Music</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Music/ENmusic/">ENmusic</a></span></div><div class="content">Try Everything🎤by Shakira
-
-
-
-
-
-
-Traveling Light🎤by Joel Hanson, Sara Groves
-
-
-
-
-
-Faded🎤by Alan Walker
-
-
-
-
-
-Hello🎤by Adele
-
-
-
-
-
-Let Her Go🎤by Passenger
-
-
-
-
-
-Dream It Possible🎤by Delacey
-
-
-
-
-Another
-Good Time🎤by Owl City &amp; Carly Rae Jepsen
-
-
-
-
-
-City of Stars &#x2F; May Finally Come True
-
-
-
-Another
-</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/oldqzone/" title="From my Qzone when I was trying to love the world 我的QQ空間備份">From my Qzone when I was trying to love the world 我的QQ空間備份</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-01-22T05:55:28.000Z" title="Created 2022-01-22 14:55:28">2022-01-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/MyLife/">MyLife</a></span></div><div class="content">These are the old articles I wrote years ago,Here is just a copy to keep them.
-2012碧蓝的天空，自由地徜徉 2012-6-14
-QQ空间已经有三年没有开放过了，嘻嘻~_~是整整一个高中的长度吧...现在，我要写点东西。不是我想要回忆，只是需要铭记...
-高考已经结束，那一份稍稍压迫的心也可以更加自在地呼吸了。至于考得怎么样，呵呵，还好吧，没有超常发挥也不至于崩盘。如今只是怀着一种平和的心态等待着成绩下发。经历了这大大小小的失败和挫折，终于，真的，做到宠辱不惊了~_~
-
-就算我曾经以为自己已经失去了一切，也慢慢地开始相信，梦想绝不会毁灭一个人，只能成就一个人！现实怎样，未来怎样，都不会再阻止我前进的脚步了。听到过很多遍，但最近才慢慢品出这句话的味道——“真的勇士，敢于直面惨淡的人生，敢于正视淋漓的鲜血。”我已经决定迎接我接下来的人生了，不论我到此为止走过的所有路是铺设下一个easy难度的锦绣前程，还是摆开一道hell模式般重重叠叠的考验，既然已经不再是我可以选择的决定，那么，我所要做的一切便是——勇往直前！ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/vimstudy/" title="vimstudy">vimstudy</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-01-14T08:07:16.000Z" title="Created 2022-01-14 17:07:16">2022-01-14</time></span></div><div class="content">study
-Delete
-
-
-Function
-Hot Key
-
-
-
-delete all
-:%d
-
-
-delete one line
-dd
-
-
-delete one line after cursor
-d$
-
-
-CutCopyPaste</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/gostudy/" title="gostudy">gostudy</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-01-14T02:51:37.000Z" title="Created 2022-01-14 11:51:37">2022-01-14</time></span></div><div class="content"></div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/cppstudy/" title="cppstudy">cppstudy</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-01-14T02:51:32.000Z" title="Created 2022-01-14 11:51:32">2022-01-14</time></span></div><div class="content"></div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/world/" title="To know the world better">To know the world better</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-01-13T07:13:00.000Z" title="Created 2022-01-13 16:13:00">2022-01-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/World/">World</a></span></div><div class="content">Time
-
-
-
-Time Zone 時區時間帯 じかんたいUTC &#x3D; Coordinated Universal TimeGMT &#x3D; Greenwich Mean TimeETC &#x3D; Eastern Standard Time &#x3D; UTC-5EDT &#x3D; Eastern Daylight Time &#x3D; UTC-4
-
-
-
-TimeZone
-English
-漢語
-日本語Nihongo
-片仮名Katakana
-
-
-
-GMT+2
-Ukraine&#x2F;ju:’krein&#x2F; (all)
-
-
-
-
-
-GMT+8
-China (all)
-
-
-
-
-
-GMT+9
-Japan (all)
-日本
-日本
-にほん
-
-
-GMT+9
-South Korean (all)
-
-
-
-
-
-Languages
-
-</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/multilanguages/" title="multilanguages">multilanguages</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-01-07T02:01:04.000Z" title="Created 2022-01-07 11:01:04">2022-01-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/World/">World</a></span></div><div class="content">HiJapnaese:   こんにちは&#x3D;konnichiwaKorean:     안녕하세요&#x3D;annyeonghaseyoChinese:    你好&#x3D;nihaoItalian:    Ciao&#x3D;&#x2F;tʃaʊ&#x2F;
-GoodbyeJapnaese:   さようなら&#x3D;sayounaraKorean:     안녕&#x3D;annyeongChinese:    再見&#x3D;zaijianItalian:    Ciao&#x3D;&#x2F;tʃaʊ&#x2F; ~ arrivederci&#x3D;ar·ri·ve·dér·ci
-</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/jpsentence/" title="Sentence 文 ぶん">Sentence 文 ぶん</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-01-01T10:41:31.000Z" title="Created 2022-01-01 19:41:31">2022-01-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Japanese-Study/">Japanese Study</a></span></div><div class="content">.
-
-
-Greeting 問候 挨拶する あいさつ
-Happy New Year 新年快樂明けましておめでとう あけましておめでとう
-
-
-Good morning 早安お早うございます おはようございます
-
-
-Hello ~ Good afternoon 你好 ~ 午安今日は こんにちは
-
-
-Good evening 晚安今晩は こんばんは
-
-
-Goodbye 再見またね　- さようなら
-
-
-Long time no see 好久不見久しぶり ひさしぶり
-
-
-Please take care of yourselfどうぞお大事になさってください 大事&#x3D;だいじ
-
-
-Cheer up!元気を出して ~ 元気つける—–da
-
-
-I don’t feel well私は具合が悪いです—guaii warui
-
-
-Get well soon!お大事に！–daiji
-
-
-Have a great new year! Happy holidays!良いお年を よいおとしを
-
-
-Happy New Year!明けましておめでとうございますa
-
-
-Merry Christmasメリークリスマス！ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/jpadverb/" title="Adverb 副詞 ふくし | Conjunction 接続詞 せつぞくし">Adverb 副詞 ふくし | Conjunction 接続詞 せつぞくし</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-12-30T11:25:09.000Z" title="Created 2021-12-30 20:25:09">2021-12-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Japanese-Study/">Japanese Study</a></span></div><div class="content">.
-
-
-NOT SURE
-Adverb 副詞 副詞 ふくしTime
-
-
-English
-漢語
-辞書形
-片仮名Katakana
-
-
-
-always ~ continuously ~ the whole time
-總是
-いつも ~ ずっと
-~
-
-
-almost&#x2F;ˈɑːl.moʊst&#x2F; ~ mostly
-幾乎
-ほとんど
-~
-
-
-hardly
-幾乎不
-ほとんどない
-~
-
-
-usually ~ generally ~ commonly
-大抵上 ~ 通常
-大抵 ~ 何時もは
-たいてい ~ いつもは
-
-
-rarely&#x2F;ˈrer.li&#x2F; ~ occasionly ~ once in a while
-偶爾
-偶に
-たまに
-
-
-sometimes
-常常
-時々 ~　時には
-ときどき ~ ときには
-
-
-just now
-剛才
-さっき ~ ばかり
-さっき ~ ばかり
-
-
-soon
-很快地
-そろそろ ~ 間も無く
-そろそろ ~ まもなく
-
-
-directly ~ straight
-直接地 ~ 径直地
-真っ直ぐ
-まっすぐ
-
-
-leisurely ~ slowly
-慢慢地
-ゆっく ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/jpverb/" title="Verb 動詞 どうし">Verb 動詞 どうし</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-12-27T08:59:24.000Z" title="Created 2021-12-27 17:59:24">2021-12-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Japanese-Study/">Japanese Study</a></span></div><div class="content">
-
-
-
-
-
-Transitive Verb 及物動詞 他動詞 たどうし(を)開ける (を)あける(場所 + を + 移動動詞 &#x3D; 自動詞)InTrasitive Verb 不及物動詞 自動詞 じどうし開ける ひらける 
-Subject 主語 主語 しゅごObject 賓語 目的語 もくてきご
-Passive Voice 被動語態 受動態 じゅどうたい
-It is not only for the passive voice, there are four uses.四つの用途があります。study link受身助動詞 うけみじょどうし可能助動詞 かのうじょどうし自発助動詞 じはつじょどうし尊敬助動詞 そんけいじょどうし
-Past Tense 過去式 過去形 かこけい
-Tense Transformation (時制)変換 (じせい)へんかん
-辞書形 to てけいI類 「う、つ、る」→「って」I類 「ぬ、ぶ、む」→「んで」I類 「く」→「いて」I類 「ぐ」→「いで」I類 「す」→「して」I類 「行く (いく)」→「行って (いって)」Ⅱ類 「る」→「て」Ⅲ類「来る(くる)」→「 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/pystudy/" title="Start to Use Python to Solve Algorithm Problems">Start to Use Python to Solve Algorithm Problems</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-12-16T11:22:48.000Z" title="Created 2021-12-16 20:22:48">2021-12-16</time></span></div><div class="content">Basic functionsFor123a = [&quot;hello&quot;, 1, 0.5]for i, v in enumerate(a):    print(i, v)
-Output:
-
-0 hello1 12 0.5
-
-
-While123456while True:    try:        n = int(input())        ...    except EOFError:        break
-
-Operations12345x = 5 #101(Base2)y = 3 #011(Base2)print(x + y, x - y, x * y, x / y)print(x ** y, x // y, x % y)print(x &amp; y, x | y, x ^ y, x &lt;&lt; y, x &gt;&gt; y)
-Output:
-
-8 2 15 1.6666666666666667125 1 21 7 6 40 0
-
-
-Min Max1234a, b, c = 1, 3, 2mn = min(a, b, c)mx = max(a,  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/myanticcp/" title="Why am I standing against the Chinese Communist Party?">Why am I standing against the Chinese Communist Party?</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-12-14T08:36:23.000Z" title="Created 2021-12-14 17:36:23">2021-12-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/MyLife/">MyLife</a></span></div><div class="content">為什麼我反對中國共產黨
-
-前言在我25歲之前，自己都可謂是個「愛國者」。有點類似於「粉紅」，但卻從未變得極端。
-在我處於並不瞭解政治的「愛國者」的時候，卻也時常在想，為什麼我要愛國 ——因為我的父母，我自己，出生時的便籤也便是中國人。在一路成長中，也曾經遇到了一些美好的中國人。
-我在接受的歷史教育中，中國是一個偉大的文明發源國，是禮儀之邦，是個善良友好的國家，但是卻在百年中蒙受屈辱。我被教育說「叢林社會，弱肉強食」、「落後就要捱打」，而「少年強則國強」，我們便要「奮發圖強」、以「振興中華」。
-其實這個邏輯還滿順暢的，而中國的信息防火牆和篩刪制度讓很多人都一直以為這就是世界的真相。對於我自己，雖然一直喜歡電腦，大學也是計算機專業，卻並沒怎麼產生過翻牆的需求。在小學的時候，Google還未退出中國，其實曾經不記緣由地瀏覽過相關「六四屠殺」的一些信息。但是那時候我並沒有勇氣看下去和追究下去。我並不喜歡政治，讀書時一直為高考或者為理想所佔走了時間；在學習之於，有時間也更願意用電腦多打會兒遊戲。而真的開始去探索政治與歷史的真相，已是2019年在COVID-19爆發後了……
-我也曾是個愛國青年從小 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/sabwt/" title="From Suffix Array To Burrows-Wheeler Transform">From Suffix Array To Burrows-Wheeler Transform</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-12-13T05:26:24.000Z" title="Created 2021-12-13 14:26:24">2021-12-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Algorithm/">Algorithm</a></span></div><div class="content">
-BWT: Burrows-Wheeler TransformSA: Suffix Array
-
-Suffix Array | 後綴數組 | 接尾辞配列（せつびじはいれつ）
-s[]: the basic string, define it starts from index 1 and ends at index n with length(s) &#x3D; n    s[i] means the i-th character of ssa[]: the order of the all suffix of s    sa[i] means the i-th smallest suffix of allrk[]: the order of the i-th suffix of s    rk[i] means the rank(from small to big) of the i-th suffix
-sa[rk[i]] &#x3D; rk[sa[i]] &#x3D; i
-How to calculate SAdefine ss[l][i] as a substring of s,  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/jpadj/" title="Adjective 形容詞 けいようし">Adjective 形容詞 けいようし</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-12-11T14:33:33.000Z" title="Created 2021-12-11 23:33:33">2021-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Japanese-Study/">Japanese Study</a></span></div><div class="content">List of Japanese Adjective on Wiki
-Synonym(s)[ˈsinəˌnim] &#x3D; 近義詞 &#x3D; 同義語[どうぎご]
-Antonym(s)[ˈan(t)əˌnim] &#x3D; 反義詞 &#x3D; 対義語[たいぎご]
-Color 色 いろ
-
-
-English
-漢語
-日本語Nihongo
-片仮名Katakana
-
-
-
-black
-黑色的
-黒い⬛
-くろい
-
-
-white
-白色的
-白い⬜
-しろい
-
-
-dark
-灰暗的
-暗い
-くらい
-
-
-bright
-明亮的 ~ 光明的
-明るい
-あかるい
-
-
-red
-紅色的
-赤い ~ 紅い🟥
-あかい
-
-
-orange
-橙色的
-オレンジ色の🟧
-~
-
-
-yellow
-黃色的
-黄色い🟨
-きいろい
-
-
-green
-綠色的
-緑色の🟩
-みどりいろの
-
-
-blue
-藍色的
-青い ~ 碧い🟦
-あおい
-
-
-dark blue ~ navy&#x2F;ˈneɪ.vi&#x2F; blue
-紺色的
-紺色の
-こんいろの
-
-
-purple
-紫色的
-紫色の🟪
-むらさきいろの
-
-
-dark brown ~ tobi
-鳶色的 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/Index/" title="Index">Index</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-12-07T09:32:06.000Z" title="Created 2021-12-07 18:32:06">2021-12-07</time></span></div><div class="content">
-世界、宇宙、科學、神學
-文學、電影、動漫、音樂
-社會、政治、歷史、新聞
-算法、編程、面試、工作
-技術、工具、學習、創造
-遊戲、娛樂、競技、愛好
-生活、旅遊、寵物、美食
-金融、投資、好物、推薦
-個人成長、心路歷程</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/jpstudy/" title="SNOWY SMILEは日本語の勉強を頑張ります！">SNOWY SMILEは日本語の勉強を頑張ります！</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-12-06T14:56:21.000Z" title="Created 2021-12-06 23:56:21">2021-12-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Japanese-Study/">Japanese Study</a></span></div><div class="content">五十音 - あいうえおPractical Japanese Study with English and Chinese Comparision
-
-
-
-
-</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/IsThereStillAnythingThatLoveCanDo/" title="『JP/EN/CN』愛にできることはまだあるかい">『JP/EN/CN』愛にできることはまだあるかい</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-09-28T23:26:02.000Z" title="Created 2021-09-29 08:26:02">2021-09-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Music/">Music</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Music/JPmusic/">JPmusic</a></span></div><div class="content">
-
-
-
-
-
-愛にできることはまだあるかい？ai ni dekiru koto wa mada aru kaiIs There Still Anything That Love Can Do?還有什麼事是愛能夠做到的嗎？
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/interview/" title="Algorithm Training for the Interview">Algorithm Training for the Interview</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-09-26T11:23:18.000Z" title="Created 2021-09-26 20:23:18">2021-09-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Algorithm/">Algorithm</a></span></div><div class="content">Personal IntroductionI was born and grew up in China, I went to the university in 2014 and finished it in 2018, studying programming for 4 years. After devoting 10k+ hours, I finished over 4~5k programming problems with record.
-During college, I won the bronze, silver, and gold medals from freshman to junior year respectively. And went to the ICPC World Finals (International Collegiate Programming Contest).
-I passed almost all of my interviews (Alibaba, Baidu, Bytedance, Huawei, etc.) and went t ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/chinese/" title="Chinese&gt; Traditional ↔ Simplified 繁簡漢字">Chinese&gt; Traditional ↔ Simplified 繁簡漢字</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-09-26T07:57:49.000Z" title="Created 2021-09-26 16:57:49">2021-09-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Chinese-Study/">Chinese Study</a></span></div><div class="content">
-
-Input Method 輸入法推薦: 小狼毫Recommend: Rimehttps://rime.im/
-Compare 繁簡對比一，組織類名詞黨（党）、團（团）、國（国）、區（区）、鄉（乡）、廟（庙）、廠（厂）、廳（厅）、
-二，身份類名詞華（华）、漢（汉）、親（亲）、爺（爷）、闆（板）、僕（仆）、傭（佣）、衆（众）、們（们）、聖（圣）、靈（灵）、賓（宾）、龍（龙）、鳳（凤）、蟲（虫）、蠅（蝇）、趙（赵）、農（农）、祂（他）、亞（亚）、堯（尧）、鄰（邻）、夥（伙）、敵（敌）、兩（两）、萬（万）、
-三，事物類名詞職（职）、業（业）、錢（钱）、幣（币）、權（权）、奬（奖）、寶（宝）、禮（礼）、鑽（钻）、鑰（钥）、礙（碍）、壩（坝）、淵（渊）、憲（宪）、劍（剑）、屍（尸）、體（体）、樣（样）、態（态）、藥（药）、癥（症）、傷（伤）、報（报）、樹（树）、葉（叶）、築（筑）、蓋（盖）、營（营）、傘（伞）、風（风）、煙（烟）、塵（尘）、燭（烛）、筆（笔）、簽（签）、寫（写）、藝（艺）、聲（声）、這（这）、個（个）、
-四，動詞產（产）、養（养）、補（补）、戀（恋）、愛（爱）、罷（罢）、滅（灭 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/jpcharacters/" title="Japansese Baisc Characters">Japansese Baisc Characters</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-09-26T03:09:01.000Z" title="Created 2021-09-26 12:09:01">2021-09-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Japanese-Study/">Japanese Study</a></span></div><div class="content">日本語を勉強しましょう！
-
-
-せいおん 清音あ  い  う  え  おか  き  く  け  こさ  し  す  せ  そた  ち  つ  て  とな  に  ぬ  ね  のは  ひ  ふ  へ  ほま  み  む  め  もや      ゆ      よら  り  る  れ  ろわ              を
-だくおん 濁音が	ぎ	ぐ	げ  ござ	じ	ず	ぜ	ぞだ	ぢ	づ	で	どば	び	ぶ	べ	ぼ
-ちょうおん 長音「ー」かあさん（母さん）にいさん（兄さん）くうき（空気）ねえさん（姉さん）
-はつおん 撥音「ん」
-すくおん 促音「っ」「ッ」
-ようおん 拗音開拗音きゃ(kya)	きゅ(kyu)	きょ(kyo)	きの子音による	ぎゃ(gya)	ぎゅ(gyu)	ぎょ(gyo)	ぎの子音による	しゃ(sya&#x2F;sha)	しゅ(syu&#x2F;shu)	しょ(syo&#x2F;sho)	しの子音による	じゃ(zya&#x2F;ja)	じゅ(zyu&#x2F;ju)	じょ(zyo&#x2F;jo)	じの子音による	ちゃ(tya&#x2F;cha)	ちゅ(tyu&#x2F;chu)	ちょ( ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/cnmusic/" title="Chinese Music I like">Chinese Music I like</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-09-26T02:48:25.000Z" title="Created 2021-09-26 11:48:25">2021-09-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Music/">Music</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Music/CNmusic/">CNmusic</a></span></div><div class="content">平凡之路 - 朴樹
-
-
-
-
-
-多美麗 Unreachable - 鄧紫棋 G.E.M
-
-
-
-很久以後 Long After - 鄧紫棋 G.E.M
-
-
-
-岩石裡的花 LOVE FINDS A WAY - 鄧紫棋 G.E.M
-
-
-
-摩天動物園 City Zoo - 鄧紫棋 G.E.M
-
-
-
-曾經我也想過一了百了 - 陳樂一
-      
-
-
-來自天堂的魔鬼 AWAY - 鄧紫棋 G.E.M
-
-
-
-Fly Away - 鄧紫棋 G.E.M
-
-
-
-透明 Selfless - 鄧紫棋 G.E.M
-
-
-
-多遠都要在一起 Long Distance - 鄧紫棋 G.E.M
-
-
-
-畫 - 鄧紫棋 G.E.M
-
-
-
-一路逆風 AGAINST THE WIND - 鄧紫棋 G.E.M
-
-
-
-倒數 TIK TOK - 鄧紫棋 G.E.M
-
-
-
-再見 GOODBYE - 鄧紫棋 G.E.M
-
-
-
-新的心跳 HEARTBEAT - 鄧紫棋 G.E.M
-
-
-
-親愛的旅人啊 - 周深
-
-
-
-一期一會 - 周深
- 
-
-
-女孩你為何踮腳尖 - 雙笙
-
-
-
-海闊天空 - BEYOND
-
-
-
-
-
-
-</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/markdown/" title="Markdown">Markdown</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-09-19T11:26:33.000Z" title="Created 2021-09-19 20:26:33">2021-09-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Coding-Language/">Coding Language</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Coding-Language/Markdown/">Markdown</a></span></div><div class="content">Hi there ~
-
-
-FontHead123456# h1 Heading## h2 Heading### h3 Heading#### h4 Heading##### h5 Heading###### h6 Heading
-
-BoldBold  or  Bold
-1**Bold**  or  __Bold__
-
-ItalicsBold  or  Bold
-1*Bold*  or  _Bold_
-
-Bold &amp;&amp; ItalicsBold  or  Bold
-1***Bold***  or  ___Bold___
-
-StrikethroughStikethrough
-1~~Stikethrough~~
-
-SymbolsList
-
-
-
-
-
-
-
-
-
-
-
-This is 1-
-This is 2-
-This is 3-
-
-
-+ + +
-
-
-This is 1-
-This is 2-
-This is 3-
-
-Symbols ⏸unicode-table
-
-
-
-Symbol ~ Punctuation
-UTF-8 Code
-English
-漢語
-日語
-
-
-
-¦
-U+00A6
-B ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">snowy_smile</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">38</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">12</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/mottos/" title="Mottos"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mottos"/></a><div class="content"><a class="title" href="/mottos/" title="Mottos">Mottos</a><time datetime="2022-09-06T11:34:29.000Z" title="Created 2022-09-06 20:34:29">2022-09-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022-August/" title="2022 August"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2022 August"/></a><div class="content"><a class="title" href="/2022-August/" title="2022 August">2022 August</a><time datetime="2022-09-04T09:54:36.000Z" title="Created 2022-09-04 18:54:36">2022-09-04</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/emoji/" title="Emoji 絵文字">Emoji 絵文字</a><time datetime="2022-08-28T06:27:24.000Z" title="Created 2022-08-28 15:27:24">2022-08-28</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/jpnoun/" title="Noun 名詞 めいし">Noun 名詞 めいし</a><time datetime="2022-08-13T08:43:52.000Z" title="Created 2022-08-13 17:43:52">2022-08-13</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/test/" title="Accelerate Test">Accelerate Test</a><time datetime="2022-05-23T03:17:39.000Z" title="Created 2022-05-23 12:17:39">2022-05-23</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
-            <i class="fas fa-folder-open"></i>
-            <span>Categories</span>
-            <a class="card-more-btn" href="/categories/" title="More">
-    <i class="fas fa-angle-right"></i></a>
-            </div>
-            <ul class="card-category-list" id="aside-cat-list">
-            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Algorithm/"><span class="card-category-list-name">Algorithm</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Chinese-Study/"><span class="card-category-list-name">Chinese Study</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Coding-Language/"><span class="card-category-list-name">Coding Language</span><span class="card-category-list-count">2</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Coding-Language/Markdown/"><span class="card-category-list-name">Markdown</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Japanese-Study/"><span class="card-category-list-name">Japanese Study</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Music/"><span class="card-category-list-name">Music</span><span class="card-category-list-count">4</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Music/CNmusic/"><span class="card-category-list-name">CNmusic</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Music/ENmusic/"><span class="card-category-list-name">ENmusic</span><span class="card-category-list-count">1</span></a></li></ul></li>
-            </ul></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span><a class="card-more-btn" href="/archives/" title="More">
-    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/09/"><span class="card-archive-list-date">September 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/08/"><span class="card-archive-list-date">August 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/05/"><span class="card-archive-list-date">May 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/02/"><span class="card-archive-list-date">February 2022</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/01/"><span class="card-archive-list-date">January 2022</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/12/"><span class="card-archive-list-date">December 2021</span><span class="card-archive-list-count">8</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/09/"><span class="card-archive-list-date">September 2021</span><span class="card-archive-list-count">8</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/06/"><span class="card-archive-list-date">June 2021</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">38</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-09-06T12:51:41.123Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By snowy_smile</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+</body>
+</html>
