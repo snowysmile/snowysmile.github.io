@@ -16814,6 +16814,8 @@ This is a comment
 <h2 id="Italics"><a href="#Italics" class="headerlink" title="Italics"></a>Italics</h2><p><em>Bold</em>  or  <em>Bold</em></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">*Bold*  or  _Bold_</span><br></pre></td></tr></table></figure>
 
+<span id="more"></span>
+
 <h2 id="Bold-amp-amp-Italics"><a href="#Bold-amp-amp-Italics" class="headerlink" title="Bold &amp;&amp; Italics"></a>Bold &amp;&amp; Italics</h2><p><em><strong>Bold</strong></em>  or  <em><strong>Bold</strong></em></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">***Bold***  or  ___Bold___</span><br></pre></td></tr></table></figure>
 
