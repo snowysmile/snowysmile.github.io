@@ -1,32 +1,167 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Why am I standing against the Chinese Communist Party? | Snowy Study</title><meta name="author" content="snowy_smile"><meta name="copyright" content="snowy_smile"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="為什麼我反對中國共產黨">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Why am I standing against the Chinese Communist Party?">
+<meta property="og:url" content="http://example.com/myanticcp/index.html">
+<meta property="og:site_name" content="Snowy Study">
+<meta property="og:description" content="為什麼我反對中國共產黨">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2021-12-14T08:36:23.000Z">
+<meta property="article:modified_time" content="2022-02-17T06:03:58.235Z">
+<meta property="article:author" content="snowy_smile">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/myanticcp/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Why am I standing against the Chinese Communist Party?',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-02-17 15:03:58'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-block content
-  #post
-    if top_img === false
-      include includes/header/post-info.pug
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
 
-    article#article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      include includes/third-party/share/index.pug
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-    if theme.reward.enable && theme.reward.QR_code
-      !=partial('includes/post/reward', {}, {cache: true})
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">38</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">12</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Snowy Study</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Why am I standing against the Chinese Communist Party?</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-12-14T08:36:23.000Z" title="Created 2021-12-14 17:36:23">2021-12-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-02-17T06:03:58.235Z" title="Updated 2022-02-17 15:03:58">2022-02-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/MyLife/">MyLife</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Why am I standing against the Chinese Communist Party?"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="為什麼我反對中國共產黨"><a href="#為什麼我反對中國共產黨" class="headerlink" title="為什麼我反對中國共產黨"></a>為什麼我反對中國共產黨</h1><span id="more"></span>
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .ads-wrap!=theme.ad.post
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在我25歲之前，自己都可謂是個「愛國者」。<br>有點類似於「粉紅」，但卻從未變得極端。</p>
+<p>在我處於並不瞭解政治的「愛國者」的時候，卻也時常在想，為什麼我要愛國 ——<br>因為我的父母，我自己，出生時的便籤也便是中國人。<br>在一路成長中，也曾經遇到了一些美好的中國人。</p>
+<p>我在接受的歷史教育中，中國是一個偉大的文明發源國，是禮儀之邦，是個善良友好的國家，但是卻在百年中蒙受屈辱。我被教育說「叢林社會，弱肉強食」、「落後就要捱打」，而「少年強則國強」，我們便要「奮發圖強」、以「振興中華」。</p>
+<p>其實這個邏輯還滿順暢的，而中國的信息防火牆和篩刪制度讓很多人都一直以為這就是世界的真相。<br>對於我自己，雖然一直喜歡電腦，大學也是計算機專業，卻並沒怎麼產生過翻牆的需求。在小學的時候，Google還未退出中國，其實曾經不記緣由地瀏覽過相關「六四屠殺」的一些信息。但是那時候我並沒有勇氣看下去和追究下去。我並不喜歡政治，讀書時一直為高考或者為理想所佔走了時間；在學習之於，有時間也更願意用電腦多打會兒遊戲。而真的開始去探索政治與歷史的真相，已是2019年在COVID-19爆發後了……</p>
+<h2 id="我也曾是個愛國青年"><a href="#我也曾是個愛國青年" class="headerlink" title="我也曾是個愛國青年"></a>我也曾是個愛國青年</h2><p>從小時候開始，語文都算是自己最喜歡的科目之一。而我還很喜歡一些課文，閱讀下去，有時會沉浸得察覺不到周圍的人和聲音，有時會情緒感染而淚流哽咽。在小學的時候，課本裏有很多戰爭相關的課文，什麼狼牙山五壯士，什麼抗美援朝英雄之類的…… 我是情緒很飽滿的人，在那個年齡讀這些課文，聲音裏想必也是充滿了所謂「英雄」犧牲前的「信仰的勇氣」和「憤怒的仇恨」吧。有個什麼朗讀活動，要讀相關的東西，我自以為朗讀很好、充滿了「感情」而卻沒有被選上，曾一度覺得非常遺憾和難過。現在回頭想來，也許是老師比較理性的保護？總之，是少了個「愚昧無知小戰狼」的一次丟人現眼吧。</p>
+<p>我把</p>
+<p>比如在自己曾經高考沒有考上理想大學的時候，自己寫了一本書去求學、希望大學破格錄取，有遇到的人勸說我出國留學。但是我卻希望自己留在中國，其中我還有寫到 ——<br>「 我为什么喜欢深圳这个地方？因为那辆前往南科大的公交车上，没有零钱换，却又那么多愿意慷慨解囊的人们；因为这儿满眼郁郁葱葱的绿，有过我举着柳树条沐浴在雨后清新空气里的神清气爽；因为新认识的老师和同学们，忘不了他们亲切、可爱的面庞；因为，我不愿意让所有看好我的人失望——就好像南科大如果办学失败，会给下一所谋求创新的大学更大的阻力一样。我心里知道，从某种意义上讲，我必须要做好我自己决定要做的事。招生办的一个老师问我为什么不去外国的大学，它们有这样的机会，提供给愿意把握命运的孩子们。回答这个问题的时候，是我这趟旅程里，至今为止，唯一一次，在别人面前差点控制不住流下来的眼泪。曾经，有同学也问过我这个问题。答案是一样的——“我喜欢中国，喜欢这个生我养我的地方。尽管，很多人，包括我自己，看到社会里很多残酷黑暗的现象会忍不住气上心头……但是，我不相信，我绝对不相信，我绝对绝对不相信，这个国家会永远是这样！！！我是一个全新的生命，在抹去所有眼里容不得的污点之前，在昂首挺胸自由地活着这片炽热的土地上之前，怎能因为这些小小的困难就退缩、逃避？我生下来，就不是发牢骚的，而是让更多的人不再发牢骚的！这是我的倔强，倘若我放弃了挣扎，就算别人原谅，我也一定无法原谅。还要对得起我所深爱的人们，我还未报答感谢的人们——他们所有人，都在这里……他们所有人，陪我度过了傻了吧唧却那么真诚美好的时光……他们所有人，记录了我心里珍藏着的感动……他们所有人，就是，我生活的意义！”<br>我始终不相信，这里，会死板生硬地，剥夺一个人想要努力生活的权力。终有一天，事情会改变的。就算，那一天不是今天，我还依然愿意，还是义无返顾，用自己的身躯，为后面的人，铺平这条道路^_^……  —— 《我没有哭，可是，眼泪，却流下来了》 2012-7-31 」</p>
+<p>比如自己曾經的一個夢想，也是成為一名優秀的來自中國的獨立遊戲製作人。大學的時候參加算法競賽，也一樣會希望來自中國的隊伍可以取得更好的成績，我曾經想過愛國是不是一種擴大化的自私。後來把它理解為對出生環境裏人們的愛、對所在國家文化的一種認同感。</p>
+<p>大學時接觸過算法競賽裏的亂象，瞭解到哪怕對於一個理工科的競賽，都處處充滿了腐敗。在大學畢業後，希望能為它的改變做些什麼，曾經面對其中一些亂象，在Google Tokyo工作的時候不惜得罪既得利益集團地努力地為之發聲過，那段時間，在2019年10月1日，在中共建國七十週年的時候，我在家裏用手機看閱兵儀式熱淚盈眶。我那天還打印了一面小國旗貼在工位上，覺得這是一件不丟人而且自豪的事情…… </p>
+<p>我並非是在一瞬間就完成了反轉，<br>先是愛中國人、愛中國卻憎惡中國共產黨；<br>後來愛中國人、恨中國和憎恨中國共產黨；<br>再到討厭不抗爭的中國人、恨中國、更憎恨中國共產黨。</p>
+<p>如今呢，比較平淡。<br>我還是討厭那一切。<br>但是我已經感到很寒心和疲憊，而不願為那片充滿謊言和暴力的土地、為那些虎作倀的人們再做些什麼……</p>
+<hr>
+<h2 id="悲涼"><a href="#悲涼" class="headerlink" title="悲涼"></a>悲涼</h2><p>在2020年的2月份前後，我的心底裏感到無比地悲涼。當時一方面看到<br>我甚至不畏流血、甚至是犧牲自己的生命，而希望為中國的變革做些什麼。<br>但是到今天，或者早在2020年底時，已經是悲涼和絕望了。<br>我真的曾經愛那片我想象中的土地和人們愛得深沉和熾熱，有一份「橫眉冷對千夫指，扶手敢為孺子牛」的決心和行動，卻真的最終基本上只是收穫了失望與悲傷。</p>
+<p>一方面是對一些歐美政商團體的失望，包括對於這次病毒源頭的調查無疾而終，儘管全世界大部分人都保守煎熬，真正希望和努力去找尋真相的人們寥寥無幾；中國目前大量老百姓被剝削的現狀也並非只是飽了紅色家族們的錢包，而一樣是一些西方利益集團看中了中國的低人權優勢，有些不方便在文明社會裏做的事情，他們也會巴不得有中國這麼一片土壤。</p>
+<p>另一方面，是對大量越來越多的中國失望，我慢慢地開始意識到，中華文化並不是曾經我所理解的那些多麼值得驕傲，反而就如同魯迅先生所寫的一樣 —— 「我翻開歷史一查，這歷史沒有年代，歪歪斜斜的每頁上都寫著『仁義道德』幾個字。我橫豎睡不著， 仔細看了半夜，才從字縫裡看出字來，滿本都寫著兩個字是『吃人』！」</p>
+<p>沒有年代的歷史，一頁頁上都寫滿了吃人。</p>
+<h2 id="那些現實裏我曾無法理解的事情"><a href="#那些現實裏我曾無法理解的事情" class="headerlink" title="那些現實裏我曾無法理解的事情"></a>那些現實裏我曾無法理解的事情</h2><p>在我看到一些糟糕的社會狀況、社會事件的時候，也會多少認為是經濟發展水平較低、社會制度不夠完善的背景下，大量地方官員的腐敗造成的亂象。<br>（記得初中在歷史課上……）<br>不理解為什麼國民黨認為「攘外必先安內」<br>不理解為什麼中共一方面免除了日本侵華的債務、另一方面卻煽動民族主義情緒，製造反日浪潮<br>不理解為什麼中國不去推行民主投票制度<br>不理解為什麼有錢有權的人們都喜歡移民國外<br>不理解為什麼中國的互聯網設牆，<br>不理解為什麼官員們嘴上說人為民服務，實際作威作福，與老百姓距離好似天上人間。</p>
+<h2 id="第一步，憎恨中共"><a href="#第一步，憎恨中共" class="headerlink" title="第一步，憎恨中共"></a>第一步，憎恨中共</h2><h2 id="第二步，厭惡中國"><a href="#第二步，厭惡中國" class="headerlink" title="第二步，厭惡中國"></a>第二步，厭惡中國</h2><h2 id="第三步，憎恨中華"><a href="#第三步，憎恨中華" class="headerlink" title="第三步，憎恨中華"></a>第三步，憎恨中華</h2><h1 id="I-went-to-fight-the-lies-amp-violence-of-communism-after-resigning-from-Google-——-my-story-of-resistance"><a href="#I-went-to-fight-the-lies-amp-violence-of-communism-after-resigning-from-Google-——-my-story-of-resistance" class="headerlink" title="I went to fight the lies &amp; violence of communism after resigning from Google —— my story of resistance"></a>I went to fight the lies &amp; violence of communism after resigning from Google —— my story of resistance</h1><div style="width:90%; height:90%; margin-left:auto; margin-right:auto;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2YgdCFiRbjg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+</div>
 
-    if theme.post_pagination
-      include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-
-    if page.comments !== false && theme.comments && theme.comments.use
-      - var commentsJsLoad = true
-      !=partial('includes/third-party/comments/index', {}, {cache: true})
-      
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">snowy_smile</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/myanticcp/">http://example.com/myanticcp/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/pystudy/"><img class="prev-cover" src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Start to Use Python to Solve Algorithm Problems</div></div></a></div><div class="next-post pull-right"><a href="/sabwt/"><img class="next-cover" src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">From Suffix Array To Burrows-Wheeler Transform</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">snowy_smile</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">38</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">12</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E6%88%91%E5%8F%8D%E5%B0%8D%E4%B8%AD%E5%9C%8B%E5%85%B1%E7%94%A2%E9%BB%A8"><span class="toc-number">1.</span> <span class="toc-text">為什麼我反對中國共產黨</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E4%B9%9F%E6%9B%BE%E6%98%AF%E5%80%8B%E6%84%9B%E5%9C%8B%E9%9D%92%E5%B9%B4"><span class="toc-number">1.2.</span> <span class="toc-text">我也曾是個愛國青年</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%82%B2%E6%B6%BC"><span class="toc-number">1.3.</span> <span class="toc-text">悲涼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%82%A3%E4%BA%9B%E7%8F%BE%E5%AF%A6%E8%A3%8F%E6%88%91%E6%9B%BE%E7%84%A1%E6%B3%95%E7%90%86%E8%A7%A3%E7%9A%84%E4%BA%8B%E6%83%85"><span class="toc-number">1.4.</span> <span class="toc-text">那些現實裏我曾無法理解的事情</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%8C%E6%86%8E%E6%81%A8%E4%B8%AD%E5%85%B1"><span class="toc-number">1.5.</span> <span class="toc-text">第一步，憎恨中共</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%8C%E5%8E%AD%E6%83%A1%E4%B8%AD%E5%9C%8B"><span class="toc-number">1.6.</span> <span class="toc-text">第二步，厭惡中國</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%8C%E6%86%8E%E6%81%A8%E4%B8%AD%E8%8F%AF"><span class="toc-number">1.7.</span> <span class="toc-text">第三步，憎恨中華</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#I-went-to-fight-the-lies-amp-violence-of-communism-after-resigning-from-Google-%E2%80%94%E2%80%94-my-story-of-resistance"><span class="toc-number">2.</span> <span class="toc-text">I went to fight the lies &amp; violence of communism after resigning from Google —— my story of resistance</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/mottos/" title="Mottos"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mottos"/></a><div class="content"><a class="title" href="/mottos/" title="Mottos">Mottos</a><time datetime="2022-09-06T11:34:29.000Z" title="Created 2022-09-06 20:34:29">2022-09-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022-August/" title="2022 August"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2022 August"/></a><div class="content"><a class="title" href="/2022-August/" title="2022 August">2022 August</a><time datetime="2022-09-04T09:54:36.000Z" title="Created 2022-09-04 18:54:36">2022-09-04</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/emoji/" title="Emoji 絵文字">Emoji 絵文字</a><time datetime="2022-08-28T06:27:24.000Z" title="Created 2022-08-28 15:27:24">2022-08-28</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/jpnoun/" title="Noun 名詞 めいし">Noun 名詞 めいし</a><time datetime="2022-08-13T08:43:52.000Z" title="Created 2022-08-13 17:43:52">2022-08-13</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/test/" title="Accelerate Test">Accelerate Test</a><time datetime="2022-05-23T03:17:39.000Z" title="Created 2022-05-23 12:17:39">2022-05-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By snowy_smile</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,32 +1,342 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>言論自由，科學上網 | Snowy Study</title><meta name="author" content="snowy_smile"><meta name="copyright" content="snowy_smile"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="article">
+<meta property="og:title" content="言論自由，科學上網">
+<meta property="og:url" content="http://example.com/gfw/index.html">
+<meta property="og:site_name" content="Snowy Study">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2020-05-02T15:20:48.000Z">
+<meta property="article:modified_time" content="2022-01-23T04:58:54.624Z">
+<meta property="article:author" content="snowy_smile">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/gfw/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '言論自由，科學上網',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-01-23 13:58:54'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-block content
-  #post
-    if top_img === false
-      include includes/header/post-info.pug
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
 
-    article#article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      include includes/third-party/share/index.pug
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-    if theme.reward.enable && theme.reward.QR_code
-      !=partial('includes/post/reward', {}, {cache: true})
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">38</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">12</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Snowy Study</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">言論自由，科學上網</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2020-05-02T15:20:48.000Z" title="Created 2020-05-03 00:20:48">2020-05-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-01-23T04:58:54.624Z" title="Updated 2022-01-23 13:58:54">2022-01-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Politics/">Politics</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="言論自由，科學上網"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><img src="/images/FreedomOfSpeech.jpg" width="95%" height="95%">
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .ads-wrap!=theme.ad.post
+<span id="more"></span>
 
-    if theme.post_pagination
-      include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
+<h1 id="第一部分，時代背景"><a href="#第一部分，時代背景" class="headerlink" title="第一部分，時代背景"></a>第一部分，時代背景</h1><p>新聞自由指數（英語：Press Freedom Index；或稱全球新聞自由指數），是每年無國界記者組織在評估部分國家、地區或組織上一年的新聞自由狀況的記錄之後推出的排名。該排名反映了這些國家的記者、新聞群組織和網民分別在多大的程度上享有新聞自由，同時也反映了這些國家的政府部門分別在多大的程度保護和促進這種自由。</p>
+<p>根據該指數表明，中華人民共和國（即中共國）的新聞自由指數，已經連續十年位居世界倒數前十，並且連續六年排名世界倒數前五。<br><img src="/images/新聞自由指數.png" width="95%" height="95%"><br><img src="/images/2020年全球新聞自由指數排名.png" width="95%" height="95%"></p>
+<p>這是一個非常好理解的道理，民主國家的政治體制是自下而上形成的，每一個人都享有投票權，來行使自己的決策權，進而捍衛各項權利，自然也包括着作為基本人權的「言論自由」。而專制國家的政治規則是為維護獨裁者的權力而服務的，雖說「防民之口、甚於防川」，但是「愚民、疲民、貧民、辱民」卻是從身心上控制民衆而必然會施行的御民術。</p>
+<p>我們中的大多數人應該都不願意成為被洗腦、掌控的僕從，可是又真的有多少人能不隨波逐流地成為「烏合之衆」呢？「言論自由」的意義太過重要，若沒有「言論自由」，又何來「思想自由」？有言論自由的保障，我們才能夠發現問題、承認問題，然後改善現狀，走入更美好的未來。哪個人為例，如果你想喊痛都要被捂住嘴巴，想告冤都要被限制發聲，那整個社會的公平、正義又如何保障呢？</p>
+<p>獨裁、專制、極權，是必然要削弱掉個人權益的。人如韭菜便可以草菅人命，奴役大衆、敲骨吸髓，便可以成為吸血享樂的所謂「人上人」。有良知的人存在，其便會感受到奴役並抗爭。要避免這種情況發生，於是要封鎖信息言論和加重洗腦，要使得奴隸之間不光互不信任、反而互相嫉恨，以此使得縱有反抗之心，也難成反抗之合力。這也是為什麼專制獨裁極權的流氓國度總要消除社會上的「雜音」，讓最底層被奴役的百姓無從發聲，讓中下層的大衆又見不到太多的苦難心酸，一味地被「奶頭樂」所俘虜，以為社會歌舞昇平地而一味歲月靜好。而縱然有人能知道社會的異樣，卻也一樣身為「弱肉強食」的叢林法則的擁護者，作為自私自利的精緻利己主義者，也成為罪惡體制的維護者。</p>
+<p>此外，我們還可以看到來自於 挪威奥斯陆和平研究所的互联网管制排名 ——<br><strong>最严厉的管制:</strong> &amp;nbsp;朝鲜<br><strong>非常严厉的管制:</strong> &amp;nbsp;津巴布韦 | 中华人民共和国<br><strong>严厉的管制:</strong> &amp;nbsp; 乌兹别克斯坦 | 沙特阿拉伯 | 缅甸 | 伊朗 | 阿富汗 | 哈萨克斯坦 | 古巴</p>
+<p> 在互联网管制排名中，中国仅仅优于朝鲜，和津巴布韦被并列评为仅有的两个“互联网管制非常严厉国家”之一。<br>更多內容可以參考「<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91%E5%AE%A1%E6%9F%A5">網際網路審查</a>」。</p>
+<table>
+<thead>
+<tr>
+<th align="center">國名</th>
+<th align="center">新聞自由指數排名 of 180 Countries（2019）</th>
+<th align="center">民主指數排名 of 167 Countries（2019）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">挪威</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">韓國</td>
+<td align="center">41</td>
+<td align="center">23</td>
+</tr>
+<tr>
+<td align="center">臺灣（中華民國）</td>
+<td align="center">42</td>
+<td align="center">31</td>
+</tr>
+<tr>
+<td align="center">日本</td>
+<td align="center">67</td>
+<td align="center">24</td>
+</tr>
+<tr>
+<td align="center">科威特</td>
+<td align="center">108</td>
+<td align="center">114（較為專制）</td>
+</tr>
+<tr>
+<td align="center">阿富汗</td>
+<td align="center">121</td>
+<td align="center">141（非常專制）</td>
+</tr>
+<tr>
+<td align="center">印度</td>
+<td align="center">140</td>
+<td align="center">51</td>
+</tr>
+<tr>
+<td align="center">委內瑞拉</td>
+<td align="center">148</td>
+<td align="center">140（非常專制）</td>
+</tr>
+<tr>
+<td align="center">俄羅斯</td>
+<td align="center">149（較不自由）</td>
+<td align="center">134（較為專制）</td>
+</tr>
+<tr>
+<td align="center">新加坡</td>
+<td align="center">151（較不自由）</td>
+<td align="center">75</td>
+</tr>
+<tr>
+<td align="center">白俄羅斯</td>
+<td align="center">153（較不自由）</td>
+<td align="center">150（非常專制）</td>
+</tr>
+<tr>
+<td align="center">伊拉克</td>
+<td align="center">156（較不自由）</td>
+<td align="center">118（較為專制）</td>
+</tr>
+<tr>
+<td align="center">利比亞</td>
+<td align="center">162（較不自由）</td>
+<td align="center">156（非常專制）</td>
+</tr>
+<tr>
+<td align="center">古巴</td>
+<td align="center">169（較不自由）</td>
+<td align="center">143（非常專制）</td>
+</tr>
+<tr>
+<td align="center">伊朗</td>
+<td align="center">170（較不自由）</td>
+<td align="center">151（非常專制）</td>
+</tr>
+<tr>
+<td align="center">敘利亞</td>
+<td align="center">174（完全管控）</td>
+<td align="center">164（極度專制）</td>
+</tr>
+<tr>
+<td align="center">越南</td>
+<td align="center">176（完全管控）</td>
+<td align="center">136（較為專制）</td>
+</tr>
+<tr>
+<td align="center">中共國（中華人民共和國）</td>
+<td align="center">177（完全管控）</td>
+<td align="center">153（非常專制）</td>
+</tr>
+<tr>
+<td align="center">北韓（朝鮮）</td>
+<td align="center">179（完全管控）</td>
+<td align="center">167（極度專制）</td>
+</tr>
+<tr>
+<td align="center">土庫曼</td>
+<td align="center">180（完全管控）</td>
+<td align="center">162（極度專制）</td>
+</tr>
+</tbody></table>
+<h1 id="第二部分，中國互聯網圍牆（GFW）"><a href="#第二部分，中國互聯網圍牆（GFW）" class="headerlink" title="第二部分，中國互聯網圍牆（GFW）"></a>第二部分，中國互聯網圍牆（GFW）</h1><p>互联网圍牆（又称作「互聯網監獄」、「互联网长城」、「GreatFireWall」，簡稱「牆」。）</p>
+<p>該圍牆修建起步于1998年，總设计师是臭名昭著的人渣方滨兴，並且使用了来自思科、微軟兩家為謀取商業利益而淪喪道德之公司的技术。<br>2010年3月23日，Google聲明因「遭受中國黑客攻擊」和「網絡審查」決定退出中國市場。<br>2011年7月，Facebook被趕出中國市場。<br>……<br>2021年10月14日，LinkedIn停止在中國的社交媒體功能。<br>2021年11月1日，Yahoo停止在中國的所有服務。</p>
+<p>時至今日，已經没有一家成型的互聯網公司或平臺服務，可以在不被審查的情况下被中國人所接觸使用。我們可以看到， 一切不徹底幫助中共管控刪除「負面信息（真實歷史和現實）」的企业，都上了（上過）中共的黑名单：</p>
+<table>
+<thead>
+<tr>
+<th align="center">公司（服務）</th>
+<th align="center">定位</th>
+<th align="center">狀態</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Facebook</td>
+<td align="center">全球最多用戶的好友社交平臺</td>
+<td align="center">完全封禁</td>
+</tr>
+<tr>
+<td align="center">Twitter</td>
+<td align="center">全球最多用戶的短信息資訊平臺</td>
+<td align="center">完全封禁</td>
+</tr>
+<tr>
+<td align="center">Netflix</td>
+<td align="center">全球最多付費用戶的專業流媒體平臺</td>
+<td align="center">完全封禁</td>
+</tr>
+<tr>
+<td align="center">Google Search</td>
+<td align="center">全球最主流先進的搜索引擎</td>
+<td align="center">完全封禁</td>
+</tr>
+<tr>
+<td align="center">Google Maps</td>
+<td align="center">全球最主流先進的地圖服務</td>
+<td align="center">完全封禁</td>
+</tr>
+<tr>
+<td align="center">Youtube</td>
+<td align="center">全球最多用戶的大衆流媒體平臺</td>
+<td align="center">完全封禁</td>
+</tr>
+<tr>
+<td align="center">Amazon</td>
+<td align="center">全球最大的網絡购物服务商</td>
+<td align="center">完全封禁</td>
+</tr>
+<tr>
+<td align="center">Apple</td>
+<td align="center">全球最有前瞻性的電子設備品牌</td>
+<td align="center">閹割、定製Apple Store</td>
+</tr>
+<tr>
+<td align="center">Microsoft</td>
+<td align="center">全球最多用戶的計算機系統軟件公司</td>
+<td align="center">閹割、定製Bing</td>
+</tr>
+<tr>
+<td align="center">LinkenIn</td>
+<td align="center">全球最多用戶的互聯網求職平臺</td>
+<td align="center">關閉社交媒體功能</td>
+</tr>
+</tbody></table>
+<p>中共政府表面的藉口是封鎖「色情或暴力」信息，然而實際上，中共本身，就像寫在《共產黨宣言》裏地那樣（下圖），它一開始就是作為一個暴力恐怖組織而存在。亦在「無神論」、「無信仰」、進而「無道德約束」的心智下，犯了各種甚至是強姦幼童的勾當（參照以管控封口為收場的「紅黃藍幼兒園 事件」，以及另外如「彭帥&amp;張高麗 事件」等）。中共作為最無恥的色情暴力集團，封鎖外在媒體的真實用意，恰是為了回避封鎖其在東亞大陸作下滔天罪孽的所有資料和信息，以徹底洗腦民衆為目的。</p>
+<img src="/images/ForcibleOverthrow共產黨暴力宣言.png" width="95%" height="95%">
 
-    if page.comments !== false && theme.comments && theme.comments.use
-      - var commentsJsLoad = true
-      !=partial('includes/third-party/comments/index', {}, {cache: true})
-      
+<p>參考我的另外一篇文章《中共成立以來究竟撒了多少謊，殺了多少人》——</p>
+<blockquote>
+中共自詡的政權合法性在於其為抗戰的中流砥柱，是身為救國存亡的英雄。然而，如日本戰犯岩井英一在《回想の上海》等資料中透露，中共在抗日抗日期間與日本侵略勢力达成秘密協議減少作戰。實際上，能作為中共抗日宣傳的，也只有搶國軍功勞的「將在外，軍令有所不受」的「平型關戰役」和彭德懷不聽指揮、暴露勢力、擅自發動「百團大戰」。對於國民黨發起的戰役數量，中共在抗戰期間確實經歷着「延安整風」、「種售鴉片」、「韜光養晦」等行為
+
+<p>在抗日戰爭勝利前後，毛澤東發表《民主頌——獻給美國的獨立紀念日》與《論聯合政府》等文章，宣揚要在中國建設美國式民主，在國民黨本身亦腐敗嚴重的情況下，靠宣傳、滲透等手段消滅和趕跑了國民黨存活下來的抗日將士，建立了中華人民共和國。</p>
+<p>隨後，藉助朝鮮戰爭與民主國家撕破臉開始打起反美口號。「不拿老百姓一針一線」只不過是宣傳，實際包括土地在內，近乎一切有價值的資產都歸於黨中央領導人所有。發起土地革命殺地主；大躍進毀鍋砸灶浮誇風，製造三年饑荒餓死數千萬人；發動文化大革命毀文化古跡、批鬥學者文人，逼死上千萬人；六四屠杀槍口對準學生市民殺死數千人；亦迫害各類宗教和民間團體組織；販賣底層人口的大量器官並全球販賣賄賂；改革開放之后以中國人低人權為優勢，進行着壓榨百姓血汗、滲透國際組織。近年來撕毀條約聲明、破壞香港自由、侵犯新疆人權。並釀造了COVID-19瘟疫的全球大流行。</p>
+</blockquote>
+
+<p>中國共產黨，真正秉承着是以「乱」治国之精神，通過構建互害社会來架起罪惡統治的護城河，以「韬光养晦」作為欺骗性战略，以「假大空」為本質，以「好話說盡，壞事做絕」為實際表現。在世界資本、人才、技術涌入中國的情況下，以中國廣大民主的勤勞換來了中國經濟的快速發展；但是，曾經的冤屈與現實的不公，都被淹沒在互聯網審查之下，在言論不自由的環境下成為了被忽視、被遺忘的存在……</p>
+<h1 id="第三部分，科學上網工具"><a href="#第三部分，科學上網工具" class="headerlink" title="第三部分，科學上網工具"></a>第三部分，科學上網工具</h1><p>基本原理 —— 網絡代理。</p>
+<p><strong>主要工具：</strong><br>ShadowSocks（R）<br>V2Ray<br>Trojan</p>
+<p><strong>推薦社交平臺：</strong><br>Telegram<br>Discord<br>Element<br>Wire<br>qTox</p>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">snowy_smile</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/gfw/">http://example.com/gfw/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/hello-world/"><img class="prev-cover" src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Hello World</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">snowy_smile</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">38</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">12</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%8C%E6%99%82%E4%BB%A3%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">第一部分，時代背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%8C%E4%B8%AD%E5%9C%8B%E4%BA%92%E8%81%AF%E7%B6%B2%E5%9C%8D%E7%89%86%EF%BC%88GFW%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">第二部分，中國互聯網圍牆（GFW）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%EF%BC%8C%E7%A7%91%E5%AD%B8%E4%B8%8A%E7%B6%B2%E5%B7%A5%E5%85%B7"><span class="toc-number">3.</span> <span class="toc-text">第三部分，科學上網工具</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/mottos/" title="Mottos"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mottos"/></a><div class="content"><a class="title" href="/mottos/" title="Mottos">Mottos</a><time datetime="2022-09-06T11:34:29.000Z" title="Created 2022-09-06 20:34:29">2022-09-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022-August/" title="2022 August"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2022 August"/></a><div class="content"><a class="title" href="/2022-August/" title="2022 August">2022 August</a><time datetime="2022-09-04T09:54:36.000Z" title="Created 2022-09-04 18:54:36">2022-09-04</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/emoji/" title="Emoji 絵文字">Emoji 絵文字</a><time datetime="2022-08-28T06:27:24.000Z" title="Created 2022-08-28 15:27:24">2022-08-28</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/jpnoun/" title="Noun 名詞 めいし">Noun 名詞 めいし</a><time datetime="2022-08-13T08:43:52.000Z" title="Created 2022-08-13 17:43:52">2022-08-13</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/test/" title="Accelerate Test">Accelerate Test</a><time datetime="2022-05-23T03:17:39.000Z" title="Created 2022-05-23 12:17:39">2022-05-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By snowy_smile</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

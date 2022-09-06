@@ -1,32 +1,172 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Evil CCP - 我所知道的槍桿子和筆桿子：中共的暴力與謊言 | Snowy Study</title><meta name="author" content="snowy_smile"><meta name="copyright" content="snowy_smile"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="中共成立以來究竟撒了多少謊、殺了多少人？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Evil CCP - 我所知道的槍桿子和筆桿子：中共的暴力與謊言">
+<meta property="og:url" content="http://example.com/evilccp/index.html">
+<meta property="og:site_name" content="Snowy Study">
+<meta property="og:description" content="中共成立以來究竟撒了多少謊、殺了多少人？">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2020-10-01T03:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-23T04:58:51.377Z">
+<meta property="article:author" content="snowy_smile">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/evilccp/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Evil CCP - 我所知道的槍桿子和筆桿子：中共的暴力與謊言',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-01-23 13:58:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-block content
-  #post
-    if top_img === false
-      include includes/header/post-info.pug
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
 
-    article#article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      include includes/third-party/share/index.pug
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-    if theme.reward.enable && theme.reward.QR_code
-      !=partial('includes/post/reward', {}, {cache: true})
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">38</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">12</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Snowy Study</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Evil CCP - 我所知道的槍桿子和筆桿子：中共的暴力與謊言</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2020-10-01T03:00:00.000Z" title="Created 2020-10-01 12:00:00">2020-10-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-01-23T04:58:51.377Z" title="Updated 2022-01-23 13:58:51">2022-01-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Politics/">Politics</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Evil CCP - 我所知道的槍桿子和筆桿子：中共的暴力與謊言"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="中共成立以來究竟撒了多少謊、殺了多少人？"><a href="#中共成立以來究竟撒了多少謊、殺了多少人？" class="headerlink" title="中共成立以來究竟撒了多少謊、殺了多少人？"></a>中共成立以來究竟撒了多少謊、殺了多少人？</h1><img src="/images/中國共產黨的罪惡滔天血腥史.png" width="80%" height="80%">
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .ads-wrap!=theme.ad.post
+<span id="more"></span>
 
-    if theme.post_pagination
-      include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-
-    if page.comments !== false && theme.comments && theme.comments.use
-      - var commentsJsLoad = true
-      !=partial('includes/third-party/comments/index', {}, {cache: true})
-      
+<p>這是一個馬列蘇俄邪教所支配的罪惡政權。<br>在民族危機關頭，分裂了中華民國，並以「武裝保衛蘇聯」為政治口號。<br>抗日期間與日軍勾結、不抗日、假抗日，出賣抗日國軍情報，當國軍在前線奮勇拼死抵抗侵略的時候，中共躲藏在沒有日軍的西部，延安整風、種植鴉片，一邊打着光輝的口號，一邊做着齷齪的勾當，完成了暗地的擴張。在抗日戰爭期間，僅有的可以提到的兩場戰役，其一為過度吹噓的「平型關戰役」，其二為彭德懷違抗毛澤東命令發動的所謂「百團大戰」，被毛澤東痛批，並在文革時期亦因此把彭德懷批鬥至死。而毛澤東的祕書李銳，亦在《廬山會議實錄》記錄毛在會議上說「一些同志認為日本佔地越少越好，後來才統一認識：讓日本多佔地，才愛國。否則變成愛蔣介石的國了。國內有國，蔣、日、我，三國志」。</p>
+<p>中共曾在國共割據期間，向歐美國家和中國百姓作出「建立美式民主制度」的承諾，並最終完全佔領了中國。而後卻藉以發動「抗美援朝」行動送百萬士兵做炮灰的形式，發動全民反美，進而撕毀了民主承諾，延續了一黨一人專制的毛澤東的獨裁統治。</p>
+<p>接下來，為了進一步維護獨裁政權，假意全民大鍊鋼鐵，實則一方面藉此沒收了農民起義的所需要鐵器武裝，另一方面加劇促成了策劃出來的饑荒，最終徹底敗壞了人心，奠定了發動文化大革命的道德基礎。</p>
+<p>在風調雨順、對外撒糧、黨中央整日山珍海味的「三年饑荒」和互鬥互揭、殘酷批鬥的「十年文革」兩場浩劫前後，中共所帶來的兩場人禍，共造成了五千萬人上下的死亡，還同時毀壞了中華文明的大量文化古籍、虐殺了大量學者人才和底層農民。</p>
+<p>而在生靈塗炭之際，中國國內只剩下一窮二白。中共在美蘇冷戰的大背景下，向美國求援、發起改革開放。亦因為對抗蘇聯之需要，中國獲得了來自具有國際人道主義精神和宗教信仰的歐美人士的大量技術、資金、人才支援。加上對內的壓榨，才有了以「國富民窮」為其畸形本色的、今天中國所謂世界第二大經濟體的「壯舉」。</p>
+<p>西方文明世界當時對中國的援助，雖然不乏有為私己賺錢盈利為考量，但也希望着經濟發展可以幫助中國實現民智提升、民主轉型。但中共卻緊接着製造了侮蔑學生動亂的天安門屠殺事件，以及後來陷害法輪功天安門自焚的迫害事件。</p>
+<p>在全球化的二十一世界，中共的政策是這樣子的 ——<br>對外：不斷地資助全球的獨裁政權和恐怖主義勢力，前後向蘇俄割讓了數百萬平方千米的土地，向全世界的流氓國度、無恥之徒輸送了大量的財色乃至器官為賄賂。<br>同時滲透西方民主國家，以專制極權的強大力量，滲透權力分散、相互制衡的民主制度。以老百姓的低廉勞動力積累的血汗錢滲透收買了世界各大臭不要臉的國際組織和財團。</p>
+<p>對內：打壓國內正義勢力，以人類古今中外獨一無二的「計劃生育」政策來減少國內人口，並通過昂貴教育、昂貴醫療、低劣社保來造成社會的生存壓力，打壓反抗條件與力量。<br>同時限制網絡自由、剝奪言論自由，進而控制思想自由。以「愚民、弱民、疲民、辱民、貧民」為真實的國策，讓中共國人對外無腦民族主義仇恨、對內相互迫害嫉恨，縱有反抗情緒，也無法形成合力。</p>
+<p>我們看到如今的中國，外國人享受超國民待遇。而納稅人卻承受全球最高水平苛捐雜稅。神洲大地本富饒，如今卻成為一片劇毒無比的土壤 ——<br>毒奶粉、毒疫苗、毒食品、毒空氣。<br>老人摔倒無人扶，幼兒碾壓無人理。<br>撒謊成性，造假成風。<br>好話說盡，壞事做絕！<br>滔天罪孽，罄竹難書。</p>
+<p>百年來已經直接造成超過一億中國人非正常死亡的中共政權，亦是對全世界追求民主、平等、善良、美好的人們的平安幸福生活的最大威脅。</p>
+<p>如果看到這篇文章的你，不幸地身為一名為共慘極權說話的戰螂、粉蛆、腦殘、五毛 —— 「誰不誇你覺悟高，身為韭菜愛鐮刀？」 我也要請你盡力擺脫中國法西斯主義式的洗腦欺騙，不要把再把被中共紅色流氓輕賤的自己，大言不慚地自認為是趙家人了。</p>
+<p>人為刀俎，我為魚肉。<br>狡兔死，走狗烹；飛鳥盡，良弓藏。<br>反共、反專制是每一追求美好未來新世界的人都要保持的態度與責任！<br>寒冬已至，俏春在前！邪不壓正，你我共勉！</p>
+<h2 id="時間線"><a href="#時間線" class="headerlink" title="時間線"></a>時間線</h2><p>1921年7月23日：陳獨秀等人成立於浙江嘉興南湖成立了中國共產黨。</p>
+<p>1937-1945：與日軍勾結，不抗日、假抗日、出賣抗日國軍情報。期間在延安生產鴉片四處販賣，並虐殺地主鄉紳搶奪土地錢財。期間于1942年發動了造成大量迫害死亡的延安整風運動。<br>(<a target="_blank" rel="noopener" href="https://youtu.be/fYmIZByWeYo">辛灝年: 抗戰時期中共究竟在做什麼</a>)<br>(<a target="_blank" rel="noopener" href="https://youtu.be/r35RPN1mll8">日本學者遠藤譽:《毛澤東勾結日軍的真相》</a>)</p>
+<p>1945-1949：發動國共戰爭。殺害傷痕累累的抗日英雄、淪喪華夏山河。</p>
+<p>1950-1952：土地改革運動。造成估計240萬~500萬人死亡（酷刑虐殺死）。</p>
+<p>1959-1961：故意製造饑荒。造成估計3000萬~4500萬人死亡（餓死、以及互相殘殺吞食）。</p>
+<p>1963-1965：社會主義教育運動。逼死近八萬人。為文革前戲。</p>
+<p>1966-1976：文化大革命。造成了700萬~2000萬人死亡（大量為自殺）。</p>
+<p>1989年6月4日：六四屠城。屠殺掉國內最朝氣蓬勃、善良勇敢的學生和市民數千人（機槍屠殺、坦克碾壓）。<br>(<a target="_blank" rel="noopener" href="https://youtu.be/ExqqdUXXdgA">【BBC紀錄片】 八九六四天安門廣場備忘錄</a>)</p>
+<p>1999年至今：打擊各種宗教團體如鎮壓法輪功。有統計數字地殺害4000~7000人，監禁300萬人。</p>
+<p>與此同時，針對法輪功群體在內的，同時針對於所謂「低端人口」、「政治犯（良心犯）」等，形成了具有完整產業鏈的「迫害綁架、活摘器官」這一駭人聽聞的犯罪事實。以“前重慶市公安局局長王立軍”為代表，其經過幾千人的活體試驗，發明了「活體腦幹死亡撞擊器」使健康人變為器官正常的植物人，還研製了維持植物人器官活性的藥物；又大力發展了「葉克膜」，以在移植器官過程種維持被摘取器官者的呼吸、和其他器官的活性，以達到活摘多個人體器官的最終目的。</p>
+<p>中共國作為全球器官捐獻率極低、最低的國家之一，卻為全世界提供了源源不斷、隨需隨取的優質、低價的大量血腥器官移植業務。<br>(<a target="_blank" rel="noopener" href="https://youtu.be/D2LqZAfR_ZE">【韓國紀錄片】殺了才能活 —— 記者冒險到中國實地調查強摘器官</a>)</p>
+<p>2019-2021：中共訓誡吹哨人隱瞞病毒信息，並且甚至譴責世界各國為控制病毒採取的限制行為。該中共病毒迄今已經造成全球2.5億人以上被感染，500萬人以上死亡 [Till 2021 Dec]。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">snowy_smile</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/evilccp/">http://example.com/evilccp/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/godexsits/"><img class="prev-cover" src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">為什麼我堅信這個世界有神存在？[Sorry, Chinese Only Yet]</div></div></a></div><div class="next-post pull-right"><a href="/hello-world/"><img class="next-cover" src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Hello World</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">snowy_smile</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">38</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">12</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%AD%E5%85%B1%E6%88%90%E7%AB%8B%E4%BB%A5%E4%BE%86%E7%A9%B6%E7%AB%9F%E6%92%92%E4%BA%86%E5%A4%9A%E5%B0%91%E8%AC%8A%E3%80%81%E6%AE%BA%E4%BA%86%E5%A4%9A%E5%B0%91%E4%BA%BA%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">中共成立以來究竟撒了多少謊、殺了多少人？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%82%E9%96%93%E7%B7%9A"><span class="toc-number">1.1.</span> <span class="toc-text">時間線</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/mottos/" title="Mottos"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mottos"/></a><div class="content"><a class="title" href="/mottos/" title="Mottos">Mottos</a><time datetime="2022-09-06T11:34:29.000Z" title="Created 2022-09-06 20:34:29">2022-09-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022-August/" title="2022 August"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2022 August"/></a><div class="content"><a class="title" href="/2022-August/" title="2022 August">2022 August</a><time datetime="2022-09-04T09:54:36.000Z" title="Created 2022-09-04 18:54:36">2022-09-04</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/emoji/" title="Emoji 絵文字">Emoji 絵文字</a><time datetime="2022-08-28T06:27:24.000Z" title="Created 2022-08-28 15:27:24">2022-08-28</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/jpnoun/" title="Noun 名詞 めいし">Noun 名詞 めいし</a><time datetime="2022-08-13T08:43:52.000Z" title="Created 2022-08-13 17:43:52">2022-08-13</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/test/" title="Accelerate Test">Accelerate Test</a><time datetime="2022-05-23T03:17:39.000Z" title="Created 2022-05-23 12:17:39">2022-05-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By snowy_smile</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

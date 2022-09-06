@@ -1,7 +1,982 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Snowy Study</title><meta name="author" content="snowy_smile"><meta name="copyright" content="snowy_smile"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="Snowy Study">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Snowy Study">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:author" content="snowy_smile">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Snowy Study',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-09-06 21:26:24'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-block content
-  include ./includes/mixins/post-ui.pug
-  #recent-posts.recent-posts
-    +postUI
-    include includes/pagination.pug
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">38</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">12</div></a></div><hr/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Snowy Study</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Snowy Study</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/mottos/" title="Mottos"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mottos"></a></div><div class="recent-post-info"><a class="article-title" href="/mottos/" title="Mottos">Mottos</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-06T11:34:29.000Z" title="Created 2022-09-06 20:34:29">2022-09-06</time></span></div><div class="content"></div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022-August/" title="2022 August"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2022 August"></a></div><div class="recent-post-info"><a class="article-title" href="/2022-August/" title="2022 August">2022 August</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-04T09:54:36.000Z" title="Created 2022-09-04 18:54:36">2022-09-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/MyLife/">MyLife</a></span></div><div class="content">PrologueI have a habit to write down something every day, it’s private and sometimes very short and unorganized.But I think, I should start to write something better and more formal.Even it can’t be every day, at least every month.Okay, this is the plan now 😳
+It has been more than 2 years since I moved here, the peaceful beautiful small town in Yonago, Japan.I didn’t feel happy for the past two years; on the contrary, I felt extremely lonely. It is my choice anyway, and also, getting tricked of ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/emoji/" title="Emoji 絵文字">Emoji 絵文字</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-28T06:27:24.000Z" title="Created 2022-08-28 15:27:24">2022-08-28</time></span></div><div class="content">Emoji &#x2F;iˈmoʊ.dʒi&#x2F; | 表情符號 ~ 繪文字 | 絵文字 | えもじ
+
+
+Emoji
+Unicode(HTML~CSS)
+Name
+IME Input
+Kanji
+
+
+
+♬
+266C
+Beamed Sixteenth Notes
+~
+~
+
+
+🌌
+0x1F30C
+Milky Way
+：ほしぞら：よぞら：ぎんが：てんのかわ
+星空 ~ 夜空 ~ 銀河 ~ 天の川
+
+
+🎮
+0x1F3AE
+Video Game
+：びでおげーむ
+~
+
+
+🎵
+0x1F3B5
+Musical Note
+：おんぷ
+音符
+
+
+😇
+0x1F607
+Smiling Face with Halo
+：てんしのわ
+天使の輪
+
+
+😳
+0x1F633
+Flushed Face ~ Face with Wide Open Eyes
+：せきめん
+赤面
+
+
+🥰
+0x1F970
+Smiling Face with Hearts
+：むちゅ：はーとのえがお
+夢中
+
+
+🦠
+0x1F9A0
+Microbe
+：さいきん：ウイルス
+細菌
+
+
+🧒
+0x1F9D2
+Child
+：こども
+子供
+
+
+🎤
+0x ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/jpnoun/" title="Noun 名詞 めいし">Noun 名詞 めいし</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-13T08:43:52.000Z" title="Created 2022-08-13 17:43:52">2022-08-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Japanese-Study/">Japanese Study</a></span></div><div class="content">.
+
+Place 場所 場所 ばしょ
+
+
+English
+漢語
+日本語Nihongo
+片仮名Katakana
+
+
+
+place
+場所
+場所
+ばしょ
+
+
+environment ~ surroundings
+環境
+環境
+かんきょう
+
+
+atmosphere
+氛圍
+雰囲気
+ふんいき
+
+
+region
+地區
+地方
+ちほう
+
+
+location
+地點
+所
+ところ
+
+
+country
+國
+国
+くに
+
+
+prefecture
+省
+県
+けん
+
+
+state
+州
+州
+しゅ
+
+
+city
+市 ~ 都市
+市 ~ 都市 ~ 都会
+し ~ とし ~ とかい
+
+
+village
+村
+村
+むら
+
+
+countryside ~ suburb&#x2F;ˈsʌb.ɝːb&#x2F;
+鄉村
+田舎 ~ 郊外
+いなか ~ こうがい
+
+
+field
+農田 ~ 稻田
+田んぼ
+たんぼ
+
+
+castle
+城堡
+城🏰
+しろ
+
+
+town
+街區
+町 ~ 街 ~ 坊
+まち
+
+
+neibo(u)rhood
+街坊
+近所
+きんじょ
+
+
+road ~ way ~ path ~ street
+道路
+道 ~ 路 ~ 道路
+みち ~ どうろ
+
+
+s ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/test/" title="Accelerate Test">Accelerate Test</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-05-23T03:17:39.000Z" title="Created 2022-05-23 12:17:39">2022-05-23</time></span></div><div class="content">
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/mycpp/" title="Mycpp Study">Mycpp Study</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-02-22T13:22:22.000Z" title="Created 2022-02-22 22:22:22">2022-02-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Coding-Language/">Coding Language</a></span></div><div class="content">make_pair
+for (auto &amp;it : ) {
+}
+</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/CodingEnglish/" title="Coding English 編程英語 コーディング英語">Coding English 編程英語 コーディング英語</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-02-22T01:00:00.000Z" title="Created 2022-02-22 10:00:00">2022-02-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Algorithm/">Algorithm</a></span></div><div class="content">https://unicode-table.com/en/Unicode Characters
+(Keyboard) Symbols ~ Punctuation Marks 記号 きごう ~ 句読点 くとうてん
+
+
+Unicode
+Symbol
+English
+漢語
+日本語
+ひらがな
+HTML
+
+
+
+U+0020
+
+space
+空格
+スペース
+すべーす
+&amp;#32 ;
+
+
+U+0021
+!
+exclamation mark&#x2F;ˌɛksklə’meʃən&#x2F;
+感歎號
+感嘆符
+かんたんふ
+&amp;#33 ;
+
+
+U+0022
+“
+quotation mark
+引號
+引用符
+いいにょうふ
+&amp;#34 ;
+
+
+U+0023
+#
+number sign ~ hash ~ pond
+井號
+番号記号
+ばんごうきごう
+&amp;#35 ;
+
+
+U+0024
+$
+dollar sign
+美元符號
+ドル記号
+どるきごう
+&amp;#36 ;
+
+
+U+0025
+%
+percent sign
+百分號
+パーセント記号
+ぱーせんとぎごう
+&amp;#37 ;
+
+
+U+0026
+&am ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/jpmusic/" title="Japanese Music I like">Japanese Music I like</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-02-21T16:21:56.000Z" title="Created 2022-02-22 01:21:56">2022-02-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Music/">Music</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Music/JPmusic/">JPmusic</a></span></div><div class="content">日本語の歌 (nihongo no uta) ~
+
+
+
+愛にできることはまだあるかいai ni dekiru koto wa mada aru kaiIs There Still Anything That Love Can Do?還有什麼事是愛能夠做到的嗎？🎤by RADWIMPS
+
+
+
+
+
+
+Lyrics
+Secret Base 〜君がくれたもの〜Secret Base (Kimi ga Kureta Mono)Secret Base ～你對我的意義～
+
+
+
+
+
+打上花火Uchiage Hanabi放煙火🎤by DAOKO×米津玄師
+
+
+
+
+
+なんでもないやNan demonai ya沒什麼大不了🎤by Akie秋繪 -RADWIMPS(cover)
+
+
+
+
+
+スパークル [original ver.] Your name
+
+
+
+
+ハレハレヤhare hare yasunny sunny yo朗朗晴天🎤by 貓瑾醒了嗎
+
+
+
+
+
+約束yaku sokurestraint約束🎤by Akie秋繪
+
+
+
+
+
+心做しkokoro nashi心做し🎤by 雙笙
+
+
+
+
+心拍数  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/enmusic/" title="English Music I like">English Music I like</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-02-13T02:48:19.000Z" title="Created 2022-02-13 11:48:19">2022-02-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Music/">Music</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Music/ENmusic/">ENmusic</a></span></div><div class="content">Try Everything🎤by Shakira
+
+
+
+
+
+
+Traveling Light🎤by Joel Hanson, Sara Groves
+
+
+
+
+
+Faded🎤by Alan Walker
+
+
+
+
+
+Hello🎤by Adele
+
+
+
+
+
+Let Her Go🎤by Passenger
+
+
+
+
+
+Dream It Possible🎤by Delacey
+
+
+
+
+Another
+Good Time🎤by Owl City &amp; Carly Rae Jepsen
+
+
+
+
+
+City of Stars &#x2F; May Finally Come True
+
+
+
+Another
+</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/oldqzone/" title="From my Qzone when I was trying to love the world 我的QQ空間備份">From my Qzone when I was trying to love the world 我的QQ空間備份</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-01-22T05:55:28.000Z" title="Created 2022-01-22 14:55:28">2022-01-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/MyLife/">MyLife</a></span></div><div class="content">These are the old articles I wrote years ago,Here is just a copy to keep them.
+2012碧蓝的天空，自由地徜徉 2012-6-14
+QQ空间已经有三年没有开放过了，嘻嘻~_~是整整一个高中的长度吧...现在，我要写点东西。不是我想要回忆，只是需要铭记...
+高考已经结束，那一份稍稍压迫的心也可以更加自在地呼吸了。至于考得怎么样，呵呵，还好吧，没有超常发挥也不至于崩盘。如今只是怀着一种平和的心态等待着成绩下发。经历了这大大小小的失败和挫折，终于，真的，做到宠辱不惊了~_~
+
+就算我曾经以为自己已经失去了一切，也慢慢地开始相信，梦想绝不会毁灭一个人，只能成就一个人！现实怎样，未来怎样，都不会再阻止我前进的脚步了。听到过很多遍，但最近才慢慢品出这句话的味道——“真的勇士，敢于直面惨淡的人生，敢于正视淋漓的鲜血。”我已经决定迎接我接下来的人生了，不论我到此为止走过的所有路是铺设下一个easy难度的锦绣前程，还是摆开一道hell模式般重重叠叠的考验，既然已经不再是我可以选择的决定，那么，我所要做的一切便是——勇往直前！ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/vimstudy/" title="vimstudy">vimstudy</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-01-14T08:07:16.000Z" title="Created 2022-01-14 17:07:16">2022-01-14</time></span></div><div class="content">study
+Delete
+
+
+Function
+Hot Key
+
+
+
+delete all
+:%d
+
+
+delete one line
+dd
+
+
+delete one line after cursor
+d$
+
+
+CutCopyPaste</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/gostudy/" title="gostudy">gostudy</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-01-14T02:51:37.000Z" title="Created 2022-01-14 11:51:37">2022-01-14</time></span></div><div class="content"></div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/cppstudy/" title="cppstudy">cppstudy</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-01-14T02:51:32.000Z" title="Created 2022-01-14 11:51:32">2022-01-14</time></span></div><div class="content"></div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/world/" title="To know the world better">To know the world better</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-01-13T07:13:00.000Z" title="Created 2022-01-13 16:13:00">2022-01-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/World/">World</a></span></div><div class="content">Time
+
+
+
+Time Zone 時區時間帯 じかんたいUTC &#x3D; Coordinated Universal TimeGMT &#x3D; Greenwich Mean TimeETC &#x3D; Eastern Standard Time &#x3D; UTC-5EDT &#x3D; Eastern Daylight Time &#x3D; UTC-4
+
+
+
+TimeZone
+English
+漢語
+日本語Nihongo
+片仮名Katakana
+
+
+
+GMT+2
+Ukraine&#x2F;ju:’krein&#x2F; (all)
+
+
+
+
+
+GMT+8
+China (all)
+
+
+
+
+
+GMT+9
+Japan (all)
+日本
+日本
+にほん
+
+
+GMT+9
+South Korean (all)
+
+
+
+
+
+Languages
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/multilanguages/" title="multilanguages">multilanguages</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-01-07T02:01:04.000Z" title="Created 2022-01-07 11:01:04">2022-01-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/World/">World</a></span></div><div class="content">HiJapnaese:   こんにちは&#x3D;konnichiwaKorean:     안녕하세요&#x3D;annyeonghaseyoChinese:    你好&#x3D;nihaoItalian:    Ciao&#x3D;&#x2F;tʃaʊ&#x2F;
+GoodbyeJapnaese:   さようなら&#x3D;sayounaraKorean:     안녕&#x3D;annyeongChinese:    再見&#x3D;zaijianItalian:    Ciao&#x3D;&#x2F;tʃaʊ&#x2F; ~ arrivederci&#x3D;ar·ri·ve·dér·ci
+</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/jpsentence/" title="Sentence 文 ぶん">Sentence 文 ぶん</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-01-01T10:41:31.000Z" title="Created 2022-01-01 19:41:31">2022-01-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Japanese-Study/">Japanese Study</a></span></div><div class="content">.
+
+
+Greeting 問候 挨拶する あいさつ
+Happy New Year 新年快樂明けましておめでとう あけましておめでとう
+
+
+Good morning 早安お早うございます おはようございます
+
+
+Hello ~ Good afternoon 你好 ~ 午安今日は こんにちは
+
+
+Good evening 晚安今晩は こんばんは
+
+
+Goodbye 再見またね　- さようなら
+
+
+Long time no see 好久不見久しぶり ひさしぶり
+
+
+Please take care of yourselfどうぞお大事になさってください 大事&#x3D;だいじ
+
+
+Cheer up!元気を出して ~ 元気つける—–da
+
+
+I don’t feel well私は具合が悪いです—guaii warui
+
+
+Get well soon!お大事に！–daiji
+
+
+Have a great new year! Happy holidays!良いお年を よいおとしを
+
+
+Happy New Year!明けましておめでとうございますa
+
+
+Merry Christmasメリークリスマス！ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/jpadverb/" title="Adverb 副詞 ふくし | Conjunction 接続詞 せつぞくし">Adverb 副詞 ふくし | Conjunction 接続詞 せつぞくし</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-12-30T11:25:09.000Z" title="Created 2021-12-30 20:25:09">2021-12-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Japanese-Study/">Japanese Study</a></span></div><div class="content">.
+
+
+NOT SURE
+Adverb 副詞 副詞 ふくしTime
+
+
+English
+漢語
+辞書形
+片仮名Katakana
+
+
+
+always ~ continuously ~ the whole time
+總是
+いつも ~ ずっと
+~
+
+
+almost&#x2F;ˈɑːl.moʊst&#x2F; ~ mostly
+幾乎
+ほとんど
+~
+
+
+hardly
+幾乎不
+ほとんどない
+~
+
+
+usually ~ generally ~ commonly
+大抵上 ~ 通常
+大抵 ~ 何時もは
+たいてい ~ いつもは
+
+
+rarely&#x2F;ˈrer.li&#x2F; ~ occasionly ~ once in a while
+偶爾
+偶に
+たまに
+
+
+sometimes
+常常
+時々 ~　時には
+ときどき ~ ときには
+
+
+just now
+剛才
+さっき ~ ばかり
+さっき ~ ばかり
+
+
+soon
+很快地
+そろそろ ~ 間も無く
+そろそろ ~ まもなく
+
+
+directly ~ straight
+直接地 ~ 径直地
+真っ直ぐ
+まっすぐ
+
+
+leisurely ~ slowly
+慢慢地
+ゆっく ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/jpverb/" title="Verb 動詞 どうし">Verb 動詞 どうし</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-12-27T08:59:24.000Z" title="Created 2021-12-27 17:59:24">2021-12-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Japanese-Study/">Japanese Study</a></span></div><div class="content">
+
+
+
+
+
+Transitive Verb 及物動詞 他動詞 たどうし(を)開ける (を)あける(場所 + を + 移動動詞 &#x3D; 自動詞)InTrasitive Verb 不及物動詞 自動詞 じどうし開ける ひらける 
+Subject 主語 主語 しゅごObject 賓語 目的語 もくてきご
+Passive Voice 被動語態 受動態 じゅどうたい
+It is not only for the passive voice, there are four uses.四つの用途があります。study link受身助動詞 うけみじょどうし可能助動詞 かのうじょどうし自発助動詞 じはつじょどうし尊敬助動詞 そんけいじょどうし
+Past Tense 過去式 過去形 かこけい
+Tense Transformation (時制)変換 (じせい)へんかん
+辞書形 to てけいI類 「う、つ、る」→「って」I類 「ぬ、ぶ、む」→「んで」I類 「く」→「いて」I類 「ぐ」→「いで」I類 「す」→「して」I類 「行く (いく)」→「行って (いって)」Ⅱ類 「る」→「て」Ⅲ類「来る(くる)」→「 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/pystudy/" title="Start to Use Python to Solve Algorithm Problems">Start to Use Python to Solve Algorithm Problems</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-12-16T11:22:48.000Z" title="Created 2021-12-16 20:22:48">2021-12-16</time></span></div><div class="content">Basic functionsFor123a = [&quot;hello&quot;, 1, 0.5]for i, v in enumerate(a):    print(i, v)
+Output:
+
+0 hello1 12 0.5
+
+
+While123456while True:    try:        n = int(input())        ...    except EOFError:        break
+
+Operations12345x = 5 #101(Base2)y = 3 #011(Base2)print(x + y, x - y, x * y, x / y)print(x ** y, x // y, x % y)print(x &amp; y, x | y, x ^ y, x &lt;&lt; y, x &gt;&gt; y)
+Output:
+
+8 2 15 1.6666666666666667125 1 21 7 6 40 0
+
+
+Min Max1234a, b, c = 1, 3, 2mn = min(a, b, c)mx = max(a,  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/myanticcp/" title="Why am I standing against the Chinese Communist Party?">Why am I standing against the Chinese Communist Party?</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-12-14T08:36:23.000Z" title="Created 2021-12-14 17:36:23">2021-12-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/MyLife/">MyLife</a></span></div><div class="content">為什麼我反對中國共產黨
+
+前言在我25歲之前，自己都可謂是個「愛國者」。有點類似於「粉紅」，但卻從未變得極端。
+在我處於並不瞭解政治的「愛國者」的時候，卻也時常在想，為什麼我要愛國 ——因為我的父母，我自己，出生時的便籤也便是中國人。在一路成長中，也曾經遇到了一些美好的中國人。
+我在接受的歷史教育中，中國是一個偉大的文明發源國，是禮儀之邦，是個善良友好的國家，但是卻在百年中蒙受屈辱。我被教育說「叢林社會，弱肉強食」、「落後就要捱打」，而「少年強則國強」，我們便要「奮發圖強」、以「振興中華」。
+其實這個邏輯還滿順暢的，而中國的信息防火牆和篩刪制度讓很多人都一直以為這就是世界的真相。對於我自己，雖然一直喜歡電腦，大學也是計算機專業，卻並沒怎麼產生過翻牆的需求。在小學的時候，Google還未退出中國，其實曾經不記緣由地瀏覽過相關「六四屠殺」的一些信息。但是那時候我並沒有勇氣看下去和追究下去。我並不喜歡政治，讀書時一直為高考或者為理想所佔走了時間；在學習之於，有時間也更願意用電腦多打會兒遊戲。而真的開始去探索政治與歷史的真相，已是2019年在COVID-19爆發後了……
+我也曾是個愛國青年從小 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/sabwt/" title="From Suffix Array To Burrows-Wheeler Transform">From Suffix Array To Burrows-Wheeler Transform</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-12-13T05:26:24.000Z" title="Created 2021-12-13 14:26:24">2021-12-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Algorithm/">Algorithm</a></span></div><div class="content">
+BWT: Burrows-Wheeler TransformSA: Suffix Array
+
+Suffix Array | 後綴數組 | 接尾辞配列（せつびじはいれつ）
+s[]: the basic string, define it starts from index 1 and ends at index n with length(s) &#x3D; n    s[i] means the i-th character of ssa[]: the order of the all suffix of s    sa[i] means the i-th smallest suffix of allrk[]: the order of the i-th suffix of s    rk[i] means the rank(from small to big) of the i-th suffix
+sa[rk[i]] &#x3D; rk[sa[i]] &#x3D; i
+How to calculate SAdefine ss[l][i] as a substring of s,  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/jpadj/" title="Adjective 形容詞 けいようし">Adjective 形容詞 けいようし</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-12-11T14:33:33.000Z" title="Created 2021-12-11 23:33:33">2021-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Japanese-Study/">Japanese Study</a></span></div><div class="content">List of Japanese Adjective on Wiki
+Synonym(s)[ˈsinəˌnim] &#x3D; 近義詞 &#x3D; 同義語[どうぎご]
+Antonym(s)[ˈan(t)əˌnim] &#x3D; 反義詞 &#x3D; 対義語[たいぎご]
+Color 色 いろ
+
+
+English
+漢語
+日本語Nihongo
+片仮名Katakana
+
+
+
+black
+黑色的
+黒い⬛
+くろい
+
+
+white
+白色的
+白い⬜
+しろい
+
+
+dark
+灰暗的
+暗い
+くらい
+
+
+bright
+明亮的 ~ 光明的
+明るい
+あかるい
+
+
+red
+紅色的
+赤い ~ 紅い🟥
+あかい
+
+
+orange
+橙色的
+オレンジ色の🟧
+~
+
+
+yellow
+黃色的
+黄色い🟨
+きいろい
+
+
+green
+綠色的
+緑色の🟩
+みどりいろの
+
+
+blue
+藍色的
+青い ~ 碧い🟦
+あおい
+
+
+dark blue ~ navy&#x2F;ˈneɪ.vi&#x2F; blue
+紺色的
+紺色の
+こんいろの
+
+
+purple
+紫色的
+紫色の🟪
+むらさきいろの
+
+
+dark brown ~ tobi
+鳶色的 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/Index/" title="Index">Index</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-12-07T09:32:06.000Z" title="Created 2021-12-07 18:32:06">2021-12-07</time></span></div><div class="content">
+世界、宇宙、科學、神學
+文學、電影、動漫、音樂
+社會、政治、歷史、新聞
+算法、編程、面試、工作
+技術、工具、學習、創造
+遊戲、娛樂、競技、愛好
+生活、旅遊、寵物、美食
+金融、投資、好物、推薦
+個人成長、心路歷程</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/jpstudy/" title="SNOWY SMILEは日本語の勉強を頑張ります！">SNOWY SMILEは日本語の勉強を頑張ります！</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-12-06T14:56:21.000Z" title="Created 2021-12-06 23:56:21">2021-12-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Japanese-Study/">Japanese Study</a></span></div><div class="content">五十音 - あいうえおPractical Japanese Study with English and Chinese Comparision
+
+
+
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/IsThereStillAnythingThatLoveCanDo/" title="『JP/EN/CN』愛にできることはまだあるかい">『JP/EN/CN』愛にできることはまだあるかい</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-09-28T23:26:02.000Z" title="Created 2021-09-29 08:26:02">2021-09-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Music/">Music</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Music/JPmusic/">JPmusic</a></span></div><div class="content">
+
+
+
+
+
+愛にできることはまだあるかい？ai ni dekiru koto wa mada aru kaiIs There Still Anything That Love Can Do?還有什麼事是愛能夠做到的嗎？
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/interview/" title="Algorithm Training for the Interview">Algorithm Training for the Interview</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-09-26T11:23:18.000Z" title="Created 2021-09-26 20:23:18">2021-09-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Algorithm/">Algorithm</a></span></div><div class="content">Personal IntroductionI was born and grew up in China, I went to the university in 2014 and finished it in 2018, studying programming for 4 years. After devoting 10k+ hours, I finished over 4~5k programming problems with record.
+During college, I won the bronze, silver, and gold medals from freshman to junior year respectively. And went to the ICPC World Finals (International Collegiate Programming Contest).
+I passed almost all of my interviews (Alibaba, Baidu, Bytedance, Huawei, etc.) and went t ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/chinese/" title="Chinese&gt; Traditional ↔ Simplified 繁簡漢字">Chinese&gt; Traditional ↔ Simplified 繁簡漢字</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-09-26T07:57:49.000Z" title="Created 2021-09-26 16:57:49">2021-09-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Chinese-Study/">Chinese Study</a></span></div><div class="content">
+
+Input Method 輸入法推薦: 小狼毫Recommend: Rimehttps://rime.im/
+Compare 繁簡對比一，組織類名詞黨（党）、團（团）、國（国）、區（区）、鄉（乡）、廟（庙）、廠（厂）、廳（厅）、
+二，身份類名詞華（华）、漢（汉）、親（亲）、爺（爷）、闆（板）、僕（仆）、傭（佣）、衆（众）、們（们）、聖（圣）、靈（灵）、賓（宾）、龍（龙）、鳳（凤）、蟲（虫）、蠅（蝇）、趙（赵）、農（农）、祂（他）、亞（亚）、堯（尧）、鄰（邻）、夥（伙）、敵（敌）、兩（两）、萬（万）、
+三，事物類名詞職（职）、業（业）、錢（钱）、幣（币）、權（权）、奬（奖）、寶（宝）、禮（礼）、鑽（钻）、鑰（钥）、礙（碍）、壩（坝）、淵（渊）、憲（宪）、劍（剑）、屍（尸）、體（体）、樣（样）、態（态）、藥（药）、癥（症）、傷（伤）、報（报）、樹（树）、葉（叶）、築（筑）、蓋（盖）、營（营）、傘（伞）、風（风）、煙（烟）、塵（尘）、燭（烛）、筆（笔）、簽（签）、寫（写）、藝（艺）、聲（声）、這（这）、個（个）、
+四，動詞產（产）、養（养）、補（补）、戀（恋）、愛（爱）、罷（罢）、滅（灭 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/jpcharacters/" title="Japansese Baisc Characters">Japansese Baisc Characters</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-09-26T03:09:01.000Z" title="Created 2021-09-26 12:09:01">2021-09-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Japanese-Study/">Japanese Study</a></span></div><div class="content">日本語を勉強しましょう！
+
+
+せいおん 清音あ  い  う  え  おか  き  く  け  こさ  し  す  せ  そた  ち  つ  て  とな  に  ぬ  ね  のは  ひ  ふ  へ  ほま  み  む  め  もや      ゆ      よら  り  る  れ  ろわ              を
+だくおん 濁音が	ぎ	ぐ	げ  ござ	じ	ず	ぜ	ぞだ	ぢ	づ	で	どば	び	ぶ	べ	ぼ
+ちょうおん 長音「ー」かあさん（母さん）にいさん（兄さん）くうき（空気）ねえさん（姉さん）
+はつおん 撥音「ん」
+すくおん 促音「っ」「ッ」
+ようおん 拗音開拗音きゃ(kya)	きゅ(kyu)	きょ(kyo)	きの子音による	ぎゃ(gya)	ぎゅ(gyu)	ぎょ(gyo)	ぎの子音による	しゃ(sya&#x2F;sha)	しゅ(syu&#x2F;shu)	しょ(syo&#x2F;sho)	しの子音による	じゃ(zya&#x2F;ja)	じゅ(zyu&#x2F;ju)	じょ(zyo&#x2F;jo)	じの子音による	ちゃ(tya&#x2F;cha)	ちゅ(tyu&#x2F;chu)	ちょ( ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/cnmusic/" title="Chinese Music I like">Chinese Music I like</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-09-26T02:48:25.000Z" title="Created 2021-09-26 11:48:25">2021-09-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Music/">Music</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Music/CNmusic/">CNmusic</a></span></div><div class="content">平凡之路 - 朴樹
+
+
+
+
+
+多美麗 Unreachable - 鄧紫棋 G.E.M
+
+
+
+很久以後 Long After - 鄧紫棋 G.E.M
+
+
+
+岩石裡的花 LOVE FINDS A WAY - 鄧紫棋 G.E.M
+
+
+
+摩天動物園 City Zoo - 鄧紫棋 G.E.M
+
+
+
+曾經我也想過一了百了 - 陳樂一
+      
+
+
+來自天堂的魔鬼 AWAY - 鄧紫棋 G.E.M
+
+
+
+Fly Away - 鄧紫棋 G.E.M
+
+
+
+透明 Selfless - 鄧紫棋 G.E.M
+
+
+
+多遠都要在一起 Long Distance - 鄧紫棋 G.E.M
+
+
+
+畫 - 鄧紫棋 G.E.M
+
+
+
+一路逆風 AGAINST THE WIND - 鄧紫棋 G.E.M
+
+
+
+倒數 TIK TOK - 鄧紫棋 G.E.M
+
+
+
+再見 GOODBYE - 鄧紫棋 G.E.M
+
+
+
+新的心跳 HEARTBEAT - 鄧紫棋 G.E.M
+
+
+
+親愛的旅人啊 - 周深
+
+
+
+一期一會 - 周深
+ 
+
+
+女孩你為何踮腳尖 - 雙笙
+
+
+
+海闊天空 - BEYOND
+
+
+
+
+
+
+</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/markdown/" title="Markdown">Markdown</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-09-19T11:26:33.000Z" title="Created 2021-09-19 20:26:33">2021-09-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Coding-Language/">Coding Language</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Coding-Language/Markdown/">Markdown</a></span></div><div class="content">Hi there ~
+
+
+FontHead123456# h1 Heading## h2 Heading### h3 Heading#### h4 Heading##### h5 Heading###### h6 Heading
+
+BoldBold  or  Bold
+1**Bold**  or  __Bold__
+
+ItalicsBold  or  Bold
+1*Bold*  or  _Bold_
+
+Bold &amp;&amp; ItalicsBold  or  Bold
+1***Bold***  or  ___Bold___
+
+StrikethroughStikethrough
+1~~Stikethrough~~
+
+SymbolsList
+
+
+
+
+
+
+
+
+
+
+
+This is 1-
+This is 2-
+This is 3-
+
+
++ + +
+
+
+This is 1-
+This is 2-
+This is 3-
+
+Symbols ⏸unicode-table
+
+
+
+Symbol ~ Punctuation
+UTF-8 Code
+English
+漢語
+日語
+
+
+
+¦
+U+00A6
+B ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">snowy_smile</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">38</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">12</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/mottos/" title="Mottos"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mottos"/></a><div class="content"><a class="title" href="/mottos/" title="Mottos">Mottos</a><time datetime="2022-09-06T11:34:29.000Z" title="Created 2022-09-06 20:34:29">2022-09-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022-August/" title="2022 August"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2022 August"/></a><div class="content"><a class="title" href="/2022-August/" title="2022 August">2022 August</a><time datetime="2022-09-04T09:54:36.000Z" title="Created 2022-09-04 18:54:36">2022-09-04</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/emoji/" title="Emoji 絵文字">Emoji 絵文字</a><time datetime="2022-08-28T06:27:24.000Z" title="Created 2022-08-28 15:27:24">2022-08-28</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/jpnoun/" title="Noun 名詞 めいし">Noun 名詞 めいし</a><time datetime="2022-08-13T08:43:52.000Z" title="Created 2022-08-13 17:43:52">2022-08-13</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/test/" title="Accelerate Test">Accelerate Test</a><time datetime="2022-05-23T03:17:39.000Z" title="Created 2022-05-23 12:17:39">2022-05-23</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            <a class="card-more-btn" href="/categories/" title="More">
+    <i class="fas fa-angle-right"></i></a>
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Algorithm/"><span class="card-category-list-name">Algorithm</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Chinese-Study/"><span class="card-category-list-name">Chinese Study</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Coding-Language/"><span class="card-category-list-name">Coding Language</span><span class="card-category-list-count">2</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Coding-Language/Markdown/"><span class="card-category-list-name">Markdown</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Japanese-Study/"><span class="card-category-list-name">Japanese Study</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Music/"><span class="card-category-list-name">Music</span><span class="card-category-list-count">4</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Music/CNmusic/"><span class="card-category-list-name">CNmusic</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Music/ENmusic/"><span class="card-category-list-name">ENmusic</span><span class="card-category-list-count">1</span></a></li></ul></li>
+            </ul></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span><a class="card-more-btn" href="/archives/" title="More">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/09/"><span class="card-archive-list-date">September 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/08/"><span class="card-archive-list-date">August 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/05/"><span class="card-archive-list-date">May 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/02/"><span class="card-archive-list-date">February 2022</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/01/"><span class="card-archive-list-date">January 2022</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/12/"><span class="card-archive-list-date">December 2021</span><span class="card-archive-list-count">8</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/09/"><span class="card-archive-list-date">September 2021</span><span class="card-archive-list-count">8</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/06/"><span class="card-archive-list-date">June 2021</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">38</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-09-06T12:26:24.434Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By snowy_smile</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
