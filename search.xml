@@ -2523,15 +2523,21 @@
 </tr>
 <tr>
 <td align="center">hungry</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">飢餓的</td>
+<td align="center">飢えている</td>
+<td align="center">うえている</td>
 </tr>
 <tr>
 <td align="center">thirsty</td>
 <td align="center">喉が渇いている</td>
 <td align="center">のどがかわいている</td>
 <td align="center"></td>
+</tr>
+<tr>
+<td align="center">drunk</td>
+<td align="center">喝醉的</td>
+<td align="center">酔っている</td>
+<td align="center">よっている</td>
 </tr>
 <tr>
 <td align="center">fresh</td>
@@ -6693,6 +6699,12 @@ the above code for the center align
 <td align="center">はまべ ~ かいひん ~ うみべ ~ びーち</td>
 </tr>
 <tr>
+<td align="center">coast ~ shore&#x2F;ʃɔːr&#x2F;</td>
+<td align="center">海岸</td>
+<td align="center">海岸</td>
+<td align="center">かいがん</td>
+</tr>
+<tr>
 <td align="center">volcano</td>
 <td align="center">火山</td>
 <td align="center">火山🌋</td>
@@ -10259,7 +10271,7 @@ the above code for the center align
 <tr>
 <td align="center">bamboo&#x2F;bæmˈbuː&#x2F;</td>
 <td align="center">竹</td>
-<td align="center">竹</td>
+<td align="center">竹🎍</td>
 <td align="center">たけ</td>
 </tr>
 </tbody></table>
@@ -10747,6 +10759,18 @@ the above code for the center align
 <td align="center">用紙</td>
 <td align="center">ようし</td>
 <td align="center"></td>
+</tr>
+<tr>
+<td align="center">envelope &#x2F;ˈen.və.ləʊp&#x2F;</td>
+<td align="center">信封</td>
+<td align="center">封筒</td>
+<td align="center">ふうとう</td>
+</tr>
+<tr>
+<td align="center">stamp</td>
+<td align="center">郵票</td>
+<td align="center">切手</td>
+<td align="center">きって</td>
 </tr>
 <tr>
 <td align="center">document ~ paper</td>
@@ -17064,6 +17088,13 @@ comment
 <td align="center">他</td>
 </tr>
 <tr>
+<td align="center">take part in</td>
+<td align="center">參加</td>
+<td align="center">参加</td>
+<td align="center">さんか</td>
+<td align="center"></td>
+</tr>
+<tr>
 <td align="center">worry ~ concern</td>
 <td align="center">擔心</td>
 <td align="center">心配</td>
@@ -18615,6 +18646,13 @@ comment
 <td align="center">自殺</td>
 <td align="center">自殺</td>
 <td align="center">じさつ</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">return</td>
+<td align="center">返還</td>
+<td align="center">返却</td>
+<td align="center">へんきゃく</td>
 <td align="center"></td>
 </tr>
 </tbody></table>
@@ -22272,5 +22310,33 @@ QQ空间已经有三年没有开放过了，嘻嘻~_~是整整一个高中的长
       <categories>
         <category>MyLife</category>
       </categories>
+  </entry>
+  <entry>
+    <title>jpslang</title>
+    <url>/jpslang/</url>
+    <content><![CDATA[<p>categories: </p>
+<ul>
+<li>Japanese Study</li>
+</ul>
+<hr>
+<p>.</p>
+<span id="more"></span>
+<h2 id="Place-場所-場所-ばしょ"><a href="#Place-場所-場所-ばしょ" class="headerlink" title="Place 場所 場所 ばしょ"></a>Place 場所 場所 ばしょ</h2><table>
+<thead>
+<tr>
+<th align="center">English</th>
+<th align="center">漢語</th>
+<th align="center">日本語Nihongo</th>
+<th align="center">片仮名Katakana</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">climax&#x2F;ˈklaɪ.mæks&#x2F;</td>
+<td align="center">高潮</td>
+<td align="center">絶頂 ~ 最高潮</td>
+<td align="center">ぜっちょう ~ さいこうちょう</td>
+</tr>
+</tbody></table>
+]]></content>
   </entry>
 </search>
