@@ -22314,12 +22314,7 @@ QQ空间已经有三年没有开放过了，嘻嘻~_~是整整一个高中的长
   <entry>
     <title>jpslang</title>
     <url>/jpslang/</url>
-    <content><![CDATA[<p>categories: </p>
-<ul>
-<li>Japanese Study</li>
-</ul>
-<hr>
-<p>.</p>
+    <content><![CDATA[<p>.</p>
 <span id="more"></span>
 <h2 id="Place-場所-場所-ばしょ"><a href="#Place-場所-場所-ばしょ" class="headerlink" title="Place 場所 場所 ばしょ"></a>Place 場所 場所 ばしょ</h2><table>
 <thead>
@@ -22338,5 +22333,8 @@ QQ空间已经有三年没有开放过了，嘻嘻~_~是整整一个高中的长
 </tr>
 </tbody></table>
 ]]></content>
+      <categories>
+        <category>Japanese Study</category>
+      </categories>
   </entry>
 </search>
