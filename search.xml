@@ -2519,6 +2519,12 @@
 <td align="center">まずい ~ ふかいな</td>
 </tr>
 <tr>
+<td align="center">thick ~ deep ~ rich ~ strong ~ heavy</td>
+<td align="center">濃稠的 ~ 濃厚的</td>
+<td align="center">濃い</td>
+<td align="center">こい</td>
+</tr>
+<tr>
 <td align="center">smelly ~ stinky</td>
 <td align="center">臭的 - 難聞的</td>
 <td align="center">臭い ~ べたべた</td>
@@ -2537,7 +2543,7 @@
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">drunk</td>
+<td align="center">drunk ~ tipsy</td>
 <td align="center">喝醉的</td>
 <td align="center">酔っている</td>
 <td align="center">よっている</td>
@@ -2713,8 +2719,8 @@
 <tr>
 <td align="center">rich ~ plentiful ~ abundant</td>
 <td align="center">富足的</td>
-<td align="center">豊富な</td>
-<td align="center">ほうふな</td>
+<td align="center">豊富な ~ 富んでいる</td>
+<td align="center">ほうふな ~ とんでいる</td>
 </tr>
 <tr>
 <td align="center">enough ~ adequate&#x2F;ˈæd.ə.kwət&#x2F; ~ sufficient&#x2F;səˈfɪʃ.ənt&#x2F;</td>
@@ -2789,7 +2795,7 @@
 <td align="center">めいかくな</td>
 </tr>
 <tr>
-<td align="center">ambiguous&#x2F;æmˈbɪɡ.ju.əs&#x2F;</td>
+<td align="center">ambiguous&#x2F;æmˈbɪɡ.ju.əs&#x2F; ~ vague&#x2F;veɪɡ&#x2F; ~ equivocal&#x2F;ɪˈkwɪv.ə.kəl&#x2F;</td>
 <td align="center">含糊不清的 ~ 引起歧義的 ~ 模棱兩可的 ~ 不明確的</td>
 <td align="center">曖昧な ~ 多義の ~ 不明瞭な</td>
 <td align="center">あいまいな ~ たぎの ~ ふめいりょうな</td>
@@ -3180,6 +3186,18 @@
 <td align="center">げんごの ~ ことばの</td>
 </tr>
 <tr>
+<td align="center">physical ~ corporeal &#x2F;kɔːrˈpɔːr.i.əl&#x2F;</td>
+<td align="center">肉體的 ~ 物質上的</td>
+<td align="center">肉体的な</td>
+<td align="center">にくたいてきな</td>
+</tr>
+<tr>
+<td align="center">mental ~ spiritual</td>
+<td align="center">精神上的</td>
+<td align="center">精神的な</td>
+<td align="center">せいしんてきな</td>
+</tr>
+<tr>
 <td align="center">tangible&#x2F;ˈtæn.dʒə.bəl&#x2F;</td>
 <td align="center">真實的 ~ 可感知的 ~ 非想象的</td>
 <td align="center">有形の</td>
@@ -3392,6 +3410,12 @@
 <td align="center">かんじょうてきな</td>
 </tr>
 <tr>
+<td align="center">excited</td>
+<td align="center">激動的</td>
+<td align="center">わくわくした</td>
+<td align="center">~</td>
+</tr>
+<tr>
 <td align="center">famous&#x2F;ˈfeɪ.məs&#x2F; ~ well-known</td>
 <td align="center">有名的</td>
 <td align="center">有名な</td>
@@ -3494,7 +3518,7 @@
 <td align="center">いたい</td>
 </tr>
 <tr>
-<td align="center">baffling ~ tough ~ problematical ~ gruelling</td>
+<td align="center">baffling ~ tough ~ problematical&#x2F;ˌprɑː.bləˈmæt̬.ɪk&#x2F; ~ gruelling&#x2F;ˈɡruː.ə.lɪŋ&#x2F;</td>
 <td align="center">痛苦的 ~ 莫名其妙的</td>
 <td align="center">苦しい</td>
 <td align="center">くるしい</td>
@@ -3622,8 +3646,8 @@
 <tr>
 <td align="center">astonished&#x2F;əˈstɑː.nɪʃt&#x2F; ~ frightened ~ surprised</td>
 <td align="center">感到震驚的 ~ 覺得驚駭的</td>
-<td align="center">驚いた</td>
-<td align="center">おどろいた</td>
+<td align="center">驚いた ~ 吃驚した</td>
+<td align="center">おどろいた ~ びっくりした</td>
 </tr>
 <tr>
 <td align="center">nervous</td>
@@ -3864,7 +3888,7 @@
 <td align="center">しげきてき</td>
 </tr>
 <tr>
-<td align="center">interesting ~ exciting</td>
+<td align="center">fun ~ interesting ~ exciting</td>
 <td align="center">有趣的 ~ 有意思的</td>
 <td align="center">興味深い</td>
 <td align="center">きょうみぶかい</td>
@@ -3916,6 +3940,12 @@
 <td align="center">看起來的</td>
 <td align="center">そうな</td>
 <td align="center">~</td>
+</tr>
+<tr>
+<td align="center">different ~ distinct</td>
+<td align="center">相異的</td>
+<td align="center">異なった</td>
+<td align="center">ことなった</td>
 </tr>
 <tr>
 <td align="center">opposite&#x2F;ˈɑː.pə.zɪt&#x2F;</td>
@@ -3972,7 +4002,7 @@
 <td align="center">ふせいかくな</td>
 </tr>
 <tr>
-<td align="center">detailed</td>
+<td align="center">detailed&#x2F;ˈdiː.teɪld&#x2F;</td>
 <td align="center">詳細的</td>
 <td align="center">詳しい</td>
 <td align="center">くわしい</td>
@@ -4056,10 +4086,10 @@
 <td align="center">にがてな</td>
 </tr>
 <tr>
-<td align="center">troublesome ~ annoying</td>
+<td align="center">troublesome ~ annoying ~ bothersome&#x2F;ˈbɑː.ðɚ.səm&#x2F;</td>
 <td align="center">麻煩的</td>
-<td align="center">迷惑な</td>
-<td align="center">めいわくな</td>
+<td align="center">迷惑な ~ 面倒な</td>
+<td align="center">めいわくな ~ めんどうな</td>
 </tr>
 <tr>
 <td align="center">polite ~ courteous</td>
@@ -4188,13 +4218,13 @@
 <td align="center">ていきてきな</td>
 </tr>
 <tr>
-<td align="center">lukcy ~ fortunete ~ auspicious</td>
-<td align="center">幸運な</td>
-<td align="center">こううんな</td>
-<td align="center"></td>
+<td align="center">lukcy ~ fortunate ~ auspicious ~ blessed</td>
+<td align="center">幸運的</td>
+<td align="center">幸運な ~ 恵まれている</td>
+<td align="center">こううんな ~ めぐまれている</td>
 </tr>
 <tr>
-<td align="center">unlucky ~ unfortunete ~ ominous</td>
+<td align="center">unlucky ~ unfortunate ~ ominous</td>
 <td align="center">不幸的 ~ 不詳的</td>
 <td align="center">不運な ~ 不吉な</td>
 <td align="center">ふうんな ~ ふきつな</td>
@@ -4234,6 +4264,24 @@
 <td align="center">勝利的</td>
 <td align="center">勝利の</td>
 <td align="center">しょうりの</td>
+</tr>
+<tr>
+<td align="center">fluent</td>
+<td align="center">流利的</td>
+<td align="center">流暢な</td>
+<td align="center">りゅうちょうな</td>
+</tr>
+<tr>
+<td align="center">trembling&#x2F;ˈtrem.blɪŋ&#x2F;</td>
+<td align="center">顫抖的</td>
+<td align="center">震えている</td>
+<td align="center">ふるえている</td>
+</tr>
+<tr>
+<td align="center">approaching</td>
+<td align="center">逼近的</td>
+<td align="center">近づいている</td>
+<td align="center">ちかづいている</td>
 </tr>
 </tbody></table>
 <h3 id="Society-社会-しゃかい"><a href="#Society-社会-しゃかい" class="headerlink" title="Society 社会 しゃかい"></a>Society 社会 しゃかい</h3><table>
@@ -4322,6 +4370,12 @@
 <td align="center">世俗的</td>
 <td align="center">世俗的</td>
 <td align="center">せぞくてき</td>
+</tr>
+<tr>
+<td align="center">prosperous&#x2F;ˈprɑː.spɚ.əs&#x2F; ~ flourishing&#x2F;ˈflɝː.ɪʃ&#x2F; ~ popular</td>
+<td align="center">盛んである</td>
+<td align="center">さかんである</td>
+<td align="center"></td>
 </tr>
 </tbody></table>
 <h2 id="no-adj-の形容詞"><a href="#no-adj-の形容詞" class="headerlink" title="no-adj の形容詞 *"></a>no-adj の形容詞 *</h2><table>
@@ -4744,12 +4798,19 @@
 <td align="center">~</td>
 </tr>
 <tr>
+<td align="center">unconsciously ~ accidentally ~ unintentionally</td>
+<td align="center">無意識地</td>
+<td align="center">思わず</td>
+<td align="center">おもわず</td>
+</tr>
+<tr>
 <td align="center">carelessly&#x2F;ˈker.ləs.li&#x2F;</td>
 <td align="center">不注意に</td>
 <td align="center">粗心地</td>
 <td align="center">うっかり</td>
 </tr>
 </tbody></table>
+<p>most likely＞probably＞likely＞maybe＝perhaps＞possibly<br>・most likely（90パーセント以上）「ほぼ確実」(kakujitsu)<br>・probably（80パーセント以上）「十中八九」(じゅっちゅうはっく jucchuhakku)<br>・likely（50パーセント以上）「たぶん」<br>・maybe &#x2F; perhaps（30～40パーセント）「もしかしたら～かもしれない」<br>・possibly（10パーセント程度、「ひょっとしたら～かもしれない」</p>
 <h2 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h2><table>
 <thead>
 <tr>
@@ -5191,6 +5252,12 @@
 <td align="center">のあと</td>
 </tr>
 <tr>
+<td align="center">henceforth ~ henceforward ~ from now (on)</td>
+<td align="center">從此以後</td>
+<td align="center">これから</td>
+<td align="center">~</td>
+</tr>
+<tr>
 <td align="center">unfortunately</td>
 <td align="center">不幸地</td>
 <td align="center">生憎</td>
@@ -5215,7 +5282,7 @@
 <tbody><tr>
 <td align="center">by the way</td>
 <td align="center">順便一提</td>
-<td align="center">ところで ~ ちなみち</td>
+<td align="center">ところで ~ ちなみち ~ そういえば</td>
 <td align="center"></td>
 </tr>
 <tr>
@@ -5479,7 +5546,7 @@ the above code for the center align
 <p>Sand got in my eyes<br>砂が目に入った 砂&#x3D;すな 目&#x3D;め 入った&#x3D;はいった</p>
 </blockquote>
 <blockquote>
-<p>Please stop (in moderation)<br>いい加減にしろ いいかげんにしろ</p>
+<p>Please stop (in moderation)<br>いい加減にしろ<br>—kagen</p>
 </blockquote>
 <blockquote>
 <p>What happened?<br>どうしたの？</p>
@@ -5756,7 +5823,412 @@ the above code for the center align
   <entry>
     <title>Noun 名詞 めいし</title>
     <url>/jpnoun/</url>
-    <content><![CDATA[<p>.</p>
+    <content><![CDATA[<h3 id="Nature-自然-自然-しぜん"><a href="#Nature-自然-自然-しぜん" class="headerlink" title="Nature 自然 自然 しぜん"></a>Nature 自然 自然 しぜん</h3><table>
+<thead>
+<tr>
+<th align="center">English</th>
+<th align="center">漢語</th>
+<th align="center">日本語Nihongo</th>
+<th align="center">片仮名Katakana</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">nature</td>
+<td align="center">自然</td>
+<td align="center">自然</td>
+<td align="center">しぜん</td>
+</tr>
+<tr>
+<td align="center">sun</td>
+<td align="center">太陽</td>
+<td align="center">太陽 ~ 日🌞</td>
+<td align="center">たいよう ~ ひ</td>
+</tr>
+<tr>
+<td align="center">moon</td>
+<td align="center">月亮</td>
+<td align="center">月🌙</td>
+<td align="center">つき</td>
+</tr>
+<tr>
+<td align="center">sunshine</td>
+<td align="center">陽光 ~ 日光</td>
+<td align="center">日光</td>
+<td align="center">にっこう</td>
+</tr>
+<tr>
+<td align="center">light</td>
+<td align="center">光</td>
+<td align="center">光</td>
+<td align="center">ひかり</td>
+</tr>
+<tr>
+<td align="center">brightness</td>
+<td align="center">光明</td>
+<td align="center">明かり</td>
+<td align="center">あかり</td>
+</tr>
+<tr>
+<td align="center">darkness</td>
+<td align="center">黑暗</td>
+<td align="center">闇</td>
+<td align="center">やみ</td>
+</tr>
+<tr>
+<td align="center">forest</td>
+<td align="center">森林</td>
+<td align="center">森 ~ 森林</td>
+<td align="center">もり ~ しんりん</td>
+</tr>
+<tr>
+<td align="center">tropical rainforest</td>
+<td align="center">熱帶雨林</td>
+<td align="center">熱帯雨林</td>
+<td align="center">ねったいうりん</td>
+</tr>
+<tr>
+<td align="center">jungle</td>
+<td align="center">叢林</td>
+<td align="center">叢林</td>
+<td align="center">そうりん</td>
+</tr>
+<tr>
+<td align="center">hill</td>
+<td align="center">山丘</td>
+<td align="center">丘</td>
+<td align="center">おか</td>
+</tr>
+<tr>
+<td align="center">valley</td>
+<td align="center">溪谷 ~ 山谷</td>
+<td align="center">谷</td>
+<td align="center">たに</td>
+</tr>
+<tr>
+<td align="center">peak ~ summit</td>
+<td align="center">巔峰</td>
+<td align="center">頂上</td>
+<td align="center">ちょうじょう</td>
+</tr>
+<tr>
+<td align="center">cave ~ hole</td>
+<td align="center">洞穴</td>
+<td align="center">洞窟 ~ 穴</td>
+<td align="center">どうくつ ~ あな</td>
+</tr>
+<tr>
+<td align="center">river</td>
+<td align="center">河流</td>
+<td align="center">川</td>
+<td align="center">かわ</td>
+</tr>
+<tr>
+<td align="center">lake</td>
+<td align="center">湖泊</td>
+<td align="center">湖</td>
+<td align="center">みずうみ</td>
+</tr>
+<tr>
+<td align="center">sea</td>
+<td align="center">海</td>
+<td align="center">海</td>
+<td align="center">うみ</td>
+</tr>
+<tr>
+<td align="center">waterfall</td>
+<td align="center">瀑布</td>
+<td align="center">滝</td>
+<td align="center">たき</td>
+</tr>
+<tr>
+<td align="center">hot spring</td>
+<td align="center">溫泉</td>
+<td align="center">温泉♨</td>
+<td align="center">おんせん</td>
+</tr>
+<tr>
+<td align="center">sky</td>
+<td align="center">天空</td>
+<td align="center">空</td>
+<td align="center">そら</td>
+</tr>
+<tr>
+<td align="center">water</td>
+<td align="center">水</td>
+<td align="center">水</td>
+<td align="center">みず</td>
+</tr>
+<tr>
+<td align="center">ice</td>
+<td align="center">冰</td>
+<td align="center">氷🧊</td>
+<td align="center">こおり</td>
+</tr>
+<tr>
+<td align="center">fire</td>
+<td align="center">火</td>
+<td align="center">火🔥</td>
+<td align="center">ひ -か</td>
+</tr>
+<tr>
+<td align="center">sunshine</td>
+<td align="center">陽光</td>
+<td align="center">日光</td>
+<td align="center">にっこ</td>
+</tr>
+<tr>
+<td align="center">wood</td>
+<td align="center">木</td>
+<td align="center">木🌲</td>
+<td align="center">き</td>
+</tr>
+<tr>
+<td align="center">sand</td>
+<td align="center">沙子</td>
+<td align="center">砂⏳</td>
+<td align="center">すな</td>
+</tr>
+<tr>
+<td align="center">rock ~ stone</td>
+<td align="center">岩石</td>
+<td align="center">岩(磐)</td>
+<td align="center">いわ</td>
+</tr>
+<tr>
+<td align="center">gold</td>
+<td align="center">金</td>
+<td align="center">金</td>
+<td align="center">きん</td>
+</tr>
+<tr>
+<td align="center">silver</td>
+<td align="center">銀</td>
+<td align="center">銀</td>
+<td align="center">ぎん</td>
+</tr>
+<tr>
+<td align="center">bronze&#x2F;brɑːnz&#x2F;</td>
+<td align="center">青銅</td>
+<td align="center">青銅</td>
+<td align="center">せいどう</td>
+</tr>
+<tr>
+<td align="center">copper&#x2F;ˈkɑː.pɚ&#x2F;</td>
+<td align="center">銅</td>
+<td align="center">銅</td>
+<td align="center">どう</td>
+</tr>
+<tr>
+<td align="center">iron&#x2F;aɪrn&#x2F;</td>
+<td align="center">鐵</td>
+<td align="center">鉄</td>
+<td align="center">てつ</td>
+</tr>
+<tr>
+<td align="center">liquid</td>
+<td align="center">液體</td>
+<td align="center">液体</td>
+<td align="center">えきたい</td>
+</tr>
+<tr>
+<td align="center">gas</td>
+<td align="center">氣體</td>
+<td align="center">気体</td>
+<td align="center">きたい</td>
+</tr>
+<tr>
+<td align="center">solid&#x2F;ˈsɑː.lɪd&#x2F;</td>
+<td align="center">固體</td>
+<td align="center">固体</td>
+<td align="center">こたい</td>
+</tr>
+<tr>
+<td align="center">dust</td>
+<td align="center">灰塵</td>
+<td align="center">灰</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">smoke</td>
+<td align="center">煙霧</td>
+<td align="center">煙</td>
+<td align="center">けむり</td>
+</tr>
+<tr>
+<td align="center">desert</td>
+<td align="center">沙漠</td>
+<td align="center">砂漠🏜</td>
+<td align="center">さばく</td>
+</tr>
+<tr>
+<td align="center">beach ~ seaside</td>
+<td align="center">沙灘 ~ 海邊</td>
+<td align="center">浜辺 ~ 海浜 ~ 海辺 ~ ビーチ</td>
+<td align="center">はまべ ~ かいひん ~ うみべ ~ びーち</td>
+</tr>
+<tr>
+<td align="center">coast&#x2F;koʊst&#x2F; ~ shore&#x2F;ʃɔːr&#x2F;</td>
+<td align="center">海岸</td>
+<td align="center">海岸</td>
+<td align="center">かいがん</td>
+</tr>
+<tr>
+<td align="center">volcano</td>
+<td align="center">火山</td>
+<td align="center">火山🌋</td>
+<td align="center">かざん</td>
+</tr>
+<tr>
+<td align="center">disaster</td>
+<td align="center">災害</td>
+<td align="center">災害</td>
+<td align="center">さいがい</td>
+</tr>
+<tr>
+<td align="center">earthquake</td>
+<td align="center">地震</td>
+<td align="center">地震</td>
+<td align="center">じしん</td>
+</tr>
+<tr>
+<td align="center">cloud</td>
+<td align="center">雲</td>
+<td align="center">雲🌥</td>
+<td align="center">くも</td>
+</tr>
+<tr>
+<td align="center">rain</td>
+<td align="center">雨</td>
+<td align="center">雨⛈</td>
+<td align="center">あめ</td>
+</tr>
+<tr>
+<td align="center">wind</td>
+<td align="center">風</td>
+<td align="center">風</td>
+<td align="center">かぜ</td>
+</tr>
+<tr>
+<td align="center">snow</td>
+<td align="center">雪</td>
+<td align="center">雪❄</td>
+<td align="center">ゆき</td>
+</tr>
+<tr>
+<td align="center">blizzard&#x2F;ˈblɪz.ɚd&#x2F;</td>
+<td align="center">暴風雪</td>
+<td align="center">大吹雪 ~ 暴風雪</td>
+<td align="center">おおふぶき ~ ぼうふうせつ</td>
+</tr>
+<tr>
+<td align="center">typhoon</td>
+<td align="center">颱風</td>
+<td align="center">台風🌀</td>
+<td align="center">たいふ</td>
+</tr>
+<tr>
+<td align="center">showers</td>
+<td align="center">陣雨</td>
+<td align="center">にわか雨</td>
+<td align="center">にわかあめ</td>
+</tr>
+<tr>
+<td align="center">windy</td>
+<td align="center">強風的</td>
+<td align="center">風が強い</td>
+<td align="center">かぜがつよい</td>
+</tr>
+<tr>
+<td align="center">thunder</td>
+<td align="center">雷</td>
+<td align="center">雷⚡</td>
+<td align="center">かみなり</td>
+</tr>
+<tr>
+<td align="center">fog</td>
+<td align="center">霧</td>
+<td align="center">霧</td>
+<td align="center">きり</td>
+</tr>
+<tr>
+<td align="center">foggy</td>
+<td align="center">濃霧的</td>
+<td align="center">霧が濃い</td>
+<td align="center">きろがこい</td>
+</tr>
+<tr>
+<td align="center">lightning</td>
+<td align="center">閃電</td>
+<td align="center">稲妻</td>
+<td align="center">いなずま</td>
+</tr>
+<tr>
+<td align="center">thunderstorm</td>
+<td align="center">雷雨</td>
+<td align="center">雷雨⛈</td>
+<td align="center">らいう</td>
+</tr>
+<tr>
+<td align="center">storm</td>
+<td align="center">暴風</td>
+<td align="center">嵐</td>
+<td align="center">あらし</td>
+</tr>
+<tr>
+<td align="center">sunny weather</td>
+<td align="center">晴天</td>
+<td align="center">晴れ☀</td>
+<td align="center">はれ</td>
+</tr>
+<tr>
+<td align="center">cloudy weather</td>
+<td align="center">多雲天</td>
+<td align="center">曇り⛅</td>
+<td align="center">くもり</td>
+</tr>
+<tr>
+<td align="center">(weather’s) temperature</td>
+<td align="center">氣溫</td>
+<td align="center">気温 ~ 温度</td>
+<td align="center">きおん ~ おんど</td>
+</tr>
+<tr>
+<td align="center">weather</td>
+<td align="center">天氣</td>
+<td align="center">天気</td>
+<td align="center">てんき</td>
+</tr>
+<tr>
+<td align="center">climate</td>
+<td align="center">氣候</td>
+<td align="center">気候</td>
+<td align="center">きこう</td>
+</tr>
+<tr>
+<td align="center">tsunami ~ tidal wave</td>
+<td align="center">海嘯</td>
+<td align="center">津波</td>
+<td align="center">つなみ</td>
+</tr>
+<tr>
+<td align="center">flood</td>
+<td align="center">洪水</td>
+<td align="center">洪水</td>
+<td align="center">こうずい</td>
+</tr>
+<tr>
+<td align="center">conflagration - fire</td>
+<td align="center">火災</td>
+<td align="center">火災</td>
+<td align="center">かさい</td>
+</tr>
+<tr>
+<td align="center">view</td>
+<td align="center">風景</td>
+<td align="center">眺め</td>
+<td align="center">ながめ</td>
+</tr>
+</tbody></table>
 <span id="more"></span>
 <h2 id="Place-場所-場所-ばしょ"><a href="#Place-場所-場所-ばしょ" class="headerlink" title="Place 場所 場所 ばしょ"></a>Place 場所 場所 ばしょ</h2><table>
 <thead>
@@ -5838,6 +6310,18 @@ the above code for the center align
 <td align="center">農田 ~ 稻田</td>
 <td align="center">田んぼ</td>
 <td align="center">たんぼ</td>
+</tr>
+<tr>
+<td align="center">farm</td>
+<td align="center">農場</td>
+<td align="center">農場</td>
+<td align="center">のうじょう</td>
+</tr>
+<tr>
+<td align="center">ranch</td>
+<td align="center">牧場</td>
+<td align="center">牧場</td>
+<td align="center">ぼくじょう</td>
 </tr>
 <tr>
 <td align="center">castle</td>
@@ -5922,6 +6406,12 @@ the above code for the center align
 <td align="center">家</td>
 <td align="center">家</td>
 <td align="center">うち ~ いえ</td>
+</tr>
+<tr>
+<td align="center">parent’s hom</td>
+<td align="center">老家</td>
+<td align="center">実家</td>
+<td align="center">じっか</td>
 </tr>
 <tr>
 <td align="center">masion</td>
@@ -6302,6 +6792,18 @@ the above code for the center align
 <td align="center">すーぱー ~ すーぱーまーけっと</td>
 </tr>
 <tr>
+<td align="center">shop ~ retail store</td>
+<td align="center">商店</td>
+<td align="center">商店 ~ 小売店</td>
+<td align="center">しょうてん ~ こうりてん</td>
+</tr>
+<tr>
+<td align="center">stall ~ stand</td>
+<td align="center">貨攤 ~ 攤位</td>
+<td align="center">屋台</td>
+<td align="center">やたい</td>
+</tr>
+<tr>
 <td align="center">beauty salon&#x2F;səˈlɑːn&#x2F; ~ beauty parlor&#x2F;ˈpɑː.lər&#x2F;</td>
 <td align="center">美容院</td>
 <td align="center">美容院</td>
@@ -6456,412 +6958,6 @@ the above code for the center align
 <td align="center">居住地</td>
 <td align="center">住居 ~ 住まい</td>
 <td align="center">じゅうきょ ~ すまい</td>
-</tr>
-</tbody></table>
-<h3 id="Nature-自然-自然-しぜん"><a href="#Nature-自然-自然-しぜん" class="headerlink" title="Nature 自然 自然 しぜん"></a>Nature 自然 自然 しぜん</h3><table>
-<thead>
-<tr>
-<th align="center">English</th>
-<th align="center">漢語</th>
-<th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">nature</td>
-<td align="center">自然</td>
-<td align="center">自然</td>
-<td align="center">しぜん</td>
-</tr>
-<tr>
-<td align="center">sun</td>
-<td align="center">太陽</td>
-<td align="center">太陽 ~ 日🌞</td>
-<td align="center">たいよう ~ ひ</td>
-</tr>
-<tr>
-<td align="center">moon</td>
-<td align="center">月亮</td>
-<td align="center">月🌙</td>
-<td align="center">つき</td>
-</tr>
-<tr>
-<td align="center">sunshine</td>
-<td align="center">陽光 ~ 日光</td>
-<td align="center">日光</td>
-<td align="center">にっこう</td>
-</tr>
-<tr>
-<td align="center">light</td>
-<td align="center">光</td>
-<td align="center">光</td>
-<td align="center">ひかり</td>
-</tr>
-<tr>
-<td align="center">brightness</td>
-<td align="center">光明</td>
-<td align="center">明かり</td>
-<td align="center">あかり</td>
-</tr>
-<tr>
-<td align="center">darkness</td>
-<td align="center">黑暗</td>
-<td align="center">闇</td>
-<td align="center">やみ</td>
-</tr>
-<tr>
-<td align="center">forest</td>
-<td align="center">森林</td>
-<td align="center">森 ~ 森林</td>
-<td align="center">もり ~ しんりん</td>
-</tr>
-<tr>
-<td align="center">tropical rainforest</td>
-<td align="center">熱帶雨林</td>
-<td align="center">熱帯雨林</td>
-<td align="center">ねったいうりん</td>
-</tr>
-<tr>
-<td align="center">jungle</td>
-<td align="center">叢林</td>
-<td align="center">叢林</td>
-<td align="center">そうりん</td>
-</tr>
-<tr>
-<td align="center">hill</td>
-<td align="center">山丘</td>
-<td align="center">丘</td>
-<td align="center">おか</td>
-</tr>
-<tr>
-<td align="center">valley</td>
-<td align="center">溪谷 ~ 山谷</td>
-<td align="center">谷</td>
-<td align="center">たに</td>
-</tr>
-<tr>
-<td align="center">peak ~ summit</td>
-<td align="center">巔峰</td>
-<td align="center">頂上</td>
-<td align="center">ちょうじょう</td>
-</tr>
-<tr>
-<td align="center">cave ~ hole</td>
-<td align="center">洞穴</td>
-<td align="center">洞窟 ~ 穴</td>
-<td align="center">どうくつ ~ あな</td>
-</tr>
-<tr>
-<td align="center">river</td>
-<td align="center">河流</td>
-<td align="center">川</td>
-<td align="center">かわ</td>
-</tr>
-<tr>
-<td align="center">lake</td>
-<td align="center">湖泊</td>
-<td align="center">湖</td>
-<td align="center">みずうみ</td>
-</tr>
-<tr>
-<td align="center">sea</td>
-<td align="center">海</td>
-<td align="center">海</td>
-<td align="center">うみ</td>
-</tr>
-<tr>
-<td align="center">waterfall</td>
-<td align="center">瀑布</td>
-<td align="center">滝</td>
-<td align="center">たき</td>
-</tr>
-<tr>
-<td align="center">hot spring</td>
-<td align="center">溫泉</td>
-<td align="center">温泉♨</td>
-<td align="center">おんせん</td>
-</tr>
-<tr>
-<td align="center">sky</td>
-<td align="center">天空</td>
-<td align="center">空</td>
-<td align="center">そら</td>
-</tr>
-<tr>
-<td align="center">water</td>
-<td align="center">水</td>
-<td align="center">水</td>
-<td align="center">みず</td>
-</tr>
-<tr>
-<td align="center">ice</td>
-<td align="center">冰</td>
-<td align="center">氷</td>
-<td align="center">こおり</td>
-</tr>
-<tr>
-<td align="center">fire</td>
-<td align="center">火</td>
-<td align="center">火🔥</td>
-<td align="center">ひ -か</td>
-</tr>
-<tr>
-<td align="center">sunshine</td>
-<td align="center">陽光</td>
-<td align="center">日光</td>
-<td align="center">にっこ</td>
-</tr>
-<tr>
-<td align="center">wood</td>
-<td align="center">木</td>
-<td align="center">木🌲</td>
-<td align="center">き</td>
-</tr>
-<tr>
-<td align="center">sand</td>
-<td align="center">沙子</td>
-<td align="center">砂⏳</td>
-<td align="center">すな</td>
-</tr>
-<tr>
-<td align="center">rock ~ stone</td>
-<td align="center">岩石</td>
-<td align="center">岩(磐)</td>
-<td align="center">いわ</td>
-</tr>
-<tr>
-<td align="center">gold</td>
-<td align="center">金</td>
-<td align="center">金</td>
-<td align="center">きん</td>
-</tr>
-<tr>
-<td align="center">silver</td>
-<td align="center">銀</td>
-<td align="center">銀</td>
-<td align="center">ぎん</td>
-</tr>
-<tr>
-<td align="center">bronze&#x2F;brɑːnz&#x2F;</td>
-<td align="center">青銅</td>
-<td align="center">青銅</td>
-<td align="center">せいどう</td>
-</tr>
-<tr>
-<td align="center">copper&#x2F;ˈkɑː.pɚ&#x2F;</td>
-<td align="center">銅</td>
-<td align="center">銅</td>
-<td align="center">どう</td>
-</tr>
-<tr>
-<td align="center">iron&#x2F;aɪrn&#x2F;</td>
-<td align="center">鐵</td>
-<td align="center">鉄</td>
-<td align="center">てつ</td>
-</tr>
-<tr>
-<td align="center">liquid</td>
-<td align="center">液體</td>
-<td align="center">液体</td>
-<td align="center">えきたい</td>
-</tr>
-<tr>
-<td align="center">gas</td>
-<td align="center">氣體</td>
-<td align="center">気体</td>
-<td align="center">きたい</td>
-</tr>
-<tr>
-<td align="center">solid&#x2F;ˈsɑː.lɪd&#x2F;</td>
-<td align="center">固體</td>
-<td align="center">固体</td>
-<td align="center">こたい</td>
-</tr>
-<tr>
-<td align="center">dust</td>
-<td align="center">灰塵</td>
-<td align="center">灰</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">smoke</td>
-<td align="center">煙霧</td>
-<td align="center">煙</td>
-<td align="center">けむり</td>
-</tr>
-<tr>
-<td align="center">desert</td>
-<td align="center">沙漠</td>
-<td align="center">砂漠🏜</td>
-<td align="center">さばく</td>
-</tr>
-<tr>
-<td align="center">beach ~ seaside</td>
-<td align="center">沙灘 ~ 海邊</td>
-<td align="center">浜辺 ~ 海浜 ~ 海辺 ~ ビーチ</td>
-<td align="center">はまべ ~ かいひん ~ うみべ ~ びーち</td>
-</tr>
-<tr>
-<td align="center">coast ~ shore&#x2F;ʃɔːr&#x2F;</td>
-<td align="center">海岸</td>
-<td align="center">海岸</td>
-<td align="center">かいがん</td>
-</tr>
-<tr>
-<td align="center">volcano</td>
-<td align="center">火山</td>
-<td align="center">火山🌋</td>
-<td align="center">かざん</td>
-</tr>
-<tr>
-<td align="center">disaster</td>
-<td align="center">災害</td>
-<td align="center">災害</td>
-<td align="center">さいがい</td>
-</tr>
-<tr>
-<td align="center">earthquake</td>
-<td align="center">地震</td>
-<td align="center">地震</td>
-<td align="center">じしん</td>
-</tr>
-<tr>
-<td align="center">cloud</td>
-<td align="center">雲</td>
-<td align="center">雲🌥</td>
-<td align="center">くも</td>
-</tr>
-<tr>
-<td align="center">rain</td>
-<td align="center">雨</td>
-<td align="center">雨⛈</td>
-<td align="center">あめ</td>
-</tr>
-<tr>
-<td align="center">wind</td>
-<td align="center">風</td>
-<td align="center">風</td>
-<td align="center">かぜ</td>
-</tr>
-<tr>
-<td align="center">snow</td>
-<td align="center">雪</td>
-<td align="center">雪❄</td>
-<td align="center">ゆき</td>
-</tr>
-<tr>
-<td align="center">blizzard&#x2F;ˈblɪz.ɚd&#x2F;</td>
-<td align="center">暴風雪</td>
-<td align="center">大吹雪 ~ 暴風雪</td>
-<td align="center">おおふぶき ~ ぼうふうせつ</td>
-</tr>
-<tr>
-<td align="center">typhoon</td>
-<td align="center">颱風</td>
-<td align="center">台風🌀</td>
-<td align="center">たいふ</td>
-</tr>
-<tr>
-<td align="center">showers</td>
-<td align="center">陣雨</td>
-<td align="center">にわか雨</td>
-<td align="center">にわかあめ</td>
-</tr>
-<tr>
-<td align="center">windy</td>
-<td align="center">強風的</td>
-<td align="center">風が強い</td>
-<td align="center">かぜがつよい</td>
-</tr>
-<tr>
-<td align="center">thunder</td>
-<td align="center">雷</td>
-<td align="center">雷⚡</td>
-<td align="center">かみなり</td>
-</tr>
-<tr>
-<td align="center">fog</td>
-<td align="center">霧</td>
-<td align="center">霧</td>
-<td align="center">きり</td>
-</tr>
-<tr>
-<td align="center">foggy</td>
-<td align="center">濃霧的</td>
-<td align="center">霧が濃い</td>
-<td align="center">きろがこい</td>
-</tr>
-<tr>
-<td align="center">lightning</td>
-<td align="center">閃電</td>
-<td align="center">稲妻</td>
-<td align="center">いなずま</td>
-</tr>
-<tr>
-<td align="center">thunderstorm</td>
-<td align="center">雷雨</td>
-<td align="center">雷雨⛈</td>
-<td align="center">らいう</td>
-</tr>
-<tr>
-<td align="center">storm</td>
-<td align="center">暴風</td>
-<td align="center">嵐</td>
-<td align="center">あらし</td>
-</tr>
-<tr>
-<td align="center">sunny weather</td>
-<td align="center">晴天</td>
-<td align="center">晴れ☀</td>
-<td align="center">はれ</td>
-</tr>
-<tr>
-<td align="center">cloudy weather</td>
-<td align="center">多雲天</td>
-<td align="center">曇り⛅</td>
-<td align="center">くもり</td>
-</tr>
-<tr>
-<td align="center">(weather’s) temperature</td>
-<td align="center">氣溫</td>
-<td align="center">気温 ~ 温度</td>
-<td align="center">きおん ~ おんど</td>
-</tr>
-<tr>
-<td align="center">weather</td>
-<td align="center">天氣</td>
-<td align="center">天気</td>
-<td align="center">てんき</td>
-</tr>
-<tr>
-<td align="center">climate</td>
-<td align="center">氣候</td>
-<td align="center">気候</td>
-<td align="center">きこう</td>
-</tr>
-<tr>
-<td align="center">tsunami ~ tidal wave</td>
-<td align="center">海嘯</td>
-<td align="center">津波</td>
-<td align="center">つなみ</td>
-</tr>
-<tr>
-<td align="center">flood</td>
-<td align="center">洪水</td>
-<td align="center">洪水</td>
-<td align="center">こうずい</td>
-</tr>
-<tr>
-<td align="center">conflagration - fire</td>
-<td align="center">火災</td>
-<td align="center">火災</td>
-<td align="center">かさい</td>
-</tr>
-<tr>
-<td align="center">view</td>
-<td align="center">風景</td>
-<td align="center">眺め</td>
-<td align="center">ながめ</td>
 </tr>
 </tbody></table>
 <h3 id="World-世界-世界🗺-セかい"><a href="#World-世界-世界🗺-セかい" class="headerlink" title="World 世界 世界🗺 セかい"></a>World 世界 世界🗺 セかい</h3><table>
@@ -7066,7 +7162,7 @@ the above code for the center align
 <td align="center">がいこく</td>
 </tr>
 <tr>
-<td align="center">US(A)</td>
+<td align="center">U.S.(A)</td>
 <td align="center">美國</td>
 <td align="center">米国</td>
 <td align="center">べいこく</td>
@@ -7900,6 +7996,12 @@ the above code for the center align
 <td align="center">ほか</td>
 </tr>
 <tr>
+<td align="center">betrayer ~ taitor ~ turncoat ~ renegade</td>
+<td align="center">叛徒 ~ 背叛者</td>
+<td align="center">裏切者</td>
+<td align="center">うらぎりもの</td>
+</tr>
+<tr>
 <td align="center">enemy</td>
 <td align="center">敵人</td>
 <td align="center">敵</td>
@@ -7928,6 +8030,12 @@ the above code for the center align
 <td align="center">房東 ~ 地主</td>
 <td align="center">大家さん</td>
 <td align="center">おおやさん</td>
+</tr>
+<tr>
+<td align="center">owner ~ possessor ~ proprietor&#x2F;prəˈpraɪə.t̬ɚ&#x2F;</td>
+<td align="center">所有者 ~ 持有人</td>
+<td align="center">持ち主</td>
+<td align="center">もちぬし</td>
 </tr>
 <tr>
 <td align="center">supervisor&#x2F;ˈsupərˌvaɪzər&#x2F; ~ boss&#x2F;bɔs&#x2F; ~ manager ~ superior&#x2F;səˈpɪr.i.ɚ&#x2F;</td>
@@ -8048,6 +8156,12 @@ the above code for the center align
 <td align="center">だんたい</td>
 </tr>
 <tr>
+<td align="center">committee&#x2F;kəˈmɪt̬.i&#x2F;</td>
+<td align="center">委員會</td>
+<td align="center">委員会</td>
+<td align="center">いいんかい</td>
+</tr>
+<tr>
 <td align="center">bureau&#x2F;ˈbjʊr.oʊ&#x2F; ~ staff office ~ executive office</td>
 <td align="center">機構 ~ 辦事處 ~ 辦公室</td>
 <td align="center">事務局</td>
@@ -8124,7 +8238,7 @@ the above code for the center align
 <td align="center">じどう</td>
 </tr>
 <tr>
-<td align="center">adult</td>
+<td align="center">adult&#x2F;əˈdʌlt&#x2F;</td>
 <td align="center">大人 ~ 成人 ~ 成年人</td>
 <td align="center">大人 ~ 成人</td>
 <td align="center">おとな ~ せいじん</td>
@@ -8776,6 +8890,12 @@ the above code for the center align
 <td align="center">教師</td>
 <td align="center">先生(others) ~ 教師</td>
 <td align="center">せんせい ~ きょうし</td>
+</tr>
+<tr>
+<td align="center">linguist&#x2F;ˈlɪŋ.ɡwɪst&#x2F;</td>
+<td align="center">語言學家</td>
+<td align="center">言語学者</td>
+<td align="center">げんごがくしゃ</td>
 </tr>
 <tr>
 <td align="center">professor</td>
@@ -10065,6 +10185,12 @@ the above code for the center align
 <td align="center">チーズ</td>
 <td align="center">~</td>
 </tr>
+<tr>
+<td align="center">dango</td>
+<td align="center">糰子</td>
+<td align="center">団子🍡</td>
+<td align="center">だんご</td>
+</tr>
 </tbody></table>
 <h3 id="Drinks-飲料-飲み物-のみもの"><a href="#Drinks-飲料-飲み物-のみもの" class="headerlink" title="Drinks 飲料 飲み物 のみもの"></a>Drinks 飲料 飲み物 のみもの</h3><table>
 <thead>
@@ -10366,7 +10492,7 @@ the above code for the center align
 <td align="center">たまねぎ</td>
 </tr>
 <tr>
-<td align="center">cereal&#x2F;ˈsɪr.i.əl&#x2F;</td>
+<td align="center">cereal&#x2F;ˈsɪr.i.əl&#x2F; ~ grain</td>
 <td align="center">穀物</td>
 <td align="center">穀物</td>
 <td align="center">こくもつ</td>
@@ -10852,6 +10978,12 @@ the above code for the center align
 <td align="center">標題</td>
 <td align="center">見出し</td>
 <td align="center">みだし</td>
+</tr>
+<tr>
+<td align="center">(table of) contents</td>
+<td align="center">目錄</td>
+<td align="center">目次</td>
+<td align="center">もくじ</td>
 </tr>
 <tr>
 <td align="center">magazine ~ journal</td>
@@ -12270,10 +12402,16 @@ the above code for the center align
 <td align="center">さくひん</td>
 </tr>
 <tr>
-<td align="center">product</td>
+<td align="center">product&#x2F;ˈprɑː.dʌkt&#x2F;</td>
 <td align="center">產品</td>
 <td align="center">製品</td>
 <td align="center">せいひん</td>
+</tr>
+<tr>
+<td align="center">trade ~ business</td>
+<td align="center">商業</td>
+<td align="center">商売</td>
+<td align="center">しょうばい</td>
 </tr>
 <tr>
 <td align="center">goods ~ merchandise &#x2F;ˈmɝː.tʃən.daɪs&#x2F;</td>
@@ -12598,6 +12736,12 @@ the above code for the center align
 <td align="center">さくぶん</td>
 </tr>
 <tr>
+<td align="center">subtitle</td>
+<td align="center">字幕</td>
+<td align="center">じまく</td>
+<td align="center"></td>
+</tr>
+<tr>
 <td align="center">language system</td>
 <td align="center">文字</td>
 <td align="center">文字</td>
@@ -12622,19 +12766,13 @@ the above code for the center align
 <td align="center">~</td>
 </tr>
 <tr>
-<td align="center">(celebrity) epigram&#x2F;ˈep.ə.ɡræm&#x2F; ~ (celebrity)</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">aphorism&#x2F;ˈæf.ɚ.ɪ.zəm&#x2F;</td>
+<td align="center">(celebrity) epigram&#x2F;ˈep.ə.ɡræm&#x2F; ~ (celebrity) aphorism&#x2F;ˈæf.ə.rɪ.zəm&#x2F;</td>
 <td align="center">格言 ~ 警句</td>
 <td align="center">格言 ~ エピグラム</td>
 <td align="center">かくげん</td>
 </tr>
 <tr>
-<td align="center">proverb (formal)</td>
+<td align="center">proverb&#x2F;ˈprɑː.vɝːb&#x2F; (formal)</td>
 <td align="center">諺語 ~ 格言</td>
 <td align="center">諺語</td>
 <td align="center">げんご</td>
@@ -12646,7 +12784,7 @@ the above code for the center align
 <td align="center">じゅくご</td>
 </tr>
 <tr>
-<td align="center">slang (not formal)</td>
+<td align="center">slang&#x2F;slæŋ&#x2F; (not formal)</td>
 <td align="center">俚語 ~ 俗語</td>
 <td align="center">俚語 ~ スラング</td>
 <td align="center">りご ~ すらんぐ</td>
@@ -12738,8 +12876,8 @@ the above code for the center align
 <tr>
 <td align="center">accent</td>
 <td align="center">口音 ~ 重音</td>
-<td align="center">アクセント ~ 語調</td>
-<td align="center">ごちょう</td>
+<td align="center">訛り ~ 語調 ~ アクセント</td>
+<td align="center">なまり ~ ごちょう</td>
 </tr>
 <tr>
 <td align="center">stress</td>
@@ -13456,6 +13594,12 @@ the above code for the center align
 <td align="center">しゅるい</td>
 </tr>
 <tr>
+<td align="center">genre&#x2F;ˈʒɑːn.rə&#x2F;</td>
+<td align="center">分類</td>
+<td align="center">分類 ~ ジャンル</td>
+<td align="center">ぶんるい ~</td>
+</tr>
+<tr>
 <td align="center">substitute&#x2F;ˈsʌb.stə.tuːt&#x2F; ~ substitution ~ replacement</td>
 <td align="center">代替</td>
 <td align="center">代用</td>
@@ -13578,8 +13722,8 @@ the above code for the center align
 <tr>
 <td align="center">answer</td>
 <td align="center">答案</td>
-<td align="center">答え</td>
-<td align="center">こたえ</td>
+<td align="center">答え ~ 返事</td>
+<td align="center">こたえ ~ はんじ</td>
 </tr>
 <tr>
 <td align="center">correct answer</td>
@@ -14871,8 +15015,29 @@ the above code for the center align
 <tr>
 <td align="center">imagination</td>
 <td align="center">想像</td>
-<td align="center">想像</td>
-<td align="center">そうぞう</td>
+<td align="center">想像 ~ 想像性</td>
+<td align="center">そうぞう ~ そうぞうせい</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">creativity&#x2F;ˌkriː.eɪˈt̬ɪv.ə.t̬i&#x2F;</td>
+<td align="center">創造力</td>
+<td align="center">創造性</td>
+<td align="center">そうぞうせい</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">trust</td>
+<td align="center">信用 ~ 信任 ~ 信賴</td>
+<td align="center">信用 ~ 信任 ~ 信頼</td>
+<td align="center">しんよう ~ しんにん ~ しんらい</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">belief ~ faith</td>
+<td align="center">信念 ~ 信仰 ~ 信條</td>
+<td align="center">信念 ~ 信仰 ~ 信条</td>
+<td align="center">しんねん ~ しんこう ~ しんじょう</td>
 <td align="center"></td>
 </tr>
 <tr>
@@ -14899,8 +15064,8 @@ the above code for the center align
 <tr>
 <td align="center">pain</td>
 <td align="center">痛苦</td>
-<td align="center">痛み</td>
-<td align="center">いたみ</td>
+<td align="center">痛み ~ 苦痛</td>
+<td align="center">いたみ ~ くつう</td>
 <td align="center"></td>
 </tr>
 <tr>
@@ -14988,6 +15153,13 @@ the above code for the center align
 <td align="center"></td>
 </tr>
 <tr>
+<td align="center">modesty&#x2F;ˈmɑː.dɪ.sti&#x2F; ~ reservation ~ long consideration</td>
+<td align="center">遠慮</td>
+<td align="center">遠慮</td>
+<td align="center">えんりょう</td>
+<td align="center"></td>
+</tr>
+<tr>
 <td align="center">soul ~ spirit ~ anima</td>
 <td align="center">靈魂</td>
 <td align="center">魂</td>
@@ -14999,6 +15171,13 @@ the above code for the center align
 <td align="center">性格</td>
 <td align="center">性格</td>
 <td align="center">せいかく</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">peculiarity&#x2F;pɪˌkjuː.liˈer.ə.t̬i&#x2F;</td>
+<td align="center">特徵</td>
+<td align="center">特徴</td>
+<td align="center">とくちょう</td>
 <td align="center"></td>
 </tr>
 <tr>
@@ -15065,10 +15244,10 @@ the above code for the center align
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">bothersome&#x2F;ˈbɑː.ðɚ.səm&#x2F; ~ trouble ~ annoyance&#x2F;əˈnɔɪ.əns&#x2F;</td>
+<td align="center">trouble ~ annoyance&#x2F;əˈnɔɪ.əns&#x2F;</td>
 <td align="center">麻煩 ~ 困惑</td>
-<td align="center">迷惑</td>
-<td align="center">めいわく</td>
+<td align="center">迷惑 ~ 面倒</td>
+<td align="center">めいわく ~ めんどう</td>
 <td align="center"></td>
 </tr>
 <tr>
@@ -15145,7 +15324,7 @@ the above code for the center align
 <td align="center">horror ~ fear ~ terror</td>
 <td align="center">恐懼 ~ 恐怖</td>
 <td align="center">恐怖</td>
-<td align="center">ようふ</td>
+<td align="center">きょうふ</td>
 <td align="center"></td>
 </tr>
 <tr>
@@ -15576,6 +15755,13 @@ the above code for the center align
 <td align="center"></td>
 </tr>
 <tr>
+<td align="center">interpretation&#x2F;ɪnˌtɝː.prəˈteɪ.ʃən&#x2F;</td>
+<td align="center">解釋 ~ 說明</td>
+<td align="center">解釈</td>
+<td align="center">かいしゃく</td>
+<td align="center"></td>
+</tr>
+<tr>
 <td align="center">expression&#x2F;ɪkˈspreʃ.ən&#x2F;</td>
 <td align="center">表達 ~ 表現</td>
 <td align="center">表現</td>
@@ -15587,6 +15773,13 @@ the above code for the center align
 <td align="center">主題</td>
 <td align="center">テーマ</td>
 <td align="center">てーま</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">quotation&#x2F;kwoʊˈteɪ.ʃən&#x2F;</td>
+<td align="center">引用</td>
+<td align="center">引用</td>
+<td align="center">いんよう</td>
 <td align="center"></td>
 </tr>
 <tr>
@@ -15911,8 +16104,14 @@ the above code for the center align
 <tr>
 <td align="center">morality&#x2F;məˈræl.ə.t̬i&#x2F;</td>
 <td align="center">品德 ~ 道德體系 ~ 道德觀</td>
-<td align="center">道徳どうとく</td>
-<td align="center"></td>
+<td align="center">道徳</td>
+<td align="center">どうとく</td>
+</tr>
+<tr>
+<td align="center">ethic&#x2F;ˈeθ.ɪk&#x2F;</td>
+<td align="center">倫理</td>
+<td align="center">倫理</td>
+<td align="center">りんり</td>
 </tr>
 <tr>
 <td align="center">evil ~ badness ~ maleficence</td>
@@ -15961,46 +16160,82 @@ the above code for the center align
 <td align="center">ばんごう</td>
 </tr>
 <tr>
-<td align="center">ten</td>
+<td align="center">10 ~ ten</td>
 <td align="center">十</td>
 <td align="center">十</td>
 <td align="center">じゅう</td>
 </tr>
 <tr>
-<td align="center">hundred</td>
+<td align="center">100 ~ hundred</td>
 <td align="center">百</td>
 <td align="center">百</td>
 <td align="center">ひゃく</td>
 </tr>
 <tr>
-<td align="center">thousand</td>
+<td align="center">1k ~ 1,000 ~ thousand</td>
 <td align="center">千</td>
 <td align="center">千</td>
 <td align="center">せん</td>
 </tr>
 <tr>
-<td align="center">10k</td>
+<td align="center">10k ~ 10,000</td>
 <td align="center">万</td>
 <td align="center">万</td>
 <td align="center">まん</td>
 </tr>
 <tr>
-<td align="center">million</td>
+<td align="center">1m ~ 1,000,000 ~ million</td>
 <td align="center">百萬</td>
 <td align="center">百万</td>
 <td align="center">ひゃくまん</td>
 </tr>
 <tr>
-<td align="center">100m</td>
+<td align="center">100m ~ 100,000,000</td>
 <td align="center">億</td>
 <td align="center">億</td>
 <td align="center">おく</td>
 </tr>
 <tr>
-<td align="center">billion</td>
+<td align="center">1b ~ 1,000,000,000 ~ billion</td>
 <td align="center">十億</td>
 <td align="center">十億</td>
 <td align="center">じゅうおく</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">300</td>
+<td align="center">三百</td>
+<td align="center">三百</td>
+<td align="center">さんびゃく</td>
+</tr>
+<tr>
+<td align="center">600</td>
+<td align="center">六百</td>
+<td align="center">六百</td>
+<td align="center">ろっぴゃく</td>
+</tr>
+<tr>
+<td align="center">800</td>
+<td align="center">八百</td>
+<td align="center">八百</td>
+<td align="center">はっぴゃく</td>
+</tr>
+<tr>
+<td align="center">3000</td>
+<td align="center">三千</td>
+<td align="center">三千</td>
+<td align="center">さんぜん</td>
+</tr>
+<tr>
+<td align="center">8000</td>
+<td align="center">八千</td>
+<td align="center">八千</td>
+<td align="center">はっせん</td>
 </tr>
 </tbody></table>
 <h2 id="Time-時間-時間-じかん"><a href="#Time-時間-時間-じかん" class="headerlink" title="Time 時間 時間 じかん"></a>Time 時間 時間 じかん</h2><table>
@@ -16279,8 +16514,8 @@ the above code for the center align
 <tr>
 <td align="center">next time</td>
 <td align="center">下次</td>
-<td align="center">次回</td>
-<td align="center">じかい</td>
+<td align="center">次回 ~ 今度</td>
+<td align="center">じかい ~ こんど</td>
 </tr>
 <tr>
 <td align="center">final time</td>
@@ -16391,139 +16626,139 @@ the above code for the center align
 <td align="center">どようび</td>
 </tr>
 <tr>
-<td align="center">January</td>
+<td align="center">January &lt;-&gt; 1 month</td>
 <td align="center">一月</td>
-<td align="center">一月</td>
-<td align="center">いちがつ</td>
+<td align="center">一月 &lt;-&gt; 一ヶ月</td>
+<td align="center">いちがつ &lt;-&gt; <strong>いっ</strong>かげつ</td>
 </tr>
 <tr>
-<td align="center">Februry</td>
+<td align="center">Februry &lt;-&gt; 2 months</td>
 <td align="center">二月</td>
-<td align="center">二月</td>
-<td align="center">にがつ</td>
+<td align="center">二月 &lt;-&gt; 二ヶ月</td>
+<td align="center">にがつ &lt;-&gt; にかげつ</td>
 </tr>
 <tr>
-<td align="center">March</td>
+<td align="center">March &lt;-&gt; 3 months</td>
 <td align="center">三月</td>
-<td align="center">三月</td>
-<td align="center">さんがつ</td>
+<td align="center">三月 &lt;-&gt; 三ヶ月</td>
+<td align="center">さんがつ &lt;-&gt; さんかげつ</td>
 </tr>
 <tr>
-<td align="center">April</td>
+<td align="center">April &lt;-&gt; 4 months</td>
 <td align="center">四月</td>
-<td align="center">四月</td>
-<td align="center">しがつ</td>
+<td align="center">四月 &lt;-&gt; 四ヶ月</td>
+<td align="center">しがつ &lt;-&gt; よんかげつ</td>
 </tr>
 <tr>
-<td align="center">May</td>
+<td align="center">May &lt;-&gt; 5 months</td>
 <td align="center">五月</td>
-<td align="center">五月</td>
-<td align="center">ごがつ</td>
+<td align="center">五月 &lt;-&gt; 五ヶ月</td>
+<td align="center">ごがつ &lt;-&gt; ごかげつ</td>
 </tr>
 <tr>
-<td align="center">June</td>
+<td align="center">June &lt;-&gt; 6 months</td>
 <td align="center">六月</td>
-<td align="center">六月</td>
-<td align="center">ろくがつ</td>
+<td align="center">六月 &lt;-&gt; 六ヶ月</td>
+<td align="center">ろくがつ &lt;-&gt; <strong>ろっ</strong>かげつ</td>
 </tr>
 <tr>
-<td align="center">July</td>
+<td align="center">July &lt;-&gt; 7 months</td>
 <td align="center">七月</td>
-<td align="center">七月</td>
-<td align="center">しちがつ</td>
+<td align="center">七月 &lt;-&gt; 七ヶ月</td>
+<td align="center">しちがつ &lt;-&gt; ななかげつ</td>
 </tr>
 <tr>
-<td align="center">August</td>
+<td align="center">August &lt;-&gt; 8 months</td>
 <td align="center">八月</td>
-<td align="center">八月</td>
-<td align="center">はちがつ</td>
+<td align="center">八月 &lt;-&gt; 八ヶ月</td>
+<td align="center">はちがつ &lt;-&gt; はちかげつ</td>
 </tr>
 <tr>
-<td align="center">Sepetember</td>
+<td align="center">Sepetember &lt;-&gt; 9 months</td>
 <td align="center">九月</td>
-<td align="center">九月</td>
-<td align="center">くがつ</td>
+<td align="center">九月 &lt;-&gt; 九ヶ月</td>
+<td align="center">くがつ &lt;-&gt; きゅうかげつ</td>
 </tr>
 <tr>
-<td align="center">Octorber</td>
+<td align="center">Octorber &lt;-&gt; 10 months</td>
 <td align="center">十月</td>
-<td align="center">十月</td>
-<td align="center">じゅうがつ</td>
+<td align="center">十月 &lt;-&gt; 十ヶ月</td>
+<td align="center">じゅうがつ &lt;-&gt; <strong>じっ</strong>かげつ</td>
 </tr>
 <tr>
-<td align="center">November</td>
+<td align="center">November &lt;-&gt; 11 months</td>
 <td align="center">十一月</td>
-<td align="center">十一月</td>
-<td align="center">じゅういちがつ</td>
+<td align="center">十一月 &lt;-&gt; 十一ヶ月</td>
+<td align="center">じゅういちがつ &lt;-&gt; <strong>じゅういっ</strong>かげつ</td>
 </tr>
 <tr>
-<td align="center">December</td>
+<td align="center">December &lt;-&gt; 12 months</td>
 <td align="center">十二月</td>
-<td align="center">十二月</td>
-<td align="center">じゅうにがつ</td>
+<td align="center">十二月 &lt;-&gt; 十二ヶ月</td>
+<td align="center">じゅうにがつ &lt;-&gt; じゅうにかげつ</td>
 </tr>
 <tr>
-<td align="center">first day ~ one day</td>
+<td align="center">first day &lt;-&gt; 1 day</td>
 <td align="center">一日</td>
 <td align="center">一日</td>
-<td align="center">ついたち</td>
+<td align="center">ついたち &lt;-&gt; <strong>いちにち</strong></td>
 </tr>
 <tr>
-<td align="center">second day ~ two days</td>
+<td align="center">second day ~ 2 days</td>
 <td align="center">二日</td>
 <td align="center">二日</td>
 <td align="center">ふつか</td>
 </tr>
 <tr>
-<td align="center">third day ~ three days</td>
+<td align="center">third day ~ 3 days</td>
 <td align="center">三日</td>
 <td align="center">三日</td>
 <td align="center">みっか</td>
 </tr>
 <tr>
-<td align="center">fourth day ~ four days</td>
+<td align="center">fourth day ~ 4 days</td>
 <td align="center">四日</td>
 <td align="center">四日</td>
 <td align="center">よっか</td>
 </tr>
 <tr>
-<td align="center">fifth day ~ five days</td>
+<td align="center">fifth day ~ 5 days</td>
 <td align="center">五日</td>
 <td align="center">五日</td>
 <td align="center">いつか</td>
 </tr>
 <tr>
-<td align="center">sixth day ~ six days</td>
+<td align="center">sixth day ~ 6 days</td>
 <td align="center">六日</td>
 <td align="center">六日</td>
 <td align="center">むいか</td>
 </tr>
 <tr>
-<td align="center">seventh day ~ seven days</td>
+<td align="center">seventh day ~ 7 days</td>
 <td align="center">七日</td>
 <td align="center">七日</td>
 <td align="center">なのか</td>
 </tr>
 <tr>
-<td align="center">eighth day ~ eight days</td>
+<td align="center">eighth day ~ 8 days</td>
 <td align="center">八日</td>
 <td align="center">八日</td>
 <td align="center">ようか</td>
 </tr>
 <tr>
-<td align="center">ninth day ~ nine days</td>
+<td align="center">ninth day ~ 9 days</td>
 <td align="center">九日</td>
 <td align="center">九日</td>
 <td align="center">ここのか</td>
 </tr>
 <tr>
-<td align="center">tenth day ~ ten days</td>
+<td align="center">tenth day ~ 0 days</td>
 <td align="center">十日</td>
 <td align="center">十日</td>
 <td align="center">とおか</td>
 </tr>
 <tr>
-<td align="center">twentieth ~ twenty days</td>
+<td align="center">twentieth ~ 20 days</td>
 <td align="center">二十日</td>
 <td align="center">二十日</td>
 <td align="center">はつか</td>
@@ -18769,6 +19004,13 @@ comment
 <td align="center"></td>
 </tr>
 <tr>
+<td align="center">laugh</td>
+<td align="center">笑</td>
+<td align="center">笑う</td>
+<td align="center">わらう</td>
+<td align="center"></td>
+</tr>
+<tr>
 <td align="center">wash</td>
 <td align="center">洗</td>
 <td align="center">洗う</td>
@@ -19492,6 +19734,13 @@ comment
 <td align="center"></td>
 </tr>
 <tr>
+<td align="center">express ~ indicate ~ show ~ reveal ~ represent</td>
+<td align="center">表示</td>
+<td align="center">表す</td>
+<td align="center">あらわす</td>
+<td align="center"></td>
+</tr>
+<tr>
 <td align="center">steam</td>
 <td align="center">蒸</td>
 <td align="center">蒸す</td>
@@ -19635,6 +19884,13 @@ comment
 <td align="center">lose ~ eliminate&#x2F;əˈliməˌnāt&#x2F; ~ extinguish ~ get rid of</td>
 <td align="center">失去 ~ 湮滅 ~ 消去 ~ 排除</td>
 <td align="center">失くす</td>
+<td align="center">なくす</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">die ~ pass away</td>
+<td align="center">死亡</td>
+<td align="center">亡くす</td>
 <td align="center">なくす</td>
 <td align="center"></td>
 </tr>
@@ -19797,6 +20053,13 @@ comment
 <td align="center">關掉 ~ 消除</td>
 <td align="center">消す</td>
 <td align="center">けす</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">hide</td>
+<td align="center">隱藏</td>
+<td align="center">隠す</td>
+<td align="center">かくす</td>
 <td align="center"></td>
 </tr>
 </tbody></table>
@@ -19977,7 +20240,7 @@ comment
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">yell ~ shout ~ clamor</td>
+<td align="center">yell ~ shout ~ clamor&#x2F;ˈklæm.ɚ&#x2F; ~ cry</td>
 <td align="center">呼喊</td>
 <td align="center">叫ぶ</td>
 <td align="center">さけぶ</td>
@@ -20238,6 +20501,13 @@ comment
 <td align="center">きりかえる</td>
 <td align="center"></td>
 </tr>
+<tr>
+<td align="center">to feel comforted</td>
+<td align="center">慰む</td>
+<td align="center">なぐさむ</td>
+<td align="center"><strong>自</strong></td>
+<td align="center"></td>
+</tr>
 </tbody></table>
 <h2 id="ru-る"><a href="#ru-る" class="headerlink" title="ru る"></a><strong>ru</strong> る</h2><table>
 <thead>
@@ -20337,6 +20607,13 @@ comment
 <td align="center">坐</td>
 <td align="center">座る</td>
 <td align="center">すわる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">differ ~ vary ~ alter</td>
+<td align="center">相異於</td>
+<td align="center">異なる</td>
+<td align="center">ことなる</td>
 <td align="center"></td>
 </tr>
 <tr>
@@ -20861,6 +21138,13 @@ comment
 <td align="center"></td>
 <td align="center"></td>
 </tr>
+<tr>
+<td align="center">betray&#x2F;bɪˈtreɪ&#x2F; ~ denounce ~ rat ~ snitch</td>
+<td align="center">背叛</td>
+<td align="center">裏切る</td>
+<td align="center">うらぎる</td>
+<td align="center"></td>
+</tr>
 </tbody></table>
 <hr>
 <h2 id="一段動詞-Ⅱ-ichidan"><a href="#一段動詞-Ⅱ-ichidan" class="headerlink" title="一段動詞 Ⅱ ichidan"></a>一段動詞 Ⅱ ichidan</h2><p>語幹が母音 (i, e) で終わる。原形は -ru で終わる。</p>
@@ -21179,7 +21463,7 @@ comment
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">give ~ impose</td>
+<td align="center">give ~ impose ~  inflict&#x2F;ɪnˈflɪkt&#x2F;</td>
 <td align="center">給予</td>
 <td align="center">与える</td>
 <td align="center">あたえる</td>
@@ -21864,6 +22148,20 @@ comment
 <td align="center">しびれる</td>
 <td align="center"></td>
 </tr>
+<tr>
+<td align="center">suppress&#x2F;səˈpres&#x2F; ~ control ~ restrain</td>
+<td align="center">抑制</td>
+<td align="center">抑える</td>
+<td align="center">おさえる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">comfort ~ console</td>
+<td align="center">安慰</td>
+<td align="center">慰める</td>
+<td align="center">なぐさめる</td>
+<td align="center"><strong>他</strong></td>
+</tr>
 </tbody></table>
 <hr>
 <h2 id="動詞の活用形"><a href="#動詞の活用形" class="headerlink" title="動詞の活用形"></a><a href="https://en.wikipedia.org/wiki/Japanese_verb_conjugation">動詞の活用形</a></h2><p><strong>辞書形(じしょけい) Dictionary Form</strong><br>Verbs are named and listed in dictionaries according to their “dictionary form” (辞書形, jishokei). This is also called the “plain form” (since this is the plain, non‑polite, non‑past conjugation), and it is the same as the modern “terminal form” (終止形, shūshikei), and the “attributive form” (連体形, rentaikei)</p>
@@ -22360,5 +22658,10 @@ QQ空间已经有三年没有开放过了，嘻嘻~_~是整整一个高中的长
       <categories>
         <category>Games</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Spanish 西班牙語 スペイン語</title>
+    <url>/spanish/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
