@@ -1626,6 +1626,13 @@
 <td align="center">子午線</td>
 </tr>
 <tr>
+<td align="center">🎈</td>
+<td align="center">0x1F388</td>
+<td align="center">Balloon</td>
+<td align="center">：ふうせん：ばるーん</td>
+<td align="center">風船</td>
+</tr>
+<tr>
 <td align="center">💰</td>
 <td align="center">0x1F4B0</td>
 <td align="center">Money Bag</td>
@@ -1633,18 +1640,18 @@
 <td align="center">金袋 ~ 賞金</td>
 </tr>
 <tr>
+<td align="center">💸</td>
+<td align="center">0x1F4B8</td>
+<td align="center">Money with Wings</td>
+<td align="center">：さつたば</td>
+<td align="center">札束</td>
+</tr>
+<tr>
 <td align="center">🪙</td>
 <td align="center">0x1FA99</td>
 <td align="center">Coin</td>
 <td align="center">~</td>
 <td align="center">~</td>
-</tr>
-<tr>
-<td align="center">💸</td>
-<td align="center">1F4B8</td>
-<td align="center">Money with Wings</td>
-<td align="center">：さつたば</td>
-<td align="center">札束</td>
 </tr>
 </tbody></table>
 <span id="more"></span>
@@ -12602,7 +12609,7 @@ the above code for the center align
 <tr>
 <td align="center">balloon&#x2F;bə’lun&#x2F;</td>
 <td align="center">氣球</td>
-<td align="center">気球</td>
+<td align="center">気球🎈</td>
 <td align="center">ききゅう</td>
 </tr>
 <tr>
