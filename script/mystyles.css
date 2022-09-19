@@ -5,3 +5,10 @@ body {
   background-attachment: fixed;
   background-position: 50% 50%;
 }
+.main-inner {
+  background: #fff;
+  opacity: 0.8;
+}
+.header-inner {
+  opacity: 0.8;
+}
