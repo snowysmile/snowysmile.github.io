@@ -1,5 +1,5 @@
 body {
-  background: "/images/background/vintage-paper-b4.jpg";
+  background: url("/images/background/vintage-paper-b4.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
