@@ -1665,12 +1665,18 @@
   <entry>
     <title>English Music I like</title>
     <url>/enmusic/</url>
-    <content><![CDATA[<h1 id="Try-Everything"><a href="#Try-Everything" class="headerlink" title="Try Everything"></a>Try Everything</h1><p>🎤by Shakira</p>
+    <content><![CDATA[<h1 id="City-of-Stars"><a href="#City-of-Stars" class="headerlink" title="City of Stars"></a>City of Stars</h1><p>🎤by Ryan Gosling, Emma Stone</p>
+<div style="width:90%; height:90%; margin-left:auto; margin-right:auto;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GTWqwSNQCcg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+</div>
+
+<span id="more"></span>
+
+<h1 id="Try-Everything"><a href="#Try-Everything" class="headerlink" title="Try Everything"></a>Try Everything</h1><p>🎤by Shakira</p>
 <div style="width:90%; height:90%; margin-left:auto; margin-right:auto;">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/c6rP-YP4c5I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
 </div>
 
-<span id="more"></span>
 
 <h1 id="Traveling-Light"><a href="#Traveling-Light" class="headerlink" title="Traveling Light"></a>Traveling Light</h1><p>🎤by Joel Hanson, Sara Groves</p>
 <div style="width:90%; height:90%; margin-left:auto; margin-right:auto;">
@@ -3012,7 +3018,7 @@
 <td align="center">near</td>
 <td align="center">近的</td>
 <td align="center">近い</td>
-<td align="center">ちがい</td>
+<td align="center">ちかい</td>
 </tr>
 <tr>
 <td align="center">deep</td>
