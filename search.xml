@@ -17160,7 +17160,7 @@ comment
 <p>&#39;1&#39;<br>&quot;2&quot;<br>‘3’<br>“4”</p>
 <h3 id="Blank-Space"><a href="#Blank-Space" class="headerlink" title="Blank Space"></a>Blank Space</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Monospaced Font is necessary</span><br><span class="line">&amp;nbsp; = space[width1]  &amp;ensp; = space[width2]  &amp;emsp; = space[width4]</span><br></pre></td></tr></table></figure>
 
-<p> &amp;nbsp; abc<br> &amp;ensp; abc<br> &amp;emsp; abc</p>
+<p> &amp;nbsp; abc123<br> &amp;ensp; abc123<br> &amp;emsp; abc123</p>
 <h3 id="Blank-Line"><a href="#Blank-Line" class="headerlink" title="Blank Line"></a>Blank Line</h3><blockquote>
 <p>&lt; br&#x2F;&gt;</p>
 </blockquote>
