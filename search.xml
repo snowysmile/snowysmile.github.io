@@ -17160,7 +17160,7 @@ comment
 <p>&#39;1&#39;<br>&quot;2&quot;<br>‘3’<br>“4”</p>
 <h3 id="Blank-Space"><a href="#Blank-Space" class="headerlink" title="Blank Space"></a>Blank Space</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Monospaced Font is necessary</span><br><span class="line">&amp;nbsp; = space[width1]  &amp;ensp; = space[width2]  &amp;emsp; = space[width4]</span><br></pre></td></tr></table></figure>
 
-<p>&amp;nbsp; abc<br>&amp;ensp; abc<br>&amp;emsp; abc</p>
+<p> &amp;nbsp; abc<br> &amp;ensp; abc<br> &amp;emsp; abc</p>
 <h3 id="Blank-Line"><a href="#Blank-Line" class="headerlink" title="Blank Line"></a>Blank Line</h3><blockquote>
 <p>&lt; br&#x2F;&gt;</p>
 </blockquote>
@@ -22986,7 +22986,6 @@ QQ空间已经有三年没有开放过了，嘻嘻~_~是整整一个高中的长
 <li>I am trying to become a (indie) game developer in the future. I am going to prepare for it and work hard on it.</li>
 </ul>
 <h1 id="Games-I-am-looking-forward-to"><a href="#Games-I-am-looking-forward-to" class="headerlink" title="Games I am looking forward to"></a>Games I am looking forward to</h1><p>2022&#x2F;11&#x2F;17 Game &quot;Nobody - 大多數&quot;<br>2023&#x2F;02&#x2F;11 &quot;Hogwarts Legacy 霍格沃茨・遺產&quot;<br>2023&#x2F;05&#x2F;12 &quot;The Legend of Zelda: Tears of the Kingdom - 薩爾達傳說 王國之淚&quot;<br>2023 &quot;Ark 2 - 方舟Ⅱ&quot;<br>2023 &quot;The Wolf Among Us 2 - 我們中的一匹狼Ⅱ&quot;</p>
-<p><a href="https://www.wanuxi.com/tga-2022%E6%B8%B8%E6%88%8F%E6%8F%90%E5%90%8D%E5%90%8D%E5%8D%95%E5%85%AC%E5%B8%83%EF%BC%81%E3%80%8Astray%E3%80%8B%E5%85%A5%E5%9B%B4%E5%B9%B4%E5%BA%A6%E6%B8%B8%E6%88%8F%E6%8F%90%E5%90%8D%EF%BC%8C/">ref</a></p>
 ]]></content>
       <tags>
         <tag>MyLife</tag>
@@ -23006,7 +23005,7 @@ There are 31 Awards this year.
 <li>Audio - Score and Music, Sound Effect</li>
 </ul>
 <p>Notes: <a href="https://en.wikipedia.org/wiki/Glossary_of_video_game_terms">https://en.wikipedia.org/wiki/Glossary_of_video_game_terms</a></p>
-<span id="more"></span>!
+<span id="more"></span>
 
 <div style="width:90%; height:90%; margin-left:auto; margin-right:auto;">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/NRmtd9PS-gE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
@@ -23165,6 +23164,7 @@ There are 31 Awards this year.
 <p>Go “Score” Dong-Bin<br>    Gen.G, LOL</p>
 <h2 id="Best-Esports-Event-最佳電競賽事"><a href="#Best-Esports-Event-最佳電競賽事" class="headerlink" title="*Best Esports Event 最佳電競賽事"></a>*Best Esports Event 最佳電競賽事</h2><p>EVO 2022<br>2022 League of Legends World Championship<br>PGL Major Antwerp 2022<br>The 2022 Mid-Season Invitational<br>Valorant Champions 2022</p>
 <h2 id="Content-Creator-Of-The-Year-年度內容創作者"><a href="#Content-Creator-Of-The-Year-年度內容創作者" class="headerlink" title="*Content Creator Of The Year 年度內容創作者"></a>*Content Creator Of The Year 年度內容創作者</h2><p>Karl Jacobs<br>Ludwig<br>Nibellion<br>Nobru<br>QTCinderella</p>
+<p><a href="https://www.wanuxi.com/tga-2022%E6%B8%B8%E6%88%8F%E6%8F%90%E5%90%8D%E5%90%8D%E5%8D%95%E5%85%AC%E5%B8%83%EF%BC%81%E3%80%8Astray%E3%80%8B%E5%85%A5%E5%9B%B4%E5%B9%B4%E5%BA%A6%E6%B8%B8%E6%88%8F%E6%8F%90%E5%90%8D%EF%BC%8C/">ref</a></p>
 ]]></content>
       <categories>
         <category>Games</category>
