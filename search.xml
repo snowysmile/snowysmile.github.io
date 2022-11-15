@@ -17157,6 +17157,7 @@ comment
 <td align="center">二重縦線 &#x3D; にじゅうじゅうせん</td>
 </tr>
 </tbody></table>
+<p>&#39;1&#39;<br>&quot;2&quot;<br>‘3’<br>“4”</p>
 <h3 id="Blank-Space"><a href="#Blank-Space" class="headerlink" title="Blank Space"></a>Blank Space</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Monospaced Font is necessary</span><br><span class="line">&amp;nbsp; = space[width1]  &amp;nbsp; = space[width2]  &amp;emsp; = space[width4]</span><br></pre></td></tr></table></figure>
 
 <h3 id="Blank-Line"><a href="#Blank-Line" class="headerlink" title="Blank Line"></a>Blank Line</h3><blockquote>
@@ -17169,7 +17170,7 @@ comment
 
 <p>This is the <a href="https://www.markdownguide.org/basic-syntax/">referrence</a></p>
 <blockquote>
-<p>[name]’(url) </p>
+<p>[name]&#39;(url) </p>
 </blockquote>
 ]]></content>
       <categories>
@@ -22996,7 +22997,6 @@ QQ空间已经有三年没有开放过了，嘻嘻~_~是整整一个高中的长
 There are 31 Awards this year.
 
 <p>Recently, I am thinking about how to judge the quality of the games.<br>So even though I don&#39;t have any favorite games this year, I am trying to follow the activity of TGA.</p>
-<p>don&#39;t<br>don&#39;t<br>&quot;1&quot;<br>&#39;2&#39;</p>
 <span id="more"></span>
 
 <div style="width:90%; height:90%; margin-left:auto; margin-right:auto;">
