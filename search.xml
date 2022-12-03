@@ -23432,6 +23432,52 @@ I mostly enjoy and pay attention to the games from the lists:
 
 </body>
 </html> 
+
+<p>Audio Test4:<br><!DOCTYPE html></p>
+<html>
+<body>
+
+<p>This example demonstrates how to assign an "onmousedown" and "onmouseup" event to a p element.</p>
+
+<p id="demo" onmousedown="mouseDown()" onmouseup="mouseUp()">Click me.</p>
+
+<script>
+function mouseDown() {
+  document.getElementById("demo").innerHTML = "The mouse button is held down.";
+}
+
+function mouseUp() {
+  document.getElementById("demo").innerHTML = "You released the mouse button.";
+}
+</script>
+
+</body>
+</html>
+
+<p>Audio Test5:<br><!DOCTYPE html></p>
+<html>
+<body>
+
+<p>This example uses the addEventListener() method to attach a "mousedown" and "mouseup" event to a p element.</p>
+
+<p id="demo">Click me.</p>
+
+<script>
+document.getElementById("demo").addEventListener("mousedown", mouseDown);
+document.getElementById("demo").addEventListener("mouseup", mouseUp);
+
+function mouseDown() {
+  document.getElementById("demo").innerHTML = "The mouse button is held down.";
+}
+
+function mouseUp() {
+  document.getElementById("demo").innerHTML = "You released the mouse button.";
+}
+</script>
+
+</body>
+</html>
+
 ]]></content>
       <categories>
         <category>Games</category>
