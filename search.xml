@@ -23450,8 +23450,7 @@ function mouseUp() {
         <tr>
             <td>外來語</td>
             <td>ゼロ<audio controls="" preload="none">
-      <source src="/music/吴青峰 - 起风了.mp3">
-</audio><i class="fas fa-volume-up"></i></td>
+      <source src="/audio/TestWater47.wav"></audio></i></td>
         </tr>
     </tbody>
 </table>
