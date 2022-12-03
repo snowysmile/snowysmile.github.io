@@ -23447,7 +23447,10 @@ function mouseUp() {
   document.getElementById("demo").innerHTML = "No! Don't Leave me! Click Me Again!";
 }
 </script>
-</body></html>]]></content>
+</body></html>
+
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/ is better</span><br><span class="line">For Windows, As the Directory Path, both \ and / work</span><br><span class="line">For Linux &amp; MacOS, As the Directory Path, only / works</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
     <title>Sound Effects of Animals</title>
@@ -23771,6 +23774,6 @@ function mouseUp() {
 <td align="center"></td>
 </tr>
 </tbody></table>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/ is better</span><br><span class="line">For Windows, As the Directory Path, both \ and / work</span><br><span class="line">For Linux &amp; MacOS, As the Directory Path, only / works</span><br></pre></td></tr></table></figure>]]></content>
+]]></content>
   </entry>
 </search>
