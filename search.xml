@@ -2104,7 +2104,7 @@
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -2246,7 +2246,7 @@
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -2454,7 +2454,7 @@
 <td align="center">~</td>
 </tr>
 <tr>
-<td align="center">nostalgic&#x2F;nə’stældʒɪk&#x2F; ~ missed</td>
+<td align="center">nostalgic&#x2F;nə&#39;stældʒɪk&#x2F; ~ missed</td>
 <td align="center">值得懷念的</td>
 <td align="center">懐かしい</td>
 <td align="center">なつかしい</td>
@@ -2502,7 +2502,7 @@
 <td align="center">からい</td>
 </tr>
 <tr>
-<td align="center">sour&#x2F;‘saʊɚ&#x2F;</td>
+<td align="center">sour&#x2F;&#39;saʊɚ&#x2F;</td>
 <td align="center">酸的</td>
 <td align="center">酸っぱい</td>
 <td align="center">すっぱい</td>
@@ -2917,7 +2917,7 @@
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -2981,7 +2981,7 @@
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -3045,7 +3045,7 @@
 <td align="center">きたない ~ よごれた</td>
 </tr>
 <tr>
-<td align="center">lively&#x2F;‘laɪvli&#x2F;</td>
+<td align="center">lively&#x2F;&#39;laɪvli&#x2F;</td>
 <td align="center">熱鬧的</td>
 <td align="center">賑やかな</td>
 <td align="center">にぎやかな</td>
@@ -3075,7 +3075,7 @@
 <td align="center">いそがしい</td>
 </tr>
 <tr>
-<td align="center">leisurely&#x2F;‘liʒɚ&#x2F; ~ idle</td>
+<td align="center">leisurely&#x2F;&#39;liʒɚ&#x2F; ~ idle</td>
 <td align="center">閒暇的</td>
 <td align="center">余暇の ~ 暇な</td>
 <td align="center">よかの ~ ひまな</td>
@@ -3153,7 +3153,7 @@
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -3175,7 +3175,7 @@
 <td align="center">ほじょの</td>
 </tr>
 <tr>
-<td align="center">neutral&#x2F;‘nʊtrəl&#x2F;</td>
+<td align="center">neutral&#x2F;&#39;nʊtrəl&#x2F;</td>
 <td align="center">中性的</td>
 <td align="center">中立的な</td>
 <td align="center">ちゅうりつてきな</td>
@@ -3187,7 +3187,7 @@
 <td align="center">いっぱんてきな</td>
 </tr>
 <tr>
-<td align="center">colloquial&#x2F;kə’lokwɪəl&#x2F; ~ oral</td>
+<td align="center">colloquial&#x2F;kə&#39;lokwɪəl&#x2F; ~ oral</td>
 <td align="center">口語的</td>
 <td align="center">口語の</td>
 <td align="center">こうごの</td>
@@ -3247,7 +3247,7 @@
 <td align="center">めいはくな</td>
 </tr>
 <tr>
-<td align="center">cognitive&#x2F;‘kɑɡnətɪv&#x2F;</td>
+<td align="center">cognitive&#x2F;&#39;kɑɡnətɪv&#x2F;</td>
 <td align="center">認知的</td>
 <td align="center">認識の</td>
 <td align="center">にんしきの</td>
@@ -3307,7 +3307,7 @@
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -3323,7 +3323,7 @@
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -3501,7 +3501,7 @@
 <td align="center">ふけんこうな</td>
 </tr>
 <tr>
-<td align="center">toxic ~ poisonous&#x2F;‘pɔɪzənəs&#x2F;</td>
+<td align="center">toxic ~ poisonous&#x2F;&#39;pɔɪzənəs&#x2F;</td>
 <td align="center">有毒的</td>
 <td align="center">有毒な ~ 有毒の</td>
 <td align="center">ゆうどくな ~ ゆうどくの</td>
@@ -3843,7 +3843,7 @@
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -4003,13 +4003,13 @@
 <td align="center">じぼうじきの ~ しにものぐるいの</td>
 </tr>
 <tr>
-<td align="center">accurate&#x2F;‘ækjərət&#x2F;</td>
+<td align="center">accurate&#x2F;&#39;ækjərət&#x2F;</td>
 <td align="center">準確的</td>
 <td align="center">正確な</td>
 <td align="center">せいかくな</td>
 </tr>
 <tr>
-<td align="center">inaccurate&#x2F;ɪn’ækjərət&#x2F;</td>
+<td align="center">inaccurate&#x2F;ɪn&#39;ækjərət&#x2F;</td>
 <td align="center">不準確的</td>
 <td align="center">不正確な</td>
 <td align="center">ふせいかくな</td>
@@ -4135,13 +4135,13 @@
 <td align="center">いちじてきな ~ つかのまの</td>
 </tr>
 <tr>
-<td align="center">ephemeral&#x2F;ə’fɛmərəl&#x2F;</td>
+<td align="center">ephemeral&#x2F;ə&#39;fɛmərəl&#x2F;</td>
 <td align="center">短暫的 ~ 一時的 ~ 轉瞬即逝的</td>
 <td align="center">一時的</td>
 <td align="center">いちじてき</td>
 </tr>
 <tr>
-<td align="center">eternal&#x2F;ɪ’tɝnl&#x2F;</td>
+<td align="center">eternal&#x2F;ɪ&#39;tɝnl&#x2F;</td>
 <td align="center">永遠的 ~ 永久的</td>
 <td align="center">永遠の ~ 永久の</td>
 <td align="center">えいえんの ~ とわの</td>
@@ -4267,7 +4267,7 @@
 <td align="center">めいよの ~ めいよある</td>
 </tr>
 <tr>
-<td align="center">suspicious &#x2F;səˈspɪʃ.əs&#x2F; ~ dubious&#x2F;‘dubɪəs&#x2F; ~ doubtful&#x2F;‘daʊtfəl&#x2F;</td>
+<td align="center">suspicious &#x2F;səˈspɪʃ.əs&#x2F; ~ dubious&#x2F;&#39;dubɪəs&#x2F; ~ doubtful&#x2F;&#39;daʊtfəl&#x2F;</td>
 <td align="center">可疑的</td>
 <td align="center">疑わしい</td>
 <td align="center">うたがわしい</td>
@@ -4303,11 +4303,11 @@
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">democratic &#x2F;‘dɛmə’krætɪk&#x2F;</td>
+<td align="center">democratic &#x2F;&#39;dɛmə&#39;krætɪk&#x2F;</td>
 <td align="center">民主的</td>
 <td align="center">民主的な</td>
 <td align="center">みんしゅてきな</td>
@@ -4319,13 +4319,13 @@
 <td align="center">~</td>
 </tr>
 <tr>
-<td align="center">tyrannic &#x2F;tɪ’rænɪkl&#x2F;</td>
+<td align="center">tyrannic &#x2F;tɪ&#39;rænɪkl&#x2F;</td>
 <td align="center">專制獨裁的</td>
 <td align="center">専制君主的な</td>
 <td align="center">せんせいくんしゅてきな</td>
 </tr>
 <tr>
-<td align="center">totalitarian &#x2F;to,tælə’tɛrɪən&#x2F;</td>
+<td align="center">totalitarian &#x2F;to,tælə&#39;tɛrɪən&#x2F;</td>
 <td align="center">極權的</td>
 <td align="center">全体主義の</td>
 <td align="center">ぜんたいしゅぎの</td>
@@ -4337,7 +4337,7 @@
 <td align="center">きほんてき</td>
 </tr>
 <tr>
-<td align="center">rotten ~ corrupt&#x2F;kə’rʌpt&#x2F;</td>
+<td align="center">rotten ~ corrupt&#x2F;kə&#39;rʌpt&#x2F;</td>
 <td align="center">腐敗的</td>
 <td align="center">腐った</td>
 <td align="center">くさった</td>
@@ -4397,7 +4397,7 @@
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -4563,7 +4563,7 @@
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -4735,7 +4735,7 @@
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -4830,7 +4830,7 @@
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -4888,8 +4888,8 @@
 <td align="center">~</td>
 </tr>
 <tr>
-<td align="center">once…is done, once…happens, after doing</td>
-<td align="center">一旦…之後</td>
+<td align="center">once...is done, once...happens, after doing</td>
+<td align="center">一旦...之後</td>
 <td align="center">てから</td>
 <td align="center">~</td>
 </tr>
@@ -4919,7 +4919,7 @@
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -4941,7 +4941,7 @@
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -4970,9 +4970,9 @@
 </tr>
 <tr>
 <td align="center">compared to</td>
-<td align="center">…相比較</td>
-<td align="center">…に比べて</td>
-<td align="center">…にくらべて</td>
+<td align="center">...相比較</td>
+<td align="center">...に比べて</td>
+<td align="center">...にくらべて</td>
 </tr>
 <tr>
 <td align="center">I think</td>
@@ -4993,26 +4993,26 @@
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">I hope ~ It’s good</td>
+<td align="center">I hope ~ It&#39;s good</td>
 <td align="center">我希望</td>
 <td align="center">といいです</td>
 <td align="center">といいです</td>
 </tr>
 <tr>
-<td align="center">I will…</td>
+<td align="center">I will...</td>
 <td align="center">我會</td>
 <td align="center">致します</td>
 <td align="center">いたします</td>
 </tr>
 <tr>
-<td align="center">I will… ~ I intend to…</td>
-<td align="center">我打算…</td>
-<td align="center">…積もり</td>
-<td align="center">…つもり</td>
+<td align="center">I will... ~ I intend to...</td>
+<td align="center">我打算...</td>
+<td align="center">...積もり</td>
+<td align="center">...つもり</td>
 </tr>
 <tr>
 <td align="center">I was about to do</td>
-<td align="center">剛要做…</td>
+<td align="center">剛要做...</td>
 <td align="center">~ところでした</td>
 <td align="center"></td>
 </tr>
@@ -5029,15 +5029,15 @@
 <td align="center">やっぱり</td>
 </tr>
 <tr>
-<td align="center">if…</td>
+<td align="center">if...</td>
 <td align="center">如果~</td>
-<td align="center">…たら ~ もし…</td>
+<td align="center">...たら ~ もし...</td>
 <td align="center">たら ~ もし</td>
 </tr>
 <tr>
-<td align="center">if you do…</td>
-<td align="center">如果你去做…</td>
-<td align="center">…みたら</td>
+<td align="center">if you do...</td>
+<td align="center">如果你去做...</td>
+<td align="center">...みたら</td>
 <td align="center"></td>
 </tr>
 <tr>
@@ -5059,21 +5059,21 @@
 <td align="center">よろしければ</td>
 </tr>
 <tr>
-<td align="center">May I…?</td>
-<td align="center">我可以做…嗎?</td>
-<td align="center">…てもいいですか?</td>
+<td align="center">May I...?</td>
+<td align="center">我可以做...嗎?</td>
+<td align="center">...てもいいですか?</td>
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">ended up doing…</td>
+<td align="center">ended up doing...</td>
 <td align="center">しまった</td>
 <td align="center"></td>
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">will (probably)…</td>
-<td align="center">可能會…</td>
-<td align="center">…でしょう</td>
+<td align="center">will (probably)...</td>
+<td align="center">可能會...</td>
+<td align="center">...でしょう</td>
 <td align="center"></td>
 </tr>
 <tr>
@@ -5083,7 +5083,7 @@
 <td align="center">~</td>
 </tr>
 <tr>
-<td align="center">…might ~ maybe ~ probably</td>
+<td align="center">...might ~ maybe ~ probably</td>
 <td align="center">可能會</td>
 <td align="center">かもしれない ~ かもしれません</td>
 <td align="center"></td>
@@ -5149,7 +5149,7 @@
 <td align="center">~</td>
 </tr>
 <tr>
-<td align="center">against ~ versus&#x2F;‘vɝsəs&#x2F;</td>
+<td align="center">against ~ versus&#x2F;&#39;vɝsəs&#x2F;</td>
 <td align="center">對</td>
 <td align="center">對</td>
 <td align="center">たい</td>
@@ -5215,7 +5215,7 @@
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -5237,7 +5237,7 @@
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -5247,7 +5247,7 @@
 <td align="center">まだ</td>
 </tr>
 <tr>
-<td align="center">(because…) so ~ therefore ~ thus ~ consequently</td>
+<td align="center">(because...) so ~ therefore ~ thus ~ consequently</td>
 <td align="center">所以</td>
 <td align="center">ので ~ それで ~ だから</td>
 <td align="center">ので ~ それで ~ だから</td>
@@ -5280,7 +5280,7 @@
 <td align="center">vice versa &#x2F;ˌvaɪsə ˈvə..sə&#x2F;</td>
 <td align="center">反之亦然</td>
 <td align="center">その逆 ~ 逆もまた同様です</td>
-<td align="center">ぎゃく…どうよう</td>
+<td align="center">ぎゃく...どうよう</td>
 </tr>
 </tbody></table>
 <h2 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h2><table>
@@ -5289,7 +5289,7 @@
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -5842,7 +5842,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -6200,7 +6200,7 @@ the above code for the center align
 <td align="center">くもり</td>
 </tr>
 <tr>
-<td align="center">(weather’s) temperature</td>
+<td align="center">(weather&#39;s) temperature</td>
 <td align="center">氣溫</td>
 <td align="center">気温 ~ 温度</td>
 <td align="center">きおん ~ おんど</td>
@@ -6249,7 +6249,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -6421,7 +6421,7 @@ the above code for the center align
 <td align="center">うち ~ いえ</td>
 </tr>
 <tr>
-<td align="center">parent’s hom</td>
+<td align="center">parent&#39;s hom</td>
 <td align="center">老家</td>
 <td align="center">実家</td>
 <td align="center">じっか</td>
@@ -6475,7 +6475,7 @@ the above code for the center align
 <td align="center">しんしつ</td>
 </tr>
 <tr>
-<td align="center">bathroom&#x2F;‘bæθrum&#x2F;</td>
+<td align="center">bathroom&#x2F;&#39;bæθrum&#x2F;</td>
 <td align="center">浴室</td>
 <td align="center">浴室</td>
 <td align="center">よくしつ</td>
@@ -6637,7 +6637,7 @@ the above code for the center align
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">kindergaten&#x2F;‘kɪndɚɡɑrtn&#x2F;</td>
+<td align="center">kindergaten&#x2F;&#39;kɪndɚɡɑrtn&#x2F;</td>
 <td align="center">幼稚園 ~ 幼兒園</td>
 <td align="center">幼稚園</td>
 <td align="center">ようちえん</td>
@@ -6787,7 +6787,7 @@ the above code for the center align
 <td align="center">きっさてん ~ かふぇ</td>
 </tr>
 <tr>
-<td align="center">tavern&#x2F;‘tæv(ə)n&#x2F; ~ pub ~ bar</td>
+<td align="center">tavern&#x2F;&#39;tæv(ə)n&#x2F; ~ pub ~ bar</td>
 <td align="center">居酒屋</td>
 <td align="center">居酒屋</td>
 <td align="center">いざかや</td>
@@ -6871,7 +6871,7 @@ the above code for the center align
 <td align="center">ほんぶ</td>
 </tr>
 <tr>
-<td align="center">affiliate&#x2F;ə’fɪlɪet&#x2F;</td>
+<td align="center">affiliate&#x2F;ə&#39;fɪlɪet&#x2F;</td>
 <td align="center">附屬 ~ 加盟 ~ 分支機構</td>
 <td align="center">アフィリエイト</td>
 <td align="center">~</td>
@@ -6979,7 +6979,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -7037,7 +7037,7 @@ the above code for the center align
 <td align="center">~</td>
 </tr>
 <tr>
-<td align="center">Antarctica&#x2F;ænt’ɑ:ktikə&#x2F;</td>
+<td align="center">Antarctica&#x2F;ænt&#39;ɑ:ktikə&#x2F;</td>
 <td align="center">南極大陸</td>
 <td align="center">なんきょくたいりく</td>
 <td align="center"></td>
@@ -7289,7 +7289,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -7449,7 +7449,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -7585,7 +7585,7 @@ the above code for the center align
 <td align="center">てくび</td>
 </tr>
 <tr>
-<td align="center">ankle&#x2F;‘æŋkl&#x2F;</td>
+<td align="center">ankle&#x2F;&#39;æŋkl&#x2F;</td>
 <td align="center">腳腕</td>
 <td align="center">足首</td>
 <td align="center">あしくび</td>
@@ -7831,7 +7831,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -8141,7 +8141,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -8187,7 +8187,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -8431,7 +8431,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -8801,7 +8801,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -8823,7 +8823,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -8965,7 +8965,7 @@ the above code for the center align
 <td align="center">けいえいしゃ ~ ぎょうせいかん</td>
 </tr>
 <tr>
-<td align="center">subordinate &#x2F;sə’bɔdɪnet&#x2F;</td>
+<td align="center">subordinate &#x2F;sə&#39;bɔdɪnet&#x2F;</td>
 <td align="center">部下</td>
 <td align="center">部下</td>
 <td align="center">ぶか</td>
@@ -9073,7 +9073,7 @@ the above code for the center align
 <td align="center">ひひょうか ~ ひょうろんか</td>
 </tr>
 <tr>
-<td align="center">enthusiast&#x2F;ɪn’θuzɪæst&#x2F;</td>
+<td align="center">enthusiast&#x2F;ɪn&#39;θuzɪæst&#x2F;</td>
 <td align="center">愛好者</td>
 <td align="center">愛好家 ~ 熱狂者</td>
 <td align="center">あいこうか ~ ねっきょうしゃ</td>
@@ -9385,7 +9385,7 @@ the above code for the center align
 <td align="center">じんしゅさべつしゅぎしゃ</td>
 </tr>
 <tr>
-<td align="center">hypocrite&#x2F;‘hɪpə’krɪt&#x2F;</td>
+<td align="center">hypocrite&#x2F;&#39;hɪpə&#39;krɪt&#x2F;</td>
 <td align="center">偽君子</td>
 <td align="center">偽善者</td>
 <td align="center">ぎぜんしゃ</td>
@@ -9703,7 +9703,7 @@ the above code for the center align
 <td align="center">おうぼしゃ</td>
 </tr>
 <tr>
-<td align="center">sponsor&#x2F;‘spɑnsɚ&#x2F;</td>
+<td align="center">sponsor&#x2F;&#39;spɑnsɚ&#x2F;</td>
 <td align="center">贊助者</td>
 <td align="center">発起人 ~ 後援者</td>
 <td align="center">ほっきにん ~ こうえんしゃ</td>
@@ -9739,7 +9739,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -9779,7 +9779,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -9849,7 +9849,7 @@ the above code for the center align
 <td align="center">ぶどう</td>
 </tr>
 <tr>
-<td align="center">mango &#x2F;‘mæŋɡo&#x2F;</td>
+<td align="center">mango &#x2F;&#39;mæŋɡo&#x2F;</td>
 <td align="center">芒果</td>
 <td align="center">マンゴー🥭</td>
 <td align="center">まんごー</td>
@@ -9897,7 +9897,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -10021,7 +10021,7 @@ the above code for the center align
 <td align="center">~</td>
 </tr>
 <tr>
-<td align="center">spaghetti&#x2F;spə’ɡɛti&#x2F;</td>
+<td align="center">spaghetti&#x2F;spə&#39;ɡɛti&#x2F;</td>
 <td align="center">義大利麵</td>
 <td align="center">スッパゲッティ</td>
 <td align="center"></td>
@@ -10141,7 +10141,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -10211,7 +10211,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -10335,7 +10335,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -10423,7 +10423,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -10517,7 +10517,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -10701,7 +10701,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -10813,7 +10813,7 @@ the above code for the center align
 <td align="center">じょうしゃけん</td>
 </tr>
 <tr>
-<td align="center">commuter’s pass</td>
+<td align="center">commuter&#39;s pass</td>
 <td align="center">通勤票</td>
 <td align="center">定期券</td>
 <td align="center">ていきけん</td>
@@ -10837,7 +10837,7 @@ the above code for the center align
 <td align="center">たーみなる</td>
 </tr>
 <tr>
-<td align="center">visa &#x2F;‘vizə&#x2F;</td>
+<td align="center">visa &#x2F;&#39;vizə&#x2F;</td>
 <td align="center">簽證</td>
 <td align="center">ビザ</td>
 <td align="center">びざ</td>
@@ -10945,7 +10945,7 @@ the above code for the center align
 <td align="center">けいしき</td>
 </tr>
 <tr>
-<td align="center">paper ~ thesis&#x2F;‘θisɪs&#x2F; ~ essay ~ treatise</td>
+<td align="center">paper ~ thesis&#x2F;&#39;θisɪs&#x2F; ~ essay ~ treatise</td>
 <td align="center">論文</td>
 <td align="center">論文</td>
 <td align="center">ろんぶん</td>
@@ -11017,7 +11017,7 @@ the above code for the center align
 <td align="center">ぶんせき</td>
 </tr>
 <tr>
-<td align="center">classic&#x2F;‘klæsɪk&#x2F;</td>
+<td align="center">classic&#x2F;&#39;klæsɪk&#x2F;</td>
 <td align="center">名著 ~ 經典著作</td>
 <td align="center">クラシック</td>
 <td align="center">~</td>
@@ -11479,7 +11479,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -11687,7 +11687,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -11853,7 +11853,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -11947,7 +11947,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -12071,7 +12071,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -12273,7 +12273,7 @@ the above code for the center align
 <td align="center">ぬい</td>
 </tr>
 <tr>
-<td align="center">massacre&#x2F;‘mæsəkɚ&#x2F;</td>
+<td align="center">massacre&#x2F;&#39;mæsəkɚ&#x2F;</td>
 <td align="center">屠殺</td>
 <td align="center">虐殺</td>
 <td align="center">ぎゃくさつ</td>
@@ -12303,7 +12303,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -12613,7 +12613,7 @@ the above code for the center align
 <td align="center">ぬいぐるみ</td>
 </tr>
 <tr>
-<td align="center">balloon&#x2F;bə’lun&#x2F;</td>
+<td align="center">balloon&#x2F;bə&#39;lun&#x2F;</td>
 <td align="center">氣球</td>
 <td align="center">気球🎈</td>
 <td align="center">ききゅう</td>
@@ -12673,7 +12673,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -12731,7 +12731,7 @@ the above code for the center align
 <td align="center">ことば</td>
 </tr>
 <tr>
-<td align="center">two kanjis’ word</td>
+<td align="center">two kanjis&#39; word</td>
 <td align="center">雙漢字詞</td>
 <td align="center">漢字二文字</td>
 <td align="center">かんじふたもじ</td>
@@ -12911,13 +12911,13 @@ the above code for the center align
 <td align="center">ぼいん</td>
 </tr>
 <tr>
-<td align="center">consonant&#x2F;‘kɑnsənənt&#x2F;</td>
+<td align="center">consonant&#x2F;&#39;kɑnsənənt&#x2F;</td>
 <td align="center">輔音</td>
 <td align="center">子音</td>
 <td align="center">しいん</td>
 </tr>
 <tr>
-<td align="center">syllable&#x2F;‘sɪləbl&#x2F;</td>
+<td align="center">syllable&#x2F;&#39;sɪləbl&#x2F;</td>
 <td align="center">音節</td>
 <td align="center">音節</td>
 <td align="center">おんせつ</td>
@@ -13103,7 +13103,7 @@ the above code for the center align
 <td align="center">~</td>
 </tr>
 <tr>
-<td align="center">latin&#x2F;‘lætn&#x2F;</td>
+<td align="center">latin&#x2F;&#39;lætn&#x2F;</td>
 <td align="center">拉丁文</td>
 <td align="center">ラテン</td>
 <td align="center">らてん</td>
@@ -13151,7 +13151,7 @@ the above code for the center align
 <td align="center">けいざい</td>
 </tr>
 <tr>
-<td align="center">etymology &#x2F;ˌɛtɪ’mɑlədʒi&#x2F;</td>
+<td align="center">etymology &#x2F;ˌɛtɪ&#39;mɑlədʒi&#x2F;</td>
 <td align="center">詞源學 ~ 詞源說明</td>
 <td align="center">語源 ~ 言葉源</td>
 <td align="center">ごげん ~ ことばげん</td>
@@ -13205,7 +13205,7 @@ the above code for the center align
 <td align="center">ふみ</td>
 </tr>
 <tr>
-<td align="center">episode&#x2F;‘ɛpɪsod&#x2F;</td>
+<td align="center">episode&#x2F;&#39;ɛpɪsod&#x2F;</td>
 <td align="center">情節</td>
 <td align="center">エピソード ~ 挿話</td>
 <td align="center">そうわ</td>
@@ -13253,7 +13253,7 @@ the above code for the center align
 <td align="center">ごがく</td>
 </tr>
 <tr>
-<td align="center">linguistics &#x2F;lɪŋ’ɡwɪstɪks&#x2F; ~</td>
+<td align="center">linguistics &#x2F;lɪŋ&#39;ɡwɪstɪks&#x2F; ~</td>
 <td align="center">語言學</td>
 <td align="center">言語学</td>
 <td align="center">げんごかく</td>
@@ -13325,7 +13325,7 @@ the above code for the center align
 <td align="center">いがく</td>
 </tr>
 <tr>
-<td align="center">hygiene&#x2F;ˈhaɪ.dʒiːn&#x2F; ~ hygienics&#x2F;ˌhaɪdʒɪ’ɛnɪks&#x2F;</td>
+<td align="center">hygiene&#x2F;ˈhaɪ.dʒiːn&#x2F; ~ hygienics&#x2F;ˌhaɪdʒɪ&#39;ɛnɪks&#x2F;</td>
 <td align="center">衛生學</td>
 <td align="center">衛生学</td>
 <td align="center">えいせいがく</td>
@@ -13637,7 +13637,7 @@ the above code for the center align
 <td align="center">じゅよう</td>
 </tr>
 <tr>
-<td align="center">leisure&#x2F;‘liʒɚ&#x2F;</td>
+<td align="center">leisure&#x2F;&#39;liʒɚ&#x2F;</td>
 <td align="center">閒暇</td>
 <td align="center">余暇 ~ 暇</td>
 <td align="center">よか ~ ひま</td>
@@ -13757,7 +13757,7 @@ the above code for the center align
 <td align="center">たようせい</td>
 </tr>
 <tr>
-<td align="center">polarity&#x2F;pə’lærəti&#x2F;</td>
+<td align="center">polarity&#x2F;pə&#39;lærəti&#x2F;</td>
 <td align="center">反向性 ~ 極性</td>
 <td align="center">極性</td>
 <td align="center">きょくせい</td>
@@ -13781,7 +13781,7 @@ the above code for the center align
 <td align="center">どうおんいぎご</td>
 </tr>
 <tr>
-<td align="center">anonym&#x2F;‘ænə,nɪm&#x2F;</td>
+<td align="center">anonym&#x2F;&#39;ænə,nɪm&#x2F;</td>
 <td align="center">匿名者</td>
 <td align="center">匿名者</td>
 <td align="center">とくめいしゃ</td>
@@ -13829,7 +13829,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -13953,13 +13953,13 @@ the above code for the center align
 <td align="center">すいやく</td>
 </tr>
 <tr>
-<td align="center">dungeon&#x2F;‘dʌndʒən&#x2F;</td>
+<td align="center">dungeon&#x2F;&#39;dʌndʒən&#x2F;</td>
 <td align="center">地牢 ~ 副本</td>
 <td align="center">地下牢</td>
 <td align="center">ちかろう</td>
 </tr>
 <tr>
-<td align="center">rejuvenation&#x2F;ri,dʒu:vi’neiʃən&#x2F;</td>
+<td align="center">rejuvenation&#x2F;ri,dʒu:vi&#39;neiʃən&#x2F;</td>
 <td align="center">回春 ~ 若返り ~ 元気回復</td>
 <td align="center">かいしゅん ~ わかがえり ~ げんきかいふく</td>
 <td align="center"></td>
@@ -13983,7 +13983,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -14281,7 +14281,7 @@ the above code for the center align
 <td align="center">しゅつりょく</td>
 </tr>
 <tr>
-<td align="center">profile&#x2F;‘profaɪl&#x2F;</td>
+<td align="center">profile&#x2F;&#39;profaɪl&#x2F;</td>
 <td align="center">(個人)檔案</td>
 <td align="center">プロフィール</td>
 <td align="center">~</td>
@@ -14293,7 +14293,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 <th align="center">sentences</th>
 </tr>
 </thead>
@@ -14403,7 +14403,7 @@ the above code for the center align
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">nonsense ~ absurd ~ bullshit&#x2F;‘bʊlʃɪt&#x2F;</td>
+<td align="center">nonsense ~ absurd ~ bullshit&#x2F;&#39;bʊlʃɪt&#x2F;</td>
 <td align="center">廢話 ~ 胡話</td>
 <td align="center">荒唐無稽 ~ ナンセンス</td>
 <td align="center">こうとうむけい</td>
@@ -15453,7 +15453,7 @@ the above code for the center align
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">physique &#x2F;fɪ’zik&#x2F;</td>
+<td align="center">physique &#x2F;fɪ&#39;zik&#x2F;</td>
 <td align="center">體格</td>
 <td align="center">体格</td>
 <td align="center">たいかく</td>
@@ -15481,7 +15481,7 @@ the above code for the center align
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">body’s temperature</td>
+<td align="center">body&#39;s temperature</td>
 <td align="center">體溫</td>
 <td align="center">体温</td>
 <td align="center">たいおん</td>
@@ -15865,7 +15865,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -15941,7 +15941,7 @@ the above code for the center align
 <td align="center">きか</td>
 </tr>
 <tr>
-<td align="center">humanity &#x2F;hjʊ’mænəti&#x2F; ~ human nature</td>
+<td align="center">humanity &#x2F;hjʊ&#39;mænəti&#x2F; ~ human nature</td>
 <td align="center">人類 ~ 人性</td>
 <td align="center">人性</td>
 <td align="center">じんせい</td>
@@ -15995,7 +15995,7 @@ the above code for the center align
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">appeasement &#x2F;ə’pizmənt&#x2F;</td>
+<td align="center">appeasement &#x2F;ə&#39;pizmənt&#x2F;</td>
 <td align="center">綏靖主義</td>
 <td align="center">宥和政策</td>
 <td align="center">ゆうわせいさく</td>
@@ -16013,7 +16013,7 @@ the above code for the center align
 <td align="center">~</td>
 </tr>
 <tr>
-<td align="center">compromise &#x2F;‘kɑmprəmaɪz&#x2F;</td>
+<td align="center">compromise &#x2F;&#39;kɑmprəmaɪz&#x2F;</td>
 <td align="center">妥協</td>
 <td align="center">妥協</td>
 <td align="center">だきょう</td>
@@ -16067,7 +16067,7 @@ the above code for the center align
 <td align="center">~</td>
 </tr>
 <tr>
-<td align="center">tyranny&#x2F;‘tɪrəni&#x2F;</td>
+<td align="center">tyranny&#x2F;&#39;tɪrəni&#x2F;</td>
 <td align="center">暴政</td>
 <td align="center">暴政 ~ 専制政治</td>
 <td align="center">ぼうせい ~ せんせいせいじ</td>
@@ -16157,7 +16157,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -16257,7 +16257,7 @@ the above code for the center align
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">日本語Nihongo</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -16777,20 +16777,20 @@ the above code for the center align
 <td align="center">はつか</td>
 </tr>
 <tr>
-<td align="center">for …weeks</td>
-<td align="center">…週間</td>
+<td align="center">for ...weeks</td>
+<td align="center">...週間</td>
 <td align="center">しゅうかん</td>
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">for …monhs</td>
-<td align="center">…が月</td>
+<td align="center">for ...monhs</td>
+<td align="center">...が月</td>
 <td align="center">がげつ</td>
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">for …years</td>
-<td align="center">…年</td>
+<td align="center">for ...years</td>
+<td align="center">...年</td>
 <td align="center">ねん</td>
 <td align="center"></td>
 </tr>
@@ -17343,7 +17343,7 @@ comment
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 <th align="center">ます形</th>
 <th align="center">て形</th>
 <th align="center">過去形</th>
@@ -17399,7 +17399,7 @@ comment
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 <th align="center">目的語</th>
 </tr>
 </thead>
@@ -17656,7 +17656,7 @@ comment
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">evacuate&#x2F;ɪ’vækjuet&#x2F;</td>
+<td align="center">evacuate&#x2F;ɪ&#39;vækjuet&#x2F;</td>
 <td align="center">避難</td>
 <td align="center">避難</td>
 <td align="center">ひなん</td>
@@ -18195,7 +18195,7 @@ comment
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">democratize&#x2F;dɪ’mɑkrətaɪz&#x2F;</td>
+<td align="center">democratize&#x2F;dɪ&#39;mɑkrətaɪz&#x2F;</td>
 <td align="center">民主化</td>
 <td align="center">民主化</td>
 <td align="center">みんしゅうか</td>
@@ -18321,7 +18321,7 @@ comment
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">beware&#x2F;bɪ’wɛr&#x2F; ~ warn</td>
+<td align="center">beware&#x2F;bɪ&#39;wɛr&#x2F; ~ warn</td>
 <td align="center">注意</td>
 <td align="center">注意</td>
 <td align="center">ちゅうい</td>
@@ -18524,7 +18524,7 @@ comment
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">connect &#x2F;kə’nɛkt&#x2F;</td>
+<td align="center">connect &#x2F;kə&#39;nɛkt&#x2F;</td>
 <td align="center">連接</td>
 <td align="center">接続</td>
 <td align="center">せつぞく</td>
@@ -18573,7 +18573,7 @@ comment
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">be bored ~ feel weary&#x2F;‘wɪri&#x2F;</td>
+<td align="center">be bored ~ feel weary&#x2F;&#39;wɪri&#x2F;</td>
 <td align="center">厭煩 ~ 無聊</td>
 <td align="center">退屈</td>
 <td align="center">たいくつ</td>
@@ -18951,7 +18951,7 @@ comment
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">sign (one’s name)</td>
+<td align="center">sign (one&#39;s name)</td>
 <td align="center">簽名 ~ 署名</td>
 <td align="center">署名</td>
 <td align="center">しょめい</td>
@@ -19077,7 +19077,7 @@ comment
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 <th align="center">目的語</th>
 </tr>
 </thead>
@@ -19348,7 +19348,7 @@ comment
 <td align="center"><strong>問うた</strong></td>
 </tr>
 <tr>
-<td align="center">do ~ execute&#x2F;‘ɛksɪkjut&#x2F; ~ accomplish</td>
+<td align="center">do ~ execute&#x2F;&#39;ɛksɪkjut&#x2F; ~ accomplish</td>
 <td align="center">執行</td>
 <td align="center">行なう</td>
 <td align="center">おこなう</td>
@@ -19437,7 +19437,7 @@ comment
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 <th align="center">目的語</th>
 </tr>
 </thead>
@@ -19741,7 +19741,7 @@ comment
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 <th align="center">目的語</th>
 </tr>
 </thead>
@@ -19835,7 +19835,7 @@ comment
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 <th align="center">目的語</th>
 </tr>
 </thead>
@@ -20244,7 +20244,7 @@ comment
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 <th align="center">目的語</th>
 </tr>
 </thead>
@@ -20338,7 +20338,7 @@ comment
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 <th align="center">目的語</th>
 </tr>
 </thead>
@@ -20376,7 +20376,7 @@ comment
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 <th align="center">目的語</th>
 </tr>
 </thead>
@@ -20470,7 +20470,7 @@ comment
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 <th align="center">目的語</th>
 </tr>
 </thead>
@@ -20690,7 +20690,7 @@ comment
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 <th align="center">目的語</th>
 </tr>
 </thead>
@@ -20982,7 +20982,7 @@ comment
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">want ~ wish ~ desire (somebody semms to …)</td>
+<td align="center">want ~ wish ~ desire (somebody semms to ...)</td>
 <td align="center">(表現出)想要</td>
 <td align="center">欲しがる</td>
 <td align="center">ほしがる</td>
@@ -21022,7 +21022,7 @@ comment
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 <th align="center">目的語</th>
 </tr>
 </thead>
@@ -21089,7 +21089,7 @@ comment
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 <th align="center">目的語</th>
 </tr>
 </thead>
@@ -21205,7 +21205,7 @@ comment
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 <th align="center">目的語</th>
 </tr>
 </thead>
@@ -21462,7 +21462,7 @@ comment
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 <th align="center">目的語</th>
 </tr>
 </thead>
@@ -21634,7 +21634,7 @@ comment
 <th align="center">English</th>
 <th align="center">漢語</th>
 <th align="center">辞書形</th>
-<th align="center">片仮名Katakana</th>
+<th align="center">平仮名Hiragana</th>
 <th align="center">目的語</th>
 </tr>
 </thead>
@@ -22318,7 +22318,7 @@ comment
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">avoid ~ dodge&#x2F;dɑːdʒ&#x2F; ~ evade&#x2F;ɪ’ved&#x2F; ~ sidestep</td>
+<td align="center">avoid ~ dodge&#x2F;dɑːdʒ&#x2F; ~ evade&#x2F;ɪ&#39;ved&#x2F; ~ sidestep</td>
 <td align="center">躲避</td>
 <td align="center">避ける ~ 回避</td>
 <td align="center">さける ~ かいひ</td>
@@ -22452,7 +22452,7 @@ comment
 </tr>
 </tbody></table>
 <hr>
-<h2 id="動詞の活用形"><a href="#動詞の活用形" class="headerlink" title="動詞の活用形"></a><a href="https://en.wikipedia.org/wiki/Japanese_verb_conjugation">動詞の活用形</a></h2><p><strong>辞書形(じしょけい) Dictionary Form</strong><br>Verbs are named and listed in dictionaries according to their “dictionary form” (辞書形, jishokei). This is also called the “plain form” (since this is the plain, non‑polite, non‑past conjugation), and it is the same as the modern “terminal form” (終止形, shūshikei), and the “attributive form” (連体形, rentaikei)</p>
+<h2 id="動詞の活用形"><a href="#動詞の活用形" class="headerlink" title="動詞の活用形"></a><a href="https://en.wikipedia.org/wiki/Japanese_verb_conjugation">動詞の活用形</a></h2><p><strong>辞書形(じしょけい) Dictionary Form</strong><br>Verbs are named and listed in dictionaries according to their &quot;dictionary form&quot; (辞書形, jishokei). This is also called the &quot;plain form&quot; (since this is the plain, non‑polite, non‑past conjugation), and it is the same as the modern &quot;terminal form&quot; (終止形, shūshikei), and the &quot;attributive form&quot; (連体形, rentaikei)</p>
 <p><strong>未然形(みぜんけい) Irrealis | i~e</strong><br>（ない・う・よう・ぬ・れる・られる・せる・させる）<br>not-否定助動詞「-ない」 <a href="https://www.sigure.tw/learn-japanese/mix/difference/nai-nai.php">link</a><br>will|may-意志、推量助動詞「う」 <a href="https://www.sigure.tw/learn-japanese/grammar/n4/31.php">link</a><br>get|can-被動、可能助動詞「-(ら)れる」 <a href="https://www.sigure.tw/learn-japanese/grammar/n4/15.php">link</a><br>make-使役助動詞「(さ)せる」<a href="https://www.sigure.tw/learn-japanese/grammar/n4/14.php">link</a></p>
 <p>五段：言わ iwa | 作ら tsukura<br>一段：見 mi | 始め hajime</p>
 <p><strong>連用形 Conjunctive | i、e</strong><br>（た・だ・て・ます・「、」・たい・ながら）<br>五段：言い ii | 作り tsukuri<br>一段：見 mi | 始め hajime</p>
@@ -23414,8 +23414,8 @@ I mostly enjoy and pay attention to the games from the lists:
   <entry>
     <title>Basic Audio Script Test</title>
     <url>/AudioTest/</url>
-    <content><![CDATA[<h1 id="Audio-Test-x3D-quot-quot"><a href="#Audio-Test-x3D-quot-quot" class="headerlink" title="Audio Test &#x3D;&quot;&quot;"></a>Audio Test &#x3D;&quot;&quot;</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">15% is a good length for short audio files</span><br><span class="line">&lt;audio controls=&quot;&quot; preload=&quot;none&quot; style=&quot;width: 15%;&quot;&gt;src&lt;/audio&gt;</span><br></pre></td></tr></table></figure>
-
+    <content><![CDATA[<h1 id="Audio-Test-x3D-quot-quot"><a href="#Audio-Test-x3D-quot-quot" class="headerlink" title="Audio Test &#x3D;&quot;&quot;"></a>Audio Test &#x3D;&quot;&quot;</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">15% is a good length for short audio files</span><br><span class="line">&lt;audio controls source src=&quot;/audio/Read_English.mp3&quot;; style=&quot;width: 15%&gt;</span><br></pre></td></tr></table></figure>
+<p>&lt;audio controls source src&#x3D;&quot;&#x2F;audio&#x2F;Read_English.mp3&quot;; style&#x3D;&quot;width: 15%&gt;</p>
 <h1 id="How-to-save-Audio-from-Google-Voice"><a href="#How-to-save-Audio-from-Google-Voice" class="headerlink" title="How to save Audio from Google Voice"></a>How to save Audio from Google Voice</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Originally it looks like </span><br><span class="line">&quot;https://translate.google.com/?hl=ja&amp;sl=en&amp;tl=en&amp;text=english&quot;</span><br><span class="line"></span><br><span class="line">replace the &quot;?&quot; after &quot;https://translate.google.com/&quot; with </span><br><span class="line">translate_tts?client=tw-ob&amp;</span><br><span class="line"></span><br><span class="line">So it will be like </span><br><span class="line">&quot;https://translate.google.com/translate_tts?client=tw-ob&amp;tl=en&amp;text=english&quot;</span><br></pre></td></tr></table></figure>
 
 <p>English<br><a href="https://translate.google.com/translate_tts?client=tw-ob&amp;tl=en&amp;text=english">https://translate.google.com/translate_tts?client=tw-ob&amp;tl=en&amp;text=english</a><br><audio controls source src="/audio/Read_English.mp3"></p>
@@ -23449,8 +23449,327 @@ function mouseUp() {
 </body></html>]]></content>
   </entry>
   <entry>
-    <title>SoundEffects</title>
+    <title>Sound Effects of Animals</title>
     <url>/SoundEffects/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h3 id="Animal-動物-動物-どうぶつ"><a href="#Animal-動物-動物-どうぶつ" class="headerlink" title="Animal 動物 動物 どうぶつ"></a>Animal 動物 動物 どうぶつ</h3><table>
+<thead>
+<tr>
+<th align="center">English</th>
+<th align="center">漢語</th>
+<th align="center">日本語Nihongo</th>
+<th align="center">片仮名Katakana</th>
+<th align="center">Voice</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">dog</td>
+<td align="center">狗</td>
+<td align="center">犬 ~ 狗🐶</td>
+<td align="center">いぬ</td>
+<td align="center"><audio controls source src="/audio/Read_English.mp3"></td>
+</tr>
+<tr>
+<td align="center">cat</td>
+<td align="center">貓</td>
+<td align="center">猫🐈</td>
+<td align="center">ねこ</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">wolf</td>
+<td align="center">狼 ~ オオカミ🐺</td>
+<td align="center">おおかみ</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">fish</td>
+<td align="center">魚</td>
+<td align="center">魚🐡</td>
+<td align="center">さかな</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">turtle</td>
+<td align="center">烏龜</td>
+<td align="center">亀🐢</td>
+<td align="center">かめ</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">bird</td>
+<td align="center">鳥</td>
+<td align="center">鳥🐦 ~ 鶏🐤</td>
+<td align="center">とり</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">chick ~ chicken</td>
+<td align="center">雞</td>
+<td align="center">雛🐣</td>
+<td align="center">ひよこ</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">duck</td>
+<td align="center">鴨</td>
+<td align="center">鴨🦆</td>
+<td align="center">かも</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">goose</td>
+<td align="center">鵝</td>
+<td align="center">鵞鳥</td>
+<td align="center">がちょう</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">pigeon</td>
+<td align="center">鴿子</td>
+<td align="center">鳩 ~ ハト🕊</td>
+<td align="center">はと</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">sparrow&#x2F;ˈsperō&#x2F;</td>
+<td align="center">麻雀</td>
+<td align="center">雀</td>
+<td align="center">すずめ</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">eagle</td>
+<td align="center">鷹</td>
+<td align="center">鷲🦅</td>
+<td align="center">わし</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">squirrel</td>
+<td align="center">松鼠</td>
+<td align="center">栗鼠🐿</td>
+<td align="center">りす</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">owl</td>
+<td align="center">貓頭鷹</td>
+<td align="center">梟 ~ フクロウ🦉</td>
+<td align="center">ふくろう</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">monkey</td>
+<td align="center">猿猴</td>
+<td align="center">猿🐵</td>
+<td align="center">さる</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">deer</td>
+<td align="center">鹿</td>
+<td align="center">鹿🦌</td>
+<td align="center">しか</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">giraffe&#x2F;dʒɪˈræf&#x2F;</td>
+<td align="center">長頸鹿</td>
+<td align="center">キリン🦒</td>
+<td align="center">~</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">pig</td>
+<td align="center">豬</td>
+<td align="center">豚🐖</td>
+<td align="center">ぶた</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">cattle ~ cow ~ ox</td>
+<td align="center">牛</td>
+<td align="center">牛🐂🐄</td>
+<td align="center">うし</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">sheep</td>
+<td align="center">羊 ~ 綿羊</td>
+<td align="center">羊🐑</td>
+<td align="center">ひつじ</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">goat</td>
+<td align="center">山羊</td>
+<td align="center">山羊🐐</td>
+<td align="center">やぎ</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">horse</td>
+<td align="center">馬</td>
+<td align="center">馬🐴</td>
+<td align="center">うま</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">bear</td>
+<td align="center">熊</td>
+<td align="center">熊🐻</td>
+<td align="center">くま</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">panda</td>
+<td align="center">貓熊 ~ 熊貓</td>
+<td align="center">パンダ🐼</td>
+<td align="center">~</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">rabbit</td>
+<td align="center">兔</td>
+<td align="center">兎🐰</td>
+<td align="center">うさぎ</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">fox</td>
+<td align="center">狐狸</td>
+<td align="center">狐🦊</td>
+<td align="center">きつね</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">squid</td>
+<td align="center">章魚 ~ 烏賊</td>
+<td align="center">烏賊🦑</td>
+<td align="center">イカ</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">salmon&#x2F;ˈsæm.ən&#x2F;</td>
+<td align="center">鮭魚</td>
+<td align="center">鮭</td>
+<td align="center">さけ</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">tuna&#x2F;ˈtuː.nə&#x2F;</td>
+<td align="center">金槍魚</td>
+<td align="center">鮪 ~ マグロ</td>
+<td align="center">まぐろ</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">carp ~ koi</td>
+<td align="center">鯉魚</td>
+<td align="center">鯉</td>
+<td align="center">こい</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">dolphin</td>
+<td align="center">海豚</td>
+<td align="center">海豚 ~ イルカ🐬</td>
+<td align="center">いるか</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">whale</td>
+<td align="center">鯨魚</td>
+<td align="center">鯨🐳</td>
+<td align="center">くじら</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">camel</td>
+<td align="center">駱駝</td>
+<td align="center">駱駝 ~ ラクダ🐪</td>
+<td align="center">らくだ</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">elephant</td>
+<td align="center">象</td>
+<td align="center">象🐘 ~ ゾウ</td>
+<td align="center">ぞう</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">hippo ~ hippopotamus</td>
+<td align="center">河馬</td>
+<td align="center">河馬🦛</td>
+<td align="center">かば</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">tiger</td>
+<td align="center">虎</td>
+<td align="center">虎🐯</td>
+<td align="center">とら</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">lion&#x2F;ˈlaɪ.ən&#x2F;</td>
+<td align="center">獅子</td>
+<td align="center">獅子 ~ ライオン🦁</td>
+<td align="center">しし</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">mouse ~ rat</td>
+<td align="center">老鼠</td>
+<td align="center">鼠🐀</td>
+<td align="center">ねずみ</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">fly</td>
+<td align="center">蒼蠅</td>
+<td align="center">蝿</td>
+<td align="center">はえ</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">penguin</td>
+<td align="center">企鵝</td>
+<td align="center">ペンギン🐧</td>
+<td align="center">ぺんぎん</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">dinosaur</td>
+<td align="center">恐龍</td>
+<td align="center">恐竜🦕</td>
+<td align="center">きょうりゅう</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">dragon</td>
+<td align="center">龍</td>
+<td align="center">ドラゴン ~ 竜 ~ 龍🐲</td>
+<td align="center">どらごん ~ りゅう ~ たつ</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">snake</td>
+<td align="center">蛇</td>
+<td align="center">蛇🐍</td>
+<td align="center">へび</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">python&#x2F;ˈpaɪ.θɑːn&#x2F;</td>
+<td align="center">蚺 ~ 巨蟒</td>
+<td align="center">ニシキヘビ</td>
+<td align="center">~</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+]]></content>
   </entry>
 </search>
