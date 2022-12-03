@@ -23437,11 +23437,11 @@ function mouseUp() {
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">translate_tts?client=tw-ob&amp;</span><br></pre></td></tr></table></figure>
 
 <p>So it will be like:</p>
-<p>English<br><a href="https://translate.google.com/translate_tts?client=tw-ob&amp;tl=en&amp;text=english">https://translate.google.com/translate_tts?client=tw-ob&amp;tl=en&amp;text=english</a><br><audio controls=""></p>
+<p>English<br><a href="https://translate.google.com/translate_tts?client=tw-ob&amp;tl=en&amp;text=english">https://translate.google.com/translate_tts?client=tw-ob&amp;tl=en&amp;text=english</a><br><audio controls="" English></p>
 <source src="https://translate.google.com/translate_tts?client=tw-ob&tl=en&text=english"
 </audio>
 
-<p>Japanese<br><a href="https://translate.google.com/translate_tts?client=tw-ob&amp;tl=ja&amp;text=%E6%97%A5%E6%9C%AC%E8%AA%9E">https://translate.google.com/translate_tts?client=tw-ob&amp;tl=ja&amp;text=日本語</a><br><audio controls=""></p>
+<p>Japanese<br><a href="https://translate.google.com/translate_tts?client=tw-ob&amp;tl=ja&amp;text=%E6%97%A5%E6%9C%AC%E8%AA%9E">https://translate.google.com/translate_tts?client=tw-ob&amp;tl=ja&amp;text=日本語</a><br><audio controls="">日本語</p>
 <source src="https://translate.google.com/translate_tts?client=tw-ob&tl=ja&text=日本語"
 </audio>
 
