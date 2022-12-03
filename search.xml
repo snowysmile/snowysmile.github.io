@@ -23478,7 +23478,10 @@ function mouseUp() {
 </body>
 </html>
 
-]]></content>
+
+<p>END Test:</p>
+<p>Used on a button:</p>
+<button style="font-size:24px"><onmousedown="PlaySound('TestWater47.wav')"><i class="fa fa-volume-up"></i></button>]]></content>
       <categories>
         <category>Games</category>
       </categories>
