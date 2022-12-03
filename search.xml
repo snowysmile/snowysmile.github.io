@@ -8472,9 +8472,9 @@ the above code for the center align
 </tr>
 <tr>
 <td align="center">wolf</td>
+<td align="center">狼</td>
 <td align="center">狼 ~ オオカミ🐺</td>
 <td align="center">おおかみ</td>
-<td align="center"></td>
 </tr>
 <tr>
 <td align="center">fish</td>
@@ -23478,9 +23478,9 @@ function mouseUp() {
 </tr>
 <tr>
 <td align="center">wolf</td>
+<td align="center">狼</td>
 <td align="center">狼 ~ オオカミ🐺</td>
 <td align="center">おおかみ</td>
-<td align="center"></td>
 <td align="center"></td>
 </tr>
 <tr>
@@ -23771,7 +23771,6 @@ function mouseUp() {
 <td align="center"></td>
 </tr>
 </tbody></table>
-<p>Directory \ and &#x2F; both work</p>
-]]></content>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Directory \ and / both work</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
 </search>
