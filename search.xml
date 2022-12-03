@@ -23474,7 +23474,7 @@ function mouseUp() {
 <td align="center">貓</td>
 <td align="center">猫🐈</td>
 <td align="center">ねこ</td>
-<td align="center"><audio controls source src="\audio\Animal Sounds\Dog\Small Dog Bark 1.mp3"></td>
+<td align="center"><audio controls source src="\audio\Animal Sounds\Cat\Cat Meowing.mp3"></td>
 </tr>
 <tr>
 <td align="center">wolf</td>
@@ -23771,7 +23771,7 @@ function mouseUp() {
 <td align="center"></td>
 </tr>
 </tbody></table>
-<p>Directory</p>
+<p>Directory \ and &#x2F; both work</p>
 ]]></content>
   </entry>
 </search>
