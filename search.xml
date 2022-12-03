@@ -23456,7 +23456,7 @@ function mouseUp() {
     </tbody>
 </table>
 
-<p>111<br>!audio[標題](&#x2F;music&#x2F;吴青峰 - 起风了.mp3)<br>audio[標題](&#x2F;music&#x2F;吴青峰 - 起风了.mp3)</p>
+<p>123<br>!audio[標題](&#x2F;music&#x2F;吴青峰 - 起风了.mp3)<br>audio[標題](&#x2F;music&#x2F;吴青峰 - 起风了.mp3)<br>:audio[標題](&#x2F;music&#x2F;吴青峰 - 起风了.mp3)</p>
 <p>222<br><audio controls="" preload="none" style="width: 40%;"><br>      <source src="/music/吴青峰 - 起风了.mp3"><br></audio></p>
 <audio controls="" preload="none" style="width: 10%;">
       <source src="/music/吴青峰 - 起风了.mp3">
