@@ -23433,6 +23433,28 @@ function mouseUp() {
 
 <h1 id="Audio-Test"><a href="#Audio-Test" class="headerlink" title="Audio Test"></a>Audio Test</h1><p><button>&lt;onmousedown&#x3D;&quot;PlaySound(&#39;TestWater47.wav&#39;)&quot;&gt;<i class="fa fa-volume-up"></i></button></p>
 <p><b onmousedown="PlaySound('TestWater47.wav')"><i class="fas fa-volume-up"></i></b></p>
-]]></content>
+<p>abc</p>
+<table>
+    <thead>
+        <tr>
+            <th>音別</td>
+            <th>假名</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>漢音</td>
+            <td>れい<b onmousedown="PlaySound('rei')"><i class="fas fa-volume-up"></i></b></td>
+        </tr>
+        <tr>
+            <td>和音</td>
+            <td>まる<b onmousedown="PlaySound('maru')"><i class="fas fa-volume-up"></i></b></td>
+        </tr>
+        <tr>
+            <td>外來語</td>
+            <td>ゼロ<b onmousedown="PlaySound('zero')"><i class="fas fa-volume-up"></i></b></td>
+        </tr>
+    </tbody>
+</table>]]></content>
   </entry>
 </search>
