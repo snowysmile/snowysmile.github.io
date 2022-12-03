@@ -23449,8 +23449,7 @@ function mouseUp() {
         </tr>
         <tr>
             <td>外來語</td>
-            <td>ゼロ<audio controls="" preload="none">
-      <source src="/audio/TestWater47.wav"></audio></i></td>
+            <td>ゼロ<audio><source src="/audio/TestWater47.wav"></audio></td>
         </tr>
     </tbody>
 </table>
