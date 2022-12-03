@@ -23429,7 +23429,7 @@ function mouseUp() {
 </body></html>
 
 
-<h1 id="Audio-Test-x3D-quot-quot"><a href="#Audio-Test-x3D-quot-quot" class="headerlink" title="Audio Test &#x3D;&quot;&quot;"></a>Audio Test &#x3D;&quot;&quot;</h1><p><audio controls><source src="/audio/TestWater47.wav"></p>
+<h1 id="Audio-Test-x3D-quot-quot"><a href="#Audio-Test-x3D-quot-quot" class="headerlink" title="Audio Test &#x3D;&quot;&quot;"></a>Audio Test &#x3D;&quot;&quot;</h1><p><audio controls><source src="/audio/TestWater47.wav"></audio></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">15% is a good length for short audio files</span><br><span class="line">&lt;audio controls=&quot;&quot; preload=&quot;none&quot; style=&quot;width: 15%;&quot;&gt;src&lt;/audio&gt;</span><br></pre></td></tr></table></figure>
 
 <h1 id="How-to-save-Audio-from-Google-Voice"><a href="#How-to-save-Audio-from-Google-Voice" class="headerlink" title="How to save Audio from Google Voice"></a>How to save Audio from Google Voice</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">replace the &quot;?&quot; after &quot;https://translate.google.com/&quot; with </span><br><span class="line">translate_tts?client=tw-ob&amp;</span><br></pre></td></tr></table></figure>
@@ -23460,5 +23460,10 @@ function mouseUp() {
 <source src="https://translate.google.com/translate_tts?client=tw-ob&tl=zh-TW&text=十里山路不換肩"
 </audio>
 -->]]></content>
+  </entry>
+  <entry>
+    <title>SoundEffects</title>
+    <url>/SoundEffects/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
