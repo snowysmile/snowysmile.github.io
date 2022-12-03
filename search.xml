@@ -23431,7 +23431,7 @@ function mouseUp() {
 </script></body></html>
 
 
-<h1 id="Audio-Test"><a href="#Audio-Test" class="headerlink" title="Audio Test"></a>Audio Test</h1><p><button>&lt;onmousedown&#x3D;&quot;PlaySound(&#39;TestWater47.wav&#39;)&quot;&gt;<i class="fa fa-volume-up"></i></button></p>
+<h1 id="Audio-Test"><a href="#Audio-Test" class="headerlink" title="Audio Test"></a>Audio Test</h1><p><button>&lt;!audio[title](&#x2F;music&#x2F;吴青峰 - 起风了.mp3)&gt;<i class="fa fa-volume-up"></i></button></p>
 <p>abc</p>
 <table>
     <thead>
