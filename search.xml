@@ -23793,8 +23793,7 @@ function mouseUp() {
   <entry>
     <title>Web Crawler</title>
     <url>/WebCrawler/WebCrawler/</url>
-    <content><![CDATA[<p>Hi hi hi!</p>
-<p><a href="https://en.wikipedia.org/wiki/Web_crawler">Web Crawler - wiki</a></p>
+    <content><![CDATA[<p><a href="https://en.wikipedia.org/wiki/Web_crawler">Web Crawler - wiki</a></p>
 ]]></content>
   </entry>
 </search>
