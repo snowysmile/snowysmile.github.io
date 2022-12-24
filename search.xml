@@ -23793,6 +23793,15 @@ function mouseUp() {
     <title>Web Crawler</title>
     <url>/WebCrawler/WebCrawler/</url>
     <content><![CDATA[<p><a href="https://en.wikipedia.org/wiki/Web_crawler">Web Crawler - wiki</a></p>
+<h1 id="I-prefer-using-Python-to-Golang"><a href="#I-prefer-using-Python-to-Golang" class="headerlink" title="I prefer using Python to Golang"></a>I prefer using Python to Golang</h1><p>The Easiest Web Crawler Step:</p>
+<ol>
+<li>requests.get -&gt; html</li>
+<li>analyze</li>
+<li>get data</li>
+</ol>
+<span id="more"></span>
+
+<p>There is More to Update</p>
 ]]></content>
   </entry>
   <entry>
@@ -24199,5 +24208,11 @@ function mouseUp() {
       <tags>
         <tag>Game</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Year2022</title>
+    <url>/Year2022/</url>
+    <content><![CDATA[<p>Hi~<br>Wait me, I will write it later!</p>
+]]></content>
   </entry>
 </search>
