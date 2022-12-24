@@ -23799,7 +23799,362 @@ function mouseUp() {
     <title>Games To Look Forward To In 2023, The Most Anticipated Games</title>
     <url>/game2023/</url>
     <content><![CDATA[<h1 id="Games-I-am-Looking-Forward-To"><a href="#Games-I-am-Looking-Forward-To" class="headerlink" title="Games I am Looking Forward To"></a>Games I am Looking Forward To</h1><p>Windows✅❌ Linux✅❌ MacOS✅❌ PS✅❌ Xbox✅❌ Switch✅❌ iOS✅❌ Android✅❌</p>
-<p>|Release Time|Name|Engine|Developer|Publisher|Platforms<br>|:-:|:-:|:-:|:-:|:-:|<br>2023-01-20|<a href="https://en.wikipedia.org/wiki/Fire_Emblem_Engage">Fire Emblem Engage</a> - 火焰紋章|Intelligent Systems|Nintendo|Windows❌ Linux❌ MacOS❌ PS❌ Xbox❌ Switch✅ iOS❌ Android❌<br>2023-01-23|<a href="https://en.wikipedia.org/wiki/Forspoken">Forspoken</a> - 魔咒之地||<br>2023-01-27|<a href="https://en.wikipedia.org/wiki/Dead_Space">Dead Space</a> Remake 死亡空間(重置版)||<br>2023-02-11|🥰 <a href="https://en.wikipedia.org/wiki/Hogwarts_Legacy">Hogwarts Legacy</a> - 霍格沃茨・遺產&quot;<br>2023-02-17|<a href="https://en.wikipedia.org/wiki/Wild_Hearts_(video_game)">Wild Hearts</a> - 狂野之心|Omega Force|Electronic Arts<br>2023-02-21|<a href="https://en.wikipedia.org/wiki/Atomic_Heart_(video_game)">Atomic Heart</a> - 原子之心|Mundfish|Mundfish &amp; Focus Entertainment &amp; 4Divinity<br>2023-02-22|<a href="https://en.wikipedia.org/wiki/Like_a_Dragon:_Ishin!">Like a Dragon: Ishin!</a> - 如龍 維新！|Ryu Ga Gotoku Studio|Sega<br>2023-02-23|Sons of The Forest||<br>2023-02-23|Company of Heroes 3||<br>2023-02-24|Octopath Traveler II||<br>2023-03-03|Wo Long: Fallen Dynasty||<br>2023-03-09|Skull and Bones||<br>2023-03-17|Star Wars Jedi: Survivor||<br>2023-03-24|* Resident Evil 4 Remake 安靈古堡|Capcom|Capcom<br>2023-04-28|Dead Island 2||<br>2023-05-12|🥰🥰🥰 <a href="https://en.wikipedia.org/wiki/The_Legend_of_Zelda:_Tears_of_the_Kingdom">The Legend of Zelda: Tears of the Kingdom</a> - 薩爾達傳說 王國之淚&quot;<br>2023-06-06|Diablo IV - 暗黑破壞神4||<br>2023-06-22|Final Fantasy XVI||<br>2023 Q1~Q2|* <a href="https://en.wikipedia.org/wiki/Starfield_(video_game)">Starfield</a>||<br>2023 Q4|Dark and Darker|IRONMACE|IRONMACE<br>2023 Q4|<a href="https://en.wikipedia.org/wiki/The_Lord_of_the_Rings:_Gollum">The Lord of the Rings: Gollum</a> - 魔戒：咕嚕&quot;||<br>2023|🥰 Ark 2 - 方舟Ⅱ||<br>2023|🥰 <a href="https://en.wikipedia.org/wiki/The_Wolf_Among_Us_2">The Wolf Among Us 2</a> - 我們中的一匹狼Ⅱ&quot;||<br>2023|<a href="https://en.wikipedia.org/wiki/Party_Animals_(video_game)">Party Animals</a> - 動物派對|Recreate Games|Source Technology<br>2023|Minecraft Legends||<br>2023|Uncharted Waters Origin||<br>2023|Valiant Hearts: Coming Home||<br>2023|Risk of Rain Returns||<br>2023|* The Alters|11 bit studios|11 bit studios<br>2023|Legend of Mortal||<br>2023|Homeworld 3||<br>2023|Pragmata||<br>2023|Forza Motorsport||<br>2023|S.T.A.L.K.E.R. 2: Heart of Chornobyl||<br>2023|Suicide Squad: Kill the Justice League||<br>2023|Avatar: Frontiers of Pandora||<br>2023|Redfall||<br>2023|Alan Wake 2||<br>2023|Street Fighter 6||<br>2023|Assassin&#39;s Creed Mirage||<br>2023|Like A Dragon Gaiden: The Man Who Erased His Name||<br>2023|Marvel Spider Man 2||<br>2023|Final Fantasy VII Rebirth||</p>
+<table>
+<thead>
+<tr>
+<th align="center">Release Time</th>
+<th align="center">Name</th>
+<th align="center">Engine</th>
+<th align="center">Developer</th>
+<th align="center">Publisher</th>
+<th align="center">Platforms</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">2023-01-20</td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Fire_Emblem_Engage">Fire Emblem Engage</a> - 火焰紋章</td>
+<td align="center">Intelligent Systems</td>
+<td align="center">Nintendo</td>
+<td align="center">Windows❌ Linux❌ MacOS❌ PS❌ Xbox❌ Switch✅ iOS❌ Android❌</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023-01-23</td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Forspoken">Forspoken</a> - 魔咒之地</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023-01-27</td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Dead_Space">Dead Space</a> Remake 死亡空間(重置版)</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023-02-11</td>
+<td align="center">🥰 <a href="https://en.wikipedia.org/wiki/Hogwarts_Legacy">Hogwarts Legacy</a> - 霍格沃茨・遺產&quot;</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023-02-17</td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Wild_Hearts_(video_game)">Wild Hearts</a> - 狂野之心</td>
+<td align="center">Omega Force</td>
+<td align="center">Electronic Arts</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023-02-21</td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Atomic_Heart_(video_game)">Atomic Heart</a> - 原子之心</td>
+<td align="center">Mundfish</td>
+<td align="center">Mundfish &amp; Focus Entertainment &amp; 4Divinity</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023-02-22</td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Like_a_Dragon:_Ishin!">Like a Dragon: Ishin!</a> - 如龍 維新！</td>
+<td align="center">Ryu Ga Gotoku Studio</td>
+<td align="center">Sega</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023-02-23</td>
+<td align="center">Sons of The Forest</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023-02-23</td>
+<td align="center">Company of Heroes 3</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023-02-24</td>
+<td align="center">Octopath Traveler II</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023-03-03</td>
+<td align="center">Wo Long: Fallen Dynasty</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023-03-09</td>
+<td align="center">Skull and Bones</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023-03-17</td>
+<td align="center">Star Wars Jedi: Survivor</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023-03-24</td>
+<td align="center">* Resident Evil 4 Remake 安靈古堡</td>
+<td align="center">Capcom</td>
+<td align="center">Capcom</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023-04-28</td>
+<td align="center">Dead Island 2</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023-05-12</td>
+<td align="center">🥰🥰🥰 <a href="https://en.wikipedia.org/wiki/The_Legend_of_Zelda:_Tears_of_the_Kingdom">The Legend of Zelda: Tears of the Kingdom</a> - 薩爾達傳說 王國之淚&quot;</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023-06-06</td>
+<td align="center">Diablo IV - 暗黑破壞神4</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023-06-22</td>
+<td align="center">Final Fantasy XVI</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023 Q1~Q2</td>
+<td align="center">* <a href="https://en.wikipedia.org/wiki/Starfield_(video_game)">Starfield</a></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023 Q4</td>
+<td align="center">Dark and Darker</td>
+<td align="center">IRONMACE</td>
+<td align="center">IRONMACE</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023 Q4</td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/The_Lord_of_the_Rings:_Gollum">The Lord of the Rings: Gollum</a> - 魔戒：咕嚕&quot;</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023</td>
+<td align="center">🥰 Ark 2 - 方舟Ⅱ</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023</td>
+<td align="center">🥰 <a href="https://en.wikipedia.org/wiki/The_Wolf_Among_Us_2">The Wolf Among Us 2</a> - 我們中的一匹狼Ⅱ&quot;</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023</td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Party_Animals_(video_game)">Party Animals</a> - 動物派對</td>
+<td align="center">Recreate Games</td>
+<td align="center">Source Technology</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023</td>
+<td align="center">Minecraft Legends</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023</td>
+<td align="center">Uncharted Waters Origin</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023</td>
+<td align="center">Valiant Hearts: Coming Home</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023</td>
+<td align="center">Risk of Rain Returns</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023</td>
+<td align="center">* The Alters</td>
+<td align="center">11 bit studios</td>
+<td align="center">11 bit studios</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023</td>
+<td align="center">Legend of Mortal</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023</td>
+<td align="center">Homeworld 3</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023</td>
+<td align="center">Pragmata</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023</td>
+<td align="center">Forza Motorsport</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023</td>
+<td align="center">S.T.A.L.K.E.R. 2: Heart of Chornobyl</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023</td>
+<td align="center">Suicide Squad: Kill the Justice League</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023</td>
+<td align="center">Avatar: Frontiers of Pandora</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023</td>
+<td align="center">Redfall</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023</td>
+<td align="center">Alan Wake 2</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023</td>
+<td align="center">Street Fighter 6</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023</td>
+<td align="center">Assassin&#39;s Creed Mirage</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023</td>
+<td align="center">Like A Dragon Gaiden: The Man Who Erased His Name</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023</td>
+<td align="center">Marvel Spider Man 2</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2023</td>
+<td align="center">Final Fantasy VII Rebirth</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
 <h1 id="Games-that-possibly-deserve-expectations"><a href="#Games-that-possibly-deserve-expectations" class="headerlink" title="Games that possibly deserve expectations"></a>Games that possibly deserve expectations</h1><table>
 <thead>
 <tr>
