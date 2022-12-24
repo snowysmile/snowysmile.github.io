@@ -23798,7 +23798,7 @@ function mouseUp() {
   <entry>
     <title>Games To Look Forward To In 2023, The Most Anticipated Games</title>
     <url>/game2023/</url>
-    <content><![CDATA[<h1 id="Games-I-am-Looking-Forward-To"><a href="#Games-I-am-Looking-Forward-To" class="headerlink" title="Games I am Looking Forward To"></a>Games I am Looking Forward To</h1><p>Windows✅❌ Linux✅❌ MacOS✅❌ PS✅❌ Xbox✅❌ Switch✅❌<br>iOS✅❌ Android✅❌</p>
+    <content><![CDATA[<h1 id="Games-I-am-Looking-Forward-To"><a href="#Games-I-am-Looking-Forward-To" class="headerlink" title="Games I am Looking Forward To"></a>Games I am Looking Forward To</h1><p>Windows✅❌ Linux✅❌ MacOS✅❌ PS✅❌ Xbox✅❌ Switch✅❌<br><del>iOS✅❌ Android✅❌ Google Stadia✅❌ Amazon Luna✅❌</del></p>
 <table>
 <thead>
 <tr>
@@ -23813,40 +23813,40 @@ function mouseUp() {
 <tbody><tr>
 <td align="center">2023-01-20</td>
 <td align="center"><a href="https://en.wikipedia.org/wiki/Fire_Emblem_Engage">Fire Emblem Engage</a> - 火焰紋章</td>
-<td align="center">Intelligent Systems</td>
-<td align="center">Nintendo</td>
-<td align="center">Windows❌ Linux❌ MacOS❌ PS❌ Xbox❌ Switch✅</td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Intelligent_Systems">Intelligent Systems</a></td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Nintendo">Nintendo</a></td>
+<td align="center">Switch✅</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">2023-01-23</td>
 <td align="center"><a href="https://en.wikipedia.org/wiki/Forspoken">Forspoken</a> - 魔咒之地</td>
-<td align="center">Luminous Productions</td>
-<td align="center">Square Enix</td>
-<td align="center">Windows✅❌ Linux❌ MacOS❌ PS✅ Xbox❌ Switch❌</td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Luminous_Productions"> Luminous Productions</a></td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Square_Enix">Square Enix</a></td>
+<td align="center">Windows✅PS✅</td>
 <td align="center">Luminous Engine</td>
 </tr>
 <tr>
 <td align="center">2023-01-27</td>
-<td align="center"><a href="https://en.wikipedia.org/wiki/Dead_Space">Dead Space</a> Remake 死亡空間(重置版)</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">* <a href="https://en.wikipedia.org/wiki/Dead_Space">Dead Space</a> Remake 死亡空間（重置版）</td>
+<td align="center">Motive Studio</td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Electronic_Arts">Electronic Arts</a></td>
 <td align="center"></td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">2023-02-11</td>
 <td align="center">🥰 <a href="https://en.wikipedia.org/wiki/Hogwarts_Legacy">Hogwarts Legacy</a> - 霍格沃茨・遺產&quot;</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Avalanche_Software">Avalanche Software</a></td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Warner_Bros._Interactive_Entertainment"> Warner Bros. Interactive Entertainment</a>[<a href="https://en.wikipedia.org/wiki/Hogwarts_Legacy#cite_note-1">a]</a></td>
 <td align="center"></td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">2023-02-17</td>
 <td align="center"><a href="https://en.wikipedia.org/wiki/Wild_Hearts_(video_game)">Wild Hearts</a> - 狂野之心</td>
-<td align="center">Omega Force</td>
-<td align="center">Electronic Arts</td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Omega_Force">Omega Force</a></td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Electronic_Arts"> Electronic Arts</a></td>
 <td align="center"></td>
 <td align="center"></td>
 </tr>
@@ -23861,96 +23861,96 @@ function mouseUp() {
 <tr>
 <td align="center">2023-02-22</td>
 <td align="center"><a href="https://en.wikipedia.org/wiki/Like_a_Dragon:_Ishin!">Like a Dragon: Ishin!</a> - 如龍 維新！</td>
-<td align="center">Ryu Ga Gotoku Studio</td>
-<td align="center">Sega</td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Ryu_Ga_Gotoku_Studio">Ryu Ga Gotoku Studio</a></td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Sega">Sega</a></td>
 <td align="center"></td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">2023-02-23</td>
 <td align="center">Sons of The Forest</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">Endnight Games Ltd</td>
+<td align="center">Newnight</td>
 <td align="center"></td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">2023-02-23</td>
 <td align="center">Company of Heroes 3</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Relic_Entertainment">Relic Entertainment</a></td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Sega"> Sega</a></td>
 <td align="center"></td>
 <td align="center"></td>
 </tr>
 <tr>
-<td align="center">2023-02-24</td>
-<td align="center">Octopath Traveler II</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">2023-02-25</td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Octopath_Traveler_II">Octopath Traveler II</a></td>
+<td align="center">Square Enix &amp; ACQUIRE Corp</td>
+<td align="center">Square Enix</td>
 <td align="center"></td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">2023-03-03</td>
-<td align="center">Wo Long: Fallen Dynasty</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Wo_Long:_Fallen_Dynasty">Wo Long: Fallen Dynasty</a></td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Team_Ninja">Team Ninja</a></td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Koei_Tecmo"> Koei Tecmo</a></td>
 <td align="center"></td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">2023-03-09</td>
-<td align="center">Skull and Bones</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Skull_and_Bones_(video_game)">Skull and Bones</a> - 碧海黑帆</td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Ubisoft_Singapore"> Ubisoft Singapore</a>[<a href="https://en.wikipedia.org/wiki/Skull_and_Bones_(video_game)#cite_note-2">a]</a></td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Ubisoft">Ubisoft</a></td>
 <td align="center"></td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">2023-03-17</td>
-<td align="center">Star Wars Jedi: Survivor</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Star_Wars_Jedi:_Survivor">Star Wars Jedi: Survivor</a></td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Respawn_Entertainment">Respawn Entertainment</a></td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Electronic_Arts">Electronic Arts</a></td>
 <td align="center"></td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">2023-03-24</td>
-<td align="center">* Resident Evil 4 Remake 安靈古堡</td>
-<td align="center">Capcom</td>
-<td align="center">Capcom</td>
+<td align="center">* <a href="https://en.wikipedia.org/wiki/Resident_Evil_4_(2023_video_game)">Resident Evil 4 Remake</a> 安靈古堡4（重置版）</td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Capcom"> Capcom</a></td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Capcom">Capcom</a></td>
 <td align="center"></td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">2023-04-28</td>
-<td align="center">Dead Island 2</td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Dead_Island_2">Dead Island 2</a> - 死亡島2</td>
+<td align="center">Dambuster Studios</td>
+<td align="center">Deep Silver</td>
 <td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">Unreal Engine 4</td>
 </tr>
 <tr>
 <td align="center">2023-05-12</td>
 <td align="center">🥰🥰🥰 <a href="https://en.wikipedia.org/wiki/The_Legend_of_Zelda:_Tears_of_the_Kingdom">The Legend of Zelda: Tears of the Kingdom</a> - 薩爾達傳說 王國之淚&quot;</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Dambuster_Studios"> Dambuster Studios</a>[<a href="https://en.wikipedia.org/wiki/Dead_Island_2#cite_note-1">a]</a></td>
+<td align="center">Nintendo</td>
 <td align="center"></td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">2023-06-06</td>
 <td align="center">Diablo IV - 暗黑破壞神4</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center">Blizzard Team 3 &amp; Blizzard Albany</td>
+<td align="center">Blizzard Entertainment</td>
+<td align="center">Windows✅PS✅Xbox✅</td>
 <td align="center"></td>
 </tr>
 <tr>
 <td align="center">2023-06-22</td>
 <td align="center">Final Fantasy XVI</td>
-<td align="center"></td>
-<td align="center"></td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Square_Enix_Creative_Business_Unit_III">Square Enix Creative Business Unit III</a></td>
+<td align="center"><a href="https://en.wikipedia.org/wiki/Square_Enix">Square Enix</a></td>
 <td align="center"></td>
 <td align="center"></td>
 </tr>
