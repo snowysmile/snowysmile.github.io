@@ -267,7 +267,7 @@
 <h1 id="Basic-Types-and-Useful-Types"><a href="#Basic-Types-and-Useful-Types" class="headerlink" title="Basic Types and Useful Types"></a>Basic Types and Useful Types</h1><h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><h3 id="Escape-Character"><a href="#Escape-Character" class="headerlink" title="Escape Character"></a>Escape Character</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">\&#x27;      Single Quote</span><br><span class="line">\\	    Backslash	</span><br><span class="line">\n	    New Line	</span><br><span class="line">\r	    Carriage Return</span><br><span class="line">\t      Tab</span><br><span class="line"></span><br><span class="line">s = &#x27;\# \&#x27; \\ &quot;&quot;&quot;&#x27;</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
 <p>Output:</p>
 <blockquote>
-<p># ‘ \ “””</p>
+<p># &#39; \ &quot;&quot;&quot;</p>
 </blockquote>
 <hr>
 <h3 id="String-Cut"><a href="#String-Cut" class="headerlink" title="String Cut"></a>String Cut</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">v = 12345</span><br><span class="line">s = str(v)</span><br><span class="line">print(s[1:], s[2:3], s[:-1], s[-2], s[::2], s[::-1])</span><br></pre></td></tr></table></figure>
@@ -280,7 +280,7 @@
 <h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">l = [&quot;hello&quot;, 1, [2, 3]]</span><br><span class="line">la = [2, 1, 0, -1, -2]</span><br><span class="line">lb = [&quot;apple&quot;, &quot;banana&quot;, &quot;orange&quot;]</span><br><span class="line">la.sort()</span><br><span class="line">lb.sort(reverse=True)</span><br><span class="line">print(la)</span><br><span class="line">print(lb)</span><br></pre></td></tr></table></figure>
 <p>Output: </p>
 <blockquote>
-<p>[-2, -1, 0, 1, 2]<br>[‘orange’, ‘banana’, ‘apple’]</p>
+<p>[-2, -1, 0, 1, 2]<br>[&#39;orange&#39;, &#39;banana&#39;, &#39;apple&#39;]</p>
 </blockquote>
 <hr>
 <h2 id="queue-PriorityQueue"><a href="#queue-PriorityQueue" class="headerlink" title="queue.PriorityQueue"></a>queue.PriorityQueue</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from queue import PriorityQueue</span><br><span class="line">q = PriorityQueue()</span><br><span class="line"></span><br><span class="line">q.put((2, &quot;eat&quot;))</span><br><span class="line">q.put((1, &quot;get up&quot;))</span><br><span class="line">q.put((3, &quot;sleep&quot;))</span><br><span class="line"></span><br><span class="line">while not q.empty():</span><br><span class="line">    next_item = q.get()</span><br><span class="line">    print(next_item)</span><br></pre></td></tr></table></figure>
@@ -289,7 +289,7 @@
 <hr>
 <p>Output:</p>
 <blockquote>
-<p>&lt;class ‘numpy.ndarray’&gt;<br>[ [0 0 0]<br>&amp;emsp;[0 0 0] ]</p>
+<p>&lt;class &#39;numpy.ndarray&#39;&gt;<br>[ [0 0 0]<br>&amp;emsp;[0 0 0] ]</p>
 </blockquote>
 <h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class A:</span><br><span class="line">    def __init__(self, cnt, chr):</span><br><span class="line">        self.cnt = cnt</span><br><span class="line">        self.chr = chr</span><br><span class="line">    def __lt__(self, other):</span><br><span class="line">        if self.cnt != other.cnt:</span><br><span class="line">            return self.cnt &gt; other.cnt</span><br><span class="line">        else:</span><br><span class="line">            return self.chr &lt; other.chr</span><br><span class="line">    def __str__(self):</span><br><span class="line">        return str(self.cnt) + &quot; &quot; + str(self.chr)</span><br><span class="line"></span><br><span class="line">a = []</span><br><span class="line">a.append(A(1, &quot;apple&quot;))</span><br><span class="line">a.append(A(2, &quot;banana&quot;))</span><br><span class="line">a.sort()</span><br><span class="line">for i in range(len(a)):</span><br><span class="line">    print(a[i])</span><br></pre></td></tr></table></figure>
 <p>Output: </p>
@@ -300,25 +300,25 @@
 <h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><h2 id="String-1"><a href="#String-1" class="headerlink" title="String"></a>String</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = input()</span><br><span class="line">print(type(s))</span><br><span class="line">sa, sb = input().split(maxsplit=1)</span><br></pre></td></tr></table></figure>
 <p>Output:</p>
 <blockquote>
-<p>&lt;class ‘str’&gt;</p>
+<p>&lt;class &#39;str&#39;&gt;</p>
 </blockquote>
 <hr>
 <h2 id="List-1"><a href="#List-1" class="headerlink" title="List"></a>List</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">l = []</span><br><span class="line">print(type(l))</span><br><span class="line">l = list(map(int, input().split()))</span><br><span class="line">l2 = [[] for i in range(10000)] # = cpp l2 = list[10000]</span><br><span class="line">lm = [[[0 for i in range(3)] for j in range(4)] for k in range(5)]</span><br><span class="line">print(lm[4][3][2])</span><br></pre></td></tr></table></figure>
 <p>Output: </p>
 <blockquote>
-<p>&lt;class ‘list’&gt;<br>0</p>
+<p>&lt;class &#39;list&#39;&gt;<br>0</p>
 </blockquote>
 <hr>
 <h2 id="Dict"><a href="#Dict" class="headerlink" title="Dict"></a>Dict</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;&#125;</span><br><span class="line">print(type(d))</span><br></pre></td></tr></table></figure>
 <p>Output:</p>
 <blockquote>
-<p>&lt;class ‘dict’&gt;</p>
+<p>&lt;class &#39;dict&#39;&gt;</p>
 </blockquote>
 <hr>
 <h2 id="Int"><a href="#Int" class="headerlink" title="Int"></a>Int</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n, m = map(int, input().split())</span><br><span class="line">print(type(n))</span><br></pre></td></tr></table></figure>
 <p>Output:</p>
 <blockquote>
-<p>&lt;class ‘int’&gt;</p>
+<p>&lt;class &#39;int&#39;&gt;</p>
 </blockquote>
 <hr>
 <h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><h2 id="One-line"><a href="#One-line" class="headerlink" title="One line"></a>One line</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">n = 5</span><br><span class="line">a = []</span><br><span class="line">for i in range(n):</span><br><span class="line">    a.append(i*i)</span><br><span class="line">for i in range(n):</span><br><span class="line">    print(a[i],end=&quot; &quot; if i != n - 1 else &quot;&quot;)</span><br><span class="line">print()</span><br></pre></td></tr></table></figure>
@@ -422,7 +422,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
