@@ -22,19 +22,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":20},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="@font-face {       font-family: &#39;CustomFont&#39;;       src: url(&#39;Fonts&#x2F;English&#x2F;Schoolbell-Regular.ttf&#39;)       unicode-range: U+0000-FFFF; &#x2F;* Specify the range of characters supported by the fon">
+  <meta name="description" content="@font-face {     font-family: &#39;Schoolbell&#39;;     src: url(&#39;Fonts&#x2F;English&#x2F;Schoolbell-Regular.ttf&#39;);   }    .font_Schoolbell {     font-family: __DEFAULT_FONT__;   }      GeeksforGeeks123         Clic">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Snowy Study">
-<meta property="og:url" content="http://example.com/FontCompare/Test.html">
+<meta property="og:url" content="http://example.com/html/FontCompare/Save.html">
 <meta property="og:site_name" content="Snowy Study">
-<meta property="og:description" content="@font-face {       font-family: &#39;CustomFont&#39;;       src: url(&#39;Fonts&#x2F;English&#x2F;Schoolbell-Regular.ttf&#39;)       unicode-range: U+0000-FFFF; &#x2F;* Specify the range of characters supported by the fon">
+<meta property="og:description" content="@font-face {     font-family: &#39;Schoolbell&#39;;     src: url(&#39;Fonts&#x2F;English&#x2F;Schoolbell-Regular.ttf&#39;);   }    .font_Schoolbell {     font-family: __DEFAULT_FONT__;   }      GeeksforGeeks123         Clic">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-06-09T04:51:48.145Z">
-<meta property="article:modified_time" content="2023-06-09T04:51:48.145Z">
+<meta property="article:published_time" content="2023-06-09T04:50:33.048Z">
+<meta property="article:modified_time" content="2023-06-09T04:50:33.048Z">
 <meta property="article:author" content="snowy_smile">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/FontCompare/Test">
+<link rel="canonical" href="http://example.com/html/FontCompare/Save">
 
 
 <script id="page-configurations">
@@ -205,6 +205,13 @@
 
 <div class="post-meta">
   
+  <ul class="breadcrumb">
+          
+            <li><a href="/html/">HTML</a></li>
+            <li><a href="/html/FontCompare/">FONTCOMPARE</a></li>
+            <li>SAVE</li>
+          
+  </ul>
 
 </div>
 
@@ -214,25 +221,59 @@
       
       
       <div class="post-body">
-          <!DOCTYPE html>
-<html>
-<head>
-  <style>
-    @font-face {
-      font-family: 'CustomFont';
-      src: url('Fonts/English/Schoolbell-Regular.ttf')
-      unicode-range: U+0000-FFFF; /* Specify the range of characters supported by the font */
-    }
-    body {
-      font-family: 'CustomFont';
-    }
-  </style>
-</head>
-<body>
-  <p>This text will be displayed using the custom font.</p>
-  <p>若干不存在于字体中的字符将不会显示。</p>
-</body>
-</html>
+          <style>
+  @font-face {
+    font-family: 'Schoolbell';
+    src: url('Fonts/English/Schoolbell-Regular.ttf');
+  }
+
+  .font_Schoolbell {
+    font-family: __DEFAULT_FONT__;
+  }
+</style>
+
+<h1 style="color:green;">
+  GeeksforGeeks123
+</h1>
+
+<p id="GFG_UP" class="font_Schoolbell">
+</p>
+
+<button onclick="gfg_Run()">
+  Click here
+</button>
+
+<p id="GFG_DOWN">
+</p>
+
+<script>
+  var el_up = document.getElementById("GFG_UP");
+  var el_down = document.getElementById("GFG_DOWN");
+
+  var str = "為什麼";
+  el_up.innerHTML = str;
+
+  function gfg_Run() {
+    var characters = Array.from(str);
+    var fonts = new Set();
+
+    characters.forEach(function(char) {
+      var fontUsed = getComputedStyle(el_up).fontFamily;
+      var fontSupportsChar = document.fonts.check(`16px "${fontUsed}"`, char);
+
+      console.log(char);
+      console.log(fontSupportsChar);
+      if (!fontSupportsChar) {
+        console.log("!fontSupportsChar");
+        fontUsed = getComputedStyle(el_up).fontFamily;
+      }
+
+      fonts.add(fontUsed);
+    });
+
+    el_down.innerHTML = "Font used for each character: " + Array.from(fonts).join(", ");
+  }
+</script>
 
       </div>
       
@@ -240,6 +281,13 @@
       
     </div>
     
+  <ul class="breadcrumb">
+          
+            <li><a href="/html/">HTML</a></li>
+            <li><a href="/html/FontCompare/">FONTCOMPARE</a></li>
+            <li>SAVE</li>
+          
+  </ul>
 
     
     
@@ -294,6 +342,9 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">
+  GeeksforGeeks123
+</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
