@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/sky_smile32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/sky_smile16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":20},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Basic functionsFor123a &#x3D; [&quot;hello&quot;, 1, 0.5]for i, v in enumerate(a):    print(i, v) Output:  0 hello1 12 0.5   While123456while True:    try:        n &#x3D; int(input())        ...    except EOFE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Start to Use Python to Solve Algorithm Problems">
+<meta property="og:url" content="http://example.com/pystudy/index.html">
+<meta property="og:site_name" content="Snowy Study">
+<meta property="og:description" content="Basic functionsFor123a &#x3D; [&quot;hello&quot;, 1, 0.5]for i, v in enumerate(a):    print(i, v) Output:  0 hello1 12 0.5   While123456while True:    try:        n &#x3D; int(input())        ...    except EOFE">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-12-16T11:22:48.000Z">
+<meta property="article:modified_time" content="2022-01-16T08:05:50.813Z">
+<meta property="article:author" content="snowy_smile">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/pystudy/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Start to Use Python to Solve Algorithm Problems | Snowy Study</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Snowy Study</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-fontcompare">
+
+    <a href="/html/FontCompare/FontCompare.html" rel="section"><i class="fa fa-cat fa-fw"></i>Fontcompare</a>
+
+  </li>
+        <li class="menu-item menu-item-test">
+
+    <a href="/html/FontCompare/FontCompare.html" rel="section"><i class="fa fa-cat fa-fw"></i>Test</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/pystudy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/snowy_smile.jpg">
+      <meta itemprop="name" content="snowy_smile">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Snowy Study">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Start to Use Python to Solve Algorithm Problems
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-12-16 20:22:48" itemprop="dateCreated datePublished" datetime="2021-12-16T20:22:48+09:00">2021-12-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-01-16 17:05:50" itemprop="dateModified" datetime="2022-01-16T17:05:50+09:00">2022-01-16</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Basic-functions"><a href="#Basic-functions" class="headerlink" title="Basic functions"></a>Basic functions</h1><h2 id="For"><a href="#For" class="headerlink" title="For"></a>For</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [&quot;hello&quot;, 1, 0.5]</span><br><span class="line">for i, v in enumerate(a):</span><br><span class="line">    print(i, v)</span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<blockquote>
+<p>0 hello<br>1 1<br>2 0.5</p>
+</blockquote>
+<hr>
+<h2 id="While"><a href="#While" class="headerlink" title="While"></a>While</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">while True:</span><br><span class="line">    try:</span><br><span class="line">        n = int(input())</span><br><span class="line">        ...</span><br><span class="line">    except EOFError:</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Operations"><a href="#Operations" class="headerlink" title="Operations"></a>Operations</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = 5 #101(Base2)</span><br><span class="line">y = 3 #011(Base2)</span><br><span class="line">print(x + y, x - y, x * y, x / y)</span><br><span class="line">print(x ** y, x // y, x % y)</span><br><span class="line">print(x &amp; y, x | y, x ^ y, x &lt;&lt; y, x &gt;&gt; y)</span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<blockquote>
+<p>8 2 15 1.6666666666666667<br>125 1 2<br>1 7 6 40 0</p>
+</blockquote>
+<hr>
+<h2 id="Min-Max"><a href="#Min-Max" class="headerlink" title="Min Max"></a>Min Max</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a, b, c = 1, 3, 2</span><br><span class="line">mn = min(a, b, c)</span><br><span class="line">mx = max(a, b, c)</span><br><span class="line">print(mn, mx)</span><br></pre></td></tr></table></figure>
+<p>Output</p>
+<blockquote>
+<p>1 3</p>
+</blockquote>
+<hr>
+<h2 id="Numerical-Base"><a href="#Numerical-Base" class="headerlink" title="Numerical Base"></a>Numerical Base</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = int(&quot;144&quot;, 8)</span><br><span class="line">a, b, c, d = bin(x), oct(x), int(x), hex(x)</span><br><span class="line">print(a, b, c, d)</span><br><span class="line">print(a[2:])</span><br><span class="line">print(b[2:])</span><br><span class="line">print(c)</span><br><span class="line">print(d[2:])</span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<blockquote>
+<p>0b1100100 0o144 100 0x64<br>1100100<br>144<br>100<br>64</p>
+</blockquote>
+<h1 id="Basic-Types-and-Useful-Types"><a href="#Basic-Types-and-Useful-Types" class="headerlink" title="Basic Types and Useful Types"></a>Basic Types and Useful Types</h1><h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><h3 id="Escape-Character"><a href="#Escape-Character" class="headerlink" title="Escape Character"></a>Escape Character</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">\&#x27;      Single Quote</span><br><span class="line">\\	    Backslash	</span><br><span class="line">\n	    New Line	</span><br><span class="line">\r	    Carriage Return</span><br><span class="line">\t      Tab</span><br><span class="line"></span><br><span class="line">s = &#x27;\# \&#x27; \\ &quot;&quot;&quot;&#x27;</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<blockquote>
+<p># &#39; \ &quot;&quot;&quot;</p>
+</blockquote>
+<hr>
+<h3 id="String-Cut"><a href="#String-Cut" class="headerlink" title="String Cut"></a>String Cut</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">v = 12345</span><br><span class="line">s = str(v)</span><br><span class="line">print(s[1:], s[2:3], s[:-1], s[-2], s[::2], s[::-1])</span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<blockquote>
+<p>2345 3 1234 4 135 54321</p>
+</blockquote>
+<hr>
+<h3 id="String-Internal-Methods"><a href="#String-Internal-Methods" class="headerlink" title="String Internal Methods"></a>String Internal Methods</h3><p><strong><a target="_blank" rel="noopener" href="https://www.w3schools.com/python/python_ref_string.asp">link</a></strong></p>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">l = [&quot;hello&quot;, 1, [2, 3]]</span><br><span class="line">la = [2, 1, 0, -1, -2]</span><br><span class="line">lb = [&quot;apple&quot;, &quot;banana&quot;, &quot;orange&quot;]</span><br><span class="line">la.sort()</span><br><span class="line">lb.sort(reverse=True)</span><br><span class="line">print(la)</span><br><span class="line">print(lb)</span><br></pre></td></tr></table></figure>
+<p>Output: </p>
+<blockquote>
+<p>[-2, -1, 0, 1, 2]<br>[&#39;orange&#39;, &#39;banana&#39;, &#39;apple&#39;]</p>
+</blockquote>
+<hr>
+<h2 id="queue-PriorityQueue"><a href="#queue-PriorityQueue" class="headerlink" title="queue.PriorityQueue"></a>queue.PriorityQueue</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from queue import PriorityQueue</span><br><span class="line">q = PriorityQueue()</span><br><span class="line"></span><br><span class="line">q.put((2, &quot;eat&quot;))</span><br><span class="line">q.put((1, &quot;get up&quot;))</span><br><span class="line">q.put((3, &quot;sleep&quot;))</span><br><span class="line"></span><br><span class="line">while not q.empty():</span><br><span class="line">    next_item = q.get()</span><br><span class="line">    print(next_item)</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Array-Numpy"><a href="#Array-Numpy" class="headerlink" title="Array (Numpy)"></a>Array (Numpy)</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">n, m = 2, 3</span><br><span class="line">a = np.zeros((n, m), dtype=int)</span><br><span class="line">print(type(a))</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+<hr>
+<p>Output:</p>
+<blockquote>
+<p>&lt;class &#39;numpy.ndarray&#39;&gt;<br>[ [0 0 0]<br>&amp;emsp;[0 0 0] ]</p>
+</blockquote>
+<h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class A:</span><br><span class="line">    def __init__(self, cnt, chr):</span><br><span class="line">        self.cnt = cnt</span><br><span class="line">        self.chr = chr</span><br><span class="line">    def __lt__(self, other):</span><br><span class="line">        if self.cnt != other.cnt:</span><br><span class="line">            return self.cnt &gt; other.cnt</span><br><span class="line">        else:</span><br><span class="line">            return self.chr &lt; other.chr</span><br><span class="line">    def __str__(self):</span><br><span class="line">        return str(self.cnt) + &quot; &quot; + str(self.chr)</span><br><span class="line"></span><br><span class="line">a = []</span><br><span class="line">a.append(A(1, &quot;apple&quot;))</span><br><span class="line">a.append(A(2, &quot;banana&quot;))</span><br><span class="line">a.sort()</span><br><span class="line">for i in range(len(a)):</span><br><span class="line">    print(a[i])</span><br></pre></td></tr></table></figure>
+<p>Output: </p>
+<blockquote>
+<p>2 banana<br>1 apple</p>
+</blockquote>
+<hr>
+<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><h2 id="String-1"><a href="#String-1" class="headerlink" title="String"></a>String</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = input()</span><br><span class="line">print(type(s))</span><br><span class="line">sa, sb = input().split(maxsplit=1)</span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<blockquote>
+<p>&lt;class &#39;str&#39;&gt;</p>
+</blockquote>
+<hr>
+<h2 id="List-1"><a href="#List-1" class="headerlink" title="List"></a>List</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">l = []</span><br><span class="line">print(type(l))</span><br><span class="line">l = list(map(int, input().split()))</span><br><span class="line">l2 = [[] for i in range(10000)] # = cpp l2 = list[10000]</span><br><span class="line">lm = [[[0 for i in range(3)] for j in range(4)] for k in range(5)]</span><br><span class="line">print(lm[4][3][2])</span><br></pre></td></tr></table></figure>
+<p>Output: </p>
+<blockquote>
+<p>&lt;class &#39;list&#39;&gt;<br>0</p>
+</blockquote>
+<hr>
+<h2 id="Dict"><a href="#Dict" class="headerlink" title="Dict"></a>Dict</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;&#125;</span><br><span class="line">print(type(d))</span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<blockquote>
+<p>&lt;class &#39;dict&#39;&gt;</p>
+</blockquote>
+<hr>
+<h2 id="Int"><a href="#Int" class="headerlink" title="Int"></a>Int</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n, m = map(int, input().split())</span><br><span class="line">print(type(n))</span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<blockquote>
+<p>&lt;class &#39;int&#39;&gt;</p>
+</blockquote>
+<hr>
+<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><h2 id="One-line"><a href="#One-line" class="headerlink" title="One line"></a>One line</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">n = 5</span><br><span class="line">a = []</span><br><span class="line">for i in range(n):</span><br><span class="line">    a.append(i*i)</span><br><span class="line">for i in range(n):</span><br><span class="line">    print(a[i],end=&quot; &quot; if i != n - 1 else &quot;&quot;)</span><br><span class="line">print()</span><br></pre></td></tr></table></figure>
+<p>Output:</p>
+<blockquote>
+<p>0 1 4 9 16</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/myanticcp/" rel="prev" title="Why am I standing against the Chinese Communist Party?">
+      <i class="fa fa-chevron-left"></i> Why am I standing against the Chinese Communist Party?
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/jpverb/" rel="next" title="Verb 動詞 どうし">
+      Verb 動詞 どうし <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Basic-functions"><span class="nav-number">1.</span> <span class="nav-text">Basic functions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#For"><span class="nav-number">1.1.</span> <span class="nav-text">For</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#While"><span class="nav-number">1.2.</span> <span class="nav-text">While</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operations"><span class="nav-number">1.3.</span> <span class="nav-text">Operations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Min-Max"><span class="nav-number">1.4.</span> <span class="nav-text">Min Max</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Numerical-Base"><span class="nav-number">1.5.</span> <span class="nav-text">Numerical Base</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Basic-Types-and-Useful-Types"><span class="nav-number">2.</span> <span class="nav-text">Basic Types and Useful Types</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">2.1.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Escape-Character"><span class="nav-number">2.1.1.</span> <span class="nav-text">Escape Character</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-Cut"><span class="nav-number">2.1.2.</span> <span class="nav-text">String Cut</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-Internal-Methods"><span class="nav-number">2.1.3.</span> <span class="nav-text">String Internal Methods</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">2.2.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#queue-PriorityQueue"><span class="nav-number">2.3.</span> <span class="nav-text">queue.PriorityQueue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-Numpy"><span class="nav-number">2.4.</span> <span class="nav-text">Array (Numpy)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Class"><span class="nav-number">2.5.</span> <span class="nav-text">Class</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Input"><span class="nav-number">3.</span> <span class="nav-text">Input</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#String-1"><span class="nav-number">3.1.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List-1"><span class="nav-number">3.2.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dict"><span class="nav-number">3.3.</span> <span class="nav-text">Dict</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Int"><span class="nav-number">3.4.</span> <span class="nav-text">Int</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Output"><span class="nav-number">4.</span> <span class="nav-text">Output</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#One-line"><span class="nav-number">4.1.</span> <span class="nav-text">One line</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="snowy_smile"
+      src="/images/snowy_smile.jpg">
+  <p class="site-author-name" itemprop="name">snowy_smile</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">snowy_smile</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
