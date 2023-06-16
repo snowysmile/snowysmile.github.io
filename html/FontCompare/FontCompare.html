@@ -257,7 +257,7 @@
       src: url('Fonts/English/RobotoMono-Regular.ttf')
     }
     .font_RobotoMono {
-      font-family: 'AdvocateAncientMono', sans-serif;
+      font-family: 'RobotoMono', sans-serif;
     }
 
     @font-face {
@@ -315,47 +315,13 @@
       { name: 'XiaoheSimplifySans', className: 'font_XiaoheSimplifySans' },
       { name: 'XiaoheSimplifySerif', className: 'font_XiaoheSimplifySerif' },
       { name: 'AdvocateAncientMono', className: 'font_AdvocateAncientMono' },
-      { name: 'Roboto', className: 'font_Roboto' },
-      { name: 'RobotoMono', className: 'font_RobotoMono' },
-      { name: 'Schoolbell', className: 'font_Schoolbell' },
-      { name: 'SingleDay', className: 'font_SingleDay' },
-      { name: 'Digital-7', className: 'font_Digital-7' },
     ];
     const myLocalEnglishFonts = [
-      { name: 'Default', className: 'font_Keshin' },
-      { name: 'Nishikiteki', className: 'font_Nishikiteki' },
-      { name: '851MkPOP', className: 'font_851MkPOP' },
-      { name: 'NotoSansCJK', className: 'font_NotoSansCJK' },
-      { name: 'NotoSansCJKjp', className: 'font_NotoSansCJKjp' },
-      { name: 'Iansui', className: 'font_Iansui' },
-      { name: 'Seto', className: 'font_Seto' },
-      { name: 'Naikai', className: 'font_Naikai' },
-      { name: 'BugMaruGothic', className: 'font_BugMaruGothic' },
-      { name: 'KosugiMaru', className: 'font_KosugiMaru' },
-      { name: 'JF-openhuninn', className: 'font_JF-openhuninn' },
-      { name: 'ChiayiCity', className: 'font_ChiayiCity' },
-      { name: 'ChenYuluoyan', className: 'font_ChenYuluoyan' },
-      { name: 'KsoKagero', className: 'font_KsoKagerou' },
-      { name: 'KsoKagero', className: 'font_KsoKaisho' },
-      { name: 'Mamelon', className: 'font_Mamelon' },
-      { name: 'OzCaramel', className: 'font_OzCaramel' },
-      { name: 'Pigmo-00', className: 'font_Pigmo-00' },
-      { name: 'TaipeiSans', className: 'font_TaipeiSans' },
-      { name: 'WD-XLLubrifont', className: 'font_WD-XLLubrifont' },
-      { name: 'tkFangSong', className: 'font_tkFangSong' },
-      { name: 'LXGWWenKai', className: 'font_LXGWWenKai' },
-      { name: 'LXGWWenKaiMono', className: 'font_LXGWWenKaiMono' },
-      { name: 'SourceHanSans', className: 'font_SourceHanSans' },
-      { name: 'SourceHanSerif', className: 'font_SourceHanSerif' },
-      { name: 'XiaoheSimplifySans', className: 'font_XiaoheSimplifySans' },
-      { name: 'XiaoheSimplifySerif', className: 'font_XiaoheSimplifySerif' },
-      { name: 'AdvocateAncientMono', className: 'font_AdvocateAncientMono' },
       { name: 'Roboto', className: 'font_Roboto' },
       { name: 'RobotoMono', className: 'font_RobotoMono' },
+      { name: 'Digital-7', className: 'font_Digital-7' },
       { name: 'Schoolbell', className: 'font_Schoolbell' },
       { name: 'SingleDay', className: 'font_SingleDay' },
-      { name: 'Digital-7', className: 'font_Digital-7' },
-      { name: 'Digital-7-Mono', className: 'font_Digital-7-Mono' },
     ];
   </script>
   <style>
@@ -411,12 +377,12 @@
     }
   </script>
   <script>
-    var scriptText = `abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ <br>
-      あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん 「」『』・…゛゜っー々ヶ￥〒 <br>
+    var scriptTextEN = `abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ <br>`
+    var scriptTextCJK = `あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん 「」『』・…゛゜っー々ヶ￥〒 <br>
       日：開遊歩売終覚帰掛書貸聞曇結咲質問閉締濯掃頼勤無鳴習並脱飲履働話貼磨読練習 為為台国党産内歴増税説黒黄偽経済〇〇〇〇〇〇〇〇〇〇〇〇〇 <br>
       台：開遊步賣終覺歸掛書貸聞雲結咲質問閉締濯掃賴勤無鳴習並脫飲履動話貼磨讀練習 為爲臺國黨產內歷增稅說黑黃偽經濟這你她他呢嗎哪喔啦噢麼奶爺 <br>
-      中：开游终卖终觉归挂书贷闻云结咲质问闭缔濯扫赖勤无鸣习并脱饮履动话贴磨读练习 为为台国党产内历增税说黑黄伪经济这你她他呢吗哪喔啦噢么奶爷 <br>
-      <table>
+      中：开游终卖终觉归挂书贷闻云结咲质问闭缔濯扫赖勤无鸣习并脱饮履动话贴磨读练习 为为台国党产内历增税说黑黄伪经济这你她他呢吗哪喔啦噢么奶爷 <br>`
+    var scriptTextTable = `<table>
         <tr>
           <td>20</td>
           <td>21</td>
@@ -558,20 +524,24 @@
       </table>`;
   </script>
   <script>
-    const generateFontAreaCode = (font) => `
+    const generateFontAreaCode = (font, showCJKContent) => `
       <div class="font-area ${font.className}">
         <div class="font-title-holder" style="margin-top: 3px; margin-bottom: 5px;">
           ${font.name}
           <button class="toggle-button" style="margin-left: 10px;" onclick="toggleContent(this)">On / Off</button><br>
         </div>
         <div class="font-content">
+          ${showCJKContent ? '<div class="font-content-CJK"></div>' : ''}
         </div>
       </div>
     `;
     const generateAllFontAreaCode = () => {
       let code = '';
       myLocalFonts.forEach(font => {
-        code += generateFontAreaCode(font);
+        code += generateFontAreaCode(font, true);
+      });
+      myLocalEnglishFonts.forEach(font => {
+        code += generateFontAreaCode(font, false);
       });
       return code;
     };
@@ -588,7 +558,12 @@
     const fontAreas = fontContainer.getElementsByClassName('font-area');
     Array.from(fontAreas).forEach(fontArea => {
       var fontContent = fontArea.querySelector('.font-content');
-      fontContent.insertAdjacentHTML('afterbegin', scriptText);
+      fontContent.insertAdjacentHTML('afterbegin', scriptTextTable);
+      fontContent.insertAdjacentHTML('afterbegin', scriptTextEN);
+    });
+    Array.from(fontAreas).forEach(fontArea => {
+      var fontContent = fontArea.querySelector('.font-content-CJK');
+      fontContent.insertAdjacentHTML('afterbegin', scriptTextCJK);
     });
   </script>
   <script>
