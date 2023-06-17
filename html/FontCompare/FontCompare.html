@@ -284,6 +284,30 @@
       font-family: 'Digital-7', sans-serif;
     }
 
+    @font-face {
+      font-family: 'Digital-7-Mono';
+      src: url('Fonts/English/digital-7-Mono.ttf')
+    }
+    .font_Digital-7-Mono {
+      font-family: 'Digital-7-Mono', sans-serif;
+    }
+
+    @font-face {
+      font-family: 'Led';
+      src: url('Fonts/English/led_real.ttf')
+    }
+    .font_Led {
+      font-family: 'Led', sans-serif;
+    }
+
+    @font-face {
+      font-family: 'Loopy';
+      src: url('Fonts/English/LOOPY___.ttf')
+    }
+    .font_Loopy {
+      font-family: 'Loopy', sans-serif;
+    }
+
   </style>
   <script>
     const myLocalFonts = [
@@ -317,6 +341,9 @@
     ];
     const myLocalEnglishFonts = [
       { name: 'Digital-7', className: 'font_Digital-7' },
+      { name: 'Digital-7-Mono', className: 'font_Digital-7-Mono' },
+      { name: 'Led', className: 'font_Led' },
+      { name: 'Loopy', className: 'font_Loopy' },
       { name: 'Roboto', className: 'font_Roboto' },
       { name: 'RobotoMono', className: 'font_RobotoMono' },
       { name: 'Schoolbell', className: 'font_Schoolbell' },
@@ -539,6 +566,7 @@
       myLocalFonts.forEach(font => {
         code += generateFontAreaCode(font, true);
       });
+      code += `English Only Font <br>`
       myLocalEnglishFonts.forEach(font => {
         code += generateFontAreaCode(font, false);
       });
