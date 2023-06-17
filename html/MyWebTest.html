@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <style>
   </style>
 </head>
+
 <body>
   <a href="https://www.fontawesomecheatsheet.com" target="_blank">Font Awesome</a><br>
+  <a href="https://api.github.com/repos/snowysmile/snowysmile.github.io" target="_blank">Github Page</a><br>
 </body>
 
-<!-- Add this where you want to display the build and deployment time -->
 <span id="build-time"></span>
-
 <script>
-  // Function to fetch and display the latest GitHub Page build and deployment time
   async function displayBuildTime() {
     try {
       const response = await fetch('https://api.github.com/repos/snowysmile/snowysmile.github.io');
       const data = await response.json();
-
       if (data.pushed_at) {
         const buildTime = new Date(data.pushed_at);
-        document.getElementById('build-time').textContent = 'Last Build: ' + buildTime.toLocaleString();
+        document.getElementById('build-time').textContent = 'Lastest Push: ' + buildTime.toLocaleString();
       } else {
         document.getElementById('build-time').textContent = 'Build time not available';
       }
@@ -29,10 +28,7 @@
       document.getElementById('build-time').textContent = 'Error fetching build time';
     }
   }
-
-  // Call the function to display the build and deployment time
   displayBuildTime();
 </script>
-
 
 </html>
