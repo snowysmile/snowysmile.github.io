@@ -51,11 +51,11 @@
         const buildStatus = latestBuild.status;
         document.getElementById('latest-build').innerHTML = `
             Latest Build Time: ${buildTimestamp} <br>
-            Latest Build  Status: ${buildStatus} <br>
+            Latest Build Status: ${buildStatus} <br>
         `;
     })
     .catch(error => {
-        console.log('Error retrieving latest build:', error);
+        console.log('Error occurs when retrieving Latest Build Time:', error);
     });
   </script>
 </body>
