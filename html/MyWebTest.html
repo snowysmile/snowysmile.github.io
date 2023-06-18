@@ -33,26 +33,26 @@
 
   <span id="latest-build"></span>
   <script>
-      const accessToken = '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';
-      const apiUrl = `https://api.github.com/repos/snowysmile/snowysmile.github.io/pages/builds/latest`;
-      fetch(apiUrl, {
-          headers: {
-              'Authorization': `Bearer ${accessToken}`
-          }
-      })
-      .then(response => response.json())
-      .then(data => {
-          const latestBuild = data;
-          const buildTimestamp = new Date(latestBuild.created_at).toLocaleString();
-          const buildStatus = latestBuild.status;
-          document.getElementById('latest-build').innerHTML = `
-              <p> Build Timestamp: ${buildTimestamp} </p>
-              <p> Build Status: ${buildStatus} </p>
-          `;
-      })
-      .catch(error => {
-          console.log('Error retrieving latest build:', error);
-      });
+    const accessToken = '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';
+    const apiUrl = `https://api.github.com/repos/snowysmile/snowysmile.github.io/pages/builds/latest`;
+    fetch(apiUrl, {
+        headers: {
+            'Authorization': `Bearer ${accessToken}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        const latestBuild = data;
+        const buildTimestamp = new Date(latestBuild.created_at).toLocaleString();
+        const buildStatus = latestBuild.status;
+        document.getElementById('latest-build').innerHTML = `
+            <p> Build Timestamp: ${buildTimestamp} </p>
+            <p> Build Status: ${buildStatus} </p>
+        `;
+    })
+    .catch(error => {
+        console.log('Error retrieving latest build:', error);
+    });
   </script>
 </body>
 </html>
