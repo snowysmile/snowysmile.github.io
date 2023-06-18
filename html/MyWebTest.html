@@ -8,24 +8,26 @@
 
 <body>
   <a href="https://www.fontawesomecheatsheet.com" target="_blank">Font Awesome</a><br>
-  <a href="https://api.github.com/repos/snowysmile/snowysmile.github.io" target="_blank">Github Page</a><br>
+  <a href="https://api.github.com/repos/snowysmile/snowysmile.github.io" target="_blank">Github Repo Status</a><br>
+  <a href="https://github.com/snowysmile/snowysmile.github.io/actions" target="_blank">Github Page Status</a><br>
+
   <br>
 
-  <span id="push-time"></span>
+  <span id="push-time"></span><br>
   <script>
     async function displayPushTime() {
       try {
         const response = await fetch('https://api.github.com/repos/snowysmile/snowysmile.github.io');
         const data = await response.json();
         if (data.pushed_at) {
-          const pushTime = new Date(data.pushed_at);
-          document.getElementById('push-time').textContent = 'Lastest Push Time: ' + pushTime.toLocaleString();
+          const pushTime = new Date(data.pushed_at).toLocaleString();
+          document.getElementById('push-time').innerHTML = `Lastest Push Time: ${pushTime}`;
         } else {
-          document.getElementById('push-time').textContent = 'Lastest Push Time is not available';
+          document.getElementById('push-time').innerHTML = 'Lastest Push Time is not available';
         }
       } catch (error) {
         console.error('Error fetching push time:', error);
-        document.getElementById('push-time').textContent = 'Error occurs when fetching Latest Push Time';
+        document.getElementById('push-time').innerHTML = 'Error occurs when fetching Latest Push Time';
       }
     }
     displayPushTime();
@@ -33,7 +35,7 @@
 
   <span id="latest-build"></span>
   <script>
-    const accessToken = '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';
+    const accessToken = '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';
     const apiUrl = `https://api.github.com/repos/snowysmile/snowysmile.github.io/pages/builds/latest`;
     fetch(apiUrl, {
         headers: {
@@ -46,8 +48,8 @@
         const buildTimestamp = new Date(latestBuild.created_at).toLocaleString();
         const buildStatus = latestBuild.status;
         document.getElementById('latest-build').innerHTML = `
-            <p> Build Timestamp: ${buildTimestamp} </p>
-            <p> Build Status: ${buildStatus} </p>
+            Latest Build Time: ${buildTimestamp} <br>
+            Latest Build  Status: ${buildStatus} <br>
         `;
     })
     .catch(error => {
