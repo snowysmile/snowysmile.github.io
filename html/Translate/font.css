@@ -1,76 +1,274 @@
+
 @font-face {
-    font-family: 'Nikumaru';
-    src: url('./font/nikumaru.otf') format('opentype');
+  font-family: 'Nishikiteki';
+  src: url('../FontCompare/Fonts/nishiki-teki.ttf');
 }
-@font-face {
-    font-family: 'Mamelon';
-    src: url('./font/Mamelon4.woff2') format('woff2');
+.font_Nishikiteki {
+  font-family: 'Nishikiteki', sans-serif;
 }
+
 @font-face {
-    font-family: 'YasashisaB';
-    src: url('./font/YasashisaB.ttf') format('truetype');
+  font-family: '851MkPOP';
+  src: url('../FontCompare/Fonts/851MkPOP_101.ttf');
 }
-@font-face {
-    font-family: 'HuiFont29';
-    src: url('./font/HuiFont29.ttf') format('truetype');
+.font_851MkPOP {
+  font-family: '851MkPOP', sans-serif;
 }
+
 @font-face {
-    font-family: 'MkPOP';
-    src: url('./font/851MkPOP_101.ttf') format('truetype');
+  font-family: 'NotoSansCJK';
+  src: url('../FontCompare/Fonts/NotoSansCJK.ttc')
 }
-@font-face {
-    font-family: 'bananaslipplus';
-    src: url('./font/bananaslipplus.otf') format('opentype');
+.font_NotoSansCJK {
+  font-family: 'NotoSansCJK', sans-serif;
 }
+
 @font-face {
-    font-family: 'katyou';
-    src: url('./font/katyou.ttf') format('truetype');
+  font-family: 'NotoSansCJKjp';
+  src: url('../FontCompare/Fonts/NotoSansCJKjp-VF.otf');
 }
-@font-face {
-    font-family: 'TanukiMagic';
-    src: url('./font/TanukiMagic.ttf') format('truetype');
+.font_NotoSansCJKjp {
+  font-family: 'NotoSansCJKjp', sans-serif;
 }
+
 @font-face {
-    font-family: 'hakidame';
-    src: url('./font/hakidame.TTF') format('truetype');
+  font-family: 'Naikai';
+  src: url('../FontCompare/Fonts/NaikaiFont-Regular.ttf');
 }
-@font-face {
-    font-family: 'umeboshi';
-    src: url('./font/umeboshi.ttf') format('truetype');
+.font_Naikai {
+  font-family: 'Naikai', sans-serif;
 }
+
 @font-face {
-    font-family: 'Jiyucho';
-    src: url('./font/Jiyucho.otf') format('opentype');
+  font-family: 'Iansui';
+  src: url('../FontCompare/Fonts/Iansui-Regular.ttf');
 }
-@font-face {
-    font-family: 'HitmoR';
-    src: url('./font/HitmoR.ttf') format('truetype');
+.font_Iansui {
+  font-family: 'Iansui', sans-serif;
 }
+
 @font-face {
-    font-family: 'nishikiteki';
-    src: url('./font/nishikiteki.ttf') format('truetype');
+  font-family: 'Seto';
+  src: url('../FontCompare/Fonts/setofont.ttf');
 }
-@font-face {
-    font-family: 'KTEGAKI';
-    src: url('./font/KTEGAKI.ttf') format('truetype');
+.font_Seto {
+  font-family: 'Seto', sans-serif;
 }
+
 @font-face {
-    font-family: 'JKGL';
-    src: url('./font/JKGL.ttf') format('truetype');
+  font-family: 'JF-openhuninn';
+  src: url('../FontCompare/Fonts/jf-openhuninn-2.0.ttf');
 }
-@font-face {
-    font-family: 'OhisamaFont';
-    src: url('./font/OhisamaFont.ttf') format('truetype');
+.font_JF-openhuninn {
+  font-family: 'JF-openhuninn', sans-serif;
 }
+
 @font-face {
-    font-family: 'nukamiso';
-    src: url('./font/nukamiso.ttf') format('truetype');
+  font-family: 'ChiayiCity';
+  src: url('../FontCompare/Fonts/ChiayiCity.ttf');
 }
-@font-face {
-    font-family: 'genkai';
-    src: url('./font/genkai.ttf') format('truetype');
+.font_ChiayiCity {
+  font-family: 'ChiayiCity', sans-serif;
 }
+
 @font-face {
-    font-family: 'CP';
-    src: url('./font/CP.otf') format('opentype');
+  font-family: 'ChenYuluoyan';
+  src: url('../FontCompare/Fonts/ChenYuluoyan-Thin.ttf');
+}
+.font_ChenYuluoyan {
+  font-family: 'ChenYuluoyan', sans-serif;
+}
+
+@font-face {
+  font-family: 'KsoKagerou';
+  src: url('../FontCompare/Fonts/A_KsoKagerou 陽炎.otf');
+}
+.font_KsoKagerou {
+  font-family: 'KsoKagerou', sans-serif;
+}
+
+@font-face {
+  font-family: 'KsoKaisho';
+  src: url('../FontCompare/Fonts/A_KsoKaisho 昭和.otf');
+}
+.font_KsoKaisho {
+  font-family: 'KsoKaisho', sans-serif;
+}
+
+@font-face {
+  font-family: 'BugMaruGothic';
+  src: url('../FontCompare/Fonts/BugMaruGothic.ttc')
+}
+.font_BugMaruGothic {
+  font-family: 'BugMaruGothic', sans-serif;
+}
+
+@font-face {
+  font-family: 'Mamelon';
+  src: url('../FontCompare/Fonts/Mamelon-3-Hi-Regular.otf');
+}
+.font_Mamelon {
+  font-family: 'Mamelon', sans-serif;
+}
+
+@font-face {
+  font-family: 'OzCaramel';
+  src: url('../FontCompare/Fonts/OzCaramel.ttf');
+}
+.font_OzCaramel {
+  font-family: 'OzCaramel', sans-serif;
+}
+
+@font-face {
+  font-family: 'KosugiMaru';
+  src: url('../FontCompare/Fonts/KosugiMaru-Regular.ttf');
+}
+.font_KosugiMaru {
+  font-family: 'KosugiMaru', sans-serif;
+}
+
+@font-face {
+  font-family: 'Pigmo-00';
+  src: url('../FontCompare/Fonts/Pigmo-00.otf');
+}
+.font_Pigmo-00 {
+  font-family: 'Pigmo-00', sans-serif;
+}
+
+@font-face {
+  font-family: 'TaipeiSans';
+  src: url('../FontCompare/Fonts/TaipeiSansTCBeta-Regular.ttf');
+}
+.font_TaipeiSans {
+  font-family: 'TaipeiSans', sans-serif;
+}
+
+@font-face {
+  font-family: 'WD-XLLubrifontTC';
+  src: url('../FontCompare/Fonts/WD-XLLubrifontTC-Regular.otf');
+}
+.font_WD-XLLubrifontTC {
+  font-family: 'WD-XLLubrifontTC', sans-serif;
+}
+
+@font-face {
+  font-family: 'WD-XLLubrifont';
+  src: url('../FontCompare/Fonts/WD-XLLubrifont.ttc')
+}
+.font_WD-XLLubrifont {
+  font-family: 'WD-XLLubrifont', sans-serif;
+}
+
+@font-face {
+  font-family: 'tkFangSong';
+  src: url('../FontCompare/Fonts/tkFangSong.ttf');
+}
+.font_tkFangSong {
+  font-family: 'tkFangSong', sans-serif;
+}
+
+@font-face {
+  font-family: 'LXGWWenKai';
+  src: url('../FontCompare/Fonts/LXGWWenKai-Regular.ttf');
+}
+.font_LXGWWenKai {
+  font-family: 'LXGWWenKai', sans-serif;
+}
+
+@font-face {
+  font-family: 'LXGWWenKaiMono';
+  src: url('../FontCompare/Fonts/LXGWWenKaiMono-Regular.ttf');
+}
+.font_LXGWWenKaiMono {
+  font-family: 'LXGWWenKaiMono', sans-serif;
+}
+
+@font-face {
+  font-family: 'SourceHanSans';
+  src: url('../FontCompare/Fonts/SourceHanSans-VF.otf.ttc')
+}
+.font_SourceHanSans {
+  font-family: 'SourceHanSans', sans-serif;
+}
+
+@font-face {
+  font-family: 'SourceHanSerif';
+  src: url('../FontCompare/Fonts/SourceHanSerif-VF.otf.ttc')
+}
+.font_SourceHanSerif {
+  font-family: 'SourceHanSerif', sans-serif;
+}
+
+@font-face {
+  font-family: 'XiaoheSimplifySans';
+  src: url('../FontCompare/Fonts/XiaoheSimplifySans-VF.otf');
+}
+.font_XiaoheSimplifySans {
+  font-family: 'XiaoheSimplifySans', sans-serif;
+}
+
+@font-face {
+  font-family: 'XiaoheSimplifySerif';
+  src: url('../FontCompare/Fonts/XiaoheSimplifySerif-VF.otf');
+}
+.font_XiaoheSimplifySerif {
+  font-family: 'XiaoheSimplifySerif', sans-serif;
+}
+
+@font-face {
+  font-family: 'AdvocateAncientMono';
+  src: url('../FontCompare/Fonts/AdvocateAncientMono-Regular.ttc')
+}
+.font_AdvocateAncientMono {
+  font-family: 'AdvocateAncientMono', sans-serif;
+}
+
+/* English Font */
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../FontCompare/Fonts/English/Roboto-Regular.ttf');
+}
+.font_Roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+@font-face {
+  font-family: 'RobotoMono';
+  src: url('../FontCompare/Fonts/English/RobotoMono-Regular.ttf');
+}
+.font_RobotoMono {
+  font-family: 'RobotoMono', sans-serif;
+}
+
+@font-face {
+  font-family: 'Schoolbell';
+  src: url('../FontCompare/Fonts/English/Schoolbell-Regular.ttf');
+}
+.font_Schoolbell {
+  font-family: 'Schoolbell', sans-serif;
+}
+
+@font-face {
+  font-family: 'SingleDay';
+  src: url('../FontCompare/Fonts/English/SingleDay-Regular.ttf');
+}
+.font_SingleDay {
+  font-family: 'SingleDay', sans-serif;
+}
+
+@font-face {
+  font-family: 'Digital-7';
+  src: url('../FontCompare/Fonts/English/digital-7.ttf');
+}
+.font_Digital-7 {
+  font-family: 'Digital-7', sans-serif;
+}
+
+@font-face {
+  font-family: 'Loopy';
+  src: url('../FontCompare/Fonts/English/LOOPY___.ttf');
+}
+.font_Loopy {
+  font-family: 'Loopy', sans-serif;
 }

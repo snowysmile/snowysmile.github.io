@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="icon" href="./Img/favicon/smile bubble orange icon animation.png" />
+  <!-- <link rel="stylesheet" href="./font.css"> -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='font.css') }}">
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <style>
+    html, body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .row-container {
+      display: flex;
+      flex-direction: row;
+    }
+    table {
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 16px;
+      padding: 3px;
+    }
+    rt {
+      font-size: 0.8em;
+    }
+    input[type="range"] {
+      height: 10px;
+    }
+    .svg-stroke-text{
+      font-size:50px;
+      text-anchor:middle;
+      fill:red;
+    }
+    .svg-stroke-layer-A{
+      stroke-width:0.1em;
+      stroke:orange;
+    }
+    .svg-stroke-layer-B{
+      stroke-width:0.2em;
+      stroke:yellow;
+    }
+    .svg-stroke-layer-C{
+      stroke-width:0.3em;
+      stroke:blue;
+    }
+    .text-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      width: 1000px;
+      height: 300px;
+    }
+    .stroke-text {
+      position: relative;
+      z-index: 0;
+    }
+    .stroke-text:before {
+      content: attr(stroke-data);
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1;
+      -webkit-text-stroke: var(--stroke-width-layer-0) var(--stroke-color-layer-0);
+    }
+    .stroke-text:after {
+      content: attr(stroke-data);
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -2;
+      -webkit-text-stroke: var(--stroke-width-layer-1) var(--stroke-color-layer-1);
+    }
+  </style>
+  <script>
+    const topTranslationCounts = 2;
+    var translationCounts = 2;
+    var configCounts = 3;
+    var defaultConfig =
+    {
+      pageColor: "#fffafa",
+      curtainColor: "#9acd32",
+      texts: ["1234567890 !@#$%^&*()", "abcdefg ABCDEFG",
+              "< あいうえお サシスセソ - 天気はいい、元気ですか >"],
+      textFontColors: ["#000000", "#000000", "#000000"],
+      textFontSizes: [24, 24, 24], //px
+      textFontWeights: [500, 500, 500],
+      textFontFamilies: ['NotoSansCJKjp', 'NotoSansCJKjp', 'NotoSansCJKjp'],
+      textStrokeColors: [['#87ceeb', '#ffb7c5'], ['#87ceeb', '#ffb7c5'], ['#87ceeb', '#ffb7c5']],
+      textStrokeWidths: [[0, 0], [0, 0], [0, 0]], //em
+      textShadowColors: ["#ffeebb", "#ffeebb", "#ffeebb"],
+      textShadowBlurRadius: [0, 0, 0], //em
+      textMargins: [5, 5, 5], //px
+      apiKey: "",
+      speechSplitInterval: 1000, //ms
+      speechClearInterval: 360000, //ms
+      languages: ['ja', 'en', 'zh-TW'],
+    }
+    var configs = [
+      {}, {}, {},
+    ];
+    var autoSID = 0;
+    configs[autoSID] = defaultConfig;
+  </script>
+  <title>Snowy Speech Translator</title>
+</head>
+<body>
+  <svg width="100%" height="100px">
+    <text class="svg-stroke-text svg-stroke-layer-C" name="strokeTitle" x="50%" y="50%">
+    </text>
+    <text class="svg-stroke-text svg-stroke-layer-B" name="strokeTitle" x="50%" y="50%">
+    </text>
+    <text class="svg-stroke-text svg-stroke-layer-A" name="strokeTitle" x="50%" y="50%">
+    </text>
+    <text class="svg-stroke-text" name="strokeTitle" x="50%" y="50%">
+    </text>
+  </svg>
+  <script>
+    strokeTitles = document.querySelectorAll('.svg-stroke-text[name="strokeTitle"]');
+      strokeTitles.forEach(function(element) {
+        element.textContent = "My Speech Translator";
+    });
+  </script>
+
+  <div class="text-area">
+    <div id="textMargin-0"> </div>
+    <div class="stroke-text" id="text-0"> </div>
+    <div id="textMargin-1"> </div>
+    <div class="stroke-text" id="text-1"> </div>
+    <div id="textMargin-2"> </div>
+    <div class="stroke-text" id="text-2"> </div>
+  </div>
+  <br>
+  <script>
+    $(function() {
+      $('.text-area').resizable();
+    });
+  </script>
+
+  <div class="row-container">
+    <button id="recognize-button" onclick="toggleRecognition()" style="width: 148px;">▶️ Start Recognizing</button>
+    <textarea id="recognitionResult" rows="3" cols="120"></textarea>
+  </div>
+  <div class="row-container">
+    <button id="record-button" onclick="toggleRecord()" style="width: 148px;">▶️ Start Recording</button>
+    <textarea id="recordResult" rows="4" cols="120"></textarea>
+  </div>
+  <form action="/process" method="post" class="row-container">
+    <button id="jpExp-button" type="button" onclick="japaneseExplanation()" style="width: 148px;">Japanese Explanation</button>
+    <textarea id="jpExpInput" name="jpExpInputName" rows="1" cols="120"></textarea>
+  </form>
+  <div id="jpExpArea">
+
+  </div>
+  <br>
+
+  <div class="row-container">
+    Google Script API-KEY: &nbsp;
+    <input type="password" id="apiKeyInput" size="60" oninput="updateApiKey()"> &nbsp;
+    <button id="apiKey-button" onmousedown="showApiKey(this)" onmouseup="hideApiKey(this)">👁️</button> &nbsp;
+    <button id="speechTranslate-button" onclick="speechTranslate(recognitionResult.value)">🔤</button>
+    <button id="recordTranslate-button" onclick="speechTranslate(recordResult.value)">❇️</button>
+  </div>
+
+  <table>
+    <tr>
+      <td><span>Page Background Color:</span></td>
+      <td><input id=pageColorPicker type="color" oninput="updatePageColor()"></td>
+      <td><span id="pageColorValue"></span></td>
+      <td><span>Curtain Background Color:</span></td>
+      <td><input id=curtainColorPicker type="color" oninput="updateCurtainColor()"></td>
+      <td><span id="curtainColorValue"></span></td>
+    </tr>
+  </table>
+
+  <table>
+    <tr>
+      <td> Language To Recognize: </td>
+      <td> <select id="languageSelect-0" onchange="updateLanguage(0)">
+        <option value="en">English 英語 English</option>
+        <option value="ja" selected>Japanese 日本語 日本語</option>
+        <option value="zh-CN">Simplified Chinese 中国語 汉语</option>
+        <option value="zh-TW">Traditional Chinese 台湾語 漢語</option>
+        <option value="ko">Korean 韓国語 한국어</option>
+        <option value="es">Spanish スペイン語 Español</option>
+        <option value="fr">French フランス語 Français</option>
+        <option value="pt">Portuguese ポルトガル語 Português</option>
+        <option value="it">Italian イタリア語 Italiano</option>
+        <option value="de">German ドイツ語 Deutsch</option>
+        <option value="pl">Polish ポーランド語 Polski</option>
+        <option value="nl">Dutch オランダ語 Nederlands</option>
+        <option value="ru">Russian ロシア語 Русский</option>
+        <option value="uk">Ukrainian ウクライナ語 українська</option>
+      </select> </td>
+      <td> Translation Counts: </td>
+      <td> <select id="translationSelect" onchange="toggleTranslationCounts()">
+        <option value="0">No Translation</option>
+        <option value="1">One Translation</option>
+        <option value="2" selected>Two Translations</option>
+      </select></td>
+    <tr>
+  </table>
+
+  <table>
+    <tr>
+      <td> Target Language 1: </td>
+      <td> <select id="languageSelect-1" onchange="updateLanguage(1)">
+        <option value="en" selected>English 英語 English</option>
+        <option value="ja">Japanese 日本語 日本語</option>
+        <option value="zh-CN">Simplified Chinese 中国語 汉语</option>
+        <option value="zh-TW">Traditional Chinese 台湾語 漢語</option>
+        <option value="ko">Korean 韓国語 한국어</option>
+        <option value="es">Spanish スペイン語 Español</option>
+        <option value="fr">French フランス語 Français</option>
+        <option value="pt">Portuguese ポルトガル語 Português</option>
+        <option value="it">Italian イタリア語 Italiano</option>
+        <option value="de">German ドイツ語 Deutsch</option>
+        <option value="pl">Polish ポーランド語 Polski</option>
+        <option value="nl">Dutch オランダ語 Nederlands</option>
+        <option value="ru">Russian ロシア語 Русский</option>
+        <option value="uk">Ukrainian ウクライナ語 українська</option>
+      </select> </td>
+      <td>Target Language 2:</td>
+      <td> <select id="languageSelect-2" onchange="updateLanguage(2)">
+        <option value="en">English 英語 English</option>
+        <option value="ja">Japanese 日本語 日本語</option>
+        <option value="zh-CN">Simplified Chinese 中国語 汉语</option>
+        <option value="zh-TW" selected>Traditional Chinese 台湾語 漢語</option>
+        <option value="ko">Korean 韓国語 한국어</option>
+        <option value="es">Spanish スペイン語 Español</option>
+        <option value="fr">French フランス語 Français</option>
+        <option value="pt">Portuguese ポルトガル語 Português</option>
+        <option value="it">Italian イタリア語 Italiano</option>
+        <option value="de">German ドイツ語 Deutsch</option>
+        <option value="pl">Polish ポーランド語 Polski</option>
+        <option value="nl">Dutch オランダ語 Nederlands</option>
+        <option value="ru">Russian ロシア語 Русский</option>
+        <option value="uk">Ukrainian ウクライナ語 українська</option>
+      </select> </td>
+    <tr>
+  </table>
+
+  <table>
+    <tr>
+      <td style="display: none;"> Speech Split Interval (ms): </td>
+      <td style="display: none;"> <input type="text" id="speechSplitInterval" size="8" oninput="updateSpeechSplitInterval();"> </td>
+      <td style="display: none;"> Speech Clear Interval (ms): </td>
+      <td style="display: none;"> <input type="text" id="speechClearInterval" size="8" oninput="updateSpeechClearInterval();"> </td>
+      <td> <button id="clearText-button" onclick="clearTexts();">Clear Texts</button> </td>
+      <td> <button id="defaultText-button" onclick="defaultTexts();">Default Texts</button> </td>
+    </tr>
+  </table>
+
+
+  <div class="row-container">
+  	<button id="defaultConfig-button" onclick="loadConfig(-1)">🆑</button>
+  	<button id="saveConfig1-button" onclick="saveConfig(1)">S1</button>
+  	<button id="loadConfig1-button" onclick="loadConfig(1)">L1</button>
+  	<button id="saveConfig2-button" onclick="saveConfig(2)">S2</button>
+  	<button id="loadConfig2-button" onclick="loadConfig(2)">L2</button>
+  </div>
+
+  <br>
+  <table>
+    <tr>
+      <th colspan="3"><span>Speech Text</span></th>
+      <th colspan="3"><span>Translation Text 1</span></th>
+      <th colspan="3"><span>Translation Text 2</span></th>
+    </tr>
+    <tr>
+      <td><span>Text Color:</span></td>
+      <td><input id=textColorPicker-0 type="color" value="#000000" oninput="updateFontColor(0)"></td>
+      <td><span id="textColorValue-0"> #000000 </span></td>
+      <td><span>Text Color:</span></td>
+      <td><input id=textColorPicker-1 type="color" value="#000000" oninput="updateFontColor(1)"></td>
+      <td><span id="textColorValue-1"> #000000 </span></td>
+      <td><span>Text Color:</span></td>
+      <td><input id=textColorPicker-2 type="color" value="#000000" oninput="updateFontColor(2)"></td>
+      <td><span id="textColorValue-2"> #000000 </span></td>
+    </tr>
+    <tr>
+      <td><span>Font Size: </span></td>
+      <td><input id=textFontSizeSlider-0 type="range" min="0" max="40" step="1" oninput="updateFontSize(0)"></td>
+      <td><span id="textFontSizeValue-0"></span>px</td>
+      <td><span>Font Size: </span></td>
+      <td><input id=textFontSizeSlider-1 type="range" min="0" max="40" step="1" oninput="updateFontSize(1)"></td>
+      <td><span id="textFontSizeValue-1"></span>px</td>
+      <td><span>Font Size: </span></td>
+      <td><input id=textFontSizeSlider-2 type="range" min="0" max="40" step="1" oninput="updateFontSize(2)"></td>
+      <td><span id="textFontSizeValue-2"></span>px</td>
+    </tr>
+    <tr>
+      <td><span>Font Weight: </span></td>
+      <td><input id="textFontWeightSlider-0" type="range" min="100" max="900" step="100" oninput=" updateFontWeight(0)"></td>
+      <td><span id="textFontWeightValue-0"></span></td>
+      <td><span>Font Weight: </span></td>
+      <td><input id="textFontWeightSlider-1" type="range" min="100" max="900" step="100" oninput=" updateFontWeight(1)"></td>
+      <td><span id="textFontWeightValue-1"></span></td>
+      <td><span>Font Weight: </span></td>
+      <td><input id="textFontWeightSlider-2" type="range" min="100" max="900" step="100" oninput=" updateFontWeight(2)"></td>
+      <td><span id="textFontWeightValue-2"></span></td>
+    </tr>
+    <tr>
+      <td><span>Font Type: </span></td>
+      <td colspan="2"><select id="textFontSelect-0" onchange="updateFontFamily(0)">
+      </select> </td>
+      <td><span>Font Type: </span></td>
+      <td colspan="2"><select id="textFontSelect-1" onchange="updateFontFamily(1)">
+      </select> </td>
+      <td><span>Font Type: </span></td>
+      <td colspan="2"><select id="textFontSelect-2" onchange="updateFontFamily(2)">
+      </select> </td>
+    </tr>
+
+    <tr>
+      <td><span>Stroke Color (A):</span></td>
+      <td><input id=textStrokeColorPicker-0-0 type="color" oninput="updateStrokeColor(0, 0)"></td>
+      <td><span id="textStrokeColorValue-0-0"></span></td>
+      <td><span>Stroke Color (A):</span></td>
+      <td><input id=textStrokeColorPicker-1-0 type="color" oninput="updateStrokeColor(1, 0)"></td>
+      <td><span id="textStrokeColorValue-1-0"></span></td>
+      <td><span>Stroke Color (A):</span></td>
+      <td><input id=textStrokeColorPicker-2-0 type="color" oninput="updateStrokeColor(2, 0)"></td>
+      <td><span id="textStrokeColorValue-2-0"></span></td>
+    </tr>
+    <tr>
+      <td><span>Stroke Width (A): </span></td>
+      <td><input id="textStrokeWidthSlider-0-0" type="range" min="0" max="0.2" step="0.05" oninput="updateStrokeWidth(0, 0)"></td>
+      <td><span id="textStrokeWidthValue-0-0"></span>em</td>
+      <td><span>Stroke Width (A): </span></td>
+      <td><input id="textStrokeWidthSlider-1-0" type="range" min="0" max="0.2" step="0.05" oninput="updateStrokeWidth(1, 0)"></td>
+      <td><span id="textStrokeWidthValue-1-0"></span>em</td>
+      <td><span>Stroke Width (A): </span></td>
+      <td><input id="textStrokeWidthSlider-2-0" type="range" min="0" max="0.2" step="0.05" oninput="updateStrokeWidth(2, 0)"></td>
+      <td><span id="textStrokeWidthValue-2-0"></span>em</td>
+    </tr>
+
+    <tr>
+      <td><span>Stroke Color (B):</span></td>
+      <td><input id=textStrokeColorPicker-0-1 type="color" oninput="updateStrokeColor(0, 1)"></td>
+      <td><span id="textStrokeColorValue-0-1"></span></td>
+      <td><span>Stroke Color (B):</span></td>
+      <td><input id=textStrokeColorPicker-1-1 type="color" oninput="updateStrokeColor(1, 1)"></td>
+      <td><span id="textStrokeColorValue-1-1"></span></td>
+      <td><span>Stroke Color (B):</span></td>
+      <td><input id=textStrokeColorPicker-2-1 type="color" oninput="updateStrokeColor(2, 1)"></td>
+      <td><span id="textStrokeColorValue-2-1"></span></td>
+    </tr>
+    <tr>
+      <td><span>Stroke Width (B): </span></td>
+      <td><input id="textStrokeWidthSlider-0-1" type="range" min="0" max="0.8" step="0.05" oninput="updateStrokeWidth(0, 1)"></td>
+      <td><span id="textStrokeWidthValue-0-1"></span>em</td>
+      <td><span>Stroke Width (B): </span></td>
+      <td><input id="textStrokeWidthSlider-1-1" type="range" min="0" max="0.8" step="0.05" oninput="updateStrokeWidth(1, 1)"></td>
+      <td><span id="textStrokeWidthValue-1-1"></span>em</td>
+      <td><span>Stroke Width (B): </span></td>
+      <td><input id="textStrokeWidthSlider-2-1" type="range" min="0" max="0.8" step="0.05" oninput="updateStrokeWidth(2, 1)"></td>
+      <td><span id="textStrokeWidthValue-2-1"></span>em</td>
+    </tr>
+
+    <tr>
+      <td><label for="textShadowColorPicker-0">Shadow Color:</label></td>
+      <td><input id=textShadowColorPicker-0 type="color" value="#dafffb" oninput="updateTextShadow(0)"></td>
+      <td><span id="textShadowColorValue-0"> #dafffb </span></td>
+      <td><label for="textShadowColorPicker-1">Shadow Color:</label></td>
+      <td><input id=textShadowColorPicker-1 type="color" value="#dafffb" oninput="updateTextShadow(1)"></td>
+      <td><span id="textShadowColorValue-1"> #dafffb </span></td>
+      <td><label for="textShadowColorPicker-2">Shadow Color:</label></td>
+      <td><input id=textShadowColorPicker-2 type="color" value="#dafffb" oninput="updateTextShadow(2)"></td>
+      <td><span id="textShadowColorValue-2"> #dafffb </span></td>
+    </tr>
+
+    <tr>
+      <td><span>Shadow Blur Radius: </span></td>
+      <td><input id="textShadowBlurRadiusSlider-0" type="range" min="0" max="1" step="0.05" oninput="updateTextShadow(0)"></td>
+      <td><span id="textShadowBlurRadiusValue-0"></span>em</td>
+      <td><span>Shadow Blur Radius: </span></td>
+      <td><input id="textShadowBlurRadiusSlider-1" type="range" min="0" max="1" step="0.05" oninput="updateTextShadow(1)"></td>
+      <td><span id="textShadowBlurRadiusValue-1"></span>em</td>
+      <td><span>Shadow Blur Radius: </span></td>
+      <td><input id="textShadowBlurRadiusSlider-2" type="range" min="0" max="1" step="0.05" oninput="updateTextShadow(2)"></td>
+      <td><span id="textShadowBlurRadiusValue-2"></span>em</td>
+    </tr>
+
+    <tr>
+      <td><span>Margin Bottom: </span></td>
+      <td><input id="textMarginSlider-0" type="range" min="0" max="100" step="1" oninput="updateTextMargin(0)"></td>
+      <td><span id="textMarginValue-0"></span>px</td>
+      <td><span>Margin Bottom: </span></td>
+      <td><input id="textMarginSlider-1" type="range" min="0" max="100" step="1" oninput="updateTextMargin(1)"></td>
+      <td><span id="textMarginValue-1"></span>px</td>
+      <td><span>Margin Bottom: </span></td>
+      <td><input id="textMarginSlider-2" type="range" min="0" max="100" step="1" oninput="updateTextMargin(2)"></td>
+      <td><span id="textMarginValue-2"></span>px</td>
+    </tr>
+  </table>
+
+  <br>
+  <ul id="speechTextList"></ul>
+  <span id="speechTextListTotalCount"></span>
+  <span id="speechTextListCurrentID"></span>
+  <br>
+
+  <div class="row-container">
+    <ruby> 日本語<rt>にほんご</rt> &nbsp; </ruby>
+    <ruby> 勉強<rt>べんきょう</rt> の &nbsp; </ruby>
+    <ruby> 為<rt>ため</rt> に &nbsp; </ruby>
+    <ruby> 自分<rt>じぶん</rt> で &nbsp; </ruby>
+    <ruby> このサイトを<rt>.</rt> &nbsp; </ruby>
+    <ruby> 作<rt>つく</rt> った &nbsp; </ruby>
+  </div>
+
+  <script>
+    var speechTextListTotalCount = 0;
+    var speechTextListCurrentID = 0;
+    function updateSpeechTextList(text) {
+      var speechTextItem = document.createElement('li');
+      speechTextItem.textContent = text;
+      speechTextList.appendChild(speechTextItem);
+      speechTextListTotalCount = speechTextList.childNodes.length;
+      document.getElementById('speechTextListTotalCount').innerHTML = `Total Count: ${speechTextListTotalCount}`;
+      document.getElementById('speechTextListCurrentID').innerHTML = `Current ID: ${speechTextListCurrentID}`;
+    }
+
+    var pageColorPicker = document.getElementById('pageColorPicker');
+    var pageColorValue = document.getElementById('pageColorValue');
+    var textArea = document.querySelector('.text-area');
+    var curtainColorPicker = document.getElementById('curtainColorPicker');
+    var curtainColorValue = document.getElementById('curtainColorValue');
+
+    var texts = document.querySelectorAll('[id^="text-"]');
+    var textColorPickers = document.querySelectorAll('[id^="textColorPicker-"]');
+    var textColorValues = document.querySelectorAll('[id^="textColorValue-"]');
+    var textFontSizeSliders = document.querySelectorAll('[id^="textFontSizeSlider-"]');
+    var textFontSizeValues =  document.querySelectorAll('[id^="textFontSizeValue-"]');
+    var textFontWeightSliders = document.querySelectorAll('[id^="textFontWeightSlider-"]');
+    var textFontWeightValues = document.querySelectorAll('[id^="textFontWeightValue-"]');
+    var textFontFamilySelects = document.querySelectorAll('[id^="textFontSelect-"]');
+
+    var textStrokeColorPickers = [];
+    for (let i = 0; i < 3; i++) {
+      textStrokeColorPickers[i] = [];
+      for (let j = 0; j < 2; j++)
+        textStrokeColorPickers[i][j] = document.getElementById(`textStrokeColorPicker-${i}-${j}`);
+    }
+    var textStrokeColorValues = [];
+    for (let i = 0; i < 3; i++) {
+      textStrokeColorValues[i] = [];
+      for (let j = 0; j < 2; j++)
+        textStrokeColorValues[i][j] = document.getElementById(`textStrokeColorValue-${i}-${j}`);
+    }
+    var textStrokeWidthSliders = [];
+    for (let i = 0; i < 3; i++) {
+      textStrokeWidthSliders[i] = [];
+      for (let j = 0; j < 2; j++)
+        textStrokeWidthSliders[i][j] = document.getElementById(`textStrokeWidthSlider-${i}-${j}`);
+    }
+    var textStrokeWidthValues = [];
+    for (let i = 0; i < 3; i++) {
+      textStrokeWidthValues[i] = [];
+      for (let j = 0; j < 2; j++)
+        textStrokeWidthValues[i][j] = document.getElementById(`textStrokeWidthValue-${i}-${j}`);
+    }
+    var textShadowColorPickers = document.querySelectorAll('[id^="textShadowColorPicker-"]');
+    var textShadowColorValues = document.querySelectorAll('[id^="textShadowColorValue-"]');
+    var textShadowBlurRadiusSliders = document.querySelectorAll('[id^="textShadowBlurRadiusSlider-"]');
+    var textShadowBlurRadiusValues = document.querySelectorAll('[id^="textShadowBlurRadiusValue-"]');
+    var textMarginSliders = document.querySelectorAll('[id^="textMarginSlider-"]');
+    var textMarginValues = document.querySelectorAll('[id^="textMarginValue-"]');
+    var textMargins = document.querySelectorAll('[id^="textMargin-"]');
+    var apiKeyInput = document.getElementById("apiKeyInput");
+    var speechSplitInterval = document.getElementById("speechSplitInterval");
+    var speechClearInterval = document.getElementById("speechClearInterval");
+    var languageSelects = [];
+    for (let i = 0; i <= translationCounts; i++) {
+      languageSelects.push(document.getElementById(`languageSelect-${i}`));
+    }
+    var speechSplitInterval_TimeOut;
+  </script>
+  <script>
+  const myLocalFonts = [
+    'Seto',
+    'Naikai',
+    'Nishikiteki',
+    'Iansui',
+    'BugMaruGothic',
+    'TaipeiSans',
+    'WD-XLLubrifont',
+    'tkFangSong',
+    'LXGWWenKai',
+    'LXGWWenKaiMono',
+    'SourceHanSans',
+    'SourceHanSerif',
+    'XiaoheSimplifySans',
+    'XiaoheSimplifySerif',
+    'AdvocateAncientMono',
+    'NotoSansCJK',
+    'NotoSansCJKjp',
+    'KosugiMaru',
+    'JF-openhuninn',
+    '851MkPOP',
+    'ChenYuluoyan',
+    'KsoKagero',
+    'KsoKaisho',
+    'Mamelon',
+    'OzCaramel',
+    'Pigmo-00',
+  ];
+  const generateAllFontAreaCode = () => {
+    textFontFamilySelects.forEach(function(element) {
+      element.innerHTML = "";
+      myLocalFonts.forEach(font => {
+        element.innerHTML += `<option value="${font}">${font}</option>`;
+      });
+    });
+  }
+  generateAllFontAreaCode();
+  </script>
+  <script>
+    var recognizeButton = document.getElementById("recognize-button");
+    var recordButton = document.getElementById("record-button");
+    var recognitionResult = document.getElementById("recognitionResult");
+    var recordResult = document.getElementById("recordResult");
+    var jpExpResult = document.getElementById("jpExpResult");
+    var isRecognizing = false;
+    var isRecording = false;
+    var recognition = new webkitSpeechRecognition();
+    var requests = [];
+    for (let i = 0; i < translationCounts; i++) {
+      requests.push(new XMLHttpRequest());
+    }
+    function showApiKey(button) {
+      apiKeyInput.type = "text";
+      button.innerHTML = "🤫";
+    }
+    function hideApiKey(button) {
+      apiKeyInput.type = "password";
+      button.innerHTML = "👁️‍";
+    }
+    function startRecognition() {
+      recognition.lang = languageSelects[0].value;
+      recognition.interimResults = true;
+      recognition.continuous = true;
+
+      var timeStamp = 0;
+      recognition.onstart = () => {
+        console.log("onstart:", timeStamp);
+      }
+      recognition.onaudiostart = () => {
+        console.log("onaudiostart:", timeStamp);
+      }
+      recognition.onsoundstart = () => {
+        console.log("onsoundstart:", timeStamp);
+      }
+      recognition.onspeechstart = () => {
+        console.log("onspeechstart:", timeStamp);
+      }
+      recognition.onspeechend = () => {
+        console.log("onspeechend:", timeStamp);
+      }
+      recognition.onsoundend = () => {
+        console.log("onsoundend:", timeStamp);
+      }
+      recognition.onaudioend = () => {
+        console.log("onaudioend:", timeStamp);
+      }
+      recognition.onend = () => {
+        console.log("onend:", timeStamp);
+        if (isRecognizing) {
+          recognition.start();
+          timeStamp = timeStamp + 1;
+        }
+      }
+      recognition.onerror = () => {
+        console.log("onerror:", timeStamp);
+        recognition.stop();
+      }
+      recognition.onnomatch = () => {
+        console.log("onnomatch:", timeStamp);
+        recognition.stop();
+      }
+      stopRecognitionControl = function() {
+        console.log(`recognition.stop() after speechSplitInterval(${speechSplitInterval.value}) turns to zero.`);
+        recognition.stop();
+      }
+      recognition.onresult = function(event) {
+        console.log("In [recognition.onresult] ", "resultIndex=", event.resultIndex, "resultLength=", event.results.length);
+        for (var i = event.resultIndex; i < event.results.length; i++) {
+        // { var i = event.results.length - 1;
+          var speechText = event.results[i][0].transcript;
+          if (speechText.trim() === "") {
+            console.log("Empty Speech Text");
+          }
+          else {
+            console.log("Speech Text:", speechText);
+            if (event.results[i].isFinal) {
+              recognitionResult.value = speechText;
+              if (isRecording) {
+                recordResult.value += speechText + ".";
+              }
+              updateSpeechTextList(speechText);
+              speechTranslate(speechText);
+            }
+            else {
+              if (false && speechSplitInterval.value && speechSplitInterval.value !== 0) {
+                clearTimeout(speechSplitInterval_TimeOut);
+                speechSplitInterval_TimeOut = setTimeout(stopRecognitionControl, speechSplitInterval.value);
+              }
+              recognitionResult.value = '< ' + speechText + ' >';
+            }
+          }
+        }
+      };
+      recognition.start();
+      timeStamp = timeStamp + 1;
+      isRecognizing = true;
+      recognizeButton.innerHTML = "⏹️ Stop Recognizing";
+    }
+    function stopRecognition() {
+      if (recognition) {
+        recognition.stop();
+        console.log("recognition.stop()");
+      }
+      isRecognizing = false;
+      recognizeButton.innerHTML = "▶️ Start Recognizing"
+    }
+    function toggleRecognition() {
+      if (isRecognizing) {
+        stopRecognition();
+      }
+      else {
+        startRecognition();
+      }
+    }
+    function toggleRecord() {
+      if (isRecording) {
+        isRecording = false;
+        recordButton.innerHTML = "▶️ Start Recording";
+      }
+      else {
+        isRecording = true;
+        recordButton.innerHTML = "⏹️ Stop Recording";
+      }
+    }
+    function toggleTranslationCounts() {
+      var translationSelect = document.getElementById("translationSelect");
+      translationCounts = translationSelect.value;
+      clearTexts(topTranslationCounts);
+      defaultTexts();
+    }
+    function speechTranslate(speechText) {
+      var apiKey = apiKeyInput.value;
+      var sourceLanguage = languageSelects[0].value;
+      updateText(0, speechText);
+      if (apiKey != null && apiKey != "") {
+        for (let i = 0; i < translationCounts; i++) {
+          query = `https://script.google.com/macros/s/${apiKey}/exec?`
+            + `text=${speechText}`
+            + `&source=${sourceLanguage}`
+            + `&target=${languageSelects[i + 1].value}`;
+          requests[i].open('GET', query, true);
+          requests[i].onreadystatechange = function(){
+            if (requests[i].readyState === 4 && requests[i].status === 200){
+              // updateText(0, speechText); // TO CHECK
+              updateText(i + 1, requests[i].responseText);
+            }
+          }
+          requests[i].send(null);
+        }
+      }
+    }
+    function saveConfigStorage() {
+      var configJSON = JSON.stringify(configs);
+      localStorage.setItem('snowyTranslatorConfig', configJSON);
+    }
+    function loadConfigStorage() {
+      if (localStorage.getItem('snowyTranslatorConfig')) {
+        configs = JSON.parse(localStorage.getItem('snowyTranslatorConfig'));
+      }
+    }
+    function updatePageColor(color = "") {
+      if (color === "") color = pageColorPicker.value;
+      else pageColorPicker.value = color;
+      pageColorValue.innerHTML = color;
+      document.body.style.backgroundColor = color;
+      configs[autoSID].pageColor = color;
+      saveConfigStorage();
+    }
+    function updateCurtainColor(color = "") {
+      if (color === "") color = curtainColorPicker.value;
+      else curtainColorPicker.value = color;
+      curtainColorValue.innerHTML = color;
+      textArea.style.background = color;
+      configs[autoSID].curtainColor = color;
+      saveConfigStorage();
+    }
+    function updateText(id, speechText) {
+      texts[id].textContent = speechText;
+      texts[id].setAttribute('stroke-data', texts[id].textContent);
+      configs[autoSID].texts[id] = speechText;
+      saveConfigStorage();
+    }
+    function clearTexts(topRow=-1) {
+      if (topRow === -1) {
+        topRow = translationCounts;
+      }
+      for (let i = 0; i <= topRow; i++) {
+        updateText(i, "");
+      }
+    }
+    function defaultTexts(topRow=-1) {
+      if (topRow === -1) {
+        topRow = translationCounts;
+      }
+      for (let i = 0; i <= topRow; i++) {
+        updateText(i, defaultConfig.texts[i]);
+      }
+    }
+    function updateFontColor(id, color="") {
+      if (color === "") color = textColorPickers[id].value;
+      else textColorPickers[id].value = color;
+      textColorValues[id].innerHTML = color;
+      texts[id].style.color = color;
+      configs[autoSID].textFontColors[id] = color;
+      saveConfigStorage();
+    }
+    function updateFontSize(id, value="") {
+      if (value === "") value = textFontSizeSliders[id].value;
+      else textFontSizeSliders[id].value = value;
+      textFontSizeValues[id].innerHTML = value;
+      texts[id].style.fontSize = value + 'px';
+      configs[autoSID].textFontSizes[id] = value;
+      saveConfigStorage();
+    }
+    function updateFontWeight(id, value="") {
+      if (value === "") value = textFontWeightSliders[id].value;
+      else textFontWeightSliders[id].value = value;
+      textFontWeightValues[id].innerHTML = value;
+      texts[id].style.fontWeight = value;
+      configs[autoSID].textFontWeights[id] = value;
+      saveConfigStorage();
+    }
+    function updateFontFamily(id, value="") {
+      if (value === "") value = textFontFamilySelects[id].value;
+      else {
+        textFontFamilySelects[id].value = value;
+      }
+      texts[id].style.fontFamily = value;
+      configs[autoSID].textFontFamilies[id] = value;
+      saveConfigStorage();
+    }
+    function updateStrokeColor(id, layer, color="") {
+      if (color === "") color = textStrokeColorPickers[id][layer].value;
+      else textStrokeColorPickers[id][layer].value = color;
+      textStrokeColorValues[id][layer].innerHTML = color;
+      texts[id].style.setProperty(`--stroke-color-layer-${layer}`, color);
+      configs[autoSID].textStrokeColors[id][layer] = color;
+      saveConfigStorage();
+    }
+    function updateStrokeWidth(id, layer, value="") {
+      if (value === "") value = textStrokeWidthSliders[id][layer].value;
+      else textStrokeWidthSliders[id][layer].value = value;
+      textStrokeWidthValues[id][layer].innerHTML = value;
+      texts[id].style.setProperty(`--stroke-width-layer-${layer}`, value + "em");
+      configs[autoSID].textStrokeWidths[id][layer] = value;
+      saveConfigStorage();
+    }
+    function updateTextShadow(id, radius="", color="") {
+      if (radius === "") radius = textShadowBlurRadiusSliders[id].value;
+      else textShadowBlurRadiusSliders[id].value = radius;
+      if (color === "") color = textShadowColorPickers[id].value;
+      else textShadowColorPickers[id].value = color;
+      textShadowBlurRadiusValues[id].innerHTML = radius;
+      textShadowColorValues[id].innerHTML = color;
+      texts[id].style.textShadow = `0 0 ${radius}em ${color}`;
+      configs[autoSID].textShadowBlurRadius[id] = radius;
+      configs[autoSID].textShadowColors[id] = color;
+      saveConfigStorage();
+    }
+    function updateTextMargin(id, value="") {
+      if (value === "") value = textMarginSliders[id].value;
+      else textMarginSliders[id].value = value;
+      textMarginValues[id].innerHTML = value;
+      textMargins[id].style.marginTop = value + "px";
+      configs[autoSID].textMargins[id] = value;
+      saveConfigStorage();
+    }
+    function updateApiKey(value="") {
+      if (value === "") value = apiKeyInput.value;
+      else apiKeyInput.value = value;
+      configs[autoSID].apiKey = value;
+      saveConfigStorage();
+    }
+    function updateSpeechSplitInterval(value=-1) {
+      if (value === -1) value = speechSplitInterval.value;
+      else speechSplitInterval.value = value;
+      configs[autoSID].speechSplitInterval = value;
+      saveConfigStorage();
+    }
+    function updateSpeechClearInterval(value=-1) {
+      if (value === -1) value = speechClearInterval.value;
+      else speechClearInterval.value = value;
+      configs[autoSID].speechClearInterval = value;
+      saveConfigStorage();
+    }
+    function updateLanguage(id, value="") {
+      if (value === "") value = languageSelects[id].value;
+      else languageSelects[id].value = value;
+      configs[autoSID].languages[id] = value;
+      saveConfigStorage();
+    }
+    function saveConfig(configID) {
+      console.log(`Save Config (${configID}) ing...`);
+      configs[configID].pageColor = pageColorPicker.value;
+      configs[configID].curtainColor = curtainColorPicker.value;
+      configs[configID].texts = [...texts].map(element => element.innerHTML);
+      configs[configID].textFontColors = [...textColorValues].map(element => element.innerHTML);
+      configs[configID].textFontSizes = [...textFontSizeValues].map(element => element.innerHTML);
+      configs[configID].textFontWeights = [...textFontWeightValues].map(element => element.innerHTML);
+      configs[configID].textFontFamilies = [...textFontFamilySelects].map(element => element.value);
+      configs[configID].textStrokeColors = textStrokeColorValues.map(elements => [elements[0].innerHTML, elements[1].innerHTML]);
+      configs[configID].textStrokeWidths = textStrokeWidthValues.map(elements => [elements[0].innerHTML, elements[1].innerHTML]);
+      configs[configID].textShadowBlurRadius = [...textShadowBlurRadiusValues].map(element => element.innerHTML);
+      configs[configID].textShadowColors = [...textShadowColorValues].map(element => element.innerHTML);
+      configs[configID].textMargins = [...textMarginValues].map(element => element.innerHTML);
+      configs[configID].apiKey = apiKeyInput.value;
+      configs[configID].speechSplitInterval = speechSplitInterval.value;
+      configs[configID].speechClearInterval = speechClearInterval.value;
+      configs[configID].languages = [...languageSelects].map(element => element.value);
+      saveConfigStorage();
+      console.log(`Save Config (${configID}) Finished.`);
+    }
+    function loadConfig(configID) {
+      loadConfigStorage();
+      if (configID === -1) {
+        configs[autoSID] = defaultConfig;
+        configID = autoSID;
+      }
+      console.log(`Load Config (${configID}) ing...`);
+      updatePageColor(configs[configID].pageColor);
+      updateCurtainColor(configs[configID].curtainColor);
+      for (let i = 0; i <= translationCounts; i++) {
+        updateText(i, configs[configID].texts[i]);
+        updateFontColor(i, configs[configID].textFontColors[i]);
+        updateFontSize(i, configs[configID].textFontSizes[i]);
+        updateFontWeight(i, configs[configID].textFontWeights[i]);
+        updateFontFamily(i, configs[configID].textFontFamilies[i]);
+        for (let j = 0; j <= 1; j++) {
+          updateStrokeColor(i, j, configs[configID].textStrokeColors[i][j]);
+          updateStrokeWidth(i, j, configs[configID].textStrokeWidths[i][j]);
+        }
+        updateTextShadow(i, configs[configID].textShadowBlurRadius[i], configs[configID].textShadowColors[i]);
+        updateTextMargin(i, configs[configID].textMargins[i]);
+        updateApiKey(configs[configID].apiKey);
+        updateSpeechSplitInterval(configs[configID].speechSplitInterval);
+        updateSpeechClearInterval(configs[configID].speechClearInterval);
+        updateLanguage(i, configs[configID].languages[i]);
+      }
+      console.log(`Load Config (${configID}) Finsihed.`);
+    }
+    function updateConfig(configID, key, value) {
+        configs[configID][key] = value;
+        saveConfig(configID);
+    }
+
+    function japaneseExplanation() {
+      var formData = $('form').serialize();
+      $.ajax({
+        url: '/process',
+        type: 'POST',
+        data: formData,
+        success: function(response) {
+            $('#jpExpArea').html(response.result);
+        }
+      });
+    }
+  </script>
+
+  <script>
+    // localStorage.removeItem('snowyTranslatorConfig');
+    // localStorage.clear();
+    loadConfig(autoSID);
+  </script>
+
+  <br>
+  <a href="https://wicg.github.io/speech-api" target="_blank">Speech Recognition</a>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">Web HTML Study</a>
+
+</body>
+</html>
