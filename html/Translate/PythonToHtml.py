@@ -51,5 +51,4 @@ async def ichimoe_japanese_split(text):
         return f"japanese_split: an error occurred: {str(e)}"
 
 if __name__ == '__main__':
-    app.static_folder = 'static'
     app.run(debug=True, threaded=True, port=5000, host='localhost', use_reloader=False)
