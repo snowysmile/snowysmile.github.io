@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="./font.css">
+<head>
+  <title>Snowy Smile's Custom Font Display</title>
+  <script>
+    const myLocalFonts = [
+      { name: 'Default', className: 'font_Keshin' },
+      { name: 'Seto', className: 'font_Seto' },
+      { name: 'Naikai', className: 'font_Naikai' },
+      { name: 'Nishikiteki', className: 'font_Nishikiteki' },
+      { name: 'Iansui', className: 'font_Iansui' },
+      { name: 'BugMaruGothic', className: 'font_BugMaruGothic' },
+      { name: 'TaipeiSans', className: 'font_TaipeiSans' },
+      { name: 'WD-XLLubrifont', className: 'font_WD-XLLubrifont' },
+      { name: 'tkFangSong', className: 'font_tkFangSong' },
+      { name: 'LXGWWenKai', className: 'font_LXGWWenKai' },
+      { name: 'LXGWWenKaiMono', className: 'font_LXGWWenKaiMono' },
+      { name: 'SourceHanSans', className: 'font_SourceHanSans' },
+      { name: 'SourceHanSerif', className: 'font_SourceHanSerif' },
+      { name: 'XiaoheSimplifySans', className: 'font_XiaoheSimplifySans' },
+      { name: 'XiaoheSimplifySerif', className: 'font_XiaoheSimplifySerif' },
+      { name: 'AdvocateAncientMono', className: 'font_AdvocateAncientMono' },
+      { name: 'NotoSansCJK', className: 'font_NotoSansCJK' },
+      { name: 'NotoSansCJKjp', className: 'font_NotoSansCJKjp' },
+      { name: 'KosugiMaru', className: 'font_KosugiMaru' },
+      { name: 'JF-openhuninn', className: 'font_JF-openhuninn' },
+      { name: '851MkPOP', className: 'font_851MkPOP' },
+      { name: 'ChenYuluoyan', className: 'font_ChenYuluoyan' },
+      { name: 'KsoKagero', className: 'font_KsoKagerou' },
+      { name: 'KsoKaisho', className: 'font_KsoKaisho' },
+      { name: 'Mamelon', className: 'font_Mamelon' },
+      { name: 'OzCaramel', className: 'font_OzCaramel' },
+      { name: 'Pigmo-00', className: 'font_Pigmo-00' },
+    ];
+    const myLocalEnglishFonts = [
+      { name: 'Digital-7', className: 'font_Digital-7' },
+      { name: 'Loopy', className: 'font_Loopy' },
+      { name: 'Roboto', className: 'font_Roboto' },
+      { name: 'RobotoMono', className: 'font_RobotoMono' },
+      { name: 'Schoolbell', className: 'font_Schoolbell' },
+      { name: 'SingleDay', className: 'font_SingleDay' },
+    ];
+  </script>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+    }
+    #fontContainer {
+      min-width: 70%;
+      max-width: 100%;
+    }
+    .font-area {
+      background-color: transparent;
+      border: 2px solid #000;
+      border-radius: 5px;
+      padding: 5px 5px;
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 5px;
+      min-width: 70%;
+      max-width: 95%;
+    }
+    .font-title-holder {
+      background-color: #89C4F4;
+      border-radius: 3px;
+      padding: 3px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      width: fit-content;
+    }
+    .font-content table {
+      margin: 0 auto;
+      margin-top: 5px;
+    }
+    /*table {
+      border-collapse: collapse;
+    }*/
+    th, td {
+      border: 1px solid black;
+      padding: 1px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  </style>
+  <script>
+    function toggleContent(element) {
+      var fontArea = element.closest('.font-area');
+      var content = fontArea.querySelector('.font-content');
+      content.style.display = content.style.display === 'none' ? 'block' : 'none';
+    }
+  </script>
+  <script>
+    var scriptTextEN = `abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ <br>`
+    var scriptTextCJK = `あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん 「」『』・…゛゜っー々ヶ￥〒 <br>
+      日：開遊歩売終覚帰掛書貸聞曇結咲質問閉締濯掃頼勤無鳴習並脱飲履働話貼磨読練習 為為台国党産内歴増税説黒黄偽経済〇〇〇〇〇〇〇〇〇〇〇〇〇 <br>
+      台：開遊步賣終覺歸掛書貸聞雲結咲質問閉締濯掃賴勤無鳴習並脫飲履動話貼磨讀練習 為爲臺國黨產內歷增稅說黑黃偽經濟這你她他呢嗎哪喔啦噢麼奶爺 <br>
+      中：开游终卖终觉归挂书贷闻云结咲质问闭缔濯扫赖勤无鸣习并脱饮履动话贴磨读练习 为为台国党产内历增税说黑黄伪经济这你她他呢吗哪喔啦噢么奶爷 <br>`
+    var scriptTextTable = `<table>
+        <tr>
+          <td>20</td>
+          <td>21</td>
+          <td>22</td>
+          <td>23</td>
+          <td>24</td>
+          <td>25</td>
+          <td>26</td>
+          <td>27</td>
+          <td>28</td>
+          <td>29</td>
+          <td>2A</td>
+          <td>2B</td>
+          <td>2C</td>
+          <td>2D</td>
+          <td>2E</td>
+          <td>2F</td>
+          <td>30</td>
+          <td>31</td>
+          <td>32</td>
+          <td>33</td>
+          <td>34</td>
+          <td>35</td>
+          <td>36</td>
+          <td>37</td>
+          <td>38</td>
+          <td>39</td>
+          <td>3A</td>
+          <td>3B</td>
+          <td>3C</td>
+          <td>3D</td>
+          <td>3E</td>
+          <td>3F</td>
+          <td>40</td>
+          <td>5B</td>
+          <td>5C</td>
+          <td>5D</td>
+          <td>5E</td>
+          <td>5F</td>
+          <td>60</td>
+          <td>7B</td>
+          <td>7C</td>
+          <td>7D</td>
+          <td>7E</td>
+          <td>7F</td>
+        </tr>
+        <tr>
+          <td>&#x20;</td>
+          <td>!</td>
+          <td>"</td>
+          <td>#</td>
+          <td>$</td>
+          <td>%</td>
+          <td>&</td>
+          <td>'</td>
+          <td>(</td>
+          <td>)</td>
+          <td>*</td>
+          <td>+</td>
+          <td>,</td>
+          <td>-</td>
+          <td>.</td>
+          <td>/</td>
+          <td>0</td>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+          <td>7</td>
+          <td>8</td>
+          <td>9</td>
+          <td>:</td>
+          <td>;</td>
+          <td><</td>
+          <td>=</td>
+          <td>></td>
+          <td>?</td>
+          <td>@</td>
+          <td>[</td>
+          <td>&#x5C;</td>
+          <td>]</td>
+          <td>^</td>
+          <td>_</td>
+          <td>&#x60;</td>
+          <td>{</td>
+          <td>|</td>
+          <td>}</td>
+          <td>~</td>
+          <td>␡</td>
+        </tr>
+        <tr>
+          <td>&#x3000;</td>
+          <td>！</td>
+          <td>＂</td>
+          <td>＃</td>
+          <td>＄</td>
+          <td>％</td>
+          <td>＆</td>
+          <td>＇</td>
+          <td>（</td>
+          <td>）</td>
+          <td>＊</td>
+          <td>＋</td>
+          <td>、</td>
+          <td>ー</td>
+          <td>。</td>
+          <td>／</td>
+          <td>０</td>
+          <td>１</td>
+          <td>２</td>
+          <td>３</td>
+          <td>４</td>
+          <td>５</td>
+          <td>６</td>
+          <td>７</td>
+          <td>８</td>
+          <td>９</td>
+          <td>：</td>
+          <td>；</td>
+          <td>＜</td>
+          <td>＝</td>
+          <td>＞</td>
+          <td>？</td>
+          <td>＠</td>
+          <td>【</td>
+          <td>＼</td>
+          <td>】</td>
+          <td>＾</td>
+          <td>＿</td>
+          <td>｀</td>
+          <td>｛</td>
+          <td>｜</td>
+          <td>｝</td>
+          <td>～</td>
+          <td>␡</td>
+        </tr>
+      </table>`;
+  </script>
+  <script>
+    const generateFontAreaCode = (font, showCJKContent) => `
+      <div class="font-area ${font.className}">
+        <div class="font-title-holder" style="margin-top: 3px; margin-bottom: 5px;">
+          ${font.name}
+          <button class="toggle-button" style="margin-left: 10px;" onclick="toggleContent(this)">On / Off</button><br>
+        </div>
+        <div class="font-content">
+          ${showCJKContent ? '<div class="font-content-CJK"></div>' : ''}
+        </div>
+      </div>
+    `;
+    const generateAllFontAreaCode = () => {
+      let code = '';
+      myLocalFonts.forEach(font => {
+        code += generateFontAreaCode(font, true);
+      });
+      code += `English Only Font <br>`
+      myLocalEnglishFonts.forEach(font => {
+        code += generateFontAreaCode(font, false);
+      });
+      return code;
+    };
+  </script>
+</head>
+<body>
+  <h1>Welcome to Font Test</h1>
+  <a href="https://www.jcinfo.net/ja/tools/kanji"> 漢字変化（日台中）</a><br>
+  <br>
+  <div id="fontContainer"></div>
+  <script>
+    const fontContainer = document.getElementById('fontContainer');
+    fontContainer.innerHTML = generateAllFontAreaCode();
+    const fontAreas = fontContainer.getElementsByClassName('font-area');
+    Array.from(fontAreas).forEach(fontArea => {
+      var fontContent = fontArea.querySelector('.font-content');
+      fontContent.insertAdjacentHTML('afterbegin', scriptTextTable);
+      fontContent.insertAdjacentHTML('afterbegin', scriptTextEN);
+    });
+    Array.from(fontAreas).forEach(fontArea => {
+      var fontContent = fontArea.querySelector('.font-content-CJK');
+      fontContent.insertAdjacentHTML('afterbegin', scriptTextCJK);
+    });
+  </script>
+  <script>
+    function generateRandomColor() {
+      var minBrightness = 120;
+      var red, green, blue;
+      while (true) {
+        red = Math.floor(Math.random() * 256);
+        green = Math.floor(Math.random() * 256);
+        blue = Math.floor(Math.random() * 256);
+        var brightness = (red * 0.2126 + green * 0.7152 + blue * 0.0722);
+        if (brightness >= minBrightness) {
+          break;
+        }
+      }
+      var hexColor = "#" + ((red << 16) + (green << 8) + blue).toString(16);
+      console.log(hexColor);
+      return hexColor;
+    }
+    var titleHolders = document.querySelectorAll('.font-title-holder');
+    titleHolders.forEach(function(titleHolder) {
+      titleHolder.style.backgroundColor = generateRandomColor();
+    });
+  </script>
+
+  <!--
+  <div id="fontContainer">
+    <div class="font-area font_Nishikiteki">
+      <div class="font-title-holder" style="margin-top: 3px; margin-bottom: 5px; background-color: rgb(148, 147, 19);">
+        Nishikiteki
+        <button class="toggle-button" style="margin-left: 10px;" onclick="toggleContent(this)">On / Off</button><br>
+      </div>
+      <div class="font-content">
+        <script> document.write(scriptText); </script>
+      </div>
+    </div>
+  </div>
+  -->
+</body>
+</html>
