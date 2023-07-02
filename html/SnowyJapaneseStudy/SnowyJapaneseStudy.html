@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+	<style>
+		body {
+			background-color: #F5FAFA; // ffffff -> white
+			color: #333333;
+		}
+		.dark-mode {
+			background-color: #131620;
+			color: #ffffff;
+		}
+	</style>
+	<style>
+		.translation_row {
+			display: flex;
+			align-items: center;
+			margin-bottom: 5px;
+		}
+		.translation_row textarea {
+			flex-grow: 1;
+			height: 30px;
+    	max-width: 500px;
+			margin-right: 10px;
+		}
+		.translation_row button {
+			flex-shrink: 0;
+			height: 30px;
+			width: 55px;
+			margin-right: 10px;
+		}
+	</style>
+	<style>
+	  ruby {
+	    font-size: 1.2em;
+	  }
+	  rt {
+	    font-size: 0.6em;
+	  }
+	</style>
+	<style>
+	  .apiKey-span {
+	    display: inline-block;
+	    width: 170px;
+	  }
+	</style>
+  <head>
+		<meta charset="UTF-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Snowy_Smile's Japanese Study Website</title>
+  </head>
+
+	<script>
+		var config =
+		{
+			apiKeys: [],
+		}
+	</script>
+
+  <body>
+    <iframe id="ichimoe_web" style="width:720px; height:654px; margin-top:2px;" src="https://ichi.moe/"></iframe><br>
+    <textarea id="inputArea" style="width:700px; height:40px; font-size: 16px; font-weight: 600;" onkeydown="if (event.keyCode === 13) lookupDictionary()"></textarea><br>
+		<button id="search-button" style="width:34px; height:25px; margin-top:5px;" onclick="lookupDictionary()">🔎</button>
+		<button id="inputLanguageSwitch-button" style="width:50px; height:25px; margin-top:5px;" onclick="inputLanguageSwitch()">JP🔤</button>
+		<button id="inputSpeakJP-button" style="width:55px; height:25px;" onclick="ggSpeak('ja', 'inputArea')">JP🔊</button>
+		<button id="inputSpeakEN-button" style="width:55px; height:25px;" onclick="ggSpeak('en', 'inputArea')">EN🔊</button>
+		<button id="pauseAudio-button" style="width:34px; height:25px;" onclick="pauseAudio()">⏯</button>
+		<button id="saveInput-button" style="width:34px; height:25px;" onclick="saveInput()">💾</button>
+		<button id="extraInput-button" style="width:34px; height:25px;" onclick="extraInput()">🕀</button>
+		<button id="prevInput-button" style="width:34px; height:25px;" onclick="prevInput()">◀️</button>
+		<button id="nextInput-button" style="width:34px; height:25px;" onclick="nextInput()">▶️</button>
+		<button id="extraInputSpeak-button" style="width:32px; height:25px;" onclick="extraInputSpeak()">⛛</button>
+		<button id="inputAutoReadSwitch-button" style="width:34px; height:25px;" onclick="inputAutoReadSwitch()">🔊</button>
+		<button id="extraInputAutoReadSwitch-button" style="width:55px; height:25px;" onclick="extraInputAutoReadSwitch()">⬇️🔊</button>
+		<button id="trim-button" style="width:34px; height:25px;" onclick="queryTrim()">🧹</button>
+		<button id="purge-button" style="width:34px; height:25px;" onclick="queryPurge()">🔁</button>
+		<button id="scrollToBottom-button" style="width:34px; height:25px;" onclick="scrollToBottom()">⬓</button>
+		<button id="darkMode-button" style="width:30px; height:25px;" onclick="toggleDarkMode()">⯄</button>
+		<br>
+
+		<button id="GGtranslationSwitch-button" style="width:52px; height:20px; margin-top:6px;" onclick="translationSwitch('GGtranslationRow')">GGen</button>
+		<button id="MStranslationSwitch-button" style="width:52px; height:20px;" onclick="translationSwitch('MStranslationRow')">MSen</button>
+		<button id="TWtranslationSwitch-button" style="width:52px; height:20px;" onclick="translationSwitch('TWtranslationRow')">GGcn</button>
+		<br>
+
+		<audio id="ggSpeakAudio" src=""></audio><br>
+		<textarea id="extraInputArea" style="width:700px; height:40px; font-size: 16px; font-weight: 600; display:none" ></textarea><br>
+
+		<div class="translation_row" id=GGtranslationRow>
+		  <span class="apiKey-span"> Google Translation: </span>
+		  <textarea id="GGtranslation" style="margin-top:2px; font-weight: 600;" readonly></textarea>
+		  <button id="ggSpeak-button", onclick="ggSpeak('en', 'GGtranslation')">Speak</button>
+		</div>
+
+		<div class="translation_row" id=MStranslationRow>
+			<span class="apiKey-span"> Microsoft Translation: </span>
+			<textarea id="MStranslation" style="margin-top:2px; font-weight: 600;"></textarea> <!-- not readonly -->
+		  <button id="ggSpeak-button", onclick="ggSpeak('en', 'MStranslation')">Speak</button>
+		</div>
+
+		<div class="translation_row" id=TWtranslationRow>
+			<span class="apiKey-span"> zh-TW|zh-CN|zh-HK : </span>
+			<textarea id="TWtranslation" style="margin-top:2px; font-weight: 500;" ></textarea> <!-- not readonly -->
+		  <button id="MSCN-button", style="width:54px;" onclick="msSpeak('zh-CN', 'CNtranslation')">MSCN</button>
+		  <button id="cnSpeak-button", onclick="ggSpeak('zh-TW', 'TWtranslation')">Speak</button>
+		</div>
+
+		<textarea id="CNtranslation" style="margin-top:2px; font-weight: 600; display:none;" ></textarea>
+
+	  <div>
+	    <span class="apiKey-span"> Google Script API-KEY: </span>
+	    <input type="password" id="apiKeyInput-0" size="65" oninput="updateApiKey(0)"> &nbsp;
+	    <button id="apiKey-button" onmousedown="showApiKey(0, this)" onmouseup="hideApiKey(0, this)">👁️</button> &nbsp;
+	    <button id="copyApiKey-button" onclick="copyApiKey(0, this)">✂️</button> &nbsp;
+	  </div>
+		<div>
+	    <span class="apiKey-span"> Google Cloud API-KEY: </span>
+	    <input type="password" id="apiKeyInput-1" size="65" oninput="updateApiKey(1)"> &nbsp;
+	    <button id="apiKey-button" onmousedown="showApiKey(1, this)" onmouseup="hideApiKey(1, this)">👁️</button> &nbsp;
+	    <button id="copyApiKey-button" onclick="copyApiKey(1, this)">✂️</button> &nbsp;
+	  </div>
+		<div>
+	    <span class="apiKey-span"> Azure Subscription KEY: </span>
+	    <input type="password" id="apiKeyInput-2" size="65" oninput="updateApiKey(2)"> &nbsp;
+	    <button id="apiKey-button" onmousedown="showApiKey(2, this)" onmouseup="hideApiKey(2, this)">👁️</button> &nbsp;
+	    <button id="copyApiKey-button" onclick="copyApiKey(2, this)">✂️</button> &nbsp;
+	  </div>
+
+		<script>
+			const inputArea = document.getElementById("inputArea");
+			const extraInputArea = document.getElementById("extraInputArea");
+    	const prevButton = document.getElementById("prevInput-button");
+			const nextButton = document.getElementById("nextInput-button");
+			const inputListTotalCountElement = document.getElementById("inputListTotalCount");
+			const inputListCurrentIDElement = document.getElementById("inputListCurrentID");
+			const apiKeyInputs = document.querySelectorAll('[id^="apiKeyInput-"]');
+    	// const inputList = document.querySelector('#inputList');
+			// const extraInputList = document.querySelector('#extraInputList');
+			const patternEn = /[a-zA-Z\.\,\!\?'-:;“”‘’'"()\[\]\{\}\<\>\#\$\%\^\&\*\+\=\\\/\|~`@]/g;
+			const patternJp = /[^a-zA-Z\s\.\,\!\?'-:;“”‘’'"()\[\]\{\}\<\>\#\$\%\^\&\*\+\=\\\/\|~`@]/g;
+
+			var hasExtraInput = false;
+			var ggSpeakAudio = document.getElementById("ggSpeakAudio");
+
+			prevButton.disabled = true;
+			nextButton.disabled = true;
+			inputList = document.getElementById("inputList")
+			extraInputList = document.getElementById("extraInputList")
+		</script>
+
+		<script>
+			var sourceLanguage = "ja";
+			var targetLanguage = "en";
+			function inputLanguageSwitch() {
+				var button = document.getElementById("inputLanguageSwitch-button");
+				if (sourceLanguage == "ja") {
+					sourceLanguage = "en";
+					targetLanguage = "ja";
+					button.innerHTML = "EN🔤"
+				} else {
+					sourceLanguage = "ja";
+					targetLanguage = "en";
+					button.innerHTML = "JP🔤"
+				}
+			}
+			function extraInputSpeak() {
+				ggSpeak(targetLanguage, "extraInputArea");
+			}
+		</script>
+
+    <script>
+			function allTranslate() {
+				if (UseGGTranslate) {
+					ggTranslate(sourceLanguage, targetLanguage, "GGtranslation");
+				}
+				if (UseMSTranslate) {
+					ggTranslate(sourceLanguage, "zh-CN", "CNtranslation")
+				}
+				if (UseTWTranslate) {
+					ggTranslate(sourceLanguage, "zh-TW", "TWtranslation");
+					msTranslate(targetLanguage, "MStranslation");
+				}
+			}
+
+      function lookupDictionary() {
+				allTranslate();
+
+				if (sourceLanguage == "en") return;
+        var query = inputArea.value;
+        var query_nospace = query.replace(/\s+/g, "");
+        var encodedQuery = encodeURIComponent(query_nospace);
+        var ichimoe_url = "https://ichi.moe/cl/qr/?q=" + encodedQuery;
+        var ichimoe_iframe = document.getElementById("ichimoe_web");
+        ichimoe_iframe.src = ichimoe_url;
+      }
+    </script>
+
+		<script>
+			function extraInput() {
+				hasExtraInput = !hasExtraInput;
+				extraInputArea.style.display = hasExtraInput? "block" : "none";
+				extraInputArea.style.height = hasExtraInput? "40px" : "0px";
+				if (hasExtraInput) {
+					inputList.innerHTML = ""
+					extraInputList.innerHTML = ""
+					var lines = inputArea.value.split("\n");
+					for (let i = 0; i < lines.length; i++) {
+						textJp = lines[i].replace(patternEn, "").replace(/\s+/g, " ").trim();
+						textEn = lines[i].replace(patternJp, "").replace(/\s+/g, " ").replace(/!+/g, " ").trim(); // Remove Exclamation Marks
+						var newInputJp = document.createElement("li");
+						newInputJp.textContent = textJp;
+						inputList.appendChild(newInputJp);
+						var newInputEn = document.createElement("li");
+						newInputEn.textContent = textEn;
+						extraInputList.appendChild(newInputEn);
+					}
+
+					inputListTotalCount = inputList.childNodes.length;
+					inputListCurrentID = 0;
+					updateInputList();
+				}
+			}
+		</script>
+
+		<script>
+			function queryTrim() {
+				var query = inputArea.value;
+        var query_nospace = query.replace(/\s+/g, " ");
+				inputArea.value = query_nospace;
+			}
+		</script>
+
+		<script>
+			function queryPurge() {
+		    var query = inputArea.value;
+				if (sourceLanguage == "ja") {
+					query = query.replace(patternEn, "");
+				} else {
+					query = query.replace(patternJp, "");
+				}
+        query = query.replace(/\s+/g, " ");
+				query = query.trim()
+		    inputArea.value = query;
+			}
+		</script>
+
+		<script>
+			var inputListTotalCount = 0;
+			var inputListCurrentID = 0;
+
+			function saveInput() {
+		    var input = inputArea.value;
+				var lines = input.split('\n').map(line => line.trim());
+				inputList.innerHTML = lines.map(line => `<li>${line}</li>`).join('');
+				inputListTotalCount = inputList.childNodes.length;
+				inputListCurrentID = 0;
+				updateInputList();
+			}
+
+			function onAudioEnded() {
+				ggSpeak(targetLanguage, "extraInputArea");
+				ggSpeakAudio.removeEventListener('ended', onAudioEnded);
+			}
+
+			var UseGGTranslate = true;
+			var UseMSTranslate = true;
+			var UseTWTranslate = true;
+			function updateInputList() {
+				inputListTotalCountElement.innerHTML = "Total Count: " + inputListTotalCount;
+				inputListCurrentIDElement.innerHTML = "Current ID: " + (inputListCurrentID + 1);
+				inputArea.value = inputList.childNodes[inputListCurrentID].innerHTML;
+				if (hasExtraInput == true) {
+					extraInputArea.value = extraInputList.childNodes[inputListCurrentID].innerHTML;
+				}
+				prevButton.disabled = (inputListCurrentID == 0);
+				nextButton.disabled = (inputListCurrentID == inputListTotalCount - 1);
+
+				allTranslate();
+
+				if (inputAutoRead == true && inputListCurrentID < inputListTotalCount) {
+					if (hasExtraInput == true && extraInputAutoRead == true) {
+						ggSpeakAudio.addEventListener('ended', onAudioEnded);
+					}
+					ggSpeak(sourceLanguage, "inputArea");
+				}
+
+				if (sourceLanguage == "en") return;
+        var query = inputArea.value;
+        var query_nospace = query.replace(/\s+/g, "");
+        var encodedQuery = encodeURIComponent(query_nospace);
+        var ichimoe_url = "https://ichi.moe/cl/qr/?q=" + encodedQuery;
+        var ichimoe_iframe = document.getElementById("ichimoe_web");
+        ichimoe_iframe.src = ichimoe_url;
+			}
+			var inputAutoRead = true;
+			function inputAutoReadSwitch() {
+				var button = document.getElementById("inputAutoReadSwitch-button");
+				inputAutoRead = !inputAutoRead;
+				button.innerHTML = inputAutoRead ? "🔊" : "🔇";
+			}
+			var extraInputAutoRead = true;
+			function extraInputAutoReadSwitch() {
+				var button = document.getElementById("extraInputAutoReadSwitch-button");
+				extraInputAutoRead = !extraInputAutoRead;
+				button.innerHTML = extraInputAutoRead ? "⬇️🔊" : "⬇️🔇";
+			}
+			function prevInput() {
+				if (inputListCurrentID > 0) {
+					inputListCurrentID--;
+					updateInputList();
+				}
+			}
+			function nextInput() {
+				if (inputListCurrentID < inputListTotalCount - 1) {
+	        inputListCurrentID++;
+	        updateInputList();
+				}
+      }
+		</script>
+
+		<script>
+			function buttonClickTest() {
+				alert("Button clicked!");
+			}
+			document.addEventListener("keydown", function(event) {
+				if (event.ctrlKey && event.key === "`") {
+					nextButton.click(); // Ctrl + `
+				}
+			});
+		</script>
+
+		<script>
+			// https://portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation
+			// 2M characters every month
+			var azureSubscriptionKey;
+			const azureEndpoint = 'https://api.cognitive.microsofttranslator.com/';
+			const region = 'japaneast';
+			function msTranslate(targetLanguage, targetElement) {
+				var input = $('#inputArea').val();
+				var params = {
+					method: 'POST',
+					headers: {
+						'Ocp-Apim-Subscription-Key': azureSubscriptionKey,
+						'Content-Type': 'application/json',
+						'Ocp-Apim-Subscription-Region': region
+					},
+					body: JSON.stringify([{'Text': input}])
+				};
+				fetch(`${azureEndpoint}/translate?api-version=3.0&to=${targetLanguage}`, params)
+					.then(response => response.json())
+					.then(data => {
+						$('#' + targetElement).val(data[0].translations[0].text);
+					})
+					.catch(error => console.error(error));
+			}
+		</script>
+
+		<script>
+			var gcpApiKey;
+			const gcpEndpoint = "https://translation.googleapis.com/language/translate/v2/";
+			function ggTranslate(sourceLanguage, targetLanguage, targetElement) {
+				var input = $("#inputArea").val();
+				var data = {
+					q: input,
+					source: sourceLanguage,
+					target: targetLanguage,
+					format: "text",
+					key: gcpApiKey
+				};
+				$.post(gcpEndpoint, data, function(response) {
+					$("#" + targetElement).val(response.data.translations[0].translatedText);
+				});
+			}
+		</script>
+
+		<script>
+		  function ggSpeak(sourceLanguage, targetElement) {
+		    var text = document.getElementById(targetElement).value;
+				if (text == "") return;
+		    var url = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" + sourceLanguage
+				 + "&client=tw-ob&q=" + encodeURIComponent(text);
+
+			 	if (ggSpeakAudio) {
+					ggSpeakAudio.pause();
+					//ggSpeakAudio.removeEventListener('ended', onAudioEnded);
+				}
+	 			// ggSpeakAudio = new Audio(url); // It will also remove the listener
+
+				ggSpeakAudio.src = url;
+		    ggSpeakAudio.play();
+		  }
+
+			function pauseAudio() {
+				var button = document.getElementById("pauseAudio-button");
+				if (ggSpeakAudio) {
+					if (ggSpeakAudio.paused) {
+					  ggSpeakAudio.play();
+					} else {
+					  ggSpeakAudio.pause();
+					}
+				}
+			}
+		</script>
+
+		<script>
+			var MSTTS_subscriptionKey;
+			const MSTTS_region = "southeastasia";
+			const MSTTS_endpoint1 = `https://${MSTTS_region}.api.cognitive.microsoft.com/sts/v1.0/issuetoken`;
+			const MSTTS_endpoint2 = `https://${MSTTS_region}.tts.speech.microsoft.com/cognitiveservices/v1`;
+			const MSTTS_voiceName = "zh-CN-XiaozhenNeural";
+			var MSTTS_accessToken;
+			var MSTTS_audioData;
+
+			function getAudioData(text) {
+				var xhr2 = new XMLHttpRequest();
+				var headers = {
+					"Authorization": `Bearer ${MSTTS_accessToken}`,
+					"Content-Type": "application/ssml+xml",
+					"X-Microsoft-OutputFormat": "riff-24khz-16bit-mono-pcm"
+				};
+				xhr2.open('POST', MSTTS_endpoint2);
+				for (const [key, value] of Object.entries(headers)) {
+					xhr2.setRequestHeader(key, value);
+				}
+				xhr2.responseType = 'arraybuffer';
+				var requestBody = `<speak version='1.0' xml:lang='zh-CN'><voice name='${MSTTS_voiceName}'>${text}</voice></speak>`;
+				xhr2.send(requestBody);
+				xhr2.onload = function() {
+				  const audioContext = new AudioContext();
+				  audioContext.decodeAudioData(xhr2.response, function(audioBuffer) {
+				    const source = audioContext.createBufferSource();
+				    source.buffer = audioBuffer;
+				    source.connect(audioContext.destination);
+				    source.start();
+				  });
+				};
+			}
+
+			function getAccessToken(text) {
+				var xhr1 = new XMLHttpRequest();
+				xhr1.open('POST', MSTTS_endpoint1);
+				xhr1.setRequestHeader('Ocp-Apim-Subscription-Key', MSTTS_subscriptionKey);
+				xhr1.send();
+				xhr1.onreadystatechange = function() {
+				  if (xhr1.readyState === 4 && xhr1.status === 200) {
+				    MSTTS_accessToken = xhr1.responseText;
+						audioData = getAudioData(text);
+				  } else if (xhr1.readyState === 4) {
+				    console.log(`Failed to get access token. Status code: ${xhr1.status}`);
+				  }
+				}
+			}
+
+			function msSpeak(sourceLanguage, targetElement) {
+		    var text = document.getElementById(targetElement).value;
+				if (text == "") return;
+				getAccessToken(text);
+			}
+		</script>
+
+		<script>
+			const translationRows = document.querySelectorAll('.translation_row');
+			const originalDisplays = {};
+			translationRows.forEach((row) => {
+			  originalDisplays[row] = window.getComputedStyle(row).display;
+			});
+
+			function translationSwitch(transtionType) {
+				translationElement = document.getElementById(transtionType)
+				var flag;
+				if (transtionType == "GGtranslationRow") {
+					UseGGTranslate = !UseGGTranslate;
+					flag = UseGGTranslate;
+				}
+				else if (transtionType == "MStranslationRow") {
+					UseMSTranslate = !UseMSTranslate;
+					flag = UseMSTranslate;
+				}
+				else if (transtionType == "TWtranslationRow") {
+					UseTWTranslate = !UseTWTranslate;
+					flag = UseTWTranslate;
+				}
+				translationElement.style.display = flag? originalDisplays[translationElement] : "none";
+			}
+		</script>
+
+    <script>
+      function scrollToBottom() {
+        console.log("scrollHeight:", document.body.scrollHeight)
+        var scroll_value = document.body.scrollHeight;
+        window.scrollTo(0, scroll_value);
+      }
+
+			function toggleDarkMode() {
+	      const body = document.body;
+	      body.classList.toggle('dark-mode');
+		    const textareas = document.querySelectorAll('textarea');
+		    textareas.forEach(textarea => {
+		      textarea.classList.toggle('dark-mode');
+		    });
+			}
+    </script>
+
+		<script>
+	    function updateApiKey(id, value="") {
+	      if (value === "") value = apiKeyInputs[id].value;
+	      else apiKeyInputs[id].value = value;
+	      config.apiKeys[id] = value;
+	      saveConfigStorage();
+	    }
+	    function showApiKey(id, button) {
+	      apiKeyInputs[id].type = "text";
+	      button.innerHTML = "🤫";
+	    }
+	    function hideApiKey(id, button) {
+	      apiKeyInputs[id].type = "password";
+	      button.innerHTML = "👁️‍";
+	    }
+	    function copyApiKey(id, button) {
+  			var tempInput = document.createElement("input");
+  			tempInput.type = "text";
+				tempInput.value = apiKeyInputs[id].value;
+				document.body.appendChild(tempInput);
+				tempInput.select();
+				document.execCommand("copy");
+				document.body.removeChild(tempInput);
+	    }
+	    function saveConfigStorage() {
+	      var configJSON = JSON.stringify(config);
+	      localStorage.setItem('snowyJapaneseStudyConfig', configJSON);
+	    }
+	    function loadConfigStorage() {
+	      if (localStorage.getItem('snowyJapaneseStudyConfig')) {
+	        config = JSON.parse(localStorage.getItem('snowyJapaneseStudyConfig'));
+	      }
+	    }
+	    function updateConfig(key, value) {
+        config[key] = value;
+        saveConfig();
+	    }
+			function saveConfig() {
+				console.log(`Save Config ing...`);
+				config.apiKeys = [...apiKeyInputs].map(element => element.value);
+				saveConfigStorage();
+				console.log(`Save Config Finished.`);
+			}
+	    function loadConfig() {
+	      loadConfigStorage();
+	      for (let i = 0; i < apiKeyInputs.length; i++) {
+	        updateApiKey(i, config.apiKeys[i]);
+				}
+			}
+		</script>
+
+		<script>
+			loadConfig();
+		</script>
+
+		<ul id="inputList"></ul>
+		<ul id="extraInputList"></ul>
+  	<p id="inputListTotalCount"></p>
+  	<p id="inputListCurrentID"></p>
+		<ruby> 日本語<rt>にほんご</rt> 勉強<rt>べんきょう</rt> の </ruby>
+		<ruby> 為<rt>ため</rt> に </ruby>
+		<ruby> 自分<rt>じぶん</rt> で </ruby>
+		<ruby> このサイトを </ruby>
+		<ruby> 作<rt>つく</rt> った </ruby>
+		<br>
+
+		<img src="Japanese Syllabary Chart 五十音表.png" alt="^_^" width="720px">
+  </body>
+</html>
