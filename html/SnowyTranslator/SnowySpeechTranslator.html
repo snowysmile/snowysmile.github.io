@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="icon" href="static/Img/favicon/hand-drawn-leaf-512x512.png" />
-  <link rel="stylesheet" href="{{ url_for('static', filename='font.css') }}">
+  <link rel="icon" href="static/Img/favicon/cat-and-how-to-train-your-human-book-512x512.png">
+  <link rel="stylesheet" href="static/font.css">
+  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='font.css') }}"> -->
 
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -960,7 +961,6 @@
       saveConfigStorage();
     }
     function updateApiKey(id, value="") {
-      console.log(id, value);
       if (value === "") value = apiKeyInputs[id].value;
       else apiKeyInputs[id].value = value;
       configs[autoSID].apiKeys[id] = value;
