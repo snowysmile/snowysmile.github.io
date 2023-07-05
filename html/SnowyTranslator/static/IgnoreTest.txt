@@ -1,4 +1,0 @@
-will work:
-  - html/SnowyTranslator/static/IgnoreTest.txt
-won't work:
-  - html\SnowyTranslator\static\IgnoreTest.txt
