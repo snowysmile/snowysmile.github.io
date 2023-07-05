@@ -17,6 +17,14 @@ def process():
     loop.close()
     return jsonify(result=result)
 
+@app.route('/tts', methods=['GET'])
+def tts():
+    text = request.args.get('text', '')
+    source_language = request.args.get('source_language', 'ja')
+    url = f"https://translate.google.com/translate_tts?ie=UTF-8&tl={source_language}&client=tw-ob&q={text}"
+    response = requests.get(url)
+    return response.content, response.status_code, {'Content-Type': response.headers['Content-Type']}
+
 async def ichimoe_japanese_split(text):
     print("text:", text)
     inner_html = ""

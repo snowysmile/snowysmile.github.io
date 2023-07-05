@@ -88,13 +88,13 @@
 		<div class="translation_row" id=GGtranslationRow>
 		  <span class="apiKey-span"> Google Translation: </span>
 		  <textarea id="GGtranslation" style="margin-top:2px; font-weight: 600;" readonly></textarea>
-		  <button id="ggSpeak-button", onclick="ggSpeak('en', 'GGtranslation')">Speak</button>
+		  <button id="ggSpeak-button", onclick="ggSpeak(targetLanguage, 'GGtranslation')">Speak</button>
 		</div>
 
 		<div class="translation_row" id=MStranslationRow>
 			<span class="apiKey-span"> Microsoft Translation: </span>
 			<textarea id="MStranslation" style="margin-top:2px; font-weight: 600;"></textarea> <!-- not readonly -->
-		  <button id="ggSpeak-button", onclick="ggSpeak('en', 'MStranslation')">Speak</button>
+		  <button id="ggSpeak-button", onclick="ggSpeak(targetLanguage, 'MStranslation')">Speak</button>
 		</div>
 
 		<div class="translation_row" id=TWtranslationRow>
@@ -106,23 +106,29 @@
 
 		<textarea id="CNtranslation" style="margin-top:2px; font-weight: 600; display:none;" ></textarea>
 
-	  <div>
-	    <span class="apiKey-span"> Google Script API-KEY: </span>
+		<div>
+	    <span class="apiKey-span"> Azure TTS KEY: </span>
 	    <input type="password" id="apiKeyInput-0" size="65" oninput="updateApiKey(0)"> &nbsp;
 	    <button id="apiKey-button" onmousedown="showApiKey(0, this)" onmouseup="hideApiKey(0, this)">👁️</button> &nbsp;
 	    <button id="copyApiKey-button" onclick="copyApiKey(0, this)">✂️</button> &nbsp;
 	  </div>
 		<div>
-	    <span class="apiKey-span"> Google Cloud API-KEY: </span>
+	    <span class="apiKey-span"> Azure Translate KEY: </span>
 	    <input type="password" id="apiKeyInput-1" size="65" oninput="updateApiKey(1)"> &nbsp;
 	    <button id="apiKey-button" onmousedown="showApiKey(1, this)" onmouseup="hideApiKey(1, this)">👁️</button> &nbsp;
 	    <button id="copyApiKey-button" onclick="copyApiKey(1, this)">✂️</button> &nbsp;
 	  </div>
 		<div>
-	    <span class="apiKey-span"> Azure Subscription KEY: </span>
+	    <span class="apiKey-span"> Google Cloud API-KEY: </span>
 	    <input type="password" id="apiKeyInput-2" size="65" oninput="updateApiKey(2)"> &nbsp;
 	    <button id="apiKey-button" onmousedown="showApiKey(2, this)" onmouseup="hideApiKey(2, this)">👁️</button> &nbsp;
 	    <button id="copyApiKey-button" onclick="copyApiKey(2, this)">✂️</button> &nbsp;
+	  </div>
+	  <div>
+	    <span class="apiKey-span"> Google Script API-KEY: </span>
+	    <input type="password" id="apiKeyInput-3" size="65" oninput="updateApiKey(3)"> &nbsp;
+	    <button id="apiKey-button" onmousedown="showApiKey(3, this)" onmouseup="hideApiKey(3, this)">👁️</button> &nbsp;
+	    <button id="copyApiKey-button" onclick="copyApiKey(3, this)">✂️</button> &nbsp;
 	  </div>
 
 		<script>
@@ -331,7 +337,7 @@
 		<script>
 			// https://portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation
 			// 2M characters every month
-			var azureSubscriptionKey;
+			var azureTranslateSubscriptionKey;
 			const azureEndpoint = 'https://api.cognitive.microsofttranslator.com/';
 			const region = 'japaneast';
 			function msTranslate(targetLanguage, targetElement) {
@@ -339,7 +345,7 @@
 				var params = {
 					method: 'POST',
 					headers: {
-						'Ocp-Apim-Subscription-Key': azureSubscriptionKey,
+						'Ocp-Apim-Subscription-Key': azureTranslateSubscriptionKey,
 						'Content-Type': 'application/json',
 						'Ocp-Apim-Subscription-Region': region
 					},
@@ -374,6 +380,9 @@
 
 		<script>
 		  function ggSpeak(sourceLanguage, targetElement) {
+				if (sourceLanguage === "") {
+					sourceLanguage = "auto";
+				}
 		    var text = document.getElementById(targetElement).value;
 				if (text == "") return;
 		    var url = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" + sourceLanguage
@@ -402,7 +411,6 @@
 		</script>
 
 		<script>
-			var MSTTS_subscriptionKey;
 			const MSTTS_region = "southeastasia";
 			const MSTTS_endpoint1 = `https://${MSTTS_region}.api.cognitive.microsoft.com/sts/v1.0/issuetoken`;
 			const MSTTS_endpoint2 = `https://${MSTTS_region}.tts.speech.microsoft.com/cognitiveservices/v1`;
@@ -438,7 +446,7 @@
 			function getAccessToken(text) {
 				var xhr1 = new XMLHttpRequest();
 				xhr1.open('POST', MSTTS_endpoint1);
-				xhr1.setRequestHeader('Ocp-Apim-Subscription-Key', MSTTS_subscriptionKey);
+				xhr1.setRequestHeader('Ocp-Apim-Subscription-Key', azureSpeechSubscriptionKey);
 				xhr1.send();
 				xhr1.onreadystatechange = function() {
 				  if (xhr1.readyState === 4 && xhr1.status === 200) {
@@ -506,6 +514,18 @@
 	      else apiKeyInputs[id].value = value;
 	      config.apiKeys[id] = value;
 	      saveConfigStorage();
+				if (id === 0) {
+					azureSpeechSubscriptionKey = value;
+				}
+				else if (id === 1) {
+					azureTranslateSubscriptionKey = value;
+				}
+				else if (id === 2) {
+					gcpApiKey = value;
+				}
+				else if (id === 3) {
+					googleScriptKey = value;
+				}
 	    }
 	    function showApiKey(id, button) {
 	      apiKeyInputs[id].type = "text";
