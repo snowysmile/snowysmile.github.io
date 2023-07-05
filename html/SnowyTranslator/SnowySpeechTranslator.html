@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="icon" href="static/Img/favicon/hand-drawn-leaf-512x512.png" />
-  <link rel="stylesheet" href="static/font.css">
-  <!-- <link rel="stylesheet" href="./font.css"> -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='font.css') }}">
+
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   <style>
@@ -19,7 +19,7 @@
       flex-direction: row;
     }
     .row-container-left {
-      width: 750px;
+      width: 720px;
       display: flex;
       flex-direction: row;
       align-items: flex-start;
@@ -85,13 +85,37 @@
       z-index: -2;
       -webkit-text-stroke: var(--stroke-width-layer-1) var(--stroke-color-layer-1);
     }
-    #jpExpArea {
-      width: 1000px; /* Set the desired width */
+    #jpExpAreaFrame {
+      width: 1045px;
+      border: 2px solid black;
+			margin-bottom: 10px;
     }
-    #jpExpArea * {
-      width: 100%; /* Inherit the width from the parent element */
+    #jpExpArea {
+      width: 1000px;
+			margin-top: 10px;
+			margin-bottom: 10px;
     }
   </style>
+
+  <script>
+    var currentUrl = window.location.href;
+    if (currentUrl.includes("localhost:")) {
+      console.log("Running on localhost");
+      if (document.getElementById("dynamic-css")) {
+        document.getElementById("dynamic-css").setAttribute("href", "{{ url_for('static', filename='font.css') }}");
+      }
+    }
+    else if (window.location.protocol === "file:") {
+      console.log("Running as a local file");
+      if (document.getElementById("dynamic-css")) {
+        document.getElementById("dynamic-css").setAttribute("href", "static/font.css");
+      }
+    }
+    else {
+      console.log("Running on a web server");
+    }
+  </script>
+
   <script>
     const topTranslationCounts = 2;
     var translationCounts = 2;
@@ -111,7 +135,7 @@
       textShadowColors: ["#ffeebb", "#ffeebb", "#ffeebb"],
       textShadowBlurRadius: [0, 0, 0], //em
       textMargins: [5, 5, 5], //px
-      apiKeys: ["", ""],
+      apiKeys: ["", "", "", ""],
       speechSplitInterval: 1000, //ms
       speechClearInterval: 360000, //ms
       languages: ['ja', 'en', 'zh-TW'],
@@ -165,14 +189,17 @@
   <div class="row-container">
     <button id="record-button" onclick="toggleRecord()" style="width: 148px;">▶️ Start Recording</button>
     <textarea id="recordResult" rows="4" cols="115"></textarea>
+    <button onclick="ggSpeak(this.parentNode.querySelector('textarea').value)">🔊</button>
   </div>
   <form action="/process" method="post" class="row-container">
     <button id="jpExp-button" type="button" onclick="japaneseExplanation()" style="width: 148px;">Japanese Explanation</button>
     <textarea id="jpExpInput" name="jpExpInputName" rows="2" cols="115"></textarea>
+    <button onclick="ggSpeak(this.parentNode.querySelector('textarea').value)">🔊</button>
   </form>
   <div class="row-container">
     <button id="translate-button" onclick="ggTranslate()" style="width: 148px;"> Transalte </button>
-    <textarea id="translateInput" rows="2" cols="120"></textarea>
+    <textarea id="translateInput" rows="2" cols="115"></textarea>
+    <button onclick="ggSpeak(this.parentNode.querySelector('textarea').value)">🔊</button>
   </div>
 
   <div class="row-container" style="margin-top:9px; margin-bottom:9px;">
@@ -186,34 +213,40 @@
     <button id="extraInputAutoReadSwitch-button" style="width:55px; height:25px;" onclick="extraInputAutoReadSwitch()">⬇️🔊</button>
   </div>
 
-  <div id="jpExpArea">
+  <div id="jpExpAreaFrame">
+    <div id="jpExpArea">
+    </div>
   </div>
   <div id="jpExpAreaTest">
   </div>
 
   <div class="row-container-left">
     <span style="width: 170px;"> Google Script API-KEY: </span>
-    <input type="password" id="apiKeyInput-0" size="60" oninput="updateApiKey(0)"> &nbsp;
+    <input type="password" id="apiKeyInput-0" size="50" oninput="updateApiKey(0)"> &nbsp;
     <button id="apiKey-button" onmousedown="showApiKey(0, this)" onmouseup="hideApiKey(0, this)">👁️</button> &nbsp;
+    <button id="copyApiKey-button" onclick="copyApiKey(0, this)">✂️</button> &nbsp;
     <button id="speechTranslate-button" onclick="speechTranslate(recognitionResult.value)">🔤</button>
     <button id="recordTranslate-button" onclick="speechTranslate(recordResult.value)">❇️</button>
   </div>
   <div class="row-container-left">
     <span style="width: 170px;"> GCP API-KEY: </span>
-    <input type="password" id="apiKeyInput-1" size="60" oninput="updateApiKey(1)"> &nbsp;
+    <input type="password" id="apiKeyInput-1" size="50" oninput="updateApiKey(1)"> &nbsp;
     <button id="apiKey-button" onmousedown="showApiKey(1, this)" onmouseup="hideApiKey(1, this)">👁️</button> &nbsp;
+    <button id="copyApiKey-button" onclick="copyApiKey(1, this)">✂️</button> &nbsp;
     <button id="speechTranslate-button" onclick="speechTranslate(recognitionResult.value)">🔤</button>
   </div>
   <div class="row-container-left">
     <span style="width: 170px;"> Azure Translate Key: </span>
-    <input type="password" id="apiKeyInput-2" size="60" oninput="updateApiKey(2)"> &nbsp;
+    <input type="password" id="apiKeyInput-2" size="50" oninput="updateApiKey(2)"> &nbsp;
     <button id="apiKey-button" onmousedown="showApiKey(2, this)" onmouseup="hideApiKey(2, this)">👁️</button> &nbsp;
+    <button id="copyApiKey-button" onclick="copyApiKey(2, this)">✂️</button> &nbsp;
     <button id="speechTranslate-button" onclick="speechTranslate(recognitionResult.value)">🔤</button>
   </div>
   <div class="row-container-left">
     <span style="width: 170px;"> Azure TTS Key: </span>
-    <input type="password" id="apiKeyInput-3" size="60" oninput="updateApiKey(3)"> &nbsp;
+    <input type="password" id="apiKeyInput-3" size="50" oninput="updateApiKey(3)"> &nbsp;
     <button id="apiKey-button" onmousedown="showApiKey(3, this)" onmouseup="hideApiKey(3, this)">👁️</button> &nbsp;
+    <button id="copyApiKey-button" onclick="copyApiKey(3, this)">✂️</button> &nbsp;
     <button id="speechTranslate-button" onclick="speechTranslate(recognitionResult.value)">🔤</button>
   </div>
 
@@ -599,6 +632,15 @@
     function hideApiKey(id, button) {
       apiKeyInputs[id].type = "password";
       button.innerHTML = "👁️‍";
+    }
+    function copyApiKey(id, button) {
+      var tempInput = document.createElement("input");
+      tempInput.type = "text";
+      tempInput.value = apiKeyInputs[id].value;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempInput);
     }
     function startRecognition() {
       recognition.lang = languageSelects[0].value;
