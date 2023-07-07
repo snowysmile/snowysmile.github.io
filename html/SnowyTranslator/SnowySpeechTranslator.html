@@ -3,10 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="icon" href="static/Img/favicon/cat-and-how-to-train-your-human-book-512x512.png">
+  <link rel="icon" href="static/Img/favicon/cat-in-leaves-512x512.png">
   <link rel="stylesheet" href="static/font.css">
-  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='font.css') }}"> -->
-
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   <style>
@@ -99,24 +97,20 @@
   </style>
 
   <script>
-    var currentUrl = window.location.href;
-    if (currentUrl.includes("localhost:")) {
-      console.log("Running on localhost");
-      if (document.getElementById("dynamic-css")) {
-        document.getElementById("dynamic-css").setAttribute("href", "{{ url_for('static', filename='font.css') }}");
-      }
-    }
-    else if (window.location.protocol === "file:") {
+    var runningEnvironment = 0;
+    if (window.location.protocol === "file:") {
       console.log("Running as a local file");
-      if (document.getElementById("dynamic-css")) {
-        document.getElementById("dynamic-css").setAttribute("href", "static/font.css");
-      }
+      runningEnvironment = 1;
+    }
+    else if (window.location.href.includes("localhost:")) {
+      console.log("Running on localhost");
+      runningEnvironment = 2;
     }
     else {
       console.log("Running on a web server");
+      runningEnvironment = 3;
     }
   </script>
-
   <script>
     const topTranslationCounts = 2;
     var translationCounts = 2;
@@ -193,9 +187,9 @@
     <button onclick="ggSpeak(this.parentNode.querySelector('textarea').value)">🔊</button>
   </div>
   <form action="/process" method="post" class="row-container">
-    <button id="jpExp-button" type="button" onclick="japaneseExplanation()" style="width: 148px;">Japanese Explanation</button>
+    <button id="jpExp-button" type="button" onclick="japaneseExplanationEntrance()" style="width: 148px;">Japanese Explanation</button>
     <textarea id="jpExpInput" name="jpExpInputName" rows="2" cols="115"></textarea>
-    <button onclick="ggSpeak(this.parentNode.querySelector('textarea').value)">🔊</button>
+    <button type="button" onclick="ggSpeak(this.parentNode.querySelector('textarea').value)">🔊</button>
   </form>
   <div class="row-container">
     <button id="translate-button" onclick="ggTranslate()" style="width: 148px;"> Transalte </button>
@@ -701,6 +695,8 @@
             console.log("Speech Text:", speechText);
             if (event.results[i].isFinal) {
               recognitionResult.value = speechText;
+              console.log("japaneseExplanationLocalhost(speechText);", speechText);
+              japaneseExplanationLocalhost(speechText);
               if (isRecording) {
                 recordResult.value += speechText + ".";
               }
@@ -774,15 +770,17 @@
       if (sourceLanguage === "") {
         sourceLanguage = "ja";
       }
+
       if (window.location.protocol === "file:") {
-        console.log("Running as a local file");
         var url = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" + sourceLanguage
          + "&client=tw-ob&q=" + encodeURIComponent(text);
       }
-      else {
-        console.log("Running on a server");
+      else if (window.location.href.includes("localhost:")) {
         var url = "/tts?text=" + encodeURIComponent(text) + "&source_language=" + encodeURIComponent(sourceLanguage);
       }
+      else {
+      }
+
       if (ggSpeakAudio) {
         ggSpeakAudio.pause();
       }
@@ -829,6 +827,8 @@
       var sourceLanguage = languageSelects[0].value;
       if (googleScriptKey != null && googleScriptKey != "") {
         for (let i = 0; i < translationCounts; i++) {
+          console.log("sourceLanguage:", sourceLanguage);
+          console.log("googleScriptKey:", googleScriptKey);
           query = `https://script.google.com/macros/s/${googleScriptKey}/exec?`
             + `text=${speechText}`
             + `&source=${sourceLanguage}`
@@ -964,7 +964,9 @@
       if (value === "") value = apiKeyInputs[id].value;
       else apiKeyInputs[id].value = value;
       configs[autoSID].apiKeys[id] = value;
-      googleScriptKey = value;
+      if (id === 0) {
+        googleScriptKey = value;
+      }
       saveConfigStorage();
     }
     function updateSpeechSplitInterval(value=-1) {
@@ -1037,15 +1039,62 @@
       console.log(`Load Config (${configID}) Finsihed.`);
     }
     function updateConfig(configID, key, value) {
-        configs[configID][key] = value;
-        saveConfig(configID);
+      configs[configID][key] = value;
+      saveConfig(configID);
     }
-    function japaneseExplanation() {
+    async function japaneseExplanationFile(text = "") {
+      if (text === "") {
+        text = jpExpInput.value;
+      }
+      let inner_html = "";
+      try {
+        const url = 'https://cors-anywhere.herokuapp.com/https://ichi.moe/cl/qr/?q=' + encodeURIComponent(text);
+        const response = await fetch(url);
+        const html = await response.text();
+        const parser = new DOMParser();
+        const soup = parser.parseFromString(html, 'text/html');
+        const row_gloss_rows = soup.getElementsByClassName('row gloss-row');
+        for (let i = 0; i < row_gloss_rows.length; i++) {
+          const row_gloss_row = row_gloss_rows[i];
+          const glosses = row_gloss_row.getElementsByClassName('gloss');
+          let romaji_str = "";
+          inner_html += " 【";
+          for (let j = 0; j < glosses.length; j++) {
+            const gloss = glosses[j];
+            const hiragana = gloss.getElementsByTagName('dt')[0];
+            if (j > 0) {
+              inner_html += " - ";
+              romaji_str += " ";
+            }
+            let word = hiragana.textContent;
+            word = word.replace("1. ", "");
+            word = word.replace("【", "<rt>");
+            word = word.replace("】", "</rt>");
+            word = "<ruby> " + word + "</ruby>";
+            const romaji = gloss.getElementsByTagName('em')[0].textContent;
+            romaji_str += romaji;
+            inner_html += word;
+          }
+          inner_html += ` | ${romaji_str}】<br> `;
+        }
+        return inner_html;
+      }
+      catch (error) {
+        return `japanese_split: an error occurred: ${error}`;
+      }
+    }
+    function japaneseExplanationLocalhost(text = "") {
       var formData = $('form').serialize();
+      //
+      formData = document.getElementById("recognitionResult").value;
+      console.log("formData:", formData);
+      // formData = $('#jpExpInput').val();
+      //
       $.ajax({
         url: '/process',
         type: 'POST',
-        data: formData,
+        // data: formData,
+        data: { jpExpInputName: formData },
         success: function(response) {
           var elements = response.result.split('<br>');
           var jpExpAreaLength = document.getElementById("jpExpArea").offsetWidth;
@@ -1078,6 +1127,17 @@
           jpExpArea.html(html);
         }
       });
+    }
+
+    function japaneseExplanationEntrance() {
+      if (window.location.protocol === "file:") {
+        japaneseExplanationFile();
+      }
+      else if (window.location.href.includes("localhost:")) {
+        japaneseExplanationLocalhost();
+      }
+      else {
+      }
     }
   </script>
 
