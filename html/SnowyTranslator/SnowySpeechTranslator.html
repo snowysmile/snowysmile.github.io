@@ -87,7 +87,6 @@
     #jpExpAreaFrame {
       width: 1045px;
       border: 2px solid black;
-			margin-bottom: 10px;
     }
     #jpExpArea {
       width: 1000px;
@@ -192,20 +191,13 @@
     <button type="button" onclick="ggSpeak(this.parentNode.querySelector('textarea').value)">🔊</button>
   </form>
   <div class="row-container">
-    <button id="translate-button" onclick="ggTranslate()" style="width: 148px;"> Transalte </button>
+    <button id="translate-button" onclick="speechTranslate(this.parentNode.querySelector('textarea').value)" style="width: 148px;"> Translate </button>
     <textarea id="translateInput" rows="2" cols="115"></textarea>
     <button onclick="ggSpeak(this.parentNode.querySelector('textarea').value)">🔊</button>
   </div>
 
   <div class="row-container" style="margin-top:9px; margin-bottom:9px;">
-    <button id="search-button" style="width:34px; height:25px;" onclick="lookupDictionary()">🔎</button>
-    <button id="inputLanguageSwitch-button" style="width:50px; height:25px;" onclick="inputLanguageSwitch()">JP🔤</button>
-    <button id="inputSpeakJP-button" style="width:55px; height:25px;" onclick="ggSpeak('ja', 'inputArea')">JP🔊</button>
-    <button id="inputSpeakEN-button" style="width:55px; height:25px;" onclick="ggSpeak('en', 'inputArea')">EN🔊</button>
-    <button id="pauseAudio-button" style="width:34px; height:25px;" onclick="pauseAudio()">⏯</button>
-    <button id="extraInputSpeak-button" style="width:32px; height:25px;" onclick="extraInputSpeak()">⛛</button>
-    <button id="inputAutoReadSwitch-button" style="width:34px; height:25px;" onclick="inputAutoReadSwitch()">🔊</button>
-    <button id="extraInputAutoReadSwitch-button" style="width:55px; height:25px;" onclick="extraInputAutoReadSwitch()">⬇️🔊</button>
+    <button id="pauseAudio-button" style="height:25px;" onclick="pauseAudio()">🔊⏯</button>
   </div>
 
   <div id="jpExpAreaFrame">
@@ -215,46 +207,42 @@
   <div id="jpExpAreaTest">
   </div>
 
-  <div class="row-container-left">
-    <span style="width: 170px;"> Google Script API-KEY: </span>
-    <input type="password" id="apiKeyInput-0" size="50" oninput="updateApiKey(0)"> &nbsp;
-    <button id="apiKey-button" onmousedown="showApiKey(0, this)" onmouseup="hideApiKey(0, this)">👁️</button> &nbsp;
-    <button id="copyApiKey-button" onclick="copyApiKey(0, this)">✂️</button> &nbsp;
-    <button id="speechTranslate-button" onclick="speechTranslate(recognitionResult.value)">🔤</button>
-    <button id="recordTranslate-button" onclick="speechTranslate(recordResult.value)">❇️</button>
-  </div>
-  <div class="row-container-left">
-    <span style="width: 170px;"> GCP API-KEY: </span>
-    <input type="password" id="apiKeyInput-1" size="50" oninput="updateApiKey(1)"> &nbsp;
-    <button id="apiKey-button" onmousedown="showApiKey(1, this)" onmouseup="hideApiKey(1, this)">👁️</button> &nbsp;
-    <button id="copyApiKey-button" onclick="copyApiKey(1, this)">✂️</button> &nbsp;
-    <button id="speechTranslate-button" onclick="speechTranslate(recognitionResult.value)">🔤</button>
-  </div>
-  <div class="row-container-left">
-    <span style="width: 170px;"> Azure Translate Key: </span>
-    <input type="password" id="apiKeyInput-2" size="50" oninput="updateApiKey(2)"> &nbsp;
-    <button id="apiKey-button" onmousedown="showApiKey(2, this)" onmouseup="hideApiKey(2, this)">👁️</button> &nbsp;
-    <button id="copyApiKey-button" onclick="copyApiKey(2, this)">✂️</button> &nbsp;
-    <button id="speechTranslate-button" onclick="speechTranslate(recognitionResult.value)">🔤</button>
-  </div>
-  <div class="row-container-left">
-    <span style="width: 170px;"> Azure TTS Key: </span>
-    <input type="password" id="apiKeyInput-3" size="50" oninput="updateApiKey(3)"> &nbsp;
-    <button id="apiKey-button" onmousedown="showApiKey(3, this)" onmouseup="hideApiKey(3, this)">👁️</button> &nbsp;
-    <button id="copyApiKey-button" onclick="copyApiKey(3, this)">✂️</button> &nbsp;
-    <button id="speechTranslate-button" onclick="speechTranslate(recognitionResult.value)">🔤</button>
+  <div class="row-container" style="margin-top:9px; margin-bottom:9px;">
+    <button id="toggleApiKeyEditor-button" onclick="toggleApiKeyEditor()">ApiKey Editor 🟢‍</button>
+    <button id="toggleLayoutEditor-button" onclick="toggleLayoutEditor()">Layout Editor 🟢</button>
   </div>
 
-  <table>
-    <tr>
-      <td><span>Page Background Color:</span></td>
-      <td><input id=pageColorPicker type="color" oninput="updatePageColor()"></td>
-      <td><span id="pageColorValue"></span></td>
-      <td><span>Curtain Background Color:</span></td>
-      <td><input id=curtainColorPicker type="color" oninput="updateCurtainColor()"></td>
-      <td><span id="curtainColorValue"></span></td>
-    </tr>
-  </table>
+  <div id="apiKeyEditor" style="margin-bottom:9px;">
+    <div class="row-container-left">
+      <span style="width: 170px;"> Google Script API-KEY: </span>
+      <input type="password" id="apiKeyInput-0" size="50" oninput="updateApiKey(0)"> &nbsp;
+      <button onmousedown="showApiKey(0, this)" onmouseup="hideApiKey(0, this)">👁️</button> &nbsp;
+      <button onclick="copyApiKey(0, this)">✂️</button> &nbsp;
+      <button onclick="speechTranslate(recognitionResult.value)">🔤</button>
+      <button id="recordTranslate-button" onclick="speechTranslate(recordResult.value)">❇️</button>
+    </div>
+    <div class="row-container-left">
+      <span style="width: 170px;"> GCP API-KEY: </span>
+      <input type="password" id="apiKeyInput-1" size="50" oninput="updateApiKey(1)"> &nbsp;
+      <button onmousedown="showApiKey(1, this)" onmouseup="hideApiKey(1, this)">👁️</button> &nbsp;
+      <button onclick="copyApiKey(1, this)">✂️</button> &nbsp;
+      <button onclick="speechTranslate(recognitionResult.value)">🔤</button>
+    </div>
+    <div class="row-container-left">
+      <span style="width: 170px;"> Azure Translate Key: </span>
+      <input type="password" id="apiKeyInput-2" size="50" oninput="updateApiKey(2)"> &nbsp;
+      <button onmousedown="showApiKey(2, this)" onmouseup="hideApiKey(2, this)">👁️</button> &nbsp;
+      <button onclick="copyApiKey(2, this)">✂️</button> &nbsp;
+      <button onclick="speechTranslate(recognitionResult.value)">🔤</button>
+    </div>
+    <div class="row-container-left">
+      <span style="width: 170px;"> Azure TTS Key: </span>
+      <input type="password" id="apiKeyInput-3" size="50" oninput="updateApiKey(3)"> &nbsp;
+      <button onmousedown="showApiKey(3, this)" onmouseup="hideApiKey(3, this)">👁️</button> &nbsp;
+      <button onclick="copyApiKey(3, this)">✂️</button> &nbsp;
+      <button onclick="speechTranslate(recognitionResult.value)">🔤</button>
+    </div>
+  </div>
 
   <table>
     <tr>
@@ -323,17 +311,6 @@
     <tr>
   </table>
 
-  <table>
-    <tr>
-      <td style="display: none;"> Speech Split Interval (ms): </td>
-      <td style="display: none;"> <input type="text" id="speechSplitInterval" size="8" oninput="updateSpeechSplitInterval();"> </td>
-      <td style="display: none;"> Speech Clear Interval (ms): </td>
-      <td style="display: none;"> <input type="text" id="speechClearInterval" size="8" oninput="updateSpeechClearInterval();"> </td>
-      <td> <button id="clearText-button" onclick="clearTexts();">Clear Texts</button> </td>
-      <td> <button id="defaultText-button" onclick="defaultTexts();">Default Texts</button> </td>
-    </tr>
-  </table>
-
 
   <div class="row-container">
   	<button id="defaultConfig-button" onclick="loadConfig(-1)">🆑</button>
@@ -341,142 +318,159 @@
   	<button id="loadConfig1-button" onclick="loadConfig(1)">L1</button>
   	<button id="saveConfig2-button" onclick="saveConfig(2)">S2</button>
   	<button id="loadConfig2-button" onclick="loadConfig(2)">L2</button>
+    <table>
+      <tr>
+        <td style="display: none;"> Speech Split Interval (ms): </td>
+        <td style="display: none;"> <input type="text" id="speechSplitInterval" size="8" oninput="updateSpeechSplitInterval();"> </td>
+        <td style="display: none;"> Speech Clear Interval (ms): </td>
+        <td style="display: none;"> <input type="text" id="speechClearInterval" size="8" oninput="updateSpeechClearInterval();"> </td>
+        <td> <button id="clearText-button" onclick="clearTexts();">Clear Texts</button> </td>
+        <td> <button id="defaultText-button" onclick="defaultTexts();">Default Texts</button> </td>
+      </tr>
+    </table>
   </div>
 
-  <br>
-  <table>
-    <tr>
-      <th colspan="3"><span>Speech Text</span></th>
-      <th colspan="3"><span>Translation Text 1</span></th>
-      <th colspan="3"><span>Translation Text 2</span></th>
-    </tr>
-    <tr>
-      <td><span>Text Color:</span></td>
-      <td><input id=textColorPicker-0 type="color" value="#000000" oninput="updateFontColor(0)"></td>
-      <td><span id="textColorValue-0"> #000000 </span></td>
-      <td><span>Text Color:</span></td>
-      <td><input id=textColorPicker-1 type="color" value="#000000" oninput="updateFontColor(1)"></td>
-      <td><span id="textColorValue-1"> #000000 </span></td>
-      <td><span>Text Color:</span></td>
-      <td><input id=textColorPicker-2 type="color" value="#000000" oninput="updateFontColor(2)"></td>
-      <td><span id="textColorValue-2"> #000000 </span></td>
-    </tr>
-    <tr>
-      <td><span>Font Size: </span></td>
-      <td><input id=textFontSizeSlider-0 type="range" min="0" max="40" step="1" oninput="updateFontSize(0)"></td>
-      <td><span id="textFontSizeValue-0"></span>px</td>
-      <td><span>Font Size: </span></td>
-      <td><input id=textFontSizeSlider-1 type="range" min="0" max="40" step="1" oninput="updateFontSize(1)"></td>
-      <td><span id="textFontSizeValue-1"></span>px</td>
-      <td><span>Font Size: </span></td>
-      <td><input id=textFontSizeSlider-2 type="range" min="0" max="40" step="1" oninput="updateFontSize(2)"></td>
-      <td><span id="textFontSizeValue-2"></span>px</td>
-    </tr>
-    <tr>
-      <td><span>Font Weight: </span></td>
-      <td><input id="textFontWeightSlider-0" type="range" min="100" max="900" step="100" oninput=" updateFontWeight(0)"></td>
-      <td><span id="textFontWeightValue-0"></span></td>
-      <td><span>Font Weight: </span></td>
-      <td><input id="textFontWeightSlider-1" type="range" min="100" max="900" step="100" oninput=" updateFontWeight(1)"></td>
-      <td><span id="textFontWeightValue-1"></span></td>
-      <td><span>Font Weight: </span></td>
-      <td><input id="textFontWeightSlider-2" type="range" min="100" max="900" step="100" oninput=" updateFontWeight(2)"></td>
-      <td><span id="textFontWeightValue-2"></span></td>
-    </tr>
-    <tr>
-      <td><span>Font Type: </span></td>
-      <td colspan="2"><select id="textFontSelect-0" onchange="updateFontFamily(0)">
-      </select> </td>
-      <td><span>Font Type: </span></td>
-      <td colspan="2"><select id="textFontSelect-1" onchange="updateFontFamily(1)">
-      </select> </td>
-      <td><span>Font Type: </span></td>
-      <td colspan="2"><select id="textFontSelect-2" onchange="updateFontFamily(2)">
-      </select> </td>
-    </tr>
 
-    <tr>
-      <td><span>Stroke Color (A):</span></td>
-      <td><input id=textStrokeColorPicker-0-0 type="color" oninput="updateStrokeColor(0, 0)"></td>
-      <td><span id="textStrokeColorValue-0-0"></span></td>
-      <td><span>Stroke Color (A):</span></td>
-      <td><input id=textStrokeColorPicker-1-0 type="color" oninput="updateStrokeColor(1, 0)"></td>
-      <td><span id="textStrokeColorValue-1-0"></span></td>
-      <td><span>Stroke Color (A):</span></td>
-      <td><input id=textStrokeColorPicker-2-0 type="color" oninput="updateStrokeColor(2, 0)"></td>
-      <td><span id="textStrokeColorValue-2-0"></span></td>
-    </tr>
-    <tr>
-      <td><span>Stroke Width (A): </span></td>
-      <td><input id="textStrokeWidthSlider-0-0" type="range" min="0" max="0.2" step="0.05" oninput="updateStrokeWidth(0, 0)"></td>
-      <td><span id="textStrokeWidthValue-0-0"></span>em</td>
-      <td><span>Stroke Width (A): </span></td>
-      <td><input id="textStrokeWidthSlider-1-0" type="range" min="0" max="0.2" step="0.05" oninput="updateStrokeWidth(1, 0)"></td>
-      <td><span id="textStrokeWidthValue-1-0"></span>em</td>
-      <td><span>Stroke Width (A): </span></td>
-      <td><input id="textStrokeWidthSlider-2-0" type="range" min="0" max="0.2" step="0.05" oninput="updateStrokeWidth(2, 0)"></td>
-      <td><span id="textStrokeWidthValue-2-0"></span>em</td>
-    </tr>
-
-    <tr>
-      <td><span>Stroke Color (B):</span></td>
-      <td><input id=textStrokeColorPicker-0-1 type="color" oninput="updateStrokeColor(0, 1)"></td>
-      <td><span id="textStrokeColorValue-0-1"></span></td>
-      <td><span>Stroke Color (B):</span></td>
-      <td><input id=textStrokeColorPicker-1-1 type="color" oninput="updateStrokeColor(1, 1)"></td>
-      <td><span id="textStrokeColorValue-1-1"></span></td>
-      <td><span>Stroke Color (B):</span></td>
-      <td><input id=textStrokeColorPicker-2-1 type="color" oninput="updateStrokeColor(2, 1)"></td>
-      <td><span id="textStrokeColorValue-2-1"></span></td>
-    </tr>
-    <tr>
-      <td><span>Stroke Width (B): </span></td>
-      <td><input id="textStrokeWidthSlider-0-1" type="range" min="0" max="0.8" step="0.05" oninput="updateStrokeWidth(0, 1)"></td>
-      <td><span id="textStrokeWidthValue-0-1"></span>em</td>
-      <td><span>Stroke Width (B): </span></td>
-      <td><input id="textStrokeWidthSlider-1-1" type="range" min="0" max="0.8" step="0.05" oninput="updateStrokeWidth(1, 1)"></td>
-      <td><span id="textStrokeWidthValue-1-1"></span>em</td>
-      <td><span>Stroke Width (B): </span></td>
-      <td><input id="textStrokeWidthSlider-2-1" type="range" min="0" max="0.8" step="0.05" oninput="updateStrokeWidth(2, 1)"></td>
-      <td><span id="textStrokeWidthValue-2-1"></span>em</td>
-    </tr>
-
-    <tr>
-      <td><label for="textShadowColorPicker-0">Shadow Color:</label></td>
-      <td><input id=textShadowColorPicker-0 type="color" value="#dafffb" oninput="updateTextShadow(0)"></td>
-      <td><span id="textShadowColorValue-0"> #dafffb </span></td>
-      <td><label for="textShadowColorPicker-1">Shadow Color:</label></td>
-      <td><input id=textShadowColorPicker-1 type="color" value="#dafffb" oninput="updateTextShadow(1)"></td>
-      <td><span id="textShadowColorValue-1"> #dafffb </span></td>
-      <td><label for="textShadowColorPicker-2">Shadow Color:</label></td>
-      <td><input id=textShadowColorPicker-2 type="color" value="#dafffb" oninput="updateTextShadow(2)"></td>
-      <td><span id="textShadowColorValue-2"> #dafffb </span></td>
-    </tr>
-
-    <tr>
-      <td><span>Shadow Blur Radius: </span></td>
-      <td><input id="textShadowBlurRadiusSlider-0" type="range" min="0" max="1" step="0.05" oninput="updateTextShadow(0)"></td>
-      <td><span id="textShadowBlurRadiusValue-0"></span>em</td>
-      <td><span>Shadow Blur Radius: </span></td>
-      <td><input id="textShadowBlurRadiusSlider-1" type="range" min="0" max="1" step="0.05" oninput="updateTextShadow(1)"></td>
-      <td><span id="textShadowBlurRadiusValue-1"></span>em</td>
-      <td><span>Shadow Blur Radius: </span></td>
-      <td><input id="textShadowBlurRadiusSlider-2" type="range" min="0" max="1" step="0.05" oninput="updateTextShadow(2)"></td>
-      <td><span id="textShadowBlurRadiusValue-2"></span>em</td>
-    </tr>
-
-    <tr>
-      <td><span>Margin Bottom: </span></td>
-      <td><input id="textMarginSlider-0" type="range" min="0" max="100" step="1" oninput="updateTextMargin(0)"></td>
-      <td><span id="textMarginValue-0"></span>px</td>
-      <td><span>Margin Bottom: </span></td>
-      <td><input id="textMarginSlider-1" type="range" min="0" max="100" step="1" oninput="updateTextMargin(1)"></td>
-      <td><span id="textMarginValue-1"></span>px</td>
-      <td><span>Margin Bottom: </span></td>
-      <td><input id="textMarginSlider-2" type="range" min="0" max="100" step="1" oninput="updateTextMargin(2)"></td>
-      <td><span id="textMarginValue-2"></span>px</td>
-    </tr>
-  </table>
+  <div id="layoutEditor">
+    <table style="margin-left: auto; margin-right: auto; margin-top:9px; margin-bottom:9px;">
+      <tr>
+        <td><span>Page Background Color:</span></td>
+        <td><input id=pageColorPicker type="color" oninput="updatePageColor()"></td>
+        <td><span id="pageColorValue"></span></td>
+        <td><span>Curtain Background Color:</span></td>
+        <td><input id=curtainColorPicker type="color" oninput="updateCurtainColor()"></td>
+        <td><span id="curtainColorValue"></span></td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <th colspan="3"><span>Speech Text</span></th>
+        <th colspan="3"><span>Translation Text 1</span></th>
+        <th colspan="3"><span>Translation Text 2</span></th>
+      </tr>
+      <tr>
+        <td><span>Text Color:</span></td>
+        <td><input id=textColorPicker-0 type="color" value="#000000" oninput="updateFontColor(0)"></td>
+        <td><span id="textColorValue-0"> #000000 </span></td>
+        <td><span>Text Color:</span></td>
+        <td><input id=textColorPicker-1 type="color" value="#000000" oninput="updateFontColor(1)"></td>
+        <td><span id="textColorValue-1"> #000000 </span></td>
+        <td><span>Text Color:</span></td>
+        <td><input id=textColorPicker-2 type="color" value="#000000" oninput="updateFontColor(2)"></td>
+        <td><span id="textColorValue-2"> #000000 </span></td>
+      </tr>
+      <tr>
+        <td><span>Font Size: </span></td>
+        <td><input id=textFontSizeSlider-0 type="range" min="0" max="40" step="1" oninput="updateFontSize(0)"></td>
+        <td><span id="textFontSizeValue-0"></span>px</td>
+        <td><span>Font Size: </span></td>
+        <td><input id=textFontSizeSlider-1 type="range" min="0" max="40" step="1" oninput="updateFontSize(1)"></td>
+        <td><span id="textFontSizeValue-1"></span>px</td>
+        <td><span>Font Size: </span></td>
+        <td><input id=textFontSizeSlider-2 type="range" min="0" max="40" step="1" oninput="updateFontSize(2)"></td>
+        <td><span id="textFontSizeValue-2"></span>px</td>
+      </tr>
+      <tr>
+        <td><span>Font Weight: </span></td>
+        <td><input id="textFontWeightSlider-0" type="range" min="100" max="900" step="100" oninput=" updateFontWeight(0)"></td>
+        <td><span id="textFontWeightValue-0"></span></td>
+        <td><span>Font Weight: </span></td>
+        <td><input id="textFontWeightSlider-1" type="range" min="100" max="900" step="100" oninput=" updateFontWeight(1)"></td>
+        <td><span id="textFontWeightValue-1"></span></td>
+        <td><span>Font Weight: </span></td>
+        <td><input id="textFontWeightSlider-2" type="range" min="100" max="900" step="100" oninput=" updateFontWeight(2)"></td>
+        <td><span id="textFontWeightValue-2"></span></td>
+      </tr>
+      <tr>
+        <td><span>Font Type: </span></td>
+        <td colspan="2"><select id="textFontSelect-0" onchange="updateFontFamily(0)">
+        </select> </td>
+        <td><span>Font Type: </span></td>
+        <td colspan="2"><select id="textFontSelect-1" onchange="updateFontFamily(1)">
+        </select> </td>
+        <td><span>Font Type: </span></td>
+        <td colspan="2"><select id="textFontSelect-2" onchange="updateFontFamily(2)">
+        </select> </td>
+      </tr>
+      <tr>
+        <td><span>Stroke Color (A):</span></td>
+        <td><input id=textStrokeColorPicker-0-0 type="color" oninput="updateStrokeColor(0, 0)"></td>
+        <td><span id="textStrokeColorValue-0-0"></span></td>
+        <td><span>Stroke Color (A):</span></td>
+        <td><input id=textStrokeColorPicker-1-0 type="color" oninput="updateStrokeColor(1, 0)"></td>
+        <td><span id="textStrokeColorValue-1-0"></span></td>
+        <td><span>Stroke Color (A):</span></td>
+        <td><input id=textStrokeColorPicker-2-0 type="color" oninput="updateStrokeColor(2, 0)"></td>
+        <td><span id="textStrokeColorValue-2-0"></span></td>
+      </tr>
+      <tr>
+        <td><span>Stroke Width (A): </span></td>
+        <td><input id="textStrokeWidthSlider-0-0" type="range" min="0" max="0.2" step="0.05" oninput="updateStrokeWidth(0, 0)"></td>
+        <td><span id="textStrokeWidthValue-0-0"></span>em</td>
+        <td><span>Stroke Width (A): </span></td>
+        <td><input id="textStrokeWidthSlider-1-0" type="range" min="0" max="0.2" step="0.05" oninput="updateStrokeWidth(1, 0)"></td>
+        <td><span id="textStrokeWidthValue-1-0"></span>em</td>
+        <td><span>Stroke Width (A): </span></td>
+        <td><input id="textStrokeWidthSlider-2-0" type="range" min="0" max="0.2" step="0.05" oninput="updateStrokeWidth(2, 0)"></td>
+        <td><span id="textStrokeWidthValue-2-0"></span>em</td>
+      </tr>
+      <tr>
+        <td><span>Stroke Color (B):</span></td>
+        <td><input id=textStrokeColorPicker-0-1 type="color" oninput="updateStrokeColor(0, 1)"></td>
+        <td><span id="textStrokeColorValue-0-1"></span></td>
+        <td><span>Stroke Color (B):</span></td>
+        <td><input id=textStrokeColorPicker-1-1 type="color" oninput="updateStrokeColor(1, 1)"></td>
+        <td><span id="textStrokeColorValue-1-1"></span></td>
+        <td><span>Stroke Color (B):</span></td>
+        <td><input id=textStrokeColorPicker-2-1 type="color" oninput="updateStrokeColor(2, 1)"></td>
+        <td><span id="textStrokeColorValue-2-1"></span></td>
+      </tr>
+      <tr>
+        <td><span>Stroke Width (B): </span></td>
+        <td><input id="textStrokeWidthSlider-0-1" type="range" min="0" max="0.8" step="0.05" oninput="updateStrokeWidth(0, 1)"></td>
+        <td><span id="textStrokeWidthValue-0-1"></span>em</td>
+        <td><span>Stroke Width (B): </span></td>
+        <td><input id="textStrokeWidthSlider-1-1" type="range" min="0" max="0.8" step="0.05" oninput="updateStrokeWidth(1, 1)"></td>
+        <td><span id="textStrokeWidthValue-1-1"></span>em</td>
+        <td><span>Stroke Width (B): </span></td>
+        <td><input id="textStrokeWidthSlider-2-1" type="range" min="0" max="0.8" step="0.05" oninput="updateStrokeWidth(2, 1)"></td>
+        <td><span id="textStrokeWidthValue-2-1"></span>em</td>
+      </tr>
+      <tr>
+        <td><label for="textShadowColorPicker-0">Shadow Color:</label></td>
+        <td><input id=textShadowColorPicker-0 type="color" value="#dafffb" oninput="updateTextShadow(0)"></td>
+        <td><span id="textShadowColorValue-0"> #dafffb </span></td>
+        <td><label for="textShadowColorPicker-1">Shadow Color:</label></td>
+        <td><input id=textShadowColorPicker-1 type="color" value="#dafffb" oninput="updateTextShadow(1)"></td>
+        <td><span id="textShadowColorValue-1"> #dafffb </span></td>
+        <td><label for="textShadowColorPicker-2">Shadow Color:</label></td>
+        <td><input id=textShadowColorPicker-2 type="color" value="#dafffb" oninput="updateTextShadow(2)"></td>
+        <td><span id="textShadowColorValue-2"> #dafffb </span></td>
+      </tr>
+      <tr>
+        <td><span>Shadow Blur Radius: </span></td>
+        <td><input id="textShadowBlurRadiusSlider-0" type="range" min="0" max="1" step="0.05" oninput="updateTextShadow(0)"></td>
+        <td><span id="textShadowBlurRadiusValue-0"></span>em</td>
+        <td><span>Shadow Blur Radius: </span></td>
+        <td><input id="textShadowBlurRadiusSlider-1" type="range" min="0" max="1" step="0.05" oninput="updateTextShadow(1)"></td>
+        <td><span id="textShadowBlurRadiusValue-1"></span>em</td>
+        <td><span>Shadow Blur Radius: </span></td>
+        <td><input id="textShadowBlurRadiusSlider-2" type="range" min="0" max="1" step="0.05" oninput="updateTextShadow(2)"></td>
+        <td><span id="textShadowBlurRadiusValue-2"></span>em</td>
+      </tr>
+      <tr>
+        <td><span>Margin Bottom: </span></td>
+        <td><input id="textMarginSlider-0" type="range" min="0" max="100" step="1" oninput="updateTextMargin(0)"></td>
+        <td><span id="textMarginValue-0"></span>px</td>
+        <td><span>Margin Bottom: </span></td>
+        <td><input id="textMarginSlider-1" type="range" min="0" max="100" step="1" oninput="updateTextMargin(1)"></td>
+        <td><span id="textMarginValue-1"></span>px</td>
+        <td><span>Margin Bottom: </span></td>
+        <td><input id="textMarginSlider-2" type="range" min="0" max="100" step="1" oninput="updateTextMargin(2)"></td>
+        <td><span id="textMarginValue-2"></span>px</td>
+      </tr>
+    </table>
+  </div>
 
   <br>
   <ul id="speechTextList"></ul>
@@ -764,38 +758,27 @@
         button.innerHTML = "JP🔤"
       }
     }
-    function ggSpeak(text, sourceLanguage="") {
+    function ggSpeak(text, sourceLanguage = "") {
       console.log("text:", text);
       if (text == "") return;
       if (sourceLanguage === "") {
         sourceLanguage = "ja";
       }
-
-      if (window.location.protocol === "file:") {
-        var url = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" + sourceLanguage
-         + "&client=tw-ob&q=" + encodeURIComponent(text);
-      }
-      else if (window.location.href.includes("localhost:")) {
-        var url = "/tts?text=" + encodeURIComponent(text) + "&source_language=" + encodeURIComponent(sourceLanguage);
-      }
-      else {
-      }
-
+      var url = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" +
+        sourceLanguage +  "&client=tw-ob&q=" + encodeURIComponent(text);
       if (ggSpeakAudio) {
         ggSpeakAudio.pause();
       }
       ggSpeakAudio.src = url;
       ggSpeakAudio.play();
-      var localSpeak = false;
-      if (localSpeak) {
+      /* if ("speechSynthesis" in window) {
         var speechSynthesis = window.speechSynthesis;
         var utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = "ja-JP";
+        utterance.lang = sourceLanguage;
         speechSynthesis.speak(utterance);
-        return;
       }
+      */
     }
-
     function pauseAudio() {
       var button = document.getElementById("pauseAudio-button");
       if (ggSpeakAudio) {
@@ -844,6 +827,21 @@
         }
       }
     }
+
+
+    function toggleApiKeyEditor() {
+      var editor = document.getElementById('apiKeyEditor');
+      var button = document.getElementById('toggleApiKeyEditor-button');
+      editor.style.display = editor.style.display === 'none' ? 'block' : 'none';
+      button.innerHTML = editor.style.display === 'none' ? "ApiKey Editor ❌" : "ApiKey Editor 🟢";
+    }
+    function toggleLayoutEditor() {
+      var editor = document.getElementById('layoutEditor');
+      var button = document.getElementById('toggleLayoutEditor-button');
+      editor.style.display = editor.style.display === 'none' ? 'block' : 'none';
+      button.innerHTML = editor.style.display === 'none' ? "Layout Editor ❌" : "Layout Editor 🟢";
+    }
+
     function saveConfigStorage() {
       var configJSON = JSON.stringify(configs);
       localStorage.setItem('snowyTranslatorConfig', configJSON);
@@ -1042,101 +1040,134 @@
       configs[configID][key] = value;
       saveConfig(configID);
     }
-    async function japaneseExplanationFile(text = "") {
-      if (text === "") {
-        text = jpExpInput.value;
+    function japaneseFill() {
+      jpExpAreaTest.html(line);
+      sentenceLength = jpExpAreaTest.width();
+      if (sentenceLength > jpExpAreaLength) {
+        if (i > 0) {
+          html += "<br>";
+        }
+        html += line;
+        if (i < elements.length - 1) {
+          html += "<br>";
+        }
       }
-      let inner_html = "";
+      else {
+        if (lineLength + sentenceLength > jpExpAreaLength) {
+          html += "<br>";
+          lineLength = 0;
+        }
+        lineLength += sentenceLength;
+        html += line;
+      }
+    }
+    function formatJpExp(jpExp) {
+      var elements = jpExp.split('<br>');
+      var jpExpAreaLength = document.getElementById("jpExpArea").offsetWidth;
+      var jpExpAreaTest = $('#jpExpAreaTest');
+      var lineLength = 0;
+      var html = "";
+      for (let i = 0; i < elements.length; i++) {
+        var line = elements[i];
+        jpExpAreaTest.html(line);
+        sentenceLength = jpExpAreaTest.width();
+        if (sentenceLength > jpExpAreaLength) {
+          if (i > 0) {
+            html += "<br>";
+          }
+          html += line;
+          if (i < elements.length - 1) {
+            html += "<br>";
+          }
+        } else {
+          if (lineLength + sentenceLength > jpExpAreaLength) {
+            html += "<br>";
+            lineLength = 0;
+          }
+          lineLength += sentenceLength;
+          html += line;
+        }
+      }
+      return(html);
+    }
+    async function ScrapeJpExp(text) {
+      var jpExp = "";
       try {
-        const url = 'https://cors-anywhere.herokuapp.com/https://ichi.moe/cl/qr/?q=' + encodeURIComponent(text);
+        const url = 'https://ichi.moe/cl/qr/?q=' + encodeURIComponent(text);
         const response = await fetch(url);
         const html = await response.text();
         const parser = new DOMParser();
         const soup = parser.parseFromString(html, 'text/html');
-        const row_gloss_rows = soup.getElementsByClassName('row gloss-row');
+        const row_gloss_rows = soup.querySelectorAll('.row.gloss-row:not(.hidden)');
         for (let i = 0; i < row_gloss_rows.length; i++) {
           const row_gloss_row = row_gloss_rows[i];
           const glosses = row_gloss_row.getElementsByClassName('gloss');
-          let romaji_str = "";
-          inner_html += " 【";
+          var romaji_str = "";
+          jpExp += " 【";
           for (let j = 0; j < glosses.length; j++) {
             const gloss = glosses[j];
             const hiragana = gloss.getElementsByTagName('dt')[0];
             if (j > 0) {
-              inner_html += " - ";
+              jpExp += " - ";
               romaji_str += " ";
             }
-            let word = hiragana.textContent;
+            var word = hiragana.textContent;
             word = word.replace("1. ", "");
             word = word.replace("【", "<rt>");
             word = word.replace("】", "</rt>");
             word = "<ruby> " + word + "</ruby>";
             const romaji = gloss.getElementsByTagName('em')[0].textContent;
             romaji_str += romaji;
-            inner_html += word;
+            jpExp += word;
           }
-          inner_html += ` | ${romaji_str}】<br> `;
+          jpExp += ` | ${romaji_str}】<br> `;
         }
-        return inner_html;
+        return jpExp;
       }
       catch (error) {
-        return `japanese_split: an error occurred: ${error}`;
+        console.log(`japanese_split: an error occurred: ${error}`);
+        return "";
       }
     }
+    function japaneseExplanationFile(text = "") {
+      if (text === "") {
+        text = jpExpInput.value;
+      }
+      var jpExpPromise = ScrapeJpExp(text);
+      var jpExpArea = $('#jpExpArea');
+      jpExpPromise.then(function(jpExp) {
+        jpExpArea.html(formatJpExp(jpExp));
+      })
+    }
+
     function japaneseExplanationLocalhost(text = "") {
-      var formData = $('form').serialize();
-      //
-      formData = document.getElementById("recognitionResult").value;
-      console.log("formData:", formData);
-      // formData = $('#jpExpInput').val();
-      //
+      if (text === "") {
+        text = $('#jpExpInput').val();
+      }
       $.ajax({
         url: '/process',
         type: 'POST',
-        // data: formData,
-        data: { jpExpInputName: formData },
+        data: { jpExpInput: text },
         success: function(response) {
-          var elements = response.result.split('<br>');
-          var jpExpAreaLength = document.getElementById("jpExpArea").offsetWidth;
-          var jpExpAreaTest = $('#jpExpAreaTest');
           var jpExpArea = $('#jpExpArea');
-          var lineLength = 0;
-          var html = "";
-          for (let i = 0; i < elements.length; i++) {
-            var line = elements[i];
-            jpExpAreaTest.html(line);
-            sentenceLength = jpExpAreaTest.width();
-            if (sentenceLength > jpExpAreaLength) {
-              if (i > 0) {
-                html += "<br>";
-              }
-              html += line;
-              if (i < elements.length - 1) {
-                html += "<br>";
-              }
-            }
-            else {
-              if (lineLength + sentenceLength > jpExpAreaLength) {
-                html += "<br>";
-                lineLength = 0;
-              }
-              lineLength += sentenceLength;
-              html += line;
-            }
-          }
-          jpExpArea.html(html);
+          console.log("response.result:", response.result);
+          jpExpArea.html(formatJpExp(response.result));
         }
       });
     }
 
     function japaneseExplanationEntrance() {
       if (window.location.protocol === "file:") {
+        console.log("japaneseExplanationFile()");
         japaneseExplanationFile();
       }
       else if (window.location.href.includes("localhost:")) {
+        console.log("japaneseExplanationLocalhost()");
         japaneseExplanationLocalhost();
       }
       else {
+        console.log("japaneseExplanationWebPage()");
+        japaneseExplanationFile();
       }
     }
   </script>

@@ -11,7 +11,7 @@ def index():
 
 @app.route('/process', methods=['POST'])
 def process():
-    text = request.form['jpExpInputName']
+    text = request.form['jpExpInput']
     loop = asyncio.new_event_loop()
     result = loop.run_until_complete(ichimoe_japanese_split(text))
     loop.close()
