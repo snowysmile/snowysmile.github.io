@@ -423,14 +423,14 @@
 				var headers = {
 					"Authorization": `Bearer ${MSTTS_accessToken}`,
 					"Content-Type": "application/ssml+xml",
-					"X-Microsoft-OutputFormat": "riff-24khz-16bit-mono-pcm"
+					"X-Microsoft-OutputFormat": "audio-16khz-128kbitrate-mono-mp3"
 				};
 				xhr2.open('POST', MSTTS_endpoint2);
 				for (const [key, value] of Object.entries(headers)) {
 					xhr2.setRequestHeader(key, value);
 				}
 				xhr2.responseType = 'arraybuffer';
-				var requestBody = `<speak version='1.0' xml:lang='zh-CN'><voice name='${MSTTS_voiceName}'>${text}</voice></speak>`;
+				var requestBody = `<speak version='1.0' xml:lang='en-US'><voice name='${MSTTS_voiceName}'>${text}</voice></speak>`;
 				xhr2.send(requestBody);
 				xhr2.onload = function() {
 				  const audioContext = new AudioContext();

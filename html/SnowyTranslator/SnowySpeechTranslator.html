@@ -243,13 +243,13 @@
       <button onclick="copyApiKey(1, this)">✂️</button> &nbsp;
     </div>
     <div class="row-container-left">
-      <span style="width: 170px;"> Azure Translate Key: </span>
+      <span style="width: 170px;"> Azure TTS Key: </span>
       <input type="password" id="apiKeyInput-2" size="50" oninput="updateApiKey(2)"> &nbsp;
       <button onmousedown="showApiKey(2, this)" onmouseup="hideApiKey(2, this)">👁️</button> &nbsp;
       <button onclick="copyApiKey(2, this)">✂️</button> &nbsp;
     </div>
     <div class="row-container-left">
-      <span style="width: 170px;"> Azure TTS Key: </span>
+      <span style="width: 170px;"> Azure Translate Key: </span>
       <input type="password" id="apiKeyInput-3" size="50" oninput="updateApiKey(3)"> &nbsp;
       <button onmousedown="showApiKey(3, this)" onmouseup="hideApiKey(3, this)">👁️</button> &nbsp;
       <button onclick="copyApiKey(3, this)">✂️</button> &nbsp;
@@ -789,33 +789,66 @@
       }
       */
     }
-    function msSpeak(text, sourceLanguage = "") {
-      const apiKeyHeader = "Ocp-Apim-Subscription-Key";
-      const endpoint = "https://YOUR_AZURE_REGION.tts.speech.microsoft.com/cognitiveservices/v1";
-      const headers = new Headers();
-      headers.append(apiKeyHeader, apiKey);
-      headers.append("Content-Type", "application/ssml+xml");
-      headers.append("X-Microsoft-OutputFormat", "audio-16khz-128kbitrate-mono-mp3");
-      const requestOptions = {
-        method: "POST",
-        headers: headers,
-        body: `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-                  <voice name="AshleyNeural">
-                      ${text}
-                  </voice>
-               </speak>`,
-      };
-      fetch(endpoint, requestOptions)
-        .then(response => response.blob())
-        .then(blob => {
-          const audioUrl = URL.createObjectURL(blob);
-          playAudio(audioUrl);
-          console.log(audioUrl);
-        })
-        .catch(error => {
-          console.log("Error:", error);
-        });
+
+		const MSTTS_region = "southeastasia";
+		const MSTTS_endpoint1 = `https://${MSTTS_region}.api.cognitive.microsoft.com/sts/v1.0/issuetoken`;
+		const MSTTS_endpoint2 = `https://${MSTTS_region}.tts.speech.microsoft.com/cognitiveservices/v1`;
+		const MSTTS_voiceName = "zh-CN-XiaozhenNeural";
+		var MSTTS_accessToken;
+		var MSTTS_audioData;
+
+    function getAccessToken(text, callback) {
+      var xhr1 = new XMLHttpRequest();
+      xhr1.open('POST', MSTTS_endpoint1);
+      xhr1.setRequestHeader('Ocp-Apim-Subscription-Key', azureSpeechSubscriptionKey);
+      xhr1.send();
+      xhr1.onreadystatechange = function() {
+        if (xhr1.readyState === 4) {
+          if (xhr1.status === 200) {
+            var accessToken = xhr1.responseText;
+            callback(accessToken);
+          } else {
+            console.log(`Failed to get access token. Status code: ${xhr1.status}`);
+          }
+        }
+      }
     }
+
+    function getAudioData(text, accessToken, callback) {
+      var xhr2 = new XMLHttpRequest();
+      var headers = {
+        "Authorization": `Bearer ${accessToken}`,
+        "Content-Type": "application/ssml+xml",
+        "X-Microsoft-OutputFormat": "audio-16khz-128kbitrate-mono-mp3"
+      };
+      xhr2.open('POST', MSTTS_endpoint2);
+      for (const [key, value] of Object.entries(headers)) {
+        xhr2.setRequestHeader(key, value);
+      }
+      xhr2.responseType = 'arraybuffer';
+      var requestBody = `<speak version='1.0' xml:lang='en-US'><voice name='${MSTTS_voiceName}'>${text}</voice></speak>`;
+      xhr2.send(requestBody);
+      xhr2.onload = function() {
+        callback(xhr2.response);
+      };
+    }
+
+    function msSpeak(text, sourceLanguage = "") {
+      if (text === "") return;
+
+      getAccessToken(text, function(accessToken) {
+        getAudioData(text, accessToken, function(audioData) {
+          const audioContext = new AudioContext();
+          audioContext.decodeAudioData(audioData, function(audioBuffer) {
+            const source = audioContext.createBufferSource();
+            source.buffer = audioBuffer;
+            source.connect(audioContext.destination);
+            source.start();
+          });
+        });
+      });
+    }
+
 
     function pauseAudio() {
       var button = document.getElementById("pauseAudio-button");
@@ -1009,6 +1042,15 @@
       configs[autoSID].apiKeys[id] = value;
       if (id === 0) {
         googleScriptKey = value;
+      }
+      else if (id === 1) {
+        gcpApiKey = value;
+      }
+      else if (id === 2) {
+        azureSpeechSubscriptionKey = value;
+      }
+      else if (id === 3) {
+        azureTranslateSubscriptionKey = value;
       }
       saveConfigStorage();
     }
