@@ -177,23 +177,38 @@
 
   <div class="row-container">
     <button id="recognize-button" onclick="toggleRecognition()" style="width: 148px;">▶️ Start Recognizing</button>
-    <textarea id="recognitionResult" rows="3" cols="115"></textarea>
-    <button onclick="ggSpeak(this.parentNode.querySelector('textarea').value)">🔊</button>
+    <textarea id="recognitionResult" rows="3" cols="110"></textarea>
+    <select id="textareaLanguageSelect-1" style="width: 36px;">
+      <option value="ja" selected>🇯🇵</option>
+      <option value="en">🇺🇸</option>
+      <option value="zh-TW">🇹🇼</option>
+    </select>
+    <button onclick="msSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">🔊</button>
   </div>
   <div class="row-container">
     <button id="record-button" onclick="toggleRecord()" style="width: 148px;">▶️ Start Recording</button>
-    <textarea id="recordResult" rows="4" cols="115"></textarea>
-    <button onclick="ggSpeak(this.parentNode.querySelector('textarea').value)">🔊</button>
+    <textarea id="recordResult" rows="4" cols="110"></textarea>
+    <select id="textareaLanguageSelect-2" style="width: 36px;">
+      <option value="ja" selected>🇯🇵</option>
+      <option value="en">🇺🇸</option>
+      <option value="zh-TW">🇹🇼</option>
+    </select>
+    <button onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">🔊</button>
   </div>
   <form action="/process" method="post" class="row-container">
     <button id="jpExp-button" type="button" onclick="japaneseExplanationEntrance()" style="width: 148px;">Japanese Explanation</button>
     <textarea id="jpExpInput" name="jpExpInputName" rows="2" cols="115"></textarea>
-    <button type="button" onclick="ggSpeak(this.parentNode.querySelector('textarea').value)">🔊</button>
+    <button type="button" onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">🔊</button>
   </form>
   <div class="row-container">
-    <button id="translate-button" onclick="speechTranslate(this.parentNode.querySelector('textarea').value)" style="width: 148px;"> Translate </button>
-    <textarea id="translateInput" rows="2" cols="115"></textarea>
-    <button onclick="ggSpeak(this.parentNode.querySelector('textarea').value)">🔊</button>
+    <button id="translate-button" onclick="speechTranslate(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)" style="width: 148px;"> Translate </button>
+    <textarea id="translateInput" rows="2" cols="110"></textarea>
+    <select id="textareaLanguageSelect-3" style="width: 36px;">
+      <option value="ja" selected>🇯🇵</option>
+      <option value="en">🇺🇸</option>
+      <option value="zh-TW">🇹🇼</option>
+    </select>
+    <button onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">🔊</button>
   </div>
 
   <div class="row-container" style="margin-top:9px; margin-bottom:9px;">
@@ -210,6 +225,8 @@
   <div class="row-container" style="margin-top:9px; margin-bottom:9px;">
     <button id="toggleApiKeyEditor-button" onclick="toggleApiKeyEditor()">ApiKey Editor 🟢‍</button>
     <button id="toggleLayoutEditor-button" onclick="toggleLayoutEditor()">Layout Editor 🟢</button>
+    <button onclick="speechTranslate(recognitionResult.value)">🔤</button>
+    <button onclick="speechTranslate(recordResult.value)">❇️</button>
   </div>
 
   <div id="apiKeyEditor" style="margin-bottom:9px;">
@@ -218,29 +235,24 @@
       <input type="password" id="apiKeyInput-0" size="50" oninput="updateApiKey(0)"> &nbsp;
       <button onmousedown="showApiKey(0, this)" onmouseup="hideApiKey(0, this)">👁️</button> &nbsp;
       <button onclick="copyApiKey(0, this)">✂️</button> &nbsp;
-      <button onclick="speechTranslate(recognitionResult.value)">🔤</button>
-      <button id="recordTranslate-button" onclick="speechTranslate(recordResult.value)">❇️</button>
     </div>
     <div class="row-container-left">
       <span style="width: 170px;"> GCP API-KEY: </span>
       <input type="password" id="apiKeyInput-1" size="50" oninput="updateApiKey(1)"> &nbsp;
       <button onmousedown="showApiKey(1, this)" onmouseup="hideApiKey(1, this)">👁️</button> &nbsp;
       <button onclick="copyApiKey(1, this)">✂️</button> &nbsp;
-      <button onclick="speechTranslate(recognitionResult.value)">🔤</button>
     </div>
     <div class="row-container-left">
       <span style="width: 170px;"> Azure Translate Key: </span>
       <input type="password" id="apiKeyInput-2" size="50" oninput="updateApiKey(2)"> &nbsp;
       <button onmousedown="showApiKey(2, this)" onmouseup="hideApiKey(2, this)">👁️</button> &nbsp;
       <button onclick="copyApiKey(2, this)">✂️</button> &nbsp;
-      <button onclick="speechTranslate(recognitionResult.value)">🔤</button>
     </div>
     <div class="row-container-left">
       <span style="width: 170px;"> Azure TTS Key: </span>
       <input type="password" id="apiKeyInput-3" size="50" oninput="updateApiKey(3)"> &nbsp;
       <button onmousedown="showApiKey(3, this)" onmouseup="hideApiKey(3, this)">👁️</button> &nbsp;
       <button onclick="copyApiKey(3, this)">✂️</button> &nbsp;
-      <button onclick="speechTranslate(recognitionResult.value)">🔤</button>
     </div>
   </div>
 
@@ -311,7 +323,6 @@
     <tr>
   </table>
 
-
   <div class="row-container">
   	<button id="defaultConfig-button" onclick="loadConfig(-1)">🆑</button>
   	<button id="saveConfig1-button" onclick="saveConfig(1)">S1</button>
@@ -329,7 +340,6 @@
       </tr>
     </table>
   </div>
-
 
   <div id="layoutEditor">
     <table style="margin-left: auto; margin-right: auto; margin-top:9px; margin-bottom:9px;">
@@ -759,7 +769,7 @@
       }
     }
     function ggSpeak(text, sourceLanguage = "") {
-      console.log("text:", text);
+      console.log("ggSpeak text:", text);
       if (text == "") return;
       if (sourceLanguage === "") {
         sourceLanguage = "ja";
@@ -779,6 +789,34 @@
       }
       */
     }
+    function msSpeak(text, sourceLanguage = "") {
+      const apiKeyHeader = "Ocp-Apim-Subscription-Key";
+      const endpoint = "https://YOUR_AZURE_REGION.tts.speech.microsoft.com/cognitiveservices/v1";
+      const headers = new Headers();
+      headers.append(apiKeyHeader, apiKey);
+      headers.append("Content-Type", "application/ssml+xml");
+      headers.append("X-Microsoft-OutputFormat", "audio-16khz-128kbitrate-mono-mp3");
+      const requestOptions = {
+        method: "POST",
+        headers: headers,
+        body: `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+                  <voice name="AshleyNeural">
+                      ${text}
+                  </voice>
+               </speak>`,
+      };
+      fetch(endpoint, requestOptions)
+        .then(response => response.blob())
+        .then(blob => {
+          const audioUrl = URL.createObjectURL(blob);
+          playAudio(audioUrl);
+          console.log(audioUrl);
+        })
+        .catch(error => {
+          console.log("Error:", error);
+        });
+    }
+
     function pauseAudio() {
       var button = document.getElementById("pauseAudio-button");
       if (ggSpeakAudio) {
@@ -805,17 +843,24 @@
         xmlRequest.send(null);
       }
     }
-    function speechTranslate(speechText) {
+    function speechTranslate(speechText, sourceLanguage="") {
       updateText(0, speechText);
-      var sourceLanguage = languageSelects[0].value;
+      if (sourceLanguage === "") {
+        sourceLanguage = languageSelects[0].value;
+      }
+      targetLanguages = [];
+      for (let i = 0; i <= translationCounts; i++) {
+        console.log("languageSelects[i].value:", languageSelects[i].value);
+        if (languageSelects[i].value != sourceLanguage) {
+          targetLanguages.push(languageSelects[i].value);
+        }
+      }
       if (googleScriptKey != null && googleScriptKey != "") {
         for (let i = 0; i < translationCounts; i++) {
-          console.log("sourceLanguage:", sourceLanguage);
-          console.log("googleScriptKey:", googleScriptKey);
           query = `https://script.google.com/macros/s/${googleScriptKey}/exec?`
             + `text=${speechText}`
             + `&source=${sourceLanguage}`
-            + `&target=${languageSelects[i + 1].value}`;
+            + `&target=${targetLanguages[i]}`;
           requests[i].open('GET', query, true);
           requests[i].onreadystatechange = function(){
             if (requests[i].readyState === 4 && requests[i].status === 200){
@@ -1040,27 +1085,6 @@
       configs[configID][key] = value;
       saveConfig(configID);
     }
-    function japaneseFill() {
-      jpExpAreaTest.html(line);
-      sentenceLength = jpExpAreaTest.width();
-      if (sentenceLength > jpExpAreaLength) {
-        if (i > 0) {
-          html += "<br>";
-        }
-        html += line;
-        if (i < elements.length - 1) {
-          html += "<br>";
-        }
-      }
-      else {
-        if (lineLength + sentenceLength > jpExpAreaLength) {
-          html += "<br>";
-          lineLength = 0;
-        }
-        lineLength += sentenceLength;
-        html += line;
-      }
-    }
     function formatJpExp(jpExp) {
       var elements = jpExp.split('<br>');
       var jpExpAreaLength = document.getElementById("jpExpArea").offsetWidth;
@@ -1170,6 +1194,7 @@
         japaneseExplanationFile();
       }
     }
+
   </script>
 
   <script>
