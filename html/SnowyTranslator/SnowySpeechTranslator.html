@@ -201,14 +201,17 @@
   </div>
   <form action="/process" method="post" class="row-container">
     <button id="jpExp-button" type="button" onclick="japaneseExplanationEntrance()" style="width: 148px;">Japanese Explanation</button>
-    <textarea id="jpExpInput" name="jpExpInputName" rows="2" cols="110"></textarea>
-    <button style="font-size: 10px;" type="button" onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">G🔊</button>
-    <button style="font-size: 10px;" onclick="msSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">M🔊</button>
+    <textarea id="jpExpInput" name="jpExpInputName" rows="2" cols="105"></textarea>
+    <select id="textareaLanguageSelect-3" style="width: 36px;">
+      <option value="ja" selected>🇯🇵</option>
+    </select>
+    <button type="button" style="font-size: 10px;"  onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">G🔊</button>
+    <button type="button" style="font-size: 10px;" onclick="msSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">M🔊</button>
   </form>
   <div class="row-container">
     <button id="translate-button" onclick="speechTranslate(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)" style="width: 148px;"> Translate </button>
     <textarea id="translateInput" rows="2" cols="105"></textarea>
-    <select id="textareaLanguageSelect-3" style="width: 36px;">
+    <select id="textareaLanguageSelect-4" style="width: 36px;">
       <option value="ja" selected>🇯🇵</option>
       <option value="en">🇺🇸</option>
       <option value="zh-TW">🇹🇼</option>
@@ -646,6 +649,7 @@
     var azureVoiceSelects = document.querySelectorAll('[id^="azureVoiceSelect-"]');
 
     var speechSplitInterval_TimeOut;
+    var speechClearInterval_TimeOut;
     var googleScriptKey;
     var gcpApiKey;
     var azureSpeechSubscriptionKey;
@@ -978,7 +982,6 @@
       }
       targetLanguages = [];
       for (let i = 0; i <= translationCounts; i++) {
-        console.log("languageSelects[i].value:", languageSelects[i].value);
         if (languageSelects[i].value != sourceLanguage) {
           targetLanguages.push(languageSelects[i].value);
         }
