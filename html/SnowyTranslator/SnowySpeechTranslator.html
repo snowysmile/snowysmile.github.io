@@ -118,8 +118,9 @@
     {
       pageColor: "#fffafa",
       curtainColor: "#9acd32",
-      texts: ["1234567890 !@#$%^&*()", "abcdefg ABCDEFG",
-              "< あいうえお サシスセソ - 天気はいい、元気ですか >"],
+      texts: ["< あいうえお サシスセソ - 天気はいい、元気ですか >",
+              "1234567890 !@#$%^&*() abcdefg ABCDEFG",
+              "一閃一閃亮晶晶，滿天都是小星星。掛在天上放光明，好像許多小眼睛。"],
       textFontColors: ["#000000", "#000000", "#000000"],
       textFontSizes: [24, 24, 24], //px
       textFontWeights: [500, 500, 500],
@@ -133,6 +134,7 @@
       speechSplitInterval: 1000, //ms
       speechClearInterval: 360000, //ms
       languages: ['ja', 'en', 'zh-TW'],
+      azureVoices: ['ja-JP-AoiNeural', 'en-US-AnaNeural', 'zh-CN-XiaoyouNeural'],
     }
     var configs = [
       {}, {}, {},
@@ -177,42 +179,47 @@
 
   <div class="row-container">
     <button id="recognize-button" onclick="toggleRecognition()" style="width: 148px;">▶️ Start Recognizing</button>
-    <textarea id="recognitionResult" rows="3" cols="110"></textarea>
+    <textarea id="recognitionResult" rows="3" cols="105"></textarea>
     <select id="textareaLanguageSelect-1" style="width: 36px;">
       <option value="ja" selected>🇯🇵</option>
       <option value="en">🇺🇸</option>
       <option value="zh-TW">🇹🇼</option>
     </select>
-    <button onclick="msSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">🔊</button>
+    <button style="font-size: 10px;" onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">G🔊</button>
+    <button style="font-size: 10px;" onclick="msSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">M🔊</button>
   </div>
   <div class="row-container">
     <button id="record-button" onclick="toggleRecord()" style="width: 148px;">▶️ Start Recording</button>
-    <textarea id="recordResult" rows="4" cols="110"></textarea>
+    <textarea id="recordResult" rows="4" cols="105"></textarea>
     <select id="textareaLanguageSelect-2" style="width: 36px;">
       <option value="ja" selected>🇯🇵</option>
       <option value="en">🇺🇸</option>
       <option value="zh-TW">🇹🇼</option>
     </select>
-    <button onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">🔊</button>
+    <button style="font-size: 10px;" onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">G🔊</button>
+    <button style="font-size: 10px;" onclick="msSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">M🔊</button>
   </div>
   <form action="/process" method="post" class="row-container">
     <button id="jpExp-button" type="button" onclick="japaneseExplanationEntrance()" style="width: 148px;">Japanese Explanation</button>
-    <textarea id="jpExpInput" name="jpExpInputName" rows="2" cols="115"></textarea>
-    <button type="button" onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">🔊</button>
+    <textarea id="jpExpInput" name="jpExpInputName" rows="2" cols="110"></textarea>
+    <button style="font-size: 10px;" type="button" onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">G🔊</button>
+    <button style="font-size: 10px;" onclick="msSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">M🔊</button>
   </form>
   <div class="row-container">
     <button id="translate-button" onclick="speechTranslate(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)" style="width: 148px;"> Translate </button>
-    <textarea id="translateInput" rows="2" cols="110"></textarea>
+    <textarea id="translateInput" rows="2" cols="105"></textarea>
     <select id="textareaLanguageSelect-3" style="width: 36px;">
       <option value="ja" selected>🇯🇵</option>
       <option value="en">🇺🇸</option>
       <option value="zh-TW">🇹🇼</option>
     </select>
-    <button onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">🔊</button>
+    <button style="font-size: 10px;" onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">G🔊</button>
+    <button style="font-size: 10px;" onclick="msSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">M🔊</button>
   </div>
 
   <div class="row-container" style="margin-top:9px; margin-bottom:9px;">
-    <button id="pauseAudio-button" style="height:25px;" onclick="pauseAudio()">🔊⏯</button>
+    <button id="ggPauseAudio-button" style="height:25px;" onclick="ggPauseAudio()">GG🔊⏯</button>
+    <button id="msPauseAudio-button" style="height:25px;" onclick="msPauseAudio()">MS🔊⏯</button>
   </div>
 
   <div id="jpExpAreaFrame">
@@ -319,6 +326,79 @@
         <option value="nl">Dutch オランダ語 Nederlands</option>
         <option value="ru">Russian ロシア語 Русский</option>
         <option value="uk">Ukrainian ウクライナ語 українська</option>
+      </select> </td>
+    <tr>
+  </table>
+
+  <table>
+    <tr>
+      <td> Azure Japanese Voice: </td>
+      <td> <select id="azureVoiceSelect-Japanese" onchange="updateAzureVoice(0)">
+        <option value="ja-JP-NanamiNeural">Nanami</option>
+        <option value="ja-JP-KeitaNeural">Keita</option>
+        <option value="ja-JP-AoiNeural">Aoi</option>
+        <option value="ja-JP-DaichiNeural">Daichi</option>
+        <option value="ja-JP-MayuNeural">Mayu</option>
+        <option value="ja-JP-NaokiNeural">Naoki</option>
+        <option value="ja-JP-ShioriNeural">Shiori</option>
+      </select> </td>
+      <td> Azure English Voice: </td>
+      <td> <select id="azureVoiceSelect-English" onchange="updateAzureVoice(1)">
+        <option value="en-US-JennyMultilingualNeural">Jenny Multilingual</option>
+        <option value="en-US-JennyNeural">Jenny</option>
+        <option value="en-US-GuyNeural">Guy</option>
+        <option value="en-US-AriaNeural">Aria</option>
+        <option value="en-US-DavisNeural">Davis</option>
+        <option value="en-US-AmberNeural">Amber</option>
+        <option value="en-US-AnaNeural">Ana</option>
+        <option value="en-US-AshleyNeural">Ashley</option>
+        <option value="en-US-BrandonNeural">Brandon</option>
+        <option value="en-US-ChristopherNeural">Christopher</option>
+        <option value="en-US-CoraNeural">Cora</option>
+        <option value="en-US-ElizabethNeural">Elizabeth</option>
+        <option value="en-US-EricNeural">Eric</option>
+        <option value="en-US-JacobNeural">Jacob</option>
+        <option value="en-US-JaneNeural">Jane</option>
+        <option value="en-US-JasonNeural">Jason</option>
+        <option value="en-US-JennyMultilingualV2Neural">Jenny Multilingual V2</option>
+        <option value="en-US-MichelleNeural">Michelle</option>
+        <option value="en-US-MonicaNeural">Monica</option>
+        <option value="en-US-NancyNeural">Nancy</option>
+        <option value="en-US-RogerNeural">Roger</option>
+        <option value="en-US-RyanMultilingualNeural">Ryan Multilingual</option>
+        <option value="en-US-SaraNeural">Sara</option>
+        <option value="en-US-SteffanNeural">Steffan</option>
+        <option value="en-US-TonyNeural">Tony</option>
+        <option value="en-US-AIGenerate1Neural">AIGenerate1</option>
+        <option value="en-US-AIGenerate2Neural">AIGenerate2</option>
+        <option value="en-US-BlueNeural">Blue</option>
+      </select> </td>
+      <td> Azure Chinese Voice: </td>
+      <td> <select id="azureVoiceSelect-Chinese" onchange="updateAzureVoice(2)">
+        <option value="zh-TW-HsiaoChenNeural">HsiaoChen</option>
+        <option value="zh-TW-YunJheNeural">YunJhe</option>
+        <option value="zh-TW-HsiaoYuNeural">HsiaoYu</option>
+        <option value="zh-CN-XiaoxiaoNeural">Xiaoxiao</option>
+        <option value="zh-CN-YunxiNeural">Yunxi</option>
+        <option value="zh-CN-YunjianNeural">Yunjian</option>
+        <option value="zh-CN-XiaoyiNeural">Xiaoyi</option>
+        <option value="zh-CN-YunyangNeural">Yunyang</option>
+        <option value="zh-CN-XiaochenNeural">Xiaochen</option>
+        <option value="zh-CN-XiaohanNeural">Xiaohan</option>
+        <option value="zh-CN-XiaomengNeural">Xiaomeng</option>
+        <option value="zh-CN-XiaomoNeural">Xiaomo</option>
+        <option value="zh-CN-XiaoqiuNeural">Xiaoqiu</option>
+        <option value="zh-CN-XiaoruiNeural">Xiaorui</option>
+        <option value="zh-CN-XiaoshuangNeural">Xiaoshuang</option>
+        <option value="zh-CN-XiaoxuanNeural">Xiaoxuan</option>
+        <option value="zh-CN-XiaoyanNeural">Xiaoyan</option>
+        <option value="zh-CN-XiaoyouNeural">Xiaoyou</option>
+        <option value="zh-CN-XiaozhenNeural">Xiaozhen</option>
+        <option value="zh-CN-YunfengNeural">Yunfeng</option>
+        <option value="zh-CN-YunhaoNeural">Yunhao</option>
+        <option value="zh-CN-YunxiaNeural">Yunxia</option>
+        <option value="zh-CN-YunyeNeural">Yunye</option>
+        <option value="zh-CN-YunzeNeural">Yunze</option>
       </select> </td>
     <tr>
   </table>
@@ -563,8 +643,9 @@
     for (let i = 0; i <= translationCounts; i++) {
       languageSelects.push(document.getElementById(`languageSelect-${i}`));
     }
-    var speechSplitInterval_TimeOut;
+    var azureVoiceSelects = document.querySelectorAll('[id^="azureVoiceSelect-"]');
 
+    var speechSplitInterval_TimeOut;
     var googleScriptKey;
     var gcpApiKey;
     var azureSpeechSubscriptionKey;
@@ -793,11 +874,8 @@
 		const MSTTS_region = "southeastasia";
 		const MSTTS_endpoint1 = `https://${MSTTS_region}.api.cognitive.microsoft.com/sts/v1.0/issuetoken`;
 		const MSTTS_endpoint2 = `https://${MSTTS_region}.tts.speech.microsoft.com/cognitiveservices/v1`;
-		const MSTTS_voiceName = "zh-CN-XiaozhenNeural";
-		var MSTTS_accessToken;
-		var MSTTS_audioData;
-
-    function getAccessToken(text, callback) {
+    var msSpeakAudio;
+    function getMsttsAccessToken(callback) {
       var xhr1 = new XMLHttpRequest();
       xhr1.open('POST', MSTTS_endpoint1);
       xhr1.setRequestHeader('Ocp-Apim-Subscription-Key', azureSpeechSubscriptionKey);
@@ -808,13 +886,12 @@
             var accessToken = xhr1.responseText;
             callback(accessToken);
           } else {
-            console.log(`Failed to get access token. Status code: ${xhr1.status}`);
+            console.log(`Failed to get Azure Access Token. Status code: ${xhr1.status}`);
           }
         }
       }
     }
-
-    function getAudioData(text, accessToken, callback) {
+    function getAudioData(text, sourceLanguage, MSTTS_voiceName, accessToken, callback) {
       var xhr2 = new XMLHttpRequest();
       var headers = {
         "Authorization": `Bearer ${accessToken}`,
@@ -832,26 +909,44 @@
         callback(xhr2.response);
       };
     }
-
+    function updateAzureVoice(id, value="") {
+      if (value === "") value = azureVoiceSelects[id].value;
+      else azureVoiceSelects[id].value = value;
+      configs[autoSID].azureVoices[id] = value;
+      saveConfigStorage();
+    }
     function msSpeak(text, sourceLanguage = "") {
       if (text === "") return;
-
-      getAccessToken(text, function(accessToken) {
-        getAudioData(text, accessToken, function(audioData) {
+      var MSTTS_voiceName;
+      if (sourceLanguage === "ja") {
+        MSTTS_voiceName = azureVoiceSelects[0].value;
+      } else if (sourceLanguage === "en") {
+        MSTTS_voiceName = azureVoiceSelects[1].value;
+      } else if (sourceLanguage === "zh-TW") {
+        MSTTS_voiceName = azureVoiceSelects[2].value;
+      }
+      getMsttsAccessToken(function(accessToken) {
+        getAudioData(text, sourceLanguage, MSTTS_voiceName, accessToken, function(audioData) {
           const audioContext = new AudioContext();
           audioContext.decodeAudioData(audioData, function(audioBuffer) {
-            const source = audioContext.createBufferSource();
-            source.buffer = audioBuffer;
-            source.connect(audioContext.destination);
-            source.start();
+            msSpeakAudio = audioContext.createBufferSource();
+            msSpeakAudio.buffer = audioBuffer;
+            msSpeakAudio.connect(audioContext.destination);
+            msSpeakAudio.start();
           });
         });
       });
     }
-
-
-    function pauseAudio() {
-      var button = document.getElementById("pauseAudio-button");
+    function msPauseAudio() {
+      if (msSpeakAudio) {
+        if (msSpeakAudio.context.state === 'running') {
+          msSpeakAudio.context.suspend();
+        } else if (msSpeakAudio.context.state === 'suspended') {
+          msSpeakAudio.context.resume();
+        }
+      }
+    }
+    function ggPauseAudio() {
       if (ggSpeakAudio) {
         if (ggSpeakAudio.paused) {
           ggSpeakAudio.play();
@@ -905,7 +1000,6 @@
         }
       }
     }
-
 
     function toggleApiKeyEditor() {
       var editor = document.getElementById('apiKeyEditor');
@@ -1090,6 +1184,7 @@
       configs[configID].speechSplitInterval = speechSplitInterval.value;
       configs[configID].speechClearInterval = speechClearInterval.value;
       configs[configID].languages = [...languageSelects].map(element => element.value);
+      configs[configID].azureVoices = [...azureVoiceSelects].map(element => element.value);
       saveConfigStorage();
       console.log(`Save Config (${configID}) Finished.`);
     }
@@ -1117,6 +1212,7 @@
         updateSpeechSplitInterval(configs[configID].speechSplitInterval);
         updateSpeechClearInterval(configs[configID].speechClearInterval);
         updateLanguage(i, configs[configID].languages[i]);
+        updateAzureVoice(i, configs[configID].azureVoices[i]);
       }
       for (let i = 0; i < apiKeyInputs.length; i++) {
         updateApiKey(i, configs[configID].apiKeys[i]);
