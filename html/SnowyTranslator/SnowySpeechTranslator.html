@@ -190,7 +190,7 @@
   </div>
   <div class="row-container">
     <button id="record-button" onclick="toggleRecord()" style="width: 148px;">▶️ Start Recording</button>
-    <textarea id="recordResult" rows="4" cols="105"></textarea>
+    <textarea id="recordResult" rows="3" cols="105"></textarea>
     <select id="textareaLanguageSelect-2" style="width: 36px;">
       <option value="ja" selected>🇯🇵</option>
       <option value="en">🇺🇸</option>
@@ -220,9 +220,44 @@
     <button style="font-size: 10px;" onclick="msSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">M🔊</button>
   </div>
 
-  <div class="row-container" style="margin-top:9px; margin-bottom:9px;">
-    <button id="ggPauseAudio-button" style="height:25px;" onclick="ggPauseAudio()">GG🔊⏯</button>
-    <button id="msPauseAudio-button" style="height:25px;" onclick="msPauseAudio()">MS🔊⏯</button>
+  <div class="row-container" style="margin-top:6px; margin-bottom:3px;">
+    <button id="ggPauseAudio-button" style="height:24px;" onclick="ggPauseAudio()">GG🔊⏯</button>
+    <button id="msPauseAudio-button" style="height:24px;" onclick="msPauseAudio()">MS🔊⏯</button>
+
+    <span style="margin-left:12px;">
+      <select style="width: 40px; height:18px;">
+        <option value="ja" selected>🇯🇵</option>
+        <option value="en">🇺🇸</option>
+        <option value="zh-TW">🇹🇼</option>
+      </select>
+      <button onclick="ggSpeak(texts[0].textContent, this.previousElementSibling.value)">G🔊</button>
+      <button onclick="msSpeak(texts[0].textContent, this.previousElementSibling.previousElementSibling.value)">M🔊</button>
+    </span>
+    <span style="margin-left:12px;">
+      <select style="width: 40px; height:18px;">
+        <option value="ja">🇯🇵</option>
+        <option value="en" selected>🇺🇸</option>
+        <option value="zh-TW">🇹🇼</option>
+      </select>
+      <button onclick="ggSpeak(texts[1].textContent, this.previousElementSibling.value)">G🔊</button>
+      <button onclick="msSpeak(texts[1].textContent, this.previousElementSibling.previousElementSibling.value)">M🔊</button>
+    </span>
+    <span style="margin-left:10px;">
+      <select style="width: 40px; height:18px;">
+        <option value="ja">🇯🇵</option>
+        <option value="en">🇺🇸</option>
+        <option value="zh-TW" selected>🇹🇼</option>
+      </select>
+      <button onclick="ggSpeak(texts[2].textContent, this.previousElementSibling.value)">G🔊</button>
+      <button onclick="msSpeak(texts[2].textContent, this.previousElementSibling.previousElementSibling.value)">M🔊</button>
+    </span>
+  </div>
+
+  <div class="row-container" style="margin-bottom:9px;">
+    <button id="toggleJpExpArea-button" style="margin-right:3px;" onclick="toggleJpExpArea()">JpExp Area 🟢</button>
+    <button id="toggleJpExpWeb-button" style="margin-right:3px;" onclick="toggleJpExpWeb()">JpExp Web ❌</button>
+    <button id="toggleApiKeyEditor-button" style="margin-right:3px;" onclick="toggleApiKeyEditor()">ApiKey Editor 🟢‍</button>
+    <button id="toggleLayoutEditor-button" style="margin-right:3px;" onclick="toggleLayoutEditor()">Layout Editor 🟢</button>
   </div>
 
   <div id="jpExpAreaFrame">
@@ -232,12 +267,7 @@
   <div id="jpExpAreaTest">
   </div>
 
-  <div class="row-container" style="margin-top:9px; margin-bottom:9px;">
-    <button id="toggleApiKeyEditor-button" onclick="toggleApiKeyEditor()">ApiKey Editor 🟢‍</button>
-    <button id="toggleLayoutEditor-button" onclick="toggleLayoutEditor()">Layout Editor 🟢</button>
-    <button onclick="speechTranslate(recognitionResult.value)">🔤</button>
-    <button onclick="speechTranslate(recordResult.value)">❇️</button>
-  </div>
+  <iframe id="jpExpWeb" style="width:1000px; height:654px; margin-top:5px; margin-bottom:5px; display:none" src="https://ichi.moe/"></iframe><br>
 
   <div id="apiKeyEditor" style="margin-bottom:9px;">
     <div class="row-container-left">
@@ -245,6 +275,8 @@
       <input type="password" id="apiKeyInput-0" size="50" oninput="updateApiKey(0)"> &nbsp;
       <button onmousedown="showApiKey(0, this)" onmouseup="hideApiKey(0, this)">👁️</button> &nbsp;
       <button onclick="copyApiKey(0, this)">✂️</button> &nbsp;
+      <button onclick="speechTranslate(recognitionResult.value)">🔤</button>
+      <button onclick="speechTranslate(recordResult.value)">❇️</button>
     </div>
     <div class="row-container-left">
       <span style="width: 170px;"> GCP API-KEY: </span>
@@ -853,6 +885,7 @@
         button.innerHTML = "JP🔤"
       }
     }
+
     function ggSpeak(text, sourceLanguage = "") {
       console.log("ggSpeak text:", text);
       if (text == "") return;
@@ -920,6 +953,8 @@
       saveConfigStorage();
     }
     function msSpeak(text, sourceLanguage = "") {
+      console.log("msSpeak-text:", text);
+      console.log("sourceLanguage:", sourceLanguage);
       if (text === "") return;
       var MSTTS_voiceName;
       if (sourceLanguage === "ja") {
@@ -980,6 +1015,12 @@
       if (sourceLanguage === "") {
         sourceLanguage = languageSelects[0].value;
       }
+      if (sourceLanguage === "ja" && document.getElementById('jpExpWeb').style.display === 'block') {
+        var noSpaceSpeechText = speechText.replace(/\s+/g, "");
+        var encodedSpeechText = encodeURIComponent(noSpaceSpeechText);
+        var ichimoe_url = "https://ichi.moe/cl/qr/?q=" + encodedSpeechText;
+        document.getElementById("jpExpWeb").src = ichimoe_url;
+      }
       targetLanguages = [];
       for (let i = 0; i <= translationCounts; i++) {
         if (languageSelects[i].value != sourceLanguage) {
@@ -1015,6 +1056,18 @@
       var button = document.getElementById('toggleLayoutEditor-button');
       editor.style.display = editor.style.display === 'none' ? 'block' : 'none';
       button.innerHTML = editor.style.display === 'none' ? "Layout Editor ❌" : "Layout Editor 🟢";
+    }
+    function toggleJpExpArea() {
+      var widget = document.getElementById('jpExpAreaFrame');
+      var button = document.getElementById('toggleJpExpArea-button');
+      widget.style.display = widget.style.display === 'none' ? 'block' : 'none';
+      button.innerHTML = widget.style.display === 'none' ? "JpExp Text ❌" : "JpExp Text 🟢";
+    }
+    function toggleJpExpWeb() {
+      var widget = document.getElementById('jpExpWeb');
+      var button = document.getElementById('toggleJpExpWeb-button');
+      widget.style.display = widget.style.display === 'none' ? 'block' : 'none';
+      button.innerHTML = widget.style.display === 'none' ? "JpExp Web ❌" : "JpExp Web 🟢";
     }
 
     function saveConfigStorage() {
