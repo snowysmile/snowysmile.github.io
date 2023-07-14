@@ -162,6 +162,8 @@
     });
   </script>
 
+  <iframe id="jpExpWebZero" style="width:1000px; height:654px; margin-top:5px; margin-bottom:5px; display:none" src="https://ichi.moe/"></iframe>
+
   <div class="text-area">
     <div id="textMargin-0"> </div>
     <div class="stroke-text" id="text-0"> </div>
@@ -177,67 +179,95 @@
     });
   </script>
 
-  <table class="row-container" id="inputArea-1">
-    <tr>
-      <td><button id="recognize-button" onclick="toggleRecognition()" style="width: 148px;">▶️ Start Recognizing</button></td>
-      <td><textarea id="recognitionResult" rows="2" cols="99"></textarea></td>
-      <td><select id="textareaLanguageSelect-1" style="width: 36px; height: 20px;">
-        <option value="ja" selected>🇯🇵</option>
-        <option value="en">🇺🇸</option>
-        <option value="zh-TW">🇹🇼</option>
-      </select>
-      <button style="font-size: 10px; height: 20px;" onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">G🔊</button>
-      <button style="font-size: 10px; height: 20px;" onclick="msSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">M🔊</button></td>
-    </tr>
-  </table>
-
-  <table class="row-container" id="inputArea-2">
-    <tr>
-      <td><button id="record-button" onclick="toggleRecord()" style="width: 148px;">▶️ Start Recording</button></td>
-      <td><textarea id="recordResult" rows="2" cols="99"></textarea></td>
-      <td><select id="textareaLanguageSelect-2" style="width: 36px;">
-        <option value="ja" selected>🇯🇵</option>
-        <option value="en">🇺🇸</option>
-        <option value="zh-TW">🇹🇼</option>
-      </select>
-      <button style="font-size: 10px;" onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">G🔊</button>
-      <button style="font-size: 10px;" onclick="msSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">M🔊</button></td>
-    </tr>
-  </table>
-
-  <table class="row-container" id="inputArea-3">
-    <form action="/process" method="post">
-      <tr>
-        <td><button id="jpExp-button" type="button" onclick="japaneseExplanationEntrance()" style="width: 148px;">Japanese Explanation</button></td>
-        <td><textarea id="jpExpInput" name="jpExpInputName" rows="2" cols="99"></textarea></td>
-        <td><select id="textareaLanguageSelect-3" style="width: 36px;">
+  <table>
+    <tr id="inputArea-1" style="display:block">
+      <td>
+        <button id="recognize-button" onclick="toggleRecognition()" style="width: 148px;">▶️ Start Recognizing</button>
+      </td>
+      <td>
+        <button onclick="copyTextArea(this)">✂️</button>
+      </td>
+      <td>
+        <textarea id="recognitionResult" rows="2" cols="99"></textarea>
+      </td>
+      <td>
+        <select id="textareaLanguageSelect-1" style="width: 36px; height: 20px;">
           <option value="ja" selected>🇯🇵</option>
+          <option value="en">🇺🇸</option>
+          <option value="zh-TW">🇹🇼</option>
         </select>
-        <button type="button" style="font-size: 10px;"  onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">G🔊</button>
-        <button type="button" style="font-size: 10px;" onclick="msSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">M🔊</button></td>
-      <tr>
-    </form>
-  </table>
-
-  <table class="row-container" id="inputArea-4">
-    <tr>
-      <td><button id="translate-button" onclick="speechTranslate(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)" style="width: 148px;"> Translate </button></td>
-      <td><textarea id="translateInput" rows="2" cols="99"></textarea></td>
-      <td><select id="textareaLanguageSelect-4" style="width: 36px;">
-        <option value="ja" selected>🇯🇵</option>
-        <option value="en">🇺🇸</option>
-        <option value="zh-TW">🇹🇼</option>
-      </select>
-      <button style="font-size: 10px;" onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">G🔊</button>
-      <button style="font-size: 10px;" onclick="msSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">M🔊</button></td>
-    </td>
+        <button style="font-size: 10px; height: 20px;" onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">G🔊</button>
+        <button style="font-size: 10px; height: 20px;" onclick="msSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">M🔊</button>
+      </td>
+    </tr>
+    <tr id="inputArea-2" style="display:block">
+      <td>
+        <button id="record-button" onclick="toggleRecord()" style="width: 148px;">▶️ Start Recording</button>
+      </td>
+      <td>
+        <button onclick="copyTextArea(this)">✂️</button>
+      </td>
+      <td>
+        <textarea id="recordResult" rows="2" cols="99"></textarea>
+      </td>
+      <td>
+        <select id="textareaLanguageSelect-2" style="width: 36px;">
+          <option value="ja" selected>🇯🇵</option>
+          <option value="en">🇺🇸</option>
+          <option value="zh-TW">🇹🇼</option>
+        </select>
+        <button style="font-size: 10px;" onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">G🔊</button>
+        <button style="font-size: 10px;" onclick="msSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">M🔊</button>
+      </td>
+    </tr>
+    <tr id="inputArea-3" style="display:block">
+      <form action="/process" method="post">
+        <td>
+          <button id="jpExp-button" type="button" onclick="japaneseExplanationEntrance()" style="width: 148px;">Japanese Explanation</button>
+        </td>
+        <td>
+          <button type="button" onclick="copyTextArea(this)">✂️</button>
+        </td>
+        <td>
+          <textarea id="jpExpInput" name="jpExpInputName" rows="2" cols="99"></textarea>
+        </td>
+        <td>
+          <select id="textareaLanguageSelect-3" style="width: 36px;">
+            <option value="ja" selected>🇯🇵</option>
+          </select>
+          <button type="button" style="font-size: 10px;"  onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">G🔊</button>
+          <button type="button" style="font-size: 10px;" onclick="msSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">M🔊</button>
+        </td>
+      </form>
+    </tr>
+    <tr id="inputArea-4" style="display:none">
+      <td>
+        <button id="translate-button" onclick="speechTranslate(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)" style="width: 148px;"> Translate </button>
+      </td>
+      <td>
+        <button onclick="copyTextArea(this)">✂️</button>
+      </td>
+      <td>
+        <textarea id="translateInput" rows="2" cols="99"></textarea>
+      </td>
+      <td>
+        <select id="textareaLanguageSelect-4" style="width: 36px;">
+          <option value="ja" selected>🇯🇵</option>
+          <option value="en">🇺🇸</option>
+          <option value="zh-TW">🇹🇼</option>
+        </select>
+        <button style="font-size: 10px;" onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">G🔊</button>
+        <button style="font-size: 10px;" onclick="msSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">M🔊</button>
+      </td>
+    </tr>
   </table>
 
   <div class="row-container" style="margin-top:6px; margin-bottom:3px;">
-    <button id="ggPauseAudio-button" style="height:24px;" onclick="ggPauseAudio()">GG🔊⏯</button>
-    <button id="msPauseAudio-button" style="height:24px;" onclick="msPauseAudio()">MS🔊⏯</button>
-
-    <span style="margin-left:12px;">
+    <button onclick="speechTranslate(recognitionResult.value)">🔤</button>
+    <button onclick="speechTranslate(recordResult.value)">❇️</button>
+    <button id="ggPauseAudio-button" style="height:24px;" onclick="ggPauseAudio()">G🔊⏯</button>
+    <button id="msPauseAudio-button" style="height:24px;" onclick="msPauseAudio()">M🔊⏯</button>
+    <span style="margin-left:18px;">
       <select style="width: 40px; height:18px;">
         <option value="ja" selected>🇯🇵</option>
         <option value="en">🇺🇸</option>
@@ -246,7 +276,7 @@
       <button onclick="ggSpeak(texts[0].textContent, this.previousElementSibling.value)">G🔊</button>
       <button onclick="msSpeak(texts[0].textContent, this.previousElementSibling.previousElementSibling.value)">M🔊</button>
     </span>
-    <span style="margin-left:12px;">
+    <span style="margin-left:18px;">
       <select style="width: 40px; height:18px;">
         <option value="ja">🇯🇵</option>
         <option value="en" selected>🇺🇸</option>
@@ -255,7 +285,7 @@
       <button onclick="ggSpeak(texts[1].textContent, this.previousElementSibling.value)">G🔊</button>
       <button onclick="msSpeak(texts[1].textContent, this.previousElementSibling.previousElementSibling.value)">M🔊</button>
     </span>
-    <span style="margin-left:10px;">
+    <span style="margin-left:18px;">
       <select style="width: 40px; height:18px;">
         <option value="ja">🇯🇵</option>
         <option value="en">🇺🇸</option>
@@ -267,15 +297,17 @@
   </div>
 
   <div class="row-container" style="margin-bottom:9px;">
-    <button id="toggleRecognitionArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('inputArea-1', 'toggleRecognitionArea-button', 'Recognition Area')">Recognition 🟢</button>
-    <button id="toggleRecordArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('inputArea-2', 'toggleRecordArea-button', 'Record Area')">Record 🟢</button>
+    <button id="toggleRecognitionArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('inputArea-1', 'toggleRecognitionArea-button', 'Recognition')">Recognition 🟢</button>
+    <button id="toggleRecordArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('inputArea-2', 'toggleRecordArea-button', 'Record')">Record 🟢</button>
     <button id="toggleJpExpInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('inputArea-3', 'toggleJpExpInputArea-button', 'JpExp Input')">JpExp Input 🟢</button>
-    <button id="toggleTranslateInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('inputArea-4', 'toggleTranslateInputArea-button', 'Translate Input')">Translate Input 🟢</button>
+    <button id="toggleTranslateInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('inputArea-4', 'toggleTranslateInputArea-button', 'Translate Input')">Translate Input ❌</button>
 
-    <button id="toggleJpExpArea-button" style="margin-right:3px;" onclick="toggleJpExpArea()">JpExp Area 🟢</button>
-    <button id="toggleJpExpWeb-button" style="margin-right:3px;" onclick="toggleJpExpWeb()">JpExp Web ❌</button>
-    <button id="toggleApiKeyEditor-button" style="margin-right:3px;" onclick="toggleApiKeyEditor()">ApiKey Editor 🟢‍</button>
-    <button id="toggleLayoutEditor-button" style="margin-right:3px;" onclick="toggleLayoutEditor()">Layout Editor 🟢</button>
+    <button id="toggleJpExpArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpAreaFrame', 'toggleJpExpArea-button', 'JpExp Text')">JpExp Text 🟢</button>
+    <button id="toggleJpExpWeb-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWeb', 'toggleJpExpWeb-button', 'JpExp Web')">JpExp Web ❌</button>
+    <button id="toggleApiKeyEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('apiKeyEditor', 'toggleApiKeyEditor-button', 'ApiKey Editor')">ApiKey Editor 🟢‍</button>
+    <button id="toggleLayoutEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('layoutEditor', 'toggleLayoutEditor-button', 'Layout Editor')">Layout Editor 🟢</button>
+
+    <button id="toggleJpExpWebZero-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebZero', 'toggleJpExpWebZero-button', 'JpExpZero')">JpExpZero ❌</button>
   </div>
 
   <div id="jpExpAreaFrame">
@@ -293,8 +325,6 @@
       <input type="password" id="apiKeyInput-0" size="50" oninput="updateApiKey(0)"> &nbsp;
       <button onmousedown="showApiKey(0, this)" onmouseup="hideApiKey(0, this)">👁️</button> &nbsp;
       <button onclick="copyApiKey(0, this)">✂️</button> &nbsp;
-      <button onclick="speechTranslate(recognitionResult.value)">🔤</button>
-      <button onclick="speechTranslate(recordResult.value)">❇️</button>
     </div>
     <div class="row-container-left">
       <span style="width: 175px;"> GCP API-KEY: </span>
@@ -776,6 +806,11 @@
       document.execCommand("copy");
       document.body.removeChild(tempInput);
     }
+    function copyTextArea(button) {
+      var textarea = button.parentNode.nextElementSibling.querySelector('textarea');
+      textarea.select();
+      document.execCommand("copy");
+    }
     function startRecognition() {
       recognition.lang = languageSelects[0].value;
       recognition.interimResults = true;
@@ -868,9 +903,17 @@
     function toggleRecognition() {
       if (isRecognizing) {
         stopRecognition();
+        if (isRecording) {
+          isRecording = false;
+          recordButton.innerHTML = "▶️ Start Recording";
+        }
       }
       else {
         startRecognition();
+        if (!isRecording) {
+          isRecording = true;
+          recordButton.innerHTML = "⏹️ Stop Recording";
+        }
       }
     }
     function toggleRecord() {
@@ -1039,6 +1082,12 @@
         var ichimoe_url = "https://ichi.moe/cl/qr/?q=" + encodedSpeechText;
         document.getElementById("jpExpWeb").src = ichimoe_url;
       }
+      if (sourceLanguage === "ja" && document.getElementById('jpExpWebZero').style.display === 'block') {
+        var noSpaceSpeechText = speechText.replace(/\s+/g, "");
+        var encodedSpeechText = encodeURIComponent(noSpaceSpeechText);
+        var ichimoe_url = "https://ichi.moe/cl/qr/?q=" + encodedSpeechText;
+        document.getElementById("jpExpWebZero").src = ichimoe_url;
+      }
       targetLanguages = [];
       for (let i = 0; i <= translationCounts; i++) {
         if (languageSelects[i].value != sourceLanguage) {
@@ -1062,38 +1111,12 @@
         }
       }
     }
-
     function toggleWidgetArea(widgetName, buttonName, text) {
       var widget = document.getElementById(widgetName);
       var button = document.getElementById(buttonName);
       widget.style.display = widget.style.display === 'none' ? 'block' : 'none';
       button.innerHTML = widget.style.display === 'none' ? `${text} ❌` : `${text} 🟢`;
     }
-    function toggleApiKeyEditor() {
-      var editor = document.getElementById('apiKeyEditor');
-      var button = document.getElementById('toggleApiKeyEditor-button');
-      editor.style.display = editor.style.display === 'none' ? 'block' : 'none';
-      button.innerHTML = editor.style.display === 'none' ? "ApiKey Editor ❌" : "ApiKey Editor 🟢";
-    }
-    function toggleLayoutEditor() {
-      var editor = document.getElementById('layoutEditor');
-      var button = document.getElementById('toggleLayoutEditor-button');
-      editor.style.display = editor.style.display === 'none' ? 'block' : 'none';
-      button.innerHTML = editor.style.display === 'none' ? "Layout Editor ❌" : "Layout Editor 🟢";
-    }
-    function toggleJpExpArea() {
-      var widget = document.getElementById('jpExpAreaFrame');
-      var button = document.getElementById('toggleJpExpArea-button');
-      widget.style.display = widget.style.display === 'none' ? 'block' : 'none';
-      button.innerHTML = widget.style.display === 'none' ? "JpExp Text ❌" : "JpExp Text 🟢";
-    }
-    function toggleJpExpWeb() {
-      var widget = document.getElementById('jpExpWeb');
-      var button = document.getElementById('toggleJpExpWeb-button');
-      widget.style.display = widget.style.display === 'none' ? 'block' : 'none';
-      button.innerHTML = widget.style.display === 'none' ? "JpExp Web ❌" : "JpExp Web 🟢";
-    }
-
     function saveConfigStorage() {
       var configJSON = JSON.stringify(configs);
       localStorage.setItem('snowyTranslatorConfig', configJSON);
