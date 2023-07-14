@@ -186,9 +186,10 @@
       </td>
       <td>
         <button onclick="copyTextArea(this)">✂️</button>
+        <button onclick="clearTextArea(this)">🆑</button>
       </td>
       <td>
-        <textarea id="recognitionResult" rows="2" cols="99"></textarea>
+        <textarea id="recognitionResult" rows="2" cols="84"></textarea>
       </td>
       <td>
         <select id="textareaLanguageSelect-1" style="width: 36px; height: 20px;">
@@ -206,9 +207,10 @@
       </td>
       <td>
         <button onclick="copyTextArea(this)">✂️</button>
+        <button onclick="clearTextArea(this)">🆑</button>
       </td>
       <td>
-        <textarea id="recordResult" rows="2" cols="99"></textarea>
+        <textarea id="recordResult" rows="2" cols="84"></textarea>
       </td>
       <td>
         <select id="textareaLanguageSelect-2" style="width: 36px;">
@@ -227,9 +229,10 @@
         </td>
         <td>
           <button type="button" onclick="copyTextArea(this)">✂️</button>
+          <button type="button" onclick="clearTextArea(this)">🆑</button>
         </td>
         <td>
-          <textarea id="jpExpInput" name="jpExpInputName" rows="2" cols="99"></textarea>
+          <textarea id="jpExpInput" name="jpExpInputName" rows="2" cols="84"></textarea>
         </td>
         <td>
           <select id="textareaLanguageSelect-3" style="width: 36px;">
@@ -246,9 +249,10 @@
       </td>
       <td>
         <button onclick="copyTextArea(this)">✂️</button>
+        <button onclick="clearTextArea(this)">🆑</button>
       </td>
       <td>
-        <textarea id="translateInput" rows="2" cols="99"></textarea>
+        <textarea id="translateInput" rows="2" cols="84"></textarea>
       </td>
       <td>
         <select id="textareaLanguageSelect-4" style="width: 36px;">
@@ -810,6 +814,10 @@
       var textarea = button.parentNode.nextElementSibling.querySelector('textarea');
       textarea.select();
       document.execCommand("copy");
+    }
+    function clearTextArea(button) {
+      var textarea = button.parentNode.nextElementSibling.querySelector('textarea');
+      textarea.value = "";
     }
     function startRecognition() {
       recognition.lang = languageSelects[0].value;
