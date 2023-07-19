@@ -190,7 +190,7 @@
           <option value="en">🇺🇸</option>
           <option value="zh-TW">🇹🇼</option>
         </select>
-        <button onclick="speechTranslate(recognitionResult.value)">🔤</button>
+        <button onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)">🔤</button>
         <button onclick="copyTextArea(this)">✂️</button>
         <button onclick="clearTextArea(this)">🆑</button>
       </td>
@@ -212,7 +212,7 @@
           <option value="en">🇺🇸</option>
           <option value="zh-TW">🇹🇼</option>
         </select>
-        <button onclick="speechTranslate(recordResult.value)">🔤</button>
+        <button onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)">🔤</button>
         <button onclick="copyTextArea(this)">✂️</button>
         <button onclick="clearTextArea(this)">🆑</button>
       </td>
@@ -233,7 +233,7 @@
           <select id="textareaLanguageSelect-3" style="width: 36px;">
             <option value="ja" selected>🇯🇵</option>
           </select>
-          <button type="button" onclick="speechTranslate(jpExpInput.value)">🔤</button>
+          <button type="button" onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, 'ja')">🔤</button>
           <button type="button" onclick="copyTextArea(this)">✂️</button>
           <button type="button" onclick="clearTextArea(this)">🆑</button>
         </td>
@@ -246,7 +246,7 @@
         </td>
       </form>
     </tr>
-    <tr id="inputArea-4" style="display:none">
+    <tr id="inputArea-4" style="display:block">
       <td>
         <button id="translate-button" onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)" style="width: 148px;"> Translate </button>
       </td>
@@ -256,7 +256,7 @@
           <option value="en">🇺🇸</option>
           <option value="zh-TW">🇹🇼</option>
         </select>
-        <button type="button" onclick="autoTranslate(translateInput.value)">🔎</button>
+        <button type="button" onclick="autoTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select'))">🔎</button>
         <button onclick="copyTextArea(this)">✂️</button>
         <button onclick="clearTextArea(this)">🆑</button>
       </td>
@@ -269,16 +269,10 @@
       </td>
     </tr>
   </table>
-  <br>
-  <table>
-    <tr id="inputArea-5" style="display:block">
+  <table style="margin-top: 3px;">
+    <tr id="inputArea-5" style="display:block;">
       <td>
         <button id="addToReadingList-button" onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)" > Reading List </button>
-        <select id="textareaLanguageSelect-5" style="width: 36px;">
-          <option value="ja" selected>🇯🇵</option>
-          <option value="en">🇺🇸</option>
-          <option value="zh-TW">🇹🇼</option>
-        </select>
         <select id="repeatTime" style="width: 40px;">
           <option value="1">1</option>
           <option value="2" selected>2</option>
@@ -292,12 +286,18 @@
         </select>
       </td>
       <td>
-        <button onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, 2)">+</button>
-        <button onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, 3)">++</button>
+        <select id="textareaLanguageSelect-5" style="width: 36px;">
+          <option value="ja" selected>🇯🇵</option>
+          <option value="en">🇺🇸</option>
+          <option value="zh-TW">🇹🇼</option>
+        </select>
+        <button type="button" onclick="autoTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[1])">🔎</button>
+        <button onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[1].value, 2)">+</button>
+        <button onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[1].value, 3)">++</button>
         <button onclick="clearReadingList(this)">🆑</button>
       </td>
       <td>
-        <textarea id="readingListInput" rows="2" cols="80"></textarea>
+        <textarea id="readingListInput" rows="2" cols="79"></textarea>
       </td>
       <td>
         <button style="font-size: 10px;" onclick="ggSpeakReadingList(document.getElementById('repeatTime').value)">G🔊</button>
@@ -342,7 +342,7 @@
     <button id="toggleRecognitionArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('inputArea-1', 'toggleRecognitionArea-button', 'Recognition')">Recognition 🟢</button>
     <button id="toggleRecordArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('inputArea-2', 'toggleRecordArea-button', 'Record')">Record 🟢</button>
     <button id="toggleJpExpInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('inputArea-3', 'toggleJpExpInputArea-button', 'JpExp Input')">JpExp Input 🟢</button>
-    <button id="toggleTranslateInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('inputArea-4', 'toggleTranslateInputArea-button', 'Translate Input')">Translate Input ❌</button>
+    <button id="toggleTranslateInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('inputArea-4', 'toggleTranslateInputArea-button', 'Translate Input')">Translate Input 🟢</button>
 
     <button id="toggleJpExpArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpAreaFrame', 'toggleJpExpArea-button', 'JpExp Text')">JpExp Text 🟢</button>
     <button id="toggleJpExpWeb-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWeb', 'toggleJpExpWeb-button', 'JpExp Web')">JpExp Web ❌</button>
@@ -920,7 +920,7 @@
                 recordResult.value += speechText + ".";
               }
               updateSpeechTextList(speechText);
-              speechTranslate(speechText);
+              speechTranslate(speechText, languageSelects[0].value);
             }
             else {
               if (false && speechSplitInterval.value && speechSplitInterval.value !== 0) {
@@ -1149,7 +1149,7 @@
         });
       }
       var readingListItem = document.createElement('li');
-      readingListItem.textContent = text + `   [${sourceLanguage}]`;
+      readingListItem.textContent = text + ` - [${sourceLanguage}]`;
       readingList.appendChild(readingListItem);
       if (lines > 1) {
         for (let i = 1; i < lines; i++) {
@@ -1188,17 +1188,16 @@
       console.log("start: msAudioList:", msAudioList);
       function playAudio(index) {
         console.log("start id:", index, "msAudioList:", msAudioList);
-        if (index >= msAudioList.length) return;
-        if (msAudioList.length + 1 < totalRepeatTime) {
-          var audioCopy = msAudioList[index].slice();
-          msAudioList.push(audioCopy);
-        }
-        const audioData = msAudioList[index];
+        if (index >= totalRepeatTime) return;
+        var i = index % msAudioList.length;
+        var audioCopy = msAudioList[i].slice();
+        const audioData = msAudioList[i];
         audioContext.decodeAudioData(audioData, function (audioBuffer) {
           const audioSource = audioContext.createBufferSource();
           audioSource.buffer = audioBuffer;
           audioSource.connect(audioContext.destination);
           audioSource.onended = function() {
+            msAudioList[i] = audioCopy;
             playAudio(index + 1);
           };
           audioSource.start();
@@ -1227,16 +1226,21 @@
         const language = responseData.data.detections[0][0].language;
         const confidence = responseData.data.detections[0][0].confidence;
         console.log(`Detected Language: ${language} (Confidence: ${confidence})`);
+        if (text.length <= 10 && (detectedLanguage === "zh-CN" || detectedLanguage === "zh-TW")) {
+          detectedLanguage = "ja";
+        }
         return language;
       } catch (error) {
         console.error('ggDetectLanguage Error:', error);
       }
     }
 
-
-    async function autoTranslate(text) {
+    async function autoTranslate(text, languageSelect=undefined) {
       var sourceLanguage = await ggDetectLanguage(text);
-      speechTranslate(text, sourceLanguage);
+      if (languageSelect !== undefined) {
+        languageSelect.value = sourceLanguage;
+      }
+      await speechTranslate(text, sourceLanguage);
     }
 
     function ggTranslate(text) {
@@ -1257,10 +1261,11 @@
     }
 
     var targetLanguages;
-    function speechTranslate(speechText, sourceLanguage="") {
+    async function speechTranslate(speechText, sourceLanguage="") {
       updateText(0, speechText);
       if (sourceLanguage === "") {
-        sourceLanguage = languageSelects[0].value;
+        sourceLanguage = await ggDetectLanguage(text);
+        console.log("speechTranslate - sourceLanguage:", sourceLanguage);
       }
       if (sourceLanguage === "ja" && document.getElementById('jpExpWeb').style.display === 'block') {
         var noSpaceSpeechText = speechText.replace(/\s+/g, "");
@@ -1280,6 +1285,7 @@
           targetLanguages.push(languageSelects[i].value);
         }
       }
+      console.log("sourceLanguage:", sourceLanguage);
       console.log("targetLanguages:", targetLanguages);
       if (googleScriptKey != null && googleScriptKey != "") {
         const requestsPromises = targetLanguages.map((targetLanguage) => {
