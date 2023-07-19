@@ -1,32 +1,83 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Japanese Split</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        function japaneseExplanation() {
-            var formData = $('form').serialize();
-            console.log($('form'));
-            console.log($('form').text);
-            console.log(formData);
-            $.ajax({
-                url: '/process',
-                type: 'POST',
-                data: formData,
-                success: function(response) {
-                    $('#result').html(response.result);
-                }
-            });
-        }
-    </script>
+  <title>Text-to-Speech Example</title>
 </head>
 <body>
-    <h1>Japanese Split</h1>
-    <form action="/process" method="post">
-        <input type="text" name="text" placeholder="Enter text">
-        <button type="button" onclick="japaneseExplanation()">Submit</button>
-    </form>
-    <div id="result"></div>
+  <h1>Text-to-Speech Example</h1>
+  <textarea id="inputText" rows="4" cols="50" placeholder="Enter text to read"></textarea>
+  <button id="readButton">Read Text</button>
+
+  <script>
+    async function readText(text) {
+      const apiKey = 'AIzaSyBobAujde-AEeUzYFCsa3FZFkXE5QMFBQA'; // Replace with your actual API key
+      const url = `https://texttospeech.googleapis.com/v1/text:synthesize?key=${apiKey}`;
+
+      const requestData = {
+        input: {
+          text: text
+        },
+        voice: {
+          languageCode: 'en-US',
+          ssmlGender: 'NEUTRAL'
+        },
+        audioConfig: {
+          audioEncoding: 'MP3'
+        }
+      };
+
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(requestData)
+        });
+
+        if (!response.ok) {
+          throw new Error('Text-to-speech request failed.');
+        }
+
+        const data = await response.json();
+        const audioContent = data.audioContent;
+        const audioBlob = base64toBlob(audioContent, 'audio/mpeg');
+        const audioURL = URL.createObjectURL(audioBlob);
+
+        const audioElement = new Audio(audioURL);
+        audioElement.play();
+
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+
+    function base64toBlob(base64Data, contentType) {
+      const sliceSize = 1024;
+      const byteCharacters = atob(base64Data);
+      const byteArrays = [];
+
+      for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+        const slice = byteCharacters.slice(offset, offset + sliceSize);
+        const byteNumbers = new Array(slice.length);
+
+        for (let i = 0; i < slice.length; i++) {
+          byteNumbers[i] = slice.charCodeAt(i);
+        }
+
+        const byteArray = new Uint8Array(byteNumbers);
+        byteArrays.push(byteArray);
+      }
+
+      return new Blob(byteArrays, { type: contentType });
+    }
+
+    document.getElementById('readButton').addEventListener('click', () => {
+      const inputText = document.getElementById('inputText').value;
+      if (inputText.trim() !== '') {
+        readText(inputText);
+      }
+    });
+  </script>
 </body>
 </html>
