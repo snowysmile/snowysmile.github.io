@@ -346,8 +346,8 @@
 
     <button id="toggleJpExpArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpAreaFrame', 'toggleJpExpArea-button', 'JpExp Text')">JpExp Text 🟢</button>
     <button id="toggleJpExpWeb-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWeb', 'toggleJpExpWeb-button', 'JpExp Web')">JpExp Web ❌</button>
-    <button id="toggleApiKeyEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('apiKeyEditor', 'toggleApiKeyEditor-button', 'ApiKey Editor')">ApiKey Editor 🟢‍</button>
-    <button id="toggleLayoutEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('layoutEditor', 'toggleLayoutEditor-button', 'Layout Editor')">Layout Editor 🟢</button>
+    <button id="toggleApiKeyEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('apiKeyEditor', 'toggleApiKeyEditor-button', 'ApiKey Editor')">ApiKey Editor ❌‍</button>
+    <button id="toggleLayoutEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('layoutEditor', 'toggleLayoutEditor-button', 'Layout Editor')">Layout Editor ❌</button>
 
     <button id="toggleJpExpWebZero-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebZero', 'toggleJpExpWebZero-button', 'JpExpZero')">JpExpZero ❌</button>
   </div>
@@ -361,7 +361,7 @@
 
   <iframe id="jpExpWeb" style="width:960px; height:654px; margin-top:5px; margin-bottom:5px; display:none" src="https://ichi.moe/"></iframe><br>
 
-  <div id="apiKeyEditor" style="margin-bottom:9px;">
+  <div id="apiKeyEditor" style="display:none; margin-bottom:9px;">
     <div class="row-container-left">
       <span style="width: 175px;"> Google Script API-KEY: </span>
       <input type="password" id="apiKeyInput-0" size="50" oninput="updateApiKey(0)"> &nbsp;
@@ -550,7 +550,7 @@
     </table>
   </div>
 
-  <div id="layoutEditor">
+  <div id="layoutEditor" style="display:none">
     <table style="margin-left: auto; margin-right: auto; margin-top:9px; margin-bottom:9px;">
       <tr>
         <td><span>Page Background Color:</span></td>
@@ -1004,6 +1004,17 @@
       }
       var url = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" +
         sourceLanguage +  "&client=tw-ob&q=" + encodeURIComponent(text);
+      if (window.location.protocol === "file:") {
+
+      } else {
+        const serverUrl = "http://146.235.209.179:3000/audio";
+        const queryParams = new URLSearchParams({
+          text: text,
+          sourceLanguage: sourceLanguage,
+        });
+        url = serverUrl + "?" + queryParams.toString();
+      }
+      console.log("ggSpeak url:", url);
       if (ggSpeakAudio) {
         ggSpeakAudio.pause();
       }
