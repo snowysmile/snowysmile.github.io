@@ -1002,9 +1002,14 @@
       if (sourceLanguage === "") {
         sourceLanguage = "ja";
       }
+      if (ggSpeakAudio) {
+        ggSpeakAudio.pause();
+      }
       var url = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" +
         sourceLanguage +  "&client=tw-ob&q=" + encodeURIComponent(text);
       if (window.location.protocol === "file:") {
+        ggSpeakAudio.src = url;
+        ggSpeakAudio.play();
       } else {
         console.log("ggSpeak running not as a file");
         fetch('https://snsmile.site:3000/text-to-speech', {
@@ -1017,19 +1022,16 @@
             text: text
           })
         })
-        .then(response => response.arrayBuffer()) // Change this based on the response format from the server
+        .then(response => response.arrayBuffer())
         .then(audioData => {
           const audioBlob = new Blob([audioData], { type: 'audio/mpeg' });
           url = URL.createObjectURL(audioBlob);
+          console.log("ggSpeak updated url:", url);
+          ggSpeakAudio.src = url;
+          ggSpeakAudio.play();
         })
         .catch(error => console.error('Error:', error));
       }
-      console.log("ggSpeak url:", url);
-      if (ggSpeakAudio) {
-        ggSpeakAudio.pause();
-      }
-      ggSpeakAudio.src = url;
-      ggSpeakAudio.play();
       /* if ("speechSynthesis" in window) {
         var speechSynthesis = window.speechSynthesis;
         var utterance = new SpeechSynthesisUtterance(text);
