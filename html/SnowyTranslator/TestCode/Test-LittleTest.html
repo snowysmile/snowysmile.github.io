@@ -13,7 +13,7 @@
     let audioElement = new Audio();
 
     function readText(text) {
-      const proxyUrl = 'http://146.235.209.179:3000/audio?text=';
+      const proxyUrl = 'https://snsmile.site:3001/audio?text=';
       const fullUrl = proxyUrl + encodeURIComponent(text);
 
       audioElement.src = fullUrl;
