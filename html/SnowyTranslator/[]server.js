@@ -1,39 +1,47 @@
 const express = require('express');
+const https = require('https');
+const path = require('path');
+const fs = require('fs');
 const cors = require('cors');
 const app = express();
 const port = 3000;
 
-app.use(cors()); // Enable CORS for all routes
+app.use(express.json());
+app.use(cors());
 
-app.get('/audio', async (req, res) => {
-  const { text } = req.query;
+// Add the paths to your SSL certificate and private key
+const options = {
+  key: fs.readFileSync(path.join(__dirname,'privkey.pem')),
+  cert: fs.readFileSync(path.join(__dirname,'fullchain.pem')),
+};
 
-  // Your audio handling logic here
-  // Replace this with your actual audio fetching logic
-  const fetch = require('node-fetch');
-  const sourceLanguage = 'en'; // Set your desired source language code (e.g., 'en' for English)
-  const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${sourceLanguage}&client=tw-ob&q=${encodeURIComponent(text)}`;
-
+app.post('/text-to-speech', async (req, res) => {
   try {
-    const response = await fetch(audioUrl);
-    const audioBuffer = await response.buffer();
+    const { sourceLanguage, text } = req.body;
+    const url =
+      'https://translate.google.com/translate_tts?ie=UTF-8&tl=' +
+      sourceLanguage +
+      '&client=tw-ob&q=' +
+      encodeURIComponent(text);
 
-    // Set the response headers for the audio file
-    res.set({
-      'Content-Type': 'audio/mpeg', // Assuming the audio file is in MP3 format
-      'Content-Length': audioBuffer.length,
+    // Make a GET request to Google's TTS API
+    const response = await https.get(url, (googleRes) => {
+      // Set the response headers for audio
+      res.setHeader('Content-Type', 'audio/mpeg');
+      res.setHeader('Content-Disposition', 'inline');
+
+      // Pipe the Google TTS response to the client's response
+      googleRes.pipe(res);
     });
-
-    // Send the audio data to the client
-    res.send(audioBuffer);
   } catch (error) {
-    console.error('Error fetching audio:', error);
-    res.status(500).send('Error fetching audio');
+    console.error('Error:', error.message);
+    res.status(500).send('Error generating speech.');
   }
 });
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
-});
+// Create an HTTPS server using the 'https' module
+const server = https.createServer(options, app);
 
+server.listen(port, () => {
+  console.log(`Server running on https://localhost:${port}`);
+});

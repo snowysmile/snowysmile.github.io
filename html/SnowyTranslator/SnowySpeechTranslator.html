@@ -1007,12 +1007,23 @@
       if (window.location.protocol === "file:") {
 
       } else {
-        const serverUrl = "https://http://snsmile.site/audio";
-        const queryParams = new URLSearchParams({
-          text: text,
-          sourceLanguage: sourceLanguage,
-        });
-        url = serverUrl + "?" + queryParams.toString();
+        // Code is running on a web server (https:// protocol), proceed with fetching and playing the TTS audio.
+        fetch('https://snsmile.site:3000/text-to-speech', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            sourceLanguage: sourceLanguage,
+            text: text
+          })
+        })
+        .then(response => response.arrayBuffer()) // Change this based on the response format from the server
+        .then(audioData => {
+          const audioBlob = new Blob([audioData], { type: 'audio/mpeg' });
+          url = URL.createObjectURL(audioBlob);
+        })
+        .catch(error => console.error('Error:', error));
       }
       console.log("ggSpeak url:", url);
       if (ggSpeakAudio) {
