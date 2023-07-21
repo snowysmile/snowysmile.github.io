@@ -1,35 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Text-to-Speech Example</title>
+  <title>Text-to-Speech</title>
 </head>
 <body>
-  <h1>Text-to-Speech Example</h1>
-  <textarea id="inputText" rows="4" cols="50" placeholder="Enter text to read"></textarea>
-  <button id="readButton">Read Text</button>
-  <button id="stopButton">Stop</button>
+  <h1>Text-to-Speech</h1>
+  <form id="ttsForm">
+    <label for="language">Select Language:</label>
+    <select id="language">
+      <!-- Add language options here, e.g., English, French, Spanish, etc. -->
+      <option value="en">English</option>
+      <option value="fr">French</option>
+      <option value="es">Spanish</option>
+      <!-- Add more languages as needed -->
+    </select>
+    <br>
+    <label for="textInput">Enter Text:</label>
+    <input type="text" id="textInput" required>
+    <br>
+    <button type="submit">Read Text</button>
+  </form>
+
+  <audio id="audioPlayer" controls>
+    <!-- The audio data received from the server will be played here -->
+  </audio>
 
   <script>
-    let audioElement = new Audio();
+    document.getElementById('ttsForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const language = document.getElementById('language').value;
+      const text = document.getElementById('textInput').value;
 
-    function readText(text) {
-      const proxyUrl = 'https://snsmile.site:3001/audio?text=';
-      const fullUrl = proxyUrl + encodeURIComponent(text);
+      // Send the data to the server for text-to-speech conversion
+      fetch('https://snsmile.site:3000/text-to-speech', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          sourceLanguage: language,
+          text: text
+        })
+      })
+      .then(response => response.arrayBuffer()) // Change this based on the response format from the server
+      .then(audioData => {
+        const audioBlob = new Blob([audioData], { type: 'audio/mpeg' });
+        const audioUrl = URL.createObjectURL(audioBlob);
 
-      audioElement.src = fullUrl;
-      audioElement.play();
-    }
-
-    document.getElementById('readButton').addEventListener('click', () => {
-      const inputText = document.getElementById('inputText').value;
-      if (inputText.trim() !== '') {
-        readText(inputText);
-      }
-    });
-
-    document.getElementById('stopButton').addEventListener('click', () => {
-      audioElement.pause();
-      audioElement.currentTime = 0;
+        const audioPlayer = document.getElementById('audioPlayer');
+        audioPlayer.src = audioUrl;
+        audioPlayer.play();
+      })
+      .catch(error => console.error('Error:', error));
     });
   </script>
 </body>
