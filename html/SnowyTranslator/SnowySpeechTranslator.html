@@ -1005,9 +1005,8 @@
       var url = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" +
         sourceLanguage +  "&client=tw-ob&q=" + encodeURIComponent(text);
       if (window.location.protocol === "file:") {
-
       } else {
-        // Code is running on a web server (https:// protocol), proceed with fetching and playing the TTS audio.
+        console.log("ggSpeak running not as a file");
         fetch('https://snsmile.site:3000/text-to-speech', {
           method: 'POST',
           headers: {
