@@ -306,11 +306,13 @@
     </tr>
   </table>
 
-  <div class="row-container" style="margin-top:6px; margin-bottom:3px;">
+  <div class="row-container" style="margin-top:6px; margin-bottom:6px;">
     <button id="ggPauseAudio-button" style="height:24px;" onclick="ggPauseAudio()">G⏯</button>
-    <audio id="ggSpeakAudio" src="" controls style="height:20px;"></audio>
+    <audio id="ggSpeakAudio" src="" controls style="height:22px;"></audio>
     <button id="msPauseAudio-button" style="height:24px;" onclick="msPauseAudio()">M⏯</button>
-    <audio id="msSpeakAudioWidget" src="" controls style="height:20px;"></audio>
+    <audio id="msSpeakAudioWidget" src="" controls style="height:22px;"></audio>
+  </div>
+  <div class="row-container" style="margin-bottom:3px;">
     <span style="margin-left:24px;">
       <select style="width: 40px; height:18px;">
         <option value="ja" selected>🇯🇵</option>
@@ -1106,9 +1108,12 @@
             msSpeakAudio.buffer = audioBuffer;
             msSpeakAudio.connect(audioContext.destination);
             msSpeakAudio.start();
-
-            msSpeakAudioWidget.src = audioContext.createBufferSource();
           });
+          
+          const audioBlob = new Blob([audioData], { type: 'audio/mpeg' });
+          const audioUrl = URL.createObjectURL(audioBlob);
+          msSpeakAudioWidget.src = audioUrl;
+          console.log("msSpeakAudioWidget:", msSpeakAudioWidget.src);
         });
       });
     }
