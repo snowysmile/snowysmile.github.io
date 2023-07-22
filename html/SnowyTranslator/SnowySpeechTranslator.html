@@ -272,7 +272,7 @@
   <table style="margin-top: 3px;">
     <tr id="inputArea-5" style="display:block;">
       <td>
-        <button id="addToReadingList-button" onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)" > Reading List </button>
+        <button id="addToReadingList-button" onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[1].value)" > Reading List </button>
         <select id="repeatTime" style="width: 40px;">
           <option value="1">1</option>
           <option value="2" selected>2</option>
@@ -300,8 +300,8 @@
         <textarea id="readingListInput" rows="2" cols="79"></textarea>
       </td>
       <td>
-        <button style="font-size: 10px;" onclick="ggSpeakReadingList(document.getElementById('repeatTime').value)">G🔊</button>
-        <button style="font-size: 10px;" onclick="msSpeakReadingList(document.getElementById('repeatTime').value)">M🔊</button>
+        <button style="font-size: 10px;" onclick="ggSpeakReadingList(document.getElementById('repeatTime').value, this)">G🔊</button>
+        <button style="font-size: 10px;" onclick="msSpeakReadingList(document.getElementById('repeatTime').value, this)">M🔊</button>
       </td>
     </tr>
   </table>
@@ -695,7 +695,6 @@
     </table>
   </div>
 
-  <br>
   <ul id="speechTextList"></ul>
   <span id="speechTextListTotalCount"></span>
   <span id="speechTextListCurrentID"></span>
@@ -1151,12 +1150,6 @@
       var url = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" +
         sourceLanguage +  "&client=tw-ob&q=" + encodeURIComponent(text);
       ggAudioList.push(url);
-      var MSTTS_voiceName = chooseAzureVoice(sourceLanguage);
-      getMsttsAccessToken(function(accessToken) {
-        getMsAudioData(text, sourceLanguage, MSTTS_voiceName, accessToken, function(audioData) {
-          msAudioList.push(audioData);
-        });
-      });
       if (lines > 1) {
         await speechTranslate(text, sourceLanguage);
         for (let i = 1; i < lines; i++) {
@@ -1164,6 +1157,14 @@
             targetLanguages[i - 1] +  "&client=tw-ob&q=" + encodeURIComponent(texts[i].textContent);
           ggAudioList.push(url);
         }
+      }
+      var MSTTS_voiceName = chooseAzureVoice(sourceLanguage);
+      getMsttsAccessToken(function(accessToken) {
+        getMsAudioData(text, sourceLanguage, MSTTS_voiceName, accessToken, function(audioData) {
+          msAudioList.push(audioData);
+        });
+      });
+      if (lines > 1) {
         getMsttsAccessToken(function(accessToken) {
           for (let i = 1; i < lines; i++) {
             console.log(`i=${i}, language=${targetLanguages[i - 1]}, text=${texts[i].textContent}`);
@@ -1184,16 +1185,23 @@
         }
       }
     }
-    function ggSpeakReadingList(repeatTime) {
+    async function ggSpeakReadingList(repeatTime, button) {
       if (ggSpeakAudio) {
         ggSpeakAudio.pause();
       }
+      var totalRepeatTime = ggAudioList.length * repeatTime;
       var currentAudioIndex = 0;
+      console.log("totalRepeatTime:", totalRepeatTime);
+      console.log("ggAudioList starts:", ggAudioList);
+      if (ggAudioList.length === 0) {
+        await addToReadingList(button.parentNode.parentNode.querySelector('textarea').value, button.parentNode.parentNode.querySelectorAll('select')[1].value);
+      }
       ggSpeakAudio.addEventListener('ended', function() {
         currentAudioIndex++;
         if (currentAudioIndex < ggAudioList.length * repeatTime) {
           ggSpeakAudio.pause();
-          var audioUrl = ggAudioList[currentAudioIndex % ggAudioList.length];
+          var i = currentAudioIndex % ggAudioList.length;
+          var audioUrl = ggAudioList[i];
           ggSpeakAudio.src = audioUrl;
           ggSpeakAudio.play();
         }
@@ -1201,31 +1209,30 @@
       ggSpeakAudio.src = ggAudioList[currentAudioIndex];
       ggSpeakAudio.play();
     }
-
-
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    function msSpeakReadingList(repeatTime) {
+    async function msSpeakReadingList(repeatTime, button) {
       if (msSpeakAudio) {
         msSpeakAudio.pause();
       }
       var totalRepeatTime = msAudioList.length * repeatTime;
       console.log("totalRepeatTime:", totalRepeatTime);
-      console.log("start: msAudioList:", msAudioList);
-      function playAudio(index) {
-        console.log("start id:", index, "msAudioList:", msAudioList);
-        if (index >= totalRepeatTime) return;
-        var i = index % msAudioList.length;
-        var audioCopy = msAudioList[i].slice();
+      console.log("msAudioList start:", msAudioList);
+      if (msAudioList.length === 0) {
+        await addToReadingList(button.parentNode.parentNode.querySelector('textarea').value, button.parentNode.parentNode.querySelectorAll('select')[1].value);
+      }
+      function msListPlayAudio(currentAudioIndex) {
+        if (currentAudioIndex >= totalRepeatTime) return;
+        var i = currentAudioIndex % msAudioList.length;
+        var audioDataCopy = msAudioList[i].slice();
         const audioData = msAudioList[i];
         const audioBlob = new Blob([audioData], { type: 'audio/mpeg' });
         msSpeakAudio.src = URL.createObjectURL(audioBlob);
         msSpeakAudio.onended = function() {
-          msAudioList[i] = audioCopy;
-          playAudio(index + 1);
+          msAudioList[i] = audioDataCopy;
+          msListPlayAudio(currentAudioIndex + 1);
         };
         msSpeakAudio.play();
       }
-      playAudio(0);
+      msListPlayAudio(0);
     }
 
     async function ggDetectLanguage(text) {
@@ -1242,10 +1249,13 @@
           body: JSON.stringify(data),
         });
         const responseData = await response.json();
-        const detectedLanguage = responseData.data.detections[0][0].language;
-        const confidence = responseData.data.detections[0][0].confidence;
+        var detectedLanguage = responseData.data.detections[0][0].language;
+        var confidence = responseData.data.detections[0][0].confidence;
         console.log(`Detected Language: ${detectedLanguage} (Confidence: ${confidence})`);
-        if (text.length <= 10 && (detectedLanguage === "zh-CN" || detectedLanguage === "zh-TW")) {
+        if (detectedLanguage === "zh-CN") {
+          detectedLanguage = "zh-TW";
+        }
+        if ((detectedLanguage === "zh-CN" || detectedLanguage === "zh-TW") && confidence < 0.9) {
           detectedLanguage = "ja";
         }
         return detectedLanguage;
@@ -1255,10 +1265,18 @@
     }
 
     async function autoTranslate(text, languageSelect=undefined) {
-      var sourceLanguage = await ggDetectLanguage(text);
-      if (languageSelect !== undefined) {
-        languageSelect.value = sourceLanguage;
-      }
+      ggDetectLanguage(text)
+        .then((sourceLanguage) => {
+          if (languageSelect !== undefined) {
+            console.log("autoTranslate sourceLanguage:", sourceLanguage);
+            languageSelect.value = sourceLanguage;
+            console.log("languageSelect.value = sourceLanguage:", sourceLanguage);
+          }
+        })
+        .catch((error) => {
+          // Handle errors from ggDetectLanguage() if needed
+          console.error("ggDetectLanguage Error:", error);
+        });
       await speechTranslate(text, sourceLanguage);
     }
 
