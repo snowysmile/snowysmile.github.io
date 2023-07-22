@@ -2,6 +2,14 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="icon" href="static/Img/favicon/cat-in-leaves-512x512.png">
   <link rel="stylesheet" href="static/font.css">
@@ -1265,18 +1273,11 @@
     }
 
     async function autoTranslate(text, languageSelect=undefined) {
-      ggDetectLanguage(text)
-        .then((sourceLanguage) => {
-          if (languageSelect !== undefined) {
-            console.log("autoTranslate sourceLanguage:", sourceLanguage);
-            languageSelect.value = sourceLanguage;
-            console.log("languageSelect.value = sourceLanguage:", sourceLanguage);
-          }
-        })
-        .catch((error) => {
-          // Handle errors from ggDetectLanguage() if needed
-          console.error("ggDetectLanguage Error:", error);
-        });
+      var sourceLanguage = await ggDetectLanguage(text);
+      if (languageSelect !== undefined) {
+        languageSelect.value = sourceLanguage;
+        console.log("languageSelect.value = sourceLanguage:", sourceLanguage);
+      }
       await speechTranslate(text, sourceLanguage);
     }
 
