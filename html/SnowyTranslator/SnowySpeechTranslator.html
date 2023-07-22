@@ -1151,20 +1151,15 @@
       if (sourceLanguage === "") {
         sourceLanguage = "ja";
       }
-      console.log("ggAudioList before await ggSpeakUrlGet:", ggAudioList);
       var url = await ggSpeakUrlGet(text, sourceLanguage)
       ggAudioList.push(url);
-      console.log("ggAudioList url:", url);
-      console.log("ggAudioList after await ggSpeakUrlGet", ggAudioList);
       if (lines > 1) {
         await speechTranslate(text, sourceLanguage);
         for (let i = 1; i < lines; i++) {
           var url = await ggSpeakUrlGet(texts[i].textContent, targetLanguages[i - 1]);
-          console.log("ggSpeakUrlGet url 1:", url)
           ggAudioList.push(url);
         }
       }
-      console.log("ggSpeakUrlGet url 2:", url)
       console.log("ggAudioList:", ggAudioList);
       var MSTTS_voiceName = chooseAzureVoice(sourceLanguage);
       getMsttsAccessToken(function(accessToken) {
@@ -1175,7 +1170,6 @@
       if (lines > 1) {
         getMsttsAccessToken(function(accessToken) {
           for (let i = 1; i < lines; i++) {
-            console.log(`i=${i}, language=${targetLanguages[i - 1]}, text=${texts[i].textContent}`);
             getMsAudioData(texts[i].textContent, targetLanguages[i - 1], chooseAzureVoice(targetLanguages[i - 1]), accessToken, function(audioData) {
               msAudioList.push(audioData);
             });
