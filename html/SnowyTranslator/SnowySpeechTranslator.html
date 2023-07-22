@@ -272,9 +272,18 @@
     </tr>
   </table>
   <table style="margin-top: 3px;">
-    <tr id="inputArea-5" style="display:block;">
+    <tr id="readingListInputArea" style="display:block;">
       <td>
-        <button id="addToReadingList-button" onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[1].value)" > Reading List </button>
+        <select id="readingListLanguageSelect" style="width: 36px;">
+          <option value="ja" selected>🇯🇵</option>
+          <option value="en">🇺🇸</option>
+          <option value="zh-TW">🇹🇼</option>
+        </select>
+        <button type="button" onclick="autoTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0])">🔎</button>
+        <button id="addToReadingList-button" onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 1)" > + </button>
+        <button onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 2)"> ++ </button>
+        <button onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 3)"> +++ </button>
+        <button onclick="clearReadingList(this)">🆑</button>
         <select id="repeatTimeSelect" style="width: 40px;">
           <option value="1">1</option>
           <option value="2" selected>2</option>
@@ -286,17 +295,6 @@
           <option value="50">50</option>
           <option value="99">99</option>
         </select>
-      </td>
-      <td>
-        <select id="textareaLanguageSelect-5" style="width: 36px;">
-          <option value="ja" selected>🇯🇵</option>
-          <option value="en">🇺🇸</option>
-          <option value="zh-TW">🇹🇼</option>
-        </select>
-        <button type="button" onclick="autoTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[1])">🔎</button>
-        <button onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[1].value, 2)">+</button>
-        <button onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[1].value, 3)">++</button>
-        <button onclick="clearReadingList(this)">🆑</button>
       </td>
       <td>
         <textarea id="readingListInput" rows="2" cols="79"></textarea>
@@ -1090,7 +1088,6 @@
     }
     function msSpeak(text, sourceLanguage = "") {
       console.log("msSpeak-text:", text);
-      console.log("sourceLanguage:", sourceLanguage);
       if (text === "") return;
       var MSTTS_voiceName;
       if (sourceLanguage === "ja") {
@@ -1190,9 +1187,8 @@
       var totalRepeatTime = ggAudioList.length * repeatTime;
       var currentAudioIndex = 0;
       console.log("totalRepeatTime:", totalRepeatTime);
-      console.log("ggAudioList starts:", ggAudioList);
       if (ggAudioList.length === 0) {
-        await addToReadingList(button.parentNode.parentNode.querySelector('textarea').value, button.parentNode.parentNode.querySelectorAll('select')[1].value);
+        await addToReadingList(button.parentNode.parentNode.querySelector('textarea').value, button.parentNode.parentNode.querySelectorAll('select')[0].value);
       }
       ggSpeakAudio.addEventListener('ended', function() {
         currentAudioIndex++;
@@ -1213,9 +1209,8 @@
       }
       var totalRepeatTime = msAudioList.length * repeatTime;
       console.log("totalRepeatTime:", totalRepeatTime);
-      console.log("msAudioList start:", msAudioList);
       if (msAudioList.length === 0) {
-        await addToReadingList(button.parentNode.parentNode.querySelector('textarea').value, button.parentNode.parentNode.querySelectorAll('select')[1].value);
+        await addToReadingList(button.parentNode.parentNode.querySelector('textarea').value, button.parentNode.parentNode.querySelectorAll('select')[0].value);
       }
       function msListPlayAudio(currentAudioIndex) {
         if (currentAudioIndex >= totalRepeatTime) return;
