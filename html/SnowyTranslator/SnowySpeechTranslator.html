@@ -998,14 +998,14 @@
       }
     }
 
-    function ggSpeakUrlGet(text, sourceLanguage) {
-      var url = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" +
-        sourceLanguage +  "&client=tw-ob&q=" + encodeURIComponent(text);
+    async function ggSpeakUrlGet(text, sourceLanguage) {
       if (window.location.protocol === "file:") {
+        var url = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" +
+          sourceLanguage +  "&client=tw-ob&q=" + encodeURIComponent(text);
         return url;
       }
       else {
-        fetch('https://snsmile.site:3000/text-to-speech', {
+        await fetch('https://snsmile.site:3000/text-to-speech', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -1023,7 +1023,7 @@
         .catch(error => console.error('Error:', error));
       }
     }
-    function ggSpeak(text, sourceLanguage = "") {
+    async function ggSpeak(text, sourceLanguage = "") {
       console.log("ggSpeak text:", text);
       if (text == "") return;
       if (sourceLanguage === "") {
@@ -1032,7 +1032,7 @@
       if (ggSpeakAudio) {
         ggSpeakAudio.pause();
       }
-      ggSpeakAudio.src = ggSpeakUrlGet(text, sourceLanguage);
+      ggSpeakAudio.src = await ggSpeakUrlGet(text, sourceLanguage);
       ggSpeakAudio.play();
       /* if ("speechSynthesis" in window) {
         var speechSynthesis = window.speechSynthesis;
@@ -1146,11 +1146,11 @@
       if (sourceLanguage === "") {
         sourceLanguage = "ja";
       }
-      ggAudioList.push(ggSpeakUrlGet(text, sourceLanguage));
+      ggAudioList.push(await ggSpeakUrlGet(text, sourceLanguage));
       if (lines > 1) {
         await speechTranslate(text, sourceLanguage);
         for (let i = 1; i < lines; i++) {
-          ggAudioList.push(ggSpeakUrlGet(texts[i].textContent, targetLanguages[i - 1]));
+          ggAudioList.push(await ggSpeakUrlGet(texts[i].textContent, targetLanguages[i - 1]));
         }
       }
       var MSTTS_voiceName = chooseAzureVoice(sourceLanguage);
@@ -1212,8 +1212,7 @@
       if (msAudioList.length === 0) {
         await addToReadingList(button.parentNode.parentNode.querySelector('textarea').value, button.parentNode.parentNode.querySelectorAll('select')[0].value);
       }
-      function msListPlayAudio(currentAudioIndex) {
-        if (currentAudioIndex >= totalRepeatTime) return;
+      function msListPlayAudio(currentAudioIndex) { (currentAudioIndex >= totalRepeatTime) return;
         var i = currentAudioIndex % msAudioList.length;
         var audioDataCopy = msAudioList[i].slice();
         const audioData = msAudioList[i];
