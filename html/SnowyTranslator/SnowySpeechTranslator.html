@@ -1146,7 +1146,9 @@
       if (sourceLanguage === "") {
         sourceLanguage = "ja";
       }
+      console.log("before await ggSpeakUrlGet");
       ggAudioList.push(await ggSpeakUrlGet(text, sourceLanguage));
+      console.log("after await ggSpeakUrlGet");
       if (lines > 1) {
         await speechTranslate(text, sourceLanguage);
         for (let i = 1; i < lines; i++) {
@@ -1189,15 +1191,20 @@
       console.log("totalRepeatTime:", totalRepeatTime);
       if (ggAudioList.length === 0) {
         await addToReadingList(button.parentNode.parentNode.querySelector('textarea').value, button.parentNode.parentNode.querySelectorAll('select')[0].value);
+        console.log("1");
       }
+      console.log("2");
       ggSpeakAudio.addEventListener('ended', function() {
+        console.log("3");
         currentAudioIndex++;
         if (currentAudioIndex < totalRepeatTime) {
           ggSpeakAudio.pause();
           var i = currentAudioIndex % ggAudioList.length;
           var audioUrl = ggAudioList[i];
           ggSpeakAudio.src = audioUrl;
+          console.log("4");
           ggSpeakAudio.play();
+          console.log("5");
         }
       });
       ggSpeakAudio.src = ggAudioList[currentAudioIndex];
