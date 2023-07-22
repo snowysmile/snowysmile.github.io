@@ -1001,7 +1001,7 @@
     var ggAudioList = [];
     var msAudioList = [];
     async function ggSpeakUrlGet(text, sourceLanguage) {
-      if (window.location.protocol === "123file:") {
+      if (window.location.protocol === "file:") {
         var url = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" +
           sourceLanguage +  "&client=tw-ob&q=" + encodeURIComponent(text);
         return url;
@@ -1268,7 +1268,6 @@
       var sourceLanguage = await ggDetectLanguage(text);
       if (languageSelect !== undefined) {
         languageSelect.value = sourceLanguage;
-        console.log("languageSelect.value = sourceLanguage:", sourceLanguage);
       }
       await speechTranslate(text, sourceLanguage);
     }
