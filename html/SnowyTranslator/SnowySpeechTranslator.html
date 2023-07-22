@@ -1212,7 +1212,8 @@
       if (msAudioList.length === 0) {
         await addToReadingList(button.parentNode.parentNode.querySelector('textarea').value, button.parentNode.parentNode.querySelectorAll('select')[0].value);
       }
-      function msListPlayAudio(currentAudioIndex) { (currentAudioIndex >= totalRepeatTime) return;
+      function msListPlayAudio(currentAudioIndex) {
+        if (currentAudioIndex >= totalRepeatTime) return;
         var i = currentAudioIndex % msAudioList.length;
         var audioDataCopy = msAudioList[i].slice();
         const audioData = msAudioList[i];
