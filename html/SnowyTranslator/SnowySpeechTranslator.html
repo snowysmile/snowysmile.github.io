@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=500, initial-scale=1.0">
 
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="icon" href="static/Img/favicon/cat-in-leaves-512x512.png">
@@ -275,7 +275,7 @@
     <tr id="inputArea-5" style="display:block;">
       <td>
         <button id="addToReadingList-button" onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[1].value)" > Reading List </button>
-        <select id="repeatTime" style="width: 40px;">
+        <select id="repeatTimeSelect" style="width: 40px;">
           <option value="1">1</option>
           <option value="2" selected>2</option>
           <option value="3">3</option>
@@ -302,8 +302,8 @@
         <textarea id="readingListInput" rows="2" cols="79"></textarea>
       </td>
       <td>
-        <button style="font-size: 10px;" onclick="ggSpeakReadingList(document.getElementById('repeatTime').value, this)">G🔊</button>
-        <button style="font-size: 10px;" onclick="msSpeakReadingList(document.getElementById('repeatTime').value, this)">M🔊</button>
+        <button style="font-size: 10px;" onclick="ggSpeakReadingList(repeatTimeSelect.value, this)">G🔊</button>
+        <button style="font-size: 10px;" onclick="msSpeakReadingList(repeatTimeSelect.value, this)">M🔊</button>
       </td>
     </tr>
   </table>
@@ -1034,7 +1034,7 @@
       if (ggSpeakAudio) {
         ggSpeakAudio.pause();
       }
-      ggSpeakAudio.src = ggSpeakUrlGet();
+      ggSpeakAudio.src = ggSpeakUrlGet(text, sourceLanguage);
       ggSpeakAudio.play();
       /* if ("speechSynthesis" in window) {
         var speechSynthesis = window.speechSynthesis;
@@ -1149,15 +1149,11 @@
       if (sourceLanguage === "") {
         sourceLanguage = "ja";
       }
-      var url = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" +
-        sourceLanguage +  "&client=tw-ob&q=" + encodeURIComponent(text);
-      ggAudioList.push(url);
+      ggAudioList.push(ggSpeakUrlGet(text, sourceLanguage));
       if (lines > 1) {
         await speechTranslate(text, sourceLanguage);
         for (let i = 1; i < lines; i++) {
-          var url = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" +
-            targetLanguages[i - 1] +  "&client=tw-ob&q=" + encodeURIComponent(texts[i].textContent);
-          ggAudioList.push(url);
+          ggAudioList.push(ggSpeakUrlGet(texts[i].textContent, targetLanguages[i - 1]));
         }
       }
       var MSTTS_voiceName = chooseAzureVoice(sourceLanguage);
@@ -1200,7 +1196,7 @@
       }
       ggSpeakAudio.addEventListener('ended', function() {
         currentAudioIndex++;
-        if (currentAudioIndex < ggAudioList.length * repeatTime) {
+        if (currentAudioIndex < totalRepeatTime) {
           ggSpeakAudio.pause();
           var i = currentAudioIndex % ggAudioList.length;
           var audioUrl = ggAudioList[i];
