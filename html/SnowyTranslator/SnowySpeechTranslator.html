@@ -4,10 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -1006,22 +1002,13 @@
       }
     }
 
-    function ggSpeak(text, sourceLanguage = "") {
-      console.log("ggSpeak text:", text);
-      if (text == "") return;
-      if (sourceLanguage === "") {
-        sourceLanguage = "ja";
-      }
-      if (ggSpeakAudio) {
-        ggSpeakAudio.pause();
-      }
+    function ggSpeakUrlGet(text, sourceLanguage) {
       var url = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" +
         sourceLanguage +  "&client=tw-ob&q=" + encodeURIComponent(text);
-      if (window.location.protocol === "123file:") {
-        ggSpeakAudio.src = url;
-        ggSpeakAudio.play();
-      } else {
-        console.log("ggSpeak running not as a file");
+      if (window.location.protocol === "file:") {
+        return url;
+      }
+      else {
         fetch('https://snsmile.site:3000/text-to-speech', {
           method: 'POST',
           headers: {
@@ -1034,13 +1021,23 @@
         })
         .then(response => response.arrayBuffer())
         .then(audioData => {
-          console.log("GG audioData:", typeof audioData, audioData);
           const audioBlob = new Blob([audioData], { type: 'audio/mpeg' });
-          ggSpeakAudio.src = URL.createObjectURL(audioBlob);
-          ggSpeakAudio.play();
+          return URL.createObjectURL(audioBlob);
         })
         .catch(error => console.error('Error:', error));
       }
+    }
+    function ggSpeak(text, sourceLanguage = "") {
+      console.log("ggSpeak text:", text);
+      if (text == "") return;
+      if (sourceLanguage === "") {
+        sourceLanguage = "ja";
+      }
+      if (ggSpeakAudio) {
+        ggSpeakAudio.pause();
+      }
+      ggSpeakAudio.src = ggSpeakUrlGet();
+      ggSpeakAudio.play();
       /* if ("speechSynthesis" in window) {
         var speechSynthesis = window.speechSynthesis;
         var utterance = new SpeechSynthesisUtterance(text);
@@ -1107,7 +1104,6 @@
       }
       getMsttsAccessToken(function(accessToken) {
         getMsAudioData(text, sourceLanguage, MSTTS_voiceName, accessToken, function(audioData) {
-            console.log("MS audioData:", typeof audioData, audioData);
             const audioBlob = new Blob([audioData], { type: 'audio/mpeg' });
             msSpeakAudio.src = URL.createObjectURL(audioBlob);
             msSpeakAudio.play();
