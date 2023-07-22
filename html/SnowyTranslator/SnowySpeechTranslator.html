@@ -252,8 +252,8 @@
       </td>
       <td>
         <select id="textareaLanguageSelect-4" style="width: 36px;">
-          <option value="ja" selected>🇯🇵</option>
-          <option value="en">🇺🇸</option>
+          <option value="ja">🇯🇵</option>
+          <option value="en" selected>🇺🇸</option>
           <option value="zh-TW">🇹🇼</option>
         </select>
         <button type="button" onclick="autoTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select'))">🔎</button>
@@ -310,7 +310,7 @@
     <button id="ggPauseAudio-button" style="height:24px;" onclick="ggPauseAudio()">G⏯</button>
     <audio id="ggSpeakAudio" src="" controls style="height:22px;"></audio>
     <button id="msPauseAudio-button" style="height:24px;" onclick="msPauseAudio()">M⏯</button>
-    <audio id="msSpeakAudioWidget" src="" controls style="height:22px;"></audio>
+    <audio id="msSpeakAudio" src="" controls style="height:22px;"></audio>
   </div>
   <div class="row-container" style="margin-bottom:3px;">
     <span style="margin-left:24px;">
@@ -1010,7 +1010,7 @@
       }
       var url = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" +
         sourceLanguage +  "&client=tw-ob&q=" + encodeURIComponent(text);
-      if (window.location.protocol === "file:") {
+      if (window.location.protocol === "123file:") {
         ggSpeakAudio.src = url;
         ggSpeakAudio.play();
       } else {
@@ -1027,10 +1027,9 @@
         })
         .then(response => response.arrayBuffer())
         .then(audioData => {
+          console.log("GG audioData:", typeof audioData, audioData);
           const audioBlob = new Blob([audioData], { type: 'audio/mpeg' });
-          url = URL.createObjectURL(audioBlob);
-          console.log("ggSpeak updated url:", url);
-          ggSpeakAudio.src = url;
+          ggSpeakAudio.src = URL.createObjectURL(audioBlob);
           ggSpeakAudio.play();
         })
         .catch(error => console.error('Error:', error));
@@ -1047,7 +1046,6 @@
 		const MSTTS_region = "southeastasia";
 		const MSTTS_endpoint1 = `https://${MSTTS_region}.api.cognitive.microsoft.com/sts/v1.0/issuetoken`;
 		const MSTTS_endpoint2 = `https://${MSTTS_region}.tts.speech.microsoft.com/cognitiveservices/v1`;
-    var msSpeakAudio;
     function getMsttsAccessToken(callback) {
       var xhr1 = new XMLHttpRequest();
       xhr1.open('POST', MSTTS_endpoint1);
@@ -1064,7 +1062,7 @@
         }
       }
     }
-    function getAudioData(text, sourceLanguage, MSTTS_voiceName, accessToken, callback) {
+    function getMsAudioData(text, sourceLanguage, MSTTS_voiceName, accessToken, callback) {
       var xhr2 = new XMLHttpRequest();
       var headers = {
         "Authorization": `Bearer ${accessToken}`,
@@ -1101,28 +1099,20 @@
         MSTTS_voiceName = azureVoiceSelects[2].value;
       }
       getMsttsAccessToken(function(accessToken) {
-        getAudioData(text, sourceLanguage, MSTTS_voiceName, accessToken, function(audioData) {
-          const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-          audioContext.decodeAudioData(audioData, function(audioBuffer) {
-            msSpeakAudio = audioContext.createBufferSource();
-            msSpeakAudio.buffer = audioBuffer;
-            msSpeakAudio.connect(audioContext.destination);
-            msSpeakAudio.start();
-          });
-          
-          const audioBlob = new Blob([audioData], { type: 'audio/mpeg' });
-          const audioUrl = URL.createObjectURL(audioBlob);
-          msSpeakAudioWidget.src = audioUrl;
-          console.log("msSpeakAudioWidget:", msSpeakAudioWidget.src);
+        getMsAudioData(text, sourceLanguage, MSTTS_voiceName, accessToken, function(audioData) {
+            console.log("MS audioData:", typeof audioData, audioData);
+            const audioBlob = new Blob([audioData], { type: 'audio/mpeg' });
+            msSpeakAudio.src = URL.createObjectURL(audioBlob);
+            msSpeakAudio.play();
         });
       });
     }
     function msPauseAudio() {
       if (msSpeakAudio) {
-        if (msSpeakAudio.context.state === 'running') {
-          msSpeakAudio.context.suspend();
-        } else if (msSpeakAudio.context.state === 'suspended') {
-          msSpeakAudio.context.resume();
+        if (msSpeakAudio.paused) {
+          msSpeakAudio.play();
+        } else {
+          msSpeakAudio.pause();
         }
       }
     }
@@ -1163,7 +1153,7 @@
       ggAudioList.push(url);
       var MSTTS_voiceName = chooseAzureVoice(sourceLanguage);
       getMsttsAccessToken(function(accessToken) {
-        getAudioData(text, sourceLanguage, MSTTS_voiceName, accessToken, function(audioData) {
+        getMsAudioData(text, sourceLanguage, MSTTS_voiceName, accessToken, function(audioData) {
           msAudioList.push(audioData);
         });
       });
@@ -1177,7 +1167,7 @@
         getMsttsAccessToken(function(accessToken) {
           for (let i = 1; i < lines; i++) {
             console.log(`i=${i}, language=${targetLanguages[i - 1]}, text=${texts[i].textContent}`);
-            getAudioData(texts[i].textContent, targetLanguages[i - 1], chooseAzureVoice(targetLanguages[i - 1]), accessToken, function(audioData) {
+            getMsAudioData(texts[i].textContent, targetLanguages[i - 1], chooseAzureVoice(targetLanguages[i - 1]), accessToken, function(audioData) {
               msAudioList.push(audioData);
             });
           }
@@ -1215,8 +1205,8 @@
 
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     function msSpeakReadingList(repeatTime) {
-      if (msSpeakAudio && audioContext.state === 'running') {
-        msSpeakAudio.stop();
+      if (msSpeakAudio) {
+        msSpeakAudio.pause();
       }
       var totalRepeatTime = msAudioList.length * repeatTime;
       console.log("totalRepeatTime:", totalRepeatTime);
@@ -1227,19 +1217,13 @@
         var i = index % msAudioList.length;
         var audioCopy = msAudioList[i].slice();
         const audioData = msAudioList[i];
-        audioContext.decodeAudioData(audioData, function (audioBuffer) {
-          const audioSource = audioContext.createBufferSource();
-          audioSource.buffer = audioBuffer;
-          audioSource.connect(audioContext.destination);
-          audioSource.onended = function() {
-            msAudioList[i] = audioCopy;
-            playAudio(index + 1);
-          };
-          audioSource.start();
-          msSpeakAudio = audioSource;
-        }, function(error) {
-          console.error('Error decoding audio data:', error);
-        });
+        const audioBlob = new Blob([audioData], { type: 'audio/mpeg' });
+        msSpeakAudio.src = URL.createObjectURL(audioBlob);
+        msSpeakAudio.onended = function() {
+          msAudioList[i] = audioCopy;
+          playAudio(index + 1);
+        };
+        msSpeakAudio.play();
       }
       playAudio(0);
     }
@@ -1258,13 +1242,13 @@
           body: JSON.stringify(data),
         });
         const responseData = await response.json();
-        const language = responseData.data.detections[0][0].language;
+        const detectedLanguage = responseData.data.detections[0][0].language;
         const confidence = responseData.data.detections[0][0].confidence;
-        console.log(`Detected Language: ${language} (Confidence: ${confidence})`);
+        console.log(`Detected Language: ${detectedLanguage} (Confidence: ${confidence})`);
         if (text.length <= 10 && (detectedLanguage === "zh-CN" || detectedLanguage === "zh-TW")) {
           detectedLanguage = "ja";
         }
-        return language;
+        return detectedLanguage;
       } catch (error) {
         console.error('ggDetectLanguage Error:', error);
       }
