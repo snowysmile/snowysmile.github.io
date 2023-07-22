@@ -998,29 +998,36 @@
       }
     }
 
+    var ggAudioList = [];
+    var msAudioList = [];
     async function ggSpeakUrlGet(text, sourceLanguage) {
-      if (window.location.protocol === "file:") {
+      if (window.location.protocol === "123file:") {
         var url = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" +
           sourceLanguage +  "&client=tw-ob&q=" + encodeURIComponent(text);
         return url;
       }
       else {
-        await fetch('https://snsmile.site:3000/text-to-speech', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            sourceLanguage: sourceLanguage,
-            text: text
-          })
-        })
-        .then(response => response.arrayBuffer())
-        .then(audioData => {
+        try {
+          const response = await fetch('https://snsmile.site:3000/text-to-speech', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              sourceLanguage: sourceLanguage,
+              text: text
+            })
+          });
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          const audioData = await response.arrayBuffer();
           const audioBlob = new Blob([audioData], { type: 'audio/mpeg' });
           return URL.createObjectURL(audioBlob);
-        })
-        .catch(error => console.error('Error:', error));
+        } catch (error) {
+          console.error('Error:', error);
+          return null; // or handle the error in a way appropriate for your application
+        }
       }
     }
     async function ggSpeak(text, sourceLanguage = "") {
@@ -1124,8 +1131,6 @@
       }
     }
 
-    var ggAudioList = [];
-    var msAudioList = [];
     function clearReadingList() {
       ggAudioList = [];
       msAudioList = [];
@@ -1146,15 +1151,21 @@
       if (sourceLanguage === "") {
         sourceLanguage = "ja";
       }
-      console.log("before await ggSpeakUrlGet");
-      ggAudioList.push(await ggSpeakUrlGet(text, sourceLanguage));
-      console.log("after await ggSpeakUrlGet");
+      console.log("ggAudioList before await ggSpeakUrlGet:", ggAudioList);
+      var url = await ggSpeakUrlGet(text, sourceLanguage)
+      ggAudioList.push(url);
+      console.log("ggAudioList url:", url);
+      console.log("ggAudioList after await ggSpeakUrlGet", ggAudioList);
       if (lines > 1) {
         await speechTranslate(text, sourceLanguage);
         for (let i = 1; i < lines; i++) {
-          ggAudioList.push(await ggSpeakUrlGet(texts[i].textContent, targetLanguages[i - 1]));
+          var url = await ggSpeakUrlGet(texts[i].textContent, targetLanguages[i - 1]);
+          console.log("ggSpeakUrlGet url 1:", url)
+          ggAudioList.push(url);
         }
       }
+      console.log("ggSpeakUrlGet url 2:", url)
+      console.log("ggAudioList:", ggAudioList);
       var MSTTS_voiceName = chooseAzureVoice(sourceLanguage);
       getMsttsAccessToken(function(accessToken) {
         getMsAudioData(text, sourceLanguage, MSTTS_voiceName, accessToken, function(audioData) {
@@ -1171,6 +1182,7 @@
           }
         });
       }
+      console.log("msAudioList:", msAudioList);
       var readingListItem = document.createElement('li');
       readingListItem.textContent = text + ` - [${sourceLanguage}]`;
       readingList.appendChild(readingListItem);
@@ -1191,20 +1203,14 @@
       console.log("totalRepeatTime:", totalRepeatTime);
       if (ggAudioList.length === 0) {
         await addToReadingList(button.parentNode.parentNode.querySelector('textarea').value, button.parentNode.parentNode.querySelectorAll('select')[0].value);
-        console.log("1");
       }
-      console.log("2");
       ggSpeakAudio.addEventListener('ended', function() {
-        console.log("3");
         currentAudioIndex++;
         if (currentAudioIndex < totalRepeatTime) {
           ggSpeakAudio.pause();
           var i = currentAudioIndex % ggAudioList.length;
-          var audioUrl = ggAudioList[i];
-          ggSpeakAudio.src = audioUrl;
-          console.log("4");
+          ggSpeakAudio.src = ggAudioList[i];
           ggSpeakAudio.play();
-          console.log("5");
         }
       });
       ggSpeakAudio.src = ggAudioList[currentAudioIndex];
