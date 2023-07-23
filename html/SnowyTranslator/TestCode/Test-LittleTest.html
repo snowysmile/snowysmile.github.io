@@ -1,58 +1,145 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Text-to-Speech</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        table {
+            width: 100%;
+            max-width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        @media screen and (max-width: 1467px) {
+            .table-row {
+                display: flex; /* Change to block to stack elements vertically */
+                flex-direction: column;
+            }
+            /* Add this rule to set a maximum width for the textarea on phones */
+            textarea {
+                max-width: 100%;
+                width: 100%; /* Set textarea width to 100% to ensure it fills the container */
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>Text-to-Speech</h1>
-  <form id="ttsForm">
-    <label for="language">Select Language:</label>
-    <select id="language">
-      <!-- Add language options here, e.g., English, French, Spanish, etc. -->
-      <option value="en">English</option>
-      <option value="fr">French</option>
-      <option value="es">Spanish</option>
-      <!-- Add more languages as needed -->
-    </select>
-    <br>
-    <label for="textInput">Enter Text:</label>
-    <input type="text" id="textInput" required>
-    <br>
-    <button type="submit">Read Text</button>
-  </form>
 
-  <audio id="audioPlayer" controls>
-    <!-- The audio data received from the server will be played here -->
-  </audio>
+<h2>Sample Table</h2>
 
-  <script>
-    document.getElementById('ttsForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      const language = document.getElementById('language').value;
-      const text = document.getElementById('textInput').value;
+<table>
+    <tr class="table-row" id="inputArea-1">
+        <td class="column1">
+            <button id="recognize-button" onclick="toggleRecognition()">▶️ Start Recognizing</button>
+        </td>
+        <td class="column2">
+            <select id="textareaLanguageSelect-1">
+                <option value="ja" selected>🇯🇵</option>
+                <option value="en">🇺🇸</option>
+                <option value="zh-TW">🇹🇼</option>
+            </select>
+            <button onclick="speechTranslate(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">🔤</button>
 
-      // Send the data to the server for text-to-speech conversion
-      fetch('https://snsmile.site:3000/text-to-speech', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          sourceLanguage: language,
-          text: text
-        })
-      })
-      .then(response => response.arrayBuffer()) // Change this based on the response format from the server
-      .then(audioData => {
-        const audioBlob = new Blob([audioData], { type: 'audio/mpeg' });
-        const audioUrl = URL.createObjectURL(audioBlob);
+            <button onclick="copyTextArea(this)">✂️</button>
+            <button onclick="clearTextArea(this)">🆑</button>
+            <span class="alterable-layouts">
+                <button style="font-size: 10px;" onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">G🔊</button>
+                <button style="font-size: 10px;" onclick="msSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">M🔊</button>
+            </span>
+        </td>
+        <td>
+            <textarea id="recognitionResult" rows="2" cols="120"></textarea>
+        </td>
+        <td class="alterable-layouts">
+            <button style="font-size: 10px;" onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">G🔊</button>
+            <button style="font-size: 10px;" onclick="msSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">M🔊</button>
+        </td>
+    </tr>
+</table>
 
-        const audioPlayer = document.getElementById('audioPlayer');
-        audioPlayer.src = audioUrl;
-        audioPlayer.play();
-      })
-      .catch(error => console.error('Error:', error));
-    });
-  </script>
+<table>
+  <tr class="table-row" id="recognitionInputArea">
+    <td>
+      <button id="recognize-button" onclick="toggleRecognition()" style="width: 148px;">▶️ Start Recognizing</button>
+    </td>
+    <td>
+      <select id="recognitionLanguageSelect" style="width: 36px; height: 20px;">
+        <option value="ja" selected>🇯🇵</option>
+        <option value="en">🇺🇸</option>
+        <option value="zh-TW">🇹🇼</option>
+      </select>
+      <button onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)">🔤</button>
+      <button onclick="copyTextArea(this)">✂️</button>
+      <button onclick="clearTextArea(this)">🆑</button>
+      <span class="readButtons">
+        <button style="font-size: 10px; height: 20px;" onclick="ggSpeak(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)">G🔊</button>
+        <button style="font-size: 10px; height: 20px;" onclick="msSpeak(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)">M🔊</button>
+      </span>
+    </td>
+    <td>
+      <textarea id="recognitionResult" rows="2" cols="80"></textarea>
+    </td>
+  </tr>
+<table>
+
+  <table style="margin-top: 3px; ">
+    <tr class="table-row" id="readingListInputArea">
+      <td>
+        <select id="readingListLanguageSelect">
+          <option value="ja" selected>🇯🇵</option>
+          <option value="en">🇺🇸</option>
+          <option value="zh-TW">🇹🇼</option>
+        </select>
+        <select id="repeatTimeSelect" style="width: 40px;">
+          <option value="1">1</option>
+          <option value="2" selected>2</option>
+          <option value="3">3</option>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="50">50</option>
+          <option value="99">99</option>
+        </select>
+        <button type="button" onclick="autoTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0])">🔎</button>
+        <button id="addToReadingList-button" onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 1)" > + </button>
+        <button onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 2)"> ++ </button>
+        <button onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 3)"> +++ </button>
+        <button onclick="clearReadingList(this)">🆑</button>
+        <span class="readButtons">
+          <button style="font-size: 11px;" onclick="ggSpeakReadingList(repeatTimeSelect.value, this)">G🔊</button>
+          <button style="font-size: 11px;" onclick="msSpeakReadingList(repeatTimeSelect.value, this)">M🔊</button>
+        </span>
+      </td>
+      <td>
+        <textarea id="readingListInput" rows="2" cols="87"></textarea>
+      </td>
+    </tr>
+  </table>
+
+<script>
+  function moveButtonsOnPhone() {
+    const readButtonsSpan = document.querySelector('.readButtons');
+    const recognitionInputArea = document.getElementById('recognitionInputArea');
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth <= 767) { // Adjust this threshold to the desired screen width for phones
+      //const newTd = document.createElement('td');
+      //newTd.appendChild(readButtonsSpan);
+      recognitionInputArea.appendChild(readButtonsSpan);
+    }
+  }
+
+  // Call the function when the page loads and when it is resized
+  window.addEventListener('load', moveButtonsOnPhone);
+  window.addEventListener('resize', moveButtonsOnPhone);
+</script>
+
 </body>
 </html>

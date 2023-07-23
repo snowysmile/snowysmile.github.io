@@ -2,8 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=500, initial-scale=1.0">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="icon" href="static/Img/favicon/cat-in-leaves-512x512.png">
   <link rel="stylesheet" href="static/font.css">
@@ -18,6 +17,7 @@
     .row-container {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
     }
     .row-container-left {
       width: 720px;
@@ -25,16 +25,66 @@
       flex-direction: row;
       align-items: flex-start;
     }
+    .reading-container,
+    .reading-container select,
+    .reading-container button {
+      font-size: 9px;
+    }
+    .layout-container
+    .layout-container button {
+      font-size: 9px;
+    }
+
     table {
       border-collapse: collapse;
+      border: 1px solid #777777;
     }
     th, td {
-      border: 1px solid black;
+      border-bottom: 1px solid #ccc;
       text-align: center;
       vertical-align: middle;
-      font-size: 16px;
-      padding: 3px;
+      padding: 4px;
     }
+    .input-table {
+      table-layout: fixed;
+    }
+    .input-table button{
+      vertical-align: middle;
+      height: 28px;
+    }
+    .input-table select {
+      vertical-align: middle;
+      height: 28px;
+      width: 36px;
+      font-family: "Monaco", monospace;
+    }
+    @media screen and (max-width: 600px) {
+      html, body {
+        max-width: 96%;
+        display: flex;
+      }
+      table {
+        display: flex;
+        flex-direction: column;
+      }
+      th, td {
+        display: block;
+        text-align: center;
+        padding: 4px;
+      }
+      textarea {
+        max-width: 96%;
+        width: 96%;
+      }
+      .input-table-row {
+        display: flex;
+        flex-direction: column;
+      }
+      .text-area {
+        max-width: 90%;
+      }
+    }
+
     rt {
       font-size: 0.8em;
     }
@@ -147,16 +197,6 @@
   <title>Snowy Speech Translator</title>
 </head>
 <body>
-  <svg width="100%" height="100px">
-    <text class="svg-stroke-text svg-stroke-layer-C" name="strokeTitle" x="50%" y="50%">
-    </text>
-    <text class="svg-stroke-text svg-stroke-layer-B" name="strokeTitle" x="50%" y="50%">
-    </text>
-    <text class="svg-stroke-text svg-stroke-layer-A" name="strokeTitle" x="50%" y="50%">
-    </text>
-    <text class="svg-stroke-text" name="strokeTitle" x="50%" y="50%">
-    </text>
-  </svg>
   <script>
     strokeTitles = document.querySelectorAll('.svg-stroke-text[name="strokeTitle"]');
       strokeTitles.forEach(function(element) {
@@ -181,13 +221,13 @@
     });
   </script>
 
-  <table>
-    <tr id="inputArea-1" style="display:block">
+  <table class="input-table">
+    <tr class="input-table-row" id="recognitionInputArea" style="display:block">
       <td>
         <button id="recognize-button" onclick="toggleRecognition()" style="width: 148px;">▶️ Start Recognizing</button>
       </td>
       <td>
-        <select id="textareaLanguageSelect-1" style="width: 36px; height: 20px;">
+        <select id="recognitionLanguageSelect">
           <option value="ja" selected>🇯🇵</option>
           <option value="en">🇺🇸</option>
           <option value="zh-TW">🇹🇼</option>
@@ -195,21 +235,22 @@
         <button onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)">🔤</button>
         <button onclick="copyTextArea(this)">✂️</button>
         <button onclick="clearTextArea(this)">🆑</button>
+        <span class="readButtons">
+          <button onclick="ggSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">G🔊</button>
+          <button onclick="msSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">M🔊</button>
+        </span>
       </td>
       <td>
         <textarea id="recognitionResult" rows="2" cols="80"></textarea>
       </td>
-      <td>
-        <button style="font-size: 10px; height: 20px;" onclick="ggSpeak(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)">G🔊</button>
-        <button style="font-size: 10px; height: 20px;" onclick="msSpeak(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)">M🔊</button>
-      </td>
     </tr>
-    <tr id="inputArea-2" style="display:block">
+
+    <tr class="input-table-row" id="recordInputArea" style="display:block">
       <td>
         <button id="record-button" onclick="toggleRecord()" style="width: 148px;">▶️ Start Recording</button>
       </td>
       <td>
-        <select id="textareaLanguageSelect-2" style="width: 36px;">
+        <select id="recordLanguageSelect">
           <option value="ja" selected>🇯🇵</option>
           <option value="en">🇺🇸</option>
           <option value="zh-TW">🇹🇼</option>
@@ -217,73 +258,73 @@
         <button onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)">🔤</button>
         <button onclick="copyTextArea(this)">✂️</button>
         <button onclick="clearTextArea(this)">🆑</button>
+        <span class="readButtons">
+          <button onclick="ggSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">G🔊</button>
+          <button onclick="msSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">M🔊</button>
+        </span>
       </td>
       <td>
         <textarea id="recordResult" rows="2" cols="80"></textarea>
       </td>
-      <td>
-        <button style="font-size: 10px;" onclick="ggSpeak(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)">G🔊</button>
-        <button style="font-size: 10px;" onclick="msSpeak(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)">M🔊</button>
-      </td>
     </tr>
-    <tr id="inputArea-3" style="display:block">
+
+    <tr class="input-table-row" id="JpExpInputArea" style="display:block">
       <form action="/process" method="post">
         <td>
           <button id="jpExp-button" type="button" onclick="japaneseExplanationEntrance()" style="width: 148px;">Japanese Explanation</button>
         </td>
         <td>
-          <select id="textareaLanguageSelect-3" style="width: 36px;">
+          <select id="textareaLanguageSelect-3">
+            <option value="ja" selected>🇯🇵</option>
+            <option value="ja" selected>🇯🇵</option>
             <option value="ja" selected>🇯🇵</option>
           </select>
           <button type="button" onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, 'ja')">🔤</button>
           <button type="button" onclick="copyTextArea(this)">✂️</button>
           <button type="button" onclick="clearTextArea(this)">🆑</button>
+          <span class="readButtons">
+            <button type="button"  onclick="ggSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">G🔊</button>
+            <button type="button" onclick="msSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">M🔊</button>
+          </span>
         </td>
         <td>
           <textarea id="jpExpInput" name="jpExpInputName" rows="2" cols="80"></textarea>
         </td>
-        <td>
-          <button type="button" style="font-size: 10px;"  onclick="ggSpeak(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)">G🔊</button>
-          <button type="button" style="font-size: 10px;" onclick="msSpeak(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)">M🔊</button>
-        </td>
       </form>
     </tr>
-    <tr id="inputArea-4" style="display:block">
+
+    <tr class="input-table-row" id="translateInputArea" style="display:block">
       <td>
         <button id="translate-button" onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)" style="width: 148px;"> Translate </button>
       </td>
       <td>
-        <select id="textareaLanguageSelect-4" style="width: 36px;">
+        <select id="translateLanguageSelect">
           <option value="ja">🇯🇵</option>
           <option value="en" selected>🇺🇸</option>
           <option value="zh-TW">🇹🇼</option>
         </select>
-        <button type="button" onclick="autoTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select'))">🔎</button>
+        <button  onclick="autoTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select'))">🔎</button>
         <button onclick="copyTextArea(this)">✂️</button>
         <button onclick="clearTextArea(this)">🆑</button>
+        <span class="readButtons">
+          <button onclick="ggSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">G🔊</button>
+          <button onclick="msSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">M🔊</button>
+        </span>
       </td>
       <td>
         <textarea id="translateInput" rows="2" cols="80"></textarea>
       </td>
-      <td>
-        <button style="font-size: 10px;" onclick="ggSpeak(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)">G🔊</button>
-        <button style="font-size: 10px;" onclick="msSpeak(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)">M🔊</button>
-      </td>
     </tr>
   </table>
-  <table style="margin-top: 3px;">
-    <tr id="readingListInputArea" style="display:block;">
+
+  <table class="input-table" style="margin-top: 3px; display:block;">
+    <tr class="input-table-row" id="readingListInputArea">
       <td>
-        <select id="readingListLanguageSelect" style="width: 36px;">
+        <select id="readingListLanguageSelect">
           <option value="ja" selected>🇯🇵</option>
           <option value="en">🇺🇸</option>
           <option value="zh-TW">🇹🇼</option>
         </select>
-        <button type="button" onclick="autoTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0])">🔎</button>
-        <button id="addToReadingList-button" onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 1)" > + </button>
-        <button onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 2)"> ++ </button>
-        <button onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 3)"> +++ </button>
-        <button onclick="clearReadingList(this)">🆑</button>
         <select id="repeatTimeSelect" style="width: 40px;">
           <option value="1">1</option>
           <option value="2" selected>2</option>
@@ -295,58 +336,66 @@
           <option value="50">50</option>
           <option value="99">99</option>
         </select>
+        <button type="button" onclick="autoTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0])">🔎</button>
+        <button id="addToReadingList-button" onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 1)" > + </button>
+        <button onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 2)"> ++ </button>
+        <button onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 3)"> +++ </button>
+        <button onclick="clearReadingList(this)">🆑</button>
+        <span class="readButtons">
+          <button style="font-size: 11px;" onclick="ggSpeakReadingList(repeatTimeSelect.value, this)">G🔊</button>
+          <button style="font-size: 11px;" onclick="msSpeakReadingList(repeatTimeSelect.value, this)">M🔊</button>
+        </span>
       </td>
       <td>
-        <textarea id="readingListInput" rows="2" cols="79"></textarea>
-      </td>
-      <td>
-        <button style="font-size: 10px;" onclick="ggSpeakReadingList(repeatTimeSelect.value, this)">G🔊</button>
-        <button style="font-size: 10px;" onclick="msSpeakReadingList(repeatTimeSelect.value, this)">M🔊</button>
+        <textarea id="readingListInput" rows="2" cols="87"></textarea>
       </td>
     </tr>
   </table>
 
   <div class="row-container" style="margin-top:6px; margin-bottom:6px;">
-    <button id="ggPauseAudio-button" style="height:24px;" onclick="ggPauseAudio()">G⏯</button>
-    <audio id="ggSpeakAudio" src="" controls style="height:22px;"></audio>
+      <button id="ggPauseAudio-button" style="height:24px;" onclick="ggPauseAudio()">G⏯</button>
+      <audio id="ggSpeakAudio" src="" controls style="height:22px;"></audio>
     <button id="msPauseAudio-button" style="height:24px;" onclick="msPauseAudio()">M⏯</button>
     <audio id="msSpeakAudio" src="" controls style="height:22px;"></audio>
   </div>
   <div class="row-container" style="margin-bottom:3px;">
-    <span style="margin-left:24px;">
-      <select style="width: 40px; height:18px;">
-        <option value="ja" selected>🇯🇵</option>
-        <option value="en">🇺🇸</option>
-        <option value="zh-TW">🇹🇼</option>
-      </select>
-      <button onclick="ggSpeak(texts[0].textContent, this.previousElementSibling.value)">G🔊</button>
-      <button onclick="msSpeak(texts[0].textContent, this.previousElementSibling.previousElementSibling.value)">M🔊</button>
-    </span>
-    <span style="margin-left:24px;">
-      <select style="width: 40px; height:18px;">
-        <option value="ja">🇯🇵</option>
-        <option value="en" selected>🇺🇸</option>
-        <option value="zh-TW">🇹🇼</option>
-      </select>
-      <button onclick="ggSpeak(texts[1].textContent, this.previousElementSibling.value)">G🔊</button>
-      <button onclick="msSpeak(texts[1].textContent, this.previousElementSibling.previousElementSibling.value)">M🔊</button>
-    </span>
-    <span style="margin-left:24px;">
-      <select style="width: 40px; height:18px;">
-        <option value="ja">🇯🇵</option>
-        <option value="en">🇺🇸</option>
-        <option value="zh-TW" selected>🇹🇼</option>
-      </select>
-      <button onclick="ggSpeak(texts[2].textContent, this.previousElementSibling.value)">G🔊</button>
-      <button onclick="msSpeak(texts[2].textContent, this.previousElementSibling.previousElementSibling.value)">M🔊</button>
+    <span class="reading-container">
+      🔊
+      <span>
+        <select>
+          <option value="ja" selected>🇯🇵</option>
+          <option value="en">🇺🇸</option>
+          <option value="zh-TW">🇹🇼</option>
+        </select>
+        <button onclick="ggSpeak(texts[0].textContent, this.previousElementSibling.value)">G</button>
+        <button onclick="msSpeak(texts[0].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
+      </span>
+      <span style="margin-left:20px;">
+        <select>
+          <option value="ja">🇯🇵</option>
+          <option value="en" selected>🇺🇸</option>
+          <option value="zh-TW">🇹🇼</option>
+        </select>
+        <button onclick="ggSpeak(texts[1].textContent, this.previousElementSibling.value)">G</button>
+        <button onclick="msSpeak(texts[1].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
+      </span>
+      <span style="margin-left:20px;">
+        <select>
+          <option value="ja">🇯🇵</option>
+          <option value="en">🇺🇸</option>
+          <option value="zh-TW" selected>🇹🇼</option>
+        </select>
+        <button onclick="ggSpeak(texts[2].textContent, this.previousElementSibling.value)">G</button>
+        <button onclick="msSpeak(texts[2].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
+      </span>
     </span>
   </div>
 
   <div class="row-container" style="margin-bottom:9px;">
-    <button id="toggleRecognitionArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('inputArea-1', 'toggleRecognitionArea-button', 'Recognition')">Recognition 🟢</button>
-    <button id="toggleRecordArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('inputArea-2', 'toggleRecordArea-button', 'Record')">Record 🟢</button>
-    <button id="toggleJpExpInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('inputArea-3', 'toggleJpExpInputArea-button', 'JpExp Input')">JpExp Input 🟢</button>
-    <button id="toggleTranslateInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('inputArea-4', 'toggleTranslateInputArea-button', 'Translate Input')">Translate Input 🟢</button>
+    <button id="toggleRecognitionInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recognitionInputArea', 'toggleRecognitionInputArea-button', 'Recognition')">Recognition 🟢</button>
+    <button id="toggleRecordInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recordInputArea', 'toggleRecordInputArea-button', 'Record')">Record 🟢</button>
+    <button id="toggleJpExpInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('JpExpInputArea', 'toggleJpExpInputArea-button', 'JpExp Input')">JpExp Input 🟢</button>
+    <button id="toggleTranslateInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('translateInputArea', 'toggleTranslateInputArea-button', 'Translate Input')">Translate Input 🟢</button>
 
     <button id="toggleJpExpArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpAreaFrame', 'toggleJpExpArea-button', 'JpExp Text')">JpExp Text 🟢</button>
     <button id="toggleJpExpWeb-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWeb', 'toggleJpExpWeb-button', 'JpExp Web')">JpExp Web ❌</button>
