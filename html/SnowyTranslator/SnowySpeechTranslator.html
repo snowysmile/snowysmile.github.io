@@ -68,9 +68,10 @@
         flex-direction: column;
       }
       th, td {
+        display: block;
+        align-items: center;
         text-align: center;
         padding: 4px;
-        display: block;
       }
       textarea {
         max-width: 96%;
@@ -244,7 +245,8 @@
   <table class="input-table">
     <tr class="input-table-row" id="recognitionInputArea" style="display:block">
       <td class="button-title">
-        <button id="recognize-button" onclick="toggleRecognition()" style="width: 148px;">▶️ Start Recognizing</button>
+        <button id="recognize-button" onclick="toggleRecognition(this.parentNode.parentNode.querySelector('select').value)" style="width: 148px;">▶️ Start Recognizing</button>
+        <button onclick="toggleWidgetArea('recognitionInputArea', 'toggleRecognitionInputArea-button', 'Recognition Ipt')">⛔</button>
       </td>
       <td>
         <select id="recognitionLanguageSelect">
@@ -291,17 +293,18 @@
       </td>
     </tr>
 
-    <tr class="input-table-row" id="translateInputArea" style="display:none">
+    <tr class="input-table-row" id="translationInputArea" style="display:none">
       <td>
-        <button id="translate-button" onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, translateDetect.innerHTML === '🤔', translateLanguageSelect)" style="width: 148px;"> Translate </button>
+        <button id="translate-button" onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, translationDetect.innerHTML === '🤔', translationLanguageSelect)" style="width: 148px;"> Translate </button>
+        <button onclick="toggleWidgetArea('translationInputArea', 'toggleRecognitionInputArea-button', 'Recognition Ipt')">⛔</button>
       </td>
       <td>
-        <select id="translateLanguageSelect">
+        <select id="translationLanguageSelect">
           <option value="ja">🇯🇵</option>
           <option value="en" selected>🇺🇸</option>
           <option value="zh-TW">🇹🇼</option>
         </select>
-        <button id="translateDetect" onclick="toggleAutoLangaugeDetect(this)">🫣</button>
+        <button id="translationDetect" onclick="toggleAutoLangaugeDetect(this)">🫣</button>
         <button onclick="copyTextArea(this)">✂️</button>
         <button onclick="clearTextArea(this)">🆑</button>
         <span class="readButtons">
@@ -374,10 +377,18 @@
   </table>
 
   <div class="row-container" style="margin-top:6px; margin-bottom:6px;">
-      <button id="ggPauseAudio-button" style="height:24px; width:44px;" onclick="ggPauseAudio()">G⏯</button>
-      <audio id="ggSpeakAudio" src="" controls style="height:22px;"></audio>
-    <button id="msPauseAudio-button" style="height:24px; width:44px;" onclick="msPauseAudio()">M⏯</button>
-    <audio id="msSpeakAudio" src="" controls style="height:22px;"></audio>
+    <table>
+      <tr>
+        <td style="display: flex;">
+          <button id="ggPauseAudio-button" style="width:40px; margin-right:5px;" onclick="ggPauseAudio()">G⏯</button>
+          <audio id="ggSpeakAudio" src="" controls style="height:25px;"></audio>
+        </td>
+        <td style="display: flex;">
+          <button id="msPauseAudio-button" style="width:40px; margin-right:5px;" onclick="msPauseAudio()">M⏯</button>
+          <audio id="msSpeakAudio" src="" controls style="height:25px;"></audio>
+        </td>
+      <tr>
+    </table>
   </div>
 
   <div class="row-container" style="margin-bottom:3px;">
@@ -939,8 +950,11 @@
       var textarea = button.parentNode.nextElementSibling.querySelector('textarea');
       textarea.value = "";
     }
-    function startRecognition() {
-      recognition.lang = languageSelects[0].value;
+    function startRecognition(sourceLanguage="") {
+      if (sourceLanguage === "") {
+        sourceLanguage = languageSelects[0].value;
+      }
+      recognition.lang = sourceLanguage;
       recognition.interimResults = true;
       recognition.continuous = true;
 
@@ -1003,7 +1017,8 @@
                 recordResult.value += speechText + ".";
               }
               updateSpeechTextList(speechText);
-              speechTranslate(speechText, languageSelects[0].value);
+              // await
+              speechTranslate(speechText, sourceLanguage);
             }
             else {
               if (false && speechSplitInterval.value && speechSplitInterval.value !== 0) {
@@ -1028,7 +1043,7 @@
       isRecognizing = false;
       recognizeButton.innerHTML = "▶️ Start Recognizing"
     }
-    function toggleRecognition() {
+    function toggleRecognition(sourceLanguage) {
       if (isRecognizing) {
         stopRecognition();
         if (isRecording) {
@@ -1037,7 +1052,7 @@
         }
       }
       else {
-        startRecognition();
+        startRecognition(sourceLanguage);
         if (!isRecording) {
           isRecording = true;
           recordButton.innerHTML = "⏹️ Stop Recording";
