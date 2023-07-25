@@ -256,7 +256,7 @@
               <option value="en">🇺🇸</option>
               <option value="zh-TW">🇹🇼</option>
             </select>
-            <button id="recognitionDetect" onclick="toggleAutoLangaugeDetect(this)">😴</button>
+            <button name="languageDetectButton" onclick="toggleAutoLangaugeDetect(this)">😴</button>
         </span>
         <button class="phone-button" onclick="toggleWidgetArea('recognitionInputArea', 'toggleRecognitionInputArea-button', 'Recognition Ipt')">⛔</button>
       </td>
@@ -264,7 +264,7 @@
         <textarea id="recognitionResult" rows="2" cols="80"></textarea>
       </td>
       <td>
-        <button name="translateButton" onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, recognitionDetect.innerHTML === '🤔', recognitionLanguageSelect)">🔤</button>
+        <button name="translateButton" onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', recognitionLanguageSelect)">🔤</button>
         <button onclick="copyTextArea(this)">✂️</button>
         <button onclick="clearTextArea(this)">🆑</button>
         <span class="readButtons">
@@ -274,7 +274,7 @@
       </td>
     </tr>
 
-    <tr class="input-table-row" id="recordInputArea" style="display:block">
+    <tr class="input-table-row" id="recordInputArea" style="display:none">
       <td class="button-title">
         <span>
           <button id="record-button" onclick="toggleRecord()" style="width: 148px;">▶️ Start Recording</button>
@@ -283,7 +283,7 @@
             <option value="en">🇺🇸</option>
             <option value="zh-TW">🇹🇼</option>
           </select>
-          <button id="recordDetect" onclick="toggleAutoLangaugeDetect(this)">😴</button>
+          <button name="languageDetectButton" onclick="toggleAutoLangaugeDetect(this)">😴</button>
         </span>
         <button class="phone-button" onclick="toggleWidgetArea('recordInputArea', 'toggleRecordInputArea-button', 'Record Ipt')">⛔</button>
       </td>
@@ -291,7 +291,7 @@
         <textarea id="recordResult" rows="2" cols="80"></textarea>
       </td>
       <td>
-        <button name="translateButton" onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, recordDetect.innerHTML === '🤔', recordLanguageSelect)">🔤</button>
+        <button name="translateButton" onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', recordLanguageSelect)">🔤</button>
         <button onclick="copyTextArea(this)">✂️</button>
         <button onclick="clearTextArea(this)">🆑</button>
         <span class="readButtons">
@@ -304,21 +304,22 @@
     <tr class="input-table-row" id="translationInputArea" style="display:none">
       <td class="button-title">
         <span>
-          <button id="translate-button" onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, translationDetect.innerHTML === '🤔', translationLanguageSelect)" style="width: 148px;"> Translate </button>
+          <button id="translate-button" onclick="speechTranslate(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', translationLanguageSelect)" style="width: 148px;"> Translate </button>
           <select id="translationLanguageSelect">
             <option value="ja">🇯🇵</option>
             <option value="en" selected>🇺🇸</option>
             <option value="zh-TW">🇹🇼</option>
           </select>
-          <button id="translationDetect" onclick="toggleAutoLangaugeDetect(this)">😴</button>
+          <button name="languageDetectButton" onclick="toggleAutoLangaugeDetect(this)">😴</button>
         </span>
-        <button class="phone-button" onclick="toggleWidgetArea('translationInputArea', 'toggleRecognitionInputArea-button', 'Recognition Ipt')">⛔</button>
+        <button class="phone-button" onclick="toggleWidgetArea('translationInputArea', 'toggleTranslationInputArea-button', 'Translation Ipt')">⛔</button>
       </td>
       <td>
         <textarea id="translateInput" rows="2" cols="80"></textarea>
       </td>
       <td>
-        <button type="button" name="translateButton" onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, 'ja')">🔤</button>
+        <button type="button" name="translateButton"
+          onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', translationLanguageSelect)">🔤</button>
         <button onclick="copyTextArea(this)">✂️</button>
         <button onclick="clearTextArea(this)">🆑</button>
         <span class="readButtons">
@@ -332,15 +333,15 @@
       <form action="/process" method="post">
         <td class="button-title">
           <span>
-            <button id="jpExp-button" type="button" onclick="japaneseExplanationEntrance()" style="width: 148px;">Japanese Explanation</button>
+            <button type="button" id="jpExp-button" onclick="japaneseExplanationEntrance()" style="width: 148px;">Japanese Explanation</button>
             <select id="jpExpLanguageSelect">
               <option value="ja" selected>🇯🇵</option>
             </select>
           </span>
-          <button class="phone-button" onclick="toggleWidgetArea('jpExpInputArea', 'toggleJpExpInputArea-button', 'JpExp Ipt')">⛔</button>
+          <button type="button" class="phone-button" onclick="toggleWidgetArea('jpExpInputArea', 'toggleJpExpInputArea-button', 'JpExp Ipt')">⛔</button>
         </td>
         <td>
-          <textarea id="jpExpInput" name="jpExpInputName" rows="2" cols="85"></textarea>
+          <textarea id="jpExpInput" rows="2" cols="85"></textarea>
         </td>
         <td>
           <button type="button" name="translateButton" onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, 'ja')">🔤</button>
@@ -355,37 +356,79 @@
     </tr>
   </table>
 
+  <script>
+    async function ggSpeakAllScreenText(repeatTime=1) {
+      ggAudioListTmp = [];
+      await addToGgReadingList(ggAudioListTmp, 3);
+      await ggSpeakReadingList(ggAudioListTmp, repeatTime);
+    }
+    async function msSpeakAllScreenText(repeatTime=1) {
+      msAudioListTmp = [];
+      await addToGgReadingList(msAudioListTmp, 3);
+      await msSpeakReadingList(msAudioListTmp, repeatTime);
+    }
+    async function ggSpeakAllInputText(text, sourceLanguage, repeatTime) {
+      if (ggAudioList.length === 0) {
+        if (text != texts[0].textContent) {
+          console.log("text != texts[0].textContent");
+          await speechTranslate(text, sourceLanguage);
+        }
+        await addToGgReadingList(ggAudioList, 3);
+        console.log("len after addToGgReadingList: ", ggAudioList.length);
+      }
+      await ggSpeakReadingList(ggAudioList, repeatTime);
+    }
+    async function msSpeakAllInputText(text, sourceLanguage, repeatTime) {
+      if (msAudioList.length === 0) {
+        if (text != texts[0].textContent) {
+          console.log("text != texts[0].textContent");
+          await speechTranslate(text, sourceLanguage);
+        }
+        await addToMsReadingList(msAudioList, 3);
+      }
+      await msSpeakReadingList(msAudioList, repeatTime);
+    }
+  </script>
+
   <table class="input-table" style="margin-top: 3px; display:block;">
     <tr class="input-table-row" id="readingListInputArea">
-      <td>
-        <select id="readingListLanguageSelect">
-          <option value="ja" selected>🇯🇵</option>
-          <option value="en">🇺🇸</option>
-          <option value="zh-TW">🇹🇼</option>
-        </select>
-        <select id="repeatTimeSelect" style="width: 40px;">
-          <option value="1">1</option>
-          <option value="2" selected>2</option>
-          <option value="3">3</option>
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="20">20</option>
-          <option value="30">30</option>
-          <option value="50">50</option>
-          <option value="99">99</option>
-        </select>
-        <button type="button" onclick="autoDetectTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0])">🔎</button>
-        <button id="addToReadingList-button" onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 1)" > + </button>
-        <button onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 2)"> ++ </button>
-        <button onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 3)"> +++ </button>
-        <button onclick="clearReadingList(this)">🆑</button>
-        <span class="readButtons">
-          <button style="font-size: 7px;" onclick="ggSpeakReadingList(ggAudioList, repeatTimeSelect.value, this)">G🔊</button>
-          <button style="font-size: 7px;" onclick="msSpeakReadingList(msAudioList, repeatTimeSelect.value, this)">M🔊</button>
+      <td class="button-title">
+        <span>
+          <button id="addToReadingList-button" onclick="addToReadingList(ggAudioList, msAudioList, this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 1)" > + </button>
+          <button onclick="addToReadingList(ggAudioList, msAudioList, this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 2)"> ++ </button>
+          <button onclick="addToReadingList(ggAudioList, msAudioList, this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 3)"> +++ </button>
+          <select id="readingListLanguageSelect">
+            <option value="ja" selected>🇯🇵</option>
+            <option value="en">🇺🇸</option>
+            <option value="zh-TW">🇹🇼</option>
+          </select>
+          <button name="languageDetectButton" onclick="toggleAutoLangaugeDetect(this)">😴</button>
         </span>
+        <button class="phone-button" onclick="toggleWidgetArea('ReadingListInputArea', 'toggleReadingListInputArea-button', 'ReadingList Ipt')">⛔</button>
       </td>
       <td>
-        <textarea id="readingListInput" rows="2" cols="90"></textarea>
+        <textarea id="readingListInput" rows="2" cols="84"></textarea>
+      </td>
+      <td>
+        <button type="button" name="translateButton"
+          onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', translationLanguageSelect)">🔤</button>
+        <button onclick="copyTextArea(this)">✂️</button>
+        <button onclick="clearReadingList(this)">🆑</button>
+        <span class="readButtons">
+          <select id="repeatTimeSelect" style="width: 40px;">
+            <option value="1">1</option>
+            <option value="2" selected>2</option>
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="50">50</option>
+            <option value="99">99</option>
+          </select>
+          <button style="font-size: 7px;" onclick="ggSpeakAllInputText(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value, repeatTimeSelect.value)">G🔊</button>
+          <button style="font-size: 7px;" onclick="msSpeakAllInputText(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value, repeatTimeSelect.value)">M🔊</button>
+        </span>
       </td>
     </tr>
   </table>
@@ -405,17 +448,10 @@
     </table>
   </div>
 
-  <script>
-    function ggSpeakAll(button) {
-      addToGgReadingList(ggAudioListTmp, 3);
-      ggSpeakReadingList(ggAudioListTmp, 1, button);
-    }
-  </script>
-
   <div class="row-container" style="margin-bottom:3px;">
     <span class="reading-container">
-      <button onclick="ggSpeakAll(this)">G</button>
-      <button onclick="msSpeakAll(this)">M</button>
+      <button onclick="ggSpeakAllScreenText()">G</button>
+      <button onclick="msSpeakAllScreenText()">M</button>
       <span style="margin-left:10px;">
         <select id="readingSelect0">
           <option value="ja" selected>🇯🇵</option>
@@ -458,10 +494,12 @@
   <div class="row-container" style="margin-top:5px; margin-bottom:9px;">
     <span class="layout-container">
       <button id="toggleRecognitionInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recognitionInputArea', 'toggleRecognitionInputArea-button', 'Recognition Ipt')">Recognition Ipt 🟢</button>
-      <button id="toggleRecordInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recordInputArea', 'toggleRecordInputArea-button', 'Record Ipt')">Record Ipt 🟢</button>
+      <button id="toggleRecordInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recordInputArea', 'toggleRecordInputArea-button', 'Record Ipt')">Record Ipt ❌</button>
 
-      <button id="toggletranslationInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('translationInputArea', 'toggletranslationInputArea-button', 'Translate Ipt')">Translate Ipt ❌</button>
+      <button id="toggleTranslationInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('translationInputArea', 'toggleTranslationInputArea-button', 'Translation Ipt')">Translation Ipt ❌</button>
       <button id="toggleJpExpInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpInputArea', 'toggleJpExpInputArea-button', 'JpExp Ipt')">JpExp Ipt ❌</button>
+      <button id="toggleReadingListInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('readingListInputArea', 'toggleReadingListInputArea-button', 'ReadingList Ipt')">ReadingList Ipt 🟢</button>
+
 
       <button id="toggleJpExpArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpAreaFrame', 'toggleJpExpArea-button', 'JpExp Text')">JpExp Text 🟢</button>
       <button id="toggleJpExpWebTop-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebTop', 'toggleJpExpWebTop-button', 'JpExpTop Web')">JpExpTop Web ❌</button>
@@ -983,12 +1021,13 @@
       document.body.removeChild(tempInput);
     }
     function copyTextArea(button) {
-      var textarea = button.parentNode.nextElementSibling.querySelector('textarea');
+      var textarea = button.parentNode.parentNode.querySelector('textarea');
       textarea.select();
       document.execCommand("copy");
     }
     function clearTextArea(button) {
-      var textarea = button.parentNode.nextElementSibling.querySelector('textarea');
+      // nextElementSibling || previousElementSibling
+      var textarea = button.parentNode.parentNode.querySelector('textarea');
       textarea.value = "";
     }
     function startRecognition(sourceLanguage="") {
@@ -1197,39 +1236,53 @@
 		const MSTTS_region = "southeastasia";
 		const MSTTS_endpoint1 = `https://${MSTTS_region}.api.cognitive.microsoft.com/sts/v1.0/issuetoken`;
 		const MSTTS_endpoint2 = `https://${MSTTS_region}.tts.speech.microsoft.com/cognitiveservices/v1`;
-    function getMsttsAccessToken(callback) {
-      var xhr1 = new XMLHttpRequest();
-      xhr1.open('POST', MSTTS_endpoint1);
-      xhr1.setRequestHeader('Ocp-Apim-Subscription-Key', azureSpeechSubscriptionKey);
-      xhr1.send();
-      xhr1.onreadystatechange = function() {
-        if (xhr1.readyState === 4) {
-          if (xhr1.status === 200) {
-            var accessToken = xhr1.responseText;
-            callback(accessToken);
-          } else {
-            console.log(`Failed to get Azure Access Token. Status code: ${xhr1.status}`);
+    function getMsttsAccessToken() {
+      return new Promise((resolve, reject) => {
+        var xhr1 = new XMLHttpRequest();
+        xhr1.open('POST', MSTTS_endpoint1);
+        xhr1.setRequestHeader('Ocp-Apim-Subscription-Key', azureSpeechSubscriptionKey);
+        xhr1.send();
+        xhr1.onreadystatechange = function() {
+          if (xhr1.readyState === 4) {
+            if (xhr1.status === 200) {
+              var accessToken = xhr1.responseText;
+              resolve(accessToken);
+            } else {
+              reject(new Error(`Failed to get Azure Access Token. Status code: ${xhr1.status}`));
+            }
           }
-        }
-      }
+        };
+        xhr1.onerror = function() {
+          reject(new Error('Request error'));
+        };
+      });
     }
-    function getMsAudioData(text, sourceLanguage, MSTTS_voiceName, accessToken, callback) {
-      var xhr2 = new XMLHttpRequest();
-      var headers = {
-        "Authorization": `Bearer ${accessToken}`,
-        "Content-Type": "application/ssml+xml",
-        "X-Microsoft-OutputFormat": "audio-16khz-128kbitrate-mono-mp3"
-      };
-      xhr2.open('POST', MSTTS_endpoint2);
-      for (const [key, value] of Object.entries(headers)) {
-        xhr2.setRequestHeader(key, value);
-      }
-      xhr2.responseType = 'arraybuffer';
-      var requestBody = `<speak version='1.0' xml:lang='en-US'><voice name='${MSTTS_voiceName}'>${text}</voice></speak>`;
-      xhr2.send(requestBody);
-      xhr2.onload = function() {
-        callback(xhr2.response);
-      };
+    async function getMsAudioData(text, sourceLanguage, MSTTS_voiceName, accessToken) {
+      return new Promise((resolve, reject) => {
+        const xhr2 = new XMLHttpRequest();
+        const headers = {
+          "Authorization": `Bearer ${accessToken}`,
+          "Content-Type": "application/ssml+xml",
+          "X-Microsoft-OutputFormat": "audio-16khz-128kbitrate-mono-mp3"
+        };
+        xhr2.open('POST', MSTTS_endpoint2);
+        for (const [key, value] of Object.entries(headers)) {
+          xhr2.setRequestHeader(key, value);
+        }
+        xhr2.responseType = 'arraybuffer';
+        const requestBody = `<speak version='1.0' xml:lang='en-US'><voice name='${MSTTS_voiceName}'>${text}</voice></speak>`;
+        xhr2.onload = function() {
+          if (xhr2.status >= 200 && xhr2.status < 300) {
+            resolve(xhr2.response);
+          } else {
+            reject(new Error(`Request failed with status ${xhr2.status}`));
+          }
+        };
+        xhr2.onerror = function() {
+          reject(new Error('Request error'));
+        };
+        xhr2.send(requestBody);
+      });
     }
     function updateAzureVoice(id, value="") {
       if (value === "") value = azureVoiceSelects[id].value;
@@ -1237,7 +1290,7 @@
       configs[autoSID].azureVoices[id] = value;
       saveConfigStorage();
     }
-    function msSpeak(text, sourceLanguage = "") {
+    async function msSpeak(text, sourceLanguage = "") {
       console.log("msSpeak-text:", text);
       if (text === "") return;
       var MSTTS_voiceName;
@@ -1248,14 +1301,17 @@
       } else if (sourceLanguage === "zh-TW") {
         MSTTS_voiceName = azureVoiceSelects[2].value;
       }
-      getMsttsAccessToken(function(accessToken) {
-        getMsAudioData(text, sourceLanguage, MSTTS_voiceName, accessToken, function(audioData) {
-            const audioBlob = new Blob([audioData], { type: 'audio/mpeg' });
-            msSpeakAudio.src = URL.createObjectURL(audioBlob);
-            msSpeakAudio.play();
-        });
-      });
+      try {
+        const accessToken = await getMsttsAccessToken();
+        const audioData = await getMsAudioData(text, sourceLanguage, MSTTS_voiceName, accessToken);
+        const audioBlob = new Blob([audioData], { type: 'audio/mpeg' });
+        msSpeakAudio.src = URL.createObjectURL(audioBlob);
+        msSpeakAudio.play();
+      } catch (error) {
+        console.error("Error while executing msSpeak:", error);
+      }
     }
+
     function msPauseAudio() {
       if (msSpeakAudio) {
         if (msSpeakAudio.paused) {
@@ -1298,16 +1354,20 @@
       }
       console.log("ggAudioList:", ggAudioList);
     }
-    async function addToMsReadingList(msAudioList, lines=1) {
-      getMsttsAccessToken(function(accessToken) {
+    async function addToMsReadingList(msAudioList, lines = 1) {
+      try {
+        const accessToken = await getMsttsAccessToken();
         for (let i = 0; i < lines; i++) {
           var MSTTS_voiceName = chooseAzureVoice(targetLanguages[i]);
-          getMsAudioData(texts[i].textContent, targetLanguages[i], MSTTS_voiceName, accessToken, function(audioData) {
-            msAudioList.push(audioData);
-          });
+          const audioData = await getMsAudioData(texts[i].textContent, targetLanguages[i], MSTTS_voiceName, accessToken);
+          msAudioList.push(audioData);
         }
-      });
-      console.log("msAudioList:", msAudioList);
+        console.log("msAudioList:", msAudioList);
+        return msAudioList;
+      } catch (error) {
+        console.error("Error while adding to MsReadingList:", error);
+        throw error;
+      }
     }
     async function addToReadingList(ggAudioList, msAudioList, text, sourceLanguage = "", lines=1) {
       if (sourceLanguage === "") {
@@ -1322,16 +1382,14 @@
         readingList.appendChild(readingListItem);
       }
     }
-    async function ggSpeakReadingList(ggAudioList, repeatTime, button) {
+    async function ggSpeakReadingList(ggAudioList, repeatTime) {
       if (ggSpeakAudio) {
         ggSpeakAudio.pause();
       }
       var totalRepeatTime = ggAudioList.length * Math.abs(repeatTime);
       var currentAudioIndex = 0;
+      console.log("ggAudioList.length:", ggAudioList.length);
       console.log("totalRepeatTime:", totalRepeatTime);
-      if (ggAudioList.length === 0) {
-        await addToGgReadingList(ggAudioList, button.parentNode.parentNode.querySelector('textarea').value, button.parentNode.parentNode.querySelectorAll('select')[0].value, 3);
-      }
       ggSpeakAudio.addEventListener('ended', function() {
         currentAudioIndex++;
         if (currentAudioIndex < totalRepeatTime) {
@@ -1344,15 +1402,13 @@
       ggSpeakAudio.src = ggAudioList[currentAudioIndex];
       ggSpeakAudio.play();
     }
-    async function msSpeakReadingList(msAudioList, repeatTime, button) {
+    async function msSpeakReadingList(msAudioList, repeatTime) {
       if (msSpeakAudio) {
         msSpeakAudio.pause();
       }
       var totalRepeatTime = msAudioList.length * Math.abs(repeatTime);
+      console.log("msAudioList.length:", msAudioList.length);
       console.log("totalRepeatTime:", totalRepeatTime);
-      if (msAudioList.length === 0) {
-        await addToReadingList(msAudioList, button.parentNode.parentNode.querySelector('textarea').value, button.parentNode.parentNode.querySelectorAll('select')[0].value, 3);
-      }
       function msListPlayAudio(currentAudioIndex) {
         if (currentAudioIndex >= totalRepeatTime) return;
         var i = currentAudioIndex % msAudioList.length;
@@ -1423,6 +1479,20 @@
       }
     }
 
+    async function getTargetLanguages(sourceLanguage="") {
+      if (sourceLanguage === "") {
+        sourceLanguage = ggDetectLanguage(texts.textContent[0]);
+      }
+      targetLanguages = [];
+      targetLanguages.push(sourceLanguage);
+      for (let i = 0; i <= translationCounts; i++) {
+        if (languageSelects[i].value != sourceLanguage) {
+          targetLanguages.push(languageSelects[i].value);
+        }
+        readingSelects[i].value = targetLanguages[i];
+      }
+    }
+
     var targetLanguages;
     async function speechTranslate(speechText, sourceLanguage="", isAutoDetect=false, languageSelect=undefined) {
       updateText(0, speechText);
@@ -1441,15 +1511,7 @@
         var ichimoe_url = "https://ichi.moe/cl/qr/?q=" + encodedSpeechText;
         document.getElementById("jpExpWebBot").src = ichimoe_url;
       }
-      targetLanguages = [];
-      targetLanguages.push(sourceLanguage);
-      for (let i = 0; i <= translationCounts; i++) {
-        if (languageSelects[i].value != sourceLanguage) {
-          targetLanguages.push(languageSelects[i].value);
-        }
-        readingSelects[i].value = targetLanguages[i];
-        console.log("readingSelects[i].value:", readingSelects[i].value);
-      }
+      await getTargetLanguages(sourceLanguage);
 
       console.log("sourceLanguage:", sourceLanguage);
       console.log("targetLanguages:", targetLanguages);
