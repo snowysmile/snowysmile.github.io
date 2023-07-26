@@ -184,11 +184,15 @@
     {
       pageColor: "#fffafa",
       curtainColor: "#9acd32",
-      texts: ["< あいうえお サシスセソ - 天気はいい、元気ですか >",
-              "1234567890 !@#$%^&*() abcdefg ABCDEFG",
-              "一閃一閃亮晶晶，滿天都是小星星。掛在天上放光明，好像許多小眼睛。"],
+      texts: ["きらきらひかる、おそらのほしよ。",
+              "Twinkle, twinkle, little star, How I wonder what you are! ",
+              "一閃一閃亮晶晶，滿天都是小星星。"],
+              // まばたきしては、みんなをみてる。
+              // Up above the world so high, Like a diamond in the sky.
+              // 掛在天上放光明，好像許多小眼睛。
+              // "1234567890 !@#$%^&*() abcdefg ABCDEFG",
       textFontColors: ["#000000", "#000000", "#000000"],
-      textFontSizes: [24, 24, 24], //px
+      textFontSizes: [20, 20, 20], //px
       textFontWeights: [500, 500, 500],
       textFontFamilies: ['NotoSansCJKjp', 'NotoSansCJKjp', 'NotoSansCJKjp'],
       textStrokeColors: [['#87ceeb', '#ffb7c5'], ['#87ceeb', '#ffb7c5'], ['#87ceeb', '#ffb7c5']],
@@ -364,7 +368,7 @@
     }
     async function msSpeakAllScreenText(repeatTime=1) {
       msAudioListTmp = [];
-      await addToGgReadingList(msAudioListTmp, 3);
+      await addToMsReadingList(msAudioListTmp, 3);
       await msSpeakReadingList(msAudioListTmp, repeatTime);
     }
     async function ggSpeakAllInputText(text, sourceLanguage, repeatTime) {
@@ -394,9 +398,9 @@
     <tr class="input-table-row" id="readingListInputArea">
       <td class="button-title">
         <span>
-          <button id="addToReadingList-button" onclick="addToReadingList(ggAudioList, msAudioList, this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 1)" > + </button>
-          <button onclick="addToReadingList(ggAudioList, msAudioList, this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 2)"> ++ </button>
-          <button onclick="addToReadingList(ggAudioList, msAudioList, this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 3)"> +++ </button>
+          <button id="addToReadingList-button" onclick="addToReadingList(ggAudioList, msAudioList, this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 1,  this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', readingListLanguageSelect)" > + </button>
+          <button onclick="addToReadingList(ggAudioList, msAudioList, this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 2,  this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', readingListLanguageSelect)"> ++ </button>
+          <button onclick="addToReadingList(ggAudioList, msAudioList, this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 3,  this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', readingListLanguageSelect)"> +++ </button>
           <select id="readingListLanguageSelect">
             <option value="ja" selected>🇯🇵</option>
             <option value="en">🇺🇸</option>
@@ -1348,6 +1352,9 @@
       }
     }
     async function addToGgReadingList(ggAudioList, lines=1) {
+      if (targetLanguages.length === 0) {
+        await getTargetLanguages();
+      }
       for (let i = 0; i < lines; i++) {
         var url = await ggSpeakUrlGet(texts[i].textContent, targetLanguages[i]);
         ggAudioList.push(url);
@@ -1369,11 +1376,11 @@
         throw error;
       }
     }
-    async function addToReadingList(ggAudioList, msAudioList, text, sourceLanguage = "", lines=1) {
+    async function addToReadingList(ggAudioList, msAudioList, text, sourceLanguage = "", lines=1, isAutoDetect=false, languageSelect=undefined) {
       if (sourceLanguage === "") {
         sourceLanguage = "ja";
       }
-      await speechTranslate(text, sourceLanguage);
+      await speechTranslate(text, sourceLanguage, isAutoDetect, languageSelect);
       await addToGgReadingList(ggAudioList, lines);
       await addToMsReadingList(msAudioList, lines);
       for (let i = 0; i < lines; i++) {
