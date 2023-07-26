@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="static/font.css">
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
   <style>
     html, body {
       display: flex;
@@ -60,7 +61,6 @@
     }
     @media screen and (max-width: 600px) {
       html, body {
-        max-width: 96%;
         display: flex;
       }
       table {
@@ -79,7 +79,7 @@
       }
       iframe {
         width: 100%; /* Make the iframe responsive to its container width */
-        max-width: 400px; /* Set a maximum width for the iframe */
+        max-width: 100%; /* Set a maximum width for the iframe */
         height: auto; /* Let the iframe adjust its height proportionally */
         display: block; /* Remove any extra spacing around the iframe */
         margin: 0 auto; /* Center the iframe horizontally */
@@ -125,8 +125,8 @@
       padding: 20px;
       width: 1000px;
       height: 200px;
-      max-width: 96%;
-      width: 96%;
+      max-width: 95%;
+      width: 95%;
     }
     .stroke-text {
       position: relative;
@@ -149,15 +149,17 @@
       -webkit-text-stroke: var(--stroke-width-layer-1) var(--stroke-color-layer-1);
     }
     #jpExpAreaFrame {
-      width: 1035px;
+      width: 1015px;
       border: 2px solid black;
       max-width: 96%;
       width: 96%;
     }
     #jpExpArea {
-      width: 1000px;
 			margin-top: 10px;
 			margin-bottom: 10px;
+      width: 1000px;
+      max-width: 96%;
+      width: 96%;
     }
   </style>
 
@@ -233,7 +235,7 @@
     });
   </script>
 
-  <iframe id="jpExpWebTop" style="width:960px; height:654px; margin-top:5px; margin-bottom:5px; display:none" src="https://ichi.moe/"></iframe>
+  <iframe id="jpExpWebTop" style="width:1000px; height:654px; margin-top:5px; margin-bottom:5px; display:none" src="https://ichi.moe/"></iframe>
 
   <div class="text-area">
     <div id="textMargin-0"> </div>
@@ -245,7 +247,12 @@
   </div>
   <script>
     $(function() {
-      $('.text-area').resizable();
+      $('.text-area').resizable({
+        touchAction: 'none',
+        handles: 'se',
+        resize: function(event, ui) {
+        }
+      });
     });
   </script>
 
@@ -486,14 +493,14 @@
     </table>
   </div>
 
-  <div id="jpExpAreaFrame">
+  <div id="jpExpAreaFrame" style="display:none">
     <div id="jpExpArea">
     </div>
   </div>
   <div id="jpExpAreaTest">
   </div>
 
-  <iframe id="jpExpWebBot" style="width:960px; height:654px; margin-top:5px; margin-bottom:9px; display:none" src="https://ichi.moe/"></iframe>
+  <iframe id="jpExpWebBot" style="width:1000px; height:654px; margin-top:5px; margin-bottom:9px; display:none" src="https://ichi.moe/"></iframe>
 
   <div class="row-container" style="margin-top:5px; margin-bottom:9px;">
     <span class="layout-container">
@@ -505,7 +512,7 @@
       <button id="toggleReadingListInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('readingListInputArea', 'toggleReadingListInputArea-button', 'ReadingList Ipt')">ReadingList Ipt 🟢</button>
 
 
-      <button id="toggleJpExpArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpAreaFrame', 'toggleJpExpArea-button', 'JpExp Text')">JpExp Text 🟢</button>
+      <button id="toggleJpExpArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpAreaFrame', 'toggleJpExpArea-button', 'JpExp Text')">JpExp Text ❌</button>
       <button id="toggleJpExpWebTop-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebTop', 'toggleJpExpWebTop-button', 'JpExpTop Web')">JpExpTop Web ❌</button>
       <button id="toggleJpExpWebBot-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebBot', 'toggleJpExpWebBot-button', 'JpExpBot Web')">JpExpBot Web ❌</button>
 
@@ -1505,22 +1512,27 @@
       }
     }
 
+    function jpExpWebUpdate(speechText) {
+      if (jpExpWebTop.style.display === 'block') {
+        var noSpaceSpeechText = speechText.replace(/\s+/g, "");
+        var encodedSpeechText = encodeURIComponent(noSpaceSpeechText);
+        var ichimoe_url = "https://ichi.moe/cl/qr/?q=" + encodedSpeechText;
+        jpExpWebTop.src = ichimoe_url;
+      }
+      if (jpExpWebBot.style.display === 'block') {
+        var noSpaceSpeechText = speechText.replace(/\s+/g, "");
+        var encodedSpeechText = encodeURIComponent(noSpaceSpeechText);
+        var ichimoe_url = "https://ichi.moe/cl/qr/?q=" + encodedSpeechText;
+        jpExpWebBot.src = ichimoe_url;
+      }
+    }
     async function speechTranslate(speechText, sourceLanguage="", isAutoDetect=false, languageSelect=undefined) {
       updateText(0, speechText);
       if (sourceLanguage === "" || isAutoDetect) {
         sourceLanguage = await autoDetectTranslate(speechText, languageSelect);
       }
-      if (sourceLanguage === "ja" && document.getElementById('jpExpWebTop').style.display === 'block') {
-        var noSpaceSpeechText = speechText.replace(/\s+/g, "");
-        var encodedSpeechText = encodeURIComponent(noSpaceSpeechText);
-        var ichimoe_url = "https://ichi.moe/cl/qr/?q=" + encodedSpeechText;
-        document.getElementById("jpExpWebTop").src = ichimoe_url;
-      }
-      if (sourceLanguage === "ja" && document.getElementById('jpExpWebBot').style.display === 'block') {
-        var noSpaceSpeechText = speechText.replace(/\s+/g, "");
-        var encodedSpeechText = encodeURIComponent(noSpaceSpeechText);
-        var ichimoe_url = "https://ichi.moe/cl/qr/?q=" + encodedSpeechText;
-        document.getElementById("jpExpWebBot").src = ichimoe_url;
+      if (sourceLanguage === "ja") {
+        jpExpWebUpdate(speechText);
       }
       await getTargetLanguages(sourceLanguage);
 
@@ -1542,6 +1554,9 @@
               if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
                   updateText(i, xhr.responseText);
+                  if (targetLanguage === "ja") {
+                    jpExpWebUpdate(xhr.responseText);
+                  }
                   resolve();
                 } else {
                   reject(new Error('Failed to finish speechTranslate()'));
