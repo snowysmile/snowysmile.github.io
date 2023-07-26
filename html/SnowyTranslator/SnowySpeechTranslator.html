@@ -243,12 +243,78 @@
     <div id="textMargin-2"> </div>
     <div class="stroke-text" id="text-2"> </div>
   </div>
-  <br>
   <script>
     $(function() {
       $('.text-area').resizable();
     });
   </script>
+
+  <script>
+    async function ggSpeakAllScreenText(repeatTime=1) {
+      ggAudioListTmp = [];
+      await addToGgReadingList(ggAudioListTmp, 3);
+      await ggSpeakReadingList(ggAudioListTmp, repeatTime);
+    }
+    async function msSpeakAllScreenText(repeatTime=1) {
+      msAudioListTmp = [];
+      await addToMsReadingList(msAudioListTmp, 3);
+      await msSpeakReadingList(msAudioListTmp, repeatTime);
+    }
+    async function ggSpeakAllInputText(text, sourceLanguage, repeatTime) {
+      if (ggAudioList.length === 0) {
+        if (text != texts[0].textContent) {
+          console.log("text != texts[0].textContent");
+          await speechTranslate(text, sourceLanguage);
+        }
+        await addToGgReadingList(ggAudioList, 3);
+        console.log("len after addToGgReadingList: ", ggAudioList.length);
+      }
+      await ggSpeakReadingList(ggAudioList, repeatTime);
+    }
+    async function msSpeakAllInputText(text, sourceLanguage, repeatTime) {
+      if (msAudioList.length === 0) {
+        if (text != texts[0].textContent) {
+          console.log("text != texts[0].textContent");
+          await speechTranslate(text, sourceLanguage);
+        }
+        await addToMsReadingList(msAudioList, 3);
+      }
+      await msSpeakReadingList(msAudioList, repeatTime);
+    }
+  </script>
+  <div class="row-container" style="margin-top:5px; margin-bottom:5px;">
+    <span class="reading-container">
+      <button onclick="ggSpeakAllScreenText()">G</button>
+      <button onclick="msSpeakAllScreenText()">M</button>
+      <span style="margin-left:10px;">
+        <select id="readingSelect0">
+          <option value="ja" selected>🇯🇵</option>
+          <option value="en">🇺🇸</option>
+          <option value="zh-TW">🇹🇼</option>
+        </select>
+        <button onclick="ggSpeak(texts[0].textContent, this.previousElementSibling.value)">G</button>
+        <button onclick="msSpeak(texts[0].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
+      </span>
+      <span style="margin-left:10px;">
+        <select id="readingSelect1">
+          <option value="ja">🇯🇵</option>
+          <option value="en" selected>🇺🇸</option>
+          <option value="zh-TW">🇹🇼</option>
+        </select>
+        <button onclick="ggSpeak(texts[1].textContent, this.previousElementSibling.value)">G</button>
+        <button onclick="msSpeak(texts[1].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
+      </span>
+      <span style="margin-left:10px;">
+        <select id="readingSelect2">
+          <option value="ja">🇯🇵</option>
+          <option value="en">🇺🇸</option>
+          <option value="zh-TW" selected>🇹🇼</option>
+        </select>
+        <button onclick="ggSpeak(texts[2].textContent, this.previousElementSibling.value)">G</button>
+        <button onclick="msSpeak(texts[2].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
+      </span>
+    </span>
+  </div>
 
   <table class="input-table">
     <tr class="input-table-row" id="recognitionInputArea" style="display:block">
@@ -360,44 +426,12 @@
     </tr>
   </table>
 
-  <script>
-    async function ggSpeakAllScreenText(repeatTime=1) {
-      ggAudioListTmp = [];
-      await addToGgReadingList(ggAudioListTmp, 3);
-      await ggSpeakReadingList(ggAudioListTmp, repeatTime);
-    }
-    async function msSpeakAllScreenText(repeatTime=1) {
-      msAudioListTmp = [];
-      await addToMsReadingList(msAudioListTmp, 3);
-      await msSpeakReadingList(msAudioListTmp, repeatTime);
-    }
-    async function ggSpeakAllInputText(text, sourceLanguage, repeatTime) {
-      if (ggAudioList.length === 0) {
-        if (text != texts[0].textContent) {
-          console.log("text != texts[0].textContent");
-          await speechTranslate(text, sourceLanguage);
-        }
-        await addToGgReadingList(ggAudioList, 3);
-        console.log("len after addToGgReadingList: ", ggAudioList.length);
-      }
-      await ggSpeakReadingList(ggAudioList, repeatTime);
-    }
-    async function msSpeakAllInputText(text, sourceLanguage, repeatTime) {
-      if (msAudioList.length === 0) {
-        if (text != texts[0].textContent) {
-          console.log("text != texts[0].textContent");
-          await speechTranslate(text, sourceLanguage);
-        }
-        await addToMsReadingList(msAudioList, 3);
-      }
-      await msSpeakReadingList(msAudioList, repeatTime);
-    }
-  </script>
-
   <table class="input-table" style="margin-top: 3px; display:block;">
     <tr class="input-table-row" id="readingListInputArea">
       <td class="button-title">
         <span>
+          <button type="button" name="translateButton"
+            onclick="speechTranslate(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', translationLanguageSelect)">訳</button>
           <button id="addToReadingList-button" onclick="addToReadingList(ggAudioList, msAudioList, this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 1,  this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', readingListLanguageSelect)" > + </button>
           <button onclick="addToReadingList(ggAudioList, msAudioList, this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 2,  this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', readingListLanguageSelect)"> ++ </button>
           <button onclick="addToReadingList(ggAudioList, msAudioList, this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 3,  this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', readingListLanguageSelect)"> +++ </button>
@@ -450,40 +484,6 @@
         </td>
       <tr>
     </table>
-  </div>
-
-  <div class="row-container" style="margin-bottom:3px;">
-    <span class="reading-container">
-      <button onclick="ggSpeakAllScreenText()">G</button>
-      <button onclick="msSpeakAllScreenText()">M</button>
-      <span style="margin-left:10px;">
-        <select id="readingSelect0">
-          <option value="ja" selected>🇯🇵</option>
-          <option value="en">🇺🇸</option>
-          <option value="zh-TW">🇹🇼</option>
-        </select>
-        <button onclick="ggSpeak(texts[0].textContent, this.previousElementSibling.value)">G</button>
-        <button onclick="msSpeak(texts[0].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
-      </span>
-      <span style="margin-left:10px;">
-        <select id="readingSelect1">
-          <option value="ja">🇯🇵</option>
-          <option value="en" selected>🇺🇸</option>
-          <option value="zh-TW">🇹🇼</option>
-        </select>
-        <button onclick="ggSpeak(texts[1].textContent, this.previousElementSibling.value)">G</button>
-        <button onclick="msSpeak(texts[1].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
-      </span>
-      <span style="margin-left:10px;">
-        <select id="readingSelect2">
-          <option value="ja">🇯🇵</option>
-          <option value="en">🇺🇸</option>
-          <option value="zh-TW" selected>🇹🇼</option>
-        </select>
-        <button onclick="ggSpeak(texts[2].textContent, this.previousElementSibling.value)">G</button>
-        <button onclick="msSpeak(texts[2].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
-      </span>
-    </span>
   </div>
 
   <div id="jpExpAreaFrame">
@@ -1352,8 +1352,9 @@
       }
     }
     async function addToGgReadingList(ggAudioList, lines=1) {
-      if (targetLanguages.length === 0) {
+      if (targetLanguages === undefined || targetLanguages.length === 0) {
         await getTargetLanguages();
+        console.log("targetLanguages: ", targetLanguages);
       }
       for (let i = 0; i < lines; i++) {
         var url = await ggSpeakUrlGet(texts[i].textContent, targetLanguages[i]);
@@ -1362,6 +1363,9 @@
       console.log("ggAudioList:", ggAudioList);
     }
     async function addToMsReadingList(msAudioList, lines = 1) {
+      if (targetLanguages === undefined || targetLanguages.length === 0) {
+        await getTargetLanguages();
+      }
       try {
         const accessToken = await getMsttsAccessToken();
         for (let i = 0; i < lines; i++) {
@@ -1486,9 +1490,10 @@
       }
     }
 
+    var targetLanguages;
     async function getTargetLanguages(sourceLanguage="") {
       if (sourceLanguage === "") {
-        sourceLanguage = ggDetectLanguage(texts.textContent[0]);
+        sourceLanguage = await ggDetectLanguage(texts[0].textContent);
       }
       targetLanguages = [];
       targetLanguages.push(sourceLanguage);
@@ -1500,7 +1505,6 @@
       }
     }
 
-    var targetLanguages;
     async function speechTranslate(speechText, sourceLanguage="", isAutoDetect=false, languageSelect=undefined) {
       updateText(0, speechText);
       if (sourceLanguage === "" || isAutoDetect) {
