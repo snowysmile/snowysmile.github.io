@@ -1,145 +1,99 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table with Columns in a Column Direction</title>
     <style>
-        body {
-            max-width: 100%;
-            overflow-x: hidden;
-        }
+        /* Common table styles */
         table {
             width: 100%;
-            max-width: 100%;
-            border-collapse: collapse;
         }
         th, td {
+            border: 1px solid black;
             padding: 8px;
-            text-align: left;
+            display: block;
+            text-align: center;
+            vertical-align: middle;
         }
-        @media screen and (max-width: 1467px) {
-            .table-row {
-                display: flex; /* Change to block to stack elements vertically */
-                flex-direction: column;
-            }
-            /* Add this rule to set a maximum width for the textarea on phones */
-            textarea {
-                max-width: 100%;
-                width: 100%; /* Set textarea width to 100% to ensure it fills the container */
-            }
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Display <td> elements in a column direction */
+        td {
+        }
+
+        /* Add spacing between <td> elements (optional) */
+        td:not(:last-child) {
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
 
-<h2>Sample Table</h2>
-
-<table>
-    <tr class="table-row" id="inputArea-1">
-        <td class="column1">
-            <button id="recognize-button" onclick="toggleRecognition()">▶️ Start Recognizing</button>
-        </td>
-        <td class="column2">
-            <select id="textareaLanguageSelect-1">
-                <option value="ja" selected>🇯🇵</option>
-                <option value="en">🇺🇸</option>
-                <option value="zh-TW">🇹🇼</option>
-            </select>
-            <button onclick="speechTranslate(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">🔤</button>
-
-            <button onclick="copyTextArea(this)">✂️</button>
-            <button onclick="clearTextArea(this)">🆑</button>
-            <span class="alterable-layouts">
-                <button style="font-size: 10px;" onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">G🔊</button>
-                <button style="font-size: 10px;" onclick="msSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">M🔊</button>
-            </span>
+    <table display:>
+      <tr>
+        <td>
+          row1 - 1
         </td>
         <td>
-            <textarea id="recognitionResult" rows="2" cols="120"></textarea>
+          row1 - 2
         </td>
-        <td class="alterable-layouts">
-            <button style="font-size: 10px;" onclick="ggSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">G🔊</button>
-            <button style="font-size: 10px;" onclick="msSpeak(this.parentNode.querySelector('textarea').value, this.parentNode.querySelector('select').value)">M🔊</button>
+        <td>
+          row1 - 3
         </td>
-    </tr>
-</table>
+      </tr>
+      <tr>
+        <td>
+          row2 - 1
+        </td>
+        <td>
+          row2 - 2
+        </td>
+        <td>
+          row2 - 3
+        </td>
+      </tr>
+    </table>
 
-<table>
-  <tr class="table-row" id="recognitionInputArea">
-    <td>
-      <button id="recognize-button" onclick="toggleRecognition()" style="width: 148px;">▶️ Start Recognizing</button>
-    </td>
-    <td>
-      <select id="recognitionLanguageSelect" style="width: 36px; height: 20px;">
-        <option value="ja" selected>🇯🇵</option>
-        <option value="en">🇺🇸</option>
-        <option value="zh-TW">🇹🇼</option>
-      </select>
-      <button onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)">🔤</button>
-      <button onclick="copyTextArea(this)">✂️</button>
-      <button onclick="clearTextArea(this)">🆑</button>
-      <span class="readButtons">
-        <button style="font-size: 10px; height: 20px;" onclick="ggSpeak(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)">G🔊</button>
-        <button style="font-size: 10px; height: 20px;" onclick="msSpeak(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)">M🔊</button>
-      </span>
-    </td>
-    <td>
-      <textarea id="recognitionResult" rows="2" cols="80"></textarea>
-    </td>
-  </tr>
-<table>
-
-  <table style="margin-top: 3px; ">
-    <tr class="table-row" id="readingListInputArea">
-      <td>
-        <select id="readingListLanguageSelect">
-          <option value="ja" selected>🇯🇵</option>
-          <option value="en">🇺🇸</option>
-          <option value="zh-TW">🇹🇼</option>
-        </select>
-        <select id="repeatTimeSelect" style="width: 40px;">
-          <option value="1">1</option>
-          <option value="2" selected>2</option>
-          <option value="3">3</option>
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="20">20</option>
-          <option value="30">30</option>
-          <option value="50">50</option>
-          <option value="99">99</option>
-        </select>
-        <button type="button" onclick="autoTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0])">🔎</button>
-        <button id="addToReadingList-button" onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 1)" > + </button>
-        <button onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 2)"> ++ </button>
-        <button onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 3)"> +++ </button>
-        <button onclick="clearReadingList(this)">🆑</button>
-        <span class="readButtons">
-          <button style="font-size: 11px;" onclick="ggSpeakReadingList(repeatTimeSelect.value, this)">G🔊</button>
-          <button style="font-size: 11px;" onclick="msSpeakReadingList(repeatTimeSelect.value, this)">M🔊</button>
-        </span>
-      </td>
-      <td>
-        <textarea id="readingListInput" rows="2" cols="87"></textarea>
-      </td>
-    </tr>
-  </table>
-
-<script>
-  function moveButtonsOnPhone() {
-    const readButtonsSpan = document.querySelector('.readButtons');
-    const recognitionInputArea = document.getElementById('recognitionInputArea');
-    const screenWidth = window.innerWidth;
-
-    if (screenWidth <= 767) { // Adjust this threshold to the desired screen width for phones
-      //const newTd = document.createElement('td');
-      //newTd.appendChild(readButtonsSpan);
-      recognitionInputArea.appendChild(readButtonsSpan);
-    }
-  }
-
-  // Call the function when the page loads and when it is resized
-  window.addEventListener('load', moveButtonsOnPhone);
-  window.addEventListener('resize', moveButtonsOnPhone);
-</script>
-
+    <table>
+        <!-- Table1 - Left Columns -->
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <th>Left Column1</th>
+                    </tr>
+                    <tr>
+                        <td>Data</td>
+                    </tr>
+                    <!-- Add more rows for Table1 data as needed -->
+                </table>
+            </td>
+            <!-- Table2 - Middle Columns -->
+            <td>
+                <table>
+                    <tr>
+                        <th>Middle Col1</th>
+                    </tr>
+                    <tr>
+                        <td>Data</td>
+                    </tr>
+                    <!-- Add more rows for Table2 data as needed -->
+                </table>
+            </td>
+            <!-- Table3 - Right Columns -->
+            <td>
+                <table>
+                    <tr>
+                        <th>Right Col1</th>
+                    </tr>
+                    <tr>
+                        <td>Data</td>
+                    </tr>
+                    <!-- Add more rows for Table3 data as needed -->
+                </table>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>
