@@ -31,6 +31,9 @@
     .reading-container button {
       font-size: 9px;
     }
+    .reading-button-container button{
+      width:22px;
+    }
     .layout-container,
     .layout-container button {
       font-size: 12px;
@@ -124,7 +127,7 @@
       align-items: center;
       padding: 20px;
       width: 1000px;
-      height: 200px;
+      height: 150px;
       max-width: 95%;
       width: 95%;
     }
@@ -194,7 +197,7 @@
               // 掛在天上放光明，好像許多小眼睛。
               // "1234567890 !@#$%^&*() abcdefg ABCDEFG",
       textFontColors: ["#000000", "#000000", "#000000"],
-      textFontSizes: [20, 20, 20], //px
+      textFontSizes: [20, 17, 14], //px
       textFontWeights: [500, 500, 500],
       textFontFamilies: ['NotoSansCJKjp', 'NotoSansCJKjp', 'NotoSansCJKjp'],
       textStrokeColors: [['#87ceeb', '#ffb7c5'], ['#87ceeb', '#ffb7c5'], ['#87ceeb', '#ffb7c5']],
@@ -293,7 +296,7 @@
     <span class="reading-container">
       <button onclick="ggSpeakAllScreenText()">G</button>
       <button onclick="msSpeakAllScreenText()">M</button>
-      <span style="margin-left:10px;">
+      <span style="margin-left:10px;" class="reading-button-container">
         <select id="readingSelect0">
           <option value="ja" selected>🇯🇵</option>
           <option value="en">🇺🇸</option>
@@ -302,7 +305,7 @@
         <button onclick="ggSpeak(texts[0].textContent, this.previousElementSibling.value)">G</button>
         <button onclick="msSpeak(texts[0].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
       </span>
-      <span style="margin-left:10px;">
+      <span style="margin-left:10px;" class="reading-button-container">
         <select id="readingSelect1">
           <option value="ja">🇯🇵</option>
           <option value="en" selected>🇺🇸</option>
@@ -311,7 +314,7 @@
         <button onclick="ggSpeak(texts[1].textContent, this.previousElementSibling.value)">G</button>
         <button onclick="msSpeak(texts[1].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
       </span>
-      <span style="margin-left:10px;">
+      <span style="margin-left:10px;" class="reading-button-container">
         <select id="readingSelect2">
           <option value="ja">🇯🇵</option>
           <option value="en">🇺🇸</option>
