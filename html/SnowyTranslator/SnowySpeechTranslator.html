@@ -70,7 +70,10 @@
       }
       tr {
         display: block;
-        width: 100%;
+      }
+      th, td {
+        border-bottom: none;
+        margin: 0 auto;
       }
       textarea {
         max-width: 96%;
@@ -99,9 +102,8 @@
         display: none;
       }
     }
-
     rt {
-      font-size: 0.8em;
+      font-size: 0.7em;
     }
     input[type="range"] {
       height: 10px;
@@ -513,10 +515,9 @@
       <button id="toggleRecordInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recordInputArea', 'toggleRecordInputArea-button', 'Record Ipt')">Record Ipt ❌</button>
 
       <button id="toggleTranslationInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('translationInputArea', 'toggleTranslationInputArea-button', 'Translation Ipt')">Translation Ipt ❌</button>
-      <button id="toggleJpExpInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpInputArea', 'toggleJpExpInputArea-button', 'JpExp Ipt')">JpExp Ipt ❌</button>
       <button id="toggleReadingListInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('readingListInputArea', 'toggleReadingListInputArea-button', 'ReadingList Ipt')">ReadingList Ipt 🟢</button>
 
-
+      <button id="toggleJpExpInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpInputArea', 'toggleJpExpInputArea-button', 'JpExp Ipt')">JpExp Ipt ❌</button>
       <button id="toggleJpExpArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpAreaFrame', 'toggleJpExpArea-button', 'JpExp Text')">JpExp Text ❌</button>
       <button id="toggleJpExpWebTop-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebTop', 'toggleJpExpWebTop-button', 'JpExpTop Web')">JpExpTop Web ❌</button>
       <button id="toggleJpExpWebBot-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebBot', 'toggleJpExpWebBot-button', 'JpExpBot Web')">JpExpBot Web ❌</button>
