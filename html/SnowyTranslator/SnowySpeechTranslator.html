@@ -490,11 +490,11 @@
       <tr>
         <td>
           <button id="ggPauseAudio-button" style="width:40px; margin-right:5px; vertical-align: middle;" onclick="ggPauseAudio()">G⏯</button>
-          <audio id="ggSpeakAudio" src="" controls preload="metadata" style="height:25px; width:280px; vertical-align: middle;"></audio>
+          <audio id="ggSpeakAudio" src="static/Audio/あいうえお.mp3" controls style="height:25px; width:280px; vertical-align: middle;"></audio>
         </td>
         <td>
           <button id="msPauseAudio-button" style="width:40px; margin-right:5px; vertical-align: middle;" onclick="msPauseAudio()">M⏯</button>
-          <audio id="msSpeakAudio" src="" controls preload="metadata" style="height:25px; width:280px; vertical-align: middle;"></audio>
+          <audio id="msSpeakAudio" src="static/Audio/abcdefg.mp3" controls style="height:25px; width:280px; vertical-align: middle;"></audio>
         </td>
       <tr>
     </table>
@@ -942,22 +942,6 @@
         </td>
       </tr>
     </table>
-  </div>
-
-  <ul id="speechTextList"></ul>
-  <span id="speechTextListTotalCount"></span>
-  <span id="speechTextListCurrentID"></span>
-  <ul id="readingList"></ul>
-  <span id="readingListTotalCount"></span>
-  <br>
-
-  <div class="row-container">
-    <ruby> 日本語<rt>にほんご</rt> &nbsp; </ruby>
-    <ruby> 勉強<rt>べんきょう</rt> の &nbsp; </ruby>
-    <ruby> 為<rt>ため</rt> に &nbsp; </ruby>
-    <ruby> 自分<rt>じぶん</rt> で &nbsp; </ruby>
-    <ruby> このサイトを<rt>.</rt> &nbsp; </ruby>
-    <ruby> 作<rt>つく</rt> った &nbsp; </ruby>
   </div>
 
   <script>
@@ -1996,8 +1980,26 @@
     loadConfig(autoSID);
   </script>
 
-  <br>
-  <a href="https://wicg.github.io/speech-api" target="_blank">Speech Recognition</a>
-  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">Web HTML Study</a>
+  <span style="display: none">
+    <ul id="speechTextList"></ul>
+    <span id="speechTextListTotalCount"></span>
+    <span id="speechTextListCurrentID"></span>
+    <ul id="readingList"></ul>
+    <span id="readingListTotalCount"></span>
+    <br>
+
+    <div class="row-container">
+      <ruby> 日本語<rt>にほんご</rt> &nbsp; </ruby>
+      <ruby> 勉強<rt>べんきょう</rt> の &nbsp; </ruby>
+      <ruby> 為<rt>ため</rt> に &nbsp; </ruby>
+      <ruby> 自分<rt>じぶん</rt> で &nbsp; </ruby>
+      <ruby> このサイトを<rt>.</rt> &nbsp; </ruby>
+      <ruby> 作<rt>つく</rt> った &nbsp; </ruby>
+    </div>
+
+    <a href="https://wicg.github.io/speech-api" target="_blank">Speech Recognition</a>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">Web HTML Study</a>
+  </span>
+
 </body>
 </html>
