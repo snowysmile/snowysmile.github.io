@@ -33,13 +33,19 @@
     .reading-button-container button{
       width:22px;
     }
+    .layout-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
     .layout-container button {
-      width: 110px;
-      margin: 2px;
-      padding: 2px;
+      width: 100px;
+      margin: 0px;
+      padding: 1px;
       white-space: nowrap;
       overflow: hidden;
-      font-size: 10px;
+      font-size: 11px;
     }
     table {
       border-collapse: collapse;
@@ -93,6 +99,10 @@
       }
       .phone-row-table tr {
         display: inline-flex;
+      }
+      #apiKeyEditor input {
+        max-width: 96%;
+        width: 96%;
       }
     }
     @media screen and (min-width: 601px) {
@@ -523,7 +533,7 @@
     <button id="toggleLayoutEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('layoutEditor', 'toggleLayoutEditor-button', 'Layout Editor')">Layout Editor ❌</button>
   </div>
 
-  <div id="apiKeyEditor" style="display:none; margin-bottom:9px;">
+  <div id="apiKeyEditor" style="display:none; margin-bottom:5px;">
     <table>
       <tr class="row-container-left">
         <td style="width: 175px;"> Google Script API-KEY: </td>
