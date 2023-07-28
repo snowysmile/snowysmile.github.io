@@ -33,16 +33,19 @@
     .reading-button-container button{
       width:22px;
     }
-    .layout-container,
     .layout-container button {
-      font-size: 12px;
+      width: 110px;
+      margin: 2px;
+      padding: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: 10px;
     }
     table {
       border-collapse: collapse;
-      border: 1px solid #777777;
+      border: 1px solid black;
     }
     th, td {
-      border-bottom: 1px solid #ccc;
       text-align: center;
       vertical-align: middle;
       padding: 4px;
@@ -61,39 +64,34 @@
       font-family: "Monaco", monospace;
     }
     @media screen and (max-width: 600px) {
-      html, body {
-        display: flex;
-      }
       table {
-        display: flex;
-        flex-direction: column;
       }
       tr {
         display: block;
+        width: 100%;
       }
       th, td {
-        border-bottom: none;
+        display: block;
         margin: 0 auto;
+        padding: 2px;
+        vertical-align: middle;
       }
       textarea {
         max-width: 96%;
         width: 96%;
       }
       iframe {
-        width: 100%; /* Make the iframe responsive to its container width */
-        max-width: 100%; /* Set a maximum width for the iframe */
-        height: auto; /* Let the iframe adjust its height proportionally */
-        display: block; /* Remove any extra spacing around the iframe */
-        margin: 0 auto; /* Center the iframe horizontally */
+        max-width: 100%;
+        width: 100%;
+        display: block;
+        height: auto;
+        margin: 0 auto;
       }
       .button-title {
         display: flex;
         justify-content: space-between;
       }
-      .layout-table tr {
-        display: block;
-      }
-      .layout-table th, td {
+      .phone-row-table tr {
         display: inline-flex;
       }
     }
@@ -456,7 +454,7 @@
           </select>
           <button name="languageDetectButton" onclick="toggleAutoLangaugeDetect(this)">😴</button>
         </span>
-        <button class="phone-button" onclick="toggleWidgetArea('ReadingListInputArea', 'toggleReadingListInputArea-button', 'ReadingList Ipt')">⛔</button>
+        <button class="phone-button" onclick="toggleWidgetArea('readingListInputArea', 'toggleReadingListInputArea-button', 'ReadingList Ipt')">⛔</button>
       </td>
       <td>
         <textarea id="readingListInput" rows="2" cols="80"></textarea>
@@ -509,22 +507,20 @@
 
   <iframe id="jpExpWebBot" style="width:1000px; height:654px; margin-top:5px; margin-bottom:9px; display:none" src="https://ichi.moe/"></iframe>
 
-  <div class="row-container" style="margin-top:5px; margin-bottom:9px;">
-    <span class="layout-container">
-      <button id="toggleRecognitionInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recognitionInputArea', 'toggleRecognitionInputArea-button', 'Recognition Ipt')">Recognition Ipt 🟢</button>
-      <button id="toggleRecordInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recordInputArea', 'toggleRecordInputArea-button', 'Record Ipt')">Record Ipt ❌</button>
 
-      <button id="toggleTranslationInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('translationInputArea', 'toggleTranslationInputArea-button', 'Translation Ipt')">Translation Ipt ❌</button>
-      <button id="toggleReadingListInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('readingListInputArea', 'toggleReadingListInputArea-button', 'ReadingList Ipt')">ReadingList Ipt 🟢</button>
+  <button id="layoutContainer-button" style="margin-bottom:5px;" onclick="toggleWidgetArea('layoutContainer', 'layoutContainer-button', 'Layout Container')">Layout Container ❌</button>
 
-      <button id="toggleJpExpInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpInputArea', 'toggleJpExpInputArea-button', 'JpExp Ipt')">JpExp Ipt ❌</button>
-      <button id="toggleJpExpArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpAreaFrame', 'toggleJpExpArea-button', 'JpExp Text')">JpExp Text ❌</button>
-      <button id="toggleJpExpWebTop-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebTop', 'toggleJpExpWebTop-button', 'JpExpTop Web')">JpExpTop Web ❌</button>
-      <button id="toggleJpExpWebBot-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebBot', 'toggleJpExpWebBot-button', 'JpExpBot Web')">JpExpBot Web ❌</button>
-
-      <button id="toggleApiKeyEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('apiKeyEditor', 'toggleApiKeyEditor-button', 'ApiKey Editor')">ApiKey Editor ❌‍</button>
-      <button id="toggleLayoutEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('layoutEditor', 'toggleLayoutEditor-button', 'Layout Editor')">Layout Editor ❌</button>
-    </span>
+  <div class="layout-container" id="layoutContainer" style="margin-bottom:5px; display:none">
+    <button id="toggleRecognitionInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recognitionInputArea', 'toggleRecognitionInputArea-button', 'Recognition Ipt')">Recognition Ipt 🟢</button>
+    <button id="toggleRecordInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recordInputArea', 'toggleRecordInputArea-button', 'Record Ipt')">Record Ipt ❌</button>
+    <button id="toggleTranslationInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('translationInputArea', 'toggleTranslationInputArea-button', 'Translation Ipt')">Translation Ipt ❌</button>
+    <button id="toggleReadingListInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('readingListInputArea', 'toggleReadingListInputArea-button', 'ReadingList Ipt')">ReadingList Ipt 🟢</button>
+    <button id="toggleJpExpInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpInputArea', 'toggleJpExpInputArea-button', 'JpExp Ipt')">JpExp Ipt ❌</button>
+    <button id="toggleJpExpArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpAreaFrame', 'toggleJpExpArea-button', 'JpExp Text')">JpExp Text ❌</button>
+    <button id="toggleJpExpWebTop-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebTop', 'toggleJpExpWebTop-button', 'JpExpTop Web')">JpExpTop Web ❌</button>
+    <button id="toggleJpExpWebBot-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebBot', 'toggleJpExpWebBot-button', 'JpExpBot Web')">JpExpBot Web ❌</button>
+    <button id="toggleApiKeyEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('apiKeyEditor', 'toggleApiKeyEditor-button', 'ApiKey Editor')">ApiKey Editor ❌‍</button>
+    <button id="toggleLayoutEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('layoutEditor', 'toggleLayoutEditor-button', 'Layout Editor')">Layout Editor ❌</button>
   </div>
 
   <div id="apiKeyEditor" style="display:none; margin-bottom:9px;">
@@ -576,35 +572,36 @@
     </table>
   </div>
 
-  <table>
+  <table style="margin-bottom:5px">
     <tr>
-      <td> Language To Recognize: </td>
-      <td> <select id="languageSelect-0" onchange="updateLanguage(0)">
-        <option value="en">English 英語 English</option>
-        <option value="ja" selected>Japanese 日本語 日本語</option>
-        <option value="zh-CN">Simplified Chinese 中国語 汉语</option>
-        <option value="zh-TW">Traditional Chinese 台湾語 漢語</option>
-        <option value="ko">Korean 韓国語 한국어</option>
-        <option value="es">Spanish スペイン語 Español</option>
-        <option value="fr">French フランス語 Français</option>
-        <option value="pt">Portuguese ポルトガル語 Português</option>
-        <option value="it">Italian イタリア語 Italiano</option>
-        <option value="de">German ドイツ語 Deutsch</option>
-        <option value="pl">Polish ポーランド語 Polski</option>
-        <option value="nl">Dutch オランダ語 Nederlands</option>
-        <option value="ru">Russian ロシア語 Русский</option>
-        <option value="uk">Ukrainian ウクライナ語 українська</option>
-      </select> </td>
-      <td> Translation Counts: </td>
-      <td> <select id="translationSelect" onchange="toggleTranslationCounts()">
-        <option value="0">No Translation</option>
-        <option value="1">One Translation</option>
-        <option value="2" selected>Two Translations</option>
-      </select></td>
-    <tr>
-  </table>
-
-  <table>
+      <span style="display: inline-flex; width: 100%;">
+        <td> Language To Recognize: </td>
+        <td> <select id="languageSelect-0" onchange="updateLanguage(0)">
+          <option value="en">English 英語 English</option>
+          <option value="ja" selected>Japanese 日本語 日本語</option>
+          <option value="zh-CN">Simplified Chinese 中国語 汉语</option>
+          <option value="zh-TW">Traditional Chinese 台湾語 漢語</option>
+          <option value="ko">Korean 韓国語 한국어</option>
+          <option value="es">Spanish スペイン語 Español</option>
+          <option value="fr">French フランス語 Français</option>
+          <option value="pt">Portuguese ポルトガル語 Português</option>
+          <option value="it">Italian イタリア語 Italiano</option>
+          <option value="de">German ドイツ語 Deutsch</option>
+          <option value="pl">Polish ポーランド語 Polski</option>
+          <option value="nl">Dutch オランダ語 Nederlands</option>
+          <option value="ru">Russian ロシア語 Русский</option>
+          <option value="uk">Ukrainian ウクライナ語 українська</option>
+        </select> </td>
+      </span>
+      <span style="display: inline-flex; width: 100%;">
+        <td> Translation Counts: </td>
+        <td> <select id="translationSelect" onchange="toggleTranslationCounts()">
+          <option value="0">No Translation</option>
+          <option value="1">One Translation</option>
+          <option value="2" selected>Two Translations</option>
+        </select></td>
+      </span>
+    </tr>
     <tr>
       <td> Target Language 1: </td>
       <td> <select id="languageSelect-1" onchange="updateLanguage(1)">
@@ -738,7 +735,7 @@
   </div>
 
   <div id="layoutEditor" style="display:none">
-    <table style="margin-left: auto; margin-right: auto; margin-top:9px; margin-bottom:9px;">
+    <table style="margin-left: auto; margin-right: auto; margin-bottom: 3px;">
       <tr>
         <td>
           <span>Page Background Color:</span>
@@ -755,7 +752,7 @@
     <table>
       <tr>
         <td>
-          <table class="layout-table">
+          <table class="phone-row-table">
             <tr>
               <th colspan="3"><span>Speech Text</span></th>
             </tr>
@@ -817,7 +814,7 @@
           </table>
         </td>
         <td>
-          <table class="layout-table">
+          <table class="phone-row-table">
             <tr>
               <th colspan="3"><span>Translation Text 1</span></th>
             </tr>
@@ -879,7 +876,7 @@
           </table>
         </td>
         <td>
-          <table class="layout-table">
+          <table class="phone-row-table">
             <tr>
               <th colspan="3"><span>Translation Text 2</span></th>
             </tr>
@@ -1971,9 +1968,15 @@
         japaneseExplanationFile();
       }
     }
-
   </script>
-
+  <script>
+    function updateScreenWidth() {
+      const screenWidth = window.innerWidth || document.documentElement.clientWidth;
+      console.log("screenWidth:", screenWidth);
+    }
+    updateScreenWidth();
+    window.addEventListener('resize', updateScreenWidth);
+  </script>
   <script>
     // localStorage.removeItem('snowyTranslatorConfig');
     // localStorage.clear();

@@ -1,99 +1,153 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Table with Columns in a Column Direction</title>
-    <style>
-        /* Common table styles */
-        table {
-            width: 100%;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            display: block;
-            text-align: center;
-            vertical-align: middle;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-
-        /* Display <td> elements in a column direction */
-        td {
-        }
-
-        /* Add spacing between <td> elements (optional) */
-        td:not(:last-child) {
-            margin-bottom: 10px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table with Columns in a Column Direction</title>
+  <style>
+    @media screen and (max-width: 600px) {
+      tr {
+        display: block;
+        width: 100%;
+      }
+      th, td {
+        margin: 0 auto;
+        padding: 2px;
+        display: block;
+      }
+      .phone-row-table tr {
+        display: inline-flex;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <table display:>
-      <tr>
-        <td>
-          row1 - 1
-        </td>
-        <td>
-          row1 - 2
-        </td>
-        <td>
-          row1 - 3
-        </td>
-      </tr>
-      <tr>
-        <td>
-          row2 - 1
-        </td>
-        <td>
-          row2 - 2
-        </td>
-        <td>
-          row2 - 3
-        </td>
-      </tr>
-    </table>
 
+  <div class="layout-container" id="layoutContainer" style="margin-bottom:5px;">
     <table>
-        <!-- Table1 - Left Columns -->
-        <tr>
-            <td>
-                <table>
-                    <tr>
-                        <th>Left Column1</th>
-                    </tr>
-                    <tr>
-                        <td>Data</td>
-                    </tr>
-                    <!-- Add more rows for Table1 data as needed -->
-                </table>
-            </td>
-            <!-- Table2 - Middle Columns -->
-            <td>
-                <table>
-                    <tr>
-                        <th>Middle Col1</th>
-                    </tr>
-                    <tr>
-                        <td>Data</td>
-                    </tr>
-                    <!-- Add more rows for Table2 data as needed -->
-                </table>
-            </td>
-            <!-- Table3 - Right Columns -->
-            <td>
-                <table>
-                    <tr>
-                        <th>Right Col1</th>
-                    </tr>
-                    <tr>
-                        <td>Data</td>
-                    </tr>
-                    <!-- Add more rows for Table3 data as needed -->
-                </table>
-            </td>
-        </tr>
+      <tr>
+        <td>
+          <button id="toggleRecognitionInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recognitionInputArea', 'toggleRecognitionInputArea-button', 'Recognition Ipt')">Recognition Ipt 🟢</button>
+        </td>
+        <td>
+          <button id="toggleRecordInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recordInputArea', 'toggleRecordInputArea-button', 'Record Ipt')">Record Ipt ❌</button>
+        </td>
+        <td>
+          <button id="toggleTranslationInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('translationInputArea', 'toggleTranslationInputArea-button', 'Translation Ipt')">Translation Ipt ❌</button>
+        </td>
+        <td>
+          <button id="toggleReadingListInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('readingListInputArea', 'toggleReadingListInputArea-button', 'ReadingList Ipt')">ReadingList Ipt 🟢</button>
+        </td>
+        <td>
+          <button id="toggleJpExpInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpInputArea', 'toggleJpExpInputArea-button', 'JpExp Ipt')">JpExp Ipt ❌</button>
+        </td>
+        <td>
+          <button id="toggleJpExpArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpAreaFrame', 'toggleJpExpArea-button', 'JpExp Text')">JpExp Text ❌</button>
+        </td>
+        <td>
+          <button id="toggleJpExpWebTop-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebTop', 'toggleJpExpWebTop-button', 'JpExpTop Web')">JpExpTop Web ❌</button>
+        </td>
+        <td>
+          <button id="toggleJpExpWebBot-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebBot', 'toggleJpExpWebBot-button', 'JpExpBot Web')">JpExpBot Web ❌</button>
+        </td>
+        <td>
+          <button id="toggleApiKeyEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('apiKeyEditor', 'toggleApiKeyEditor-button', 'ApiKey Editor')">ApiKey Editor ❌‍</button>
+        </td>
+        <td>
+          <button id="toggleLayoutEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('layoutEditor', 'toggleLayoutEditor-button', 'Layout Editor')">Layout Editor ❌</button>
+        </td>
+      </tr>
     </table>
+  </div>
+
+
+
+
+  <table style="margin-bottom:5px">
+    <tr>
+      <span style="display: inline-flex; width: 100%;">
+        <td> Language To Recognize: </td>
+        <td> <select id="languageSelect-0" onchange="updateLanguage(0)">
+          <option value="en">English 英語 English</option>
+          <option value="ja" selected>Japanese 日本語 日本語</option>
+          <option value="zh-CN">Simplified Chinese 中国語 汉语</option>
+          <option value="zh-TW">Traditional Chinese 台湾語 漢語</option>
+          <option value="ko">Korean 韓国語 한국어</option>
+          <option value="es">Spanish スペイン語 Español</option>
+          <option value="fr">French フランス語 Français</option>
+          <option value="pt">Portuguese ポルトガル語 Português</option>
+          <option value="it">Italian イタリア語 Italiano</option>
+          <option value="de">German ドイツ語 Deutsch</option>
+          <option value="pl">Polish ポーランド語 Polski</option>
+          <option value="nl">Dutch オランダ語 Nederlands</option>
+          <option value="ru">Russian ロシア語 Русский</option>
+          <option value="uk">Ukrainian ウクライナ語 українська</option>
+        </select> </td>
+      </span>
+      <span style="display: inline-flex; width: 100%;">
+        <td> Translation Counts: </td>
+        <td> <select id="translationSelect" onchange="toggleTranslationCounts()">
+          <option value="0">No Translation</option>
+          <option value="1">One Translation</option>
+          <option value="2" selected>Two Translations</option>
+        </select></td>
+      </span>
+    </tr>
+    <tr>
+      <td> Target Language 1: </td>
+      <td> <select id="languageSelect-1" onchange="updateLanguage(1)">
+        <option value="en" selected>English 英語 English</option>
+        <option value="ja">Japanese 日本語 日本語</option>
+        <option value="zh-CN">Simplified Chinese 中国語 汉语</option>
+        <option value="zh-TW">Traditional Chinese 台湾語 漢語</option>
+        <option value="ko">Korean 韓国語 한국어</option>
+        <option value="es">Spanish スペイン語 Español</option>
+        <option value="fr">French フランス語 Français</option>
+        <option value="pt">Portuguese ポルトガル語 Português</option>
+        <option value="it">Italian イタリア語 Italiano</option>
+        <option value="de">German ドイツ語 Deutsch</option>
+        <option value="pl">Polish ポーランド語 Polski</option>
+        <option value="nl">Dutch オランダ語 Nederlands</option>
+        <option value="ru">Russian ロシア語 Русский</option>
+        <option value="uk">Ukrainian ウクライナ語 українська</option>
+      </select> </td>
+      <td>Target Language 2:</td>
+      <td> <select id="languageSelect-2" onchange="updateLanguage(2)">
+        <option value="en">English 英語 English</option>
+        <option value="ja">Japanese 日本語 日本語</option>
+        <option value="zh-CN">Simplified Chinese 中国語 汉语</option>
+        <option value="zh-TW" selected>Traditional Chinese 台湾語 漢語</option>
+        <option value="ko">Korean 韓国語 한국어</option>
+        <option value="es">Spanish スペイン語 Español</option>
+        <option value="fr">French フランス語 Français</option>
+        <option value="pt">Portuguese ポルトガル語 Português</option>
+        <option value="it">Italian イタリア語 Italiano</option>
+        <option value="de">German ドイツ語 Deutsch</option>
+        <option value="pl">Polish ポーランド語 Polski</option>
+        <option value="nl">Dutch オランダ語 Nederlands</option>
+        <option value="ru">Russian ロシア語 Русский</option>
+        <option value="uk">Ukrainian ウクライナ語 українська</option>
+      </select> </td>
+    <tr>
+  </table>
+
+
+  <div class="scree-check">
+    scree-check
+  </div>
+  Screen Width (CSS pixels): <span id="screen-width-css"></span>
+  Screen Width (Physical pixels): <span id="screen-width-physical"></span>
+  <script>
+    function updateScreenWidth() {
+      const screenWidthCSS = window.innerWidth || document.documentElement.clientWidth;
+      document.getElementById('screen-width-css').innerText = screenWidthCSS;
+      const screenWidthPhysical = screen.width;
+      document.getElementById('screen-width-physical').innerText = screenWidthPhysical;
+    }
+    updateScreenWidth();
+    window.addEventListener('resize', updateScreenWidth);
+  </script>
+
 </body>
 </html>
