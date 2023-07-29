@@ -349,6 +349,7 @@
               <option value="zh-TW">🇹🇼</option>
             </select>
             <button name="languageDetectButton" onclick="toggleAutoLangaugeDetect(this)">😴</button>
+            <button name="languageDetectButton" onclick="toggleOneSentenceRecognize(this)">〜</button>
         </span>
         <button class="phone-button" onclick="toggleWidgetArea('recognitionInputArea', 'toggleRecognitionInputArea-button', 'Recognition Ipt')">⛔</button>
       </td>
@@ -734,8 +735,8 @@
   	<button id="loadConfig2-button" onclick="loadConfig(2)">L2</button>
     <table>
       <tr>
-        <td style="display: none;"> Speech Split Interval (ms): </td>
-        <td style="display: none;"> <input type="text" id="speechSplitInterval" size="8" oninput="updateSpeechSplitInterval();"> </td>
+        <td style="display: block;"> Speech Split Interval (ms): </td>
+        <td style="display: block;"> <input type="text" id="speechSplitInterval" size="8" oninput="updateSpeechSplitInterval();"> </td>
         <td style="display: none;"> Speech Clear Interval (ms): </td>
         <td style="display: none;"> <input type="text" id="speechClearInterval" size="8" oninput="updateSpeechClearInterval();"> </td>
         <td> <button id="clearText-button" onclick="clearTexts();">Clear Texts</button> </td>
@@ -1122,7 +1123,7 @@
       var textarea = button.parentNode.parentNode.querySelector('textarea');
       textarea.value = "";
     }
-    function startRecognition(sourceLanguage="") {
+    function startRecognition(sourceLanguage="", nonStop=true) {
       if (sourceLanguage === "") {
         sourceLanguage = languageSelects[0].value;
       }
@@ -1185,7 +1186,7 @@
             if (event.results[i].isFinal) {
               recognitionResult.value = speechText;
               console.log("japaneseExplanationLocalhost(speechText);", speechText);
-              japaneseExplanationLocalhost(speechText);
+              japaneseExplanationEntrance(speechText);
               if (isRecording) {
                 recordResult.value += speechText + ".";
               }
@@ -1194,7 +1195,7 @@
               speechTranslate(speechText, sourceLanguage);
             }
             else {
-              if (false && speechSplitInterval.value && speechSplitInterval.value !== 0) {
+              if (!nonStop && speechSplitInterval.value && speechSplitInterval.value !== 0) {
                 clearTimeout(speechSplitInterval_TimeOut);
                 speechSplitInterval_TimeOut = setTimeout(stopRecognitionControl, speechSplitInterval.value);
               }
@@ -1268,6 +1269,14 @@
       }
       else {
         button.innerText = "😴";
+      }
+    }
+    function toggleOneSentenceRecognize(button) {
+      if (button.innerText === "①") {
+        button.innerText = "〜";
+      }
+      else {
+        button.innerText = "①";
       }
     }
 
@@ -1964,18 +1973,18 @@
       });
     }
 
-    function japaneseExplanationEntrance() {
+    function japaneseExplanationEntrance(text) {
       if (window.location.protocol === "file:") {
         console.log("japaneseExplanationFile()");
-        japaneseExplanationFile();
+        japaneseExplanationFile(text);
       }
       else if (window.location.href.includes("localhost:")) {
         console.log("japaneseExplanationLocalhost()");
-        japaneseExplanationLocalhost();
+        japaneseExplanationLocalhost(text);
       }
       else {
         console.log("japaneseExplanationWebPage()");
-        japaneseExplanationFile();
+        japaneseExplanationFile(text);
       }
     }
   </script>
