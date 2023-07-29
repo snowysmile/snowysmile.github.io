@@ -194,8 +194,8 @@
     }
   </script>
   <script>
-    const topTranslationCounts = 2;
-    var translationCounts = 2;
+    const topTranslationCount = 2;
+    var translationCount;
     var configCounts = 3;
     var defaultConfig =
     {
@@ -221,6 +221,7 @@
       speechOverInterval: 5000, //ms
       speechSplitInterval: 1000, //ms
       speechClearInterval: 360000, //ms
+      translationCount: 2,
       languages: ['ja', 'en', 'zh-TW'],
       azureVoices: ['ja-JP-AoiNeural', 'en-US-AnaNeural', 'zh-CN-XiaoyouNeural'],
     }
@@ -401,7 +402,7 @@
     <tr class="input-table-row" id="translationInputArea" style="display:none">
       <td class="button-title">
         <span>
-          <button id="translate-button" onclick="speechTranslate(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', translationLanguageSelect)" style="width: 148px;"> Translate </button>
+          <button onclick="speechTranslate(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', translationLanguageSelect)" style="width: 148px;"> Translate </button>
           <select id="translationLanguageSelect">
             <option value="ja">🇯🇵</option>
             <option value="en" selected>🇺🇸</option>
@@ -610,7 +611,7 @@
       </span>
       <span style="display: inline-flex; width: 100%;">
         <td> Translation Counts: </td>
-        <td> <select id="translationSelect" onchange="toggleTranslationCounts()">
+        <td> <select id="translationCountSelect" onchange="toggleTranslationCount()">
           <option value="0">No Translation</option>
           <option value="1">One Translation</option>
           <option value="2" selected>Two Translations</option>
@@ -746,15 +747,15 @@
       </td>
       <td style="display: flex;">
         Speech Over Interval (ms):
-        <input type="text" id="speechOverInterval" size="8" oninput="updateIntervalInput('speechOverInterval');">
+        <input type="text" id="speechOverInterval" size="8" oninput="updateIntegerValue('speechOverInterval');">
       </td>
       <td style="display: none;">
         Speech Split Interval (ms):
-        <input type="text" id="speechSplitInterval" size="8" oninput="updateIntervalInput('speechSplitInterval');">
+        <input type="text" id="speechSplitInterval" size="8" oninput="updateIntegerValue('speechSplitInterval');">
       </td>
       <td style="display: none;">
         Speech Clear Interval (ms):
-        <input type="text" id="speechClearInterval" size="8" oninput="updateIntervalInput('speechClearInterval');">
+        <input type="text" id="speechClearInterval" size="8" oninput="updateIntegerValue('speechClearInterval');">
       </td>
     </tr>
   </table>
@@ -1027,7 +1028,7 @@
     var textMargins = document.querySelectorAll('[id^="textMargin-"]');
     var apiKeyInputs = document.querySelectorAll('[id^="apiKeyInput-"]');
     var languageSelects = [];
-    for (let i = 0; i <= translationCounts; i++) {
+    for (let i = 0; i <= topTranslationCount; i++) {
       languageSelects.push(document.getElementById(`languageSelect-${i}`));
     }
     var azureVoiceSelects = document.querySelectorAll('[id^="azureVoiceSelect-"]');
@@ -1105,7 +1106,7 @@
     var recognition = new webkitSpeechRecognition();
     var xmlRequest = new XMLHttpRequest();
     var requests = [];
-    for (let i = 0; i < translationCounts; i++) {
+    for (let i = 0; i < topTranslationCount; i++) {
       requests.push(new XMLHttpRequest());
     }
 
@@ -1137,12 +1138,13 @@
       textarea.value = "";
     }
     function startRecognition(sourceLanguage="") {
+      console.log("[startRecognition] before-> sourceLanguage:", sourceLanguage);
       if (sourceLanguage === "") {
         sourceLanguage = languageSelects[0].value;
       }
       recognitionResult.value = "";
       recognitionPreviousResult.value = "";
-      console.log("startRecognition(sourceLanguage):", sourceLanguage);
+      console.log("[startRecognition] after-> sourceLanguage:", sourceLanguage);
       recognition.lang = sourceLanguage;
       recognition.interimResults = true;
       recognition.continuous = true;
@@ -1207,7 +1209,9 @@
                 recognitionResult.value = recognitionPreviousResult.value + speechText + ".";
                 recognitionPreviousResult.value = recognitionResult.value;
               }
-              japaneseExplanationEntrance(speechText);
+              if (jpExpAreaFrame.style.display !== "none") {
+                japaneseExplanationEntrance(speechText);
+              }
               if (isRecording) {
                 recordResult.value = recognitionPreviousResult.value + speechText;
               }
@@ -1218,7 +1222,9 @@
             else {
               if (!recognitionNonStop && speechOverInterval.value && speechOverInterval.value !== 0) {
                 clearTimeout(speechOverInterval_TimeOut);
-                speechOverInterval_TimeOut = setTimeout(stopRecognitionComplete, speechOverInterval.value);
+                speechOverInterval_TimeOut = setTimeout(function() {
+                  stopRecognitionComplete(sourceLanguage);
+                }, speechOverInterval.value);
               }
               else if (!false && speechSplitInterval.value && speechSplitInterval.value !== 0) {
                 clearTimeout(speechSplitInterval_TimeOut);
@@ -1242,18 +1248,20 @@
       isRecognizing = false;
       recognizeButton.innerHTML = "▶️ Start Recognizing"
     }
-    function stopRecognitionComplete() {
+    function stopRecognitionComplete(sourceLanguage) {
       stopRecognition();
       if (isRecording) {
         isRecording = false;
         recordButton.innerHTML = "▶️ Start Recording";
       }
-      updateSpeechTextList(recognitionResult.value);
-      speechTranslate(recognitionResult.value, sourceLanguage);
+      if (recognitionResult.value !== texts[0].textContent) {
+        updateSpeechTextList(recognitionResult.value);
+        speechTranslate(recognitionResult.value, sourceLanguage);
+      }
     }
     function toggleRecognition(sourceLanguage) {
       if (isRecognizing) {
-        stopRecognitionComplete();
+        stopRecognitionComplete(sourceLanguage);
       }
       else {
         startRecognition(sourceLanguage);
@@ -1273,11 +1281,12 @@
         recordButton.innerHTML = "⏹️ Stop Recording";
       }
     }
-    function toggleTranslationCounts() {
-      var translationSelect = document.getElementById("translationSelect");
-      translationCounts = translationSelect.value;
-      clearTexts(topTranslationCounts);
+    function toggleTranslationCount() {
+      translationCount = translationCountSelect.value;
+      clearTexts(topTranslationCount);
       defaultTexts();
+      configs[autoSID].translationCount = translationCountSelect.value;
+      saveConfigStorage();
     }
     var sourceLanguage = "ja";
     var targetLanguage = "en";
@@ -1624,7 +1633,7 @@
       }
       targetLanguages = [];
       targetLanguages.push(sourceLanguage);
-      for (let i = 0; i <= translationCounts; i++) {
+      for (let i = 0; i <= topTranslationCount; i++) {
         if (languageSelects[i].value != sourceLanguage) {
           targetLanguages.push(languageSelects[i].value);
         }
@@ -1648,6 +1657,8 @@
     }
     async function speechTranslate(speechText, sourceLanguage="", isAutoDetect=false, languageSelect=undefined) {
       updateText(0, speechText);
+      console.log("[speechTranslate] before-> sourceLanguage:", sourceLanguage);
+
       if (sourceLanguage === "" || isAutoDetect) {
         sourceLanguage = await autoDetectTranslate(speechText, languageSelect);
       }
@@ -1656,12 +1667,11 @@
       }
       await getTargetLanguages(sourceLanguage);
 
-      console.log("sourceLanguage:", sourceLanguage);
-      console.log("targetLanguages:", targetLanguages);
-      console.log("readingSelects:", readingSelects);
+      console.log("[speechTranslate] after-> sourceLanguage:", sourceLanguage);
+      console.log("[speechTranslate] after-> targetLanguages:", targetLanguages);
       if (googleScriptKey != null && googleScriptKey != "") {
         const requestsPromises = [];
-        for (let i = 1; i < targetLanguages.length; i++) {
+        for (let i = 1; i <= translationCount; i++) {
           const targetLanguage = targetLanguages[i];
           const promise = new Promise((resolve, reject) => {
             const query = `https://script.google.com/macros/s/${googleScriptKey}/exec?`
@@ -1732,7 +1742,7 @@
     }
     function clearTexts(topRow=-1) {
       if (topRow === -1) {
-        topRow = translationCounts;
+        topRow = translationCount;
       }
       for (let i = 0; i <= topRow; i++) {
         updateText(i, "");
@@ -1740,7 +1750,7 @@
     }
     function defaultTexts(topRow=-1) {
       if (topRow === -1) {
-        topRow = translationCounts;
+        topRow = translationCount;
       }
       for (let i = 0; i <= topRow; i++) {
         updateText(i, defaultConfig.texts[i]);
@@ -1833,7 +1843,7 @@
       }
       saveConfigStorage();
     }
-    function updateIntervalInput(intervalInput, value=-1) {
+    function updateIntegerValue(intervalInput, value=-1) {
       var intervalInputElement = document.getElementById(intervalInput);
       if (value === -1) value = intervalInputElement.value;
       else intervalInputElement.value = value;
@@ -1864,8 +1874,11 @@
       configs[configID].speechOverInterval = speechOverInterval.value;
       configs[configID].speechSplitInterval = speechSplitInterval.value;
       configs[configID].speechClearInterval = speechClearInterval.value;
+      configs[configID].translationCount = translationCountSelect.value;
       configs[configID].languages = [...languageSelects].map(element => element.value);
       configs[configID].azureVoices = [...azureVoiceSelects].map(element => element.value);
+      // configs[configID].layoutContainer = [document.getElementById("layoutContainer").querySelectorAll('button')].map(element => element.innerHTML);
+
       saveConfigStorage();
       console.log(`Save Config (${configID}) Finished.`);
     }
@@ -1878,7 +1891,12 @@
       console.log(`Load Config (${configID}) ing...`);
       updatePageColor(configs[configID].pageColor);
       updateCurtainColor(configs[configID].curtainColor);
-      for (let i = 0; i <= translationCounts; i++) {
+      updateIntegerValue("speechOverInterval", configs[configID].speechOverInterval);
+      updateIntegerValue("speechSplitInterval", configs[configID].speechSplitInterval);
+      updateIntegerValue("speechClearInterval", configs[configID].speechClearInterval);
+      updateIntegerValue("translationCountSelect", configs[configID].translationCount);
+      toggleTranslationCount();
+      for (let i = 0; i <= translationCount; i++) {
         updateText(i, configs[configID].texts[i]);
         updateFontColor(i, configs[configID].textFontColors[i]);
         updateFontSize(i, configs[configID].textFontSizes[i]);
@@ -1890,9 +1908,6 @@
         }
         updateTextShadow(i, configs[configID].textShadowBlurRadius[i], configs[configID].textShadowColors[i]);
         updateTextMargin(i, configs[configID].textMargins[i]);
-        updateIntervalInput("speechOverInterval", configs[configID].speechOverInterval);
-        updateIntervalInput("speechSplitInterval", configs[configID].speechSplitInterval);
-        updateIntervalInput("speechClearInterval", configs[configID].speechClearInterval);
         updateLanguage(i, configs[configID].languages[i]);
         updateAzureVoice(i, configs[configID].azureVoices[i]);
       }
@@ -2033,8 +2048,6 @@
     <ul id="speechTextList"></ul>
     <span id="speechTextListTotalCount"></span>
     <span id="speechTextListCurrentID"></span>
-    <ul id="readingList"></ul>
-    <span id="readingListTotalCount"></span>
     <br>
 
     <div class="row-container">
@@ -2049,6 +2062,9 @@
     <a href="https://wicg.github.io/speech-api" target="_blank">Speech Recognition</a>
     <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">Web HTML Study</a>
   </span>
+
+  <ul id="readingList"></ul>
+  <span id="readingListTotalCount"></span>
 
 </body>
 </html>
