@@ -25,14 +25,6 @@
       flex-direction: row;
       align-items: flex-start;
     }
-    .reading-container,
-    .reading-container select,
-    .reading-container button {
-      font-size: 9px;
-    }
-    .reading-button-container button{
-      width:22px;
-    }
     .layout-container {
       display: flex;
       justify-content: center;
@@ -103,6 +95,14 @@
       #apiKeyEditor input {
         max-width: 96%;
         width: 96%;
+      }
+      .reading-container,
+      .reading-container select,
+      .reading-container button {
+        font-size: 9px;
+      }
+      .reading-button-container button{
+        width:22px;
       }
     }
     @media screen and (min-width: 601px) {
@@ -218,6 +218,7 @@
       textShadowBlurRadius: [0, 0, 0], //em
       textMargins: [5, 5, 5], //px
       apiKeys: ["", "", "", ""],
+      speechOverInterval: 5000, //ms
       speechSplitInterval: 1000, //ms
       speechClearInterval: 360000, //ms
       languages: ['ja', 'en', 'zh-TW'],
@@ -348,13 +349,16 @@
               <option value="en">🇺🇸</option>
               <option value="zh-TW">🇹🇼</option>
             </select>
-            <button name="languageDetectButton" onclick="toggleAutoLangaugeDetect(this)">😴</button>
-            <button name="languageDetectButton" onclick="toggleOneSentenceRecognize(this)">〜</button>
+            <button name="languageDetectButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">😴</button>
+            <button id="oneSentenceRecognizeButton" title="① To Recognize A Single Sentence; 〜 Is Nonstop Detection" onclick="toggleOneSentenceRecognize(this)">①</button>
         </span>
-        <button class="phone-button" onclick="toggleWidgetArea('recognitionInputArea', 'toggleRecognitionInputArea-button', 'Recognition Ipt')">⛔</button>
+        <button class="phone-button" onclick="toggleWidgetArea('recognitionInputArea', 'toggleRecognitionInputArea-button', 'Recognition')">⛔</button>
       </td>
       <td>
-        <textarea id="recognitionResult" rows="2" cols="80"></textarea>
+        <textarea id="recognitionResult" rows="2" cols="76"></textarea>
+        <div style="display:none">
+        <textarea id="recognitionPreviousResult" rows="2" cols="80"></textarea>
+        </div>
       </td>
       <td>
         <button name="translateButton" onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', recognitionLanguageSelect)">🔤</button>
@@ -376,9 +380,9 @@
             <option value="en">🇺🇸</option>
             <option value="zh-TW">🇹🇼</option>
           </select>
-          <button name="languageDetectButton" onclick="toggleAutoLangaugeDetect(this)">😴</button>
+          <button name="languageDetectButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">😴</button>
         </span>
-        <button class="phone-button" onclick="toggleWidgetArea('recordInputArea', 'toggleRecordInputArea-button', 'Record Ipt')">⛔</button>
+        <button class="phone-button" onclick="toggleWidgetArea('recordInputArea', 'toggleRecordInputArea-button', 'Record')">⛔</button>
       </td>
       <td>
         <textarea id="recordResult" rows="2" cols="80"></textarea>
@@ -403,9 +407,9 @@
             <option value="en" selected>🇺🇸</option>
             <option value="zh-TW">🇹🇼</option>
           </select>
-          <button name="languageDetectButton" onclick="toggleAutoLangaugeDetect(this)">😴</button>
+          <button name="languageDetectButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">😴</button>
         </span>
-        <button class="phone-button" onclick="toggleWidgetArea('translationInputArea', 'toggleTranslationInputArea-button', 'Translation Ipt')">⛔</button>
+        <button class="phone-button" onclick="toggleWidgetArea('translationInputArea', 'toggleTranslationInputArea-button', 'Translation')">⛔</button>
       </td>
       <td>
         <textarea id="translateInput" rows="2" cols="80"></textarea>
@@ -431,7 +435,7 @@
               <option value="ja" selected>🇯🇵</option>
             </select>
           </span>
-          <button type="button" class="phone-button" onclick="toggleWidgetArea('jpExpInputArea', 'toggleJpExpInputArea-button', 'JpExp Ipt')">⛔</button>
+          <button type="button" class="phone-button" onclick="toggleWidgetArea('jpExpInputArea', 'toggleJpExpInputArea-button', 'JpExp')">⛔</button>
         </td>
         <td>
           <textarea id="jpExpInput" rows="2" cols="85"></textarea>
@@ -463,9 +467,9 @@
             <option value="en">🇺🇸</option>
             <option value="zh-TW">🇹🇼</option>
           </select>
-          <button name="languageDetectButton" onclick="toggleAutoLangaugeDetect(this)">😴</button>
+          <button name="languageDetectButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">😴</button>
         </span>
-        <button class="phone-button" onclick="toggleWidgetArea('readingListInputArea', 'toggleReadingListInputArea-button', 'ReadingList Ipt')">⛔</button>
+        <button class="phone-button" onclick="toggleWidgetArea('readingListInputArea', 'toggleReadingListInputArea-button', 'ReadingList')">⛔</button>
       </td>
       <td>
         <textarea id="readingListInput" rows="2" cols="80"></textarea>
@@ -522,14 +526,14 @@
   <button id="layoutContainer-button" style="margin-bottom:5px;" onclick="toggleWidgetArea('layoutContainer', 'layoutContainer-button', 'Layout Container')">Layout Container ❌</button>
 
   <div class="layout-container" id="layoutContainer" style="margin-bottom:5px; display:none">
-    <button id="toggleRecognitionInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recognitionInputArea', 'toggleRecognitionInputArea-button', 'Recognition Ipt')">Recognition Ipt 🟢</button>
-    <button id="toggleRecordInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recordInputArea', 'toggleRecordInputArea-button', 'Record Ipt')">Record Ipt ❌</button>
-    <button id="toggleTranslationInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('translationInputArea', 'toggleTranslationInputArea-button', 'Translation Ipt')">Translation Ipt ❌</button>
-    <button id="toggleReadingListInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('readingListInputArea', 'toggleReadingListInputArea-button', 'ReadingList Ipt')">ReadingList Ipt 🟢</button>
-    <button id="toggleJpExpInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpInputArea', 'toggleJpExpInputArea-button', 'JpExp Ipt')">JpExp Ipt ❌</button>
+    <button id="toggleRecognitionInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recognitionInputArea', 'toggleRecognitionInputArea-button', 'Recognition')">Recognition 🟢</button>
+    <button id="toggleRecordInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recordInputArea', 'toggleRecordInputArea-button', 'Record')">Record ❌</button>
+    <button id="toggleTranslationInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('translationInputArea', 'toggleTranslationInputArea-button', 'Translation')">Translation ❌</button>
+    <button id="toggleReadingListInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('readingListInputArea', 'toggleReadingListInputArea-button', 'ReadingList')">ReadingList 🟢</button>
+    <button id="toggleJpExpInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpInputArea', 'toggleJpExpInputArea-button', 'JpExp Input')">JpExp Input ❌</button>
     <button id="toggleJpExpArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpAreaFrame', 'toggleJpExpArea-button', 'JpExp Text')">JpExp Text ❌</button>
-    <button id="toggleJpExpWebTop-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebTop', 'toggleJpExpWebTop-button', 'JpExpTop Web')">JpExpTop Web ❌</button>
-    <button id="toggleJpExpWebBot-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebBot', 'toggleJpExpWebBot-button', 'JpExpBot Web')">JpExpBot Web ❌</button>
+    <button id="toggleJpExpWebTop-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebTop', 'toggleJpExpWebTop-button', 'JpExp Web(↑)')">JpExp Web (↑) ❌</button>
+    <button id="toggleJpExpWebBot-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebBot', 'toggleJpExpWebBot-button', 'JpExp Web(↓)')">JpExp Web (↓) ❌</button>
     <button id="toggleApiKeyEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('apiKeyEditor', 'toggleApiKeyEditor-button', 'ApiKey Editor')">ApiKey Editor ❌‍</button>
     <button id="toggleLayoutEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('layoutEditor', 'toggleLayoutEditor-button', 'Layout Editor')">Layout Editor ❌</button>
   </div>
@@ -727,23 +731,33 @@
     <tr>
   </table>
 
-  <div class="row-container">
-  	<button id="defaultConfig-button" onclick="loadConfig(-1)">🆑</button>
-  	<button id="saveConfig1-button" onclick="saveConfig(1)">S1</button>
-  	<button id="loadConfig1-button" onclick="loadConfig(1)">L1</button>
-  	<button id="saveConfig2-button" onclick="saveConfig(2)">S2</button>
-  	<button id="loadConfig2-button" onclick="loadConfig(2)">L2</button>
-    <table>
-      <tr>
-        <td style="display: block;"> Speech Split Interval (ms): </td>
-        <td style="display: block;"> <input type="text" id="speechSplitInterval" size="8" oninput="updateSpeechSplitInterval();"> </td>
-        <td style="display: none;"> Speech Clear Interval (ms): </td>
-        <td style="display: none;"> <input type="text" id="speechClearInterval" size="8" oninput="updateSpeechClearInterval();"> </td>
-        <td> <button id="clearText-button" onclick="clearTexts();">Clear Texts</button> </td>
-        <td> <button id="defaultText-button" onclick="defaultTexts();">Default Texts</button> </td>
-      </tr>
-    </table>
-  </div>
+  <table style="border: none">
+    <tr class="row-container">
+      <td>
+      	<button id="defaultConfig-button" onclick="loadConfig(-1)">🆑</button>
+      	<button id="saveConfig1-button" onclick="saveConfig(1)">S1</button>
+      	<button id="loadConfig1-button" onclick="loadConfig(1)">L1</button>
+      	<button id="saveConfig2-button" onclick="saveConfig(2)">S2</button>
+      	<button id="loadConfig2-button" onclick="loadConfig(2)">L2</button>
+      </td>
+      <td>
+        <button id="clearText-button" onclick="clearTexts();">Clear Texts</button>
+       <button id="defaultText-button" onclick="defaultTexts();">Default Texts</button>
+      </td>
+      <td style="display: flex;">
+        Speech Over Interval (ms):
+        <input type="text" id="speechOverInterval" size="8" oninput="updateIntervalInput('speechOverInterval');">
+      </td>
+      <td style="display: none;">
+        Speech Split Interval (ms):
+        <input type="text" id="speechSplitInterval" size="8" oninput="updateIntervalInput('speechSplitInterval');">
+      </td>
+      <td style="display: none;">
+        Speech Clear Interval (ms):
+        <input type="text" id="speechClearInterval" size="8" oninput="updateIntervalInput('speechClearInterval');">
+      </td>
+    </tr>
+  </table>
 
   <div id="layoutEditor" style="display:none">
     <table style="margin-left: auto; margin-right: auto; margin-bottom: 3px;">
@@ -1012,14 +1026,13 @@
     var textMarginValues = document.querySelectorAll('[id^="textMarginValue-"]');
     var textMargins = document.querySelectorAll('[id^="textMargin-"]');
     var apiKeyInputs = document.querySelectorAll('[id^="apiKeyInput-"]');
-    var speechSplitInterval = document.getElementById("speechSplitInterval");
-    var speechClearInterval = document.getElementById("speechClearInterval");
     var languageSelects = [];
     for (let i = 0; i <= translationCounts; i++) {
       languageSelects.push(document.getElementById(`languageSelect-${i}`));
     }
     var azureVoiceSelects = document.querySelectorAll('[id^="azureVoiceSelect-"]');
 
+    var speechOverInterval_TimeOut;
     var speechSplitInterval_TimeOut;
     var speechClearInterval_TimeOut;
     var googleScriptKey;
@@ -1123,14 +1136,17 @@
       var textarea = button.parentNode.parentNode.querySelector('textarea');
       textarea.value = "";
     }
-    function startRecognition(sourceLanguage="", nonStop=true) {
+    function startRecognition(sourceLanguage="") {
       if (sourceLanguage === "") {
         sourceLanguage = languageSelects[0].value;
       }
+      recognitionResult.value = "";
+      recognitionPreviousResult.value = "";
       console.log("startRecognition(sourceLanguage):", sourceLanguage);
       recognition.lang = sourceLanguage;
       recognition.interimResults = true;
       recognition.continuous = true;
+      recognitionNonStop = oneSentenceRecognizeButton.innerHTML === '〜';
 
       var timeStamp = 0;
       recognition.onstart = () => {
@@ -1184,22 +1200,31 @@
           else {
             console.log("Speech Text:", speechText);
             if (event.results[i].isFinal) {
-              recognitionResult.value = speechText;
-              console.log("japaneseExplanationLocalhost(speechText);", speechText);
+              if (recognitionNonStop) {
+                recognitionResult.value = speechText;
+              }
+              else {
+                recognitionResult.value = recognitionPreviousResult.value + speechText + ".";
+                recognitionPreviousResult.value = recognitionResult.value;
+              }
               japaneseExplanationEntrance(speechText);
               if (isRecording) {
-                recordResult.value += speechText + ".";
+                recordResult.value = recognitionPreviousResult.value + speechText;
               }
               updateSpeechTextList(speechText);
               // await
               speechTranslate(speechText, sourceLanguage);
             }
             else {
-              if (!nonStop && speechSplitInterval.value && speechSplitInterval.value !== 0) {
+              if (!recognitionNonStop && speechOverInterval.value && speechOverInterval.value !== 0) {
+                clearTimeout(speechOverInterval_TimeOut);
+                speechOverInterval_TimeOut = setTimeout(stopRecognitionComplete, speechOverInterval.value);
+              }
+              else if (!false && speechSplitInterval.value && speechSplitInterval.value !== 0) {
                 clearTimeout(speechSplitInterval_TimeOut);
                 speechSplitInterval_TimeOut = setTimeout(stopRecognitionControl, speechSplitInterval.value);
               }
-              recognitionResult.value = '< ' + speechText + ' >';
+              recognitionResult.value = recognitionPreviousResult.value + ' < ' + speechText + ' > ';
             }
           }
         }
@@ -1217,13 +1242,18 @@
       isRecognizing = false;
       recognizeButton.innerHTML = "▶️ Start Recognizing"
     }
+    function stopRecognitionComplete() {
+      stopRecognition();
+      if (isRecording) {
+        isRecording = false;
+        recordButton.innerHTML = "▶️ Start Recording";
+      }
+      updateSpeechTextList(recognitionResult.value);
+      speechTranslate(recognitionResult.value, sourceLanguage);
+    }
     function toggleRecognition(sourceLanguage) {
       if (isRecognizing) {
-        stopRecognition();
-        if (isRecording) {
-          isRecording = false;
-          recordButton.innerHTML = "▶️ Start Recording";
-        }
+        stopRecognitionComplete();
       }
       else {
         startRecognition(sourceLanguage);
@@ -1803,16 +1833,11 @@
       }
       saveConfigStorage();
     }
-    function updateSpeechSplitInterval(value=-1) {
-      if (value === -1) value = speechSplitInterval.value;
-      else speechSplitInterval.value = value;
-      configs[autoSID].speechSplitInterval = value;
-      saveConfigStorage();
-    }
-    function updateSpeechClearInterval(value=-1) {
-      if (value === -1) value = speechClearInterval.value;
-      else speechClearInterval.value = value;
-      configs[autoSID].speechClearInterval = value;
+    function updateIntervalInput(intervalInput, value=-1) {
+      var intervalInputElement = document.getElementById(intervalInput);
+      if (value === -1) value = intervalInputElement.value;
+      else intervalInputElement.value = value;
+      configs[autoSID][intervalInputElement.id] = value;
       saveConfigStorage();
     }
     function updateLanguage(id, value="") {
@@ -1836,6 +1861,7 @@
       configs[configID].textShadowColors = [...textShadowColorValues].map(element => element.innerHTML);
       configs[configID].textMargins = [...textMarginValues].map(element => element.innerHTML);
       configs[configID].apiKeys = [...apiKeyInputs].map(element => element.value);
+      configs[configID].speechOverInterval = speechOverInterval.value;
       configs[configID].speechSplitInterval = speechSplitInterval.value;
       configs[configID].speechClearInterval = speechClearInterval.value;
       configs[configID].languages = [...languageSelects].map(element => element.value);
@@ -1864,8 +1890,9 @@
         }
         updateTextShadow(i, configs[configID].textShadowBlurRadius[i], configs[configID].textShadowColors[i]);
         updateTextMargin(i, configs[configID].textMargins[i]);
-        updateSpeechSplitInterval(configs[configID].speechSplitInterval);
-        updateSpeechClearInterval(configs[configID].speechClearInterval);
+        updateIntervalInput("speechOverInterval", configs[configID].speechOverInterval);
+        updateIntervalInput("speechSplitInterval", configs[configID].speechSplitInterval);
+        updateIntervalInput("speechClearInterval", configs[configID].speechClearInterval);
         updateLanguage(i, configs[configID].languages[i]);
         updateAzureVoice(i, configs[configID].azureVoices[i]);
       }
