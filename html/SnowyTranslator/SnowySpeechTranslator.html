@@ -194,17 +194,20 @@
     }
   </script>
   <script>
-    function printMap(map) {
-      console.log("printMap");
-      console.log("type:", typeof(map));
+    function printMap(map, str) {
+      console.log(`printMap ${str}`)
       map.forEach((value, key) => {
-        console.log(`map=${mapName}: key=${key}, value=${value}`);
+        console.log(`key=${key}, value=${value}`);
       });
+    }
+    function copyMap(originalMap) {
+      return new Map([...originalMap]);
     }
     function copyConfig(originalConfig) {
       const newConfig = { ...originalConfig };
-      newConfig.layoutButtonsClickedMap = new Map([...originalConfig.layoutButtonsClickedMap]);
+      newConfig.layoutButtonsClickedMap = copyMap(originalConfig.layoutButtonsClickedMap);
       // TODO [...]
+      // newConfig.layoutButtonsClickedMap = new Map([...originalConfig.layoutButtonsClickedMap]);
       return newConfig;
     }
     const topTranslationCount = 2;
@@ -244,18 +247,9 @@
     ];
     for (let i = 0; i < configs.length; i++) {
       configs[i].layoutButtonsClickedMap = new Map();
-      console.log("init layoutButtonsClickedMap");
-      configs[i].layoutButtonsClickedMap.forEach((value, key) => {
-        console.log(`key=${key}, value=${value}`);
-      });
     }
     var autoSID = 0;
     configs[autoSID] = copyConfig(defaultConfig);
-
-    console.log("typeof(configs[autoSID].layoutButtonsClickedMap):", typeof(configs[autoSID].layoutButtonsClickedMap));
-    configs[autoSID].layoutButtonsClickedMap.forEach((value, key) => {
-      console.log(`key=${key}, value=${value}`);
-    });
   </script>
   <title>Snowy Speech Translator</title>
 </head>
@@ -578,11 +572,11 @@
     });
     function updateLayoutButtonClick(buttonText) {
       var button = layoutButtonsMap.get(buttonText);
-      var buttonClicked = !layoutButtonsClickedMap.get(buttonText);
-      layoutButtonsClickedMap.set(buttonText, buttonClicked);
       button.click();
-      configs[autoSID].layoutButtonsClickedMap.set(buttonText, buttonClicked);
-      saveConfigStorage();
+
+      // layoutButtonsClickedMap.set(buttonText, true);
+      // configs[autoSID].layoutButtonsClickedMap.set(buttonText, true);
+      // saveConfigStorage();
     }
   </script>
 
@@ -1758,19 +1752,38 @@
       trigger = trigger === '🟢' ? '❌' : '🟢';
       button.innerHTML = `${buttonText} ${trigger}`;
       widget.style.display = trigger === '🟢' ? 'block' : 'none';
-      // compact = inline || block]
+      // compact = inline || block
+
       var buttonClicked = !layoutButtonsClickedMap.get(buttonText);
       layoutButtonsClickedMap.set(buttonText, buttonClicked);
+      printMap(layoutButtonsClickedMap, "toggleWidgetArea->layoutButtonsClickedMap");
       configs[autoSID].layoutButtonsClickedMap.set(buttonText, buttonClicked);
       saveConfigStorage();
+      printMap(configs[autoSID].layoutButtonsClickedMap, "toggleWidgetArea->configs[autoSID].layoutButtonsClickedMap");
+      console.log("configJSON:", JSON.parse(localStorage.getItem('snowyTranslatorConfig')));
     }
     function saveConfigStorage() {
+      for (let i = 0; i < configs.length; i++) {
+        const layoutButtonsClickedMap = configs[i].layoutButtonsClickedMap;
+        if (layoutButtonsClickedMap instanceof Map && layoutButtonsClickedMap.size > 0) {
+          configs[i].layoutButtonsClickedMap = Object.fromEntries(layoutButtonsClickedMap);
+        } else {
+          configs[i].layoutButtonsClickedMap = {};
+        }
+      }
       var configJSON = JSON.stringify(configs);
       localStorage.setItem('snowyTranslatorConfig', configJSON);
     }
     function loadConfigStorage() {
       if (localStorage.getItem('snowyTranslatorConfig')) {
         configs = JSON.parse(localStorage.getItem('snowyTranslatorConfig'));
+        console.log("configs.length:", configs.length);
+        for (let i = 0; i < configs.length; i++) {
+          if (configs[i].layoutButtonsClickedMap && typeof configs[i].layoutButtonsClickedMap === 'object') {
+            configs[i].layoutButtonsClickedMap = new Map(Object.entries(configs[i].layoutButtonsClickedMap));
+            // printMap(configs[i].layoutButtonsClickedMap, `configs[${i}].layoutButtonsClickedMap`);
+          }
+        }
       }
     }
     function updatePageColor(color = "") {
@@ -1933,7 +1946,6 @@
       configs[configID].languages = [...languageSelects].map(element => element.value);
       configs[configID].azureVoices = [...azureVoiceSelects].map(element => element.value);
       configs[configID].layoutButtonsClickedMap = copyMap(layoutButtonsClickedMap);
-
       saveConfigStorage();
       console.log(`Save Config (${configID}) Finished.`);
     }
@@ -1942,11 +1954,6 @@
       if (configID === -1) {
         configs[autoSID] = copyConfig(defaultConfig);
         configID = autoSID;
-
-        console.log("loadConfig Start");
-        configs[configID].layoutButtonsClickedMap.forEach((value, key) => {
-          console.log(`key=${key}, value=${value}`);
-        });
       }
       console.log(`Load Config (${configID}) ing...`);
       updatePageColor(configs[configID].pageColor);
@@ -1974,19 +1981,13 @@
       for (let i = 0; i < apiKeyInputs.length; i++) {
         updateApiKey(i, configs[configID].apiKeys[i]);
       }
-      console.log("configs[configID].layoutButtonsClickedMap:", configs[configID].layoutButtonsClickedMap);
-
-      configs[configID].layoutButtonsClickedMap.forEach((value, key) => {
-        console.log(`key=${key}, value=${value}`);
-      });
-
-      printMap(configs[configID].layoutButtonsClickedMap);
-      console.log(configs[configID].layoutButtonsClickedMap.get("key1"));
-      configs[configID].layoutButtonsClickedMap.forEach((value, key) => {
-        if (value) {
-          updateLayoutButtonClick(key);
-        }
-      });
+      if (configs[configID].layoutButtonsClickedMap != undefined) {
+        configs[configID].layoutButtonsClickedMap.forEach((value, key) => {
+          if (value) {
+            updateLayoutButtonClick(key);
+          }
+        });
+      }
       console.log(`Load Config (${configID}) Finsihed.`);
     }
     function updateConfig(configID, key, value) {
