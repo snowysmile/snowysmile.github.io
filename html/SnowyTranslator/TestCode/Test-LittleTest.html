@@ -23,130 +23,71 @@
 </head>
 <body>
 
-
-  <div class="layout-container" id="layoutContainer" style="margin-bottom:5px;">
-    <table>
-      <tr>
-        <td>
-          <button id="toggleRecognitionInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recognitionInputArea', 'toggleRecognitionInputArea-button', 'Recognition Ipt')">Recognition Ipt 🟢</button>
-        </td>
-        <td>
-          <button id="toggleRecordInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recordInputArea', 'toggleRecordInputArea-button', 'Record Ipt')">Record Ipt ❌</button>
-        </td>
-        <td>
-          <button id="toggleTranslationInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('translationInputArea', 'toggleTranslationInputArea-button', 'Translation Ipt')">Translation Ipt ❌</button>
-        </td>
-        <td>
-          <button id="toggleReadingListInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('readingListInputArea', 'toggleReadingListInputArea-button', 'ReadingList Ipt')">ReadingList Ipt 🟢</button>
-        </td>
-        <td>
-          <button id="toggleJpExpInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpInputArea', 'toggleJpExpInputArea-button', 'JpExp Ipt')">JpExp Ipt ❌</button>
-        </td>
-        <td>
-          <button id="toggleJpExpArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpAreaFrame', 'toggleJpExpArea-button', 'JpExp Text')">JpExp Text ❌</button>
-        </td>
-        <td>
-          <button id="toggleJpExpWebTop-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebTop', 'toggleJpExpWebTop-button', 'JpExpTop Web')">JpExpTop Web ❌</button>
-        </td>
-        <td>
-          <button id="toggleJpExpWebBot-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebBot', 'toggleJpExpWebBot-button', 'JpExpBot Web')">JpExpBot Web ❌</button>
-        </td>
-        <td>
-          <button id="toggleApiKeyEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('apiKeyEditor', 'toggleApiKeyEditor-button', 'ApiKey Editor')">ApiKey Editor ❌‍</button>
-        </td>
-        <td>
-          <button id="toggleLayoutEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('layoutEditor', 'toggleLayoutEditor-button', 'Layout Editor')">Layout Editor ❌</button>
-        </td>
-      </tr>
-    </table>
-  </div>
-
-
-
-
-  <table style="margin-bottom:5px">
-    <tr>
-      <span style="display: inline-flex; width: 100%;">
-        <td> Language To Recognize: </td>
-        <td> <select id="languageSelect-0" onchange="updateLanguage(0)">
-          <option value="en">English 英語 English</option>
-          <option value="ja" selected>Japanese 日本語 日本語</option>
-          <option value="zh-CN">Simplified Chinese 中国語 汉语</option>
-          <option value="zh-TW">Traditional Chinese 台湾語 漢語</option>
-          <option value="ko">Korean 韓国語 한국어</option>
-          <option value="es">Spanish スペイン語 Español</option>
-          <option value="fr">French フランス語 Français</option>
-          <option value="pt">Portuguese ポルトガル語 Português</option>
-          <option value="it">Italian イタリア語 Italiano</option>
-          <option value="de">German ドイツ語 Deutsch</option>
-          <option value="pl">Polish ポーランド語 Polski</option>
-          <option value="nl">Dutch オランダ語 Nederlands</option>
-          <option value="ru">Russian ロシア語 Русский</option>
-          <option value="uk">Ukrainian ウクライナ語 українська</option>
-        </select> </td>
-      </span>
-      <span style="display: inline-flex; width: 100%;">
-        <td> Translation Counts: </td>
-        <td> <select id="translationSelect" onchange="toggleTranslationCounts()">
-          <option value="0">No Translation</option>
-          <option value="1">One Translation</option>
-          <option value="2" selected>Two Translations</option>
-        </select></td>
-      </span>
-    </tr>
-    <tr>
-      <td> Target Language 1: </td>
-      <td> <select id="languageSelect-1" onchange="updateLanguage(1)">
-        <option value="en" selected>English 英語 English</option>
-        <option value="ja">Japanese 日本語 日本語</option>
-        <option value="zh-CN">Simplified Chinese 中国語 汉语</option>
-        <option value="zh-TW">Traditional Chinese 台湾語 漢語</option>
-        <option value="ko">Korean 韓国語 한국어</option>
-        <option value="es">Spanish スペイン語 Español</option>
-        <option value="fr">French フランス語 Français</option>
-        <option value="pt">Portuguese ポルトガル語 Português</option>
-        <option value="it">Italian イタリア語 Italiano</option>
-        <option value="de">German ドイツ語 Deutsch</option>
-        <option value="pl">Polish ポーランド語 Polski</option>
-        <option value="nl">Dutch オランダ語 Nederlands</option>
-        <option value="ru">Russian ロシア語 Русский</option>
-        <option value="uk">Ukrainian ウクライナ語 українська</option>
-      </select> </td>
-      <td>Target Language 2:</td>
-      <td> <select id="languageSelect-2" onchange="updateLanguage(2)">
-        <option value="en">English 英語 English</option>
-        <option value="ja">Japanese 日本語 日本語</option>
-        <option value="zh-CN">Simplified Chinese 中国語 汉语</option>
-        <option value="zh-TW" selected>Traditional Chinese 台湾語 漢語</option>
-        <option value="ko">Korean 韓国語 한국어</option>
-        <option value="es">Spanish スペイン語 Español</option>
-        <option value="fr">French フランス語 Français</option>
-        <option value="pt">Portuguese ポルトガル語 Português</option>
-        <option value="it">Italian イタリア語 Italiano</option>
-        <option value="de">German ドイツ語 Deutsch</option>
-        <option value="pl">Polish ポーランド語 Polski</option>
-        <option value="nl">Dutch オランダ語 Nederlands</option>
-        <option value="ru">Russian ロシア語 Русский</option>
-        <option value="uk">Ukrainian ウクライナ語 українська</option>
-      </select> </td>
-    <tr>
-  </table>
-
-
-  <div class="scree-check">
-    scree-check
-  </div>
-  Screen Width (CSS pixels): <span id="screen-width-css"></span>
-  Screen Width (Physical pixels): <span id="screen-width-physical"></span>
   <script>
-    function updateScreenWidth() {
-      const screenWidthCSS = window.innerWidth || document.documentElement.clientWidth;
-      document.getElementById('screen-width-css').innerText = screenWidthCSS;
-      const screenWidthPhysical = screen.width;
-      document.getElementById('screen-width-physical').innerText = screenWidthPhysical;
+
+    function deepCloneMap(originalMap) {
+      const newMap = new Map();
+      originalMap.forEach((value, key) => {
+        if (typeof value === 'object' && value !== null) {
+          newMap.set(key, deepCloneMap(value));
+        } else {
+          newMap.set(key, value);
+        }
+      });
+      return newMap;
     }
-    updateScreenWidth();
-    window.addEventListener('resize', updateScreenWidth);
+    function printMap(map, mapName="nameUndefined") {
+      map.forEach((value, key) => {
+        console.log(`map=${mapName}: key=${key}, value=${value}`);
+      });
+    }
+    function copyConfig(originalConfig) {
+      const newConfig = { ...originalConfig };
+      newConfig.layoutButtonsClickedMap = new Map([...originalConfig.layoutButtonsClickedMap]);
+      return newConfig;
+    }
+    const topTranslationCount = 2;
+    var translationCount;
+    var configCounts = 3;
+    var defaultConfig =
+    {
+      pageColor: "#fffafa",
+      curtainColor: "#9acd32",
+      texts: ["きらきらひかる、おそらのほしよ。",
+              "Twinkle, twinkle, little star, How I wonder what you are! ",
+              "一閃一閃亮晶晶，滿天都是小星星。"],
+              // まばたきしては、みんなをみてる。
+              // Up above the world so high, Like a diamond in the sky.
+              // 掛在天上放光明，好像許多小眼睛。
+              // "1234567890 !@#$%^&*() abcdefg ABCDEFG",
+      textFontColors: ["#000000", "#000000", "#000000"],
+      textFontSizes: [20, 17, 14], //px
+      textFontWeights: [500, 500, 500],
+      textFontFamilies: ['NotoSansCJKjp', 'NotoSansCJKjp', 'NotoSansCJKjp'],
+      textStrokeColors: [['#87ceeb', '#ffb7c5'], ['#87ceeb', '#ffb7c5'], ['#87ceeb', '#ffb7c5']],
+      textStrokeWidths: [[0, 0], [0, 0], [0, 0]], //em
+      textShadowColors: ["#ffeebb", "#ffeebb", "#ffeebb"],
+      textShadowBlurRadius: [0, 0, 0], //em
+      textMargins: [5, 5, 5], //px
+      apiKeys: ["", "", "", ""],
+      speechOverInterval: 5000, //ms
+      speechSplitInterval: 1000, //ms
+      speechClearInterval: 360000, //ms
+      translationCount: 2,
+      languages: ['ja', 'en', 'zh-TW'],
+      azureVoices: ['ja-JP-AoiNeural', 'en-US-AnaNeural', 'zh-CN-XiaoyouNeural'],
+      layoutButtonsClickedMap: new Map(),
+    }
+    var configs = [
+      {}, {}, {},
+    ];
+    var autoSID = 0;
+    defaultConfig.layoutButtonsClickedMap.set('key0', 'value0');
+    configs[autoSID] = copyConfig(defaultConfig);
+    defaultConfig.layoutButtonsClickedMap.set('key1', 'value1');
+    printMap(defaultConfig.layoutButtonsClickedMap, "defaultConfigMap");
+    printMap(configs[autoSID].layoutButtonsClickedMap, "configs[autoSID]Map");
+
   </script>
 
 </body>

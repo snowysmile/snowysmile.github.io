@@ -194,6 +194,19 @@
     }
   </script>
   <script>
+    function printMap(map) {
+      console.log("printMap");
+      console.log("type:", typeof(map));
+      map.forEach((value, key) => {
+        console.log(`map=${mapName}: key=${key}, value=${value}`);
+      });
+    }
+    function copyConfig(originalConfig) {
+      const newConfig = { ...originalConfig };
+      newConfig.layoutButtonsClickedMap = new Map([...originalConfig.layoutButtonsClickedMap]);
+      // TODO [...]
+      return newConfig;
+    }
     const topTranslationCount = 2;
     var translationCount;
     var configCounts = 3;
@@ -224,12 +237,25 @@
       translationCount: 2,
       languages: ['ja', 'en', 'zh-TW'],
       azureVoices: ['ja-JP-AoiNeural', 'en-US-AnaNeural', 'zh-CN-XiaoyouNeural'],
+      layoutButtonsClickedMap: new Map(),
     }
     var configs = [
       {}, {}, {},
     ];
+    for (let i = 0; i < configs.length; i++) {
+      configs[i].layoutButtonsClickedMap = new Map();
+      console.log("init layoutButtonsClickedMap");
+      configs[i].layoutButtonsClickedMap.forEach((value, key) => {
+        console.log(`key=${key}, value=${value}`);
+      });
+    }
     var autoSID = 0;
-    configs[autoSID] = defaultConfig;
+    configs[autoSID] = copyConfig(defaultConfig);
+
+    console.log("typeof(configs[autoSID].layoutButtonsClickedMap):", typeof(configs[autoSID].layoutButtonsClickedMap));
+    configs[autoSID].layoutButtonsClickedMap.forEach((value, key) => {
+      console.log(`key=${key}, value=${value}`);
+    });
   </script>
   <title>Snowy Speech Translator</title>
 </head>
@@ -353,7 +379,7 @@
             <button name="languageDetectButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">😴</button>
             <button id="oneSentenceRecognizeButton" title="① To Recognize A Single Sentence; 〜 Is Nonstop Detection" onclick="toggleOneSentenceRecognize(this)">①</button>
         </span>
-        <button class="phone-button" onclick="toggleWidgetArea('recognitionInputArea', 'toggleRecognitionInputArea-button', 'Recognition')">⛔</button>
+        <button class="phone-button" onclick="toggleWidgetArea('recognitionInputArea', document.getElementById('toggleRecognitionInputArea-button'))">⛔</button>
       </td>
       <td>
         <textarea id="recognitionResult" rows="2" cols="76"></textarea>
@@ -383,7 +409,7 @@
           </select>
           <button name="languageDetectButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">😴</button>
         </span>
-        <button class="phone-button" onclick="toggleWidgetArea('recordInputArea', 'toggleRecordInputArea-button', 'Record')">⛔</button>
+        <button class="phone-button" onclick="toggleWidgetArea('recordInputArea', document.getElementById('toggleRecordInputArea-button'))">⛔</button>
       </td>
       <td>
         <textarea id="recordResult" rows="2" cols="80"></textarea>
@@ -410,7 +436,7 @@
           </select>
           <button name="languageDetectButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">😴</button>
         </span>
-        <button class="phone-button" onclick="toggleWidgetArea('translationInputArea', 'toggleTranslationInputArea-button', 'Translation')">⛔</button>
+        <button class="phone-button" onclick="toggleWidgetArea('translationInputArea', document.getElementById('toggleTranslationInputArea-button'))">⛔</button>
       </td>
       <td>
         <textarea id="translateInput" rows="2" cols="80"></textarea>
@@ -436,7 +462,7 @@
               <option value="ja" selected>🇯🇵</option>
             </select>
           </span>
-          <button type="button" class="phone-button" onclick="toggleWidgetArea('jpExpInputArea', 'toggleJpExpInputArea-button', 'JpExp')">⛔</button>
+          <button type="button" class="phone-button" onclick="toggleWidgetArea('jpExpInputArea', document.getElementById('toggleJpExpInputArea-button'))">⛔</button>
         </td>
         <td>
           <textarea id="jpExpInput" rows="2" cols="85"></textarea>
@@ -470,7 +496,7 @@
           </select>
           <button name="languageDetectButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">😴</button>
         </span>
-        <button class="phone-button" onclick="toggleWidgetArea('readingListInputArea', 'toggleReadingListInputArea-button', 'ReadingList')">⛔</button>
+        <button class="phone-button" onclick="toggleWidgetArea('readingListInputArea', document.getElementById('toggleReadingListInputArea-button'))">⛔</button>
       </td>
       <td>
         <textarea id="readingListInput" rows="2" cols="80"></textarea>
@@ -524,20 +550,41 @@
   <iframe id="jpExpWebBot" style="width:1000px; height:654px; margin-top:5px; margin-bottom:9px; display:none" src="https://ichi.moe/"></iframe>
 
 
-  <button id="layoutContainer-button" style="margin-bottom:5px;" onclick="toggleWidgetArea('layoutContainer', 'layoutContainer-button', 'Layout Container')">Layout Container ❌</button>
+  <button id="layoutContainer-button" style="margin-bottom:5px;" onclick="toggleWidgetArea('layoutContainer', this)">Layout Container ❌</button>
 
   <div class="layout-container" id="layoutContainer" style="margin-bottom:5px; display:none">
-    <button id="toggleRecognitionInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recognitionInputArea', 'toggleRecognitionInputArea-button', 'Recognition')">Recognition 🟢</button>
-    <button id="toggleRecordInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recordInputArea', 'toggleRecordInputArea-button', 'Record')">Record ❌</button>
-    <button id="toggleTranslationInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('translationInputArea', 'toggleTranslationInputArea-button', 'Translation')">Translation ❌</button>
-    <button id="toggleReadingListInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('readingListInputArea', 'toggleReadingListInputArea-button', 'ReadingList')">ReadingList 🟢</button>
-    <button id="toggleJpExpInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpInputArea', 'toggleJpExpInputArea-button', 'JpExp Input')">JpExp Input ❌</button>
-    <button id="toggleJpExpArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpAreaFrame', 'toggleJpExpArea-button', 'JpExp Text')">JpExp Text ❌</button>
-    <button id="toggleJpExpWebTop-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebTop', 'toggleJpExpWebTop-button', 'JpExp Web(↑)')">JpExp Web (↑) ❌</button>
-    <button id="toggleJpExpWebBot-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebBot', 'toggleJpExpWebBot-button', 'JpExp Web(↓)')">JpExp Web (↓) ❌</button>
-    <button id="toggleApiKeyEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('apiKeyEditor', 'toggleApiKeyEditor-button', 'ApiKey Editor')">ApiKey Editor ❌‍</button>
-    <button id="toggleLayoutEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('layoutEditor', 'toggleLayoutEditor-button', 'Layout Editor')">Layout Editor ❌</button>
+    <button id="toggleRecognitionInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recognitionInputArea', this)">Recognition 🟢</button>
+    <button id="toggleRecordInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recordInputArea', this)">Record ❌</button>
+    <button id="toggleTranslationInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('translationInputArea', this)">Translation ❌</button>
+    <button id="toggleReadingListInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('readingListInputArea', this)">ReadingList 🟢</button>
+    <button id="toggleJpExpInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpInputArea', this)">JpExp Input ❌</button>
+    <button id="toggleJpExpArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpAreaFrame', this)">JpExp Text ❌</button>
+    <button id="toggleJpExpWebTop-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebTop', this)">JpExp Web (↑) ❌</button>
+    <button id="toggleJpExpWebBot-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebBot', this)">JpExp Web (↓) ❌</button>
+    <button id="toggleApiKeyEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('apiKeyEditor', this)">ApiKey Editor ❌‍</button>
+    <button id="toggleLayoutEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('layoutEditor', this)">Layout Editor ❌</button>
   </div>
+
+  <script>
+    const layoutButtonsMap = new Map();
+    const layoutButtonsClickedMap = new Map();
+    var layoutButtons = [];
+    layoutButtons.push(document.getElementById("layoutContainer-button"));
+    layoutButtons.push(...document.getElementById("layoutContainer").querySelectorAll('button'));
+    layoutButtons.forEach(function(button) {
+      var buttonText = button.innerHTML.substr(0, button.innerHTML.lastIndexOf(' '));
+      layoutButtonsMap.set(buttonText, button);
+      layoutButtonsClickedMap.set(buttonText, false);
+    });
+    function updateLayoutButtonClick(buttonText) {
+      var button = layoutButtonsMap.get(buttonText);
+      var buttonClicked = !layoutButtonsClickedMap.get(buttonText);
+      layoutButtonsClickedMap.set(buttonText, buttonClicked);
+      button.click();
+      configs[autoSID].layoutButtonsClickedMap.set(buttonText, buttonClicked);
+      saveConfigStorage();
+    }
+  </script>
 
   <div id="apiKeyEditor" style="display:none; margin-bottom:5px;">
     <table>
@@ -1702,12 +1749,20 @@
         return Promise.resolve();
       }
     }
-    function toggleWidgetArea(widgetName, buttonName, text) {
+    function toggleWidgetArea(widgetName, button) {
       var widget = document.getElementById(widgetName);
-      var button = document.getElementById(buttonName);
-      button.innerHTML = button.innerHTML === `${text} 🟢` ? `${text} ❌` : `${text} 🟢`;
-      widget.style.display = button.innerHTML === `${text} 🟢` ? 'block' : 'none';
-      // compact = inline || block
+      var splitPos = button.innerHTML.lastIndexOf(' ');
+      var buttonText = button.innerHTML.substr(0, splitPos);
+      var trigger = button.innerHTML.substr(splitPos + 1);
+      // length('🟢') = 2; length('❌') = 1;
+      trigger = trigger === '🟢' ? '❌' : '🟢';
+      button.innerHTML = `${buttonText} ${trigger}`;
+      widget.style.display = trigger === '🟢' ? 'block' : 'none';
+      // compact = inline || block]
+      var buttonClicked = !layoutButtonsClickedMap.get(buttonText);
+      layoutButtonsClickedMap.set(buttonText, buttonClicked);
+      configs[autoSID].layoutButtonsClickedMap.set(buttonText, buttonClicked);
+      saveConfigStorage();
     }
     function saveConfigStorage() {
       var configJSON = JSON.stringify(configs);
@@ -1877,7 +1932,7 @@
       configs[configID].translationCount = translationCountSelect.value;
       configs[configID].languages = [...languageSelects].map(element => element.value);
       configs[configID].azureVoices = [...azureVoiceSelects].map(element => element.value);
-      // configs[configID].layoutContainer = [document.getElementById("layoutContainer").querySelectorAll('button')].map(element => element.innerHTML);
+      configs[configID].layoutButtonsClickedMap = copyMap(layoutButtonsClickedMap);
 
       saveConfigStorage();
       console.log(`Save Config (${configID}) Finished.`);
@@ -1885,8 +1940,13 @@
     function loadConfig(configID) {
       loadConfigStorage();
       if (configID === -1) {
-        configs[autoSID] = defaultConfig;
+        configs[autoSID] = copyConfig(defaultConfig);
         configID = autoSID;
+
+        console.log("loadConfig Start");
+        configs[configID].layoutButtonsClickedMap.forEach((value, key) => {
+          console.log(`key=${key}, value=${value}`);
+        });
       }
       console.log(`Load Config (${configID}) ing...`);
       updatePageColor(configs[configID].pageColor);
@@ -1914,6 +1974,19 @@
       for (let i = 0; i < apiKeyInputs.length; i++) {
         updateApiKey(i, configs[configID].apiKeys[i]);
       }
+      console.log("configs[configID].layoutButtonsClickedMap:", configs[configID].layoutButtonsClickedMap);
+
+      configs[configID].layoutButtonsClickedMap.forEach((value, key) => {
+        console.log(`key=${key}, value=${value}`);
+      });
+
+      printMap(configs[configID].layoutButtonsClickedMap);
+      console.log(configs[configID].layoutButtonsClickedMap.get("key1"));
+      configs[configID].layoutButtonsClickedMap.forEach((value, key) => {
+        if (value) {
+          updateLayoutButtonClick(key);
+        }
+      });
       console.log(`Load Config (${configID}) Finsihed.`);
     }
     function updateConfig(configID, key, value) {
