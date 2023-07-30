@@ -131,16 +131,20 @@
 	    <button id="copyApiKey-button" onclick="copyApiKey(3, this)">✂️</button> &nbsp;
 	  </div>
 
+		<ul id="inputList"></ul>
+		<ul id="extraInputList"></ul>
+  	<p id="inputListTotalCount"></p>
+  	<p id="inputListCurrentID"></p>
+		
 		<script>
 			const inputArea = document.getElementById("inputArea");
 			const extraInputArea = document.getElementById("extraInputArea");
     	const prevButton = document.getElementById("prevInput-button");
 			const nextButton = document.getElementById("nextInput-button");
 			const inputListTotalCountElement = document.getElementById("inputListTotalCount");
+
 			const inputListCurrentIDElement = document.getElementById("inputListCurrentID");
 			const apiKeyInputs = document.querySelectorAll('[id^="apiKeyInput-"]');
-    	// const inputList = document.querySelector('#inputList');
-			// const extraInputList = document.querySelector('#extraInputList');
 			const patternEn = /[a-zA-Z\.\,\!\?'-:;“”‘’'"()\[\]\{\}\<\>\#\$\%\^\&\*\+\=\\\/\|~`@]/g;
 			const patternJp = /[^a-zA-Z\s\.\,\!\?'-:;“”‘’'"()\[\]\{\}\<\>\#\$\%\^\&\*\+\=\\\/\|~`@]/g;
 
@@ -149,8 +153,6 @@
 
 			prevButton.disabled = true;
 			nextButton.disabled = true;
-			// inputList = document.getElementById("inputList")
-			// extraInputList = document.getElementById("extraInputList")
 		</script>
 
 		<script>
@@ -575,10 +577,6 @@
 			loadConfig();
 		</script>
 
-		<ul id="inputList"></ul>
-		<ul id="extraInputList"></ul>
-  	<p id="inputListTotalCount"></p>
-  	<p id="inputListCurrentID"></p>
 		<ruby> 日本語<rt>にほんご</rt> 勉強<rt>べんきょう</rt> の </ruby>
 		<ruby> 為<rt>ため</rt> に </ruby>
 		<ruby> 自分<rt>じぶん</rt> で </ruby>
