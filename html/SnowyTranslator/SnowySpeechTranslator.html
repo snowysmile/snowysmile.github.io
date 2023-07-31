@@ -25,7 +25,7 @@
       flex-direction: row;
       flex-wrap: wrap;
     }
-    .reading-container {
+    .reading-buttons-container {
       display: flex;
       justify-content: center;
     }
@@ -173,6 +173,9 @@
       .layouts-container {
         width: 100%;
       }
+      .layouts-container button {
+        height: 30px;
+      }
       .div-row-container {
         display: flex;
         justify-content: center;
@@ -185,10 +188,10 @@
         max-width: 96%;
         width: 96%;
       }
-      .reading-container,
-      .reading-container select,
-      .reading-container button {
-        font-size: 9px;
+      .reading-buttons-container,
+      .reading-buttons-container select,
+      .reading-buttons-container button {
+        font-size: 10px;
       }
       .reading-button-container button{
         width:22px;
@@ -373,7 +376,7 @@
       <button style="margin-left:5px;" title="Read All Text By Google." onclick="ggSpeakAllScreenText()">G</button>
       <button style="margin-left:5px;" title="Read All Text By Microsoft." onclick="msSpeakAllScreenText()">M</button>
     </span>
-    <span class="reading-container">
+    <span class="reading-buttons-container">
       <span class="reading-button-container" style="margin-left:10px;">
         <select id="readingSelect0">
           <option value="ja" selected>🇯🇵</option>
