@@ -34,18 +34,19 @@
       flex-direction: row;
       align-items: flex-start;
     }
-    .layout-container {
+    .layouts-container {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
       width: 600px;
     }
-    .layout-container button {
-      width: 100px;
+    .layouts-container button {
+      justify-content: center;
+      align-items: center;
+      width: 110px;
       margin: 0px;
-      padding: 1px;
-      white-space: nowrap;
+      padding: 2px;
       overflow: hidden;
       font-size: 11px;
     }
@@ -169,7 +170,7 @@
         display: flex;
         justify-content: space-between;
       }
-      .layout-container {
+      .layouts-container {
         width: 100%;
       }
       .div-row-container {
@@ -589,7 +590,7 @@
 
   <button id="layoutContainer-button" style="margin-bottom:5px;" onclick="toggleWidgetArea('layoutContainer', this)">Layout Container ❌</button>
 
-  <div class="layout-container" id="layoutContainer" style="margin-bottom:5px; display:none">
+  <div class="layouts-container" id="layoutContainer" style="margin-bottom:5px; display:none">
     <button id="toggleRecognitionInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recognitionInputArea', this)">Recognition 🟢</button>
     <button id="toggleRecordInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recordInputArea', this)">Record ❌</button>
     <button id="toggleTranslationInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('translationInputArea', this)">Translation ❌</button>
