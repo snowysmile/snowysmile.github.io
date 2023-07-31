@@ -61,54 +61,15 @@
       width: 36px;
       font-family: "Monaco", monospace;
     }
-    @media screen and (max-width: 600px) {
-      table {
-      }
-      tr {
-        display: block;
-        width: 100%;
-      }
-      th, td {
-        display: block;
-        margin: 0 auto;
-        padding: 2px;
-        vertical-align: middle;
-      }
-      textarea {
-        max-width: 96%;
-        width: 96%;
-      }
-      iframe {
-        max-width: 100%;
-        width: 100%;
-        display: block;
-        height: auto;
-        margin: 0 auto;
-      }
-      .button-title {
-        display: flex;
-        justify-content: space-between;
-      }
-      .phone-row-table tr {
-        display: inline-flex;
-      }
-      #apiKeyEditor input {
-        max-width: 96%;
-        width: 96%;
-      }
-      .reading-container,
-      .reading-container select,
-      .reading-container button {
-        font-size: 9px;
-      }
-      .reading-button-container button{
-        width:22px;
-      }
-    }
-    @media screen and (min-width: 601px) {
-      .phone-button {
-        display: none;
-      }
+    .text-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      max-width: 95%;
+      width: 1000px;
+      height: 99px;
+      overflow-y: auto;
     }
     rt {
       font-size: 0.7em;
@@ -132,16 +93,6 @@
     .svg-stroke-layer-C{
       stroke-width:0.3em;
       stroke:blue;
-    }
-    .text-area {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-      width: 1000px;
-      height: 150px;
-      max-width: 95%;
-      width: 95%;
     }
     .stroke-text {
       position: relative;
@@ -176,6 +127,59 @@
       max-width: 96%;
       width: 96%;
     }
+    @media screen and (max-width: 600px) {
+      table {
+      }
+      tr {
+        display: block;
+        width: 100%;
+      }
+      th, td {
+        display: block;
+        margin: 0 auto;
+        padding: 2px;
+        vertical-align: middle;
+      }
+      textarea {
+        max-width: 96%;
+        width: 96%;
+      }
+      iframe {
+        max-width: 100%;
+        width: 100%;
+        display: block;
+        height: auto;
+        margin: 0 auto;
+      }
+      .text-area {
+        max-width: 95%;
+        width: 95%;
+      }
+      .button-title {
+        display: flex;
+        justify-content: space-between;
+      }
+      .phone-row-table tr {
+        display: inline-flex;
+      }
+      #apiKeyEditor input {
+        max-width: 96%;
+        width: 96%;
+      }
+      .reading-container,
+      .reading-container select,
+      .reading-container button {
+        font-size: 9px;
+      }
+      .reading-button-container button{
+        width:22px;
+      }
+    }
+    @media screen and (min-width: 601px) {
+      .phone-button {
+        display: none;
+      }
+    }
   </style>
 
   <script>
@@ -203,12 +207,17 @@
     function copyMap(originalMap) {
       return new Map([...originalMap]);
     }
+    function saveMap(originalMap) {
+      const newArray = [];
+      originalMap.forEach((value, key) => {
+        if (value) {
+          newArray.push(key);
+        }
+      });
+      return newArray;
+    }
     function copyConfig(originalConfig) {
-      const newConfig = { ...originalConfig };
-      newConfig.layoutButtonsClickedMap = copyMap(originalConfig.layoutButtonsClickedMap);
-      // TODO [...]
-      // newConfig.layoutButtonsClickedMap = new Map([...originalConfig.layoutButtonsClickedMap]);
-      return newConfig;
+      return JSON.parse(JSON.stringify(originalConfig));
     }
     const topTranslationCount = 2;
     var translationCount;
@@ -240,14 +249,11 @@
       translationCount: 2,
       languages: ['ja', 'en', 'zh-TW'],
       azureVoices: ['ja-JP-AoiNeural', 'en-US-AnaNeural', 'zh-CN-XiaoyouNeural'],
-      layoutButtonsClickedMap: new Map(),
+      layoutButtonsClickedList: [],
     }
     var configs = [
       {}, {}, {},
     ];
-    for (let i = 0; i < configs.length; i++) {
-      configs[i].layoutButtonsClickedMap = new Map();
-    }
     var autoSID = 0;
     configs[autoSID] = copyConfig(defaultConfig);
   </script>
@@ -272,7 +278,7 @@
     });
   </script>
 
-  <iframe id="jpExpWebTop" style="width:1000px; height:654px; margin-top:5px; margin-bottom:5px; display:none" src="https://ichi.moe/"></iframe>
+  <iframe id="jpExpWebTop" style="width:1050px; height:654px; margin-top:5px; margin-bottom:5px; display:none" src="https://ichi.moe/"></iframe>
 
   <div class="text-area">
     <div id="textMargin-0"> </div>
@@ -283,6 +289,7 @@
     <div class="stroke-text" id="text-2"> </div>
   </div>
   <script>
+    // $(document).ready()
     $(function() {
       $('.text-area').resizable({
         touchAction: 'none',
@@ -291,6 +298,13 @@
         }
       });
     });
+  </script>
+  <script>
+    function adjustTextAreaHeight() {
+      textArea.style.height = '99px';
+      var maxHeight = textArea.scrollHeight;
+      textArea.style.height = (maxHeight - 15) + 'px';
+    }
   </script>
 
   <script>
@@ -376,7 +390,7 @@
         <button class="phone-button" onclick="toggleWidgetArea('recognitionInputArea', document.getElementById('toggleRecognitionInputArea-button'))">⛔</button>
       </td>
       <td>
-        <textarea id="recognitionResult" rows="2" cols="76"></textarea>
+        <textarea id="recognitionResult" rows="2" cols="75"></textarea>
         <div style="display:none">
         <textarea id="recognitionPreviousResult" rows="2" cols="80"></textarea>
         </div>
@@ -493,7 +507,7 @@
         <button class="phone-button" onclick="toggleWidgetArea('readingListInputArea', document.getElementById('toggleReadingListInputArea-button'))">⛔</button>
       </td>
       <td>
-        <textarea id="readingListInput" rows="2" cols="80"></textarea>
+        <textarea id="readingListInput" rows="2" cols="79"></textarea>
       </td>
       <td>
         <button type="button" name="translateButton"
@@ -573,10 +587,6 @@
     function updateLayoutButtonClick(buttonText) {
       var button = layoutButtonsMap.get(buttonText);
       button.click();
-
-      // layoutButtonsClickedMap.set(buttonText, true);
-      // configs[autoSID].layoutButtonsClickedMap.set(buttonText, true);
-      // saveConfigStorage();
     }
   </script>
 
@@ -1753,37 +1763,21 @@
       button.innerHTML = `${buttonText} ${trigger}`;
       widget.style.display = trigger === '🟢' ? 'block' : 'none';
       // compact = inline || block
-
       var buttonClicked = !layoutButtonsClickedMap.get(buttonText);
       layoutButtonsClickedMap.set(buttonText, buttonClicked);
-      printMap(layoutButtonsClickedMap, "toggleWidgetArea->layoutButtonsClickedMap");
-      configs[autoSID].layoutButtonsClickedMap.set(buttonText, buttonClicked);
+      configs[autoSID].layoutButtonsClickedList = configs[autoSID].layoutButtonsClickedList.filter(item => item !== buttonText);
+      if (buttonClicked) {
+        configs[autoSID].layoutButtonsClickedList.push(buttonText);
+      }
       saveConfigStorage();
-      printMap(configs[autoSID].layoutButtonsClickedMap, "toggleWidgetArea->configs[autoSID].layoutButtonsClickedMap");
-      console.log("configJSON:", JSON.parse(localStorage.getItem('snowyTranslatorConfig')));
     }
     function saveConfigStorage() {
-      for (let i = 0; i < configs.length; i++) {
-        const layoutButtonsClickedMap = configs[i].layoutButtonsClickedMap;
-        if (layoutButtonsClickedMap instanceof Map && layoutButtonsClickedMap.size > 0) {
-          configs[i].layoutButtonsClickedMap = Object.fromEntries(layoutButtonsClickedMap);
-        } else {
-          configs[i].layoutButtonsClickedMap = {};
-        }
-      }
       var configJSON = JSON.stringify(configs);
       localStorage.setItem('snowyTranslatorConfig', configJSON);
     }
     function loadConfigStorage() {
       if (localStorage.getItem('snowyTranslatorConfig')) {
         configs = JSON.parse(localStorage.getItem('snowyTranslatorConfig'));
-        console.log("configs.length:", configs.length);
-        for (let i = 0; i < configs.length; i++) {
-          if (configs[i].layoutButtonsClickedMap && typeof configs[i].layoutButtonsClickedMap === 'object') {
-            configs[i].layoutButtonsClickedMap = new Map(Object.entries(configs[i].layoutButtonsClickedMap));
-            // printMap(configs[i].layoutButtonsClickedMap, `configs[${i}].layoutButtonsClickedMap`);
-          }
-        }
       }
     }
     function updatePageColor(color = "") {
@@ -1805,6 +1799,7 @@
     function updateText(id, speechText) {
       texts[id].textContent = speechText;
       texts[id].setAttribute('stroke-data', texts[id].textContent);
+      adjustTextAreaHeight();
       configs[autoSID].texts[id] = speechText;
       saveConfigStorage();
     }
@@ -1945,7 +1940,7 @@
       configs[configID].translationCount = translationCountSelect.value;
       configs[configID].languages = [...languageSelects].map(element => element.value);
       configs[configID].azureVoices = [...azureVoiceSelects].map(element => element.value);
-      configs[configID].layoutButtonsClickedMap = copyMap(layoutButtonsClickedMap);
+      configs[configID].layoutButtonsClickedList = saveMap(layoutButtonsClickedMap);
       saveConfigStorage();
       console.log(`Save Config (${configID}) Finished.`);
     }
@@ -1981,11 +1976,14 @@
       for (let i = 0; i < apiKeyInputs.length; i++) {
         updateApiKey(i, configs[configID].apiKeys[i]);
       }
-      if (configs[configID].layoutButtonsClickedMap != undefined) {
-        configs[configID].layoutButtonsClickedMap.forEach((value, key) => {
-          if (value) {
-            updateLayoutButtonClick(key);
-          }
+      layoutButtonsClickedMap.forEach((value, key) => {
+        if (value) {
+          updateLayoutButtonClick(key);
+        }
+      });
+      if (Array.isArray(configs[configID].layoutButtonsClickedList)) {
+        configs[configID].layoutButtonsClickedList.forEach((value) => {
+          updateLayoutButtonClick(value);
         });
       }
       console.log(`Load Config (${configID}) Finsihed.`);
