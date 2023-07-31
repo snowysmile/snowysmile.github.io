@@ -20,6 +20,15 @@
       flex-direction: row;
       flex-wrap: wrap;
     }
+    .div-row-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    .reading-container {
+      display: flex;
+      justify-content: center;
+    }
     .row-container-left {
       display: block;
       flex-direction: row;
@@ -163,6 +172,11 @@
       .layout-container {
         width: 100%;
       }
+      .div-row-container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
       .phone-row-table tr {
         display: inline-flex;
       }
@@ -237,6 +251,7 @@
               // Up above the world so high, Like a diamond in the sky.
               // 掛在天上放光明，好像許多小眼睛。
               // "1234567890 !@#$%^&*() abcdefg ABCDEFG",
+      displayedTexts: [],
       textFontColors: ["#000000", "#000000", "#000000"],
       textFontSizes: [20, 17, 14], //px
       textFontWeights: [500, 500, 500],
@@ -255,6 +270,8 @@
       azureVoices: ['ja-JP-AoiNeural', 'en-US-AnaNeural', 'zh-CN-XiaoyouNeural'],
       layoutButtonsClickedList: [],
     }
+    defaultConfig.displayedTexts = [...defaultConfig.texts];
+    console.log("defaultConfig.displayedTexts:", defaultConfig.displayedTexts);
     var configs = [
       {}, {}, {},
     ];
@@ -286,11 +303,16 @@
 
   <div class="text-area">
     <div id="textMargin-0"> </div>
-    <div class="stroke-text" id="text-0"> </div>
+    <div class="stroke-text" id="displayedText-0"> </div>
     <div id="textMargin-1"> </div>
-    <div class="stroke-text" id="text-1"> </div>
+    <div class="stroke-text" id="displayedText-1"> </div>
     <div id="textMargin-2"> </div>
-    <div class="stroke-text" id="text-2"> </div>
+    <div class="stroke-text" id="displayedText-2"> </div>
+  </div>
+  <div class="hiddenTexts" style="display:none">
+    <div id="text-0"> </div>
+    <div id="text-1"> </div>
+    <div id="text-2"> </div>
   </div>
   <script>
     // $(document).ready()
@@ -307,7 +329,7 @@
     function adjustTextAreaHeight() {
       textArea.style.height = '99px';
       var maxHeight = textArea.scrollHeight;
-      textArea.style.height = (maxHeight - 15) + 'px';
+      textArea.style.height = (maxHeight - 10) + 'px';
     }
   </script>
 
@@ -325,7 +347,7 @@
     async function ggSpeakAllInputText(text, sourceLanguage, repeatTime) {
       if (ggAudioList.length === 0) {
         if (text != texts[0].textContent) {
-          console.log("text != texts[0].textContent");
+          console.log("ggSpeakAllInputText() text != texts[0].textContent");
           await speechTranslate(text, sourceLanguage);
         }
         await addToGgReadingList(ggAudioList, 3);
@@ -336,7 +358,7 @@
     async function msSpeakAllInputText(text, sourceLanguage, repeatTime) {
       if (msAudioList.length === 0) {
         if (text != texts[0].textContent) {
-          console.log("text != texts[0].textContent");
+          console.log("msSpeakAllInputText() text != texts[0].textContent");
           await speechTranslate(text, sourceLanguage);
         }
         await addToMsReadingList(msAudioList, 3);
@@ -344,11 +366,14 @@
       await msSpeakReadingList(msAudioList, repeatTime);
     }
   </script>
-  <div class="row-container" style="margin-top:5px; margin-bottom:5px;">
+  <div class="div-row-container" style="margin-top:5px; margin-bottom:5px;">
+    <span style="display:flex; justify-content: center; margin-bottom:3px;">
+      <button id="textFuriganaButton" style="font-size: 12px;" onclick="toggleTextFurigana()">🔰</button>
+      <button style="margin-left:5px;" onclick="ggSpeakAllScreenText()">G</button>
+      <button style="margin-left:5px;" onclick="msSpeakAllScreenText()">M</button>
+    </span>
     <span class="reading-container">
-      <button onclick="ggSpeakAllScreenText()">G</button>
-      <button onclick="msSpeakAllScreenText()">M</button>
-      <span style="margin-left:10px;" class="reading-button-container">
+      <span class="reading-button-container" style="margin-left:10px;">
         <select id="readingSelect0">
           <option value="ja" selected>🇯🇵</option>
           <option value="en">🇺🇸</option>
@@ -357,7 +382,7 @@
         <button onclick="ggSpeak(texts[0].textContent, this.previousElementSibling.value)">G</button>
         <button onclick="msSpeak(texts[0].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
       </span>
-      <span style="margin-left:10px;" class="reading-button-container">
+      <span class="reading-button-container" style="margin-left:10px;">
         <select id="readingSelect1">
           <option value="ja">🇯🇵</option>
           <option value="en" selected>🇺🇸</option>
@@ -366,7 +391,7 @@
         <button onclick="ggSpeak(texts[1].textContent, this.previousElementSibling.value)">G</button>
         <button onclick="msSpeak(texts[1].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
       </span>
-      <span style="margin-left:10px;" class="reading-button-container">
+      <span class="reading-button-container" style="margin-left:10px;">
         <select id="readingSelect2">
           <option value="ja">🇯🇵</option>
           <option value="en">🇺🇸</option>
@@ -388,7 +413,7 @@
               <option value="en">🇺🇸</option>
               <option value="zh-TW">🇹🇼</option>
             </select>
-            <button name="languageDetectButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">😴</button>
+            <button name="languageDetectButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">🤔</button>
             <button id="oneSentenceRecognizeButton" title="① To Recognize A Single Sentence; 〜 Is Nonstop Detection" onclick="toggleOneSentenceRecognize(this)">①</button>
         </span>
         <button class="phone-button" onclick="toggleWidgetArea('recognitionInputArea', document.getElementById('toggleRecognitionInputArea-button'))">⛔</button>
@@ -419,7 +444,7 @@
             <option value="en">🇺🇸</option>
             <option value="zh-TW">🇹🇼</option>
           </select>
-          <button name="languageDetectButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">😴</button>
+          <button name="languageDetectButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">🤔</button>
         </span>
         <button class="phone-button" onclick="toggleWidgetArea('recordInputArea', document.getElementById('toggleRecordInputArea-button'))">⛔</button>
       </td>
@@ -446,7 +471,7 @@
             <option value="en" selected>🇺🇸</option>
             <option value="zh-TW">🇹🇼</option>
           </select>
-          <button name="languageDetectButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">😴</button>
+          <button name="languageDetectButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">🤔</button>
         </span>
         <button class="phone-button" onclick="toggleWidgetArea('translationInputArea', document.getElementById('toggleTranslationInputArea-button'))">⛔</button>
       </td>
@@ -506,7 +531,7 @@
             <option value="en">🇺🇸</option>
             <option value="zh-TW">🇹🇼</option>
           </select>
-          <button name="languageDetectButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">😴</button>
+          <button name="languageDetectButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">🤔</button>
         </span>
         <button class="phone-button" onclick="toggleWidgetArea('readingListInputArea', document.getElementById('toggleReadingListInputArea-button'))">⛔</button>
       </td>
@@ -1041,6 +1066,7 @@
     var curtainColorValue = document.getElementById('curtainColorValue');
 
     var texts = document.querySelectorAll('[id^="text-"]');
+    var displayedTexts = document.querySelectorAll('[id^="displayedText-"]');
     var textColorPickers = document.querySelectorAll('[id^="textColorPicker-"]');
     var textColorValues = document.querySelectorAll('[id^="textColorValue-"]');
     var textFontSizeSliders = document.querySelectorAll('[id^="textFontSizeSlider-"]');
@@ -1255,20 +1281,17 @@
             console.log("Empty Speech Text");
           }
           else {
-            console.log("Speech Text:", speechText);
+            console.log("[event.results] speech text:", speechText);
             if (event.results[i].isFinal) {
               if (recognitionNonStop) {
                 recognitionResult.value = speechText;
               }
               else {
-                recognitionResult.value = recognitionPreviousResult.value + speechText + ".";
+                recognitionResult.value = recognitionPreviousResult.value + speechText + ". ";
                 recognitionPreviousResult.value = recognitionResult.value;
               }
-              if (jpExpAreaFrame.style.display !== "none") {
-                japaneseExplanationEntrance(speechText);
-              }
               if (isRecording) {
-                recordResult.value = recognitionPreviousResult.value + speechText;
+                recordResult.value = recordResult.value + speechText + ". ";
               }
               updateSpeechTextList(speechText);
               // await
@@ -1336,10 +1359,15 @@
         recordButton.innerHTML = "⏹️ Stop Recording";
       }
     }
-    function toggleTranslationCount() {
+    function toggleTextFurigana() {
+      textFuriganaButton.innerText = textFuriganaButton.innerText === "🔰" ? "💤" : "🔰";
+    }
+    function toggleTranslationCount(clearBoolean=true) {
       translationCount = translationCountSelect.value;
-      clearTexts(topTranslationCount);
-      defaultTexts();
+      if (clearBoolean) {
+        clearTexts(translationCount + 1);
+        defaultTexts();
+      }
       configs[autoSID].translationCount = translationCountSelect.value;
       saveConfigStorage();
     }
@@ -1657,6 +1685,7 @@
     }
 
     async function autoDetectTranslate(text, languageSelect=undefined) {
+      console.log("autoDetectTranslate:", text);
       var sourceLanguage = await ggDetectLanguage(text);
       if (languageSelect !== undefined) {
         languageSelect.value = sourceLanguage;
@@ -1711,9 +1740,12 @@
       }
     }
     async function speechTranslate(speechText, sourceLanguage="", isAutoDetect=false, languageSelect=undefined) {
+      if (speechText === "") {
+        return;
+      }
       updateText(0, speechText);
       console.log("[speechTranslate] before-> sourceLanguage:", sourceLanguage);
-
+      console.log("[speechTranslate] speechText:", speechText);
       if (sourceLanguage === "" || isAutoDetect) {
         sourceLanguage = await autoDetectTranslate(speechText, languageSelect);
       }
@@ -1723,7 +1755,6 @@
         updateTextWithFurigana(0, html);
       }
       await getTargetLanguages(sourceLanguage);
-
       console.log("[speechTranslate] after-> sourceLanguage:", sourceLanguage);
       console.log("[speechTranslate] after-> targetLanguages:", targetLanguages);
       if (googleScriptKey != null && googleScriptKey != "") {
@@ -1804,22 +1835,30 @@
       configs[autoSID].curtainColor = color;
       saveConfigStorage();
     }
-    function updateText(id, speechText) {
-      texts[id].textContent = speechText;
-      texts[id].setAttribute('stroke-data', texts[id].textContent);
+    function updateDisplayedText(id, speechText) {
+      displayedTexts[id].textContent = speechText;
+      displayedTexts[id].setAttribute('stroke-data', displayedTexts[id].textContent);
       adjustTextAreaHeight();
-      configs[autoSID].texts[id] = speechText;
+      configs[autoSID].displayedTexts[id] = speechText;
       saveConfigStorage();
     }
-    function updateTextWithFurigana(id, htmlText) {
-      texts[id].innerHTML = htmlText;
-      texts[id].setAttribute('stroke-data', "");
+    function updateText(id, speechText) {
+      texts[id].textContent = speechText;
+      configs[autoSID].texts[id] = speechText;
+      updateDisplayedText(id, speechText);
+      // saveConfigStorage();
     }
-    function clearTexts(topRow=-1) {
-      if (topRow === -1) {
-        topRow = translationCount;
+    function updateTextWithFurigana(id, htmlText) {
+      if (textFuriganaButton.innerText === "🔰") {
+        displayedTexts[id].innerHTML = htmlText;
+        displayedTexts[id].setAttribute('stroke-data', "");
       }
-      for (let i = 0; i <= topRow; i++) {
+    }
+    function clearTexts(firstRow=0, topRow=-1) {
+      if (topRow === -1) {
+        topRow = topTranslationCount;
+      }
+      for (let i = firstRow; i <= topRow; i++) {
         updateText(i, "");
       }
     }
@@ -1843,7 +1882,7 @@
       if (value === "") value = textFontSizeSliders[id].value;
       else textFontSizeSliders[id].value = value;
       textFontSizeValues[id].innerHTML = value;
-      texts[id].style.fontSize = value + 'px';
+      displayedTexts[id].style.fontSize = value + 'px';
       configs[autoSID].textFontSizes[id] = value;
       saveConfigStorage();
     }
@@ -1851,7 +1890,7 @@
       if (value === "") value = textFontWeightSliders[id].value;
       else textFontWeightSliders[id].value = value;
       textFontWeightValues[id].innerHTML = value;
-      texts[id].style.fontWeight = value;
+      displayedTexts[id].style.fontWeight = value;
       configs[autoSID].textFontWeights[id] = value;
       saveConfigStorage();
     }
@@ -1860,7 +1899,7 @@
       else {
         textFontFamilySelects[id].value = value;
       }
-      texts[id].style.fontFamily = value;
+      displayedTexts[id].style.fontFamily = value;
       configs[autoSID].textFontFamilies[id] = value;
       saveConfigStorage();
     }
@@ -1868,7 +1907,7 @@
       if (color === "") color = textStrokeColorPickers[id][layer].value;
       else textStrokeColorPickers[id][layer].value = color;
       textStrokeColorValues[id][layer].innerHTML = color;
-      texts[id].style.setProperty(`--stroke-color-layer-${layer}`, color);
+      displayedTexts[id].style.setProperty(`--stroke-color-layer-${layer}`, color);
       configs[autoSID].textStrokeColors[id][layer] = color;
       saveConfigStorage();
     }
@@ -1876,7 +1915,7 @@
       if (value === "") value = textStrokeWidthSliders[id][layer].value;
       else textStrokeWidthSliders[id][layer].value = value;
       textStrokeWidthValues[id][layer].innerHTML = value;
-      texts[id].style.setProperty(`--stroke-width-layer-${layer}`, value + "em");
+      displayedTexts[id].style.setProperty(`--stroke-width-layer-${layer}`, value + "em");
       configs[autoSID].textStrokeWidths[id][layer] = value;
       saveConfigStorage();
     }
@@ -1887,7 +1926,7 @@
       else textShadowColorPickers[id].value = color;
       textShadowBlurRadiusValues[id].innerHTML = radius;
       textShadowColorValues[id].innerHTML = color;
-      texts[id].style.textShadow = `0 0 ${radius}em ${color}`;
+      displayedTexts[id].style.textShadow = `0 0 ${radius}em ${color}`;
       configs[autoSID].textShadowBlurRadius[id] = radius;
       configs[autoSID].textShadowColors[id] = color;
       saveConfigStorage();
@@ -1936,6 +1975,7 @@
       configs[configID].pageColor = pageColorPicker.value;
       configs[configID].curtainColor = curtainColorPicker.value;
       configs[configID].texts = [...texts].map(element => element.innerHTML);
+      configs[configID].displayedTexts = [...displayedTexts].map(element => element.innerHTML);
       configs[configID].textFontColors = [...textColorValues].map(element => element.innerHTML);
       configs[configID].textFontSizes = [...textFontSizeValues].map(element => element.innerHTML);
       configs[configID].textFontWeights = [...textFontWeightValues].map(element => element.innerHTML);
@@ -1969,9 +2009,11 @@
       updateIntegerValue("speechSplitInterval", configs[configID].speechSplitInterval);
       updateIntegerValue("speechClearInterval", configs[configID].speechClearInterval);
       updateIntegerValue("translationCountSelect", configs[configID].translationCount);
-      toggleTranslationCount();
+      translationCount = configs[configID].translationCount;
+      toggleTranslationCount(false);
       for (let i = 0; i <= translationCount; i++) {
         updateText(i, configs[configID].texts[i]);
+        updateText(i, configs[configID].displayedTexts[i]);
         updateFontColor(i, configs[configID].textFontColors[i]);
         updateFontSize(i, configs[configID].textFontSizes[i]);
         updateFontWeight(i, configs[configID].textFontWeights[i]);
@@ -1986,7 +2028,12 @@
         updateAzureVoice(i, configs[configID].azureVoices[i]);
       }
       for (let i = 0; i < apiKeyInputs.length; i++) {
-        updateApiKey(i, configs[configID].apiKeys[i]);
+        if (configs[configID].apiKeys[i] !== "") {
+          updateApiKey(i, configs[configID].apiKeys[i]);
+        }
+        else if (apiKeyInputs[i].value !== "") {
+          updateApiKey(i);
+        }
       }
       layoutButtonsClickedMap.forEach((value, key) => {
         if (value) {
@@ -2112,7 +2159,6 @@
           })
         })
         const data = await response.json();
-        console.log("japaneseExplanationServer:", data.result);
         // var jpExpArea = $('#jpExpArea');
         // jpExpArea.html(response.result;);
         return data.result;
