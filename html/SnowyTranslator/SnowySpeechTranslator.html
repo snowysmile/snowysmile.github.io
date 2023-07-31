@@ -369,8 +369,8 @@
   <div class="div-row-container" style="margin-top:5px; margin-bottom:5px;">
     <span style="display:flex; justify-content: center; margin-bottom:3px;">
       <button id="textFuriganaButton" style="font-size: 12px;" title="🔰 To Auto Mark Furigana; 💤 Is Off." onclick="toggleTextFurigana()">🔰</button>
-      <button style="margin-left:5px;" onclick="ggSpeakAllScreenText()">G</button>
-      <button style="margin-left:5px;" onclick="msSpeakAllScreenText()">M</button>
+      <button style="margin-left:5px;" title="Read All Text By Google." onclick="ggSpeakAllScreenText()">G</button>
+      <button style="margin-left:5px;" title="Read All Text By Microsoft." onclick="msSpeakAllScreenText()">M</button>
     </span>
     <span class="reading-container">
       <span class="reading-button-container" style="margin-left:10px;">
@@ -379,8 +379,8 @@
           <option value="en">🇺🇸</option>
           <option value="zh-TW">🇹🇼</option>
         </select>
-        <button onclick="ggSpeak(texts[0].textContent, this.previousElementSibling.value)">G</button>
-        <button onclick="msSpeak(texts[0].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
+        <button title="Read First Language Text By Google." onclick="ggSpeak(texts[0].textContent, this.previousElementSibling.value)">G</button>
+        <button title="Read First Language Text By Microsoft." onclick="msSpeak(texts[0].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
       </span>
       <span class="reading-button-container" style="margin-left:10px;">
         <select id="readingSelect1">
@@ -388,8 +388,8 @@
           <option value="en" selected>🇺🇸</option>
           <option value="zh-TW">🇹🇼</option>
         </select>
-        <button onclick="ggSpeak(texts[1].textContent, this.previousElementSibling.value)">G</button>
-        <button onclick="msSpeak(texts[1].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
+        <button title="Read Second Language Text By Google." onclick="ggSpeak(texts[1].textContent, this.previousElementSibling.value)">G</button>
+        <button title="Read Second Language Text By Microsoft." onclick="msSpeak(texts[1].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
       </span>
       <span class="reading-button-container" style="margin-left:10px;">
         <select id="readingSelect2">
@@ -397,8 +397,8 @@
           <option value="en">🇺🇸</option>
           <option value="zh-TW" selected>🇹🇼</option>
         </select>
-        <button onclick="ggSpeak(texts[2].textContent, this.previousElementSibling.value)">G</button>
-        <button onclick="msSpeak(texts[2].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
+        <button title="Read Third Language Text By Google." onclick="ggSpeak(texts[2].textContent, this.previousElementSibling.value)">G</button>
+        <button title="Read Third Language Text By Microsoft." onclick="msSpeak(texts[2].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
       </span>
     </span>
   </div>
