@@ -138,6 +138,9 @@
       max-width: 96%;
       width: 96%;
     }
+    #readingList {
+      width: 800px;
+    }
     @media screen and (max-width: 600px) {
       table {
       }
@@ -184,10 +187,6 @@
       .phone-row-table tr {
         display: inline-flex;
       }
-      #apiKeyEditor input {
-        max-width: 96%;
-        width: 96%;
-      }
       .reading-buttons-container,
       .reading-buttons-container select,
       .reading-buttons-container button {
@@ -195,6 +194,14 @@
       }
       .reading-button-container button{
         width:22px;
+      }
+      #apiKeyEditor input {
+        max-width: 96%;
+        width: 96%;
+      }
+      #readingList {
+        max-width: 96%;
+        width: 96%;
       }
     }
     @media screen and (min-width: 601px) {
@@ -335,7 +342,7 @@
     function adjustTextAreaHeight() {
       textArea.style.height = '99px';
       var maxHeight = textArea.scrollHeight;
-      textArea.style.height = (maxHeight - 10) + 'px';
+      textArea.style.height = (maxHeight - 5) + 'px';
     }
   </script>
 
@@ -375,8 +382,8 @@
   <div class="div-row-container" style="margin-top:5px; margin-bottom:5px;">
     <span style="display:flex; justify-content: center; margin-bottom:3px;">
       <button id="textFuriganaButton" style="font-size: 12px;" title="🔰 To Auto Mark Furigana; 💤 Is Off." onclick="toggleTextFurigana()">🔰</button>
-      <button style="margin-left:5px;" title="Read All Text By Google." onclick="ggSpeakAllScreenText()">G</button>
-      <button style="margin-left:5px;" title="Read All Text By Microsoft." onclick="msSpeakAllScreenText()">M</button>
+      <button style="margin-left:5px;" title="Read All Screen Text By Google." onclick="ggSpeakAllScreenText()">G</button>
+      <button style="margin-left:5px;" title="Read All Screen Text By Microsoft." onclick="msSpeakAllScreenText()">M</button>
       <button style="margin-left:5px; font-size:10px;" title="Copy text of the source language." onclick="copyText(0)">0</button>
       <button style="margin-left:5px; font-size:10px;" title="Copy text of the target1 language." onclick="copyText(1)">1</button>
       <button style="margin-left:5px; font-size:10px;" title="Copy text of the target2 language." onclick="copyText(2)">2</button>
@@ -551,7 +558,7 @@
         <button type="button" name="translateButton"
           onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', translationLanguageSelect)">🔤</button>
         <button onclick="copyTextArea(this)">✂️</button>
-        <button onclick="clearReadingList(this)">🆑</button>
+        <button title="Clear The Reading List" onclick="clearReadingList(this)">🆑</button>
         <span class="readButtons">
           <select id="repeatTimeSelect" style="width: 40px;">
             <option value="1">1</option>
@@ -1621,6 +1628,8 @@
         throw error;
       }
     }
+
+    readlistIndexList = [];
     async function addToReadingList(ggAudioList, msAudioList, lines=1, isAutoDetect=false, languageSelect=undefined) {
       if (sourceLanguage === "") {
         sourceLanguage = "ja";
@@ -1629,9 +1638,33 @@
       await addToGgReadingList(ggAudioList, lines);
       await addToMsReadingList(msAudioList, lines);
       for (let i = 0; i < lines; i++) {
-        var readingListItem = document.createElement('li');
+
+        let readingListItem = document.createElement('li');
         readingListItem.textContent = texts[i].textContent + ` - [${targetLanguages[i]}]`;
-        readingList.appendChild(readingListItem);
+
+        let removeButton = document.createElement('button');
+        removeButton.textContent = '⛔';
+
+        let itemContainer = document.createElement('div');
+        itemContainer.style.display = 'flex';
+        itemContainer.style.justifyContent = 'space-between';
+        itemContainer.appendChild(readingListItem);
+        itemContainer.appendChild(removeButton);
+
+        readlistIndexList.push(readingList.children.length);
+        removeButton.addEventListener('click', function() {
+          const index = Array.from(readingList.children).indexOf(itemContainer);
+          console.log("removeButton-> index:", index);
+          console.log("readlistIndexList:", readlistIndexList);
+          console.log("removeButton-> readlistIndexList[index]:", readlistIndexList[index]);
+          ggAudioList.splice(readlistIndexList[index], 1);
+          msAudioList.splice(readlistIndexList[index], 1);
+          console.log("ggAudioList:", ggAudioList);
+          console.log("msAudioList:", msAudioList);
+          itemContainer.remove();
+        });
+
+        readingList.appendChild(itemContainer);
       }
     }
     async function ggSpeakReadingList(ggAudioList, repeatTime) {
@@ -1708,7 +1741,13 @@
 
     async function autoDetectTranslate(text, languageSelect=undefined) {
       console.log("autoDetectTranslate:", text);
-      var sourceLanguage = await ggDetectLanguage(text);
+      var sourceLanguage = "";
+      if (gcpApiKey != "") {
+        sourceLanguage = await ggDetectLanguage(text);
+      }
+      else {
+        
+      }
       if (languageSelect !== undefined) {
         languageSelect.value = sourceLanguage;
       }

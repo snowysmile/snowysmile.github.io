@@ -1,82 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Responsive Buttons</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    html, body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .div-row-container {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-    }
-    .reading-container {
-      display: flex;
-      justify-content: center;
-    }
-    @media screen and (max-width: 600px) {
-      .div-row-container {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        flex-wrap: wrap;
-      }
-      .reading-container,
-      .reading-container select,
-      .reading-container button {
-        font-size: 9px;
-      }
-      .reading-button-container button{
-        width:22px;
-      }
-    }
-  </style>
+  <title>Language Detection</title>
 </head>
 <body>
-  <div class="div-row-container" style="margin-top:5px; margin-bottom:5px;">
+  <textarea id="inputText" placeholder="Enter text here..."></textarea>
+  <button onclick="detectLanguage()">Detect Language</button>
+  <div id="result"></div>
 
-    <span class="reading-container">
-      <button onclick="ggSpeakAllScreenText()">G</button>
-      <button onclick="msSpeakAllScreenText()">M</button>
-    </span>
+  <script src="https://cdn.jsdelivr.net/npm/langdetect@0.2.1/index.min.js"></script>
+  <script>
+    function detectLanguage() {
+      const text = document.getElementById('inputText').value;
+      const detectedLanguageCode = detect(text);
+      displayResult(detectedLanguageCode);
+    }
 
-    <span class="reading-container">
-      <span class="reading-button-container">
-        <select id="readingSelect0">
-          <option value="ja" selected>🇯🇵</option>
-          <option value="en">🇺🇸</option>
-          <option value="zh-TW">🇹🇼</option>
-        </select>
-        <button onclick="ggSpeak(texts[0].textContent, this.previousElementSibling.value)">G</button>
-        <button onclick="msSpeak(texts[0].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
-      </span>
+    function displayResult(languageCode) {
+      let languageName;
+      switch (languageCode) {
+        case 'en':
+          languageName = 'English';
+          break;
+        case 'es':
+          languageName = 'Spanish';
+          break;
+        case 'fr':
+          languageName = 'French';
+          break;
+        // Add more cases for other languages as needed
+        default:
+          languageName = 'Unknown';
+          break;
+      }
 
-      <span class="reading-button-container" style="margin-left:10px;">
-        <select id="readingSelect1">
-          <option value="ja">🇯🇵</option>
-          <option value="en" selected>🇺🇸</option>
-          <option value="zh-TW">🇹🇼</option>
-        </select>
-        <button onclick="ggSpeak(texts[1].textContent, this.previousElementSibling.value)">G</button>
-        <button onclick="msSpeak(texts[1].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
-      </span>
-
-      <span class="reading-button-container" style="margin-left:10px;">
-        <select id="readingSelect2">
-          <option value="ja">🇯🇵</option>
-          <option value="en">🇺🇸</option>
-          <option value="zh-TW" selected>🇹🇼</option>
-        </select>
-        <button onclick="ggSpeak(texts[2].textContent, this.previousElementSibling.value)">G</button>
-        <button onclick="msSpeak(texts[2].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
-      </span>
-    </span>
-  </div>
+      document.getElementById('result').innerText = `Detected Language: ${languageName} (${languageCode})`;
+    }
+  </script>
 </body>
 </html>
