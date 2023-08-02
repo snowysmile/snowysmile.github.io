@@ -392,15 +392,18 @@
   </script>
   <div class="div-row-container" style="margin-top:5px; margin-bottom:5px;">
     <span style="display:flex; justify-content: center; margin-bottom:3px;">
-      <button id="textFuriganaButton" style="font-size: 12px;" title="🔰 To Auto Mark Furigana; 💤 Is Off." onclick="toggleTextFurigana()">🔰</button>
-      <button style="margin-left:5px; font-size:11px;" title="Read All Screen Text By Google." onclick="ggSpeakAllScreenText()">G</button>
-      <button style="margin-left:5px; font-size:11px;" title="Read All Screen Text By Microsoft." onclick="msSpeakAllScreenText()">M</button>
-      <button style="margin-left:5px; font-size:10px;" title="Copy text of the source language." onclick="copyText(0)">0</button>
-      <button style="margin-left:5px; font-size:10px;" title="Copy text of the target1 language." onclick="copyText(1)">1</button>
-      <button style="margin-left:5px; font-size:10px;" title="Copy text of the target2 language." onclick="copyText(2)">2</button>
+      <button id="textFuriganaToggleButton" style="font-size: 11px;" title="🔰 To Auto Mark Furigana; 💤 Is Off." onclick="toggleTextFurigana()">🔰</button>
+      <button style="margin-left:3px; font-size:11px;" title="Read All Screen Text By Google." onclick="ggSpeakAllScreenText()">G</button>
+      <button style="margin-left:3px; font-size:11px;" title="Read All Screen Text By Microsoft." onclick="msSpeakAllScreenText()">M</button>
 
+      <span style="margin-left:7px;"> </span>
+      <button style="font-size:10px;" title="Copy text of the source language." onclick="copyText(0)">0</button>
+      <button style="font-size:10px;" title="Copy text of the target1 language." onclick="copyText(1)">1</button>
+      <button style="font-size:10px;" title="Copy text of the target2 language." onclick="copyText(2)">2</button>
+
+      <span style="margin-left:7px;"> </span>
       <button id="previousText-button" title="Previous Texts" onclick="showHistoryText(historyTextsCurrentId-1);">◀️</button>
-      <button id="historyTextsDisplay"> X/X </button>
+      <button id="historyTextsDisplay" style="font-size:10px;"> X/X </button>
       <button id="nextText-button" title="Next Texts" onclick="showHistoryText(historyTextsCurrentId+1);">▶️</button>
     </span>
     <span class="reading-buttons-container">
@@ -439,13 +442,13 @@
       <td class="button-title">
         <span>
           <button id="recognize-button" onclick="toggleRecognition(this.parentNode.parentNode.querySelector('select').value)" style="width: 148px;">▶️ Start Recognizing</button>
-            <select id="recognitionLanguageSelect">
+            <select id="recognitionLanguageSelect" onchange="recognizeRestart(this.value)">
               <option value="ja" selected>🇯🇵</option>
               <option value="en">🇺🇸</option>
               <option value="zh-TW">🇹🇼</option>
             </select>
-            <button name="languageDetectButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">🤔</button>
-            <button id="oneSentenceRecognizeButton" title="① To Recognize A Single Sentence; 〜 Is Nonstop Detection" onclick="toggleOneSentenceRecognize(this)">①</button>
+            <button name="languageDetectButton" id="recognizeLangDetectToggleButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">🤔</button>
+            <button id="oneSentenceRecognizeToggleButton" title="① To Recognize A Single Sentence; 〜 Is Nonstop Detection" onclick="toggleOneSentenceRecognize(this)">①</button>
         </span>
         <button class="phone-button" onclick="toggleWidgetArea('recognitionInputArea', document.getElementById('toggleRecognitionInputArea-button'))">⛔</button>
       </td>
@@ -475,7 +478,7 @@
             <option value="en">🇺🇸</option>
             <option value="zh-TW">🇹🇼</option>
           </select>
-          <button name="languageDetectButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">🤔</button>
+          <button name="languageDetectButton" id="recordLangDetectToggleButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">🤔</button>
         </span>
         <button class="phone-button" onclick="toggleWidgetArea('recordInputArea', document.getElementById('toggleRecordInputArea-button'))">⛔</button>
       </td>
@@ -502,7 +505,7 @@
             <option value="en" selected>🇺🇸</option>
             <option value="zh-TW">🇹🇼</option>
           </select>
-          <button name="languageDetectButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">🤔</button>
+          <button name="languageDetectButton" id="translateLangDetectToggleButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">🤔</button>
         </span>
         <button class="phone-button" onclick="toggleWidgetArea('translationInputArea', document.getElementById('toggleTranslationInputArea-button'))">⛔</button>
       </td>
@@ -562,7 +565,7 @@
             <option value="en">🇺🇸</option>
             <option value="zh-TW">🇹🇼</option>
           </select>
-          <button name="languageDetectButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">🤔</button>
+          <button name="languageDetectButton" id="readLangDetectToggleButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">🤔</button>
         </span>
         <button class="phone-button" onclick="toggleWidgetArea('readingListInputArea', document.getElementById('toggleReadingListInputArea-button'))">⛔</button>
       </td>
@@ -619,6 +622,13 @@
 
   <iframe id="jpExpWebBot" style="width:1000px; height:654px; margin-top:5px; margin-bottom:9px; display:none" src="https://ichi.moe/"></iframe>
 
+  <!--
+  <div id="enExpWeb">
+    <iframe id="enExpWebsterDict" style="width:320px; height:654px; margin-top:5px; margin-bottom:9px;" src="https://www.merriam-webster.com/dictionary/study"></iframe>
+    <iframe id="enExpVoiceTubeDict" style="width:320px; height:654px; margin-top:5px; margin-bottom:9px;" src="https://tw.voicetube.com/definition/study"></iframe>
+    <iframe id="enExpYoudaoDict" style="width:320px; height:654px; margin-top:5px; margin-bottom:9px;" src="https://www.youdao.com/m/result?word=study&lang=en"></iframe>
+  </div>
+  -->
 
   <button id="layoutContainer-button" style="margin-bottom:5px;" onclick="toggleWidgetArea('layoutContainer', this)">Layout Container ❌</button>
 
@@ -631,6 +641,7 @@
     <button id="toggleJpExpArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpAreaFrame', this)">JpExp Text ❌</button>
     <button id="toggleJpExpWebTop-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebTop', this)">JpExp Web (↑) ❌</button>
     <button id="toggleJpExpWebBot-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebBot', this)">JpExp Web (↓) ❌</button>
+    <button id="toggleEnExpWeb-button" style="margin-right:3px;" onclick="toggleWidgetArea('enExpWeb', this)">EnExp Web 🟢</button>
     <button id="toggleApiKeyEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('apiKeyEditor', this)">ApiKey Editor ❌‍</button>
     <button id="toggleLayoutEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('layoutEditor', this)">Layout Editor ❌</button>
   </div>
@@ -650,6 +661,21 @@
       var button = layoutButtonsMap.get(buttonText);
       button.click();
     }
+
+    var toggleButtons = document.querySelectorAll('button[id$="ToggleButton"]');
+    toggleButtons.forEach(button => {
+      layoutButtonsMap.set(button.id, button);
+      layoutButtonsClickedMap.set(button.id, false);
+      button.addEventListener('click', () => {
+        var buttonClicked = !layoutButtonsClickedMap.get(button.id);
+        layoutButtonsClickedMap.set(button.id, buttonClicked);
+        configs[autoSID].layoutButtonsClickedList = configs[autoSID].layoutButtonsClickedList.filter(item => item !== button.id);
+        if (buttonClicked) {
+          configs[autoSID].layoutButtonsClickedList.push(button.id);
+        }
+        saveConfigStorage();
+      });
+    });
   </script>
 
   <div id="apiKeyEditor" style="display:none; margin-bottom:5px;">
@@ -1307,7 +1333,7 @@
       recognition.lang = sourceLanguage;
       recognition.interimResults = true;
       recognition.continuous = true;
-      recognitionNonStop = oneSentenceRecognizeButton.innerHTML === '〜';
+      recognitionNonStop = oneSentenceRecognizeToggleButton.innerHTML === '〜';
 
       var timeStamp = 0;
       recognition.onstart = () => {
@@ -1427,6 +1453,8 @@
         }
       }
     }
+    function recognizeRestart(sourceLanguage) {
+    }
     function toggleRecord() {
       if (isRecording) {
         isRecording = false;
@@ -1438,7 +1466,7 @@
       }
     }
     function toggleTextFurigana() {
-      textFuriganaButton.innerText = textFuriganaButton.innerText === "🔰" ? "💤" : "🔰";
+      textFuriganaToggleButton.innerText = textFuriganaToggleButton.innerText === "🔰" ? "💤" : "🔰";
     }
     function toggleTranslationCount(clearBoolean=true) {
       translationCount = translationCountSelect.value;
@@ -1945,7 +1973,6 @@
         historyTexts = JSON.parse(localStorage.getItem(`snowyTranslatorTextConfig[${configID}]`));
         saveTextConfigStorage(autoSID);
       }
-      console.log("after loadTextConfigStorage() historyTexts:", historyTexts);
     }
     function updatePageColor(color = "") {
       if (color === "") color = pageColorPicker.value;
@@ -2028,7 +2055,7 @@
       }
     }
     function updateTextWithFurigana(id, htmlText) {
-      if (textFuriganaButton.innerText === "🔰") {
+      if (textFuriganaToggleButton.innerText === "🔰") {
         displayedTexts[id].innerHTML = htmlText;
         displayedTexts[id].setAttribute('stroke-data', "");
       }
@@ -2235,14 +2262,18 @@
           updateApiKey(i);
         }
       }
+      // cancel the clicked buttons now
       layoutButtonsClickedMap.forEach((value, key) => {
         if (value) {
+          console.log("layoutButtonsClickedMap:", key);
           updateLayoutButtonClick(key);
         }
       });
+      // triggle the clicked buttons saved
       if (Array.isArray(configs[configID].layoutButtonsClickedList)) {
-        configs[configID].layoutButtonsClickedList.forEach((value) => {
-          updateLayoutButtonClick(value);
+        configs[configID].layoutButtonsClickedList.forEach((key) => {
+          updateLayoutButtonClick(key);
+          console.log("configs[configID].layoutButtonsClickedList:", key);
         });
       }
       console.log(`Load Config (${configID}) Finsihed.`);
