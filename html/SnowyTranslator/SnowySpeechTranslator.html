@@ -1454,6 +1454,10 @@
       }
     }
     function recognizeRestart(sourceLanguage) {
+      toggleRecognition(sourceLanguage);
+      setTimeout(function() {
+        toggleRecognition(sourceLanguage);
+      }, 1000);
     }
     function toggleRecord() {
       if (isRecording) {
