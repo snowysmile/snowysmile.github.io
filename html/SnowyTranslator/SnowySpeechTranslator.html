@@ -287,6 +287,9 @@
       azureVoices: ['ja-JP-AoiNeural', 'en-US-AnaNeural', 'zh-CN-XiaoyouNeural'],
       layoutButtonsClickedList: [],
     }
+    var defaultTextsConfig = {
+
+    }
     defaultConfig.displayedTexts = [...defaultConfig.texts];
     defaultConfig.historyTexts.push([...defaultConfig.texts]);
     var configs = [
@@ -853,9 +856,26 @@
         <button id="clearText-button" title="Clear Texts 🆑" onclick="clearTexts();">Clear Texts</button>
         <button id="defaultText-button" title="Default Texts 🛠️" onclick="defaultTexts();">Default Texts</button>
       </td>
+    </tr>
+  </table>
+  <table style="border: none">
+    <tr class="row-container">
       <td style="display: flex;">
         Speech Over Interval (ms):
         <input type="text" id="speechOverInterval" size="8" oninput="updateIntegerValue('speechOverInterval');">
+      </td>
+      <td style="display: flex;">
+         History Texts Max Length:
+        <select id="historyTextsMaxLengthSelect" style="width: 40px;" onchange="toggleHistoryTextsMaxLength()">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="5">5</option>
+          <option value="10" selected>10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="50">50</option>
+        </select>
       </td>
       <td style="display: none;">
         Speech Split Interval (ms):
@@ -1454,6 +1474,11 @@
       else {
         button.innerText = "①";
       }
+    }
+    function toggleHistoryTextsMaxLength() {
+      historyTextsMaxLength = historyTextsMaxLengthSelect.value;
+      configs[autoSID].historyTextsMaxLength = historyTextsMaxLength;
+      saveConfigStorage();
     }
 
     var ggAudioList = [];
@@ -2166,6 +2191,7 @@
 
       historyTextsMaxLength = configs[configID].historyTextsMaxLength;
       configs[autoSID].historyTextsMaxLength = historyTextsMaxLength;
+      historyTextsMaxLengthSelect.value = historyTextsMaxLength;
       historyTextsCurrentId = configs[configID].historyTextsCurrentId;
       configs[autoSID].historyTextsCurrentId = historyTextsCurrentId;
       historyTexts = configs[configID].historyTexts.map(innerArr => [...innerArr]);
