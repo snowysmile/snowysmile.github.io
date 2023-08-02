@@ -266,9 +266,6 @@
               // 掛在天上放光明，好像許多小眼睛。
               // "1234567890 !@#$%^&*() abcdefg ABCDEFG",
       displayedTexts: [],
-      historyTexts: [],
-      historyTextsMaxLength: 10,
-      historyTextsCurrentId: 0,
       textFontColors: ["#000000", "#000000", "#000000"],
       textFontSizes: [20, 17, 14], //px
       textFontWeights: [500, 500, 500],
@@ -286,12 +283,17 @@
       languages: ['ja', 'en', 'zh-TW'],
       azureVoices: ['ja-JP-AoiNeural', 'en-US-AnaNeural', 'zh-CN-XiaoyouNeural'],
       layoutButtonsClickedList: [],
+      historyTextsMaxLength: 10,
+      historyTextsCurrentId: 0,
     }
-    var defaultTextsConfig = {
-
+    var defaultTextConfig = {
+      historyTexts: [],
     }
     defaultConfig.displayedTexts = [...defaultConfig.texts];
-    defaultConfig.historyTexts.push([...defaultConfig.texts]);
+    defaultTextConfig.historyTexts.push([...defaultConfig.texts]);
+    var configs = [
+      {}, {}, {},
+    ];
     var configs = [
       {}, {}, {},
     ];
@@ -851,6 +853,9 @@
       	<button id="loadConfig1-button" onclick="loadConfig(1)">L1</button>
       	<button id="saveConfig2-button" onclick="saveConfig(2)">S2</button>
       	<button id="loadConfig2-button" onclick="loadConfig(2)">L2</button>
+        <span style="margin-left:5px;"> </span>
+      	<button id="saveFavoriteConfig-button" onclick="saveConfig(99)">S♡</button>
+      	<button id="loadFavoriteConfig-button" onclick="loadConfig(99)">L♡</button>
       </td>
       <td>
         <button id="clearText-button" title="Clear Texts 🆑" onclick="clearTexts();">Clear Texts</button>
@@ -1924,11 +1929,23 @@
       var configJSON = JSON.stringify(configs);
       localStorage.setItem('snowyTranslatorConfig', configJSON);
     }
+    function saveTextConfigStorage(configID) {
+      var configJSON = JSON.stringify(historyTexts);
+      localStorage.setItem(`snowyTranslatorTextConfig[${configID}]`, configJSON);
+    }
     function loadConfigStorage() {
       if (localStorage.getItem('snowyTranslatorConfig')) {
         configs = JSON.parse(localStorage.getItem('snowyTranslatorConfig'));
-        console.log("loadConfigStorage() configs:", configs);
+        // console.log("loadConfigStorage() configs:", configs);
       }
+    }
+    function loadTextConfigStorage(configID) {
+      console.log("loadTextConfigStorage:");
+      if (localStorage.getItem(`snowyTranslatorTextConfig[${configID}]`)) {
+        historyTexts = JSON.parse(localStorage.getItem(`snowyTranslatorTextConfig[${configID}]`));
+        saveTextConfigStorage(autoSID);
+      }
+      console.log("after loadTextConfigStorage() historyTexts:", historyTexts);
     }
     function updatePageColor(color = "") {
       if (color === "") color = pageColorPicker.value;
@@ -1974,11 +1991,6 @@
           pushHistoryText();
         }
       }
-
-      // var configJSON = JSON.stringify(configs);
-      // localStorage.setItem('snowyTranslatorConfig', configJSON);
-      // console.log("saveConfigStorage() configs:", configs);
-
       // saveConfigStorage();
     }
     function updateTextCurrent(pos) {
@@ -2002,8 +2014,8 @@
         historyTexts.shift();
       }
       updateTextCurrent(historyTexts.length - 1);
-      configs[autoSID].historyTexts = historyTexts.map(innerArr => [...innerArr]);
-      saveConfigStorage();
+      // configs[autoSID].historyTexts = historyTexts.map(innerArr => [...innerArr]);
+      saveTextConfigStorage(autoSID);
     }
     function showHistoryText(index) {
       if (index < 0 || index >= historyTexts.length) {
@@ -2165,20 +2177,23 @@
       configs[configID].azureVoices = [...azureVoiceSelects].map(element => element.value);
       configs[configID].layoutButtonsClickedList = saveMap(layoutButtonsClickedMap);
       saveConfigStorage();
-      configs[configID].historyTexts = historyTexts.map(innerArr => [...innerArr]);
-      console.log("historyTexts:", historyTexts);
-      console.log("configs[configID].historyTexts:", configs[configID].historyTexts);
+      // configs[configID].historyTexts = historyTexts.map(innerArr => [...innerArr]);
       configs[configID].historyTextsMaxLength = historyTextsMaxLength;
       configs[configID].historyTextsCurrentId = historyTextsCurrentId;
       saveConfigStorage();
+      saveTextConfigStorage(configID);
       console.log(`Save Config (${configID}) Finished.`);
     }
     function loadConfig(configID) {
       loadConfigStorage();
       if (configID === -1) {
+        historyTexts = defaultTextConfig.historyTexts.map(innerArr => [...innerArr]);
+        saveTextConfigStorage(autoSID);
         configs[autoSID] = copyConfig(defaultConfig);
         configID = autoSID;
       }
+      else loadTextConfigStorage(configID);
+
       console.log(`Load Config (${configID}) ing...`);
       updatePageColor(configs[configID].pageColor);
       updateCurtainColor(configs[configID].curtainColor);
@@ -2192,10 +2207,9 @@
       historyTextsMaxLength = configs[configID].historyTextsMaxLength;
       configs[autoSID].historyTextsMaxLength = historyTextsMaxLength;
       historyTextsMaxLengthSelect.value = historyTextsMaxLength;
+
       historyTextsCurrentId = configs[configID].historyTextsCurrentId;
       configs[autoSID].historyTextsCurrentId = historyTextsCurrentId;
-      historyTexts = configs[configID].historyTexts.map(innerArr => [...innerArr]);
-      configs[autoSID].historyTexts = historyTexts.map(innerArr => [...innerArr]);
       updateTextCurrent(historyTextsCurrentId);
 
       for (let i = 0; i <= translationCount; i++) {
@@ -2377,8 +2391,14 @@
     window.addEventListener('resize', updateScreenWidth);
   </script>
   <script>
-    // localStorage.removeItem('snowyTranslatorConfig');
-    // localStorage.clear();
+    var clearConfigs = false;
+    if (clearConfigs) {
+      localStorage.removeItem('snowyTranslatorConfig');
+      for (let configID = 0; configID <= 2; configID++) {
+        localStorage.removeItem(`snowyTranslatorTextConfig[${configID}]`);
+      }
+      // localStorage.clear();
+    }
     loadConfig(autoSID);
   </script>
 
