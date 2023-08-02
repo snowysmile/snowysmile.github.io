@@ -288,6 +288,7 @@
       layoutButtonsClickedList: [],
     }
     defaultConfig.displayedTexts = [...defaultConfig.texts];
+    defaultConfig.historyTexts.push([...defaultConfig.texts]);
     var configs = [
       {}, {}, {},
     ];
@@ -393,10 +394,9 @@
       <button style="margin-left:5px; font-size:10px;" title="Copy text of the target1 language." onclick="copyText(1)">1</button>
       <button style="margin-left:5px; font-size:10px;" title="Copy text of the target2 language." onclick="copyText(2)">2</button>
 
-      <button id="clearText-button" style="margin-left:5px;"  title="Clear Texts" onclick="clearTexts();">🆑</button>
-      <button id="defaultText-button" title="Default Texts" onclick="defaultTexts();">🛠️</button>
-      <button id="previousText-button" title="Previous Texts" onclick="updateHistoryText(historyTextsCurrentId+1);">◀️</button>
-      <button id="nextText-button" title="Next Texts" onclick="updateHistoryText(historyTextsCurrentId-1);">▶️</button>
+      <button id="previousText-button" title="Previous Texts" onclick="showHistoryText(historyTextsCurrentId-1);">◀️</button>
+      <button id="historyTextsDisplay"> X/X </button>
+      <button id="nextText-button" title="Next Texts" onclick="showHistoryText(historyTextsCurrentId+1);">▶️</button>
     </span>
     <span class="reading-buttons-container">
       <span class="reading-button-container" style="margin-left:20px;">
@@ -849,6 +849,10 @@
       	<button id="saveConfig2-button" onclick="saveConfig(2)">S2</button>
       	<button id="loadConfig2-button" onclick="loadConfig(2)">L2</button>
       </td>
+      <td>
+        <button id="clearText-button" title="Clear Texts 🆑" onclick="clearTexts();">Clear Texts</button>
+        <button id="defaultText-button" title="Default Texts 🛠️" onclick="defaultTexts();">Default Texts</button>
+      </td>
       <td style="display: flex;">
         Speech Over Interval (ms):
         <input type="text" id="speechOverInterval" size="8" oninput="updateIntegerValue('speechOverInterval');">
@@ -1072,6 +1076,16 @@
   </div>
 
   <script>
+    function getRandomInteger(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    function fillArrayWithRandomValue(arr, len, min, max) {
+      var randomInteger = getRandomInteger(min, max);
+      arr = Array.from({ length: len }, () => randomInteger);
+      return arr;
+    }
+  </script>
+  <script>
     var speechTextListTotalCount = 0;
     var speechTextListCurrentID = 0;
     function updateSpeechTextList(text) {
@@ -1099,6 +1113,10 @@
     var textFontWeightValues = document.querySelectorAll('[id^="textFontWeightValue-"]');
     var textFontFamilySelects = document.querySelectorAll('[id^="textFontSelect-"]');
     var readingSelects = document.querySelectorAll('[id^="readingSelect"]');
+    var historyTexts = [];
+    var historyTextsMaxLength;
+    var historyTextsCurrentId;
+    var timeTextUpdated = fillArrayWithRandomValue([], topTranslationCount + 1, 1, 500000);
 
     var textStrokeColorPickers = [];
     for (let i = 0; i < 3; i++) {
@@ -1405,6 +1423,7 @@
       }
       configs[autoSID].translationCount = translationCountSelect.value;
       saveConfigStorage();
+      timeTextUpdated = fillArrayWithRandomValue([], topTranslationCount + 1, 1, 500000);
     }
     var sourceLanguage = "ja";
     var targetLanguage = "en";
@@ -1736,7 +1755,7 @@
         if (detectedLanguage === "zh-CN") {
           detectedLanguage = "zh-TW";
         }
-        if ((detectedLanguage === "zh-CN" || detectedLanguage === "zh-TW") && confidence < 0.9) {
+        if ((detectedLanguage === "zh-CN" || detectedLanguage === "zh-TW") && confidence < 0.93) {
           detectedLanguage = "ja";
         }
         return detectedLanguage;
@@ -1812,7 +1831,7 @@
       updateText(0, speechText);
       console.log("[speechTranslate] before-> sourceLanguage:", sourceLanguage);
       console.log("[speechTranslate] speechText:", speechText);
-      if (sourceLanguage === "" || isAutoDetect) {
+      if (sourceLanguage === "" || isAutoDetect && gcpApiKey !== "") {
         sourceLanguage = await autoDetectTranslate(speechText, languageSelect);
       }
       if (sourceLanguage === "ja") {
@@ -1883,6 +1902,7 @@
     function loadConfigStorage() {
       if (localStorage.getItem('snowyTranslatorConfig')) {
         configs = JSON.parse(localStorage.getItem('snowyTranslatorConfig'));
+        console.log("loadConfigStorage() configs:", configs);
       }
     }
     function updatePageColor(color = "") {
@@ -1908,24 +1928,66 @@
       configs[autoSID].displayedTexts[id] = speechText;
       saveConfigStorage();
     }
-    function updateText(id, speechText, isHistoryText=false) {
+    function updateText(id, speechText, isNotHistoryText=true) {
       texts[id].textContent = speechText;
       configs[autoSID].texts[id] = speechText;
       updateDisplayedText(id, speechText);
-      // saveConfigStorage();
-      if (id == translationCount && !isHistoryText) {
-        pushHistoryText();
+      timeTextUpdated[id] += 1;
+      // typeof translationCount is string
+      if (speechText.trim() !== "" && isNotHistoryText) {
+        var allTextUpdated = true;
+        console.log("timeTextUpdated:", timeTextUpdated);
+        for (let i = 1; i <= translationCount; i++) {
+          console.log(`timeTextUpdated(${i})`, timeTextUpdated[i]);
+          if (timeTextUpdated[i] != timeTextUpdated[0]) {
+            allTextUpdated = false;
+            break;
+          }
+        }
+        if (allTextUpdated) {
+          console.log("allTextUpdated!");
+          pushHistoryText();
+        }
       }
+
+      // var configJSON = JSON.stringify(configs);
+      // localStorage.setItem('snowyTranslatorConfig', configJSON);
+      // console.log("saveConfigStorage() configs:", configs);
+
+      // saveConfigStorage();
+    }
+    function updateTextCurrent(pos) {
+      historyTextsCurrentId = pos;
+      configs[autoSID].historyTextsCurrentId = pos;
+      historyTextsDisplay.innerHTML = `${historyTextsCurrentId + 1}/${historyTexts.length}`;
     }
     function pushHistoryText() {
-      historyTexts.unshift([...texts].map(element => element.innerHTML));
-      while (historyTexts.length > historyTextsMaxLength) {
-        historyTexts.pop();
+      if (historyTexts.length > 0) {
+        var isSameText = true;
+        for (let i = 0; i <= topTranslationCount; i++) {
+          if (historyTexts[historyTexts.length - 1][i] !== texts[i].textContent) {
+            isSameText = false;
+            break;
+          }
+        }
+        if (isSameText) return;
       }
+      historyTexts.push([...texts].map(element => element.innerHTML));
+      while (historyTexts.length > historyTextsMaxLength) {
+        historyTexts.shift();
+      }
+      updateTextCurrent(historyTexts.length - 1);
+      configs[autoSID].historyTexts = historyTexts.map(innerArr => [...innerArr]);
+      saveConfigStorage();
     }
-    function updateHistoryText(index) {
-      for (let i = 0; i < translationCount; i++) {
-        updateText(i, historyTexts[index][i], true);
+    function showHistoryText(index) {
+      if (index < 0 || index >= historyTexts.length) {
+        return;
+      }
+      updateTextCurrent(index);
+      // saveConfigStorage();
+      for (let i = 0; i <= translationCount; i++) {
+        updateText(i, historyTexts[index][i], false);
       }
     }
     function updateTextWithFurigana(id, htmlText) {
@@ -1951,7 +2013,7 @@
         topRow = translationCount;
       }
       for (let i = 0; i <= topRow; i++) {
-        updateText(i, defaultConfig.texts[i]);
+        updateText(i, defaultConfig.texts[i], false);
       }
     }
     function updateFontColor(id, color="") {
@@ -2078,6 +2140,12 @@
       configs[configID].azureVoices = [...azureVoiceSelects].map(element => element.value);
       configs[configID].layoutButtonsClickedList = saveMap(layoutButtonsClickedMap);
       saveConfigStorage();
+      configs[configID].historyTexts = historyTexts.map(innerArr => [...innerArr]);
+      console.log("historyTexts:", historyTexts);
+      console.log("configs[configID].historyTexts:", configs[configID].historyTexts);
+      configs[configID].historyTextsMaxLength = historyTextsMaxLength;
+      configs[configID].historyTextsCurrentId = historyTextsCurrentId;
+      saveConfigStorage();
       console.log(`Save Config (${configID}) Finished.`);
     }
     function loadConfig(configID) {
@@ -2095,9 +2163,17 @@
       updateIntegerValue("translationCountSelect", configs[configID].translationCount);
       translationCount = configs[configID].translationCount;
       toggleTranslationCount(false);
+
+      historyTextsMaxLength = configs[configID].historyTextsMaxLength;
+      configs[autoSID].historyTextsMaxLength = historyTextsMaxLength;
+      historyTextsCurrentId = configs[configID].historyTextsCurrentId;
+      configs[autoSID].historyTextsCurrentId = historyTextsCurrentId;
+      historyTexts = configs[configID].historyTexts.map(innerArr => [...innerArr]);
+      configs[autoSID].historyTexts = historyTexts.map(innerArr => [...innerArr]);
+      updateTextCurrent(historyTextsCurrentId);
+
       for (let i = 0; i <= translationCount; i++) {
-        updateText(i, configs[configID].texts[i]);
-        updateText(i, configs[configID].displayedTexts[i]);
+        updateText(i, configs[configID].texts[i], false);
         updateFontColor(i, configs[configID].textFontColors[i]);
         updateFontSize(i, configs[configID].textFontSizes[i]);
         updateFontWeight(i, configs[configID].textFontWeights[i]);

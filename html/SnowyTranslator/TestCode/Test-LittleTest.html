@@ -8,34 +8,51 @@
   <button onclick="detectLanguage()">Detect Language</button>
   <div id="result"></div>
 
-  <script src="https://cdn.jsdelivr.net/npm/langdetect@0.2.1/index.min.js"></script>
   <script>
-    function detectLanguage() {
-      const text = document.getElementById('inputText').value;
-      const detectedLanguageCode = detect(text);
-      displayResult(detectedLanguageCode);
+    function copyConfig(originalConfig) {
+      return JSON.parse(JSON.stringify(originalConfig));
     }
-
-    function displayResult(languageCode) {
-      let languageName;
-      switch (languageCode) {
-        case 'en':
-          languageName = 'English';
-          break;
-        case 'es':
-          languageName = 'Spanish';
-          break;
-        case 'fr':
-          languageName = 'French';
-          break;
-        // Add more cases for other languages as needed
-        default:
-          languageName = 'Unknown';
-          break;
-      }
-
-      document.getElementById('result').innerText = `Detected Language: ${languageName} (${languageCode})`;
+    var defaultConfig =
+    {
+      pageColor: "#fffafa",
+      curtainColor: "#9acd32",
+      texts: ["きらきらひかる、おそらのほしよ。",
+              "Twinkle, twinkle, little star, How I wonder what you are! ",
+              "一閃一閃亮晶晶，滿天都是小星星。"],
+              // まばたきしては、みんなをみてる。
+              // Up above the world so high, Like a diamond in the sky.
+              // 掛在天上放光明，好像許多小眼睛。
+              // "1234567890 !@#$%^&*() abcdefg ABCDEFG",
+      displayedTexts: [],
+      historyTexts: [["1-1","1-2"],["2-1","2-2"],["3-1","3-2"]],
+      historyTextsMaxLength: 10,
+      historyTextsCurrentId: 0,
+      textFontColors: ["#000000", "#000000", "#000000"],
+      textFontSizes: [20, 17, 14], //px
+      textFontWeights: [500, 500, 500],
+      textFontFamilies: ['NotoSansCJKjp', 'NotoSansCJKjp', 'NotoSansCJKjp'],
+      textStrokeColors: [['#87ceeb', '#ffb7c5'], ['#87ceeb', '#ffb7c5'], ['#87ceeb', '#ffb7c5']],
+      textStrokeWidths: [[0, 0], [0, 0], [0, 0]], //em
+      textShadowColors: ["#ffeebb", "#ffeebb", "#ffeebb"],
+      textShadowBlurRadius: [0, 0, 0], //em
+      textMargins: [5, 5, 5], //px
+      apiKeys: ["", "", "", ""],
+      speechOverInterval: 5000, //ms
+      speechSplitInterval: 1000, //ms
+      speechClearInterval: 360000, //ms
+      translationCount: 2,
+      languages: ['ja', 'en', 'zh-TW'],
+      azureVoices: ['ja-JP-AoiNeural', 'en-US-AnaNeural', 'zh-CN-XiaoyouNeural'],
+      layoutButtonsClickedList: [],
     }
+    var newConfig = copyConfig(defaultConfig);
+    newConfig.historyTexts[0][0] = "Changed 1-1";
+    defaultConfig.historyTexts = newConfig.historyTexts.map(innerArr => [...innerArr]);
+    console.log("defaultConfig:", defaultConfig);
+    console.log("newConfig:", newConfig);
+    newConfig.historyTexts[0][0] = "Changed 1-1 ~~~~~~~~~~~";
+    console.log("defaultConfig:", defaultConfig);
+    console.log("newConfig:", newConfig);
   </script>
 </body>
 </html>
