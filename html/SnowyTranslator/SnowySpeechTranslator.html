@@ -125,6 +125,9 @@
       z-index: -2;
       -webkit-text-stroke: var(--stroke-width-layer-1) var(--stroke-color-layer-1);
     }
+    .readButtons button {
+      font-size: 9px;
+    }
     #jpExpAreaFrame {
       width: 1015px;
       border: 2px solid black;
@@ -298,6 +301,7 @@
       {}, {}, {},
     ];
     var autoSID = 0;
+    var favID = 0;
     configs[autoSID] = copyConfig(defaultConfig);
   </script>
   <title>Snowy Speech Translator</title>
@@ -390,6 +394,7 @@
       await msSpeakReadingList(msAudioList, repeatTime);
     }
   </script>
+
   <div class="div-row-container" style="margin-top:5px; margin-bottom:5px;">
     <span style="display:flex; justify-content: center; margin-bottom:3px;">
       <button id="textFuriganaToggleButton" style="font-size: 11px;" title="🔰 To Auto Mark Furigana; 💤 Is Off." onclick="toggleTextFurigana()">🔰</button>
@@ -403,7 +408,7 @@
 
       <span style="margin-left:7px;"> </span>
       <button id="previousText-button" title="Previous Texts" onclick="showHistoryText(historyTextsCurrentId-1);">◀️</button>
-      <button id="historyTextsDisplay" style="font-size:10px;"> X/X </button>
+      <button id="historyTextsDisplay" style="font-size:10px;" onclick="addFavoriteText()"> X/X </button>
       <button id="nextText-button" title="Next Texts" onclick="showHistoryText(historyTextsCurrentId+1);">▶️</button>
     </span>
     <span class="reading-buttons-container">
@@ -461,6 +466,7 @@
       <td>
         <button name="translateButton" onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', recognitionLanguageSelect)">🔤</button>
         <button onclick="copyTextArea(this)">✂️</button>
+        <button class="phone-button" onclick="pasteToTextArea(this)">📥</button>
         <button onclick="clearTextArea(this)">🆑</button>
         <span class="readButtons">
           <button onclick="ggSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">G🔊</button>
@@ -570,12 +576,13 @@
         <button class="phone-button" onclick="toggleWidgetArea('readingListInputArea', document.getElementById('toggleReadingListInputArea-button'))">⛔</button>
       </td>
       <td>
-        <textarea id="readingListInput" rows="2" cols="75"></textarea>
+        <textarea id="readingListInput" rows="2" cols="73"></textarea>
       </td>
       <td>
         <button type="button" name="translateButton"
           onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', translationLanguageSelect)">🔤</button>
         <button onclick="copyTextArea(this)">✂️</button>
+        <button class="phone-button" onclick="pasteToTextArea(this)">📥</button>
         <button title="Clear The Reading List" onclick="clearReadingList(this)">🆑</button>
         <span class="readButtons">
           <select id="repeatTimeSelect" style="width: 40px;">
@@ -622,14 +629,6 @@
 
   <iframe id="jpExpWebBot" style="width:1000px; height:654px; margin-top:5px; margin-bottom:9px; display:none" src="https://ichi.moe/"></iframe>
 
-  <!--
-  <div id="enExpWeb">
-    <iframe id="enExpWebsterDict" style="width:320px; height:654px; margin-top:5px; margin-bottom:9px;" src="https://www.merriam-webster.com/dictionary/study"></iframe>
-    <iframe id="enExpVoiceTubeDict" style="width:320px; height:654px; margin-top:5px; margin-bottom:9px;" src="https://tw.voicetube.com/definition/study"></iframe>
-    <iframe id="enExpYoudaoDict" style="width:320px; height:654px; margin-top:5px; margin-bottom:9px;" src="https://www.youdao.com/m/result?word=study&lang=en"></iframe>
-  </div>
-  -->
-
   <button id="layoutContainer-button" style="margin-bottom:5px;" onclick="toggleWidgetArea('layoutContainer', this)">Layout Container ❌</button>
 
   <div class="layouts-container" id="layoutContainer" style="margin-bottom:5px; display:none">
@@ -641,7 +640,6 @@
     <button id="toggleJpExpArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpAreaFrame', this)">JpExp Text ❌</button>
     <button id="toggleJpExpWebTop-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebTop', this)">JpExp Web (↑) ❌</button>
     <button id="toggleJpExpWebBot-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebBot', this)">JpExp Web (↓) ❌</button>
-    <button id="toggleEnExpWeb-button" style="margin-right:3px;" onclick="toggleWidgetArea('enExpWeb', this)">EnExp Web 🟢</button>
     <button id="toggleApiKeyEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('apiKeyEditor', this)">ApiKey Editor ❌‍</button>
     <button id="toggleLayoutEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('layoutEditor', this)">Layout Editor ❌</button>
   </div>
@@ -1167,7 +1165,9 @@
     var historyTexts = [];
     var historyTextsMaxLength;
     var historyTextsCurrentId;
+    var favoriteHistoryTexts = [];
     var timeTextUpdated = fillArrayWithRandomValue([], topTranslationCount + 1, 1, 500000);
+    var JapanesePosId;
 
     var textStrokeColorPickers = [];
     for (let i = 0; i < 3; i++) {
@@ -1317,6 +1317,18 @@
       textarea.select();
       document.execCommand("copy");
     }
+    function pasteToTextArea(button) {
+      var textarea = button.parentNode.parentNode.querySelector('textarea');
+      if (navigator.clipboard) {
+        navigator.clipboard.readText()
+          .then(text => {
+              textarea.value = text;
+          })
+          .catch(err => {
+              console.error('Failed to read clipboard contents:', err);
+          });
+      }
+    }
     function clearTextArea(button) {
       // nextElementSibling || previousElementSibling
       var textarea = button.parentNode.parentNode.querySelector('textarea');
@@ -1457,7 +1469,7 @@
       toggleRecognition(sourceLanguage);
       setTimeout(function() {
         toggleRecognition(sourceLanguage);
-      }, 1000);
+      }, 1200);
     }
     function toggleRecord() {
       if (isRecording) {
@@ -1797,6 +1809,22 @@
       msListPlayAudio(0);
     }
 
+    function saveFavoriteTextConfigStorage() {
+      var configJSON = JSON.stringify(favoriteHistoryTexts);
+      localStorage.setItem(`snowyTranslatorTextConfig[${favID}]`, configJSON);
+    }
+    function loadFavoriteTextConfigStorage() {
+      favoriteHistoryTexts = JSON.parse(localStorage.getItem(`snowyTranslatorTextConfig[${favID}]`));
+    }
+    function addFavoriteText() {
+      favoriteHistoryTexts.push([...texts].map(element => element.innerHTML));
+      saveFavoriteTextConfigStorage();
+    }
+    function loadFavoriteText() {
+      historyTexts = favoriteHistoryTexts;
+      updateTextCurrent(historyTexts.length - 1);
+    }
+
     async function ggDetectLanguage(text) {
       const url = `https://translation.googleapis.com/language/translate/v2/detect?key=${gcpApiKey}`;
       const data = {
@@ -1898,8 +1926,9 @@
       }
       if (sourceLanguage === "ja") {
         jpExpWebUpdate(speechText);
-        var html = await japaneseExplanationServer(speechText);
-        updateTextWithFurigana(0, html);
+        // var html = await japaneseExplanationServer(speechText);
+        // updateTextWithFurigana(0, html);
+        JapanesePosId = 0;
       }
       await getTargetLanguages(sourceLanguage);
       console.log("[speechTranslate] after-> sourceLanguage:", sourceLanguage);
@@ -1921,8 +1950,9 @@
                   updateText(i, xhr.responseText);
                   if (targetLanguage === "ja") {
                     jpExpWebUpdate(xhr.responseText);
-                    var html = await japaneseExplanationServer(xhr.responseText);
-                    updateTextWithFurigana(i, html);
+                    // var html = await japaneseExplanationServer(xhr.responseText);
+                    // updateTextWithFurigana(i, html);
+                    JapanesePosId = i;
                   }
                   resolve();
                 } else {
@@ -2020,6 +2050,10 @@
         if (allTextUpdated) {
           console.log("allTextUpdated!");
           pushHistoryText();
+
+          japaneseExplanationServer(texts[JapanesePosId].textContent)
+          .then((html) => updateTextWithFurigana(JapanesePosId, html))
+          .catch((error) => console.error(error));
         }
       }
       // saveConfigStorage();
