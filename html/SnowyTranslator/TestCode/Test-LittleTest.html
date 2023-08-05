@@ -1,80 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Multiple Dictionary Word Search</title>
-    <style>
-      body {
-        margin: 0;
-      }
-    </style>
+  <title>Language Detection</title>
 </head>
 <body>
-    <h1>Multiple Dictionary Word Search</h1>
-    <div>
-      <input id="searchWordInDictInput" placeholder="Input English Word...">
-      <button id="searchWordInDictButton" onclick="searchWordInDict(this.parentNode.querySelector('input').value)">Search</button>
-    </div>
+  <h1>Language Detection</h1>
+  <textarea id="textInput" rows="10" cols="50"></textarea>
+  <button onclick="detectLanguage()">Detect Language</button>
+  <p id="result"></p>
 
-    <br>
-    <br>
+  <script type="module">
+    import { franc } from './franc.js';
 
-    <div id="enExpWeb">
-      <span id="en1DictContainer"> </span>
-      <span id="en2DictContainer"> </span>
-      <br>
-      <span id="jp10DictContainer"> </span>
-      <span id="cn1DictContainer"> </span>
-    </div>
+    function detectLanguage() {
+      const textInput = document.getElementById('textInput').value;
+      const detectedLanguage = franc(textInput);
+      const languageInfo = franc.all(textInput);
 
+      if (detectedLanguage === 'und') {
+        document.getElementById('result').innerText = 'Language detection failed. The text might be too short or contains only common words.';
+      } else {
+        document.getElementById('result').innerText = `Detected Language: ${detectedLanguage.toUpperCase()}`;
 
-    <script>
-      var dictLinks = [
-        // English dictionaries
-        "https://www.merriam-webster.com/dictionary/",
-        "https://www.thefreedictionary.com/",
-        // ❌ "https://www.ldoceonline.com/dictionary/wake",
-        // ❌ "https://www.oxfordlearnersdictionaries.com/definition/english/wake",
-        // ❌ "https://www.collinsdictionary.com/zh/dictionary/english/wake",
-
-        // English <-> Japanese Dictionaries
-        "https://www.wordreference.com/enja/",
-        // ❌ "https://ejje.weblio.jp/content/wake",
-
-        // English <-> Chinese Dictionaries
-        "https://www.wordreference.com/enzh/",
-        // ❌ "https://dictionary.cambridge.org/dictionary/english-chinese-traditional/wake",
-      ];
-      const dictContainers = document.querySelectorAll('span[id$="DictContainer"]');
-      const dictIframes = [];
-      window.onload = function () {
-        for (let i = 0; i < dictContainers.length; i++) {
-          const container = dictContainers[i];
-          const iframe = document.createElement("iframe");
-          iframe.setAttribute("style", "max-width:40%; width:40%; height:500px;");
-          iframe.setAttribute("src", dictLinks[i]);
-          iframe.setAttribute("sandbox", "allow-same-origin allow-scripts");
-          container.appendChild(iframe);
-          dictIframes.push(iframe);
-        };
+        // If you want to display more information about possible languages and their confidence:
+        // languageInfo.forEach(lang => {
+        //   document.getElementById('result').innerText += `\n${lang[0]}: ${Math.floor(lang[1] * 100)}%`;
+        // });
       }
-    </script>
-
-    <script>
-      function enterTriggersButton(inputElement) {
-        buttonElement = inputElement.parentNode.querySelector('button');
-        inputElement.addEventListener("keydown", function (event) {
-          if (event.keyCode === 13) {
-            event.preventDefault();
-            buttonElement.click();
-          }
-        });
-      }
-      enterTriggersButton(searchWordInDictInput);
-      function searchWordInDict(word) {
-        for (let i = 0; i < dictContainers.length; i++) {
-          dictIframes[i].setAttribute("src", dictLinks[i] + word);
-        }
-      }
-    </script>
+    }
+  </script>
 </body>
 </html>

@@ -141,7 +141,7 @@
       max-width: 96%;
       width: 96%;
     }
-    #readingList {
+    #readingList, #favoriteList {
       width: 800px;
     }
     @media screen and (max-width: 600px) {
@@ -205,7 +205,7 @@
         max-width: 96%;
         width: 96%;
       }
-      #readingList {
+      #readingList, #favoriteList {
         max-width: 96%;
         width: 96%;
       }
@@ -255,10 +255,9 @@
       return JSON.parse(JSON.stringify(originalConfig));
     }
     const topTranslationCount = 2;
-    var translationCount;
+    var translationCount = 2; // Make it an integer, otherwise it will be a string
     var configCounts = 3;
-    var defaultConfig =
-    {
+    var defaultConfig = {
       pageColor: "#fffafa",
       curtainColor: "#9acd32",
       texts: ["きらきらひかる、おそらのほしよ。",
@@ -279,7 +278,7 @@
       textShadowBlurRadius: [0, 0, 0], //em
       textMargins: [5, 5, 5], //px
       apiKeys: ["", "", "", ""],
-      speechOverInterval: 5000, //ms
+      speechOverInterval: 3600, //ms
       speechSplitInterval: 1000, //ms
       speechClearInterval: 360000, //ms
       translationCount: 2,
@@ -291,15 +290,20 @@
     }
     var defaultTextConfig = {
       historyTexts: [],
+      historyTextsLanguages: [],
     }
     defaultConfig.displayedTexts = [...defaultConfig.texts];
     defaultTextConfig.historyTexts.push([...defaultConfig.texts]);
+    defaultTextConfig.historyTextsLanguages.push([...defaultConfig.languages]);
     var configs = [
       {}, {}, {},
     ];
-    var configs = [
-      {}, {}, {},
-    ];
+    var textConfig = {
+      historyTexts: [],
+      historyTextsLanguages: [],
+      // favoriteHistoryTexts: [],
+      // favoriteHistoryTextsLanguages: [],
+    };
     var autoSID = 0;
     var favID = 0;
     configs[autoSID] = copyConfig(defaultConfig);
@@ -357,7 +361,7 @@
     function adjustTextAreaHeight() {
       textArea.style.height = '99px';
       var maxHeight = textArea.scrollHeight;
-      textArea.style.height = (maxHeight - 5) + 'px';
+      textArea.style.height = (maxHeight - 0) + 'px';
     }
   </script>
 
@@ -407,9 +411,9 @@
       <button style="font-size:10px;" title="Copy text of the target2 language." onclick="copyText(2)">2</button>
 
       <span style="margin-left:7px;"> </span>
-      <button id="previousText-button" title="Previous Texts" onclick="showHistoryText(historyTextsCurrentId-1);">◀️</button>
-      <button id="historyTextsDisplay" style="font-size:10px;" onclick="addFavoriteText()"> X/X </button>
-      <button id="nextText-button" title="Next Texts" onclick="showHistoryText(historyTextsCurrentId+1);">▶️</button>
+      <button id="previousText-button" title="Previous Texts" onclick="showHistoryText(configs[autoSID].historyTextsCurrentId-1);">◀️</button>
+      <button id="historyTextsIdDisplay" style="font-size:10px;" onclick="addToFavoriteList()"> X/X </button>
+      <button id="nextText-button" title="Next Texts" onclick="showHistoryText(configs[autoSID].historyTextsCurrentId+1);">▶️</button>
     </span>
     <span class="reading-buttons-container">
       <span class="reading-button-container" style="margin-left:20px;">
@@ -586,15 +590,15 @@
         <button title="Clear The Reading List" onclick="clearReadingList(this)">🆑</button>
         <span class="readButtons">
           <select id="repeatTimeSelect" style="width: 40px;">
-            <option value="1">1</option>
-            <option value="2" selected>2</option>
-            <option value="3">3</option>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="30">30</option>
-            <option value="50">50</option>
-            <option value="99">99</option>
+            <option value=1>1</option>
+            <option value=2 selected>2</option>
+            <option value=3>3</option>
+            <option value=5>5</option>
+            <option value=10>10</option>
+            <option value=20>20</option>
+            <option value=30>30</option>
+            <option value=50>50</option>
+            <option value=99>99</option>
           </select>
           <button style="font-size: 7px;" onclick="ggSpeakAllInputText(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value, repeatTimeSelect.value)">G🔊</button>
           <button style="font-size: 7px;" onclick="msSpeakAllInputText(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value, repeatTimeSelect.value)">M🔊</button>
@@ -629,32 +633,40 @@
 
   <iframe id="jpExpWebBot" style="width:1000px; height:654px; margin-top:5px; margin-bottom:9px; display:none" src="https://ichi.moe/"></iframe>
 
-  <button id="layoutContainer-button" style="margin-bottom:5px;" onclick="toggleWidgetArea('layoutContainer', this)">Layout Container ❌</button>
+  <button id="layoutContainer_LayoutButton" style="margin-bottom:5px;" onclick="toggleWidgetArea('layoutContainer', this)">Layout Container ❌</button>
 
   <div class="layouts-container" id="layoutContainer" style="margin-bottom:5px; display:none">
-    <button id="toggleRecognitionInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recognitionInputArea', this)">Recognition 🟢</button>
-    <button id="toggleRecordInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('recordInputArea', this)">Record ❌</button>
-    <button id="toggleTranslationInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('translationInputArea', this)">Translation ❌</button>
-    <button id="toggleJpExpInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpInputArea', this)">JpExp Input ❌</button>
-    <button id="toggleReadingListInputArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('readingListInputArea', this)">ReadingList 🟢</button>
-    <button id="toggleJpExpArea-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpAreaFrame', this)">JpExp Text ❌</button>
-    <button id="toggleJpExpWebTop-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebTop', this)">JpExp Web (↑) ❌</button>
-    <button id="toggleJpExpWebBot-button" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebBot', this)">JpExp Web (↓) ❌</button>
-    <button id="toggleApiKeyEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('apiKeyEditor', this)">ApiKey Editor ❌‍</button>
-    <button id="toggleLayoutEditor-button" style="margin-right:3px;" onclick="toggleWidgetArea('layoutEditor', this)">Layout Editor ❌</button>
+    <button id="toggleRecognitionInputArea_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('recognitionInputArea', this)">Recognition 🟢</button>
+    <button id="toggleRecordInputArea_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('recordInputArea', this)">Record ❌</button>
+    <button id="toggleTranslationInputArea_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('translationInputArea', this)">Translation ❌</button>
+    <button id="toggleJpExpInputArea_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpInputArea', this)">JpExp Input ❌</button>
+    <button id="toggleReadingListInputArea_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('readingListInputArea', this)">ReadingList 🟢</button>
+    <button id="toggleJpExpArea_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpAreaFrame', this)">JpExp Text ❌</button>
+    <button id="toggleJpExpWebTop_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebTop', this)">JpExp Web (↑) ❌</button>
+    <button id="toggleJpExpWebBot_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebBot', this)">JpExp Web (↓) ❌</button>
+    <button id="toggleApiKeyEditor_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('apiKeyEditor', this)">ApiKey Editor ❌‍</button>
+    <button id="toggleLayoutEditor_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('layoutEditor', this)">Layout Editor ❌</button>
+    <button id="toggleLanguageSelects_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('languageSelectsContainer', this)">Lang Selects 🟢</button>
+    <button id="toggleVoiceSelects_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('VoiceSelectsContainer', this)">Voice Selects 🟢</button>
+    <button id="toggleGlobalValues_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('globalValuesContainer', this)">Global Values 🟢</button>
   </div>
 
   <script>
     const layoutButtonsMap = new Map();
     const layoutButtonsClickedMap = new Map();
-    var layoutButtons = [];
-    layoutButtons.push(document.getElementById("layoutContainer-button"));
-    layoutButtons.push(...document.getElementById("layoutContainer").querySelectorAll('button'));
-    layoutButtons.forEach(function(button) {
-      var buttonText = button.innerHTML.substr(0, button.innerHTML.lastIndexOf(' '));
-      layoutButtonsMap.set(buttonText, button);
-      layoutButtonsClickedMap.set(buttonText, false);
-    });
+    // window.addEventListener("load", function() {} );
+    function initLayoutButtons() {
+      var layoutButtons = [];
+      // layoutButtons.push(document.getElementById("layoutContainer-button"));
+      // layoutButtons.push(...document.getElementById("layoutContainer").querySelectorAll('button'));
+      layoutButtons.push(...document.querySelectorAll('[id$="_LayoutButton"]'));
+      layoutButtons.forEach(function(button) {
+        var buttonText = button.innerHTML.substr(0, button.innerHTML.lastIndexOf(' '));
+        layoutButtonsMap.set(buttonText, button);
+        layoutButtonsClickedMap.set(buttonText, false);
+      });
+    };
+
     function updateLayoutButtonClick(buttonText) {
       var button = layoutButtonsMap.get(buttonText);
       button.click();
@@ -711,7 +723,7 @@
           <button onclick="copyApiKey(2, this)">✂️</button> &nbsp;
         </td>
       </tr>
-      <tr class="row-container-left">
+      <tr class="row-container-left" style="display:none;">
         <td style="width: 175px;"> Azure Translate Key: </td>
         <td>
           <input type="password" id="apiKeyInput-3" size="50" oninput="updateApiKey(3)"> &nbsp;
@@ -722,10 +734,35 @@
           <button onclick="copyApiKey(3, this)">✂️</button> &nbsp;
         </td>
       </tr>
+      <tr class="row-container-left">
+        <td style="width: 175px;"> API Keys Split by ',': </td>
+        <td>
+          <input type="password" id="apiKeyInput-All" size="50" oninput="updateApiKey(99, this.value)"> &nbsp;
+        </td>
+      </tr>
     </table>
   </div>
 
-  <table style="margin-bottom:5px">
+  <table style="border: none">
+    <tr class="row-container">
+      <td>
+      	<button id="defaultConfig-button" onclick="loadConfig(-1)">🆑</button>
+      	<button id="saveConfig1-button" onclick="saveConfig(1)">S1</button>
+      	<button id="loadConfig1-button" onclick="loadConfig(1)">L1</button>
+      	<button id="saveConfig2-button" onclick="saveConfig(2)">S2</button>
+      	<button id="loadConfig2-button" onclick="loadConfig(2)">L2</button>
+        <span style="margin-left:5px;"> </span>
+      	<button id="saveFavoriteConfig-button" onclick="saveConfig(99)">S♡</button>
+      	<button id="loadFavoriteConfig-button" onclick="loadConfig(99)">L♡</button>
+      </td>
+      <td>
+        <button id="clearText-button" title="Clear Texts 🆑" onclick="clearTexts();">Clear Texts</button>
+        <button id="defaultText-button" title="Default Texts 🛠️" onclick="defaultTexts();">Default Texts</button>
+      </td>
+    </tr>
+  </table>
+
+  <table id="languageSelectsContainer" style="margin-bottom:5px">
     <tr>
       <span style="display: inline-flex; width: 100%;">
         <td> Language To Recognize: </td>
@@ -749,9 +786,9 @@
       <span style="display: inline-flex; width: 100%;">
         <td> Translation Counts: </td>
         <td> <select id="translationCountSelect" onchange="toggleTranslationCount()">
-          <option value="0">No Translation</option>
-          <option value="1">One Translation</option>
-          <option value="2" selected>Two Translations</option>
+          <option value=0>No Translation</option>
+          <option value=1>One Translation</option>
+          <option value=2 selected>Two Translations</option>
         </select></td>
       </span>
     </tr>
@@ -793,7 +830,7 @@
     <tr>
   </table>
 
-  <table>
+  <table id="VoiceSelectsContainer" style="margin-bottom:5px">
     <tr>
       <td> Azure Japanese Voice:
         <select id="azureVoiceSelect-Japanese" onchange="updateAzureVoice(0)">
@@ -869,25 +906,7 @@
     <tr>
   </table>
 
-  <table style="border: none">
-    <tr class="row-container">
-      <td>
-      	<button id="defaultConfig-button" onclick="loadConfig(-1)">🆑</button>
-      	<button id="saveConfig1-button" onclick="saveConfig(1)">S1</button>
-      	<button id="loadConfig1-button" onclick="loadConfig(1)">L1</button>
-      	<button id="saveConfig2-button" onclick="saveConfig(2)">S2</button>
-      	<button id="loadConfig2-button" onclick="loadConfig(2)">L2</button>
-        <span style="margin-left:5px;"> </span>
-      	<button id="saveFavoriteConfig-button" onclick="saveConfig(99)">S♡</button>
-      	<button id="loadFavoriteConfig-button" onclick="loadConfig(99)">L♡</button>
-      </td>
-      <td>
-        <button id="clearText-button" title="Clear Texts 🆑" onclick="clearTexts();">Clear Texts</button>
-        <button id="defaultText-button" title="Default Texts 🛠️" onclick="defaultTexts();">Default Texts</button>
-      </td>
-    </tr>
-  </table>
-  <table style="border: none">
+  <table id="globalValuesContainer" style="margin-bottom:5px">
     <tr class="row-container">
       <td style="display: flex;">
         Speech Over Interval (ms):
@@ -896,14 +915,14 @@
       <td style="display: flex;">
          History Texts Max Length:
         <select id="historyTextsMaxLengthSelect" style="width: 40px;" onchange="toggleHistoryTextsMaxLength()">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="5">5</option>
-          <option value="10" selected>10</option>
-          <option value="20">20</option>
-          <option value="30">30</option>
-          <option value="50">50</option>
+          <option value=1>1</option>
+          <option value=2>2</option>
+          <option value=3>3</option>
+          <option value=5>5</option>
+          <option value=10 selected>10</option>
+          <option value=20>20</option>
+          <option value=30>30</option>
+          <option value=50>50</option>
         </select>
       </td>
       <td style="display: none;">
@@ -1162,10 +1181,8 @@
     var textFontWeightValues = document.querySelectorAll('[id^="textFontWeightValue-"]');
     var textFontFamilySelects = document.querySelectorAll('[id^="textFontSelect-"]');
     var readingSelects = document.querySelectorAll('[id^="readingSelect"]');
-    var historyTexts = [];
-    var historyTextsMaxLength;
-    var historyTextsCurrentId;
-    var favoriteHistoryTexts = [];
+
+
     var timeTextUpdated = fillArrayWithRandomValue([], topTranslationCount + 1, 1, 500000);
     var JapanesePosId;
 
@@ -1466,6 +1483,9 @@
       }
     }
     function recognizeRestart(sourceLanguage) {
+      if (!isRecognizing) {
+        return;
+      }
       toggleRecognition(sourceLanguage);
       setTimeout(function() {
         toggleRecognition(sourceLanguage);
@@ -1484,13 +1504,15 @@
     function toggleTextFurigana() {
       textFuriganaToggleButton.innerText = textFuriganaToggleButton.innerText === "🔰" ? "💤" : "🔰";
     }
-    function toggleTranslationCount(clearBoolean=true) {
-      translationCount = translationCountSelect.value;
+    function toggleTranslationCount(value=-1, clearBoolean=true) {
+      if (value === -1) value = parseInt(translationCountSelect.value, 10);
+      else translationCountSelect.value = value;
+      translationCount = value;
       if (clearBoolean) {
         clearTexts(translationCount + 1);
         defaultTexts();
       }
-      configs[autoSID].translationCount = translationCountSelect.value;
+      configs[autoSID].translationCount = parseInt(translationCountSelect.value, 10);
       saveConfigStorage();
       timeTextUpdated = fillArrayWithRandomValue([], topTranslationCount + 1, 1, 500000);
     }
@@ -1524,9 +1546,10 @@
         button.innerText = "①";
       }
     }
-    function toggleHistoryTextsMaxLength() {
-      historyTextsMaxLength = historyTextsMaxLengthSelect.value;
-      configs[autoSID].historyTextsMaxLength = historyTextsMaxLength;
+    function toggleHistoryTextsMaxLength(value=-1) {
+      if (value == -1) value = historyTextsMaxLengthSelect.value;
+      else historyTextsMaxLengthSelect.value = value;
+      configs[autoSID].historyTextsMaxLength = value;
       saveConfigStorage();
     }
 
@@ -1699,25 +1722,25 @@
       }
     }
     async function addToGgReadingList(ggAudioList, lines=1) {
-      if (targetLanguages === undefined || targetLanguages.length === 0) {
-        await getTargetLanguages();
-        console.log("targetLanguages: ", targetLanguages);
+      if (detectedLanguages === undefined || detectedLanguages.length === 0) {
+        await getDetectedLanguages();
+        console.log("detectedLanguages: ", detectedLanguages);
       }
       for (let i = 0; i < lines; i++) {
-        var url = await ggSpeakUrlGet(texts[i].textContent, targetLanguages[i]);
+        var url = await ggSpeakUrlGet(texts[i].textContent, detectedLanguages[i]);
         ggAudioList.push(url);
       }
       console.log("ggAudioList:", ggAudioList);
     }
     async function addToMsReadingList(msAudioList, lines = 1) {
-      if (targetLanguages === undefined || targetLanguages.length === 0) {
-        await getTargetLanguages();
+      if (detectedLanguages === undefined || detectedLanguages.length === 0) {
+        await getDetectedLanguages();
       }
       try {
         const accessToken = await getMsttsAccessToken();
         for (let i = 0; i < lines; i++) {
-          var MSTTS_voiceName = chooseAzureVoice(targetLanguages[i]);
-          const audioData = await getMsAudioData(texts[i].textContent, targetLanguages[i], MSTTS_voiceName, accessToken);
+          var MSTTS_voiceName = chooseAzureVoice(detectedLanguages[i]);
+          const audioData = await getMsAudioData(texts[i].textContent, detectedLanguages[i], MSTTS_voiceName, accessToken);
           msAudioList.push(audioData);
         }
         console.log("msAudioList:", msAudioList);
@@ -1728,7 +1751,6 @@
       }
     }
 
-    readlistIndexList = [];
     async function addToReadingList(ggAudioList, msAudioList, lines=1, isAutoDetect=false, languageSelect=undefined) {
       if (sourceLanguage === "") {
         sourceLanguage = "ja";
@@ -1739,33 +1761,90 @@
       for (let i = 0; i < lines; i++) {
 
         let readingListItem = document.createElement('li');
-        readingListItem.textContent = texts[i].textContent + ` - [${targetLanguages[i]}]`;
+        readingListItem.textContent = texts[i].textContent + ` - [${detectedLanguages[i]}]`;
 
-        let removeButton = document.createElement('button');
-        removeButton.textContent = '⛔';
+        let ggSpeakReadingListItemButton = document.createElement('button');
+        ggSpeakReadingListItemButton.textContent = 'G';
+        let msSpeakReadingListItemButton = document.createElement('button');
+        msSpeakReadingListItemButton.textContent = 'M';
+        let removeReadingListItemButton = document.createElement('button');
+        removeReadingListItemButton.textContent = '⛔';
+
+        let buttonContainer =  document.createElement('span');
+        buttonContainer.appendChild(ggSpeakReadingListItemButton);
+        buttonContainer.appendChild(msSpeakReadingListItemButton);
+        buttonContainer.appendChild(removeReadingListItemButton);
 
         let itemContainer = document.createElement('div');
         itemContainer.style.display = 'flex';
         itemContainer.style.justifyContent = 'space-between';
         itemContainer.appendChild(readingListItem);
-        itemContainer.appendChild(removeButton);
+        itemContainer.appendChild(buttonContainer);
 
-        readlistIndexList.push(readingList.children.length);
-        removeButton.addEventListener('click', function() {
+        removeReadingListItemButton.addEventListener('click', function() {
           const index = Array.from(readingList.children).indexOf(itemContainer);
-          console.log("removeButton-> index:", index);
-          console.log("readlistIndexList:", readlistIndexList);
-          console.log("removeButton-> readlistIndexList[index]:", readlistIndexList[index]);
-          ggAudioList.splice(readlistIndexList[index], 1);
-          msAudioList.splice(readlistIndexList[index], 1);
-          console.log("ggAudioList:", ggAudioList);
-          console.log("msAudioList:", msAudioList);
+          ggAudioList.splice(index, 1);
+          msAudioList.splice(index, 1);
           itemContainer.remove();
+        });
+        ggSpeakReadingListItemButton.addEventListener('click', function() {
+          const index = Array.from(readingList.children).indexOf(itemContainer);
+          ggSpeakSingleAudioOfList(index);
+        });
+        msSpeakReadingListItemButton.addEventListener('click', function() {
+          const index = Array.from(readingList.children).indexOf(itemContainer);
+          msSpeakSingleAudioOfList(index);
         });
 
         readingList.appendChild(itemContainer);
       }
     }
+    function sentenceSplit(sentence) {
+      var values = sentence.split(' - [');
+      var text = values[0];
+      var language = values[1].slice(0, -1);
+      return [text, language];
+    }
+    function addToFavoriteList() {
+      for (let i = 0; i <= topTranslationCount; i++) {
+
+        let favoriteListItem = document.createElement('li');
+        favoriteListItem.textContent = texts[i].textContent + ` - [${detectedLanguages[i]}]`;
+
+        let ggSpeakFavoriteListItemButton = document.createElement('button');
+        ggSpeakFavoriteListItemButton.textContent = 'G';
+        let msSpeakFavoriteListItemButton = document.createElement('button');
+        msSpeakFavoriteListItemButton.textContent = 'M';
+        let removeFavoriteListItemButton = document.createElement('button');
+        removeFavoriteListItemButton.textContent = '⛔';
+
+        let buttonContainer =  document.createElement('span');
+        // buttonContainer.appendChild(ggSpeakFavoriteListItemButton);
+        // buttonContainer.appendChild(msSpeakFavoriteListItemButton);
+        buttonContainer.appendChild(removeFavoriteListItemButton);
+
+        let itemContainer = document.createElement('div');
+        itemContainer.style.display = 'flex';
+        itemContainer.style.justifyContent = 'space-between';
+        itemContainer.appendChild(favoriteListItem);
+        itemContainer.appendChild(buttonContainer);
+
+        removeFavoriteListItemButton.addEventListener('click', function() {
+          const index = Array.from(favoriteList.children).indexOf(itemContainer);
+          itemContainer.remove();
+        });
+        ggSpeakFavoriteListItemButton.addEventListener('click', function() {
+          const index = Array.from(favoriteList.children).indexOf(itemContainer);
+          ggSpeak(...sentenceSplit(favoriteListItem.textContent));
+        });
+        msSpeakFavoriteListItemButton.addEventListener('click', function() {
+          const index = Array.from(favoriteList.children).indexOf(itemContainer);
+          msSpeak(...sentenceSplit(favoriteListItem.textContent));
+        });
+        favoriteList.appendChild(itemContainer);
+      }
+    }
+
     async function ggSpeakReadingList(ggAudioList, repeatTime) {
       if (ggSpeakAudio) {
         ggSpeakAudio.pause();
@@ -1786,6 +1865,14 @@
       ggSpeakAudio.src = ggAudioList[currentAudioIndex];
       ggSpeakAudio.play();
     }
+    async function ggSpeakSingleAudioOfList(index) {
+      if (ggSpeakAudio) {
+        ggSpeakAudio.pause();
+      }
+      ggSpeakAudio.src = ggAudioList[index];
+      ggSpeakAudio.play();
+    }
+
     async function msSpeakReadingList(msAudioList, repeatTime) {
       if (msSpeakAudio) {
         msSpeakAudio.pause();
@@ -1808,6 +1895,16 @@
       }
       msListPlayAudio(0);
     }
+    async function msSpeakSingleAudioOfList(index) {
+      if (msSpeakAudio) {
+        msSpeakAudio.pause();
+      }
+      var audioDataCopy = msAudioList[index].slice();
+      const audioData = msAudioList[index];
+      const audioBlob = new Blob([audioData], { type: 'audio/mpeg' });
+      msSpeakAudio.src = URL.createObjectURL(audioBlob);
+      msSpeakAudio.play();
+    }
 
     function saveFavoriteTextConfigStorage() {
       var configJSON = JSON.stringify(favoriteHistoryTexts);
@@ -1817,12 +1914,16 @@
       favoriteHistoryTexts = JSON.parse(localStorage.getItem(`snowyTranslatorTextConfig[${favID}]`));
     }
     function addFavoriteText() {
+      for (let i = 0; i <= translationCount; i++) {
+
+      }
       favoriteHistoryTexts.push([...texts].map(element => element.innerHTML));
       saveFavoriteTextConfigStorage();
     }
     function loadFavoriteText() {
-      historyTexts = favoriteHistoryTexts;
-      updateTextCurrent(historyTexts.length - 1);
+      textConfig.historyTexts = textConfig.favoriteHistoryTexts;
+      textConfig.historyTextsLanguages = textConfig.favoriteHistoryTextsLanguages;
+      updateHistoryTextCurrentId(textConfig.historyTexts.length - 1);
     }
 
     async function ggDetectLanguage(text) {
@@ -1856,10 +1957,15 @@
 
     async function autoDetectTranslate(text, languageSelect=undefined) {
       console.log("autoDetectTranslate:", text);
+      var sourceLanguage;
       if (gcpApiKey !== "") {
         sourceLanguage = await ggDetectLanguage(text);
       }
+      else if (languageSelect != undefined) {
+        sourceLanguage = languageSelect.value;
+      }
       else {
+        sourceLanguage = languageSelects[0].value;
       }
       console.log("autoDetectTranslate() sourceLanguage:", sourceLanguage);
       if (languageSelect !== undefined) {
@@ -1885,18 +1991,18 @@
       }
     }
 
-    var targetLanguages;
-    async function getTargetLanguages(sourceLanguage="") {
+    var detectedLanguages;
+    async function getDetectedLanguages(sourceLanguage="") {
       if (sourceLanguage === "") {
-        sourceLanguage = await ggDetectLanguage(texts[0].textContent);
+        sourceLanguage = await autoDetectTranslate(texts[0].textContent);
       }
-      targetLanguages = [];
-      targetLanguages.push(sourceLanguage);
+      detectedLanguages = [];
+      detectedLanguages.push(sourceLanguage);
       for (let i = 0; i <= topTranslationCount; i++) {
         if (languageSelects[i].value != sourceLanguage) {
-          targetLanguages.push(languageSelects[i].value);
+          detectedLanguages.push(languageSelects[i].value);
         }
-        readingSelects[i].value = targetLanguages[i];
+        readingSelects[i].value = detectedLanguages[i];
       }
     }
 
@@ -1930,13 +2036,13 @@
         // updateTextWithFurigana(0, html);
         JapanesePosId = 0;
       }
-      await getTargetLanguages(sourceLanguage);
+      await getDetectedLanguages(sourceLanguage);
       console.log("[speechTranslate] after-> sourceLanguage:", sourceLanguage);
-      console.log("[speechTranslate] after-> targetLanguages:", targetLanguages);
+      console.log("[speechTranslate] after-> detectedLanguages:", detectedLanguages);
       if (googleScriptKey != null && googleScriptKey != "") {
         const requestsPromises = [];
         for (let i = 1; i <= translationCount; i++) {
-          const targetLanguage = targetLanguages[i];
+          const targetLanguage = detectedLanguages[i];
           const promise = new Promise((resolve, reject) => {
             const query = `https://script.google.com/macros/s/${googleScriptKey}/exec?`
               + `text=${speechText}`
@@ -1992,20 +2098,19 @@
       localStorage.setItem('snowyTranslatorConfig', configJSON);
     }
     function saveTextConfigStorage(configID) {
-      var configJSON = JSON.stringify(historyTexts);
+      var configJSON = JSON.stringify(textConfig);
       localStorage.setItem(`snowyTranslatorTextConfig[${configID}]`, configJSON);
     }
     function loadConfigStorage() {
+      console.log("loadConfigStorage():");
       if (localStorage.getItem('snowyTranslatorConfig')) {
         configs = JSON.parse(localStorage.getItem('snowyTranslatorConfig'));
-        // console.log("loadConfigStorage() configs:", configs);
       }
     }
     function loadTextConfigStorage(configID) {
-      console.log("loadTextConfigStorage:");
+      console.log("loadTextConfigStorage():");
       if (localStorage.getItem(`snowyTranslatorTextConfig[${configID}]`)) {
-        historyTexts = JSON.parse(localStorage.getItem(`snowyTranslatorTextConfig[${configID}]`));
-        saveTextConfigStorage(autoSID);
+        textConfig = JSON.parse(localStorage.getItem(`snowyTranslatorTextConfig[${configID}]`));
       }
     }
     function updatePageColor(color = "") {
@@ -2032,11 +2137,11 @@
       saveConfigStorage();
     }
     function updateText(id, speechText, isNotHistoryText=true) {
+      texts[id].innerHTML = speechText;
       texts[id].textContent = speechText;
       configs[autoSID].texts[id] = speechText;
       updateDisplayedText(id, speechText);
       timeTextUpdated[id] += 1;
-      // typeof translationCount is string
       if (speechText.trim() !== "" && isNotHistoryText) {
         var allTextUpdated = true;
         console.log("timeTextUpdated:", timeTextUpdated);
@@ -2051,52 +2156,47 @@
           console.log("allTextUpdated!");
           pushHistoryText();
 
-          japaneseExplanationServer(texts[JapanesePosId].textContent)
-          .then((html) => updateTextWithFurigana(JapanesePosId, html))
-          .catch((error) => console.error(error));
+          // console.log("texts[JapanesePosId]", texts[JapanesePosId]);
+          if (textFuriganaToggleButton.innerText === "🔰") {
+            setTimeout(() => {
+              japaneseExplanationServer(texts[JapanesePosId].textContent)
+              .then((html) => updateTextWithFurigana(JapanesePosId, html))
+              .catch((error) => console.error(error));
+            }, 500);
+          }
         }
       }
       // saveConfigStorage();
     }
-    function updateTextCurrent(pos) {
-      historyTextsCurrentId = pos;
+    function updateHistoryTextCurrentId(pos) {
       configs[autoSID].historyTextsCurrentId = pos;
-      historyTextsDisplay.innerHTML = `${historyTextsCurrentId + 1}/${historyTexts.length}`;
+      historyTextsIdDisplay.innerHTML = `${pos + 1}/${textConfig.historyTexts.length}`;
+      saveConfigStorage();
     }
     function pushHistoryText() {
-      if (historyTexts.length > 0) {
-        var isSameText = true;
-        for (let i = 0; i <= topTranslationCount; i++) {
-          if (historyTexts[historyTexts.length - 1][i] !== texts[i].textContent) {
-            isSameText = false;
-            break;
-          }
-        }
-        if (isSameText) return;
+      if (textConfig.historyTexts.length > 0 && textConfig.historyTexts[textConfig.historyTexts.length - 1][0] === texts[0].textContent) {
+          return;
       }
-      historyTexts.push([...texts].map(element => element.innerHTML));
-      while (historyTexts.length > historyTextsMaxLength) {
-        historyTexts.shift();
+      textConfig.historyTexts.push([...texts].map(element => element.textContent));
+      textConfig.historyTextsLanguages.push([...detectedLanguages]);
+      while (textConfig.historyTexts.length > configs[autoSID].historyTextsMaxLength) {
+        textConfig.historyTexts.shift();
       }
-      updateTextCurrent(historyTexts.length - 1);
-      // configs[autoSID].historyTexts = historyTexts.map(innerArr => [...innerArr]);
+      updateHistoryTextCurrentId(textConfig.historyTexts.length - 1);
       saveTextConfigStorage(autoSID);
     }
     function showHistoryText(index) {
-      if (index < 0 || index >= historyTexts.length) {
+      if (index < 0 || index >= textConfig.historyTexts.length) {
         return;
       }
-      updateTextCurrent(index);
-      // saveConfigStorage();
+      updateHistoryTextCurrentId(index);
       for (let i = 0; i <= translationCount; i++) {
-        updateText(i, historyTexts[index][i], false);
+        updateText(i, textConfig.historyTexts[index][i], false);
       }
     }
     function updateTextWithFurigana(id, htmlText) {
-      if (textFuriganaToggleButton.innerText === "🔰") {
-        displayedTexts[id].innerHTML = htmlText;
-        displayedTexts[id].setAttribute('stroke-data', "");
-      }
+      displayedTexts[id].innerHTML = htmlText;
+      displayedTexts[id].setAttribute('stroke-data', "");
     }
     function copyText(id) {
       var text = document.getElementById(`text-${id}`).textContent;
@@ -2188,6 +2288,15 @@
       saveConfigStorage();
     }
     function updateApiKey(id, value="") {
+      if (id === 99) {
+        console.log("value:", value);
+        let values = value.replace(/[^\w-,]/g, '').split(',');
+        console.log("values:", values);
+        for (let i = 0; i < 4; i++) {
+          if (values.length >= i + 1) updateApiKey(i, values[i]);
+        }
+        return;
+      }
       if (value === "") value = apiKeyInputs[id].value;
       else apiKeyInputs[id].value = value;
       configs[autoSID].apiKeys[id] = value;
@@ -2237,14 +2346,16 @@
       configs[configID].speechOverInterval = speechOverInterval.value;
       configs[configID].speechSplitInterval = speechSplitInterval.value;
       configs[configID].speechClearInterval = speechClearInterval.value;
-      configs[configID].translationCount = translationCountSelect.value;
+      configs[configID].translationCount = parseInt(translationCountSelect.value, 10);
       configs[configID].languages = [...languageSelects].map(element => element.value);
       configs[configID].azureVoices = [...azureVoiceSelects].map(element => element.value);
       configs[configID].layoutButtonsClickedList = saveMap(layoutButtonsClickedMap);
       saveConfigStorage();
-      // configs[configID].historyTexts = historyTexts.map(innerArr => [...innerArr]);
-      configs[configID].historyTextsMaxLength = historyTextsMaxLength;
-      configs[configID].historyTextsCurrentId = historyTextsCurrentId;
+      configs[configID].historyTextsMaxLength = configs[autoSID].historyTextsMaxLength;
+      configs[configID].historyTextsCurrentId = configs[autoSID].historyTextsCurrentId;
+
+      console.log("configs[configID].historyTextsCurrentId:", configs[configID].historyTextsCurrentId);
+
       saveConfigStorage();
       saveTextConfigStorage(configID);
       console.log(`Save Config (${configID}) Finished.`);
@@ -2252,33 +2363,29 @@
     function loadConfig(configID) {
       loadConfigStorage();
       if (configID === -1) {
-        historyTexts = defaultTextConfig.historyTexts.map(innerArr => [...innerArr]);
-        saveTextConfigStorage(autoSID);
         configs[autoSID] = copyConfig(defaultConfig);
         configID = autoSID;
+        textConfig = copyConfig(defaultTextConfig);
       }
-      else loadTextConfigStorage(configID);
+      else {
+        loadTextConfigStorage(configID);
+      }
 
+      saveTextConfigStorage(autoSID);
       console.log(`Load Config (${configID}) ing...`);
+
+      toggleTranslationCount(configs[configID].translationCount);
+
       updatePageColor(configs[configID].pageColor);
       updateCurtainColor(configs[configID].curtainColor);
       updateIntegerValue("speechOverInterval", configs[configID].speechOverInterval);
       updateIntegerValue("speechSplitInterval", configs[configID].speechSplitInterval);
       updateIntegerValue("speechClearInterval", configs[configID].speechClearInterval);
-      updateIntegerValue("translationCountSelect", configs[configID].translationCount);
-      translationCount = configs[configID].translationCount;
-      toggleTranslationCount(false);
-
-      historyTextsMaxLength = configs[configID].historyTextsMaxLength;
-      configs[autoSID].historyTextsMaxLength = historyTextsMaxLength;
-      historyTextsMaxLengthSelect.value = historyTextsMaxLength;
-
-      historyTextsCurrentId = configs[configID].historyTextsCurrentId;
-      configs[autoSID].historyTextsCurrentId = historyTextsCurrentId;
-      updateTextCurrent(historyTextsCurrentId);
+      toggleTranslationCount(configs[configID].translationCount);
+      toggleHistoryTextsMaxLength(configs[configID].historyTextsMaxLength);
+      showHistoryText(configs[configID].historyTextsCurrentId, false);
 
       for (let i = 0; i <= translationCount; i++) {
-        updateText(i, configs[configID].texts[i], false);
         updateFontColor(i, configs[configID].textFontColors[i]);
         updateFontSize(i, configs[configID].textFontSizes[i]);
         updateFontWeight(i, configs[configID].textFontWeights[i]);
@@ -2293,10 +2400,10 @@
         updateAzureVoice(i, configs[configID].azureVoices[i]);
       }
       for (let i = 0; i < apiKeyInputs.length; i++) {
-        if (configs[configID].apiKeys[i] !== "") {
+        if (configs[configID].apiKeys[i] != "") {
           updateApiKey(i, configs[configID].apiKeys[i]);
         }
-        else if (apiKeyInputs[i].value !== "") {
+        else if (apiKeyInputs[i].value != "") {
           updateApiKey(i);
         }
       }
@@ -2433,7 +2540,7 @@
         return data.result;
       } catch (error) {
         console.error('Error:', error);
-        return "japaneseExplanationServer [ERROR]";
+        return text + "🌐🚨";
       }
     }
     function japaneseExplanationEntrance(text) {
@@ -2451,27 +2558,18 @@
       }
     }
   </script>
-  <script>
-    function updateScreenWidth() {
-      const screenWidth = window.innerWidth || document.documentElement.clientWidth;
-      console.log("screenWidth:", screenWidth);
-    }
-    updateScreenWidth();
-    window.addEventListener('resize', updateScreenWidth);
-  </script>
-  <script>
-    var clearConfigs = false;
-    if (clearConfigs) {
-      localStorage.removeItem('snowyTranslatorConfig');
-      for (let configID = 0; configID <= 2; configID++) {
-        localStorage.removeItem(`snowyTranslatorTextConfig[${configID}]`);
-      }
-      // localStorage.clear();
-    }
-    loadConfig(autoSID);
-  </script>
 
-  <span style="display: none">
+  <span class="row-container">
+    <button id="readingList_LayoutButton" style="margin-bottom:5px;" onclick="toggleWidgetArea('readingList', this)">Reading List ❌</button>
+    <span style="margin-left:10px;"></span>
+    <button id="favoriteList_LayoutButton" style="margin-bottom:5px;" onclick="toggleWidgetArea('favoriteList', this)">Favorite List ❌</button>
+  </span>
+
+  <ul id="readingList" style="display:none"></ul>
+  <span id="readingListTotalCount"></span>
+  <ul id="favoriteList" style="display:none"></ul>
+
+  <span style="display: block">
     <ul id="speechTextList"></ul>
     <span id="speechTextListTotalCount"></span>
     <span id="speechTextListCurrentID"></span>
@@ -2484,14 +2582,37 @@
       <ruby> 自分<rt>じぶん</rt> で &nbsp; </ruby>
       <ruby> このサイトを<rt>.</rt> &nbsp; </ruby>
       <ruby> 作<rt>つく</rt> った &nbsp; </ruby>
+      <ruby> by snowy_smile <rt>.</rt> </ruby>
     </div>
 
-    <a href="https://wicg.github.io/speech-api" target="_blank">Speech Recognition</a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">Web HTML Study</a>
+    <span style="display: none">
+      <a href="https://wicg.github.io/speech-api" target="_blank">Speech Recognition</a>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">Web HTML Study</a>
+    </span>
   </span>
 
-  <ul id="readingList"></ul>
-  <span id="readingListTotalCount"></span>
+  <script>
+    function updateScreenWidth() {
+      const screenWidth = window.innerWidth || document.documentElement.clientWidth;
+      console.log("screenWidth:", screenWidth);
+    }
+    window.addEventListener('resize', updateScreenWidth);
+    // updateScreenWidth();
+  </script>
+
+  <script> // Start
+    var clearConfigs = false;
+    if (clearConfigs) {
+      localStorage.removeItem('snowyTranslatorConfig');
+      for (let configID = 0; configID <= 2; configID++) {
+        localStorage.removeItem(`snowyTranslatorTextConfig[${configID}]`);
+      }
+      // localStorage.clear();
+    }
+    initLayoutButtons();
+    loadConfig(autoSID);
+    getDetectedLanguages();
+  </script>
 
 </body>
 </html>
