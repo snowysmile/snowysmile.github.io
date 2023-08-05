@@ -1974,7 +1974,7 @@
     async function autoDetectTranslate(text, languageSelect=undefined) {
       console.log("AutoDetectTranslate:", text);
       var sourceLanguage;
-      if (gcpApiKey !== undefined && gcpApiKey != "") {
+      if (gcpApiKey) {
         sourceLanguage = await ggDetectLanguage(text);
         // console.log("ggDetectLanguage():", sourceLanguage);
       }
@@ -2000,7 +2000,7 @@
 
     function ggTranslate(text) {
       var text = $("#inputArea").val();
-      if (googleScriptKey != null && googleScriptKey != "") {
+      if (googleScriptKey) {
         query = `https://script.google.com/macros/s/${googleScriptKey}/exec?`
           + `text=${text}`
           + `&source=${sourceLanguage}`
@@ -2424,10 +2424,10 @@
         updateAzureVoice(i, configs[configID].azureVoices[i]);
       }
       for (let i = 0; i < apiKeyInputs.length; i++) {
-        if (configs[configID].apiKeys[i] != "") {
+        if (configs[configID].apiKeys[i]) {
           updateApiKey(i, configs[configID].apiKeys[i]);
         }
-        else if (apiKeyInputs[i].value != "") {
+        else if (apiKeyInputs[i].value) {
           updateApiKey(i);
         }
       }
