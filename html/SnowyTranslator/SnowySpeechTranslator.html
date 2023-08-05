@@ -459,7 +459,7 @@
             <button name="languageDetectButton" id="recognizeLangDetectToggleButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">🤔</button>
             <button id="oneSentenceRecognizeToggleButton" title="① To Recognize A Single Sentence; 〜 Is Nonstop Detection" onclick="toggleOneSentenceRecognize(this)">①</button>
         </span>
-        <button class="phone-button" onclick="toggleWidgetArea('recognitionInputArea', document.getElementById('toggleRecognitionInputArea-button'))">⛔</button>
+        <button class="phone-button" onclick="toggleWidgetArea('recognitionInputArea', document.getElementById('toggleRecognitionInputArea_LayoutButton'))">⛔</button>
       </td>
       <td>
         <textarea id="recognitionResult" rows="2" cols="71"></textarea>
@@ -490,7 +490,7 @@
           </select>
           <button name="languageDetectButton" id="recordLangDetectToggleButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">🤔</button>
         </span>
-        <button class="phone-button" onclick="toggleWidgetArea('recordInputArea', document.getElementById('toggleRecordInputArea-button'))">⛔</button>
+        <button class="phone-button" onclick="toggleWidgetArea('recordInputArea', document.getElementById('toggleRecordInputArea_LayoutButton'))">⛔</button>
       </td>
       <td>
         <textarea id="recordResult" rows="2" cols="75"></textarea>
@@ -517,7 +517,7 @@
           </select>
           <button name="languageDetectButton" id="translateLangDetectToggleButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">🤔</button>
         </span>
-        <button class="phone-button" onclick="toggleWidgetArea('translationInputArea', document.getElementById('toggleTranslationInputArea-button'))">⛔</button>
+        <button class="phone-button" onclick="toggleWidgetArea('translationInputArea', document.getElementById('toggleTranslationInputArea_LayoutButton'))">⛔</button>
       </td>
       <td>
         <textarea id="translateInput" rows="2" cols="75"></textarea>
@@ -543,7 +543,7 @@
               <option value="ja" selected>🇯🇵</option>
             </select>
           </span>
-          <button type="button" class="phone-button" onclick="toggleWidgetArea('jpExpInputArea', document.getElementById('toggleJpExpInputArea-button'))">⛔</button>
+          <button type="button" class="phone-button" onclick="toggleWidgetArea('jpExpInputArea', document.getElementById('toggleJpExpInputArea_LayoutButton'))">⛔</button>
         </td>
         <td>
           <textarea id="jpExpInput" rows="2" cols="80"></textarea>
@@ -577,7 +577,7 @@
           </select>
           <button name="languageDetectButton" id="readLangDetectToggleButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">🤔</button>
         </span>
-        <button class="phone-button" onclick="toggleWidgetArea('readingListInputArea', document.getElementById('toggleReadingListInputArea-button'))">⛔</button>
+        <button class="phone-button" onclick="toggleWidgetArea('readingListInputArea', document.getElementById('toggleReadingListInputArea_LayoutButton'))">⛔</button>
       </td>
       <td>
         <textarea id="readingListInput" rows="2" cols="73"></textarea>
@@ -919,8 +919,8 @@
           <option value=2>2</option>
           <option value=3>3</option>
           <option value=5>5</option>
-          <option value=10 selected>10</option>
-          <option value=20>20</option>
+          <option value=10>10</option>
+          <option value=20 selected>20</option>
           <option value=30>30</option>
           <option value=50>50</option>
         </select>
@@ -1305,7 +1305,17 @@
     var recordButton = document.getElementById("record-button");
     var isRecognizing = false;
     var isRecording = false;
-    var recognition = new webkitSpeechRecognition();
+    var recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    /*
+    var recognition;
+    if ('webkitSpeechRecognition' in window) {
+      recognition = new webkitSpeechRecognition();
+    } else if ('SpeechRecognition' in window) {
+      recognition = new SpeechRecognition();
+    } else {
+      alert("Speech recognition is not supported in this browser.");
+    }
+    */
     var xmlRequest = new XMLHttpRequest();
     var requests = [];
     for (let i = 0; i < topTranslationCount; i++) {
