@@ -1722,25 +1722,25 @@
       }
     }
     async function addToGgReadingList(ggAudioList, lines=1) {
-      if (detectedLanguages === undefined || detectedLanguages.length === 0) {
-        await getDetectedLanguages();
-        console.log("detectedLanguages: ", detectedLanguages);
-      }
+      /* if (targetLanguages === undefined || targetLanguages.length === 0) {
+        await getTargetLanguages();
+        console.log("targetLanguages: ", targetLanguages);
+      }*/
       for (let i = 0; i < lines; i++) {
-        var url = await ggSpeakUrlGet(texts[i].textContent, detectedLanguages[i]);
+        var url = await ggSpeakUrlGet(texts[i].textContent, readingSelects[i].value);
         ggAudioList.push(url);
       }
       console.log("ggAudioList:", ggAudioList);
     }
     async function addToMsReadingList(msAudioList, lines = 1) {
-      if (detectedLanguages === undefined || detectedLanguages.length === 0) {
-        await getDetectedLanguages();
-      }
+      /* if (targetLanguages === undefined || targetLanguages.length === 0) {
+        await getTargetLanguages();
+      } */
       try {
         const accessToken = await getMsttsAccessToken();
         for (let i = 0; i < lines; i++) {
-          var MSTTS_voiceName = chooseAzureVoice(detectedLanguages[i]);
-          const audioData = await getMsAudioData(texts[i].textContent, detectedLanguages[i], MSTTS_voiceName, accessToken);
+          var MSTTS_voiceName = chooseAzureVoice(readingSelects[i].value);
+          const audioData = await getMsAudioData(texts[i].textContent, readingSelects[i].value, MSTTS_voiceName, accessToken);
           msAudioList.push(audioData);
         }
         console.log("msAudioList:", msAudioList);
@@ -1752,16 +1752,12 @@
     }
 
     async function addToReadingList(ggAudioList, msAudioList, lines=1, isAutoDetect=false, languageSelect=undefined) {
-      if (sourceLanguage === "") {
-        sourceLanguage = "ja";
-      }
-      // await speechTranslate(text, sourceLanguage, isAutoDetect, languageSelect);
       await addToGgReadingList(ggAudioList, lines);
       await addToMsReadingList(msAudioList, lines);
       for (let i = 0; i < lines; i++) {
 
         let readingListItem = document.createElement('li');
-        readingListItem.textContent = texts[i].textContent + ` - [${detectedLanguages[i]}]`;
+        readingListItem.textContent = texts[i].textContent + ` - [${readingSelects[i].value}]`;
 
         let ggSpeakReadingListItemButton = document.createElement('button');
         ggSpeakReadingListItemButton.textContent = 'G';
@@ -1809,7 +1805,7 @@
       for (let i = 0; i <= topTranslationCount; i++) {
 
         let favoriteListItem = document.createElement('li');
-        favoriteListItem.textContent = texts[i].textContent + ` - [${detectedLanguages[i]}]`;
+        favoriteListItem.textContent = texts[i].textContent + ` - [${targetLanguages[i]}]`;
 
         let ggSpeakFavoriteListItemButton = document.createElement('button');
         ggSpeakFavoriteListItemButton.textContent = 'G';
@@ -1955,48 +1951,45 @@
       }
     }
 
-    function detectLanguageFromMyServer() {
-      const text = document.getElementById('text-input').value;
-      fetch('http://localhost:3001/detect-language', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ text: text })
-      })
-      .then(response => response.json())
-      .then(data => {
-        const languageResult = document.getElementById('language-result');
-        if (data.language) {
-          return data.language;
-        } else {
-          console.log("Language Detection Failed");
-          return "en";
-        }
-      })
-      .catch(error => {
-        console.log("Language Detection: ", error.message);
-      });
+    async function detectLanguageFromMyServer(text) {
+      try {
+        // const response = await fetch('http://localhost:3001/detect-language', {
+        const response = await fetch('https://snsmile.site:3001/detect-language', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            text: text
+          })
+        })
+        const data = await response.json();
+        return data.language;
+      } catch (error) {
+       console.error('Error:', error);
+       return text + "🌐🚨";
+      }
     }
 
     async function autoDetectTranslate(text, languageSelect=undefined) {
       console.log("autoDetectTranslate:", text);
       var sourceLanguage;
-      if (gcpApiKey !== "") {
+      if (gcpApiKey !== undefined && gcpApiKey != "") {
         sourceLanguage = await ggDetectLanguage(text);
+        // console.log("ggDetectLanguage():", sourceLanguage);
       }
       else {
-
+        sourceLanguage = await detectLanguageFromMyServer(text);
+        console.log("detectLanguageFromMyServer():", sourceLanguage);
       }
-
-      /*
-      if (languageSelect != undefined) {
-        sourceLanguage = languageSelect.value;
+      if (sourceLanguage === undefined || sourceLanguage === "") {
+        if (languageSelect != undefined) {
+          sourceLanguage = languageSelect.value;
+        }
+        else {
+          sourceLanguage = languageSelects[0].value;
+        }
       }
-      else {
-        sourceLanguage = languageSelects[0].value;
-      }
-      */
 
       console.log("autoDetectTranslate() sourceLanguage:", sourceLanguage);
       if (languageSelect !== undefined) {
@@ -2022,18 +2015,18 @@
       }
     }
 
-    var detectedLanguages;
-    async function getDetectedLanguages(sourceLanguage="") {
+    var targetLanguages;
+    async function getTargetLanguages(sourceLanguage="") {
       if (sourceLanguage === "") {
         sourceLanguage = await autoDetectTranslate(texts[0].textContent);
       }
-      detectedLanguages = [];
-      detectedLanguages.push(sourceLanguage);
+      targetLanguages = [];
+      targetLanguages.push(sourceLanguage);
       for (let i = 0; i <= topTranslationCount; i++) {
         if (languageSelects[i].value != sourceLanguage) {
-          detectedLanguages.push(languageSelects[i].value);
+          targetLanguages.push(languageSelects[i].value);
         }
-        readingSelects[i].value = detectedLanguages[i];
+        readingSelects[i].value = targetLanguages[i];
       }
     }
 
@@ -2067,13 +2060,13 @@
         // updateTextWithFurigana(0, html);
         JapanesePosId = 0;
       }
-      await getDetectedLanguages(sourceLanguage);
+      await getTargetLanguages(sourceLanguage);
       console.log("[speechTranslate] after-> sourceLanguage:", sourceLanguage);
-      console.log("[speechTranslate] after-> detectedLanguages:", detectedLanguages);
+      console.log("[speechTranslate] after-> targetLanguages:", targetLanguages);
       if (googleScriptKey != null && googleScriptKey != "") {
         const requestsPromises = [];
         for (let i = 1; i <= translationCount; i++) {
-          const targetLanguage = detectedLanguages[i];
+          const targetLanguage = targetLanguages[i];
           const promise = new Promise((resolve, reject) => {
             const query = `https://script.google.com/macros/s/${googleScriptKey}/exec?`
               + `text=${speechText}`
@@ -2177,7 +2170,6 @@
         var allTextUpdated = true;
         console.log("timeTextUpdated:", timeTextUpdated);
         for (let i = 1; i <= translationCount; i++) {
-          console.log(`timeTextUpdated(${i})`, timeTextUpdated[i]);
           if (timeTextUpdated[i] != timeTextUpdated[0]) {
             allTextUpdated = false;
             break;
@@ -2209,7 +2201,7 @@
           return;
       }
       textConfig.historyTexts.push([...texts].map(element => element.textContent));
-      textConfig.historyTextsLanguages.push([...detectedLanguages]);
+      textConfig.historyTextsLanguages.push([...targetLanguages]);
       while (textConfig.historyTexts.length > configs[autoSID].historyTextsMaxLength) {
         textConfig.historyTexts.shift();
       }
@@ -2223,6 +2215,7 @@
       updateHistoryTextCurrentId(index);
       for (let i = 0; i <= translationCount; i++) {
         updateText(i, textConfig.historyTexts[index][i], false);
+        readingSelects[i].value = textConfig.historyTextsLanguages[index][i];
       }
     }
     function updateTextWithFurigana(id, htmlText) {
@@ -2449,7 +2442,6 @@
       if (Array.isArray(configs[configID].layoutButtonsClickedList)) {
         configs[configID].layoutButtonsClickedList.forEach((key) => {
           updateLayoutButtonClick(key);
-          console.log("configs[configID].layoutButtonsClickedList:", key);
         });
       }
       console.log(`Load Config (${configID}) Finsihed.`);
@@ -2555,8 +2547,8 @@
         text = $('#jpExpInput').val();
       }
       try {
-          const response = await fetch('https://snsmile.site:3001/furigana', {
           // const response = await fetch('http://localhost:3001/furigana', {
+          const response = await fetch('https://snsmile.site:3001/furigana', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -2642,7 +2634,6 @@
     }
     initLayoutButtons();
     loadConfig(autoSID);
-    getDetectedLanguages();
   </script>
 
 </body>

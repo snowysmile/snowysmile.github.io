@@ -34,6 +34,15 @@ def process_furigana():
     loop.close()
     return jsonify(result=result)
 
+@app.route('/detect-language', methods=['POST'])
+def process_detect_language():
+    text = request.json.get('text')
+    print("process_detect_language text:", text)
+    loop = asyncio.new_event_loop()
+    language = loop.run_until_complete(detect_language(text))
+    loop.close()
+    return jsonify(language=language)
+
 async def ichimoe_japanese_split(text):
     inner_html = ""
     try:
@@ -138,29 +147,26 @@ async def ichimoe_japanese_furigana(text):
         return f"japanese_split: an error occurred: {str(e)}"
 
 
-@app.route('/detect-language', methods=['POST'])
-def detect_language():
-    data = request.get_json()
-    if 'text' in data:
-        text = data['text']
-        try:
-            # from langdetect import detect
-            # lang = detect(text)
+async def detect_language(text):
+    print("detect_language() text:", text)
 
-            # from pyfranc import franc
-            lang = franc.lang_detect(text)[0][0]
+    # from langdetect import detect
+    # lang = detect(text)
 
-            return jsonify({'language': lang}), 200
-        except Exception as e:
-            return jsonify({'error': 'Language detection failed'}), 500
-    else:
-        return jsonify({'error': 'Text parameter is missing'}), 400
-
+    # from pyfranc import franc
+    lang = franc.lang_detect(text, minlength=1, whitelist=['jpn', 'eng', 'cmn'])[0][0]
+    if lang == "cmn":
+        lang = "zh-TW"
+    elif lang == "eng":
+        lang = "en"
+    elif lang == "jpn":
+        lang = "jp"
+    return lang
 
 if __name__ == '__main__':
     context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
 
-    running_on_server = False
+    running_on_server = True
     if running_on_server:
         current_path = os.path.abspath(__file__)
         current_dir = os.path.dirname(current_path)
