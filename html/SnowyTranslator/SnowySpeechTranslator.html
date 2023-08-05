@@ -1955,18 +1955,49 @@
       }
     }
 
+    function detectLanguageFromMyServer() {
+      const text = document.getElementById('text-input').value;
+      fetch('http://localhost:3001/detect-language', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ text: text })
+      })
+      .then(response => response.json())
+      .then(data => {
+        const languageResult = document.getElementById('language-result');
+        if (data.language) {
+          return data.language;
+        } else {
+          console.log("Language Detection Failed");
+          return "en";
+        }
+      })
+      .catch(error => {
+        console.log("Language Detection: ", error.message);
+      });
+    }
+
     async function autoDetectTranslate(text, languageSelect=undefined) {
       console.log("autoDetectTranslate:", text);
       var sourceLanguage;
       if (gcpApiKey !== "") {
         sourceLanguage = await ggDetectLanguage(text);
       }
-      else if (languageSelect != undefined) {
+      else {
+
+      }
+
+      /*
+      if (languageSelect != undefined) {
         sourceLanguage = languageSelect.value;
       }
       else {
         sourceLanguage = languageSelects[0].value;
       }
+      */
+
       console.log("autoDetectTranslate() sourceLanguage:", sourceLanguage);
       if (languageSelect !== undefined) {
         languageSelect.value = sourceLanguage;
@@ -2032,7 +2063,7 @@
       }
       if (sourceLanguage === "ja") {
         jpExpWebUpdate(speechText);
-        // var html = await japaneseExplanationServer(speechText);
+        // var html = await japaneseExplanationFromMyServer(speechText);
         // updateTextWithFurigana(0, html);
         JapanesePosId = 0;
       }
@@ -2056,7 +2087,7 @@
                   updateText(i, xhr.responseText);
                   if (targetLanguage === "ja") {
                     jpExpWebUpdate(xhr.responseText);
-                    // var html = await japaneseExplanationServer(xhr.responseText);
+                    // var html = await japaneseExplanationFromMyServer(xhr.responseText);
                     // updateTextWithFurigana(i, html);
                     JapanesePosId = i;
                   }
@@ -2159,7 +2190,7 @@
           // console.log("texts[JapanesePosId]", texts[JapanesePosId]);
           if (textFuriganaToggleButton.innerText === "🔰") {
             setTimeout(() => {
-              japaneseExplanationServer(texts[JapanesePosId].textContent)
+              japaneseExplanationFromMyServer(texts[JapanesePosId].textContent)
               .then((html) => updateTextWithFurigana(JapanesePosId, html))
               .catch((error) => console.error(error));
             }, 500);
@@ -2519,7 +2550,7 @@
         }
       });
     }
-    async function japaneseExplanationServer(text = "") {
+    async function japaneseExplanationFromMyServer(text = "") {
       if (text === "") {
         text = $('#jpExpInput').val();
       }

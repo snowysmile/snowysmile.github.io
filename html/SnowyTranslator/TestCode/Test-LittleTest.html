@@ -1,33 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Language Detection</title>
+    <title>Language Detection</title>
 </head>
+<script type="module">
+    import {franc, francAll} from 'https://esm.sh/franc@6?bundle'
+    console.log(franc("這是什麼", {minLength: 3}));
+    console.log(franc("这是什么", {minLength: 3}));
+    console.log(franc("何これ", {minLength: 3}));
+    console.log(franc("what is it", {minLength: 3}));
+</script>
 <body>
-  <h1>Language Detection</h1>
-  <textarea id="textInput" rows="10" cols="50"></textarea>
-  <button onclick="detectLanguage()">Detect Language</button>
-  <p id="result"></p>
+    <h1>Language Detection</h1>
+    <textarea id="text-input" rows="5" cols="50" placeholder="Enter text to detect language"></textarea>
+    <button onclick="detectLanguage()">Detect Language</button>
+    <p>Detected Language: <span id="language-result"></span></p>
 
-  <script type="module">
-    import { franc } from './franc.js';
+    <script>
+        function detectLanguage() {
+            const text = document.getElementById('text-input').value;
+            const languageResult = document.getElementById('language-result');
+            languageResult.textContent = franc(text, {minLength: 3})
+            return;
 
-    function detectLanguage() {
-      const textInput = document.getElementById('textInput').value;
-      const detectedLanguage = franc(textInput);
-      const languageInfo = franc.all(textInput);
-
-      if (detectedLanguage === 'und') {
-        document.getElementById('result').innerText = 'Language detection failed. The text might be too short or contains only common words.';
-      } else {
-        document.getElementById('result').innerText = `Detected Language: ${detectedLanguage.toUpperCase()}`;
-
-        // If you want to display more information about possible languages and their confidence:
-        // languageInfo.forEach(lang => {
-        //   document.getElementById('result').innerText += `\n${lang[0]}: ${Math.floor(lang[1] * 100)}%`;
-        // });
-      }
-    }
-  </script>
+            // Make a POST request to the Flask server
+            fetch('http://localhost:3001/detect-language', { // Update the URL accordingly
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ text: text })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.language) {
+                    languageResult.textContent = data.language;
+                } else {
+                    languageResult.textContent = 'Language detection failed';
+                }
+            })
+            .catch(error => {
+                const languageResult = document.getElementById('language-result');
+                languageResult.textContent = 'Error: ' + error.message;
+            });
+        }
+    </script>
 </body>
 </html>

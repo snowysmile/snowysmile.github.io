@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS  # Import the CORS module
 import aiohttp
 from bs4 import BeautifulSoup
+from langdetect import detect
+from pyfranc import franc
 import asyncio
 import ssl
 import os
@@ -135,10 +137,30 @@ async def ichimoe_japanese_furigana(text):
     except Exception as e:
         return f"japanese_split: an error occurred: {str(e)}"
 
+
+@app.route('/detect-language', methods=['POST'])
+def detect_language():
+    data = request.get_json()
+    if 'text' in data:
+        text = data['text']
+        try:
+            # from langdetect import detect
+            # lang = detect(text)
+
+            # from pyfranc import franc
+            lang = franc.lang_detect(text)[0][0]
+
+            return jsonify({'language': lang}), 200
+        except Exception as e:
+            return jsonify({'error': 'Language detection failed'}), 500
+    else:
+        return jsonify({'error': 'Text parameter is missing'}), 400
+
+
 if __name__ == '__main__':
     context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
 
-    running_on_server = True
+    running_on_server = False
     if running_on_server:
         current_path = os.path.abspath(__file__)
         current_dir = os.path.dirname(current_path)
