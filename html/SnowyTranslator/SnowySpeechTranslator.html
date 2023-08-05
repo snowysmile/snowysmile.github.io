@@ -1972,7 +1972,7 @@
     }
 
     async function autoDetectTranslate(text, languageSelect=undefined) {
-      console.log("autoDetectTranslate:", text);
+      console.log("AutoDetectTranslate:", text);
       var sourceLanguage;
       if (gcpApiKey !== undefined && gcpApiKey != "") {
         sourceLanguage = await ggDetectLanguage(text);
@@ -1980,7 +1980,7 @@
       }
       else {
         sourceLanguage = await detectLanguageFromMyServer(text);
-        console.log("detectLanguageFromMyServer():", sourceLanguage);
+        console.log("DetectLanguageFromMyServer():", sourceLanguage);
       }
       if (sourceLanguage === undefined || sourceLanguage === "") {
         if (languageSelect != undefined) {
@@ -2063,7 +2063,7 @@
       await getTargetLanguages(sourceLanguage);
       console.log("[speechTranslate] after-> sourceLanguage:", sourceLanguage);
       console.log("[speechTranslate] after-> targetLanguages:", targetLanguages);
-      if (googleScriptKey != null && googleScriptKey != "") {
+      if (googleScriptKey) {
         const requestsPromises = [];
         for (let i = 1; i <= translationCount; i++) {
           const targetLanguage = targetLanguages[i];
