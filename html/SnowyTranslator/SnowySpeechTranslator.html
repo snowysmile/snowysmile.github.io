@@ -1305,17 +1305,25 @@
     var recordButton = document.getElementById("record-button");
     var isRecognizing = false;
     var isRecording = false;
-    var recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+
+
     /*
     var recognition;
     if ('webkitSpeechRecognition' in window) {
+      console.log("'webkitSpeechRecognition' in window")
       recognition = new webkitSpeechRecognition();
     } else if ('SpeechRecognition' in window) {
+      console.log("'SpeechRecognition' in window")
       recognition = new SpeechRecognition();
     } else {
       alert("Speech recognition is not supported in this browser.");
     }
     */
+
+
     var xmlRequest = new XMLHttpRequest();
     var requests = [];
     for (let i = 0; i < topTranslationCount; i++) {
