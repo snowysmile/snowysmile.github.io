@@ -379,22 +379,22 @@
       await addToMsReadingList(msAudioListTmp, 3);
       await msSpeakReadingList(msAudioListTmp, repeatTime);
     }
-    async function ggSpeakAllInputText(text, sourceLanguage, repeatTime) {
+    async function ggSpeakAllInputText(text, languageSelect, isAutoDetect, repeatTime) {
       if (ggAudioList.length === 0) {
         if (text != texts[0].textContent) {
           console.log("ggSpeakAllInputText() text != texts[0].textContent");
-          await speechTranslate(text, sourceLanguage);
+          await speechTranslate(text, languageSelect.value, isAutoDetect, languageSelect);
         }
         await addToGgReadingList(ggAudioList, 3);
         console.log("len after addToGgReadingList: ", ggAudioList.length);
       }
       await ggSpeakReadingList(ggAudioList, repeatTime);
     }
-    async function msSpeakAllInputText(text, sourceLanguage, repeatTime) {
-      if (msAudioList.length === 0) {
+    async function msSpeakAllInputText(text, languageSelect, isAutoDetect, repeatTime) {
+      if (msAudioList.length , false=== 0) {
         if (text != texts[0].textContent) {
           console.log("msSpeakAllInputText() text != texts[0].textContent");
-          await speechTranslate(text, sourceLanguage);
+          await speechTranslate(text, languageSelect.value, isAutoDetect, languageSelect);
         }
         await addToMsReadingList(msAudioList, 3);
       }
@@ -603,8 +603,8 @@
             <option value=50>50</option>
             <option value=99>99</option>
           </select>
-          <button style="font-size: 7px;" onclick="ggSpeakAllInputText(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value, repeatTimeSelect.value)">G🔊</button>
-          <button style="font-size: 7px;" onclick="msSpeakAllInputText(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value, repeatTimeSelect.value)">M🔊</button>
+          <button style="font-size: 7px;" onclick="ggSpeakAllInputText(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select'), this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔',  repeatTimeSelect.value)">G🔊</button>
+          <button style="font-size: 7px;" onclick="msSpeakAllInputText(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select'), this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔',  repeatTimeSelect.value)">M🔊</button>
         </span>
       </td>
     </tr>
@@ -1162,8 +1162,7 @@
       var speechTextItem = document.createElement('li');
       speechTextItem.textContent = text;
       speechList.appendChild(speechTextItem);
-      speechListTotalCount = speechList.childNodes.length;
-      document.getElementById('speechListTotalCount').innerHTML = `Total Count: ${speechListTotalCount}`;
+      speechListTotalCount.innerHTML = `Total Count: ${speechList.childNodes.length}`;
     }
 
     var pageColorPicker = document.getElementById('pageColorPicker');
@@ -1463,8 +1462,8 @@
                 recordResult.value = recordResult.value + addPunctuation(speechText);
               }
               // await
-              speechTranslate(speechText, sourceLanguage);
               updateSpeechList(speechText);
+              speechTranslate(speechText, sourceLanguage, false, undefined, false);
             }
             else {
               if (!recognitionNonStop && speechOverInterval.value && speechOverInterval.value !== 0) {
@@ -1503,7 +1502,7 @@
       }
       if (recognitionResult.value !== texts[0].textContent) {
         updateSpeechList(recognitionResult.value);
-        speechTranslate(recognitionResult.value, sourceLanguage);
+        speechTranslate(recognitionResult.value, sourceLanguage, false, undefined, false);
       }
     }
     function toggleRecognition(sourceLanguage) {
@@ -2080,7 +2079,7 @@
         jpExpWebBot.src = ichimoe_url;
       }
     }
-    async function speechTranslate(speechText, sourceLanguage="", isAutoDetect=false, languageSelect=undefined) {
+    async function speechTranslate(speechText, sourceLanguage="", isAutoDetect=false, languageSelect=undefined, willUpdateHistoryText=true) {
       if (!speechText) {
         return;
       }
@@ -2097,7 +2096,6 @@
         JapanesePosId = 0;
       }
       await getTargetLanguages(sourceLanguage);
-      console.log("[speechTranslate] after-> sourceLanguage:", sourceLanguage);
       console.log("[speechTranslate] after-> targetLanguages:", targetLanguages);
       if (googleScriptKey) {
         const requestsPromises = [];
@@ -2196,12 +2194,12 @@
       configs[autoSID].displayedTexts[id] = speechText;
       saveConfigStorage();
     }
-    function updateText(id, speechText, isNotHistoryText=true) {
+    function updateText(id, speechText, isNotHistoryText=true, willUpdateHistoryText=true) {
       texts[id].innerHTML = speechText;
-      texts[id].textContent = speechText;
       configs[autoSID].texts[id] = speechText;
       updateDisplayedText(id, speechText);
       timeTextUpdated[id] += 1;
+
       if (speechText.trim() !== "" && isNotHistoryText) {
         var allTextUpdated = true;
         console.log("timeTextUpdated:", timeTextUpdated);
@@ -2213,7 +2211,9 @@
         }
         if (allTextUpdated) {
           console.log("allTextUpdated!");
-          pushHistoryText();
+          if (willUpdateHistoryText) {
+            pushHistoryText();
+          }
 
           // console.log("texts[JapanesePosId]", texts[JapanesePosId]);
           if (textFuriganaToggleButton.innerText === "🔰") {
@@ -2249,11 +2249,11 @@
       if (index < 0 || index >= textConfig.historyTexts.length) {
         return;
       }
+      console.log(" textConfig.historyTexts:",  textConfig.historyTexts);
       console.log(" textConfig.historyTextsLanguages:",  textConfig.historyTextsLanguages);
       updateHistoryTextCurrentId(index);
       for (let i = 0; i <= translationCount; i++) {
         updateText(i, textConfig.historyTexts[index][i], false);
-        console.log(" textConfig.historyTextsLanguages[index][i]:",  textConfig.historyTextsLanguages[index][i]);
         readingSelects[i].value = textConfig.historyTextsLanguages[index][i];
       }
     }
@@ -2622,11 +2622,11 @@
   </script>
 
   <span class="row-container">
-    <button id="speechList_LayoutButton" style="margin-bottom:5px;" onclick="toggleWidgetArea('speechList', this)">Speech List ❌</button>
-    <span style="margin-left:8px;"></span>
     <button id="readingList_LayoutButton" style="margin-bottom:5px;" onclick="toggleWidgetArea('readingList', this)">Reading List ❌</button>
     <span style="margin-left:8px;"></span>
     <button id="favoriteList_LayoutButton" style="margin-bottom:5px;" onclick="toggleWidgetArea('favoriteList', this)">Favorite List ❌</button>
+    <span style="margin-left:8px;"></span>
+    <button id="speechList_LayoutButton" style="margin-bottom:5px;" onclick="toggleWidgetArea('speechList', this)">Speech List ❌</button>
   </span>
 
   <ul id="readingList" style="display:none"></ul>
