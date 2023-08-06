@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="icon" href="static/Img/favicon/cat-in-leaves-512x512.png">
   <link rel="stylesheet" href="static/font.css">
+
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap"  rel="stylesheet"> -->
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
@@ -271,15 +273,15 @@
       textFontColors: ["#000000", "#000000", "#000000"],
       textFontSizes: [20, 17, 14], //px
       textFontWeights: [500, 500, 500],
-      textFontFamilies: ['NotoSansCJKjp', 'NotoSansCJKjp', 'NotoSansCJKjp'],
-      textStrokeColors: [['#87ceeb', '#ffb7c5'], ['#87ceeb', '#ffb7c5'], ['#87ceeb', '#ffb7c5']],
+      textFontFamilies: ["NotoSansCJKjp", "NotoSansCJKjp", "NotoSansCJKjp"],
+      textStrokeColors: [['#87ceeb#ffb7c5'], ['#87ceeb#ffb7c5'], ['#87ceeb#ffb7c5']],
       textStrokeWidths: [[0, 0], [0, 0], [0, 0]], //em
       textShadowColors: ["#ffeebb", "#ffeebb", "#ffeebb"],
       textShadowBlurRadius: [0, 0, 0], //em
       textMargins: [5, 5, 5], //px
       apiKeys: ["", "", "", ""],
       speechOverInterval: 3600, //ms
-      speechSplitInterval: 1000, //ms
+      speechSplitInterval: 2000, //ms
       speechClearInterval: 360000, //ms
       translationCount: 2,
       languages: ['ja', 'en', 'zh-TW'],
@@ -295,6 +297,7 @@
     defaultConfig.displayedTexts = [...defaultConfig.texts];
     defaultTextConfig.historyTexts.push([...defaultConfig.texts]);
     defaultTextConfig.historyTextsLanguages.push([...defaultConfig.languages]);
+    console.log("defaultTextConfig.historyTextsLanguages:", defaultTextConfig.historyTextsLanguages);
     var configs = [
       {}, {}, {},
     ];
@@ -1369,9 +1372,24 @@
       var textarea = button.parentNode.parentNode.querySelector('textarea');
       textarea.value = "";
     }
+    function isPuntuation(character) {
+      return /[.,!?;:—–(){}[\]“”‘’"'…・。、？！「」『』（）【】ー]/.test(character);
+    }
+    function isEnglishLetter(character) {
+      return /^[A-Za-z]$/.test(character);
+    }
+    function addPunctuation(text) {
+      if (!text) return "";
+      var textTrim = text.trim();
+      if (!textTrim) return "";
+      var lastCharacter = textTrim[textTrim.length - 1];
+      if (isPuntuation(lastCharacter)) return text;
+      if (isEnglishLetter(lastCharacter)) return text + ". ";
+      else return text + "。 ";
+    }
     function startRecognition(sourceLanguage="") {
       console.log("[startRecognition] before-> sourceLanguage:", sourceLanguage);
-      if (sourceLanguage === "") {
+      if (!sourceLanguage) {
         sourceLanguage = languageSelects[0].value;
       }
       recognitionResult.value = "";
@@ -1428,7 +1446,7 @@
         for (var i = event.resultIndex; i < event.results.length; i++) {
         // { var i = event.results.length - 1;
           var speechText = event.results[i][0].transcript;
-          if (speechText.trim() === "") {
+          if (!speechText || !speechText.trim()) {
             console.log("Empty Speech Text");
           }
           else {
@@ -1436,17 +1454,19 @@
             if (event.results[i].isFinal) {
               if (recognitionNonStop) {
                 recognitionResult.value = speechText;
+                // recognitionResult.value = recognitionPreviousResult.value + addPunctuation(speechText);
+                // recognitionPreviousResult.value = recognitionResult.value;
               }
               else {
-                recognitionResult.value = recognitionPreviousResult.value + speechText + ". ";
+                recognitionResult.value = recognitionPreviousResult.value + addPunctuation(speechText);
                 recognitionPreviousResult.value = recognitionResult.value;
               }
               if (isRecording) {
-                recordResult.value = recordResult.value + speechText + ". ";
+                recordResult.value = recordResult.value + addPunctuation(speechText);
               }
-              updateSpeechTextList(speechText);
               // await
               speechTranslate(speechText, sourceLanguage);
+              updateSpeechTextList(speechText);
             }
             else {
               if (!recognitionNonStop && speechOverInterval.value && speechOverInterval.value !== 0) {
@@ -1455,7 +1475,7 @@
                   stopRecognitionComplete(sourceLanguage);
                 }, speechOverInterval.value);
               }
-              else if (!false && speechSplitInterval.value && speechSplitInterval.value !== 0) {
+              else if (speechSplitInterval.value && speechSplitInterval.value !== 0) {
                 clearTimeout(speechSplitInterval_TimeOut);
                 speechSplitInterval_TimeOut = setTimeout(stopRecognitionControl, speechSplitInterval.value);
               }
@@ -1607,7 +1627,7 @@
     }
     async function ggSpeak(text, sourceLanguage = "") {
       console.log("ggSpeak text:", text);
-      if (text == "") return;
+      if (!text) return;
       if (sourceLanguage === "") {
         sourceLanguage = "ja";
       }
@@ -1677,14 +1697,14 @@
       });
     }
     function updateAzureVoice(id, value="") {
-      if (value === "") value = azureVoiceSelects[id].value;
+      if (!value) value = azureVoiceSelects[id].value;
       else azureVoiceSelects[id].value = value;
       configs[autoSID].azureVoices[id] = value;
       saveConfigStorage();
     }
     async function msSpeak(text, sourceLanguage = "") {
       console.log("msSpeak-text:", text);
-      if (text === "") return;
+      if (!text) return;
       var MSTTS_voiceName;
       if (sourceLanguage === "ja") {
         MSTTS_voiceName = azureVoiceSelects[0].value;
@@ -1935,9 +1955,9 @@
       saveFavoriteTextConfigStorage();
     }
     function loadFavoriteText() {
-      textConfig.historyTexts = textConfig.favoriteHistoryTexts;
-      textConfig.historyTextsLanguages = textConfig.favoriteHistoryTextsLanguages;
-      updateHistoryTextCurrentId(textConfig.historyTexts.length - 1);
+      // textConfig.historyTexts = textConfig.favoriteHistoryTexts;
+      // textConfig.historyTextsLanguages = textConfig.favoriteHistoryTextsLanguages;
+      // updateHistoryTextCurrentId(textConfig.historyTexts.length - 1);
     }
 
     async function ggDetectLanguage(text) {
@@ -2000,8 +2020,8 @@
         sourceLanguage = await detectLanguageFromMyServer(text);
         console.log("DetectLanguageFromMyServer():", sourceLanguage);
       }
-      if (sourceLanguage === undefined || sourceLanguage === "") {
-        if (languageSelect != undefined) {
+      if (!sourceLanguage) {
+        if (languageSelect) {
           sourceLanguage = languageSelect.value;
         }
         else {
@@ -2035,7 +2055,7 @@
 
     var targetLanguages;
     async function getTargetLanguages(sourceLanguage="") {
-      if (sourceLanguage === "") {
+      if (!sourceLanguage) {
         sourceLanguage = await autoDetectTranslate(texts[0].textContent);
       }
       targetLanguages = [];
@@ -2063,13 +2083,13 @@
       }
     }
     async function speechTranslate(speechText, sourceLanguage="", isAutoDetect=false, languageSelect=undefined) {
-      if (speechText === "") {
+      if (!speechText) {
         return;
       }
       updateText(0, speechText);
       console.log("[speechTranslate] before-> sourceLanguage:", sourceLanguage);
       console.log("[speechTranslate] speechText:", speechText);
-      if (sourceLanguage === "" || isAutoDetect && gcpApiKey !== "") {
+      if (!sourceLanguage || isAutoDetect && gcpApiKey) {
         sourceLanguage = await autoDetectTranslate(speechText, languageSelect);
       }
       if (sourceLanguage === "ja") {
@@ -2230,9 +2250,11 @@
       if (index < 0 || index >= textConfig.historyTexts.length) {
         return;
       }
+      console.log(" textConfig.historyTextsLanguages:",  textConfig.historyTextsLanguages);
       updateHistoryTextCurrentId(index);
       for (let i = 0; i <= translationCount; i++) {
         updateText(i, textConfig.historyTexts[index][i], false);
+        console.log(" textConfig.historyTextsLanguages[index][i]:",  textConfig.historyTextsLanguages[index][i]);
         readingSelects[i].value = textConfig.historyTextsLanguages[index][i];
       }
     }
