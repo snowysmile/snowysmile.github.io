@@ -460,7 +460,7 @@
               <option value="zh-TW">🇹🇼</option>
             </select>
             <button name="languageDetectButton" id="recognizeLangDetectToggleButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">🤔</button>
-            <button id="oneSentenceRecognizeToggleButton" title="① To Recognize A Single Sentence; 〜 Is Nonstop Detection" onclick="toggleOneSentenceRecognize(this)">①</button>
+            <button id="oneSentenceRecognizeToggleButton" title="① To Recognize A Single Sentence; 〜 Is Nonstop Detection." onclick="toggleOneSentenceRecognize(this)">①</button>
             <button id="updateHistoryTextToggleButton" title="🕳️ To Not Push to History Text; 🎈 Is To Push" onclick="toggleUpdateHistoryText(this)">🕳️</button>
         </span>
         <button class="phone-button" onclick="toggleWidgetArea('recognitionInputArea', document.getElementById('toggleRecognitionInputArea_LayoutButton'))">⛔</button>
@@ -472,8 +472,8 @@
         </div>
       </td>
       <td>
-        <button name="translateButton" onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', recognitionLanguageSelect)">🔤</button>
-        <button onclick="copyTextArea(this)">✂️</button>
+        <button name="translateButton" title="Translate For Textarea." onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', recognitionLanguageSelect)">🔤</button>
+        <button title="Copy From Textarea." onclick="copyTextArea(this)">📑</button>
         <button class="phone-button" onclick="pasteToTextArea(this)">📥</button>
         <button onclick="clearTextArea(this)">🆑</button>
         <span class="readButtons">
@@ -486,7 +486,7 @@
     <tr class="input-table-row" id="recordInputArea" style="display:none">
       <td class="button-title">
         <span>
-          <button id="record-button" onclick="toggleRecord()" style="width: 148px;">▶️ Start Recording</button>
+          <button id="record-button" title="Record The Text Recognized." onclick="toggleRecord()" style="width: 148px;">▶️ Start Recording</button>
           <select id="recordLanguageSelect">
             <option value="ja" selected>🇯🇵</option>
             <option value="en">🇺🇸</option>
@@ -500,8 +500,8 @@
         <textarea id="recordResult" rows="2" cols="75"></textarea>
       </td>
       <td>
-        <button name="translateButton" onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', recordLanguageSelect)">🔤</button>
-        <button onclick="copyTextArea(this)">✂️</button>
+        <button name="translateButton" title="Translate For Textarea." onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', recordLanguageSelect)">🔤</button>
+        <button title="Copy From Textarea." onclick="copyTextArea(this)">📑</button>
         <button onclick="clearTextArea(this)">🆑</button>
         <span class="readButtons">
           <button onclick="ggSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">G🔊</button>
@@ -527,9 +527,9 @@
         <textarea id="translateInput" rows="2" cols="75"></textarea>
       </td>
       <td>
-        <button type="button" name="translateButton"
+        <button name="translateButton" title="Translate For Textarea."
           onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', translationLanguageSelect)">🔤</button>
-        <button onclick="copyTextArea(this)">✂️</button>
+        <button title="Copy From Textarea." onclick="copyTextArea(this)">📑</button>
         <button onclick="clearTextArea(this)">🆑</button>
         <span class="readButtons">
           <button onclick="ggSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">G🔊</button>
@@ -539,29 +539,27 @@
     </tr>
 
     <tr class="input-table-row" id="jpExpInputArea" style="display:none">
-      <form action="/process" method="post">
-        <td class="button-title">
-          <span>
-            <button type="button" id="jpExp-button" onclick="japaneseExplanationEntrance()" style="width: 148px;">Japanese Explanation</button>
-            <select id="jpExpLanguageSelect">
-              <option value="ja" selected>🇯🇵</option>
-            </select>
-          </span>
-          <button type="button" class="phone-button" onclick="toggleWidgetArea('jpExpInputArea', document.getElementById('toggleJpExpInputArea_LayoutButton'))">⛔</button>
-        </td>
-        <td>
-          <textarea id="jpExpInput" rows="2" cols="80"></textarea>
-        </td>
-        <td>
-          <button type="button" name="translateButton" onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, 'ja')">🔤</button>
-          <button type="button" onclick="copyTextArea(this)">✂️</button>
-          <button type="button" onclick="clearTextArea(this)">🆑</button>
-          <span class="readButtons">
-            <button type="button"  onclick="ggSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">G🔊</button>
-            <button type="button" onclick="msSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">M🔊</button>
-          </span>
-        </td>
-      </form>
+      <td class="button-title">
+        <span>
+          <button id="jpExp-button" onclick="japaneseExplanationSplitFromMyServer()" style="width: 148px;">Japanese Explanation</button>
+          <select id="jpExpLanguageSelect">
+            <option value="ja" selected>🇯🇵</option>
+          </select>
+        </span>
+        <button class="phone-button" onclick="toggleWidgetArea('jpExpInputArea', document.getElementById('toggleJpExpInputArea_LayoutButton'))">⛔</button>
+      </td>
+      <td>
+        <textarea id="jpExpInput" rows="2" cols="80"></textarea>
+      </td>
+      <td>
+        <button name="translateButton" title="Translate For Textarea." onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, 'ja')">🔤</button>
+        <button title="Copy From Textarea." onclick="copyTextArea(this)">📑</button>
+        <button onclick="clearTextArea(this)">🆑</button>
+        <span class="readButtons">
+          <button  onclick="ggSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">G🔊</button>
+          <button onclick="msSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">M🔊</button>
+        </span>
+      </td>
     </tr>
   </table>
 
@@ -569,8 +567,7 @@
     <tr class="input-table-row" id="readingListInputArea">
       <td class="button-title">
         <span>
-          <button type="button" name="translateButton"
-            onclick="speechTranslate(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', translationLanguageSelect)">訳</button>
+          <button name="translateButton" title="Translate For Textarea." onclick="speechTranslate(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', translationLanguageSelect)">訳</button>
           <button onclick="addToReadingList(ggAudioList, msAudioList, 1,  this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', readingListLanguageSelect)" > + </button>
           <button onclick="addToReadingList(ggAudioList, msAudioList, 2,  this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', readingListLanguageSelect)"> ++ </button>
           <button onclick="addToReadingList(ggAudioList, msAudioList, 3,  this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', readingListLanguageSelect)"> +++ </button>
@@ -587,9 +584,9 @@
         <textarea id="readingListInput" rows="2" cols="73"></textarea>
       </td>
       <td>
-        <button type="button" name="translateButton"
+        <button name="translateButton" title="Translate For Textarea."
           onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', translationLanguageSelect)">🔤</button>
-        <button onclick="copyTextArea(this)">✂️</button>
+        <button title="Copy From Textarea." onclick="copyTextArea(this)">📑</button>
         <button class="phone-button" onclick="pasteToTextArea(this)">📥</button>
         <button title="Clear The Reading List" onclick="clearReadingList(this)">🆑</button>
         <span class="readButtons">
@@ -702,7 +699,7 @@
         <td>
           <button ontouchstart="showApiKey(0, this)" ontouchend="hideApiKey(0, this)"
               onmousedown="showApiKey(0, this)" onmouseup="hideApiKey(0, this)">👁️</button> &nbsp;
-          <button onclick="copyApiKey(0, this)">✂️</button> &nbsp;
+          <button title="Copy From Textarea." onclick="copyApiKey(0, this)">📑</button>
         </td>
       </tr>
       <tr class="row-container-left">
@@ -713,7 +710,7 @@
         <td>
           <button ontouchstart="showApiKey(1, this)" ontouchend="hideApiKey(1, this)"
               onmousedown="showApiKey(1, this)" onmouseup="hideApiKey(1, this)">👁️</button> &nbsp;
-          <button onclick="copyApiKey(1, this)">✂️</button> &nbsp;
+          <button title="Copy From Textarea." onclick="copyApiKey(1, this)">📑</button>
         </td>
       </tr>
       <tr class="row-container-left">
@@ -724,7 +721,7 @@
         <td>
           <button ontouchstart="showApiKey(2, this)" ontouchend="hideApiKey(2, this)"
               onmousedown="showApiKey(2, this)" onmouseup="hideApiKey(2, this)">👁️</button> &nbsp;
-          <button onclick="copyApiKey(2, this)">✂️</button> &nbsp;
+          <button title="Copy From Textarea." onclick="copyApiKey(2, this)">📑</button>
         </td>
       </tr>
       <tr class="row-container-left" style="display:none;">
@@ -735,7 +732,7 @@
         <td>
           <button ontouchstart="showApiKey(3, this)" ontouchend="hideApiKey(3, this)"
               onmousedown="showApiKey(3, this)" onmouseup="hideApiKey(3, this)">👁️</button> &nbsp;
-          <button onclick="copyApiKey(3, this)">✂️</button> &nbsp;
+          <button title="Copy From Textarea." onclick="copyApiKey(3, this)">📑</button>
         </td>
       </tr>
       <tr class="row-container-left">
@@ -750,14 +747,14 @@
   <table style="border: none">
     <tr class="row-container">
       <td>
-      	<button id="defaultConfig-button" onclick="loadConfig(-1)">🆑</button>
-      	<button id="saveConfig1-button" onclick="saveConfig(1)">S1</button>
-      	<button id="loadConfig1-button" onclick="loadConfig(1)">L1</button>
-      	<button id="saveConfig2-button" onclick="saveConfig(2)">S2</button>
-      	<button id="loadConfig2-button" onclick="loadConfig(2)">L2</button>
+      	<button id="defaultConfig-button" title="Recover To Default Configs." onclick="loadConfig(-1)">🆑</button>
+      	<button id="saveConfig1-button" title="Save Configs[1]." onclick="saveConfig(1)">S1</button>
+      	<button id="loadConfig1-button" title="Load Configs[1]." onclick="loadConfig(1)">L1</button>
+      	<button id="saveConfig2-button" title="Save Configs[2]." onclick="saveConfig(2)">S2</button>
+      	<button id="loadConfig2-button" title="Load Configs[2]." onclick="loadConfig(2)">L2</button>
         <span style="margin-left:5px;"> </span>
-      	<button id="saveFavoriteConfig-button" onclick="saveConfig(99)">S♡</button>
-      	<button id="loadFavoriteConfig-button" onclick="loadConfig(99)">L♡</button>
+      	<button id="saveFavoriteConfig-button" title="Save Favorite History Texts[♡]." onclick="saveConfig(99)">S♡</button>
+      	<button id="loadFavoriteConfig-button" title="Load Favorite History Texts[♡]." onclick="loadConfig(99)">L♡</button>
       </td>
       <td>
         <button id="clearText-button" title="Clear Texts 🆑" onclick="clearTexts();">Clear Texts</button>
@@ -2512,7 +2509,7 @@
       }
       return(html);
     }
-    async function ScrapeJpExp(text) {
+    async function scrapeJpExp(text) {
       var jpExp = "";
       try {
         const url = 'https://ichi.moe/cl/qr/?q=' + encodeURIComponent(text);
@@ -2551,29 +2548,15 @@
         return "";
       }
     }
-    function japaneseExplanationFile(text = "") {
+    function japaneseExplanationFileCORS(text = "") {
       if (text === "") {
         text = jpExpInput.value;
         if (text === "") return;
       }
-      var jpExpPromise = ScrapeJpExp(text);
+      var jpExpPromise = scrapeJpExp(text);
       jpExpPromise.then(function(jpExp) {
         jpExpArea.html(formatJpExp(jpExp));
       })
-    }
-    function japaneseExplanationLocalhost(text = "") {
-      if (text === "") {
-        text = $('#jpExpInput').val();
-        if (text === "") return;
-      }
-      $.ajax({
-        url: '/process',
-        type: 'POST',
-        data: { jpExpInput: text },
-        success: function(response) {
-          jpExpArea.html(formatJpExp(response.result));
-        }
-      });
     }
     async function japaneseExplanationFromMyServer(text = "") {
       if (text === "") {
@@ -2592,25 +2575,36 @@
         })
         const data = await response.json();
         // var jpExpArea = $('#jpExpArea');
-        // jpExpArea.html(response.result;);
+        // jpExpArea.html(response.result);
         return data.result;
       } catch (error) {
         console.error('Error:', error);
         return text + "🌐🚨";
       }
     }
-    function japaneseExplanationEntrance(text) {
-      if (window.location.protocol === "file:") {
-        console.log("japaneseExplanationFile()");
-        japaneseExplanationFile(text);
+    async function japaneseExplanationSplitFromMyServer(text="") {
+      // japaneseExplanationFileCORS(text);
+      if (text === "") {
+        text = $('#jpExpInput').val();
       }
-      else if (window.location.href.includes("localhost:")) {
-        console.log("japaneseExplanationLocalhost()");
-        japaneseExplanationLocalhost(text);
-      }
-      else {
-        console.log("japaneseExplanationWebPage()");
-        japaneseExplanationFile(text);
+      try {
+          // const response = await fetch('http://localhost:3001/furigana', {
+          const response = await fetch('https://snsmile.site:3001/formatJpExp', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            text: text
+          })
+        })
+        const data = await response.json();
+        var jpExpArea = $('#jpExpArea');
+        jpExpArea.html(data.result);
+        return data.result;
+      } catch (error) {
+        console.error('Error:', error);
+        return text + "🌐🚨";
       }
     }
   </script>
