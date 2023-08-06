@@ -2242,6 +2242,7 @@
       textConfig.historyTextsLanguages.push([...targetLanguages]);
       while (textConfig.historyTexts.length > configs[autoSID].historyTextsMaxLength) {
         textConfig.historyTexts.shift();
+        textConfig.historyTextsLanguages.shift();
       }
       updateHistoryTextCurrentId(textConfig.historyTexts.length - 1);
       saveTextConfigStorage(autoSID);
