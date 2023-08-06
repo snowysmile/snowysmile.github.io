@@ -287,7 +287,7 @@
       languages: ['ja', 'en', 'zh-TW'],
       azureVoices: ['ja-JP-AoiNeural', 'en-US-AnaNeural', 'zh-CN-XiaoyouNeural'],
       layoutButtonsClickedList: [],
-      historyTextsMaxLength: 10,
+      historyTextsMaxLength: 20,
       historyTextsCurrentId: 0,
     }
     var defaultTextConfig = {
@@ -391,7 +391,7 @@
       await ggSpeakReadingList(ggAudioList, repeatTime);
     }
     async function msSpeakAllInputText(text, languageSelect, isAutoDetect, repeatTime) {
-      if (msAudioList.length , false=== 0) {
+      if (msAudioList.length === 0) {
         if (text != texts[0].textContent) {
           console.log("msSpeakAllInputText() text != texts[0].textContent");
           await speechTranslate(text, languageSelect.value, isAutoDetect, languageSelect);
@@ -461,11 +461,12 @@
             </select>
             <button name="languageDetectButton" id="recognizeLangDetectToggleButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">🤔</button>
             <button id="oneSentenceRecognizeToggleButton" title="① To Recognize A Single Sentence; 〜 Is Nonstop Detection" onclick="toggleOneSentenceRecognize(this)">①</button>
+            <button id="updateHistoryTextToggleButton" title="🕳️ To Not Push to History Text; 🎈 Is To Push" onclick="toggleUpdateHistoryText(this)">🕳️</button>
         </span>
         <button class="phone-button" onclick="toggleWidgetArea('recognitionInputArea', document.getElementById('toggleRecognitionInputArea_LayoutButton'))">⛔</button>
       </td>
       <td>
-        <textarea id="recognitionResult" rows="2" cols="71"></textarea>
+        <textarea id="recognitionResult" rows="2" cols="66"></textarea>
         <div style="display:none">
         <textarea id="recognitionPreviousResult" rows="2" cols="75"></textarea>
         </div>
@@ -603,8 +604,8 @@
             <option value=50>50</option>
             <option value=99>99</option>
           </select>
-          <button style="font-size: 7px;" onclick="ggSpeakAllInputText(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select'), this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔',  repeatTimeSelect.value)">G🔊</button>
-          <button style="font-size: 7px;" onclick="msSpeakAllInputText(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select'), this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔',  repeatTimeSelect.value)">M🔊</button>
+          <button style="font-size: 7px;" onclick="ggSpeakAllInputText(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select'), this.parentNode.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔',  repeatTimeSelect.value)">G🔊</button>
+          <button style="font-size: 7px;" onclick="msSpeakAllInputText(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select'), this.parentNode.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔',  repeatTimeSelect.value)">M🔊</button>
         </span>
       </td>
     </tr>
@@ -1463,7 +1464,7 @@
               }
               // await
               updateSpeechList(speechText);
-              speechTranslate(speechText, sourceLanguage, false, undefined, false);
+              speechTranslate(speechText, sourceLanguage, false, undefined, updateHistoryTextToggleButton.innerHTML === "🎈");
             }
             else {
               if (!recognitionNonStop && speechOverInterval.value && speechOverInterval.value !== 0) {
@@ -1502,7 +1503,7 @@
       }
       if (recognitionResult.value !== texts[0].textContent) {
         updateSpeechList(recognitionResult.value);
-        speechTranslate(recognitionResult.value, sourceLanguage, false, undefined, false);
+        speechTranslate(recognitionResult.value, sourceLanguage, false, undefined, updateHistoryTextToggleButton.innerHTML === "🎈");
       }
     }
     function toggleRecognition(sourceLanguage) {
@@ -1566,20 +1567,13 @@
       }
     }
     function toggleAutoLangaugeDetect(button) {
-      if (button.innerText === "😴") {
-        button.innerText = "🤔";
-      }
-      else {
-        button.innerText = "😴";
-      }
+      button.innerText = button.innerText === "🤔" ? "😴" : "🤔";
     }
     function toggleOneSentenceRecognize(button) {
-      if (button.innerText === "①") {
-        button.innerText = "〜";
-      }
-      else {
-        button.innerText = "①";
-      }
+      button.innerText = button.innerText === "①" ? "〜" : "①";
+    }
+    function toggleUpdateHistoryText(button) {
+      button.innerText = button.innerText === "🎈" ? "🕳️" : "🎈";
     }
     function toggleHistoryTextsMaxLength(value=-1) {
       if (value == -1) value = historyTextsMaxLengthSelect.value;
@@ -2083,7 +2077,7 @@
       if (!speechText) {
         return;
       }
-      updateText(0, speechText);
+      updateText(0, speechText, true, willUpdateHistoryText);
       console.log("[speechTranslate] before-> sourceLanguage:", sourceLanguage);
       console.log("[speechTranslate] speechText:", speechText);
       if (!sourceLanguage || isAutoDetect && gcpApiKey) {
@@ -2111,7 +2105,7 @@
             xhr.onreadystatechange = async function () {
               if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
-                  updateText(i, xhr.responseText);
+                  updateText(i, xhr.responseText, true, willUpdateHistoryText);
                   if (targetLanguage === "ja") {
                     jpExpWebUpdate(xhr.responseText);
                     // var html = await japaneseExplanationFromMyServer(xhr.responseText);
