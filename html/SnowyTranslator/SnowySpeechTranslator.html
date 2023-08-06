@@ -1157,15 +1157,13 @@
     }
   </script>
   <script>
-    var speechTextListTotalCount = 0;
-    var speechTextListCurrentID = 0;
-    function updateSpeechTextList(text) {
+    var speechListTotalCount = 0;
+    function updateSpeechList(text) {
       var speechTextItem = document.createElement('li');
       speechTextItem.textContent = text;
-      speechTextList.appendChild(speechTextItem);
-      speechTextListTotalCount = speechTextList.childNodes.length;
-      document.getElementById('speechTextListTotalCount').innerHTML = `Total Count: ${speechTextListTotalCount}`;
-      document.getElementById('speechTextListCurrentID').innerHTML = `Current ID: ${speechTextListCurrentID}`;
+      speechList.appendChild(speechTextItem);
+      speechListTotalCount = speechList.childNodes.length;
+      document.getElementById('speechListTotalCount').innerHTML = `Total Count: ${speechListTotalCount}`;
     }
 
     var pageColorPicker = document.getElementById('pageColorPicker');
@@ -1466,7 +1464,7 @@
               }
               // await
               speechTranslate(speechText, sourceLanguage);
-              updateSpeechTextList(speechText);
+              updateSpeechList(speechText);
             }
             else {
               if (!recognitionNonStop && speechOverInterval.value && speechOverInterval.value !== 0) {
@@ -1504,7 +1502,7 @@
         recordButton.innerHTML = "▶️ Start Recording";
       }
       if (recognitionResult.value !== texts[0].textContent) {
-        updateSpeechTextList(recognitionResult.value);
+        updateSpeechList(recognitionResult.value);
         speechTranslate(recognitionResult.value, sourceLanguage);
       }
     }
@@ -2624,21 +2622,22 @@
   </script>
 
   <span class="row-container">
+    <button id="speechList_LayoutButton" style="margin-bottom:5px;" onclick="toggleWidgetArea('speechList', this)">Speech List ❌</button>
+    <span style="margin-left:8px;"></span>
     <button id="readingList_LayoutButton" style="margin-bottom:5px;" onclick="toggleWidgetArea('readingList', this)">Reading List ❌</button>
-    <span style="margin-left:10px;"></span>
+    <span style="margin-left:8px;"></span>
     <button id="favoriteList_LayoutButton" style="margin-bottom:5px;" onclick="toggleWidgetArea('favoriteList', this)">Favorite List ❌</button>
   </span>
 
   <ul id="readingList" style="display:none"></ul>
   <span id="readingListTotalCount"></span>
+
   <ul id="favoriteList" style="display:none"></ul>
 
-  <span style="display: block">
-    <ul id="speechTextList"></ul>
-    <span id="speechTextListTotalCount"></span>
-    <span id="speechTextListCurrentID"></span>
-    <br>
+  <ul id="speechList" style="display:none"></ul>
+  <span id="speechListTotalCount"></span>
 
+  <span style="display: block">
     <div class="row-container">
       <ruby> 日本語<rt>にほんご</rt> &nbsp; </ruby>
       <ruby> 勉強<rt>べんきょう</rt> の &nbsp; </ruby>
