@@ -42,8 +42,10 @@
     }
     table {
       border-collapse: collapse;
+      border: 1px solid black;
     }
     th, td {
+      padding: 5px;
       vertical-align: middle;
     }
     .input-table tr{
@@ -2187,8 +2189,11 @@
       }
     }
     function loadFavoriteTextConfigStorage() {
+      if (!localStorage.getItem('snowyTranslatorFavoriteTextConfig')) {
+        return;
+      }
       favTextConfig = JSON.parse(localStorage.getItem(`snowyTranslatorFavoriteTextConfig`));
-      if (favoriteTable.rows.length > 0) return;
+      if (favoriteTable.rows.length > 0 || !favTextConfig.favoriteTexts) return;
       for (let i = 0; i < favTextConfig.favoriteTexts.length; i++) {
         if (favTextConfig.favoriteTexts[i][0]) {
           addToFavoriteList(favTextConfig.favoriteTexts[i], favTextConfig.favoriteTextLanguages[i], favTextConfig.favoriteTexts[i].length);
@@ -2746,6 +2751,7 @@
       for (let configID = 0; configID <= 2; configID++) {
         localStorage.removeItem(`snowyTranslatorTextConfig[${configID}]`);
       }
+      localStorage.removeItem(`snowyTranslatorFavoriteTextConfig`);
       // localStorage.clear();
     }
     initLayoutButtons();
