@@ -16,25 +16,13 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      text-align: center;
     }
     .row-container {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-    }
-    .div-row-container {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-    }
-    .reading-buttons-container {
-      display: flex;
       justify-content: center;
-    }
-    .row-container-left {
-      display: block;
-      flex-direction: row;
-      align-items: flex-start;
     }
     .layouts-container {
       display: flex;
@@ -54,15 +42,12 @@
     }
     table {
       border-collapse: collapse;
-      border: 1px solid black;
     }
     th, td {
-      text-align: center;
       vertical-align: middle;
-      padding: 4px;
     }
-    .input-table {
-      table-layout: fixed;
+    .input-table tr{
+      border: 1px solid grey;
     }
     .input-table button{
       vertical-align: middle;
@@ -79,7 +64,6 @@
       flex-direction: column;
       align-items: center;
       padding: 20px;
-      max-width: 95%;
       width: 1000px;
       height: 99px;
       overflow-y: auto;
@@ -127,7 +111,7 @@
       z-index: -2;
       -webkit-text-stroke: var(--stroke-width-layer-1) var(--stroke-color-layer-1);
     }
-    .readButtons button {
+    .readButtonContainer button {
       font-size: 9px;
     }
     #jpExpAreaFrame {
@@ -146,9 +130,7 @@
     #readingList, #favoriteList {
       width: 800px;
     }
-    @media screen and (max-width: 600px) {
-      table {
-      }
+    @media screen and (max-width: 1000px) {
       tr {
         display: block;
         width: 100%;
@@ -183,14 +165,6 @@
       }
       .layouts-container button {
         height: 32px;
-      }
-      .row-container-left {
-        display: flex;
-      }
-      .div-row-container {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
       }
       .phone-row-table tr {
         display: inline-flex;
@@ -297,18 +271,18 @@
     defaultConfig.displayedTexts = [...defaultConfig.texts];
     defaultTextConfig.historyTexts.push([...defaultConfig.texts]);
     defaultTextConfig.historyTextsLanguages.push([...defaultConfig.languages]);
-    console.log("defaultTextConfig.historyTextsLanguages:", defaultTextConfig.historyTextsLanguages);
     var configs = [
       {}, {}, {},
     ];
     var textConfig = {
       historyTexts: [],
       historyTextsLanguages: [],
-      // favoriteHistoryTexts: [],
-      // favoriteHistoryTextsLanguages: [],
     };
+    var favTextConfig = {
+      favoriteTexts: [],
+      favoriteTextLanguages: [],
+    }
     var autoSID = 0;
-    var favID = 0;
     configs[autoSID] = copyConfig(defaultConfig);
   </script>
   <title>Snowy Speech Translator</title>
@@ -402,7 +376,7 @@
     }
   </script>
 
-  <div class="div-row-container" style="margin-top:5px; margin-bottom:5px;">
+  <div class="row-container" style="margin-top:5px; margin-bottom:5px;">
     <span style="display:flex; justify-content: center; margin-bottom:3px;">
       <button id="textFuriganaToggleButton" style="font-size: 11px;" title="🔰 To Auto Mark Furigana; 💤 Is Off." onclick="toggleTextFurigana()">🔰</button>
       <button style="margin-left:3px; font-size:11px;" title="Read All Screen Text By Google." onclick="ggSpeakAllScreenText()">G</button>
@@ -415,7 +389,7 @@
 
       <span style="margin-left:7px;"> </span>
       <button id="previousText-button" title="Previous Texts" onclick="showHistoryText(configs[autoSID].historyTextsCurrentId-1);">◀️</button>
-      <button id="historyTextsIdDisplay" style="font-size:10px;" onclick="addToFavoriteList()"> X/X </button>
+      <button id="historyTextsIdDisplay" style="font-size:10px;" onclick="addToFavoriteListFromScreenText()"> X/X </button>
       <button id="nextText-button" title="Next Texts" onclick="showHistoryText(configs[autoSID].historyTextsCurrentId+1);">▶️</button>
     </span>
     <span class="reading-buttons-container">
@@ -461,7 +435,7 @@
             </select>
             <button name="languageDetectButton" id="recognizeLangDetectToggleButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">🤔</button>
             <button id="oneSentenceRecognizeToggleButton" title="① To Recognize A Single Sentence; 〜 Is Nonstop Detection." onclick="toggleOneSentenceRecognize(this)">①</button>
-            <button id="updateHistoryTextToggleButton" title="🕳️ To Not Push to History Text; 🎈 Is To Push" onclick="toggleUpdateHistoryText(this)">🕳️</button>
+            <button id="updateHistoryTextToggleButton" title="🕳️ To Not Push to History Text; 🎈 Is To Push." onclick="toggleUpdateHistoryText(this)">🕳️</button>
         </span>
         <button class="phone-button" onclick="toggleWidgetArea('recognitionInputArea', document.getElementById('toggleRecognitionInputArea_LayoutButton'))">⛔</button>
       </td>
@@ -475,8 +449,8 @@
         <button name="translateButton" title="Translate For Textarea." onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', recognitionLanguageSelect)">🔤</button>
         <button title="Copy From Textarea." onclick="copyTextArea(this)">📑</button>
         <button class="phone-button" onclick="pasteToTextArea(this)">📥</button>
-        <button onclick="clearTextArea(this)">🆑</button>
-        <span class="readButtons">
+        <button title="Clear Textarea." onclick="clearTextArea(this)">🆑</button>
+        <span class="readButtonContainer">
           <button onclick="ggSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">G🔊</button>
           <button onclick="msSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">M🔊</button>
         </span>
@@ -502,8 +476,8 @@
       <td>
         <button name="translateButton" title="Translate For Textarea." onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', recordLanguageSelect)">🔤</button>
         <button title="Copy From Textarea." onclick="copyTextArea(this)">📑</button>
-        <button onclick="clearTextArea(this)">🆑</button>
-        <span class="readButtons">
+        <button title="Clear Textarea." onclick="clearTextArea(this)">🆑</button>
+        <span class="readButtonContainer">
           <button onclick="ggSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">G🔊</button>
           <button onclick="msSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">M🔊</button>
         </span>
@@ -530,8 +504,8 @@
         <button name="translateButton" title="Translate For Textarea."
           onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', translationLanguageSelect)">🔤</button>
         <button title="Copy From Textarea." onclick="copyTextArea(this)">📑</button>
-        <button onclick="clearTextArea(this)">🆑</button>
-        <span class="readButtons">
+        <button title="Clear Textarea." onclick="clearTextArea(this)">🆑</button>
+        <span class="readButtonContainer">
           <button onclick="ggSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">G🔊</button>
           <button onclick="msSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">M🔊</button>
         </span>
@@ -554,23 +528,20 @@
       <td>
         <button name="translateButton" title="Translate For Textarea." onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, 'ja')">🔤</button>
         <button title="Copy From Textarea." onclick="copyTextArea(this)">📑</button>
-        <button onclick="clearTextArea(this)">🆑</button>
-        <span class="readButtons">
+        <button title="Clear Textarea." onclick="clearTextArea(this)">🆑</button>
+        <span class="readButtonContainer">
           <button  onclick="ggSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">G🔊</button>
           <button onclick="msSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">M🔊</button>
         </span>
       </td>
     </tr>
-  </table>
-
-  <table class="input-table" style="margin-top: 3px; display:block;">
-    <tr class="input-table-row" id="readingListInputArea">
+    <tr class="input-table-row" id="readingListInputArea" style="display:block">
       <td class="button-title">
         <span>
           <button name="translateButton" title="Translate For Textarea." onclick="speechTranslate(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', translationLanguageSelect)">訳</button>
-          <button onclick="addToReadingList(ggAudioList, msAudioList, 1,  this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', readingListLanguageSelect)" > + </button>
-          <button onclick="addToReadingList(ggAudioList, msAudioList, 2,  this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', readingListLanguageSelect)"> ++ </button>
-          <button onclick="addToReadingList(ggAudioList, msAudioList, 3,  this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', readingListLanguageSelect)"> +++ </button>
+          <button onclick="addToReadingList(ggAudioList, msAudioList, 1)"> + </button>
+          <button onclick="addToReadingList(ggAudioList, msAudioList, 2)"> ++ </button>
+          <button onclick="addToReadingList(ggAudioList, msAudioList, 3)"> +++ </button>
           <select id="readingListLanguageSelect">
             <option value="ja" selected>🇯🇵</option>
             <option value="en">🇺🇸</option>
@@ -588,8 +559,8 @@
           onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', translationLanguageSelect)">🔤</button>
         <button title="Copy From Textarea." onclick="copyTextArea(this)">📑</button>
         <button class="phone-button" onclick="pasteToTextArea(this)">📥</button>
-        <button title="Clear The Reading List" onclick="clearReadingList(this)">🆑</button>
-        <span class="readButtons">
+        <button title="Clear Textarea." onclick="clearTextArea(this)">🆑</button>
+        <span class="readButtonContainer">
           <select id="repeatTimeSelect" style="width: 40px;">
             <option value=1>1</option>
             <option value=2 selected>2</option>
@@ -608,7 +579,7 @@
     </tr>
   </table>
 
-  <div class="row-container" style="margin-top:6px; margin-bottom:6px;">
+  <div style="margin-top:6px; margin-bottom:6px;">
     <table style="border: 0px solid black; padding:10px;">
       <tr>
         <td>
@@ -641,7 +612,7 @@
     <button id="toggleRecordInputArea_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('recordInputArea', this)">Record ❌</button>
     <button id="toggleTranslationInputArea_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('translationInputArea', this)">Translation ❌</button>
     <button id="toggleJpExpInputArea_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpInputArea', this)">JpExp Input ❌</button>
-    <button id="toggleReadingListInputArea_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('readingListInputArea', this)">ReadingList 🟢</button>
+    <button id="toggleReadingListInputArea_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('readingListInputArea', this)">Reading Area 🟢</button>
     <button id="toggleJpExpArea_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpAreaFrame', this)">JpExp Text ❌</button>
     <button id="toggleJpExpWebTop_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebTop', this)">JpExp Web (↑) ❌</button>
     <button id="toggleJpExpWebBot_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebBot', this)">JpExp Web (↓) ❌</button>
@@ -650,6 +621,7 @@
     <button id="toggleLanguageSelects_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('languageSelectsContainer', this)">Lang Selects 🟢</button>
     <button id="toggleVoiceSelects_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('VoiceSelectsContainer', this)">Voice Selects 🟢</button>
     <button id="toggleGlobalValues_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('globalValuesContainer', this)">Global Values 🟢</button>
+    <button id="toggleTextRecordArea_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('textRecordArea', this)">Text Record 🟢</button>
   </div>
 
   <script>
@@ -691,10 +663,10 @@
 
   <div id="apiKeyEditor" style="display:none; margin-bottom:5px;">
     <table>
-      <tr class="row-container-left">
+      <tr>
         <td style="width: 175px;"> Google Script API-KEY: </td>
         <td>
-          <input type="password" id="apiKeyInput-0" size="50" oninput="updateApiKey(0)"> &nbsp;
+          <input type="password" id="apiKeyInput-0" size="50" oninput="updateApiKey(0)">
         </td>
         <td>
           <button ontouchstart="showApiKey(0, this)" ontouchend="hideApiKey(0, this)"
@@ -702,10 +674,10 @@
           <button title="Copy From Textarea." onclick="copyApiKey(0, this)">📑</button>
         </td>
       </tr>
-      <tr class="row-container-left">
+      <tr>
         <td style="width: 175px;"> GCP API-KEY: </td>
         <td>
-          <input type="password" id="apiKeyInput-1" size="50" oninput="updateApiKey(1)"> &nbsp;
+          <input type="password" id="apiKeyInput-1" size="50" oninput="updateApiKey(1)">
         </td>
         <td>
           <button ontouchstart="showApiKey(1, this)" ontouchend="hideApiKey(1, this)"
@@ -713,10 +685,10 @@
           <button title="Copy From Textarea." onclick="copyApiKey(1, this)">📑</button>
         </td>
       </tr>
-      <tr class="row-container-left">
+      <tr>
         <td style="width: 175px;"> Azure TTS Key: </td>
         <td>
-          <input type="password" id="apiKeyInput-2" size="50" oninput="updateApiKey(2)"> &nbsp;
+          <input type="password" id="apiKeyInput-2" size="50" oninput="updateApiKey(2)">
         </td>
         <td>
           <button ontouchstart="showApiKey(2, this)" ontouchend="hideApiKey(2, this)"
@@ -724,10 +696,10 @@
           <button title="Copy From Textarea." onclick="copyApiKey(2, this)">📑</button>
         </td>
       </tr>
-      <tr class="row-container-left" style="display:none;">
+      <tr style="display:none;">
         <td style="width: 175px;"> Azure Translate Key: </td>
         <td>
-          <input type="password" id="apiKeyInput-3" size="50" oninput="updateApiKey(3)"> &nbsp;
+          <input type="password" id="apiKeyInput-3" size="50" oninput="updateApiKey(3)">
         </td>
         <td>
           <button ontouchstart="showApiKey(3, this)" ontouchend="hideApiKey(3, this)"
@@ -735,17 +707,17 @@
           <button title="Copy From Textarea." onclick="copyApiKey(3, this)">📑</button>
         </td>
       </tr>
-      <tr class="row-container-left">
+      <tr>
         <td style="width: 175px;"> API Keys Split by ',': </td>
         <td>
-          <input type="password" id="apiKeyInput-All" size="50" oninput="updateApiKey(99, this.value)"> &nbsp;
+          <input type="password" id="apiKeyInput-All" size="50" oninput="updateApiKey(99, this.value)">
         </td>
       </tr>
     </table>
   </div>
 
-  <table style="border: none">
-    <tr class="row-container">
+  <table style="border:none; margin-bottom:5px">
+    <tr>
       <td>
       	<button id="defaultConfig-button" title="Recover To Default Configs." onclick="loadConfig(-1)">🆑</button>
       	<button id="saveConfig1-button" title="Save Configs[1]." onclick="saveConfig(1)">S1</button>
@@ -753,8 +725,8 @@
       	<button id="saveConfig2-button" title="Save Configs[2]." onclick="saveConfig(2)">S2</button>
       	<button id="loadConfig2-button" title="Load Configs[2]." onclick="loadConfig(2)">L2</button>
         <span style="margin-left:5px;"> </span>
-      	<button id="saveFavoriteConfig-button" title="Save Favorite History Texts[♡]." onclick="saveConfig(99)">S♡</button>
-      	<button id="loadFavoriteConfig-button" title="Load Favorite History Texts[♡]." onclick="loadConfig(99)">L♡</button>
+      	<button id="saveFavoriteConfig-button" title="Save Favorite Texts[♡]." style="display:none;" onclick="saveConfig(99)">S</button>
+      	<button id="loadFavoriteConfig-button" title="Load Favorite Texts[♡]." style="display:none;" onclick="loadConfig(99)">L</button>
       </td>
       <td>
         <button id="clearText-button" title="Clear Texts 🆑" onclick="clearTexts();">Clear Texts</button>
@@ -1449,12 +1421,14 @@
             if (event.results[i].isFinal) {
               if (recognitionNonStop) {
                 recognitionResult.value = speechText;
+                console.log("(✅recognitionNonStop 🎆) Final Text:", speechText);
                 // recognitionResult.value = recognitionPreviousResult.value + addPunctuation(speechText);
                 // recognitionPreviousResult.value = recognitionResult.value;
               }
               else {
                 recognitionResult.value = recognitionPreviousResult.value + addPunctuation(speechText);
                 recognitionPreviousResult.value = recognitionResult.value;
+                console.log("(❌!recognitionNonStop 🎆) Final Text:", speechText);
               }
               if (isRecording) {
                 recordResult.value = recordResult.value + addPunctuation(speechText);
@@ -1469,12 +1443,15 @@
                 speechOverInterval_TimeOut = setTimeout(function() {
                   stopRecognitionComplete(sourceLanguage);
                 }, speechOverInterval.value);
+                console.log("(❌!recognitionNonStop 🧩) Current Text:", speechText);
               }
               else if (speechSplitInterval.value && speechSplitInterval.value !== 0) {
                 clearTimeout(speechSplitInterval_TimeOut);
                 speechSplitInterval_TimeOut = setTimeout(stopRecognitionControl, speechSplitInterval.value);
+                console.log("(✅recognitionNonStop 🧩) Current Text:", speechText);
               }
               recognitionResult.value = recognitionPreviousResult.value + ' < ' + speechText + ' > ';
+              console.log("(🏗️) recognitionResult.value:", recognitionResult.value);
             }
           }
         }
@@ -1738,6 +1715,14 @@
         readingList.removeChild(readingList.firstChild);
       }
     }
+    function clearFavoriteList() {
+      while (favoriteTable.firstChild) {
+        favoriteTable.removeChild(favoriteTable.firstChild);
+      }
+      favTextConfig.favoriteTexts = [];
+      favTextConfig.favoriteTextLanguages = [];
+      saveFavoriteTextConfigStorage();
+    }
     function chooseAzureVoice(sourceLanguage) {
       if (sourceLanguage === "ja") {
         return azureVoiceSelects[0].value;
@@ -1777,7 +1762,12 @@
       }
     }
 
-    async function addToReadingList(ggAudioList, msAudioList, lines=1, isAutoDetect=false, languageSelect=undefined) {
+    /*
+      readingList
+        itemContainer
+          readingListItem, buttonContainer
+    */
+    async function addToReadingList(ggAudioList, msAudioList, lines=1) {
       await addToGgReadingList(ggAudioList, lines);
       await addToMsReadingList(msAudioList, lines);
       for (let i = 0; i < lines; i++) {
@@ -1790,6 +1780,7 @@
         let msSpeakReadingListItemButton = document.createElement('button');
         msSpeakReadingListItemButton.textContent = 'M';
         let removeReadingListItemButton = document.createElement('button');
+        removeReadingListItemButton.fontSize = "99px";
         removeReadingListItemButton.textContent = '⛔';
 
         let buttonContainer =  document.createElement('span');
@@ -1827,43 +1818,93 @@
       var language = values[1].slice(0, -1);
       return [text, language];
     }
-    function addToFavoriteList() {
-      for (let i = 0; i <= topTranslationCount; i++) {
+    function addToFavoriteListFromScreenText() {
+      /* for (let i = 0; i < favTextConfig.favoriteTexts.length; i++) {
+        if (texts[0].textContent == favTextConfig.favoriteTexts[i][0]) {
+          return;
+        }
+      } */
 
-        let favoriteListItem = document.createElement('li');
-        favoriteListItem.textContent = texts[i].textContent + ` - [${targetLanguages[i]}]`;
+      favTextConfig.favoriteTexts.push([...texts].map(element => element.textContent));
+      favTextConfig.favoriteTextLanguages.push([...readingSelects].map(element => element.value));
+      while (favTextConfig.favoriteTexts.length > 150) {
+        favTextConfig.favoriteTexts.shift();
+        favTextConfig.favoriteTextLanguages.shift();
+      }
+      saveFavoriteTextConfigStorage();
+      console.log("favTextConfig.favoriteTexts:", favTextConfig.favoriteTexts);
+
+      addToFavoriteList([...texts].map(element => element.textContent), [...readingSelects].map(element => element.value), translationCount + 1);
+    }
+    function removeFromFavoriteTextConfig(index) {
+      favTextConfig.favoriteTexts.splice(index, 1);
+      favTextConfig.favoriteTextLanguages.splice(index, 1);
+      saveFavoriteTextConfigStorage();
+    }
+
+    /*
+    elementTr
+      elementTd,    elementButtonTd
+        favoriteTextItem0,  buttonContainer0, buttonContainer1, buttonContainer2
+          elementUl
+            elementLi1(favoriteTextItem1)
+            elementLi2(favoriteTextItem2)
+
+    */
+    function addToFavoriteList(texts, langs, len) {
+      console.log("addToFavoriteList");
+      let elementTr = document.createElement('tr');
+      favoriteTable.appendChild(elementTr);
+      let elementTextTd = document.createElement('td');
+      elementTextTd.className = "textColumn";
+      elementTr.appendChild(elementTextTd);
+      let elementButtonTd = document.createElement('td');
+      elementButtonTd.className = "buttonColumn";
+      elementTr.appendChild(elementButtonTd);
+      let elementUl = document.createElement('ul');
+      elementUl.style.marginTop = "0";
+      elementUl.style.marginBottom = "0";
+
+      for (let i = 0; i < len; i++) {
+        let favoriteTextItem = document.createElement('div');
+        favoriteTextItem.textContent =  `${texts[i]} - [${langs[i]}]`;
+
+        let buttonContainer = document.createElement('div');
+        elementButtonTd.appendChild(buttonContainer);
 
         let ggSpeakFavoriteListItemButton = document.createElement('button');
         ggSpeakFavoriteListItemButton.textContent = 'G';
         let msSpeakFavoriteListItemButton = document.createElement('button');
         msSpeakFavoriteListItemButton.textContent = 'M';
-        let removeFavoriteListItemButton = document.createElement('button');
-        removeFavoriteListItemButton.textContent = '⛔';
-
-        let buttonContainer =  document.createElement('span');
-        // buttonContainer.appendChild(ggSpeakFavoriteListItemButton);
-        // buttonContainer.appendChild(msSpeakFavoriteListItemButton);
-        buttonContainer.appendChild(removeFavoriteListItemButton);
-
-        let itemContainer = document.createElement('div');
-        itemContainer.style.display = 'flex';
-        itemContainer.style.justifyContent = 'space-between';
-        itemContainer.appendChild(favoriteListItem);
-        itemContainer.appendChild(buttonContainer);
-
-        removeFavoriteListItemButton.addEventListener('click', function() {
-          const index = Array.from(favoriteList.children).indexOf(itemContainer);
-          itemContainer.remove();
-        });
         ggSpeakFavoriteListItemButton.addEventListener('click', function() {
-          const index = Array.from(favoriteList.children).indexOf(itemContainer);
-          ggSpeak(...sentenceSplit(favoriteListItem.textContent));
+          const index = Array.from(favoriteTable.children).indexOf(elementTr);
+          ggSpeak(...sentenceSplit(favoriteTextItem.textContent));
         });
         msSpeakFavoriteListItemButton.addEventListener('click', function() {
-          const index = Array.from(favoriteList.children).indexOf(itemContainer);
-          msSpeak(...sentenceSplit(favoriteListItem.textContent));
+          const index = Array.from(favoriteTable.children).indexOf(elementTr);
+          msSpeak(...sentenceSplit(favoriteTextItem.textContent));
         });
-        favoriteList.appendChild(itemContainer);
+        buttonContainer.appendChild(ggSpeakFavoriteListItemButton);
+        buttonContainer.appendChild(msSpeakFavoriteListItemButton);
+
+        if (i === 0) {
+          elementTextTd.appendChild(favoriteTextItem);
+          elementTextTd.appendChild(elementUl);
+          let removeFavoriteListItemButton = document.createElement('button');
+          removeFavoriteListItemButton.textContent = '⛔';
+          removeFavoriteListItemButton.style.fontSize = '10px';
+          removeFavoriteListItemButton.addEventListener('click', function() {
+            elementTr.remove();
+            const index = Array.from(favoriteTable.children).indexOf(elementTr);
+            removeFromFavoriteTextConfig(index);
+          });
+          buttonContainer.appendChild(removeFavoriteListItemButton);
+        }
+        else {
+          let elementLi = document.createElement('li');
+          elementUl.appendChild(elementLi);
+          elementLi.appendChild(favoriteTextItem);
+        }
       }
     }
 
@@ -1921,31 +1962,10 @@
       if (msSpeakAudio) {
         msSpeakAudio.pause();
       }
-      var audioDataCopy = msAudioList[index].slice();
-      const audioData = msAudioList[index];
+      const audioData = msAudioList[index].slice();
       const audioBlob = new Blob([audioData], { type: 'audio/mpeg' });
       msSpeakAudio.src = URL.createObjectURL(audioBlob);
       msSpeakAudio.play();
-    }
-
-    function saveFavoriteTextConfigStorage() {
-      var configJSON = JSON.stringify(favoriteHistoryTexts);
-      localStorage.setItem(`snowyTranslatorTextConfig[${favID}]`, configJSON);
-    }
-    function loadFavoriteTextConfigStorage() {
-      favoriteHistoryTexts = JSON.parse(localStorage.getItem(`snowyTranslatorTextConfig[${favID}]`));
-    }
-    function addFavoriteText() {
-      for (let i = 0; i <= translationCount; i++) {
-
-      }
-      favoriteHistoryTexts.push([...texts].map(element => element.innerHTML));
-      saveFavoriteTextConfigStorage();
-    }
-    function loadFavoriteText() {
-      // textConfig.historyTexts = textConfig.favoriteHistoryTexts;
-      // textConfig.historyTextsLanguages = textConfig.favoriteHistoryTextsLanguages;
-      // updateHistoryTextCurrentId(textConfig.historyTexts.length - 1);
     }
 
     async function ggDetectLanguage(text) {
@@ -2150,6 +2170,10 @@
       var configJSON = JSON.stringify(textConfig);
       localStorage.setItem(`snowyTranslatorTextConfig[${configID}]`, configJSON);
     }
+    function saveFavoriteTextConfigStorage() {
+      var configJSON = JSON.stringify(favTextConfig);
+      localStorage.setItem(`snowyTranslatorFavoriteTextConfig`, configJSON);
+    }
     function loadConfigStorage() {
       console.log("loadConfigStorage():");
       if (localStorage.getItem('snowyTranslatorConfig')) {
@@ -2160,6 +2184,15 @@
       console.log("loadTextConfigStorage():");
       if (localStorage.getItem(`snowyTranslatorTextConfig[${configID}]`)) {
         textConfig = JSON.parse(localStorage.getItem(`snowyTranslatorTextConfig[${configID}]`));
+      }
+    }
+    function loadFavoriteTextConfigStorage() {
+      favTextConfig = JSON.parse(localStorage.getItem(`snowyTranslatorFavoriteTextConfig`));
+      if (favoriteTable.rows.length > 0) return;
+      for (let i = 0; i < favTextConfig.favoriteTexts.length; i++) {
+        if (favTextConfig.favoriteTexts[i][0]) {
+          addToFavoriteList(favTextConfig.favoriteTexts[i], favTextConfig.favoriteTextLanguages[i], favTextConfig.favoriteTexts[i].length);
+        }
       }
     }
     function updatePageColor(color = "") {
@@ -2203,7 +2236,7 @@
         if (allTextUpdated) {
           console.log("allTextUpdated!");
           if (willUpdateHistoryText) {
-            pushHistoryText();
+            pushToHistoryTexts();
           }
 
           // console.log("texts[JapanesePosId]", texts[JapanesePosId]);
@@ -2223,7 +2256,7 @@
       historyTextsIdDisplay.innerHTML = `${pos + 1}/${textConfig.historyTexts.length}`;
       saveConfigStorage();
     }
-    function pushHistoryText() {
+    function pushToHistoryTexts() {
       if (textConfig.historyTexts.length > 0 && textConfig.historyTexts[textConfig.historyTexts.length - 1][0] === texts[0].textContent) {
           return;
       }
@@ -2240,8 +2273,8 @@
       if (index < 0 || index >= textConfig.historyTexts.length) {
         return;
       }
-      console.log(" textConfig.historyTexts:",  textConfig.historyTexts);
-      console.log(" textConfig.historyTextsLanguages:",  textConfig.historyTextsLanguages);
+      // console.log(" textConfig.historyTexts:",  textConfig.historyTexts);
+      // console.log(" textConfig.historyTextsLanguages:",  textConfig.historyTextsLanguages);
       updateHistoryTextCurrentId(index);
       for (let i = 0; i <= translationCount; i++) {
         updateText(i, textConfig.historyTexts[index][i], false);
@@ -2424,12 +2457,11 @@
       else {
         loadTextConfigStorage(configID);
       }
-
       saveTextConfigStorage(autoSID);
+      loadFavoriteTextConfigStorage();
       console.log(`Load Config (${configID}) ing...`);
 
       toggleTranslationCount(configs[configID].translationCount);
-
       updatePageColor(configs[configID].pageColor);
       updateCurtainColor(configs[configID].curtainColor);
       updateIntegerValue("speechOverInterval", configs[configID].speechOverInterval);
@@ -2609,22 +2641,78 @@
     }
   </script>
 
-  <span class="row-container">
-    <button id="readingList_LayoutButton" style="margin-bottom:5px;" onclick="toggleWidgetArea('readingList', this)">Reading List ❌</button>
-    <span style="margin-left:8px;"></span>
-    <button id="favoriteList_LayoutButton" style="margin-bottom:5px;" onclick="toggleWidgetArea('favoriteList', this)">Favorite List ❌</button>
-    <span style="margin-left:8px;"></span>
-    <button id="speechList_LayoutButton" style="margin-bottom:5px;" onclick="toggleWidgetArea('speechList', this)">Speech List ❌</button>
+  <style>
+    #favoriteTable {
+      word-break: break-word;
+      width: 1000px;
+
+      border: 0.2rem outset pink;
+      outline: 0.2rem solid khaki;
+      box-shadow: 0 0 0 0.4rem skyblue;
+      border-radius: 12px;
+      margin: 0.2rem;
+      outline-offset: 0.4rem;
+    }
+    #favoriteTable tr {
+      border-radius: 10px;
+    }
+    #favoriteTable td {
+      border: 1px groove grey;
+      text-align: left;
+      display: table-cell;
+    }
+    #favoriteTable button {
+      vertical-align: middle;
+      height: 20px;
+      width: 30px;
+    }
+    .textColumn {
+      min-width:70%;
+    }
+    .buttonColumn {
+      width: 100px;
+      display: grid;
+      align-content: space-evenly;
+    }
+
+    @media screen and (max-width: 1000px) {
+      #favoriteTable {
+        width: 98%;
+      }
+    }
+  </style>
+
+  <span id="textRecordArea" style="display:block">
+    <span>
+      <button id="readingList_LayoutButton" style="margin-bottom:5px;" onclick="toggleWidgetArea('readingListArea', this)">Reading List ❌</button>
+      <span style="margin-left:8px;"></span>
+      <button id="favoriteList_LayoutButton" style="margin-bottom:5px;" onclick="toggleWidgetArea('favoriteTableArea', this)">Favorite List ❌</button>
+      <span style="margin-left:8px;"></span>
+      <button id="speechList_LayoutButton" style="margin-bottom:5px;" onclick="toggleWidgetArea('speechListArea', this)">Speech List ❌</button>
+    </span>
+
+    <span id="readingListArea" style="display:none;">
+      <button style="margin-bottom:8px;" onclick="clearReadingList()">Clear - Reading List 🆑</button>
+      <ul id="readingList"></ul>
+      <span id="readingListTotalCount"></span>
+    </span>
+
+    <span id="favoriteTableArea" style="display:none;">
+      <button style="margin-bottom:8px;" onclick="clearFavoriteList()">Clear - Favorite List 🆑</button>
+      <table id="favoriteTable"></table>
+      <!--
+        <ul id="favoriteList"></ul>
+        <ul id="favoriteButtonList"></ul>
+      -->
+    </span>
+
+    <span id="speechListArea" style="display:none">
+      <ul id="speechList"></ul>
+      <span id="speechListTotalCount"></span>
+    </span>
   </span>
 
-  <ul id="readingList" style="display:none"></ul>
-  <span id="readingListTotalCount"></span>
-
-  <ul id="favoriteList" style="display:none"></ul>
-
-  <ul id="speechList" style="display:none"></ul>
-  <span id="speechListTotalCount"></span>
-
+  <br>
   <span style="display: block">
     <div class="row-container">
       <ruby> 日本語<rt>にほんご</rt> &nbsp; </ruby>

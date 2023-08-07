@@ -1,70 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Language Detection</title>
+    <title>Responsive Table</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<script type="module">
-    // import {franc, francAll} from 'https://esm.sh/franc@6?bundle'
-    // console.log(franc("なにこれ", {minLength: 1}));
-</script>
+
+<style>
+  .buttonColumn{
+    min-width: 100px;
+    display: grid;
+    align-content: space-evenly;
+  }
+</style>
 <body>
-  <h1>Language Detection</h1>
-  <textarea id="text-input" rows="5" cols="50" placeholder="Enter text to detect language"></textarea>
-  <button onclick="detectLanguage()">Detect Language</button>
-  <p> Detected Language: <span id="language-result"></span> </p>
+  <span id="favoriteTableArea" style="display:flex;">
+     <table id="favoriteTable"></table>
+   </span>
 
   <script>
-    async function detectLanguage() {
+  function addToFavoriteList(texts, langs, len) {
+     console.log("addToFavoriteList");
+     let elementTr = document.createElement('tr');
+     favoriteTable.appendChild(elementTr);
+     let elementTextTd = document.createElement('td');
+     elementTextTd.className = "textColumn";
+     elementTr.appendChild(elementTextTd);
+     let elementButtonTd = document.createElement('td');
+     elementButtonTd.className = "buttonColumn";
+     elementTr.appendChild(elementButtonTd);
+     let elementUl = document.createElement('ul');
+     elementUl.style.marginTop = "0";
+     elementUl.style.marginBottom = "0";
 
-      const text = document.getElementById('text-input').value;
-      const languageResult = document.getElementById('language-result');
-      var language = await detectLanguageFromMyServer(text);
-      console.log(language);
-      languageResult.innerHTML = language;
+     for (let i = 0; i < len; i++) {
+       let favoriteTextItem = document.createElement('div');
+       favoriteTextItem.textContent =  `${texts[i]} - [${langs[i]}]`;
 
-      // var html = await japaneseExplanationFromMyServer(text);
-      // console.log(html);
-    }
+       let buttonContainer = document.createElement('div');
+       buttonContainer.innerHTML = i;
+       elementButtonTd.appendChild(buttonContainer);
+       elementButtonTd.style.alignContent = "space-evenly";
 
-    async function detectLanguageFromMyServer(text) {
-      try {
-        // const response = await fetch('https://snsmile.site:3001/detect-language', {
-        const response = await fetch('http://localhost:3001/detect-language', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            text: text
-          })
-        })
-        const data = await response.json();
-        return data.language;
-      } catch (error) {
-       console.error('Error:', error);
-       return text + "🌐🚨";
-      }
-    }
+       if (i === 0) {
+         elementTextTd.appendChild(favoriteTextItem);
+         elementTextTd.appendChild(elementUl);
 
-   async function japaneseExplanationFromMyServer(text) {
-     try {
-        // const response = await fetch('https://snsmile.site:3001/furigana', {
-        const response = await fetch('http://localhost:3001/furigana', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          text: text
-        })
-       })
-       const data = await response.json();
-       return data.result;
-     } catch (error) {
-       console.error('Error:', error);
-       return text + "🌐🚨";
+         let removeFavoriteListItemButton = document.createElement('button');
+         removeFavoriteListItemButton.textContent = '⛔';
+         //buttonContainer.appendChild(removeFavoriteListItemButton);
+       }
+       else {
+         let elementLi = document.createElement('li');
+         elementUl.appendChild(elementLi);
+         elementLi.appendChild(favoriteTextItem);
+       }
+
+       let ggSpeakFavoriteListItemButton = document.createElement('button');
+       ggSpeakFavoriteListItemButton.textContent = 'G';
+       let msSpeakFavoriteListItemButton = document.createElement('button');
+       msSpeakFavoriteListItemButton.textContent = 'M';
+       //buttonContainer.appendChild(ggSpeakFavoriteListItemButton);
+       //buttonContainer.appendChild(msSpeakFavoriteListItemButton);
      }
-   }
+    }
+  </script>
+
+  <script>
+    var texts = [["彼は笑顔で私に挨拶した。彼は笑顔で私に挨拶した。"], ["He greeted me with a smile. He greeted me with a smile. "], ["他微笑著向我打招呼。 他微笑著向我打招呼。"]]
+    var languages = [["1"], ["2"], ["3"]]
+    addToFavoriteList(texts, languages, 3);
+    addToFavoriteList(texts, languages, 3);
+    addToFavoriteList(texts, languages, 3);
   </script>
 </body>
+
 </html>

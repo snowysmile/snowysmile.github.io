@@ -1,232 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <style>
-    table {
-      border-collapse: collapse;
-      border: 1px solid #777777;
-    }
-    th, td {
-      border-bottom: 1px solid #ccc;
-      text-align: center;
-      vertical-align: middle;
-      padding: 4px;
-    }
-    .input-table {
-      table-layout: fixed;
-    }
-    .input-table button{
-      vertical-align: middle;
-      height: 28px;
-    }
-    .input-table select {
-      vertical-align: middle;
-      height: 28px;
-      width: 36px;
-      font-family: "Monaco", monospace;
-    }
-    @media screen and (max-width: 600px) {
-      table {
-        display: flex;
-        flex-direction: column;
-      }
-      th, td {
-        display: block;
-        text-align: center;
-        padding: 4px;
-      }
-      textarea {
-        max-width: 90%;
-      }
-      .input-table-row {
-        display: flex;
-        flex-direction: column;
-      }
-      .text-area {
-        max-width: 90%;
-      }
-    }
-    .text-area {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-      width: 1000px;
-      height: 200px;
-      background: blue;
-    }
-    </style>
+<style>
+td {
+  border: 5px groove grey;
+}
+#gridContainer {
+  height: 300px;
+  display: grid;
+  align-content: space-evenly;
+  background-color: #2196F3;
+}
+
+#testTdArea{
+  height: 500px;
+  display: grid;
+  align-content: space-evenly;
+  background-color: #2196F3;
+}
+
+</style>
 </head>
 <body>
 
-<h2>Sample Table</h2>
-<div class="text-area">
-  <div id="textMargin-0"> </div>
-  <div class="stroke-text" id="text-0"> </div>
-  <div id="textMargin-1"> </div>
-  <div class="stroke-text" id="text-1"> </div>
-  <div id="textMargin-2"> </div>
-  <div class="stroke-text" id="text-2"> </div>
+<div id="gridContainer">
 </div>
-<br>
-<script>
-  $(function() {
-    $('.text-area').resizable();
-  });
-</script>
-<table class="input-table">
-  <tr class="input-table-row" id="recognitionInputArea">
-    <td>
-      <button id="recognize-button" onclick="toggleRecognition()" style="width: 148px;">▶️ Start Recognizing</button>
-    </td>
-    <td>
-      <select id="recognitionLanguageSelect">
-        <option value="ja" selected>🇯🇵</option>
-        <option value="en">🇺🇸</option>
-        <option value="zh-TW">🇹🇼</option>
-      </select>
-      <button onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)">🔤</button>
-      <button onclick="copyTextArea(this)">✂️</button>
-      <button onclick="clearTextArea(this)">🆑</button>
-      <span class="readButtons">
-        <button onclick="ggSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">G🔊</button>
-        <button onclick="msSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">M🔊</button>
-      </span>
-    </td>
-    <td>
-      <textarea id="recognitionResult" rows="2" cols="80"></textarea>
-    </td>
-  </tr>
 
-  <tr class="input-table-row" id="recordInputArea">
-    <td>
-      <button id="record-button" onclick="toggleRecord()" style="width: 148px;">▶️ Start Recording</button>
-    </td>
-    <td>
-      <select id="recordLanguageSelect">
-        <option value="ja" selected>🇯🇵</option>
-        <option value="en">🇺🇸</option>
-        <option value="zh-TW">🇹🇼</option>
-      </select>
-      <button onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)">🔤</button>
-      <button onclick="copyTextArea(this)">✂️</button>
-      <button onclick="clearTextArea(this)">🆑</button>
-      <span class="readButtons">
-        <button onclick="ggSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">G🔊</button>
-        <button onclick="msSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">M🔊</button>
-      </span>
-    </td>
-    <td>
-      <textarea id="recordResult" rows="2" cols="80"></textarea>
-    </td>
-  </tr>
-
-  <tr class="input-table-row" id="JpExpInputArea" >
-    <form action="/process" method="post">
-      <td>
-        <button id="jpExp-button" type="button" onclick="japaneseExplanationEntrance()" style="width: 148px;">Japanese Explanation</button>
+<span id="favoriteTableArea" style="display:flex;">
+   <table id="favoriteTable">
+    <tr>
+      <td id="theTdArea">
+        123
       </td>
-      <td>
-        <select id="textareaLanguageSelect-3">
-          <option value="ja" selected>🇯🇵</option>
-          <option value="ja" selected>🇯🇵</option>
-          <option value="ja" selected>🇯🇵</option>
-        </select>
-        <button type="button" onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, 'ja')">🔤</button>
-        <button type="button" onclick="copyTextArea(this)">✂️</button>
-        <button type="button" onclick="clearTextArea(this)">🆑</button>
-        <span class="readButtons">
-          <button type="button"  onclick="ggSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">G🔊</button>
-          <button type="button" onclick="msSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">M🔊</button>
-        </span>
+      <td id="testTdArea">
+        <div> 456 </div>
+        <div> 789 </div>
       </td>
-      <td>
-        <textarea id="jpExpInput" name="jpExpInputName" rows="2" cols="80"></textarea>
-      </td>
-    </form>
-  </tr>
-
-  <tr class="input-table-row" id="translateInputArea" >
-    <td>
-      <button id="translate-button" onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value)" style="width: 148px;"> Translate </button>
-    </td>
-    <td>
-      <select id="translateLanguageSelect">
-        <option value="ja">🇯🇵</option>
-        <option value="en" selected>🇺🇸</option>
-        <option value="zh-TW">🇹🇼</option>
-      </select>
-      <button  onclick="autoTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select'))">🔎</button>
-      <button onclick="copyTextArea(this)">✂️</button>
-      <button onclick="clearTextArea(this)">🆑</button>
-      <span class="readButtons">
-        <button onclick="ggSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">G🔊</button>
-        <button onclick="msSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">M🔊</button>
-      </span>
-    </td>
-    <td>
-      <textarea id="translateInput" rows="2" cols="80"></textarea>
-    </td>
-  </tr>
-</table>
-
-<table class="input-table" style="margin-top: 3px;">
-  <tr class="input-table-row" id="readingListInputArea">
-    <td>
-      <select id="readingListLanguageSelect">
-        <option value="ja" selected>🇯🇵</option>
-        <option value="en">🇺🇸</option>
-        <option value="zh-TW">🇹🇼</option>
-      </select>
-      <select id="repeatTimeSelect" style="width: 40px;">
-        <option value="1">1</option>
-        <option value="2" selected>2</option>
-        <option value="3">3</option>
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="20">20</option>
-        <option value="30">30</option>
-        <option value="50">50</option>
-        <option value="99">99</option>
-      </select>
-      <button type="button" onclick="autoTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0])">🔎</button>
-      <button id="addToReadingList-button" onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 1)" > + </button>
-      <button onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 2)"> ++ </button>
-      <button onclick="addToReadingList(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, 3)"> +++ </button>
-      <button onclick="clearReadingList(this)">🆑</button>
-      <span class="readButtons">
-        <button style="font-size: 11px;" onclick="ggSpeakReadingList(repeatTimeSelect.value, this)">G🔊</button>
-        <button style="font-size: 11px;" onclick="msSpeakReadingList(repeatTimeSelect.value, this)">M🔊</button>
-      </span>
-    </td>
-    <td>
-      <textarea id="readingListInput" rows="2" cols="87"></textarea>
-    </td>
-  </tr>
-</table>
-
+    <tr>
+   <tr>
+     <td>
+       111
+     </td>
+     <td>
+       222
+     </td>
+   <tr>
+  </table>
+ </span>
 
 <script>
-  function moveButtonsOnPhone() {
-    const readButtonsSpan = document.querySelector('.readButtons');
-    const recognitionInputArea = document.getElementById('recognitionInputArea');
-    const screenWidth = window.innerWidth;
-
-    if (screenWidth <= 767) { // Adjust this threshold to the desired screen width for phones
-      //const newTd = document.createElement('td');
-      //newTd.appendChild(readButtonsSpan);
-      recognitionInputArea.appendChild(readButtonsSpan);
-    }
+  /*
+  document.getElementById('theTdArea').appendChild(gridContainer);
+  for (let i = 0; i < 5; i++) {
+    let theDiv = document.createElement("div");
+    theDiv.innerHTML = i;
+    gridContainer.appendChild(theDiv);
   }
-
-  // Call the function when the page loads and when it is resized
-  window.addEventListener('load', moveButtonsOnPhone);
-  window.addEventListener('resize', moveButtonsOnPhone);
+  */
 </script>
-
 </body>
 </html>

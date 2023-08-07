@@ -1,0 +1,48 @@
+favoriteTextTable.appendChild(subListContainer);
+for (let i = 0; i < len; i++) {
+  let favoriteListItem = document.createElement('li');
+  favoriteListItem.textContent =  `${texts[i]} - [${langs[i]}]`;
+
+  let ggSpeakFavoriteListItemButton = document.createElement('button');
+  ggSpeakFavoriteListItemButton.textContent = 'G';
+  let msSpeakFavoriteListItemButton = document.createElement('button');
+  msSpeakFavoriteListItemButton.textContent = 'M';
+
+  let buttonContainer =  document.createElement('div');
+  if (i == 0) {
+    let removeFavoriteListItemButton = document.createElement('button');
+    removeFavoriteListItemButton.textContent = '⛔';
+    buttonContainer.appendChild(removeFavoriteListItemButton);
+  }
+  buttonContainer.appendChild(ggSpeakFavoriteListItemButton);
+  buttonContainer.appendChild(msSpeakFavoriteListItemButton);
+
+  let itemContainer = document.createElement('div');
+  itemContainer.style.display = 'flex';
+  itemContainer.style.justifyContent = 'space-between';
+  itemContainer.appendChild(favoriteListItem);
+  itemContainer.appendChild(buttonContainer);
+
+  ggSpeakFavoriteListItemButton.addEventListener('click', function() {
+    const index = Array.from(favoriteList.children).indexOf(itemContainer);
+    ggSpeak(...sentenceSplit(favoriteListItem.textContent));
+  });
+  msSpeakFavoriteListItemButton.addEventListener('click', function() {
+    const index = Array.from(favoriteList.children).indexOf(itemContainer);
+    msSpeak(...sentenceSplit(favoriteListItem.textContent));
+  });
+
+  if (i == 0) {
+    removeFavoriteListItemButton.addEventListener('click', function() {
+      const index = Array.from(favoriteList.children).indexOf(itemContainer);
+      itemContainer.remove();
+    });
+
+    favoriteListItem.appendChild(subListContainer);
+    favoriteList.appendChild(itemContainer);
+  }
+  else {
+    subListContainer.appendChild(itemContainer);
+  }
+}
+}
