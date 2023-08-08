@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Web Speech API Demo</title>
+  </head>
+  <body>
+    <h1>Web Speech API Demo</h1>
+    <p>Click the button and say something.</p>
+    <button id="start-btn">Start</button>
+    <div id="result"></div>
+    <script>
+      // Check if the browser supports the Web Speech API
+      if (window.SpeechRecognition || window.webkitSpeechRecognition) {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognition = new SpeechRecognition();
+        // Set the language to English
+        recognition.lang = "en-US";
+        // Set the continuous mode to false
+        recognition.continuous = false;
+        // Set the interim results to true
+        recognition.interimResults = true;
+        // Get the button and result elements
+        const startBtn = document.getElementById("start-btn");
+        const result = document.getElementById("result");
+        // Add a click event listener to the button
+        startBtn.addEventListener("click", () => {
+          // Start the recognition
+          recognition.start();
+          // Clear the previous result
+          result.textContent = "";
+        });
+        // Add a result event listener to the recognition
+        recognition.addEventListener("result", (event) => {
+          // Get the transcript of the speech
+          const transcript = event.results[0][0].transcript;
+          // Display the transcript in the result element
+          result.textContent = transcript;
+        });
+      } else {
+        // Display a message if the browser does not support the Web Speech API
+        alert("Sorry, your browser does not support the Web Speech API.");
+      }
+    </script>
+  </body>
+</html>

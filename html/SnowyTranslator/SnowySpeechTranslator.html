@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="static/font.css">
 
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap"  rel="stylesheet"> -->
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
@@ -115,6 +114,13 @@
     }
     .readButtonContainer button {
       font-size: 9px;
+    }
+    .phone-row-table tr{
+      border-collapse: collapse;
+      border: 1px dashed grey;
+    }
+    .phone-row-table td:first-child {
+      width: 35%;
     }
     #jpExpAreaFrame {
       width: 1015px;
@@ -238,19 +244,19 @@
     var defaultConfig = {
       pageColor: "#fffafa",
       curtainColor: "#9acd32",
-      texts: ["きらきらひかる、おそらのほしよ。",
+      texts: ["きらきら光る、お空の星よ。",  // きらきらひかる、おそらのほしよ。
               "Twinkle, twinkle, little star, How I wonder what you are! ",
               "一閃一閃亮晶晶，滿天都是小星星。"],
               // まばたきしては、みんなをみてる。
               // Up above the world so high, Like a diamond in the sky.
               // 掛在天上放光明，好像許多小眼睛。
               // "1234567890 !@#$%^&*() abcdefg ABCDEFG",
-      displayedTexts: [],
+      displayedTexts: ["<ruby> きらきら</ruby> <ruby> 光る <rt>ひかる</rt></ruby>、<ruby> お</ruby> <ruby> 空 <rt>そら</rt></ruby> <ruby> の</ruby> <ruby> 星 <rt>ほし</rt></ruby> <ruby> よ</ruby>。", "", ""],
       textFontColors: ["#000000", "#000000", "#000000"],
       textFontSizes: [20, 17, 14], //px
       textFontWeights: [500, 500, 500],
       textFontFamilies: ["NotoSansCJKjp", "NotoSansCJKjp", "NotoSansCJKjp"],
-      textStrokeColors: [['#87ceeb#ffb7c5'], ['#87ceeb#ffb7c5'], ['#87ceeb#ffb7c5']],
+      textStrokeColors: [['#87ceeb, #ffb7c5'], ['#87ceeb, #ffb7c5'], ['#87ceeb, #ffb7c5']],
       textStrokeWidths: [[0, 0], [0, 0], [0, 0]], //em
       textShadowColors: ["#ffeebb", "#ffeebb", "#ffeebb"],
       textShadowBlurRadius: [0, 0, 0], //em
@@ -268,17 +274,26 @@
     }
     var defaultTextConfig = {
       historyTexts: [],
-      historyTextsLanguages: [],
-    }
-    defaultConfig.displayedTexts = [...defaultConfig.texts];
+      historyTextLanguages: [],
+      furiganaTexts: [],
+      furiganaTextPos: [],
+    };
+    defaultConfig.displayedTexts[1] = defaultConfig.texts[1];
+    defaultConfig.displayedTexts[2] = defaultConfig.texts[2];
+
+    console.log(defaultConfig.displayedTexts);
     defaultTextConfig.historyTexts.push([...defaultConfig.texts]);
-    defaultTextConfig.historyTextsLanguages.push([...defaultConfig.languages]);
+    defaultTextConfig.historyTextLanguages.push([...defaultConfig.languages]);
+    defaultTextConfig.furiganaTexts.push(defaultConfig.displayedTexts[0]);
+    defaultTextConfig.furiganaTextPos.push(0);
     var configs = [
       {}, {}, {},
     ];
     var textConfig = {
       historyTexts: [],
-      historyTextsLanguages: [],
+      historyTextLanguages: [],
+      furiganaTexts: [],
+      furiganaTextPos: [],
     };
     var favTextConfig = {
       favoriteTexts: [],
@@ -926,6 +941,7 @@
         </td>
       </tr>
     </table>
+
     <table>
       <tr>
         <td>
@@ -2248,7 +2264,19 @@
           if (textFuriganaToggleButton.innerText === "🔰") {
             setTimeout(() => {
               japaneseExplanationFromMyServer(texts[JapanesePosId].textContent)
-              .then((html) => updateTextWithFurigana(JapanesePosId, html))
+              .then((html) => {
+                updateTextWithFurigana(JapanesePosId, html);
+                while (textConfig.furiganaTexts.length < textConfig.historyTexts.length - 1) {
+                  textConfig.furiganaTexts.push("");
+                  textConfig.furiganaTextPos.push(-1);
+                }
+                while (textConfig.furiganaTexts.length > textConfig.historyTexts.length - 1) {
+                  textConfig.furiganaTexts.pop();
+                  textConfig.furiganaTextPos.pop();
+                }
+                textConfig.furiganaTexts.push(html);
+                textConfig.furiganaTextPos.push(JapanesePosId);
+              })
               .catch((error) => console.error(error));
             }, 500);
           }
@@ -2266,10 +2294,10 @@
           return;
       }
       textConfig.historyTexts.push([...texts].map(element => element.textContent));
-      textConfig.historyTextsLanguages.push([...targetLanguages]);
+      textConfig.historyTextLanguages.push([...targetLanguages]);
       while (textConfig.historyTexts.length > configs[autoSID].historyTextsMaxLength) {
         textConfig.historyTexts.shift();
-        textConfig.historyTextsLanguages.shift();
+        textConfig.historyTextLanguages.shift();
       }
       updateHistoryTextCurrentId(textConfig.historyTexts.length - 1);
       saveTextConfigStorage(autoSID);
@@ -2278,17 +2306,22 @@
       if (index < 0 || index >= textConfig.historyTexts.length) {
         return;
       }
-      // console.log(" textConfig.historyTexts:",  textConfig.historyTexts);
-      // console.log(" textConfig.historyTextsLanguages:",  textConfig.historyTextsLanguages);
       updateHistoryTextCurrentId(index);
       for (let i = 0; i <= translationCount; i++) {
         updateText(i, textConfig.historyTexts[index][i], false);
-        readingSelects[i].value = textConfig.historyTextsLanguages[index][i];
+        readingSelects[i].value = textConfig.historyTextLanguages[index][i];
+      }
+      if (textFuriganaToggleButton.innerText === "🔰") {
+        updateTextWithFurigana(textConfig.furiganaTextPos[index], textConfig.furiganaTexts[index]);
       }
     }
     function updateTextWithFurigana(id, htmlText) {
+      if (!htmlText || typeof htmlText === "string" && htmlText.trim() === "") {
+        return;
+      }
       displayedTexts[id].innerHTML = htmlText;
       displayedTexts[id].setAttribute('stroke-data', "");
+      saveTextConfigStorage(autoSID);
     }
     function copyText(id) {
       var text = document.getElementById(`text-${id}`).textContent;
@@ -2735,6 +2768,8 @@
     <span style="display: none">
       <a href="https://wicg.github.io/speech-api" target="_blank">Speech Recognition</a>
       <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">Web HTML Study</a>
+      <a href="https://www.tamasoft.co.jp/en/general-info/unicode.html" target="_blank">All Unicode Table</a>
+      <a href="https://www.ssec.wisc.edu/~tomw/java/unicode.html" target="_blank">All Unicode Explaination</a>
     </span>
   </span>
 

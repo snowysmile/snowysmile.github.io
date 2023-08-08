@@ -9,12 +9,13 @@ import ssl
 import os
 import re
 
-app = Flask(__name__, template_folder='.')
+# app = Flask(__name__, template_folder='.')
+app = Flask(__name__, template_folder=os.path.expanduser('~/snowy-server/html/'), static_url_path='/static', static_folder=os.path.expanduser('~/snowy-server/html/static'))
 CORS(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('SnowySpeechTranslator.html')
 
 @app.route('/formatJpExp', methods=['POST'])
 def process():
@@ -83,23 +84,44 @@ def is_not_japanese_character(char):
         (0x30A0, 0x30FF),  # Katakana
         (0x4E00, 0x9FFF),  # Kanji
         (0x3400, 0x4DBF),  # Extended Kanji (Rare)
+        (0xFF00, 0xFFEF),  # Japanese Full Width Characters & Half-width Katakana
     ]
     for start, end in japanese_ranges:
         if start <= code_point <= end:
             return False
     return True
 
+eng_to_jpn_map = {}
+def eng_to_jpn_init():
+    for c in range(ord('０'), ord('９') + 1):
+        jpn_char = chr(c)
+        eng_char = chr(c + ord('0') - ord('０'))
+        eng_to_jpn_map[eng_char] = jpn_char
+    eng_to_jpn_map['!'] = '！'
+    eng_to_jpn_map['?'] = '？'
+    eng_to_jpn_map[':'] = '；'
+    eng_to_jpn_map[','] = '，'
+    eng_to_jpn_map['.'] = '｡'
+eng_to_jpn_init()
+
+def eng_to_jpn(c):
+    if eng_to_jpn_map.get(c):
+        return eng_to_jpn_map[c]
+    return c
+
 def only_japanese(text):
     ans_text = ""
     pos = 0
     is_japanese = True
-    while(pos < len(text)):
-        if is_not_japanese_character(text[pos]):
+    while pos < len(text):
+        c = text[pos]
+        c = eng_to_jpn(c)
+        if is_not_japanese_character(c):
             if is_japanese:
                 ans_text += " "
             is_japanese = False
         else:
-            ans_text += text[pos]
+            ans_text += c
             is_japanese = True
         pos = pos + 1
     return ans_text
