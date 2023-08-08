@@ -1428,8 +1428,8 @@
       }
       recognition.onresult = function(event) {
         console.log("In [recognition.onresult] ", "resultIndex=", event.resultIndex, "resultLength=", event.results.length);
-        for (var i = event.resultIndex; i < event.results.length; i++) {
-        // { var i = event.results.length - 1;
+        for (var i = event.resultIndex; i < event.results.length; i++) { console.log(`🔢 event.resultIndex=${event.resultIndex}; event.results.length=${event.results.length}`);
+        // { var i = event.results.length - 1; console.log(" i = event.results.length = ", i);
           var speechText = event.results[i][0].transcript;
           if (!speechText || !speechText.trim()) {
             console.log("Empty Speech Text");
@@ -2770,6 +2770,7 @@
       <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">Web HTML Study</a>
       <a href="https://www.tamasoft.co.jp/en/general-info/unicode.html" target="_blank">All Unicode Table</a>
       <a href="https://www.ssec.wisc.edu/~tomw/java/unicode.html" target="_blank">All Unicode Explaination</a>
+      textId = 0756;
     </span>
   </span>
 
