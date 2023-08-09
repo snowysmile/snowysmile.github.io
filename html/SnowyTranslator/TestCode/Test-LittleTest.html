@@ -4,73 +4,15 @@
     <title>Responsive Table</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
-<style>
-  .buttonColumn{
-    min-width: 100px;
-    display: grid;
-    align-content: space-evenly;
-  }
-</style>
 <body>
-  <span id="favoriteTableArea" style="display:flex;">
-     <table id="favoriteTable"></table>
-   </span>
-
   <script>
-  function addToFavoriteList(texts, langs, len) {
-     console.log("addToFavoriteList");
-     let elementTr = document.createElement('tr');
-     favoriteTable.appendChild(elementTr);
-     let elementTextTd = document.createElement('td');
-     elementTextTd.className = "textColumn";
-     elementTr.appendChild(elementTextTd);
-     let elementButtonTd = document.createElement('td');
-     elementButtonTd.className = "buttonColumn";
-     elementTr.appendChild(elementButtonTd);
-     let elementUl = document.createElement('ul');
-     elementUl.style.marginTop = "0";
-     elementUl.style.marginBottom = "0";
+    const html = '<ruby> きらきら</ruby> <ruby> 光る <rt>ひかる</rt></ruby>、<ruby> お</ruby> <ruby> 空 <rt>そら</rt></ruby> <ruby> の</ruby> <ruby> 星 <rt>ほし</rt></ruby> <ruby> よ</ruby>';
 
-     for (let i = 0; i < len; i++) {
-       let favoriteTextItem = document.createElement('div');
-       favoriteTextItem.textContent =  `${texts[i]} - [${langs[i]}]`;
-
-       let buttonContainer = document.createElement('div');
-       buttonContainer.innerHTML = i;
-       elementButtonTd.appendChild(buttonContainer);
-       elementButtonTd.style.alignContent = "space-evenly";
-
-       if (i === 0) {
-         elementTextTd.appendChild(favoriteTextItem);
-         elementTextTd.appendChild(elementUl);
-
-         let removeFavoriteListItemButton = document.createElement('button');
-         removeFavoriteListItemButton.textContent = '⛔';
-         //buttonContainer.appendChild(removeFavoriteListItemButton);
-       }
-       else {
-         let elementLi = document.createElement('li');
-         elementUl.appendChild(elementLi);
-         elementLi.appendChild(favoriteTextItem);
-       }
-
-       let ggSpeakFavoriteListItemButton = document.createElement('button');
-       ggSpeakFavoriteListItemButton.textContent = 'G';
-       let msSpeakFavoriteListItemButton = document.createElement('button');
-       msSpeakFavoriteListItemButton.textContent = 'M';
-       //buttonContainer.appendChild(ggSpeakFavoriteListItemButton);
-       //buttonContainer.appendChild(msSpeakFavoriteListItemButton);
-     }
+    function getRubyText(html) {
+      const cleanedText = html.replace(/<\/?ruby>/g, '').replace(/<rt>.*?<\/rt>/g, '');
+      return cleanedText.replace(/\s+/g, ' ');
     }
-  </script>
-
-  <script>
-    var texts = [["彼は笑顔で私に挨拶した。彼は笑顔で私に挨拶した。"], ["He greeted me with a smile. He greeted me with a smile. "], ["他微笑著向我打招呼。 他微笑著向我打招呼。"]]
-    var languages = [["1"], ["2"], ["3"]]
-    addToFavoriteList(texts, languages, 3);
-    addToFavoriteList(texts, languages, 3);
-    addToFavoriteList(texts, languages, 3);
+    console.log(getRubyText(html));
   </script>
 </body>
 

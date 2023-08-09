@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  ruby {
+    color: #123456;
+    border: 0.1px dashed;
+  }
+  rt {
+    color: #FF00FF;
+    border: 1px ridge;
+    -webkit-text-stroke: 0.3px black;
+    -webkit-text-fill-color: white;
+  }
+
+
+  .stroke-text rb{
+    position: relative;
+    z-index: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    color:orange;
+    font-size: 1000;
+  }
+  .stroke-text rb:before {
+    content: attr(stroke-data);
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    color:red;
+    /* left: var(--stroke-pos-left-layer-0);
+    top: var(--stroke-pos-top-layer-0); */
+    -webkit-text-stroke: var(--stroke-width-layer-0) var(--stroke-color-layer-0);
+  }
+
+  .stroke-text rb:after {
+    content: attr(stroke-data);
+    position: absolute;
+    z-index: -2;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    color:orange;
+    /* left: var(--stroke-pos-left-layer-1);
+    top: var(--stroke-pos-top-layer-1); */
+    -webkit-text-stroke: var(--stroke-width-layer-1) var(--stroke-color-layer-1);
+  }
+</style>
+</head>
+<body>
+
+  <div>
+    <ruby> 日本語 <rt>にほんご</rt> &nbsp; </ruby>
+    <ruby> 勉強<rt>べんきょう</rt> の &nbsp; </ruby>
+    <ruby> 為<rt>ため</rt> に &nbsp; </ruby>
+    <ruby> 自分<rt>じぶん</rt> で &nbsp; </ruby>
+    <ruby> このサイトを<rt></rt> &nbsp; </ruby>
+    <ruby> 作<rt>つく</rt> った &nbsp; </ruby>
+    <ruby> <rb>by snowy_smile</rb> </ruby>
+  </div>
+  <br><br><br>
+
+  <div class="stroke-text" id="displayedText">
+    <ruby id="rubyText"> <rb id="rbText">日本語</rb> <rt id="rtText">にほんご</rt> &nbsp; </ruby>
+  </div>
+
+  <script>
+    function updateStrokeColor(element, color, layer) {
+      element.style.setProperty(`--stroke-color-layer-${layer}`, color);
+    }
+
+    function updateStrokeWidth(element, value, layer) {
+      element.style.setProperty(`--stroke-width-layer-${layer}`, value + "em");
+    }
+
+    function updateStrokePositions(element, left, top, layer) {
+      element.style.setProperty(`--stroke-pos-left-layer-${layer}`, `${left}px`);
+      element.style.setProperty(`--stroke-pos-top-layer-${layer}`, `${top}px`);
+    }
+    function updateStrokePosition(element, left, layer) {
+      element.style.setProperty(`--stroke-pos-left-layer-${layer}`, `${left}px`);
+    }
+
+
+
+    function updateRubyStrokeProperties(element, strokeText) {
+
+      // updateStrokePosition(rtElement, rtRect.left, 0);
+      // updateStrokePosition(rtElement, rtRect.left, 1);
+
+      updateStrokeColor(element, "blue", 0);
+      updateStrokeWidth(element, "0.1", 0);
+      updateStrokeColor(element, "green", 1);
+      updateStrokeWidth(element, "0.3", 1);
+      element.setAttribute('stroke-data', strokeText);
+    }
+
+    updateRubyStrokeProperties(rbText, "日本語");
+  </script>
+</body>
+</html>

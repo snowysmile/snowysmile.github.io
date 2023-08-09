@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +34,7 @@
       justify-content: center;
       align-items: center;
       width: 110px;
-      margin: 0px;
+      margin: 0;
       padding: 2px;
       overflow: hidden;
       font-size: 11px;
@@ -93,25 +93,38 @@
       stroke:blue;
     }
     .stroke-text {
+      z-index: 3;
       position: relative;
-      z-index: 0;
+    }
+    .stroke-text-before {
+      z-index: 2;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+    }
+    .stroke-text-after {
+      z-index: 1;
+      position: absolute;
+      top: 0;
+      bottom: 0;
     }
     .stroke-text:before {
       content: attr(stroke-data);
+      z-index: -1;
       position: absolute;
       left: 0;
       top: 0;
-      z-index: -1;
       -webkit-text-stroke: var(--stroke-width-layer-0) var(--stroke-color-layer-0);
     }
     .stroke-text:after {
       content: attr(stroke-data);
+      z-index: -2;
       position: absolute;
       left: 0;
       top: 0;
-      z-index: -2;
       -webkit-text-stroke: var(--stroke-width-layer-1) var(--stroke-color-layer-1);
     }
+
     .readButtonContainer button {
       font-size: 9px;
     }
@@ -126,16 +139,14 @@
       width: 1015px;
       border: 2px solid black;
       max-width: 96%;
-      width: 96%;
     }
     #jpExpArea {
-			margin-top: 10px;
-			margin-bottom: 10px;
+      margin-top: 10px;
+      margin-bottom: 10px;
       width: 1000px;
       max-width: 96%;
-      width: 96%;
     }
-    #readingList, #favoriteList {
+    #readingList {
       width: 800px;
     }
     @media screen and (max-width: 1000px) {
@@ -189,7 +200,7 @@
         max-width: 96%;
         width: 96%;
       }
-      #readingList, #favoriteList {
+      #readingList {
         max-width: 96%;
         width: 96%;
       }
@@ -256,7 +267,7 @@
       textFontSizes: [20, 17, 14], //px
       textFontWeights: [500, 500, 500],
       textFontFamilies: ["NotoSansCJKjp", "NotoSansCJKjp", "NotoSansCJKjp"],
-      textStrokeColors: [['#87ceeb, #ffb7c5'], ['#87ceeb, #ffb7c5'], ['#87ceeb, #ffb7c5']],
+      textStrokeColors: [["#87ceeb", "#ffb7c5"], ["#477eff", "#ffd500"], ["#ffffff", "#ff0033"]],
       textStrokeWidths: [[0, 0], [0, 0], [0, 0]], //em
       textShadowColors: ["#ffeebb", "#ffeebb", "#ffeebb"],
       textShadowBlurRadius: [0, 0, 0], //em
@@ -306,18 +317,18 @@
 </head>
 <body>
   <svg width="100%" viewBox="0 0 800 100" display="none">
-    <text class="svg-stroke-text svg-stroke-layer-C" name="strokeTitle" x="50%" y="50%">
+    <text class="svg-stroke-text svg-stroke-layer-C" name="strokeTitleName" x="50%" y="50%">
     </text>
-    <text class="svg-stroke-text svg-stroke-layer-B" name="strokeTitle" x="50%" y="50%">
+    <text class="svg-stroke-text svg-stroke-layer-B" name="strokeTitleName" x="50%" y="50%">
     </text>
-    <text class="svg-stroke-text svg-stroke-layer-A" name="strokeTitle" x="50%" y="50%">
+    <text class="svg-stroke-text svg-stroke-layer-A" name="strokeTitleName" x="50%" y="50%">
     </text>
-    <text class="svg-stroke-text" name="strokeTitle" x="50%" y="50%">
+    <text class="svg-stroke-text" name="strokeTitleName" x="50%" y="50%">
     </text>
   </svg>
 
   <script>
-    strokeTitles = document.querySelectorAll('.svg-stroke-text[name="strokeTitle"]');
+    strokeTitles = document.querySelectorAll('.svg-stroke-text[name="strokeTitleName"]');
       strokeTitles.forEach(function(element) {
         element.textContent = "My Speech Translator";
     });
@@ -327,11 +338,25 @@
 
   <div class="text-area">
     <div id="textMargin-0"> </div>
-    <div class="stroke-text" id="displayedText-0"> </div>
+    <div style="position:relative;">
+      <div class="stroke-text" id="displayedText-0"> </div>
+      <div class="stroke-text-before" id="displayedStrokeText_0_0"> </div>
+      <div class="stroke-text-after" id="displayedStrokeText_0_1"> </div>
+    </div>
+
     <div id="textMargin-1"> </div>
-    <div class="stroke-text" id="displayedText-1"> </div>
+    <div style="position:relative;">
+      <div class="stroke-text" id="displayedText-1"> </div>
+      <div class="stroke-text-before" id="displayedStrokeText_1_0"> </div>
+      <div class="stroke-text-after" id="displayedStrokeText_1_1"> </div>
+    </div>
+
     <div id="textMargin-2"> </div>
-    <div class="stroke-text" id="displayedText-2"> </div>
+    <div style="position:relative;">
+      <div class="stroke-text" id="displayedText-2"> </div>
+      <div class="stroke-text-before" id="displayedStrokeText_2_0"> </div>
+      <div class="stroke-text-after" id="displayedStrokeText_2_1"> </div>
+    </div>
   </div>
 
   <div class="hiddenTexts" style="display:none">
@@ -444,7 +469,7 @@
     <tr class="input-table-row" id="recognitionInputArea" style="display:block">
       <td class="button-title">
         <span>
-          <button id="recognize-button" onclick="toggleRecognition(this.parentNode.parentNode.querySelector('select').value)" style="width: 148px;">▶️ Start Recognizing</button>
+          <button id="recognize-button" onclick="toggleRecognition(this.parentNode.parentNode.querySelector('select').value)" style="width: 136px; font-size:11px;" >▶️ Start Recognizing</button>
             <select id="recognitionLanguageSelect" onchange="recognizeRestart(this.value)">
               <option value="ja" selected>🇯🇵</option>
               <option value="en">🇺🇸</option>
@@ -457,7 +482,7 @@
         <button class="phone-button" onclick="toggleWidgetArea('recognitionInputArea', document.getElementById('toggleRecognitionInputArea_LayoutButton'))">⛔</button>
       </td>
       <td>
-        <textarea id="recognitionResult" rows="2" cols="66"></textarea>
+        <textarea id="recognitionResult" rows="2" cols="65"></textarea>
         <div style="display:none">
         <textarea id="recognitionPreviousResult" rows="2" cols="75"></textarea>
         </div>
@@ -477,7 +502,7 @@
     <tr class="input-table-row" id="recordInputArea" style="display:none">
       <td class="button-title">
         <span>
-          <button id="record-button" title="Record The Text Recognized." onclick="toggleRecord()" style="width: 148px;">▶️ Start Recording</button>
+          <button id="record-button" title="Record The Text Recognized." onclick="toggleRecord()" style="width: 136px; font-size:11px;" >▶️ Start Recording</button>
           <select id="recordLanguageSelect">
             <option value="ja" selected>🇯🇵</option>
             <option value="en">🇺🇸</option>
@@ -504,7 +529,7 @@
     <tr class="input-table-row" id="translationInputArea" style="display:none">
       <td class="button-title">
         <span>
-          <button onclick="speechTranslate(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', translationLanguageSelect)" style="width: 148px;"> Translate </button>
+          <button onclick="speechTranslate(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', translationLanguageSelect)" style="width: 136px; font-size:11px;"> Translate </button>
           <select id="translationLanguageSelect">
             <option value="ja">🇯🇵</option>
             <option value="en" selected>🇺🇸</option>
@@ -532,7 +557,7 @@
     <tr class="input-table-row" id="jpExpInputArea" style="display:none">
       <td class="button-title">
         <span>
-          <button id="jpExp-button" onclick="japaneseExplanationSplitFromMyServer()" style="width: 148px;">Japanese Explanation</button>
+          <button id="jpExp-button" onclick="japaneseExplanationSplitFromMyServer()" style="width: 136px; font-size:11px;">Japanese Explanation</button>
           <select id="jpExpLanguageSelect">
             <option value="ja" selected>🇯🇵</option>
           </select>
@@ -569,7 +594,7 @@
         <button class="phone-button" onclick="toggleWidgetArea('readingListInputArea', document.getElementById('toggleReadingListInputArea_LayoutButton'))">⛔</button>
       </td>
       <td>
-        <textarea id="readingListInput" rows="2" cols="73"></textarea>
+        <textarea id="readingListInput" rows="2" cols="70"></textarea>
       </td>
       <td>
         <button name="translateButton" title="Translate For Textarea."
@@ -625,20 +650,20 @@
   <button id="layoutContainer_LayoutButton" style="margin-bottom:5px;" onclick="toggleWidgetArea('layoutContainer', this)">Layout Container ❌</button>
 
   <div class="layouts-container" id="layoutContainer" style="margin-bottom:5px; display:none">
-    <button id="toggleRecognitionInputArea_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('recognitionInputArea', this)">Recognition 🟢</button>
-    <button id="toggleRecordInputArea_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('recordInputArea', this)">Record ❌</button>
-    <button id="toggleTranslationInputArea_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('translationInputArea', this)">Translation ❌</button>
-    <button id="toggleJpExpInputArea_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpInputArea', this)">JpExp Input ❌</button>
-    <button id="toggleReadingListInputArea_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('readingListInputArea', this)">Reading Area 🟢</button>
-    <button id="toggleJpExpArea_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpAreaFrame', this)">JpExp Text ❌</button>
-    <button id="toggleJpExpWebTop_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebTop', this)">JpExp Web (↑) ❌</button>
-    <button id="toggleJpExpWebBot_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('jpExpWebBot', this)">JpExp Web (↓) ❌</button>
-    <button id="toggleApiKeyEditor_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('apiKeyEditor', this)">ApiKey Editor ❌‍</button>
-    <button id="toggleLayoutEditor_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('layoutEditor', this)">Layout Editor ❌</button>
-    <button id="toggleLanguageSelects_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('languageSelectsContainer', this)">Lang Selects 🟢</button>
-    <button id="toggleVoiceSelects_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('VoiceSelectsContainer', this)">Voice Selects 🟢</button>
-    <button id="toggleGlobalValues_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('globalValuesContainer', this)">Global Values 🟢</button>
-    <button id="toggleTextRecordArea_LayoutButton" style="margin-right:3px;" onclick="toggleWidgetArea('textRecordArea', this)">Text Record 🟢</button>
+    <button id="toggleRecognitionInputArea_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('recognitionInputArea', this)">Recognition 🟢</button>
+    <button id="toggleRecordInputArea_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('recordInputArea', this)">Record ❌</button>
+    <button id="toggleTranslationInputArea_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('translationInputArea', this)">Translation ❌</button>
+    <button id="toggleJpExpInputArea_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('jpExpInputArea', this)">JpExp Input ❌</button>
+    <button id="toggleReadingListInputArea_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('readingListInputArea', this)">Reading Area 🟢</button>
+    <button id="toggleJpExpArea_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('jpExpAreaFrame', this)">JpExp Text ❌</button>
+    <button id="toggleJpExpWebTop_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('jpExpWebTop', this)">JpExp Web (↑) ❌</button>
+    <button id="toggleJpExpWebBot_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('jpExpWebBot', this)">JpExp Web (↓) ❌</button>
+    <button id="toggleApiKeyEditor_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('apiKeyEditor', this)">ApiKey Editor ❌‍</button>
+    <button id="toggleLayoutEditor_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('layoutEditor', this)">Layout Editor ❌</button>
+    <button id="toggleLanguageSelects_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('languageSelectsContainer', this)">Lang Selects 🟢</button>
+    <button id="toggleVoiceSelects_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('VoiceSelectsContainer', this)">Voice Selects 🟢</button>
+    <button id="toggleGlobalValues_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('globalValuesContainer', this)">Global Values 🟢</button>
+    <button id="toggleTextRecordArea_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('textRecordArea', this)">Text Record 🟢</button>
   </div>
 
   <script>
@@ -1000,7 +1025,7 @@
               <td><span id="textShadowBlurRadiusValue-0"></span>em</td>
             </tr>
             <tr>
-              <td><span>Margin Bottom: </span></td>
+              <td><span>Margin To Top: </span></td>
               <td><input id="textMarginSlider-0" type="range" min="0" max="100" step="1" oninput="updateTextMargin(0)"></td>
               <td><span id="textMarginValue-0"></span>px</td>
             </tr>
@@ -1181,22 +1206,21 @@
         textStrokeColorPickers[i][j] = document.getElementById(`textStrokeColorPicker-${i}-${j}`);
     }
     var textStrokeColorValues = [];
+    var textStrokeWidthSliders = [];
+    var textStrokeWidthValues = [];
+    var strokeTexts = [];
     for (let i = 0; i < 3; i++) {
       textStrokeColorValues[i] = [];
-      for (let j = 0; j < 2; j++)
-        textStrokeColorValues[i][j] = document.getElementById(`textStrokeColorValue-${i}-${j}`);
-    }
-    var textStrokeWidthSliders = [];
-    for (let i = 0; i < 3; i++) {
       textStrokeWidthSliders[i] = [];
-      for (let j = 0; j < 2; j++)
-        textStrokeWidthSliders[i][j] = document.getElementById(`textStrokeWidthSlider-${i}-${j}`);
-    }
-    var textStrokeWidthValues = [];
-    for (let i = 0; i < 3; i++) {
       textStrokeWidthValues[i] = [];
-      for (let j = 0; j < 2; j++)
+      strokeTexts[i] = [];
+      displayedTexts[i].style.zIndex = 3;
+      for (let j = 0; j < 2; j++) {
+        textStrokeColorValues[i][j] = document.getElementById(`textStrokeColorValue-${i}-${j}`);
+        textStrokeWidthSliders[i][j] = document.getElementById(`textStrokeWidthSlider-${i}-${j}`);
         textStrokeWidthValues[i][j] = document.getElementById(`textStrokeWidthValue-${i}-${j}`);
+        strokeTexts[i][j] = document.getElementById(`displayedStrokeText_${i}_${j}`);
+      }
     }
     var textShadowColorPickers = document.querySelectorAll('[id^="textShadowColorPicker-"]');
     var textShadowColorValues = document.querySelectorAll('[id^="textShadowColorValue-"]');
@@ -1440,6 +1464,22 @@
               if (recognitionNonStop) {
                 recognitionResult.value = speechText;
                 console.log("(✅recognitionNonStop 🎆) Final Text:", speechText);
+                let speechTrim = speechText.trim();
+                if (["英語変更", "英語 変更", "英語を変更", "英語に変更",
+                "英語變更", "英文變更", "英语变更", "英文变更"].includes(speechTrim)) {
+                  recognitionLanguageSelect.value = "en";
+                  recognizeRestart("en");
+                }
+                else if (["中国語変更", "中国語 変更", "中国語を変更", "中国語に変更",
+                "Mandarin switch", "Mandarin Switch", "Mandarin recognize", "Mandarin Recognize"].includes(speechTrim)) {
+                  recognitionLanguageSelect.value = "zh-TW";
+                  recognizeRestart("zh-TW");
+                }
+                else if (["日語變更", "日文變更", "日语变更", "日文变更",
+                "Japanese switch", "Japanese Switch", "Japanese recognize", "Japanese Recognize"].includes(speechTrim)) {
+                  recognitionLanguageSelect.value = "ja";
+                  recognizeRestart("ja");
+                }
                 // recognitionResult.value = recognitionPreviousResult.value + addPunctuation(speechText);
                 // recognitionPreviousResult.value = recognitionResult.value;
               }
@@ -1548,7 +1588,7 @@
     var targetLanguage = "en";
     function inputLanguageSwitch() {
       var button = document.getElementById("inputLanguageSwitch-button");
-      if (sourceLanguage == "ja") {
+      if (sourceLanguage === "ja") {
         sourceLanguage = "en";
         targetLanguage = "ja";
         button.innerHTML = "EN🔤"
@@ -1568,7 +1608,7 @@
       button.innerText = button.innerText === "🎈" ? "🕳️" : "🎈";
     }
     function toggleHistoryTextsMaxLength(value=-1) {
-      if (value == -1) value = historyTextsMaxLengthSelect.value;
+      if (value === -1) value = historyTextsMaxLengthSelect.value;
       else historyTextsMaxLengthSelect.value = value;
       configs[autoSID].historyTextsMaxLength = value;
       saveConfigStorage();
@@ -1580,9 +1620,9 @@
     var msAudioListTmp = [];
     async function ggSpeakUrlGet(text, sourceLanguage) {
       if (window.location.protocol === "file:") {
-        var url = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" +
+        var ggTranslateUrl = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" +
           sourceLanguage +  "&client=tw-ob&q=" + encodeURIComponent(text);
-        return url;
+        return ggTranslateUrl;
       }
       else {
         try {
@@ -2063,7 +2103,9 @@
     }
 
     function ggTranslate(text) {
-      var text = $("#inputArea").val();
+      if (!text) {
+        text = $("#inputArea").val();
+      }
       if (googleScriptKey) {
         query = `https://script.google.com/macros/s/${googleScriptKey}/exec?`
           + `text=${text}`
@@ -2095,17 +2137,16 @@
     }
 
     function jpExpWebUpdate(speechText) {
-      if (jpExpWebTop.style.display === 'block') {
+      if (jpExpWebTop.style.display === 'block' || jpExpWebBot.style.display === 'block') {
         var noSpaceSpeechText = speechText.replace(/\s+/g, "");
         var encodedSpeechText = encodeURIComponent(noSpaceSpeechText);
         var ichimoe_url = "https://ichi.moe/cl/qr/?q=" + encodedSpeechText;
-        jpExpWebTop.src = ichimoe_url;
-      }
-      if (jpExpWebBot.style.display === 'block') {
-        var noSpaceSpeechText = speechText.replace(/\s+/g, "");
-        var encodedSpeechText = encodeURIComponent(noSpaceSpeechText);
-        var ichimoe_url = "https://ichi.moe/cl/qr/?q=" + encodedSpeechText;
-        jpExpWebBot.src = ichimoe_url;
+        if (jpExpWebTop.style.display !== 'none') {
+          jpExpWebTop.src = ichimoe_url;
+        }
+        if (jpExpWebBot.style.display !== 'none') {
+          jpExpWebBot.src = ichimoe_url;
+        }
       }
     }
     async function speechTranslate(speechText, sourceLanguage="", isAutoDetect=false, languageSelect=undefined, willUpdateHistoryText=true) {
@@ -2121,7 +2162,7 @@
       if (sourceLanguage === "ja") {
         jpExpWebUpdate(speechText);
         // var html = await japaneseExplanationFromMyServer(speechText);
-        // updateTextWithFurigana(0, html);
+        // updateFuriganaText(0, html);
         JapanesePosId = 0;
       }
       await getTargetLanguages(sourceLanguage);
@@ -2144,7 +2185,7 @@
                   if (targetLanguage === "ja") {
                     jpExpWebUpdate(xhr.responseText);
                     // var html = await japaneseExplanationFromMyServer(xhr.responseText);
-                    // updateTextWithFurigana(i, html);
+                    // updateFuriganaText(i, html);
                     JapanesePosId = i;
                   }
                   resolve();
@@ -2240,7 +2281,11 @@
       saveConfigStorage();
     }
     function updateText(id, speechText, isNotHistoryText=true, willUpdateHistoryText=true) {
+      for (let j = 0; j < 2; j++) {
+        strokeTexts[id][j].innerHTML = "";
+      }
       texts[id].innerHTML = speechText;
+      strokeTexts[id].innerHTML = "";
       configs[autoSID].texts[id] = speechText;
       updateDisplayedText(id, speechText);
       timeTextUpdated[id] += 1;
@@ -2249,7 +2294,7 @@
         var allTextUpdated = true;
         console.log("timeTextUpdated:", timeTextUpdated);
         for (let i = 1; i <= translationCount; i++) {
-          if (timeTextUpdated[i] != timeTextUpdated[0]) {
+          if (timeTextUpdated[i] !== timeTextUpdated[0]) {
             allTextUpdated = false;
             break;
           }
@@ -2265,7 +2310,7 @@
             setTimeout(() => {
               japaneseExplanationFromMyServer(texts[JapanesePosId].textContent)
               .then((html) => {
-                updateTextWithFurigana(JapanesePosId, html);
+                updateFuriganaText(JapanesePosId, html);
                 while (textConfig.furiganaTexts.length < textConfig.historyTexts.length - 1) {
                   textConfig.furiganaTexts.push("");
                   textConfig.furiganaTextPos.push(-1);
@@ -2312,15 +2357,52 @@
         readingSelects[i].value = textConfig.historyTextLanguages[index][i];
       }
       if (textFuriganaToggleButton.innerText === "🔰") {
-        updateTextWithFurigana(textConfig.furiganaTextPos[index], textConfig.furiganaTexts[index]);
+        updateFuriganaText(textConfig.furiganaTextPos[index], textConfig.furiganaTexts[index]);
       }
     }
-    function updateTextWithFurigana(id, htmlText) {
+    function getRubyText(html) {
+      const rubyTagRegex = /<ruby>(.*?)<\/ruby>/g;
+      const rtTagRegex = /<rt>.*?<\/rt>/g;
+      var entireRubyText = "";
+      const rubyMatches = html.match(rubyTagRegex);
+      if (!rubyMatches) {
+        return "";
+      }
+      const rubyTextList = [];
+      rubyMatches.forEach((match) => {
+        const rtText = match.replace(rtTagRegex, '').replace(/<\/?ruby>/g, '');
+        if (rtText.length > 0) {
+          rubyTextList.push(rtText);
+          entireRubyText += rtText;
+        }
+      });
+      return entireRubyText.replace(/\s+/g, ' ');
+    }
+    function getRubyTextBottom(html) {
+      const rubyTextBottom = html.replace(/<\/?ruby>/g, '').replace(/<rt>.*?<\/rt>/g, '');
+      const rubyTextBottomTrimmed = rubyTextBottom.replace(/\s+/g, ' ');
+      console.log("rubyTextBottomTrimmed:", rubyTextBottomTrimmed);
+      return rubyTextBottomTrimmed;
+    }
+    function updateFuriganaText(id, htmlText) {
       if (!htmlText || typeof htmlText === "string" && htmlText.trim() === "") {
         return;
       }
       displayedTexts[id].innerHTML = htmlText;
       displayedTexts[id].setAttribute('stroke-data', "");
+
+      for (let layer = 0; layer < 2; layer++) {
+        strokeTexts[id][layer].innerHTML = htmlText;
+        strokeTexts[id][layer].style.zIndex = 2 - layer;
+        strokeTexts[id][layer].position = "absolute";
+        strokeTexts[id][layer].style.top = "0";
+        strokeTexts[id][layer].style.bottom = "0";
+        strokeTexts[id][layer].style.fontSize = displayedTexts[id].style.fontSize; // updateFontSize
+        strokeTexts[id][layer].style.fontWeight = displayedTexts[id].style.fontWeight; // updateFontWeight
+        strokeTexts[id][layer].style.fontFamily = displayedTexts[id].style.fontFamily; // updateFontFamily
+        strokeTexts[id][layer].style.webkitTextStrokeColor = configs[autoSID].textStrokeColors[id][layer]; // updateStrokeColor
+        strokeTexts[id][layer].style.webkitTextStrokeWidth = configs[autoSID].textStrokeWidths[id][layer]; // updateStrokeWidth
+      }
       saveTextConfigStorage(autoSID);
     }
     function copyText(id) {
@@ -2342,12 +2424,15 @@
       for (let i = 0; i <= topRow; i++) {
         updateText(i, defaultConfig.texts[i], false);
       }
+      if (textFuriganaToggleButton.innerText === "🔰") {
+        updateFuriganaText(0, defaultConfig.displayedTexts[0]);
+      }
     }
     function updateFontColor(id, color="") {
       if (color === "") color = textColorPickers[id].value;
       else textColorPickers[id].value = color;
       textColorValues[id].innerHTML = color;
-      texts[id].style.color = color;
+      displayedTexts[id].style.color = color;
       configs[autoSID].textFontColors[id] = color;
       saveConfigStorage();
     }
@@ -2356,6 +2441,9 @@
       else textFontSizeSliders[id].value = value;
       textFontSizeValues[id].innerHTML = value;
       displayedTexts[id].style.fontSize = value + 'px';
+      for (let layer = 0; layer < 2; layer++) {
+        strokeTexts[id][layer].style.fontSize = value + 'px'; // updateFontSize
+      }
       configs[autoSID].textFontSizes[id] = value;
       saveConfigStorage();
     }
@@ -2364,6 +2452,9 @@
       else textFontWeightSliders[id].value = value;
       textFontWeightValues[id].innerHTML = value;
       displayedTexts[id].style.fontWeight = value;
+      for (let layer = 0; layer < 2; layer++) {
+        strokeTexts[id][layer].style.fontWeight = value; // updateFontWeight
+      }
       configs[autoSID].textFontWeights[id] = value;
       saveConfigStorage();
     }
@@ -2373,6 +2464,9 @@
         textFontFamilySelects[id].value = value;
       }
       displayedTexts[id].style.fontFamily = value;
+      for (let layer = 0; layer < 2; layer++) {
+        strokeTexts[id][layer].style.fontFamily = value; // updateFontFamily
+      }
       configs[autoSID].textFontFamilies[id] = value;
       saveConfigStorage();
     }
@@ -2381,6 +2475,7 @@
       else textStrokeColorPickers[id][layer].value = color;
       textStrokeColorValues[id][layer].innerHTML = color;
       displayedTexts[id].style.setProperty(`--stroke-color-layer-${layer}`, color);
+      strokeTexts[id][layer].style.webkitTextStrokeColor = color; // updateStrokeColor
       configs[autoSID].textStrokeColors[id][layer] = color;
       saveConfigStorage();
     }
@@ -2389,6 +2484,7 @@
       else textStrokeWidthSliders[id][layer].value = value;
       textStrokeWidthValues[id][layer].innerHTML = value;
       displayedTexts[id].style.setProperty(`--stroke-width-layer-${layer}`, value + "em");
+      strokeTexts[id][layer].style.webkitTextStrokeWidth = value + "em"; // updateStrokeWidth
       configs[autoSID].textStrokeWidths[id][layer] = value;
       saveConfigStorage();
     }
@@ -2507,7 +2603,6 @@
       updateIntegerValue("speechClearInterval", configs[configID].speechClearInterval);
       toggleTranslationCount(configs[configID].translationCount);
       toggleHistoryTextsMaxLength(configs[configID].historyTextsMaxLength);
-      showHistoryText(configs[configID].historyTextsCurrentId, false);
 
       for (let i = 0; i <= translationCount; i++) {
         updateFontColor(i, configs[configID].textFontColors[i]);
@@ -2531,10 +2626,10 @@
           updateApiKey(i);
         }
       }
+      showHistoryText(configs[configID].historyTextsCurrentId, false);
       // cancel the clicked buttons now
       layoutButtonsClickedMap.forEach((value, key) => {
         if (value) {
-          console.log("layoutButtonsClickedMap:", key);
           updateLayoutButtonClick(key);
         }
       });
@@ -2741,10 +2836,6 @@
     <span id="favoriteTableArea" style="display:none;">
       <button style="margin-bottom:8px;" onclick="clearFavoriteList()">Clear - Favorite List 🆑</button>
       <table id="favoriteTable"></table>
-      <!--
-        <ul id="favoriteList"></ul>
-        <ul id="favoriteButtonList"></ul>
-      -->
     </span>
 
     <span id="speechListArea" style="display:none">
@@ -2752,6 +2843,14 @@
       <span id="speechListTotalCount"></span>
     </span>
   </span>
+
+
+  <style>
+    .row-container ruby{
+      border: 0.4px dashed grey;
+      padding: 1px;
+    }
+  </style>
 
   <br>
   <span style="display: block">

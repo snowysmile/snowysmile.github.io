@@ -2,61 +2,67 @@
 <html>
 <head>
 <style>
-td {
-  border: 5px groove grey;
-}
-#gridContainer {
-  height: 300px;
-  display: grid;
-  align-content: space-evenly;
-  background-color: #2196F3;
-}
+  .stroke-text,
+  .stroke-text ruby,
+  .stroke-text rt {
+    position: relative;
+    z-index: 0;
+    color: #123456;
+  }
+  .stroke-text:before,
+  .stroke-text ruby:before,
+  .stroke-text rt:before {
+    content: attr(stroke-data);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    -webkit-text-stroke: var(--stroke-width-layer-0) var(--stroke-color-layer-0);
+  }
 
-#testTdArea{
-  height: 500px;
-  display: grid;
-  align-content: space-evenly;
-  background-color: #2196F3;
-}
-
+  .stroke-text:after,
+  .stroke-text ruby:after,
+  .stroke-text rt:after {
+    content: attr(stroke-data);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -2;
+    -webkit-text-stroke: var(--stroke-width-layer-1) var(--stroke-color-layer-1);
+  }
 </style>
 </head>
 <body>
 
-<div id="gridContainer">
-</div>
+  <div class="stroke-text" id="displayedText">
+    <ruby id="rubyText"> 日本語<rt id="rtText1">にほんご</rt> &nbsp; </ruby>
+    <ruby> 勉強<rt id="rtText2">べんきょう</rt> の &nbsp; </ruby>
+    <ruby> 為<rt>ため</rt> に &nbsp; </ruby>
+    <ruby> 自分<rt>じぶん</rt> で &nbsp; </ruby>
+    <ruby> このサイトを<rt>.</rt> &nbsp; </ruby>
+    <ruby> 作<rt>つく</rt> った &nbsp; </ruby>
+    <ruby> <rb>by snowy_smile</rb> </ruby>
+  </div>
 
-<span id="favoriteTableArea" style="display:flex;">
-   <table id="favoriteTable">
-    <tr>
-      <td id="theTdArea">
-        123
-      </td>
-      <td id="testTdArea">
-        <div> 456 </div>
-        <div> 789 </div>
-      </td>
-    <tr>
-   <tr>
-     <td>
-       111
-     </td>
-     <td>
-       222
-     </td>
-   <tr>
-  </table>
- </span>
+  <script>
+    function updateStrokeColor(element, color, layer) {
+      element.style.setProperty(`--stroke-color-layer-${layer}`, color);
+    }
+    function updateStrokeWidth(element, value, layer) {
+      element.style.setProperty(`--stroke-width-layer-${layer}`, value + "em");
+    }
+    function updateDisplayedText(element, speechText) {
+      console.log(element);
+      element.setAttribute('stroke-data', speechText);
+      updateStrokeColor(element, "blue", 0);
+      updateStrokeWidth(element, "0.05", 0);
+      updateStrokeColor(element, "green", 1);
+      updateStrokeWidth(element, "0.1", 1);
+    }
 
-<script>
-  /*
-  document.getElementById('theTdArea').appendChild(gridContainer);
-  for (let i = 0; i < 5; i++) {
-    let theDiv = document.createElement("div");
-    theDiv.innerHTML = i;
-    gridContainer.appendChild(theDiv);
-  }
-  */
-</script>
+    // updateDisplayedText(rubyText, "日本語");
+    updateDisplayedText(rtText2, "べんきょう");
+
+  </script>
 </body>
 </html>
