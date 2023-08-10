@@ -697,7 +697,7 @@
   </script>
 
   <div id="apiKeyEditor" style="display:none; margin-bottom:5px;">
-    <table>
+    <table id="apiKeyEditorTable">
       <tr>
         <td style="width: 175px;"> Google Script API-KEY: </td>
         <td>
@@ -944,7 +944,7 @@
     </tr>
   </table>
 
-  <div id="layoutEditor" style="display:none">
+  <div id="layoutEditor" style="display:none; margin-bottom: 3px;">
     <table style="margin-left: auto; margin-right: auto; margin-bottom: 3px;">
       <tr>
         <td>
@@ -1240,7 +1240,14 @@
 
     function initSpecialLayoutButtons() {
       if ((!googleScriptKey || googleScriptKey == "") && (!apiKeyEditor || !apiKeyEditor.style.display || apiKeyEditor.style.display === 'none')) {
+        console.log("document.body.style.backgroundColor:", document.body.style.backgroundColor);
         toggleApiKeyEditor_LayoutButton.click();
+      }
+      if (!googleScriptKey || googleScriptKey == "") {
+        apiKeyEditorTable.style.backgroundColor = "#ffb8c6";
+      }
+      else {
+        apiKeyEditorTable.style.backgroundColor = document.body.style.backgroundColor;
       }
     }
 
@@ -1326,20 +1333,6 @@
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const recognition = new SpeechRecognition();
 
-
-    /*
-    var recognition;
-    if ('webkitSpeechRecognition' in window) {
-      console.log("'webkitSpeechRecognition' in window")
-      recognition = new webkitSpeechRecognition();
-    } else if ('SpeechRecognition' in window) {
-      console.log("'SpeechRecognition' in window")
-      recognition = new SpeechRecognition();
-    } else {
-      alert("Speech recognition is not supported in this browser.");
-    }
-    */
-
     var xmlRequest = new XMLHttpRequest();
     var requests = [];
     for (let i = 0; i < topTranslationCount; i++) {
@@ -1401,10 +1394,10 @@
       else return text + "。 ";
     }
     function startRecognition(sourceLanguage="") {
+      console.log("'webkitSpeechRecognition' in window:", 'webkitSpeechRecognition' in window);
+      console.log("'SpeechRecognition' in window:", 'SpeechRecognition' in window);
       if ('webkitSpeechRecognition' in window) {
-        console.log("'webkitSpeechRecognition' in window")
       } else if ('SpeechRecognition' in window) {
-        console.log("'SpeechRecognition' in window")
       } else {
         alert("Speech recognition is not supported in this browser.");
         stopRecognitionComplete(sourceLanguage);
