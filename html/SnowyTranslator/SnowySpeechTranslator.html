@@ -65,8 +65,8 @@
       flex-direction: column;
       align-items: center;
       padding: 20px;
-      width: 1000px;
-      height: 99px;
+      width: 1080px;
+      height: 128px;
       overflow-y: auto;
     }
     rt {
@@ -376,7 +376,7 @@
   </script>
   <script>
     function adjustTextAreaHeight() {
-      textArea.style.height = '99px';
+      textArea.style.height = '128px';
       var maxHeight = textArea.scrollHeight;
       textArea.style.height = (maxHeight - 0) + 'px';
     }
@@ -416,7 +416,7 @@
     }
   </script>
 
-  <div class="row-container" style="margin-top:5px; margin-bottom:5px;">
+  <div class="row-container" style="margin-top:10px; margin-bottom:5px;">
     <span style="display:flex; justify-content: center; margin-bottom:3px;">
       <button id="textFuriganaToggleButton" style="font-size: 11px;" title="🔰 To Auto Mark Furigana; 💤 Is Off." onclick="toggleTextFurigana()">🔰</button>
       <button style="margin-left:3px; font-size:11px;" title="Read All Screen Text By Google." onclick="ggSpeakAllScreenText()">G</button>
