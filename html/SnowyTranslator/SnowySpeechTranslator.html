@@ -890,7 +890,7 @@
           <option value="en-US-BlueNeural">Blue</option>
         </select>
       </td>
-      <td> Azure Chinese Voice:
+      <td> Azure Mandarin Voice:
         <select id="azureVoiceSelect-Chinese" onchange="updateAzureVoice(2)">
           <option value="zh-TW-HsiaoChenNeural">HsiaoChen</option>
           <option value="zh-TW-YunJheNeural">YunJhe</option>
@@ -1214,7 +1214,7 @@
       textStrokeWidthSliders[i] = [];
       textStrokeWidthValues[i] = [];
       strokeTexts[i] = [];
-      displayedTexts[i].style.zIndex = 3;
+      // displayedTexts[i].style.zIndex = 3;
       for (let j = 0; j < 2; j++) {
         textStrokeColorValues[i][j] = document.getElementById(`textStrokeColorValue-${i}-${j}`);
         textStrokeWidthSliders[i][j] = document.getElementById(`textStrokeWidthSlider-${i}-${j}`);
@@ -2396,10 +2396,10 @@
 
       for (let layer = 0; layer < 2; layer++) {
         strokeTexts[id][layer].innerHTML = htmlText;
-        strokeTexts[id][layer].style.zIndex = 2 - layer;
-        strokeTexts[id][layer].position = "absolute";
-        strokeTexts[id][layer].style.top = "0";
-        strokeTexts[id][layer].style.bottom = "0";
+        // strokeTexts[id][layer].style.zIndex = 2 - layer;
+        // strokeTexts[id][layer].position = "absolute";
+        // strokeTexts[id][layer].style.top = "0";
+        // strokeTexts[id][layer].style.bottom = "0";
         strokeTexts[id][layer].style.fontSize = displayedTexts[id].style.fontSize; // updateFontSize
         strokeTexts[id][layer].style.fontWeight = displayedTexts[id].style.fontWeight; // updateFontWeight
         strokeTexts[id][layer].style.fontFamily = displayedTexts[id].style.fontFamily; // updateFontFamily
@@ -2851,7 +2851,7 @@
   <style>
     .row-container ruby{
       border: 0.4px dashed grey;
-      padding: 1px;
+      /* padding: 1px; */
     }
   </style>
 
@@ -2872,7 +2872,7 @@
       <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">Web HTML Study</a>
       <a href="https://www.tamasoft.co.jp/en/general-info/unicode.html" target="_blank">All Unicode Table</a>
       <a href="https://www.ssec.wisc.edu/~tomw/java/unicode.html" target="_blank">All Unicode Explaination</a>
-      textId = 0756;
+      textId = 2023-0810-0914;
     </span>
   </span>
 
