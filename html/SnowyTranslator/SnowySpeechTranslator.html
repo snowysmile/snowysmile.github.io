@@ -678,15 +678,7 @@
         layoutButtonsMap.set(buttonText, button);
         layoutButtonsClickedMap.set(buttonText, false);
       });
-      if (!googleScriptKey && apiKeyEditor.display === 'none') {
-        toggleApiKeyEditor_LayoutButton.click();
-      }
     };
-
-    function updateLayoutButtonClick(buttonText) {
-      var button = layoutButtonsMap.get(buttonText);
-      button.click();
-    }
 
     var toggleButtons = document.querySelectorAll('button[id$="ToggleButton"]');
     toggleButtons.forEach(button => {
@@ -1240,10 +1232,22 @@
     var speechOverInterval_TimeOut;
     var speechSplitInterval_TimeOut;
     var speechClearInterval_TimeOut;
+
     var googleScriptKey;
     var gcpApiKey;
     var azureSpeechSubscriptionKey;
     var azureTranslateSubscriptionKey;
+
+    function initSpecialLayoutButtons() {
+      if ((!googleScriptKey || googleScriptKey == "") && (!apiKeyEditor || !apiKeyEditor.style.display || apiKeyEditor.style.display === 'none')) {
+        toggleApiKeyEditor_LayoutButton.click();
+      }
+    }
+
+    function updateLayoutButtonClick(buttonText) {
+      var button = layoutButtonsMap.get(buttonText);
+      button.click();
+    }
   </script>
   <script>
   const myLocalFonts = [
@@ -2904,6 +2908,22 @@
     }
     initLayoutButtons();
     loadConfig(autoSID);
+  </script>
+  <script>
+    // method A
+    function windowOnLoad() {
+      var currentTime = new Date().toLocaleTimeString();
+      console.log("windowOnLoad: Page has completely finished loading at " + currentTime);
+      // tasks:
+    }
+    window.onload = windowOnLoad;
+    // method B
+    document.addEventListener("DOMContentLoaded", function() {
+      var currentTime = new Date().toLocaleTimeString();
+      console.log("DOM Content: page has been generally loaded at " + currentTime);
+      // tasks:
+      initSpecialLayoutButtons();
+    });
   </script>
 
 </body>
