@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" type="image/x-icon" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="static/Img/favicon/cat-in-leaves-512x512.png">
   <link rel="stylesheet" href="static/font.css">
 
@@ -1533,6 +1533,7 @@
         isRecording = false;
         recordButton.innerHTML = "▶️ Start Recording";
       }
+      timeTextUpdated = fillArrayWithRandomValue([], topTranslationCount + 1, 1, 500000);
       if (recognitionResult.value !== texts[0].textContent) {
         updateSpeechList(recognitionResult.value);
         speechTranslate(recognitionResult.value, sourceLanguage, false, undefined, updateHistoryTextToggleButton.innerHTML === "🎈");
@@ -1555,6 +1556,7 @@
         return;
       }
       toggleRecognition(sourceLanguage);
+      timeTextUpdated = fillArrayWithRandomValue([], topTranslationCount + 1, 1, 500000);
       setTimeout(function() {
         toggleRecognition(sourceLanguage);
       }, 1200);
@@ -2310,6 +2312,7 @@
             setTimeout(() => {
               japaneseExplanationFromMyServer(texts[JapanesePosId].textContent)
               .then((html) => {
+                console.log("🎎 Try to updateFuriganaText()");
                 updateFuriganaText(JapanesePosId, html);
                 while (textConfig.furiganaTexts.length < textConfig.historyTexts.length - 1) {
                   textConfig.furiganaTexts.push("");
