@@ -1333,7 +1333,6 @@
     }
     */
 
-
     var xmlRequest = new XMLHttpRequest();
     var requests = [];
     for (let i = 0; i < topTranslationCount; i++) {
@@ -1395,13 +1394,19 @@
       else return text + "。 ";
     }
     function startRecognition(sourceLanguage="") {
-      console.log("[startRecognition] before-> sourceLanguage:", sourceLanguage);
+      if ('webkitSpeechRecognition' in window) {
+        console.log("'webkitSpeechRecognition' in window")
+      } else if ('SpeechRecognition' in window) {
+        console.log("'SpeechRecognition' in window")
+      } else {
+        alert("Speech recognition is not supported in this browser.");
+        stopRecognitionComplete(sourceLanguage);
+      }
       if (!sourceLanguage) {
         sourceLanguage = languageSelects[0].value;
       }
       recognitionResult.value = "";
       recognitionPreviousResult.value = "";
-      console.log("[startRecognition] after-> sourceLanguage:", sourceLanguage);
       recognition.lang = sourceLanguage;
       recognition.interimResults = true;
       recognition.continuous = true;
@@ -2870,7 +2875,7 @@
       <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">Web HTML Study</a>
       <a href="https://www.tamasoft.co.jp/en/general-info/unicode.html" target="_blank">All Unicode Table</a>
       <a href="https://www.ssec.wisc.edu/~tomw/java/unicode.html" target="_blank">All Unicode Explaination</a>
-      textId = 2023-0810-0914;
+      textId = 2023-0810-0955;
     </span>
   </span>
 
