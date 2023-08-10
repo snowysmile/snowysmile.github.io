@@ -17,6 +17,10 @@
       align-items: center;
       text-align: center;
     }
+    .dark-mode {
+      background-color: black;
+      color: white;
+    }
     .row-container {
       display: flex;
       flex-direction: row;
@@ -766,6 +770,7 @@
       <td>
         <button id="clearText-button" title="Clear Texts 🆑" onclick="clearTexts();">Clear Texts</button>
         <button id="defaultText-button" title="Default Texts 🛠️" onclick="defaultTexts();">Default Texts</button>
+        <button id="darkMode-button" style="margin-left:5px;" onclick="toggleDarkMode()">🌌</button>
       </td>
     </tr>
   </table>
@@ -1240,7 +1245,6 @@
 
     function initSpecialLayoutButtons() {
       if ((!googleScriptKey || googleScriptKey == "") && (!apiKeyEditor || !apiKeyEditor.style.display || apiKeyEditor.style.display === 'none')) {
-        console.log("document.body.style.backgroundColor:", document.body.style.backgroundColor);
         toggleApiKeyEditor_LayoutButton.click();
       }
       if (!googleScriptKey || googleScriptKey == "") {
@@ -2879,7 +2883,20 @@
       textId = 2023-0810-1114;
     </span>
   </span>
-
+  <script>
+    var backgroundColorSave;
+    function toggleDarkMode() {
+      const body = document.body;
+      body.classList.toggle('dark-mode');
+      if (body.classList.contains('dark-mode')) {
+        // console.log("Dark mode is active now.");
+        backgroundColorSave = document.body.style.backgroundColor;
+        updatePageColor("black");
+      } else {
+        updatePageColor(backgroundColorSave);
+      }
+    }
+  </script>
   <script>
     function updateScreenWidth() {
       const screenWidth = window.innerWidth || document.documentElement.clientWidth;
