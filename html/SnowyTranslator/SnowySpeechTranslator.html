@@ -1454,9 +1454,11 @@
         recognition.stop();
       }
       recognition.onresult = function(event) {
-        console.log("In [recognition.onresult] ", "resultIndex=", event.resultIndex, "resultLength=", event.results.length);
-        for (var i = event.resultIndex; i < event.results.length; i++) { console.log(`🔢 event.resultIndex=${event.resultIndex}; event.results.length=${event.results.length}`);
-        // { var i = event.results.length - 1; console.log(" i = event.results.length = ", i);
+        // console.log("In [recognition.onresult] ", "resultIndex=", event.resultIndex, "resultLength=", event.results.length);
+        console.log(`🔢 event.resultIndex=${event.resultIndex}`);
+        console.log(`🔢 event.results.length=${event.results.length}`);
+        for (var i = event.resultIndex; i < event.results.length; i++) {
+        {
           var speechText = event.results[i][0].transcript;
           if (!speechText || !speechText.trim()) {
             console.log("Empty Speech Text");
