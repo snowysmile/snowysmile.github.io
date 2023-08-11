@@ -17,9 +17,27 @@
       align-items: center;
       text-align: center;
     }
+    body {
+      background-color: white;
+      color: black;
+    }
+    button,
+    select,
+    textarea,
+    input,
+    audio::-webkit-media-controls-panel {
+    }
     .dark-mode {
-      background-color: black;
-      color: white;
+      background-color: #111;
+      color: #EEE;
+    }
+    .dark-mode button,
+    .dark-mode select,
+    .dark-mode textarea,
+    .dark-mode input,
+    .dark-mode audio::-webkit-media-controls-panel {
+      background-color: #333;
+      color: #CCC;
     }
     .row-container {
       display: flex;
@@ -257,7 +275,7 @@
     var translationCount = 2; // Make it an integer, otherwise it will be a string
     var configCounts = 3;
     var defaultConfig = {
-      pageColor: "#fffafa",
+      pageColor: "#FFFAFA",
       curtainColor: "#9acd32",
       texts: ["きらきら光る、お空の星よ。",  // きらきらひかる、おそらのほしよ。
               "Twinkle, twinkle, little star, How I wonder what you are! ",
@@ -271,9 +289,9 @@
       textFontSizes: [20, 17, 14], //px
       textFontWeights: [500, 500, 500],
       textFontFamilies: ["NotoSansCJKjp", "NotoSansCJKjp", "NotoSansCJKjp"],
-      textStrokeColors: [["#ffffff", "#ffb7c5"], ["#ffffff", "#ffd500"], ["#ffffff", "#ff0033"]],
+      textStrokeColors: [["#FFFFFF", "#FFB7C5"], ["#FFFFFF", "#FFD500"], ["#FFFFFF", "#FF0033"]],
       textStrokeWidths: [[0, 0], [0, 0], [0, 0]], //em
-      textShadowColors: ["#ffeebb", "#ffeebb", "#ffeebb"],
+      textShadowColors: ["#FFEEBB", "#FFEEBB", "#FFEEBB"],
       textShadowBlurRadius: [0, 0, 0], //em
       textMargins: [5, 5, 5], //px
       apiKeys: ["", "", "", ""],
@@ -671,11 +689,8 @@
   <script>
     const layoutButtonsMap = new Map();
     const layoutButtonsClickedMap = new Map();
-    // window.addEventListener("load", function() {} );
     function initLayoutButtons() {
       var layoutButtons = [];
-      // layoutButtons.push(document.getElementById("layoutContainer-button"));
-      // layoutButtons.push(...document.getElementById("layoutContainer").querySelectorAll('button'));
       layoutButtons.push(...document.querySelectorAll('[id$="_LayoutButton"]'));
       layoutButtons.forEach(function(button) {
         var buttonText = button.innerHTML.substr(0, button.innerHTML.lastIndexOf(' '));
@@ -684,20 +699,24 @@
       });
     };
 
-    var toggleButtons = document.querySelectorAll('button[id$="ToggleButton"]');
-    toggleButtons.forEach(button => {
-      layoutButtonsMap.set(button.id, button);
-      layoutButtonsClickedMap.set(button.id, false);
-      button.addEventListener('click', () => {
-        var buttonClicked = !layoutButtonsClickedMap.get(button.id);
-        layoutButtonsClickedMap.set(button.id, buttonClicked);
-        configs[autoSID].layoutButtonsClickedList = configs[autoSID].layoutButtonsClickedList.filter(item => item !== button.id);
-        if (buttonClicked) {
-          configs[autoSID].layoutButtonsClickedList.push(button.id);
-        }
-        saveConfigStorage();
+    var toggleButtons = [];
+    function initToggleButtons() {
+      toggleButtons = document.querySelectorAll('button[id$="ToggleButton"]');
+      toggleButtons.forEach(button => {
+        layoutButtonsMap.set(button.id, button);
+        layoutButtonsClickedMap.set(button.id, false);
+        button.addEventListener('click', () => {
+          console.log("button click: ", button);
+          var buttonClicked = !layoutButtonsClickedMap.get(button.id);
+          layoutButtonsClickedMap.set(button.id, buttonClicked);
+          configs[autoSID].layoutButtonsClickedList = configs[autoSID].layoutButtonsClickedList.filter(item => item !== button.id);
+          if (buttonClicked) {
+            configs[autoSID].layoutButtonsClickedList.push(button.id);
+          }
+          saveConfigStorage();
+        });
       });
-    });
+    }
   </script>
 
   <div id="apiKeyEditor" style="display:none; margin-bottom:5px;">
@@ -770,7 +789,7 @@
       <td>
         <button id="clearText-button" title="Clear Texts 🆑" onclick="clearTexts();">Clear Texts</button>
         <button id="defaultText-button" title="Default Texts 🛠️" onclick="defaultTexts();">Default Texts</button>
-        <button id="darkMode-button" style="margin-left:5px;" onclick="toggleDarkMode()">🌌</button>
+        <button id="darkModeToggleButton" style="margin-left:5px;" onclick="toggleDarkMode()">🌌</button>
       </td>
     </tr>
   </table>
@@ -2413,6 +2432,8 @@
         strokeTexts[id][layer].style.fontFamily = displayedTexts[id].style.fontFamily; // updateFontFamily
         strokeTexts[id][layer].style.webkitTextStrokeColor = configs[autoSID].textStrokeColors[id][layer]; // updateStrokeColor
         strokeTexts[id][layer].style.webkitTextStrokeWidth = configs[autoSID].textStrokeWidths[id][layer]; // updateStrokeWidth
+
+        // dark mode
       }
       saveTextConfigStorage(autoSID);
     }
@@ -2884,16 +2905,28 @@
     </span>
   </span>
   <script>
-    var backgroundColorSave;
     function toggleDarkMode() {
       const body = document.body;
       body.classList.toggle('dark-mode');
       if (body.classList.contains('dark-mode')) {
         // console.log("Dark mode is active now.");
         backgroundColorSave = document.body.style.backgroundColor;
-        updatePageColor("black");
+        document.body.style.backgroundColor = "#222";
+        textArea.style.background = "#111";
+        for (let i = 0; i <= topTranslationCount; i++) {
+          console.log("i:", i);
+          displayedTexts[i].style.setProperty(`--stroke-color-layer-${0}`, "white");
+          strokeTexts[i][0].style.webkitTextStrokeColor = "white"; // updateStrokeColor
+          displayedTexts[i].style.setProperty(`--stroke-width-layer-${0}`, 0.15 + "em");
+          strokeTexts[i][0].style.webkitTextStrokeWidth = 0.15 + "em"; // updateStrokeWidth
+        }
       } else {
-        updatePageColor(backgroundColorSave);
+        updatePageColor();
+        updateCurtainColor();
+        for (let i = 0; i <= topTranslationCount; i++) {
+          updateStrokeColor(i, 0);
+          updateStrokeWidth(i, 0);
+        }
       }
     }
   </script>
@@ -2917,6 +2950,7 @@
       // localStorage.clear();
     }
     initLayoutButtons();
+    initToggleButtons();
     loadConfig(autoSID);
   </script>
   <script>
