@@ -82,7 +82,7 @@
       align-items: center;
       padding: 20px;
       width: 1000px;
-      height: 140px;
+      height: 148px; /* Need to update another place for the height */
       overflow-y: auto;
     }
     rt {
@@ -296,7 +296,7 @@
       textStrokeWidths: [[0, 0], [0, 0], [0, 0]], //em
       textShadowColors: ["#FFEEBB", "#FFEEBB", "#FFEEBB"],
       textShadowBlurRadius: [0, 0, 0], //em
-      textMargins: [12, 8, 8], //px
+      textMargins: [16, 8, 8], //px
       apiKeys: ["", "", "", ""],
       speechOverInterval: 3600, //ms
       speechSplitInterval: 2000, //ms
@@ -401,7 +401,7 @@
   </script>
   <script>
     function adjustTextAreaHeight() {
-      textArea.style.height = '128px';
+      textArea.style.height = '148px';
       var maxHeight = textArea.scrollHeight;
       textArea.style.height = (maxHeight - 0) + 'px';
     }
