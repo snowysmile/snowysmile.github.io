@@ -37,7 +37,7 @@
     .dark-mode input,
     .dark-mode audio::-webkit-media-controls-panel {
       background-color: #333;
-      color: #CCC;
+      color: #EEE;
     }
     .row-container {
       display: flex;
@@ -82,12 +82,12 @@
       width: 36px;
       font-family: "Monaco", monospace;
     }
-    .text-area {
+    .speechTextArea {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 20px;
-      width: 1080px;
+      width: 1000px;
       height: 128px;
       overflow-y: auto;
     }
@@ -154,6 +154,9 @@
       border-collapse: collapse;
       border: 1px dashed grey;
     }
+    .phone-row-table td{
+      font-size: 12px;
+    }
     .phone-row-table td:first-child {
       width: 35%;
     }
@@ -193,7 +196,7 @@
         height: auto;
         margin: 0 auto;
       }
-      .text-area {
+      .speechTextArea {
         max-width: 95%;
         width: 95%;
       }
@@ -276,7 +279,7 @@
     var configCounts = 3;
     var defaultConfig = {
       pageColor: "#FFFAFA",
-      curtainColor: "#9acd32",
+      curtainColor: "#9ACD32",
       texts: ["きらきら光る、お空の星よ。",  // きらきらひかる、おそらのほしよ。
               "Twinkle, twinkle, little star, How I wonder what you are! ",
               "一閃一閃亮晶晶，滿天都是小星星。"],
@@ -356,7 +359,7 @@
 
   <iframe id="jpExpWebTop" style="width:1050px; height:654px; margin-top:5px; margin-bottom:5px; display:none" src="https://ichi.moe/"></iframe>
 
-  <div class="text-area">
+  <div class="speechTextArea">
     <div id="textMargin-0"> </div>
     <div style="position:relative;">
       <div class="stroke-text" id="displayedText-0"> </div>
@@ -388,7 +391,7 @@
 
     // $(document).ready()
     $(function() {
-      $('.text-area').resizable({
+      $('.speechTextArea').resizable({
         touchAction: 'none',
         handles: 'se',
         resize: function(event, ui) {
@@ -706,7 +709,6 @@
         layoutButtonsMap.set(button.id, button);
         layoutButtonsClickedMap.set(button.id, false);
         button.addEventListener('click', () => {
-          console.log("button click: ", button);
           var buttonClicked = !layoutButtonsClickedMap.get(button.id);
           layoutButtonsClickedMap.set(button.id, buttonClicked);
           configs[autoSID].layoutButtonsClickedList = configs[autoSID].layoutButtonsClickedList.filter(item => item !== button.id);
@@ -724,7 +726,7 @@
       <tr>
         <td style="width: 175px;"> Google Script API-KEY: </td>
         <td>
-          <input type="password" id="apiKeyInput-0" size="50" oninput="updateApiKey(0)">
+          <input type="password" id="apiKeyInput-0" size="50" placeholder="⚡ This api key is necessary to translate the speech text." oninput="updateApiKey(0)">
         </td>
         <td>
           <button ontouchstart="showApiKey(0, this)" ontouchend="hideApiKey(0, this)"
@@ -735,7 +737,7 @@
       <tr>
         <td style="width: 175px;"> GCP API-KEY: </td>
         <td>
-          <input type="password" id="apiKeyInput-1" size="50" oninput="updateApiKey(1)">
+          <input type="password" id="apiKeyInput-1" size="50" placeholder="🤔 This api key is to auto dect language better." oninput="updateApiKey(1)">
         </td>
         <td>
           <button ontouchstart="showApiKey(1, this)" ontouchend="hideApiKey(1, this)"
@@ -746,7 +748,7 @@
       <tr>
         <td style="width: 175px;"> Azure TTS Key: </td>
         <td>
-          <input type="password" id="apiKeyInput-2" size="50" oninput="updateApiKey(2)">
+          <input type="password" id="apiKeyInput-2" size="50" placeholder="🤖 This api key is to use Microsoft AI voice." oninput="updateApiKey(2)">
         </td>
         <td>
           <button ontouchstart="showApiKey(2, this)" ontouchend="hideApiKey(2, this)"
@@ -768,7 +770,7 @@
       <tr>
         <td style="width: 175px;"> API Keys Split by ',': </td>
         <td>
-          <input type="password" id="apiKeyInput-All" size="50" oninput="updateApiKey(99, this.value)">
+          <input type="password" id="apiKeyInput-All" size="50" placeholder="📱 This blank is to fill the above three api keys once." oninput="updateApiKey(99, this.value)">
         </td>
       </tr>
     </table>
@@ -789,7 +791,7 @@
       <td>
         <button id="clearText-button" title="Clear Texts 🆑" onclick="clearTexts();">Clear Texts</button>
         <button id="defaultText-button" title="Default Texts 🛠️" onclick="defaultTexts();">Default Texts</button>
-        <button id="darkModeToggleButton" style="margin-left:5px;" onclick="toggleDarkMode()">🌌</button>
+        <button id="darkModeToggleButton" style="margin-left:5px;" onclick="toggleDarkMode()">🌞</button>
       </td>
     </tr>
   </table>
@@ -1033,8 +1035,8 @@
             </tr>
             <tr>
               <td><label for="textShadowColorPicker-0">Shadow Color:</label></td>
-              <td><input id=textShadowColorPicker-0 type="color" value="#dafffb" oninput="updateTextShadow(0)"></td>
-              <td><span id="textShadowColorValue-0"> #dafffb </span></td>
+              <td><input id=textShadowColorPicker-0 type="color" value="#DAFFFB" oninput="updateTextShadow(0)"></td>
+              <td><span id="textShadowColorValue-0"> #DAFFFB </span></td>
             </tr>
             <tr>
               <td><span>Shadow Blur Radius: </span></td>
@@ -1095,8 +1097,8 @@
             </tr>
             <tr>
               <td><label for="textShadowColorPicker-1">Shadow Color:</label></td>
-              <td><input id=textShadowColorPicker-1 type="color" value="#dafffb" oninput="updateTextShadow(1)"></td>
-              <td><span id="textShadowColorValue-1"> #dafffb </span></td>
+              <td><input id=textShadowColorPicker-1 type="color" value="#DAFFFB" oninput="updateTextShadow(1)"></td>
+              <td><span id="textShadowColorValue-1"> #DAFFFB </span></td>
             </tr>
             <tr>
               <td><span>Shadow Blur Radius: </span></td>
@@ -1157,8 +1159,8 @@
             </tr>
             <tr>
               <td><label for="textShadowColorPicker-2">Shadow Color:</label></td>
-              <td><input id=textShadowColorPicker-2 type="color" value="#dafffb" oninput="updateTextShadow(2)"></td>
-              <td><span id="textShadowColorValue-2"> #dafffb </span></td>
+              <td><input id=textShadowColorPicker-2 type="color" value="#DAFFFB" oninput="updateTextShadow(2)"></td>
+              <td><span id="textShadowColorValue-2"> #DAFFFB </span></td>
             </tr>
             <tr>
               <td><span>Shadow Blur Radius: </span></td>
@@ -1197,7 +1199,7 @@
 
     var pageColorPicker = document.getElementById('pageColorPicker');
     var pageColorValue = document.getElementById('pageColorValue');
-    var textArea = document.querySelector('.text-area');
+    var textArea = document.querySelector('.speechTextArea');
     var curtainColorPicker = document.getElementById('curtainColorPicker');
     var curtainColorValue = document.getElementById('curtainColorValue');
 
@@ -1263,11 +1265,16 @@
     var azureTranslateSubscriptionKey;
 
     function initSpecialLayoutButtons() {
-      if ((!googleScriptKey || googleScriptKey == "") && (!apiKeyEditor || !apiKeyEditor.style.display || apiKeyEditor.style.display === 'none')) {
-        toggleApiKeyEditor_LayoutButton.click();
+      if (!googleScriptKey || googleScriptKey == "") {
+        if (!apiKeyEditor || !apiKeyEditor.style.display || apiKeyEditor.style.display === 'none') {
+          toggleApiKeyEditor_LayoutButton.click();
+        }
+        if (!layoutContainer || !layoutContainer.style.display || layoutContainer.style.display === 'none') {
+          layoutContainer_LayoutButton.click();
+        }
       }
       if (!googleScriptKey || googleScriptKey == "") {
-        apiKeyEditorTable.style.backgroundColor = "#ffb8c6";
+        apiKeyEditorTable.style.backgroundColor = "#FFB8C6";
       }
       else {
         apiKeyEditorTable.style.backgroundColor = document.body.style.backgroundColor;
@@ -2430,10 +2437,9 @@
         strokeTexts[id][layer].style.fontSize = displayedTexts[id].style.fontSize; // updateFontSize
         strokeTexts[id][layer].style.fontWeight = displayedTexts[id].style.fontWeight; // updateFontWeight
         strokeTexts[id][layer].style.fontFamily = displayedTexts[id].style.fontFamily; // updateFontFamily
-        strokeTexts[id][layer].style.webkitTextStrokeColor = configs[autoSID].textStrokeColors[id][layer]; // updateStrokeColor
-        strokeTexts[id][layer].style.webkitTextStrokeWidth = configs[autoSID].textStrokeWidths[id][layer]; // updateStrokeWidth
+        strokeTexts[id][layer].style.webkitTextStrokeColor = darkModeToggleButton.innerHTML !== "🌜" ? configs[autoSID].textStrokeColors[id][layer] : darkModeStrokeColor; // updateStrokeColor
+        strokeTexts[id][layer].style.webkitTextStrokeWidth = darkModeToggleButton.innerHTML !== "🌜" ? configs[autoSID].textStrokeWidths[id][layer] : darkModeStrokeWidth; // updateStrokeWidth
 
-        // dark mode
       }
       saveTextConfigStorage(autoSID);
     }
@@ -2905,27 +2911,35 @@
     </span>
   </span>
   <script>
+    var darkModeTextColor = "#FFF";
+    var darkModeStrokeColor = "#000";
+    var darkModeStrokeWidth = "0.2em";
+    var darkModeBackgroundColor = "#222";
+    var darkModeCurtainColor = "#202020";
     function toggleDarkMode() {
-      const body = document.body;
-      body.classList.toggle('dark-mode');
-      if (body.classList.contains('dark-mode')) {
-        // console.log("Dark mode is active now.");
+      darkModeToggleButton.innerHTML = darkModeToggleButton.innerHTML === "🌞" ? "🌜" : "🌞";
+      document.body.classList.toggle('dark-mode');
+      if (document.body.classList.contains('dark-mode')) {
         backgroundColorSave = document.body.style.backgroundColor;
-        document.body.style.backgroundColor = "#222";
-        textArea.style.background = "#111";
+        document.body.style.backgroundColor = darkModeBackgroundColor;
+        textArea.style.background = darkModeCurtainColor;
         for (let i = 0; i <= topTranslationCount; i++) {
-          console.log("i:", i);
-          displayedTexts[i].style.setProperty(`--stroke-color-layer-${0}`, "white");
-          strokeTexts[i][0].style.webkitTextStrokeColor = "white"; // updateStrokeColor
-          displayedTexts[i].style.setProperty(`--stroke-width-layer-${0}`, 0.15 + "em");
-          strokeTexts[i][0].style.webkitTextStrokeWidth = 0.15 + "em"; // updateStrokeWidth
+          displayedTexts[i].style.color = darkModeTextColor;
+          displayedTexts[i].style.setProperty(`--stroke-color-layer-${0}`, darkModeStrokeColor);
+          displayedTexts[i].style.setProperty(`--stroke-width-layer-${0}`, darkModeStrokeWidth);
+          strokeTexts[i][0].style.webkitTextStrokeColor = darkModeStrokeColor; // updateStrokeColor
+          strokeTexts[i][0].style.webkitTextStrokeWidth = darkModeStrokeWidth; // updateStrokeWidth
         }
-      } else {
+      }
+      else {
         updatePageColor();
         updateCurtainColor();
         for (let i = 0; i <= topTranslationCount; i++) {
+          updateFontColor(i);
           updateStrokeColor(i, 0);
           updateStrokeWidth(i, 0);
+          strokeTexts[i][0].style.webkitTextStrokeColor = configs[autoSID].textStrokeColors[i][0];
+          strokeTexts[i][0].style.webkitTextStrokeWidth = configs[autoSID].textStrokeWidths[i][0];
         }
       }
     }
