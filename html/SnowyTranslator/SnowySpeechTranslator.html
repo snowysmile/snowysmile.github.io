@@ -52,6 +52,9 @@
       overflow: hidden;
       font-size: 11px;
     }
+    input[type="color"] {
+      text-transform: uppercase;
+    }
     table {
       border-collapse: collapse;
       border: 1px solid black;
@@ -753,7 +756,7 @@
     }
   </script>
 
-  <table id="apiKeyEditor">
+  <table id="apiKeyEditor" style="display:none">
     <tr>
       <td style="width: 175px;"> Google Script API-KEY: </td>
       <td>
@@ -822,7 +825,7 @@
         <button id="clearText-button" title="Clear Texts 🆑" onclick="clearTexts();">Clear Texts</button>
         <button id="defaultText-button" title="Default Texts 🛠️" onclick="defaultTexts();">Default Texts</button>
         <button id="darkModeToggleButton" style="margin-left:5px;" onclick="toggleDarkMode()">🌞</button>
-        <button id="specialLayoutToggle3Button" style="margin-left:5px;" onclick="toggleSpecialLayout()">🎐</button>
+        <button id="specialLayoutToggle3Button" style="margin-left:5px;" onclick="toggleSpecialLayout()">🔄</button>
       </td>
     </tr>
   </table>
@@ -1026,8 +1029,8 @@
             </tr>
             <tr>
               <td><span>Text Color:</span></td>
-              <td><input id=textColorPicker-0 type="color" value="#000000" oninput="updateFontColor(0)"></td>
-              <td><span id="textColorValue-0"> #000000 </span></td>
+              <td><input id=textColorPicker-0 type="color" oninput="updateFontColor(0)"></td>
+              <td><span id="textColorValue-0"> </span></td>
             </tr>
             <tr>
               <td><span>Font Size: </span></td>
@@ -1088,8 +1091,8 @@
             </tr>
             <tr>
               <td><span>Text Color:</span></td>
-              <td><input id=textColorPicker-1 type="color" value="#000000" oninput="updateFontColor(1)"></td>
-              <td><span id="textColorValue-1"> #000000 </span></td>
+              <td><input id=textColorPicker-1 type="color" oninput="updateFontColor(1)"></td>
+              <td><span id="textColorValue-1"> </span></td>
             </tr>
             <tr>
               <td><span>Font Size: </span></td>
@@ -1150,8 +1153,8 @@
             </tr>
             <tr>
               <td><span>Text Color:</span></td>
-              <td><input id=textColorPicker-2 type="color" value="#000000" oninput="updateFontColor(2)"></td>
-              <td><span id="textColorValue-2"> #000000 </span></td>
+              <td><input id=textColorPicker-2 type="color" oninput="updateFontColor(2)"></td>
+              <td><span id="textColorValue-2"> </span></td>
             </tr>
             <tr>
               <td><span>Font Size: </span></td>
@@ -2324,17 +2327,19 @@
         }
       }
     }
-    function updatePageColor(color = "") {
+    function updatePageColor(color="") {
       if (color === "") color = pageColorPicker.value;
       else pageColorPicker.value = color;
+      color = color.toUpperCase();
       pageColorValue.innerHTML = color;
       document.body.style.backgroundColor = color;
       configs[autoSID].pageColor = color;
       saveConfigStorage();
     }
-    function updateCurtainColor(color = "") {
+    function updateCurtainColor(color="") {
       if (color === "") color = curtainColorPicker.value;
       else curtainColorPicker.value = color;
+      color = color.toUpperCase();
       curtainColorValue.innerHTML = color;
       textArea.style.background = color;
       configs[autoSID].curtainColor = color;
@@ -2500,6 +2505,7 @@
     function updateFontColor(id, color="") {
       if (color === "") color = textColorPickers[id].value;
       else textColorPickers[id].value = color;
+      color = color.toUpperCase();
       textColorValues[id].innerHTML = color;
       displayedTexts[id].style.color = color;
       configs[autoSID].textFontColors[id] = color;
@@ -2542,6 +2548,7 @@
     function updateStrokeColor(id, layer, color="") {
       if (color === "") color = textStrokeColorPickers[id][layer].value;
       else textStrokeColorPickers[id][layer].value = color;
+      color = color.toUpperCase();
       textStrokeColorValues[id][layer].innerHTML = color;
       displayedTexts[id].style.setProperty(`--stroke-color-layer-${layer}`, color);
       strokeTexts[id][layer].style.webkitTextStrokeColor = color; // updateStrokeColor
@@ -2562,6 +2569,7 @@
       else textShadowBlurRadiusSliders[id].value = radius;
       if (color === "") color = textShadowColorPickers[id].value;
       else textShadowColorPickers[id].value = color;
+      color = color.toUpperCase();
       textShadowBlurRadiusValues[id].innerHTML = radius;
       textShadowColorValues[id].innerHTML = color;
       displayedTexts[id].style.textShadow = `0 0 ${radius}em ${color}`;
@@ -2973,26 +2981,50 @@
     }
   </script>
   <script>
-    var specialLayoutList = ['🎐', '🌈', '🌼'];
-    var specialLayoutBackgroundColors = ["#FFF", "#AAA", "#555"];
-    var specialLayoutCurtainColors = ["#EEE", "#999", "#444"];
-    var specialLayoutTextColor = ["#FFF", "#AAA", "#555"];
-    var specialLayoutStrokeColor = ["#000", "#555", "#FFF"];
-    var specialLayoutStrokeWidth = ["0.2em", "0.2em", "0.2em"];
+    var specialLayoutList = ['🔄','🎐', '🌈'];
+    var specialLayoutBackgroundColors = ["", "#AAA", "#555"];
+    var specialLayoutCurtainColors = ["", "#999", "#444"];
+    var specialLayoutTextColor = ["", "#AAA", "#555"];
+    var specialLayoutStrokeColor = [[""], ["#555"], ["#FFF"]];
+    var specialLayoutStrokeWidth = [[""], ["0.2em"], ["0.2em"]];
+    var specialLayoutStrokeColorOut = [[""], ["#555"], ["#FFF", ,]];
+    var specialLayoutStrokeWidthOut = [[""], ["0.2em"], ["0.2em"]];
     function toggleSpecialLayout() {
       let index = specialLayoutList.findIndex(item => item === specialLayoutToggle3Button.innerHTML);
       index = (index + 1) % specialLayoutList.length;
       specialLayoutToggle3Button.innerHTML = specialLayoutList[index];
       if (darkModeToggleButton.innerHTML !== "🌞") return;
-
-      document.body.style.backgroundColor = specialLayoutBackgroundColors[index];
-      textArea.style.background = specialLayoutCurtainColors[index];
-      for (let i = 0; i <= topTranslationCount; i++) {
-        displayedTexts[i].style.color = specialLayoutTextColor[index];
-        displayedTexts[i].style.setProperty(`--stroke-color-layer-${0}`, specialLayoutStrokeColor[index]);
-        displayedTexts[i].style.setProperty(`--stroke-width-layer-${0}`, specialLayoutStrokeWidth[index]);
-        strokeTexts[i][0].style.webkitTextStrokeColor = specialLayoutStrokeColor[index]; // updateStrokeColor
-        strokeTexts[i][0].style.webkitTextStrokeWidth = specialLayoutStrokeWidth[index]; // updateStrokeWidth
+      if (index === 0) {
+        updatePageColor();
+        updateCurtainColor();
+        for (let i = 0; i <= topTranslationCount; i++) {
+          updateFontColor(i);
+          updateStrokeColor(i, 0);
+          updateStrokeWidth(i, 0);
+          strokeTexts[i][0].style.webkitTextStrokeColor = configs[autoSID].textStrokeColors[i][0];
+          strokeTexts[i][0].style.webkitTextStrokeWidth = configs[autoSID].textStrokeWidths[i][0];
+        }
+      }
+      else {
+        document.body.style.backgroundColor = specialLayoutBackgroundColors[index];
+        textArea.style.background = specialLayoutCurtainColors[index];
+        for (let i = 0; i <= topTranslationCount; i++) {
+          displayedTexts[i].style.color = specialLayoutTextColor[index];
+          let color = specialLayoutStrokeColor[index][i %  specialLayoutStrokeColor[index].length];
+          let width = specialLayoutStrokeWidth[index][i %  specialLayoutStrokeWidth[index].length];
+          displayedTexts[i].style.setProperty(`--stroke-color-layer-${0}`, color);
+          displayedTexts[i].style.setProperty(`--stroke-width-layer-${0}`, width);
+          strokeTexts[i][0].style.webkitTextStrokeColor = color; // updateStrokeColor
+          strokeTexts[i][0].style.webkitTextStrokeWidth = width; // updateStrokeWidth
+          if (specialLayoutStrokeWidthOut[index]) {
+            let color = specialLayoutStrokeColorOut[index][i %  specialLayoutStrokeColorOut[index].length];
+            let width = specialLayoutStrokeWidthOut[index][i %  specialLayoutStrokeWidthOut[index].length];
+            displayedTexts[i].style.setProperty(`--stroke-color-layer-${1}`, color);
+            displayedTexts[i].style.setProperty(`--stroke-width-layer-${1}`, width);
+            strokeTexts[i][1].style.webkitTextStrokeColor = color; // updateStrokeColor
+            strokeTexts[i][1].style.webkitTextStrokeWidth = width; // updateStrokeWidth
+          }
+        }
       }
     }
   </script>
