@@ -2982,13 +2982,13 @@
   </script>
   <script>
     var specialLayoutList = ['🔄','🎐', '🌈'];
-    var specialLayoutBackgroundColors = ["", "#AAA", "#555"];
-    var specialLayoutCurtainColors = ["", "#999", "#444"];
-    var specialLayoutTextColor = ["", "#AAA", "#555"];
-    var specialLayoutStrokeColor = [[""], ["#555"], ["#FFF"]];
+    var specialLayoutBackgroundColors = ["", "#B8B8B8", "#E8E8E8"];
+    var specialLayoutCurtainColors = ["", "#C4C4C4", "#9ACD32"];
+    var specialLayoutTextColor = ["", "#FFF", "#555"];
+    var specialLayoutStrokeColor = [[""], ["#000"], ["#FFF"]];
     var specialLayoutStrokeWidth = [[""], ["0.2em"], ["0.2em"]];
-    var specialLayoutStrokeColorOut = [[""], ["#555"], ["#FFF", ,]];
-    var specialLayoutStrokeWidthOut = [[""], ["0.2em"], ["0.2em"]];
+    var specialLayoutStrokeColorOut = [[""], ["#ADF3FF", "#FFEC8F", "#FF94A9"], ["#1FDDFF", "#FFD500", "#FF0033"]];
+    var specialLayoutStrokeWidthOut = [[""], ["0.5em"], ["0.5em"]];
     function toggleSpecialLayout() {
       let index = specialLayoutList.findIndex(item => item === specialLayoutToggle3Button.innerHTML);
       index = (index + 1) % specialLayoutList.length;
@@ -2999,10 +2999,12 @@
         updateCurtainColor();
         for (let i = 0; i <= topTranslationCount; i++) {
           updateFontColor(i);
-          updateStrokeColor(i, 0);
-          updateStrokeWidth(i, 0);
-          strokeTexts[i][0].style.webkitTextStrokeColor = configs[autoSID].textStrokeColors[i][0];
-          strokeTexts[i][0].style.webkitTextStrokeWidth = configs[autoSID].textStrokeWidths[i][0];
+          for (let j = 0; j < 2; j++) {
+            updateStrokeColor(i, j);
+            updateStrokeWidth(i, j);
+            strokeTexts[i][j].style.webkitTextStrokeColor = configs[autoSID].textStrokeColors[i][j];
+            strokeTexts[i][j].style.webkitTextStrokeWidth = configs[autoSID].textStrokeWidths[i][j];
+          }
         }
       }
       else {
