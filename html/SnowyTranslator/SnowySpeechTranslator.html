@@ -35,6 +35,7 @@
     .dark-mode select,
     .dark-mode textarea,
     .dark-mode input,
+    .dark-mode table,
     .dark-mode audio::-webkit-media-controls-panel {
       background-color: #333;
       color: #EEE;
@@ -163,13 +164,11 @@
     #jpExpAreaFrame {
       width: 1015px;
       border: 2px solid black;
-      max-width: 96%;
     }
     #jpExpArea {
+      width: 1000px;
       margin-top: 10px;
       margin-bottom: 10px;
-      width: 1000px;
-      max-width: 96%;
     }
     #readingList {
       width: 800px;
@@ -229,6 +228,14 @@
         max-width: 96%;
         width: 96%;
       }
+      #jpExpAreaFrame {
+        max-width: 96%;
+        width: 96%;
+      }
+      #jpExpArea {
+        max-width: 96%;
+        width: 96%;
+      }
     }
     @media screen and (min-width: 1000px) {
       .phone-button {
@@ -278,7 +285,7 @@
     var translationCount = 2; // Make it an integer, otherwise it will be a string
     var configCounts = 3;
     var defaultConfig = {
-      pageColor: "#FFFAFA",
+      pageColor: "#FFFAFA", // #E8E8E8 (grey)
       curtainColor: "#9ACD32",
       texts: ["きらきら光る、お空の星よ。",  // きらきらひかる、おそらのほしよ。
               "Twinkle, twinkle, little star, How I wonder what you are! ",
@@ -292,7 +299,7 @@
       textFontSizes: [20, 17, 14], //px
       textFontWeights: [500, 500, 500],
       textFontFamilies: ["NotoSansCJKjp", "NotoSansCJKjp", "NotoSansCJKjp"],
-      textStrokeColors: [["#FFFFFF", "#FFB7C5"], ["#FFFFFF", "#FFD500"], ["#FFFFFF", "#FF0033"]],
+      textStrokeColors: [["#FFFFFF", "#FFB7C5"], ["#FFFFFF", "#FFD500"], ["#FFFFFF", "#FF0033"]], // #1FDDFF blue
       textStrokeWidths: [[0, 0], [0, 0], [0, 0]], //em
       textShadowColors: ["#FFEEBB", "#FFEEBB", "#FFEEBB"],
       textShadowBlurRadius: [0, 0, 0], //em
@@ -721,60 +728,58 @@
     }
   </script>
 
-  <div id="apiKeyEditor" style="display:none; margin-bottom:5px;">
-    <table id="apiKeyEditorTable">
-      <tr>
-        <td style="width: 175px;"> Google Script API-KEY: </td>
-        <td>
-          <input type="password" id="apiKeyInput-0" size="50" placeholder="⚡ This api key is necessary to translate the speech text." oninput="updateApiKey(0)">
-        </td>
-        <td>
-          <button ontouchstart="showApiKey(0, this)" ontouchend="hideApiKey(0, this)"
-              onmousedown="showApiKey(0, this)" onmouseup="hideApiKey(0, this)">👁️</button> &nbsp;
-          <button title="Copy From Textarea." onclick="copyApiKey(0, this)">📑</button>
-        </td>
-      </tr>
-      <tr>
-        <td style="width: 175px;"> GCP API-KEY: </td>
-        <td>
-          <input type="password" id="apiKeyInput-1" size="50" placeholder="🤔 This api key is to auto dect language better." oninput="updateApiKey(1)">
-        </td>
-        <td>
-          <button ontouchstart="showApiKey(1, this)" ontouchend="hideApiKey(1, this)"
-              onmousedown="showApiKey(1, this)" onmouseup="hideApiKey(1, this)">👁️</button> &nbsp;
-          <button title="Copy From Textarea." onclick="copyApiKey(1, this)">📑</button>
-        </td>
-      </tr>
-      <tr>
-        <td style="width: 175px;"> Azure TTS Key: </td>
-        <td>
-          <input type="password" id="apiKeyInput-2" size="50" placeholder="🤖 This api key is to use Microsoft AI voice." oninput="updateApiKey(2)">
-        </td>
-        <td>
-          <button ontouchstart="showApiKey(2, this)" ontouchend="hideApiKey(2, this)"
-              onmousedown="showApiKey(2, this)" onmouseup="hideApiKey(2, this)">👁️</button> &nbsp;
-          <button title="Copy From Textarea." onclick="copyApiKey(2, this)">📑</button>
-        </td>
-      </tr>
-      <tr style="display:none;">
-        <td style="width: 175px;"> Azure Translate Key: </td>
-        <td>
-          <input type="password" id="apiKeyInput-3" size="50" oninput="updateApiKey(3)">
-        </td>
-        <td>
-          <button ontouchstart="showApiKey(3, this)" ontouchend="hideApiKey(3, this)"
-              onmousedown="showApiKey(3, this)" onmouseup="hideApiKey(3, this)">👁️</button> &nbsp;
-          <button title="Copy From Textarea." onclick="copyApiKey(3, this)">📑</button>
-        </td>
-      </tr>
-      <tr>
-        <td style="width: 175px;"> API Keys Split by ',': </td>
-        <td>
-          <input type="password" id="apiKeyInput-All" size="50" placeholder="📱 This blank is to fill the above three api keys once." oninput="updateApiKey(99, this.value)">
-        </td>
-      </tr>
-    </table>
-  </div>
+  <table id="apiKeyEditor">
+    <tr>
+      <td style="width: 175px;"> Google Script API-KEY: </td>
+      <td>
+        <input type="password" id="apiKeyInput-0" size="50" placeholder="⚡ This api key is necessary to translate the speech text." oninput="updateApiKey(0)">
+      </td>
+      <td>
+        <button ontouchstart="showApiKey(0, this)" ontouchend="hideApiKey(0, this)"
+            onmousedown="showApiKey(0, this)" onmouseup="hideApiKey(0, this)">👁️</button> &nbsp;
+        <button title="Copy From Textarea." onclick="copyApiKey(0, this)">📑</button>
+      </td>
+    </tr>
+    <tr>
+      <td style="width: 175px;"> GCP API-KEY: </td>
+      <td>
+        <input type="password" id="apiKeyInput-1" size="50" placeholder="🤔 This api key is to auto dect language better." oninput="updateApiKey(1)">
+      </td>
+      <td>
+        <button ontouchstart="showApiKey(1, this)" ontouchend="hideApiKey(1, this)"
+            onmousedown="showApiKey(1, this)" onmouseup="hideApiKey(1, this)">👁️</button> &nbsp;
+        <button title="Copy From Textarea." onclick="copyApiKey(1, this)">📑</button>
+      </td>
+    </tr>
+    <tr>
+      <td style="width: 175px;"> Azure TTS Key: </td>
+      <td>
+        <input type="password" id="apiKeyInput-2" size="50" placeholder="🤖 This api key is to use Microsoft AI voice." oninput="updateApiKey(2)">
+      </td>
+      <td>
+        <button ontouchstart="showApiKey(2, this)" ontouchend="hideApiKey(2, this)"
+            onmousedown="showApiKey(2, this)" onmouseup="hideApiKey(2, this)">👁️</button> &nbsp;
+        <button title="Copy From Textarea." onclick="copyApiKey(2, this)">📑</button>
+      </td>
+    </tr>
+    <tr style="display:none;">
+      <td style="width: 175px;"> Azure Translate Key: </td>
+      <td>
+        <input type="password" id="apiKeyInput-3" size="50" oninput="updateApiKey(3)">
+      </td>
+      <td>
+        <button ontouchstart="showApiKey(3, this)" ontouchend="hideApiKey(3, this)"
+            onmousedown="showApiKey(3, this)" onmouseup="hideApiKey(3, this)">👁️</button> &nbsp;
+        <button title="Copy From Textarea." onclick="copyApiKey(3, this)">📑</button>
+      </td>
+    </tr>
+    <tr>
+      <td style="width: 175px;"> API Keys Split by ',': </td>
+      <td>
+        <input type="password" id="apiKeyInput-All" size="50" placeholder="📱 This blank is to fill the above three api keys once." oninput="updateApiKey(99, this.value)">
+      </td>
+    </tr>
+  </table>
 
   <table style="border:none; margin-bottom:5px">
     <tr>
@@ -1274,10 +1279,10 @@
         }
       }
       if (!googleScriptKey || googleScriptKey == "") {
-        apiKeyEditorTable.style.backgroundColor = "#FFB8C6";
+        apiKeyEditor.style.backgroundColor = "#FFB8C6";
       }
       else {
-        apiKeyEditorTable.style.backgroundColor = document.body.style.backgroundColor;
+        // apiKeyEditor.style.backgroundColor = document.body.style.backgroundColor;
       }
     }
 
@@ -1292,8 +1297,8 @@
     'Naikai',
     'Nishikiteki',
     'Iansui',
-    'BugMaruGothic',
     'TaipeiSans',
+    'BugMaruGothic',
     'WD-XLLubrifont',
     'tkFangSong',
     'LXGWWenKai',
@@ -2920,7 +2925,39 @@
       darkModeToggleButton.innerHTML = darkModeToggleButton.innerHTML === "🌞" ? "🌜" : "🌞";
       document.body.classList.toggle('dark-mode');
       if (document.body.classList.contains('dark-mode')) {
-        backgroundColorSave = document.body.style.backgroundColor;
+        document.body.style.backgroundColor = darkModeBackgroundColor;
+        textArea.style.background = darkModeCurtainColor;
+        for (let i = 0; i <= topTranslationCount; i++) {
+          displayedTexts[i].style.color = darkModeTextColor;
+          displayedTexts[i].style.setProperty(`--stroke-color-layer-${0}`, darkModeStrokeColor);
+          displayedTexts[i].style.setProperty(`--stroke-width-layer-${0}`, darkModeStrokeWidth);
+          strokeTexts[i][0].style.webkitTextStrokeColor = darkModeStrokeColor; // updateStrokeColor
+          strokeTexts[i][0].style.webkitTextStrokeWidth = darkModeStrokeWidth; // updateStrokeWidth
+        }
+      }
+      else {
+        updatePageColor();
+        updateCurtainColor();
+        for (let i = 0; i <= topTranslationCount; i++) {
+          updateFontColor(i);
+          updateStrokeColor(i, 0);
+          updateStrokeWidth(i, 0);
+          strokeTexts[i][0].style.webkitTextStrokeColor = configs[autoSID].textStrokeColors[i][0];
+          strokeTexts[i][0].style.webkitTextStrokeWidth = configs[autoSID].textStrokeWidths[i][0];
+        }
+      }
+    }
+  </script>
+  <script>
+    var darkModeTextColor = "#FFF";
+    var darkModeStrokeColor = "#000";
+    var darkModeStrokeWidth = "0.2em";
+    var darkModeBackgroundColor = "#222";
+    var darkModeCurtainColor = "#202020";
+    function toggleDarkMode() {
+      darkModeToggleButton.innerHTML = darkModeToggleButton.innerHTML === "🌞" ? "🌜" : "🌞";
+      document.body.classList.toggle('dark-mode');
+      if (document.body.classList.contains('dark-mode')) {
         document.body.style.backgroundColor = darkModeBackgroundColor;
         textArea.style.background = darkModeCurtainColor;
         for (let i = 0; i <= topTranslationCount; i++) {
@@ -2972,7 +3009,7 @@
     function windowOnLoad() {
       var currentTime = new Date().toLocaleTimeString();
       console.log("windowOnLoad: Page has completely finished loading at " + currentTime);
-      // tasks:
+      // tasks: ...
     }
     window.onload = windowOnLoad;
     // method B
