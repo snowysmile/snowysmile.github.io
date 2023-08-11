@@ -21,23 +21,13 @@
       background-color: white;
       color: black;
     }
-    button,
-    select,
-    textarea,
-    input,
-    audio::-webkit-media-controls-panel {
-    }
-    .dark-mode {
-      background-color: #111;
-      color: #EEE;
-    }
+    .dark-mode,
     .dark-mode button,
     .dark-mode select,
     .dark-mode textarea,
     .dark-mode input,
-    .dark-mode table,
     .dark-mode audio::-webkit-media-controls-panel {
-      background-color: #333;
+      background-color: #555;
       color: #EEE;
     }
     .row-container {
@@ -311,7 +301,7 @@
       translationCount: 2,
       languages: ['ja', 'en', 'zh-TW'],
       azureVoices: ['ja-JP-AoiNeural', 'en-US-AnaNeural', 'zh-CN-XiaoyouNeural'],
-      layoutButtonsClickedList: [],
+      toggleButtonsClickedList: [],
       historyTextsMaxLength: 20,
       historyTextsCurrentId: 0,
     }
@@ -697,34 +687,69 @@
   </div>
 
   <script>
-    const layoutButtonsMap = new Map();
-    const layoutButtonsClickedMap = new Map();
+    const toggleButtonsMap = new Map();
+    const toggleButtonsCountMap = new Map();
+    const toggleButtonsClickedMap = new Map();
+
     function initLayoutButtons() {
       var layoutButtons = [];
       layoutButtons.push(...document.querySelectorAll('[id$="_LayoutButton"]'));
       layoutButtons.forEach(function(button) {
         var buttonText = button.innerHTML.substr(0, button.innerHTML.lastIndexOf(' '));
-        layoutButtonsMap.set(buttonText, button);
-        layoutButtonsClickedMap.set(buttonText, false);
+        toggleButtonsMap.set(buttonText, button);
+        toggleButtonsCountMap.set(buttonText, 2);
+        toggleButtonsClickedMap.set(buttonText, false);
       });
     };
 
     var toggleButtons = [];
     function initToggleButtons() {
+      /*
       toggleButtons = document.querySelectorAll('button[id$="ToggleButton"]');
       toggleButtons.forEach(button => {
-        layoutButtonsMap.set(button.id, button);
-        layoutButtonsClickedMap.set(button.id, false);
+        toggleButtonsMap.set(button.id, button);
+        toggleButtonsClickedMap.set(button.id, false);
         button.addEventListener('click', () => {
-          var buttonClicked = !layoutButtonsClickedMap.get(button.id);
-          layoutButtonsClickedMap.set(button.id, buttonClicked);
-          configs[autoSID].layoutButtonsClickedList = configs[autoSID].layoutButtonsClickedList.filter(item => item !== button.id);
+          var buttonClicked = !toggleButtonsClickedMap.get(button.id);
+          toggleButtonsClickedMap.set(button.id, buttonClicked);
+          configs[autoSID].toggleButtonsClickedList = configs[autoSID].toggleButtonsClickedList.filter(item => item !== button.id); // remove exsited buttons
           if (buttonClicked) {
-            configs[autoSID].layoutButtonsClickedList.push(button.id);
+            configs[autoSID].toggleButtonsClickedList.push(button.id);
           }
           saveConfigStorage();
         });
       });
+      */
+
+      console.log("toggleButtonsCountMap:", toggleButtonsCountMap);
+      for (let buttonOptionCount = 2; buttonOptionCount <= 3; buttonOptionCount++) {
+        if (buttonOptionCount === 2) toggleButtons = document.querySelectorAll(`button[id$="ToggleButton"]`);
+        else toggleButtons = document.querySelectorAll(`button[id$="Toggle${buttonOptionCount}Button"]`);
+        toggleButtons.forEach(button => {
+          toggleButtonsMap.set(button.id, button);
+          toggleButtonsCountMap.set(button.id, buttonOptionCount);
+          toggleButtonsClickedMap.set(button.id, 0);
+          button.addEventListener('click', () => {
+            var buttonClickedCount = (toggleButtonsClickedMap.get(button.id) + 1) % buttonOptionCount;
+            toggleButtonsClickedMap.set(button.id, buttonClickedCount);
+            // another way to remove exsited buttons from the list
+            // configs[autoSID].toggleButtonsClickedList = configs[autoSID].toggleButtonsClickedList.filter(item => item[0] !== button.id);
+            let buttonInList = false;
+            for (let i = 0; i < configs[autoSID].toggleButtonsClickedList.length; i++) {
+              let pair = configs[autoSID].toggleButtonsClickedList[i];
+              if (pair[0] === button.id) {
+                pair[1] = buttonClickedCount;
+                buttonInList = true;
+                break;
+              }
+            }
+            if (!buttonInList) {
+              configs[autoSID].toggleButtonsClickedList.push([button.id, buttonClickedCount]);
+            }
+            saveConfigStorage();
+          });
+        });
+      }
     }
   </script>
 
@@ -797,6 +822,7 @@
         <button id="clearText-button" title="Clear Texts 🆑" onclick="clearTexts();">Clear Texts</button>
         <button id="defaultText-button" title="Default Texts 🛠️" onclick="defaultTexts();">Default Texts</button>
         <button id="darkModeToggleButton" style="margin-left:5px;" onclick="toggleDarkMode()">🌞</button>
+        <button id="specialLayoutToggle3Button" style="margin-left:5px;" onclick="toggleSpecialLayout()">🎐</button>
       </td>
     </tr>
   </table>
@@ -1286,8 +1312,8 @@
       }
     }
 
-    function updateLayoutButtonClick(buttonText) {
-      var button = layoutButtonsMap.get(buttonText);
+    function updateToggleButtonClick(buttonText) {
+      var button = toggleButtonsMap.get(buttonText);
       button.click();
     }
   </script>
@@ -2254,11 +2280,11 @@
       button.innerHTML = `${buttonText} ${trigger}`;
       widget.style.display = trigger === '🟢' ? 'block' : 'none';
       // compact = inline || block
-      var buttonClicked = !layoutButtonsClickedMap.get(buttonText);
-      layoutButtonsClickedMap.set(buttonText, buttonClicked);
-      configs[autoSID].layoutButtonsClickedList = configs[autoSID].layoutButtonsClickedList.filter(item => item !== buttonText);
+      var buttonClicked = !toggleButtonsClickedMap.get(buttonText);
+      toggleButtonsClickedMap.set(buttonText, buttonClicked);
+      configs[autoSID].toggleButtonsClickedList = configs[autoSID].toggleButtonsClickedList.filter(item => item[0] !== buttonText);
       if (buttonClicked) {
-        configs[autoSID].layoutButtonsClickedList.push(buttonText);
+        configs[autoSID].toggleButtonsClickedList.push([buttonText, 1]);
       }
       saveConfigStorage();
     }
@@ -2613,7 +2639,7 @@
       configs[configID].translationCount = parseInt(translationCountSelect.value, 10);
       configs[configID].languages = [...languageSelects].map(element => element.value);
       configs[configID].azureVoices = [...azureVoiceSelects].map(element => element.value);
-      configs[configID].layoutButtonsClickedList = saveMap(layoutButtonsClickedMap);
+      configs[configID].toggleButtonsClickedList = saveMap(toggleButtonsClickedMap);
       saveConfigStorage();
       configs[configID].historyTextsMaxLength = configs[autoSID].historyTextsMaxLength;
       configs[configID].historyTextsCurrentId = configs[autoSID].historyTextsCurrentId;
@@ -2670,16 +2696,14 @@
         }
       }
       showHistoryText(configs[configID].historyTextsCurrentId, false);
-      // cancel the clicked buttons now
-      layoutButtonsClickedMap.forEach((value, key) => {
-        if (value) {
-          updateLayoutButtonClick(key);
-        }
-      });
-      // triggle the clicked buttons saved
-      if (Array.isArray(configs[configID].layoutButtonsClickedList)) {
-        configs[configID].layoutButtonsClickedList.forEach((key) => {
-          updateLayoutButtonClick(key);
+      if (Array.isArray(configs[configID].toggleButtonsClickedList)) {
+        configs[configID].toggleButtonsClickedList.forEach((item) => {
+          let key = item[0], value = item[1];
+          let step = (value + toggleButtonsCountMap.get(key) - toggleButtonsClickedMap.get(key)) % toggleButtonsCountMap.get(key);
+          toggleButtonsCountMap.get(key);
+          for (let i = 0; i < step; i ++) {
+            updateToggleButtonClick(key);
+          }
         });
       }
       console.log(`Load Config (${configID}) Finsihed.`);
@@ -2916,11 +2940,11 @@
     </span>
   </span>
   <script>
+    var darkModeBackgroundColor = "#222";
+    var darkModeCurtainColor = "#202020";
     var darkModeTextColor = "#FFF";
     var darkModeStrokeColor = "#000";
     var darkModeStrokeWidth = "0.2em";
-    var darkModeBackgroundColor = "#222";
-    var darkModeCurtainColor = "#202020";
     function toggleDarkMode() {
       darkModeToggleButton.innerHTML = darkModeToggleButton.innerHTML === "🌞" ? "🌜" : "🌞";
       document.body.classList.toggle('dark-mode');
@@ -2949,35 +2973,26 @@
     }
   </script>
   <script>
-    var darkModeTextColor = "#FFF";
-    var darkModeStrokeColor = "#000";
-    var darkModeStrokeWidth = "0.2em";
-    var darkModeBackgroundColor = "#222";
-    var darkModeCurtainColor = "#202020";
-    function toggleDarkMode() {
-      darkModeToggleButton.innerHTML = darkModeToggleButton.innerHTML === "🌞" ? "🌜" : "🌞";
-      document.body.classList.toggle('dark-mode');
-      if (document.body.classList.contains('dark-mode')) {
-        document.body.style.backgroundColor = darkModeBackgroundColor;
-        textArea.style.background = darkModeCurtainColor;
-        for (let i = 0; i <= topTranslationCount; i++) {
-          displayedTexts[i].style.color = darkModeTextColor;
-          displayedTexts[i].style.setProperty(`--stroke-color-layer-${0}`, darkModeStrokeColor);
-          displayedTexts[i].style.setProperty(`--stroke-width-layer-${0}`, darkModeStrokeWidth);
-          strokeTexts[i][0].style.webkitTextStrokeColor = darkModeStrokeColor; // updateStrokeColor
-          strokeTexts[i][0].style.webkitTextStrokeWidth = darkModeStrokeWidth; // updateStrokeWidth
-        }
-      }
-      else {
-        updatePageColor();
-        updateCurtainColor();
-        for (let i = 0; i <= topTranslationCount; i++) {
-          updateFontColor(i);
-          updateStrokeColor(i, 0);
-          updateStrokeWidth(i, 0);
-          strokeTexts[i][0].style.webkitTextStrokeColor = configs[autoSID].textStrokeColors[i][0];
-          strokeTexts[i][0].style.webkitTextStrokeWidth = configs[autoSID].textStrokeWidths[i][0];
-        }
+    var specialLayoutList = ['🎐', '🌈', '🌼'];
+    var specialLayoutBackgroundColors = ["#FFF", "#AAA", "#555"];
+    var specialLayoutCurtainColors = ["#EEE", "#999", "#444"];
+    var specialLayoutTextColor = ["#FFF", "#AAA", "#555"];
+    var specialLayoutStrokeColor = ["#000", "#555", "#FFF"];
+    var specialLayoutStrokeWidth = ["0.2em", "0.2em", "0.2em"];
+    function toggleSpecialLayout() {
+      let index = specialLayoutList.findIndex(item => item === specialLayoutToggle3Button.innerHTML);
+      index = (index + 1) % specialLayoutList.length;
+      specialLayoutToggle3Button.innerHTML = specialLayoutList[index];
+      if (darkModeToggleButton.innerHTML !== "🌞") return;
+
+      document.body.style.backgroundColor = specialLayoutBackgroundColors[index];
+      textArea.style.background = specialLayoutCurtainColors[index];
+      for (let i = 0; i <= topTranslationCount; i++) {
+        displayedTexts[i].style.color = specialLayoutTextColor[index];
+        displayedTexts[i].style.setProperty(`--stroke-color-layer-${0}`, specialLayoutStrokeColor[index]);
+        displayedTexts[i].style.setProperty(`--stroke-width-layer-${0}`, specialLayoutStrokeWidth[index]);
+        strokeTexts[i][0].style.webkitTextStrokeColor = specialLayoutStrokeColor[index]; // updateStrokeColor
+        strokeTexts[i][0].style.webkitTextStrokeWidth = specialLayoutStrokeWidth[index]; // updateStrokeWidth
       }
     }
   </script>
