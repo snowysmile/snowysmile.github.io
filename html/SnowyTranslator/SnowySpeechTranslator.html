@@ -2972,10 +2972,12 @@
         updateCurtainColor();
         for (let i = 0; i <= topTranslationCount; i++) {
           updateFontColor(i);
-          updateStrokeColor(i, 0);
-          updateStrokeWidth(i, 0);
-          strokeTexts[i][0].style.webkitTextStrokeColor = configs[autoSID].textStrokeColors[i][0];
-          strokeTexts[i][0].style.webkitTextStrokeWidth = configs[autoSID].textStrokeWidths[i][0];
+          for (let j = 0; j < 2; j++) {
+            updateStrokeColor(i, j);
+            updateStrokeWidth(i, j);
+            strokeTexts[i][j].style.webkitTextStrokeColor = configs[autoSID].textStrokeColors[i][j];
+            strokeTexts[i][j].style.webkitTextStrokeWidth = configs[autoSID].textStrokeWidths[i][j];
+          }
         }
       }
     }
