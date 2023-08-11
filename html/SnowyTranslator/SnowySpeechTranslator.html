@@ -230,7 +230,7 @@
         width: 96%;
       }
     }
-    @media screen and (min-width: 601px) {
+    @media screen and (min-width: 1000px) {
       .phone-button {
         display: none;
       }
@@ -492,7 +492,7 @@
     <tr class="input-table-row" id="recognitionInputArea" style="display:block">
       <td class="button-title">
         <span>
-          <button id="recognize-button" onclick="toggleRecognition(this.parentNode.parentNode.querySelector('select').value)" style="width: 136px; font-size:11px;" >▶️ Start Recognizing</button>
+          <button id="recognize-button" onclick="toggleRecognition(this.parentNode.parentNode.querySelector('select').value)" style="width: 128px; font-size:11px;" >▶️ Start Recognizing</button>
             <select id="recognitionLanguageSelect" onchange="recognizeRestart(this.value)">
               <option value="ja" selected>🇯🇵</option>
               <option value="en">🇺🇸</option>
@@ -525,7 +525,7 @@
     <tr class="input-table-row" id="recordInputArea" style="display:none">
       <td class="button-title">
         <span>
-          <button id="record-button" title="Record The Text Recognized." onclick="toggleRecord()" style="width: 136px; font-size:11px;" >▶️ Start Recording</button>
+          <button id="record-button" title="Record The Text Recognized." onclick="toggleRecord()" style="width: 128px; font-size:11px;" >▶️ Start Recording</button>
           <select id="recordLanguageSelect">
             <option value="ja" selected>🇯🇵</option>
             <option value="en">🇺🇸</option>
@@ -552,7 +552,7 @@
     <tr class="input-table-row" id="translationInputArea" style="display:none">
       <td class="button-title">
         <span>
-          <button onclick="speechTranslate(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', translationLanguageSelect)" style="width: 136px; font-size:11px;"> Translate </button>
+          <button onclick="speechTranslate(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', translationLanguageSelect)" style="width: 128px; font-size:11px;"> Translate </button>
           <select id="translationLanguageSelect">
             <option value="ja">🇯🇵</option>
             <option value="en" selected>🇺🇸</option>
@@ -580,7 +580,7 @@
     <tr class="input-table-row" id="jpExpInputArea" style="display:none">
       <td class="button-title">
         <span>
-          <button id="jpExp-button" onclick="japaneseExplanationSplitFromMyServer()" style="width: 136px; font-size:11px;">Japanese Explanation</button>
+          <button id="jpExp-button" onclick="japaneseExplanationSplitFromMyServer()" style="width: 128px; font-size:11px;">Japanese Explain</button>
           <select id="jpExpLanguageSelect">
             <option value="ja" selected>🇯🇵</option>
           </select>
