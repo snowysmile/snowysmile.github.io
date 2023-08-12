@@ -76,20 +76,20 @@
       width: 36px;
       font-family: "Monaco", monospace;
     }
-    .speechTextArea {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-      width: 1000px;
-      height: 148px; /* Need to update another place for the height */
-      overflow-y: auto;
-    }
     rt {
       font-size: 0.65em;
     }
     input[type="range"] {
       height: 10px;
+    }
+    #speechTextArea {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      width: 1000px;
+      height: 149px; /* Also Need to in update another place for the height */
+      overflow-y: auto;
     }
     .svg-stroke-text{
       font-size:50px;
@@ -188,7 +188,7 @@
         height: auto;
         margin: 0 auto;
       }
-      .speechTextArea {
+      #speechTextArea {
         max-width: 95%;
         width: 95%;
       }
@@ -280,6 +280,7 @@
     var defaultConfig = {
       pageColor: "#FFFAFA", // #E8E8E8 (grey)
       curtainColor: "#9ACD32",
+      curtainHeight: "149",
       texts: ["きらきら光る、お空の星よ。",  // きらきらひかる、おそらのほしよ。
               "Twinkle, twinkle, little star, How I wonder what you are! ",
               "一閃一閃亮晶晶，滿天都是小星星。"],
@@ -359,7 +360,7 @@
 
   <iframe id="jpExpWebTop" style="width:1050px; height:654px; margin-top:5px; margin-bottom:5px; display:none" src="https://ichi.moe/"></iframe>
 
-  <div class="speechTextArea">
+  <div id="speechTextArea">
     <div id="textMargin-0"> </div>
     <div style="position:relative;">
       <div class="stroke-text" id="displayedText-0"> </div>
@@ -388,23 +389,15 @@
     <div id="text-2"> </div>
   </div>
   <script>
-
     // $(document).ready()
     $(function() {
-      $('.speechTextArea').resizable({
+      $('#speechTextArea').resizable({
         touchAction: 'none',
         handles: 'se',
         resize: function(event, ui) {
         }
       });
     });
-  </script>
-  <script>
-    function adjustTextAreaHeight() {
-      textArea.style.height = '148px';
-      var maxHeight = textArea.scrollHeight;
-      textArea.style.height = (maxHeight - 0) + 'px';
-    }
   </script>
 
   <script>
@@ -1017,6 +1010,11 @@
           <input id=curtainColorPicker type="color" oninput="updateCurtainColor()">
           <span id="curtainColorValue"></span>
         </td>
+        <td>
+          <span>Curtain Background Height:</span>
+          <input id=curtainHeightSlider type="range" min="50" max="400" oninput="updateCurtainHeight()">
+          <span id="curtainHeightValue"></span>
+        </td>
       </tr>
     </table>
 
@@ -1230,12 +1228,6 @@
       speechList.appendChild(speechTextItem);
       speechListTotalCount.innerHTML = `Total Count: ${speechList.childNodes.length}`;
     }
-
-    var pageColorPicker = document.getElementById('pageColorPicker');
-    var pageColorValue = document.getElementById('pageColorValue');
-    var textArea = document.querySelector('.speechTextArea');
-    var curtainColorPicker = document.getElementById('curtainColorPicker');
-    var curtainColorValue = document.getElementById('curtainColorValue');
 
     var texts = document.querySelectorAll('[id^="text-"]');
     var displayedTexts = document.querySelectorAll('[id^="displayedText-"]');
@@ -1457,6 +1449,12 @@
       if (isEnglishLetter(lastCharacter)) return text + ". ";
       else return text + "。 ";
     }
+    function purifySpeechText(text) {
+      text = text.replace(/[.,!?;:—–(){}\[\]“”‘’"'…・。、？！「」『』（）【】ー]/g, '');
+      text = text.replace(/\s+/g, ' ');
+      text = text.toLowerCase();
+      return text;
+    }
     function startRecognition(sourceLanguage="") {
       console.log("'webkitSpeechRecognition' in window:", 'webkitSpeechRecognition' in window);
       console.log("'SpeechRecognition' in window:", 'SpeechRecognition' in window);
@@ -1530,21 +1528,21 @@
             console.log("[event.results] speech text:", speechText);
             if (event.results[i].isFinal) {
               if (recognitionNonStop) {
-                recognitionResult.value = speechText;
+                 recognitionResult.value = speechText;
                 console.log("(✅recognitionNonStop 🎆) Final Text:", speechText);
-                let speechTrim = speechText.trim();
+                let purifiedSpeechText = purifySpeechText(speechText);
                 if (["英語変更", "英語 変更", "英語を変更", "英語に変更",
-                "英語變更", "英文變更", "英语变更", "英文变更"].includes(speechTrim)) {
+                "英語變更", "英文變更", "英语变更", "英文变更"].includes(purifiedSpeechText)) {
                   recognitionLanguageSelect.value = "en";
                   recognizeRestart("en");
                 }
                 else if (["中国語変更", "中国語 変更", "中国語を変更", "中国語に変更",
-                "Mandarin switch", "Mandarin Switch", "Mandarin recognize", "Mandarin Recognize"].includes(speechTrim)) {
+                "mandarin switch", "mandarin recognize", "chinese switch", "chinese recognize"].includes(purifiedSpeechText)) {
                   recognitionLanguageSelect.value = "zh-TW";
                   recognizeRestart("zh-TW");
                 }
                 else if (["日語變更", "日文變更", "日语变更", "日文变更",
-                "Japanese switch", "Japanese Switch", "Japanese recognize", "Japanese Recognize"].includes(speechTrim)) {
+                "japanese switch", "japanese recognize"].includes(purifiedSpeechText)) {
                   recognitionLanguageSelect.value = "ja";
                   recognizeRestart("ja");
                 }
@@ -2341,14 +2339,22 @@
       else curtainColorPicker.value = color;
       color = color.toUpperCase();
       curtainColorValue.innerHTML = color;
-      textArea.style.background = color;
+      speechTextArea.style.background = color;
       configs[autoSID].curtainColor = color;
       saveConfigStorage();
+    }
+    function updateCurtainHeight(value="") {
+      if (value === "") value = curtainHeightSlider.value;
+      else curtainHeightSlider.value = value;
+      curtainHeightValue.innerHTML = value + "px";
+      configs[autoSID].curtainHeight = value;
+      saveConfigStorage();
+      adjustSpeechTextAreaHeight();
     }
     function updateDisplayedText(id, speechText) {
       displayedTexts[id].textContent = speechText;
       displayedTexts[id].setAttribute('stroke-data', displayedTexts[id].textContent);
-      adjustTextAreaHeight();
+      adjustSpeechTextAreaHeight();
       configs[autoSID].displayedTexts[id] = speechText;
       saveConfigStorage();
     }
@@ -2419,6 +2425,7 @@
       }
       updateHistoryTextCurrentId(textConfig.historyTexts.length - 1);
       saveTextConfigStorage(autoSID);
+      console.log("textConfig.historyTexts:", textConfig.historyTexts);
     }
     function showHistoryText(index) {
       if (index < 0 || index >= textConfig.historyTexts.length) {
@@ -2629,6 +2636,7 @@
       console.log(`Save Config (${configID}) ing...`);
       configs[configID].pageColor = pageColorPicker.value;
       configs[configID].curtainColor = curtainColorPicker.value;
+      configs[configID].curtainHeight = curtainHeightSlider.value;
       configs[configID].texts = [...texts].map(element => element.innerHTML);
       configs[configID].displayedTexts = [...displayedTexts].map(element => element.innerHTML);
       configs[configID].textFontColors = [...textColorValues].map(element => element.innerHTML);
@@ -2675,6 +2683,7 @@
       toggleTranslationCount(configs[configID].translationCount);
       updatePageColor(configs[configID].pageColor);
       updateCurtainColor(configs[configID].curtainColor);
+      updateCurtainHeight(configs[configID].curtainHeight);
       updateIntegerValue("speechOverInterval", configs[configID].speechOverInterval);
       updateIntegerValue("speechSplitInterval", configs[configID].speechSplitInterval);
       updateIntegerValue("speechClearInterval", configs[configID].speechClearInterval);
@@ -2950,7 +2959,7 @@
       document.body.classList.toggle('dark-mode');
       if (document.body.classList.contains('dark-mode')) {
         document.body.style.backgroundColor = darkModeBackgroundColor;
-        textArea.style.background = darkModeCurtainColor;
+        speechTextArea.style.background = darkModeCurtainColor;
         for (let i = 0; i <= topTranslationCount; i++) {
           displayedTexts[i].style.color = darkModeTextColor;
           displayedTexts[i].style.setProperty(`--stroke-color-layer-${0}`, darkModeStrokeColor);
@@ -3003,7 +3012,7 @@
       }
       else {
         document.body.style.backgroundColor = specialLayoutBackgroundColors[index];
-        textArea.style.background = specialLayoutCurtainColors[index];
+        speechTextArea.style.background = specialLayoutCurtainColors[index];
         for (let i = 0; i <= topTranslationCount; i++) {
           displayedTexts[i].style.color = specialLayoutTextColor[index];
           let color = specialLayoutStrokeColor[index][i %  specialLayoutStrokeColor[index].length];
@@ -3031,6 +3040,14 @@
     }
     window.addEventListener('resize', updateScreenWidth);
     // updateScreenWidth();
+  </script>
+  <script>
+    function adjustSpeechTextAreaHeight() {
+      speechTextArea.style.height = curtainHeightValue.innerHTML;
+      var maxHeight = speechTextArea.scrollHeight;
+      speechTextArea.style.height = (maxHeight - 0) + 'px';
+    }
+    adjustSpeechTextAreaHeight();
   </script>
 
   <script> // Start
