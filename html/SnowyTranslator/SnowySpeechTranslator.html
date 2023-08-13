@@ -208,7 +208,7 @@
       .reading-buttons-container,
       .reading-buttons-container select,
       .reading-buttons-container button {
-        font-size: 10px;
+        font-size: 11px;
       }
       .reading-button-container button{
         width:24px;
@@ -240,21 +240,20 @@
   <script>
     var runningEnvironment = 0;
     if (window.location.protocol === "file:") {
-      console.log("Running as a local file");
+      console.log("⚙️ Running as a local file");
       runningEnvironment = 1;
     }
     else if (window.location.href.includes("localhost:")) {
-      console.log("Running on localhost");
+      console.log("⚙️ Running on localhost");
       runningEnvironment = 2;
     }
     else {
-      console.log("Running on a web server");
+      console.log("⚙️ Running on a web server");
       runningEnvironment = 3;
     }
   </script>
   <script>
     function printMap(map, str) {
-      console.log(`printMap ${str}`)
       map.forEach((value, key) => {
         console.log(`key=${key}, value=${value}`);
       });
@@ -308,25 +307,24 @@
       toggleButtonsClickedList: [],
       historyTextsMaxLength: 20,
       historyTextsCurrentId: 0,
+      timestamp: -1,
     }
     var defaultTextConfig = {
-      historyTexts: [],
-      historyTextLanguages: [],
-      furiganaTexts: [],
-      furiganaTextPos: [],
+      historyTexts: [[...defaultConfig.texts], ],
+      historyTextLanguages: [[...defaultConfig.languages], ],
+      historyTextTimestamps: [-1, ],
+      furiganaTexts: [defaultConfig.displayedTexts[0], ],
+      furiganaTextPos: [0, ],
     };
     defaultConfig.displayedTexts[1] = defaultConfig.texts[1];
     defaultConfig.displayedTexts[2] = defaultConfig.texts[2];
-    defaultTextConfig.historyTexts.push([...defaultConfig.texts]);
-    defaultTextConfig.historyTextLanguages.push([...defaultConfig.languages]);
-    defaultTextConfig.furiganaTexts.push(defaultConfig.displayedTexts[0]);
-    defaultTextConfig.furiganaTextPos.push(0);
     var configs = [
       {}, {}, {},
     ];
     var textConfig = {
       historyTexts: [],
       historyTextLanguages: [],
+      historyTextTimestamps: [],
       furiganaTexts: [],
       furiganaTextPos: [],
     };
@@ -414,18 +412,17 @@
     async function ggSpeakAllInputText(text, languageSelect, isAutoDetect, repeatTime) {
       if (ggAudioList.length === 0) {
         if (text != texts[0].textContent) {
-          console.log("ggSpeakAllInputText() text != texts[0].textContent");
+          console.log("❎ ggSpeakAllInputText() text != texts[0].textContent");
           await speechTranslate(text, languageSelect.value, isAutoDetect, languageSelect);
         }
         await addToGgReadingList(ggAudioList, 3);
-        console.log("len after addToGgReadingList: ", ggAudioList.length);
       }
       await ggSpeakReadingList(ggAudioList, repeatTime);
     }
     async function msSpeakAllInputText(text, languageSelect, isAutoDetect, repeatTime) {
       if (msAudioList.length === 0) {
         if (text != texts[0].textContent) {
-          console.log("msSpeakAllInputText() text != texts[0].textContent");
+          console.log("❎ msSpeakAllInputText() text != texts[0].textContent");
           await speechTranslate(text, languageSelect.value, isAutoDetect, languageSelect);
         }
         await addToMsReadingList(msAudioList, 3);
@@ -435,10 +432,12 @@
   </script>
 
   <div class="row-container" style="margin-top:10px; margin-bottom:5px;">
-    <span style="display:flex; justify-content: center; margin-bottom:3px;">
+    <span style="display:flex; justify-content: center; margin-bottom:5px;">
       <button id="textFuriganaToggleButton" style="font-size: 11px;" title="🔰 To Auto Mark Furigana; 💤 Is Off." onclick="toggleTextFurigana()">🔰</button>
       <button style="margin-left:3px; font-size:11px;" title="Read All Screen Text By Google." onclick="ggSpeakAllScreenText()">G</button>
       <button style="margin-left:3px; font-size:11px;" title="Read All Screen Text By Microsoft." onclick="msSpeakAllScreenText()">M</button>
+      <button id="ggPauseAudio-button" style="font-size:9px; width:32px; margin-left:3px; vertical-align: middle;" onclick="ggPauseAudio()">G⏯</button>
+      <button id="msPauseAudio-button" style="font-size:9px; width:32px; margin-left:3px; vertical-align: middle;" onclick="msPauseAudio()">M⏯</button>
 
       <span style="margin-left:7px;"> </span>
       <button style="font-size:10px;" title="Copy text of the source language." onclick="copyText(0)">0</button>
@@ -447,7 +446,7 @@
 
       <span style="margin-left:7px;"> </span>
       <button id="previousText-button" title="Previous Texts" onclick="showHistoryText(configs[autoSID].historyTextsCurrentId-1);">◀️</button>
-      <button id="historyTextsIdDisplay" style="font-size:10px;" onclick="addToFavoriteListFromScreenText()"> X/X </button>
+      <button id="historyTextsIdDisplay" style="font-size:10px;" title="Add to favorite Texts" onclick="addToFavoriteListFromScreenText()"> X/X </button>
       <button id="nextText-button" title="Next Texts" onclick="showHistoryText(configs[autoSID].historyTextsCurrentId+1);">▶️</button>
     </span>
     <span class="reading-buttons-container">
@@ -493,7 +492,7 @@
             </select>
             <button name="languageDetectButton" id="recognizeLangDetectToggleButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">🤔</button>
             <button id="oneSentenceRecognizeToggleButton" title="① To Recognize A Single Sentence; 〜 Is Nonstop Detection." onclick="toggleOneSentenceRecognize(this)">①</button>
-            <button id="updateHistoryTextToggleButton" title="🕳️ To Not Push to History Text; 🎈 Is To Push." onclick="toggleUpdateHistoryText(this)">🕳️</button>
+            <button id="updateHistoryTextToggleButton" title="🕳️ To Not Push to History Text; 🎈 Is To Push." onclick="toggleUpdateHistoryText(this)">🎈</button>
         </span>
         <button class="phone-button" onclick="toggleWidgetArea('recognitionInputArea', document.getElementById('toggleRecognitionInputArea_LayoutButton'))">⛔</button>
       </td>
@@ -641,12 +640,10 @@
     <table style="border: 0px solid black; padding:10px;">
       <tr>
         <td>
-          <button id="ggPauseAudio-button" style="width:42px; margin-right:5px; vertical-align: middle; display:none" onclick="ggPauseAudio()">G⏯</button>
           <span style="vertical-align: middle;">G</span>
           <audio id="ggSpeakAudio" src="static/Audio/あいうえお.mp3" controls style="height:25px; width:315px; vertical-align: middle; padding:1px;"></audio>
         </td>
         <td>
-          <button id="msPauseAudio-button" style="width:42px; margin-right:5px; vertical-align: middle; display:none" onclick="msPauseAudio()">M⏯</button>
           <span style="vertical-align: middle;">M</span>
           <audio id="msSpeakAudio" src="static/Audio/abcdefg.mp3" controls style="height:25px; width:315px; vertical-align: middle; padding:1px;"></audio>
         </td>
@@ -700,24 +697,7 @@
 
     var toggleButtons = [];
     function initToggleButtons() {
-      /*
-      toggleButtons = document.querySelectorAll('button[id$="ToggleButton"]');
-      toggleButtons.forEach(button => {
-        toggleButtonsMap.set(button.id, button);
-        toggleButtonsClickedMap.set(button.id, false);
-        button.addEventListener('click', () => {
-          var buttonClicked = !toggleButtonsClickedMap.get(button.id);
-          toggleButtonsClickedMap.set(button.id, buttonClicked);
-          configs[autoSID].toggleButtonsClickedList = configs[autoSID].toggleButtonsClickedList.filter(item => item !== button.id); // remove exsited buttons
-          if (buttonClicked) {
-            configs[autoSID].toggleButtonsClickedList.push(button.id);
-          }
-          saveConfigStorage();
-        });
-      });
-      */
-
-      console.log("toggleButtonsCountMap:", toggleButtonsCountMap);
+      // console.log("🧮 toggleButtonsCountMap:", toggleButtonsCountMap);
       for (let buttonOptionCount = 2; buttonOptionCount <= 3; buttonOptionCount++) {
         if (buttonOptionCount === 2) toggleButtons = document.querySelectorAll(`button[id$="ToggleButton"]`);
         else toggleButtons = document.querySelectorAll(`button[id$="Toggle${buttonOptionCount}Button"]`);
@@ -1223,6 +1203,7 @@
   <script>
     var speechListTotalCount = 0;
     function updateSpeechList(text) {
+      if (!text || !speechList.lastElementChild || speechList.lastElementChild.textContent === "") return;
       var speechTextItem = document.createElement('li');
       speechTextItem.textContent = text;
       speechList.appendChild(speechTextItem);
@@ -1240,9 +1221,7 @@
     var textFontFamilySelects = document.querySelectorAll('[id^="textFontSelect-"]');
     var readingSelects = document.querySelectorAll('[id^="readingSelect"]');
 
-
-    var timeTextUpdated = fillArrayWithRandomValue([], topTranslationCount + 1, 1, 500000);
-    var JapanesePosId;
+    var timeTextUpdated = fillArrayWithRandomValue([], topTranslationCount + 1, 1, 65535);
 
     var textStrokeColorPickers = [];
     for (let i = 0; i < 3; i++) {
@@ -1377,7 +1356,6 @@
     handleEnterKeyPress(jpExpInput);
     handleEnterKeyPress(readingListInputArea);
 
-
   </script>
 
   <script>
@@ -1425,7 +1403,7 @@
               textarea.value = text;
           })
           .catch(err => {
-              console.error('Failed to read clipboard contents:', err);
+              console.error('⚠️ Failed to read clipboard contents:', err);
           });
       }
     }
@@ -1445,9 +1423,9 @@
       var textTrim = text.trim();
       if (!textTrim) return "";
       var lastCharacter = textTrim[textTrim.length - 1];
-      if (isPuntuation(lastCharacter)) return text;
-      if (isEnglishLetter(lastCharacter)) return text + ". ";
-      else return text + "。 ";
+      if (isPuntuation(lastCharacter)) return " " + text;
+      if (isEnglishLetter(lastCharacter)) return " " + text + ". ";
+      else return " " + text + "。 ";
     }
     function purifySpeechText(text) {
       text = text.replace(/[.,!?;:—–(){}\[\]“”‘’"'…・。、？！「」『』（）【】ー]/g, '');
@@ -1456,12 +1434,12 @@
       return text;
     }
     function startRecognition(sourceLanguage="") {
-      console.log("'webkitSpeechRecognition' in window:", 'webkitSpeechRecognition' in window);
-      console.log("'SpeechRecognition' in window:", 'SpeechRecognition' in window);
+      console.log("🧮 'webkitSpeechRecognition' in window:", 'webkitSpeechRecognition' in window);
+      console.log("🧮 'SpeechRecognition' in window:", 'SpeechRecognition' in window);
       if ('webkitSpeechRecognition' in window) {
       } else if ('SpeechRecognition' in window) {
       } else {
-        alert("Speech recognition is not supported in this browser.");
+        alert("🚨 Speech recognition is not supported in this browser.");
         stopRecognitionComplete(sourceLanguage);
       }
       if (!sourceLanguage) {
@@ -1472,7 +1450,6 @@
       recognition.lang = sourceLanguage;
       recognition.interimResults = true;
       recognition.continuous = true;
-      recognitionNonStop = oneSentenceRecognizeToggleButton.innerHTML === '〜';
 
       var timeStamp = 0;
       recognition.onstart = () => {
@@ -1512,71 +1489,71 @@
         recognition.stop();
       }
       stopRecognitionControl = function() {
-        console.log(`recognition.stop() after speechSplitInterval(${speechSplitInterval.value}) turns to zero.`);
+        console.log(`🛑 recognition.stop() after speechSplitInterval(${speechSplitInterval.value}) turns to zero.`);
         recognition.stop();
       }
       recognition.onresult = function(event) {
-        // console.log("In [recognition.onresult] ", "resultIndex=", event.resultIndex, "resultLength=", event.results.length);
-        console.log(`🔢 event.resultIndex=${event.resultIndex}`);
-        console.log(`🔢 event.results.length=${event.results.length}`);
+        if (event.resultIndex + 1 < event.results.length) {
+          console.log(`🔢 event.resultIndex = ${event.resultIndex}, event.results.length = ${event.results.length}`);
+        }
         for (var i = event.resultIndex; i < event.results.length; i++) {
           var speechText = event.results[i][0].transcript;
           if (!speechText || !speechText.trim()) {
-            console.log("Empty Speech Text");
+            console.log("⚪ Empty Speech Text.");
+            continue;
           }
-          else {
-            console.log("[event.results] speech text:", speechText);
-            if (event.results[i].isFinal) {
-              if (recognitionNonStop) {
-                 recognitionResult.value = speechText;
-                console.log("(✅recognitionNonStop 🎆) Final Text:", speechText);
-                let purifiedSpeechText = purifySpeechText(speechText);
-                if (["英語変更", "英語 変更", "英語を変更", "英語に変更",
-                "英語變更", "英文變更", "英语变更", "英文变更"].includes(purifiedSpeechText)) {
-                  recognitionLanguageSelect.value = "en";
-                  recognizeRestart("en");
-                }
-                else if (["中国語変更", "中国語 変更", "中国語を変更", "中国語に変更",
-                "mandarin switch", "mandarin recognize", "chinese switch", "chinese recognize"].includes(purifiedSpeechText)) {
-                  recognitionLanguageSelect.value = "zh-TW";
-                  recognizeRestart("zh-TW");
-                }
-                else if (["日語變更", "日文變更", "日语变更", "日文变更",
-                "japanese switch", "japanese recognize"].includes(purifiedSpeechText)) {
-                  recognitionLanguageSelect.value = "ja";
-                  recognizeRestart("ja");
-                }
-                // recognitionResult.value = recognitionPreviousResult.value + addPunctuation(speechText);
-                // recognitionPreviousResult.value = recognitionResult.value;
+          var recognitionNonStop = oneSentenceRecognizeToggleButton.innerHTML === '〜';
+          if (event.results[i].isFinal) {
+            if (recognitionNonStop) {
+              recognitionResult.value = speechText;
+              console.log("✅🏁 Non Stop Final Text:", speechText);
+              let purifiedSpeechText = purifySpeechText(speechText);
+              if (["英語変更", "英語 変更", "英語を変更", "英語に変更",
+              "英語變更", "英文變更", "英语变更", "英文变更"].includes(purifiedSpeechText)) {
+                recognitionLanguageSelect.value = "en";
+                recognizeRestart("en");
               }
-              else {
-                recognitionResult.value = recognitionPreviousResult.value + addPunctuation(speechText);
-                recognitionPreviousResult.value = recognitionResult.value;
-                console.log("(❌!recognitionNonStop 🎆) Final Text:", speechText);
+              else if (["中国語変更", "中国語 変更", "中国語を変更", "中国語に変更",
+              "mandarin switch", "mandarin recognize", "chinese switch", "chinese recognize"].includes(purifiedSpeechText)) {
+                recognitionLanguageSelect.value = "zh-TW";
+                recognizeRestart("zh-TW");
               }
-              if (isRecording) {
-                recordResult.value = recordResult.value + addPunctuation(speechText);
+              else if (["日語變更", "日文變更", "日语变更", "日文变更",
+              "japanese switch", "japanese recognize"].includes(purifiedSpeechText)) {
+                recognitionLanguageSelect.value = "ja";
+                recognizeRestart("ja");
               }
-              // await
-              updateSpeechList(speechText);
-              speechTranslate(speechText, sourceLanguage, false, undefined, updateHistoryTextToggleButton.innerHTML === "🎈");
+              // recognitionResult.value = recognitionPreviousResult.value + addPunctuation(speechText);
+              // recognitionPreviousResult.value = recognitionResult.value;
             }
-            else {
-              if (!recognitionNonStop && speechOverInterval.value && speechOverInterval.value !== 0) {
+            else { // One Sentence
+              console.log("❌🏁 One Sentence Final Text:", speechText);
+              recognitionResult.value = recognitionPreviousResult.value + addPunctuation(speechText);
+              recognitionPreviousResult.value = recognitionResult.value;
+            }
+            if (isRecording) {
+              recordResult.value = recordResult.value + addPunctuation(speechText);
+            }
+            updateSpeechList(speechText);
+            speechTranslate(speechText, sourceLanguage, false, undefined, updateHistoryTextToggleButton.innerHTML === "🎈"); // await
+          }
+          else { // Outcome of the process
+            if (speechOverInterval.value && speechOverInterval.value !== 0) {
+              if (!recognitionNonStop) {
                 clearTimeout(speechOverInterval_TimeOut);
                 speechOverInterval_TimeOut = setTimeout(function() {
                   stopRecognitionComplete(sourceLanguage);
                 }, speechOverInterval.value);
-                console.log("(❌!recognitionNonStop 🧩) Current Text:", speechText);
+                // console.log("❌↔️ One Sentence ↔️ Current Text:", speechText);
               }
-              else if (speechSplitInterval.value && speechSplitInterval.value !== 0) {
+              else { // One Sentence
                 clearTimeout(speechSplitInterval_TimeOut);
                 speechSplitInterval_TimeOut = setTimeout(stopRecognitionControl, speechSplitInterval.value);
-                console.log("(✅recognitionNonStop 🧩) Current Text:", speechText);
+                // console.log("✅↔️ Non Stop Current Text:", speechText);
               }
-              recognitionResult.value = recognitionPreviousResult.value + ' < ' + speechText + ' > ';
-              console.log("(🏗️) recognitionResult.value:", recognitionResult.value);
             }
+            recognitionResult.value = recognitionPreviousResult.value + ' < ' + speechText + ' > ';
+            console.log("🚲 Current recognitionResult.value:", recognitionResult.value);
           }
         }
       };
@@ -1588,7 +1565,7 @@
     function stopRecognition() {
       if (recognition) {
         recognition.stop();
-        console.log("recognition.stop()");
+        console.log("🛑 stopRecognition(): isRecognizing => false");
       }
       isRecognizing = false;
       recognizeButton.innerHTML = "▶️ Start Recognizing"
@@ -1599,7 +1576,7 @@
         isRecording = false;
         recordButton.innerHTML = "▶️ Start Recording";
       }
-      timeTextUpdated = fillArrayWithRandomValue([], topTranslationCount + 1, 1, 500000);
+      timeTextUpdated = fillArrayWithRandomValue([], topTranslationCount + 1, 1, 65535);
       if (recognitionResult.value !== texts[0].textContent) {
         updateSpeechList(recognitionResult.value);
         speechTranslate(recognitionResult.value, sourceLanguage, false, undefined, updateHistoryTextToggleButton.innerHTML === "🎈");
@@ -1622,7 +1599,7 @@
         return;
       }
       toggleRecognition(sourceLanguage);
-      timeTextUpdated = fillArrayWithRandomValue([], topTranslationCount + 1, 1, 500000);
+      timeTextUpdated = fillArrayWithRandomValue([], topTranslationCount + 1, 1, 65535);
       setTimeout(function() {
         toggleRecognition(sourceLanguage);
       }, 1200);
@@ -1650,7 +1627,7 @@
       }
       configs[autoSID].translationCount = parseInt(translationCountSelect.value, 10);
       saveConfigStorage();
-      timeTextUpdated = fillArrayWithRandomValue([], topTranslationCount + 1, 1, 500000);
+      timeTextUpdated = fillArrayWithRandomValue([], topTranslationCount + 1, 1, 65535);
     }
     var sourceLanguage = "ja";
     var targetLanguage = "en";
@@ -1717,7 +1694,7 @@
       }
     }
     async function ggSpeak(text, sourceLanguage = "") {
-      console.log("ggSpeak text:", text);
+      console.log("🔊 ggSpeak text:", text);
       if (!text) return;
       if (sourceLanguage === "") {
         sourceLanguage = "ja";
@@ -1727,13 +1704,12 @@
       }
       ggSpeakAudio.src = await ggSpeakUrlGet(text, sourceLanguage);
       ggSpeakAudio.play();
-      /* if ("speechSynthesis" in window) {
+      /* if ("speechSynthesis" in window) { // Another AI Voice
         var speechSynthesis = window.speechSynthesis;
         var utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = sourceLanguage;
         speechSynthesis.speak(utterance);
-      }
-      */
+      } */
     }
 
 		const MSTTS_region = "southeastasia";
@@ -1794,7 +1770,7 @@
       saveConfigStorage();
     }
     async function msSpeak(text, sourceLanguage = "") {
-      console.log("msSpeak-text:", text);
+      console.log("🔊 msSpeak-text:", text);
       if (!text) return;
       var MSTTS_voiceName;
       if (sourceLanguage === "ja") {
@@ -1859,20 +1835,13 @@
       }
     }
     async function addToGgReadingList(ggAudioList, lines=1) {
-      /* if (targetLanguages === undefined || targetLanguages.length === 0) {
-        await getTargetLanguages();
-        console.log("targetLanguages: ", targetLanguages);
-      }*/
       for (let i = 0; i < lines; i++) {
         var url = await ggSpeakUrlGet(texts[i].textContent, readingSelects[i].value);
         ggAudioList.push(url);
       }
-      console.log("ggAudioList:", ggAudioList);
+      console.log("🗃️ ggAudioList:", ggAudioList);
     }
     async function addToMsReadingList(msAudioList, lines = 1) {
-      /* if (targetLanguages === undefined || targetLanguages.length === 0) {
-        await getTargetLanguages();
-      } */
       try {
         const accessToken = await getMsttsAccessToken();
         for (let i = 0; i < lines; i++) {
@@ -1880,7 +1849,7 @@
           const audioData = await getMsAudioData(texts[i].textContent, readingSelects[i].value, MSTTS_voiceName, accessToken);
           msAudioList.push(audioData);
         }
-        console.log("msAudioList:", msAudioList);
+        console.log("🗃️ msAudioList:", msAudioList);
         return msAudioList;
       } catch (error) {
         console.error("Error while adding to MsReadingList:", error);
@@ -1945,12 +1914,6 @@
       return [text, language];
     }
     function addToFavoriteListFromScreenText() {
-      /* for (let i = 0; i < favTextConfig.favoriteTexts.length; i++) {
-        if (texts[0].textContent == favTextConfig.favoriteTexts[i][0]) {
-          return;
-        }
-      } */
-
       favTextConfig.favoriteTexts.push([...texts].map(element => element.textContent));
       favTextConfig.favoriteTextLanguages.push([...readingSelects].map(element => element.value));
       while (favTextConfig.favoriteTexts.length > 150) {
@@ -1958,8 +1921,6 @@
         favTextConfig.favoriteTextLanguages.shift();
       }
       saveFavoriteTextConfigStorage();
-      console.log("favTextConfig.favoriteTexts:", favTextConfig.favoriteTexts);
-
       addToFavoriteList([...texts].map(element => element.textContent), [...readingSelects].map(element => element.value), translationCount + 1);
     }
     function removeFromFavoriteTextConfig(index) {
@@ -1975,10 +1936,9 @@
           elementUl
             elementLi1(favoriteTextItem1)
             elementLi2(favoriteTextItem2)
-
     */
     function addToFavoriteList(texts, langs, len) {
-      console.log("addToFavoriteList");
+      console.log("⭐ addToFavoriteList");
       let elementTr = document.createElement('tr');
       favoriteTable.appendChild(elementTr);
       let elementTextTd = document.createElement('td');
@@ -2040,8 +2000,7 @@
       }
       var totalRepeatTime = ggAudioList.length * Math.abs(repeatTime);
       var currentAudioIndex = 0;
-      console.log("ggAudioList.length:", ggAudioList.length);
-      console.log("totalRepeatTime:", totalRepeatTime);
+      console.log("🗃️ ggAudioList.length:", ggAudioList.length, "| totalRepeatTime:", totalRepeatTime);
       ggSpeakAudio.addEventListener('ended', function() {
         currentAudioIndex++;
         if (currentAudioIndex < totalRepeatTime) {
@@ -2067,8 +2026,7 @@
         msSpeakAudio.pause();
       }
       var totalRepeatTime = msAudioList.length * Math.abs(repeatTime);
-      console.log("msAudioList.length:", msAudioList.length);
-      console.log("totalRepeatTime:", totalRepeatTime);
+      console.log("🗃️ msAudioList.length:", msAudioList.length, " | totalRepeatTime:", totalRepeatTime);
       function msListPlayAudio(currentAudioIndex) {
         if (currentAudioIndex >= totalRepeatTime) return;
         var i = currentAudioIndex % msAudioList.length;
@@ -2110,7 +2068,7 @@
         const responseData = await response.json();
         var detectedLanguage = responseData.data.detections[0][0].language;
         var confidence = responseData.data.detections[0][0].confidence;
-        console.log(`Detected Language: ${detectedLanguage} (Confidence: ${confidence})`);
+        console.log(`🔍 Detected Language: ${detectedLanguage} (Confidence: ${confidence})`);
         if (detectedLanguage === "zh-CN") {
           detectedLanguage = "zh-TW";
         }
@@ -2144,15 +2102,15 @@
     }
 
     async function autoDetectTranslate(text, languageSelect=undefined) {
-      console.log("AutoDetectTranslate:", text);
+      console.log(`🔍 autoDetectTranslate(${text})`);
       var sourceLanguage;
       if (gcpApiKey) {
         sourceLanguage = await ggDetectLanguage(text);
-        // console.log("ggDetectLanguage():", sourceLanguage);
+        console.log("👁️‍🗨️ ggDetectLanguage():", sourceLanguage);
       }
       else {
         sourceLanguage = await detectLanguageFromMyServer(text);
-        console.log("DetectLanguageFromMyServer():", sourceLanguage);
+        console.log("🦉 detectLanguageFromMyServer():", sourceLanguage);
       }
       if (!sourceLanguage) {
         if (languageSelect) {
@@ -2162,8 +2120,6 @@
           sourceLanguage = languageSelects[0].value;
         }
       }
-
-      console.log("autoDetectTranslate() sourceLanguage:", sourceLanguage);
       if (languageSelect !== undefined) {
         languageSelect.value = sourceLanguage;
       }
@@ -2217,24 +2173,20 @@
         }
       }
     }
-    async function speechTranslate(speechText, sourceLanguage="", isAutoDetect=false, languageSelect=undefined, willUpdateHistoryText=true) {
-      if (!speechText) {
-        return;
-      }
-      updateText(0, speechText, true, willUpdateHistoryText);
-      console.log("[speechTranslate] before-> sourceLanguage:", sourceLanguage);
-      console.log("[speechTranslate] speechText:", speechText);
+    async function speechTranslate(speechText, sourceLanguage="", isAutoDetect=false, languageSelect=undefined, willUpdateHistoryTexts=true) {
+      if (!speechText) return;
+      let existedTimestamp = -1;
+      let japanesePosId = -1;
+      updateText(0, speechText, existedTimestamp, japanesePosId, willUpdateHistoryTexts);
+      console.log("🔡 speechTranslate(): speechText=", speechText);
       if (!sourceLanguage || isAutoDetect && gcpApiKey) {
         sourceLanguage = await autoDetectTranslate(speechText, languageSelect);
       }
       if (sourceLanguage === "ja") {
         jpExpWebUpdate(speechText);
-        // var html = await japaneseExplanationFromMyServer(speechText);
-        // updateFuriganaText(0, html);
-        JapanesePosId = 0;
+        japanesePosId = 0;
       }
       await getTargetLanguages(sourceLanguage);
-      console.log("[speechTranslate] after-> targetLanguages:", targetLanguages);
       if (googleScriptKey) {
         const requestsPromises = [];
         for (let i = 1; i <= translationCount; i++) {
@@ -2249,13 +2201,11 @@
             xhr.onreadystatechange = async function () {
               if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
-                  updateText(i, xhr.responseText, true, willUpdateHistoryText);
                   if (targetLanguage === "ja") {
                     jpExpWebUpdate(xhr.responseText);
-                    // var html = await japaneseExplanationFromMyServer(xhr.responseText);
-                    // updateFuriganaText(i, html);
-                    JapanesePosId = i;
+                    japanesePosId = i;
                   }
+                  updateText(i, xhr.responseText, existedTimestamp, japanesePosId, willUpdateHistoryTexts);
                   resolve();
                 } else {
                   reject(new Error('Failed to finish speechTranslate()'));
@@ -2302,13 +2252,13 @@
       localStorage.setItem(`snowyTranslatorFavoriteTextConfig`, configJSON);
     }
     function loadConfigStorage() {
-      console.log("loadConfigStorage():");
+      console.log("⏳ loadConfigStorage():");
       if (localStorage.getItem('snowyTranslatorConfig')) {
         configs = JSON.parse(localStorage.getItem('snowyTranslatorConfig'));
       }
     }
     function loadTextConfigStorage(configID) {
-      console.log("loadTextConfigStorage():");
+      console.log("⏳ loadTextConfigStorage():");
       if (localStorage.getItem(`snowyTranslatorTextConfig[${configID}]`)) {
         textConfig = JSON.parse(localStorage.getItem(`snowyTranslatorTextConfig[${configID}]`));
       }
@@ -2352,92 +2302,98 @@
       adjustSpeechTextAreaHeight();
     }
     function updateDisplayedText(id, speechText) {
+      for (let j = 0; j < 2; j++) {
+        strokeTexts[id][j].innerHTML = "";
+      }
       displayedTexts[id].textContent = speechText;
-      displayedTexts[id].setAttribute('stroke-data', displayedTexts[id].textContent);
+      displayedTexts[id].setAttribute('stroke-data', speechText);
       adjustSpeechTextAreaHeight();
       configs[autoSID].displayedTexts[id] = speechText;
       saveConfigStorage();
     }
-    function updateText(id, speechText, isNotHistoryText=true, willUpdateHistoryText=true) {
-      for (let j = 0; j < 2; j++) {
-        strokeTexts[id][j].innerHTML = "";
-      }
+
+    var displayedTextTimeStamp = -1;
+    function updateText(id, speechText, existedTimestamp, japanesePosId, willUpdateHistoryTexts=true) {
       texts[id].innerHTML = speechText;
-      strokeTexts[id].innerHTML = "";
       configs[autoSID].texts[id] = speechText;
       updateDisplayedText(id, speechText);
+      displayedTextTimeStamp = existedTimestamp;
+      if (speechText.trim() === "" || !willUpdateHistoryTexts) return;
+
       timeTextUpdated[id] += 1;
-
-      if (speechText.trim() !== "" && isNotHistoryText) {
-        var allTextUpdated = true;
-        console.log("timeTextUpdated:", timeTextUpdated);
-        for (let i = 1; i <= translationCount; i++) {
-          if (timeTextUpdated[i] !== timeTextUpdated[0]) {
-            allTextUpdated = false;
-            break;
-          }
-        }
-        if (allTextUpdated) {
-          console.log("allTextUpdated!");
-          if (willUpdateHistoryText) {
-            pushToHistoryTexts();
-          }
-
-          // console.log("texts[JapanesePosId]", texts[JapanesePosId]);
-          if (textFuriganaToggleButton.innerText === "🔰") {
-            setTimeout(() => {
-              japaneseExplanationFromMyServer(texts[JapanesePosId].textContent)
-              .then((html) => {
-                console.log("🎎 Try to updateFuriganaText()");
-                updateFuriganaText(JapanesePosId, html);
-                while (textConfig.furiganaTexts.length < textConfig.historyTexts.length - 1) {
-                  textConfig.furiganaTexts.push("");
-                  textConfig.furiganaTextPos.push(-1);
-                }
-                while (textConfig.furiganaTexts.length > textConfig.historyTexts.length - 1) {
-                  textConfig.furiganaTexts.pop();
-                  textConfig.furiganaTextPos.pop();
-                }
-                textConfig.furiganaTexts.push(html);
-                textConfig.furiganaTextPos.push(JapanesePosId);
-              })
-              .catch((error) => console.error(error));
-            }, 500);
-          }
+      for (let i = 1; i <= translationCount; i++) {
+        if (timeTextUpdated[i] !== timeTextUpdated[0]) {
+          // console.log("🕒 timeTextUpdated:", timeTextUpdated);
+          return;
         }
       }
-      // saveConfigStorage();
+      console.log("⏰ All Texts Are Updated!");
+
+      if (existedTimestamp == -1) displayedTextTimeStamp = getRandomInteger(1, 65535);
+      let textTimeStampNow = displayedTextTimeStamp;
+
+      // pushToHistoryTexts
+      if (textConfig.historyTexts.length > 0 && textConfig.historyTexts[textConfig.historyTexts.length - 1][0] === speechText) return;
+      textConfig.historyTexts.push([...texts].map(element => element.textContent));
+      textConfig.historyTextLanguages.push([...targetLanguages]);
+      textConfig.historyTextTimestamps.push(displayedTextTimeStamp);
+      while (textConfig.historyTexts.length > configs[autoSID].historyTextsMaxLength) {
+        textConfig.historyTexts.shift() // or textConfig.historyTexts = textConfig.historyTexts.slice(1);
+        textConfig.historyTextLanguages.shift();
+        textConfig.historyTextTimestamps.shift();
+      }
+      updateHistoryTextCurrentId(textConfig.historyTexts.length - 1);
+      saveTextConfigStorage(autoSID);
+
+      // updateFuriganaText
+      if (textFuriganaToggleButton.innerText === "🔰") {
+        setTimeout(() => {
+          japaneseExplanationFromMyServer(texts[japanesePosId].textContent)
+          .then((html) => {
+            console.log("🎎 Try to updateFuriganaText()");
+            updateFuriganaText(japanesePosId, html, textTimeStampNow);
+
+            let htLength = textConfig.historyTexts.length;
+            while (textConfig.furiganaTexts.length < htLength) {
+              textConfig.furiganaTexts.push("");
+              textConfig.furiganaTextPos.push(-1);
+            }
+            while (textConfig.furiganaTexts.length > htLength) {
+              textConfig.furiganaTexts.shift();
+              textConfig.furiganaTextPos.shift();
+              console.log("💥 furiganaTexts.length > textConfig.historyTexts.length");
+            }
+            let historySearchRange = htLength > 10 ? 10 : htLength;
+            for (let i = 1; i <= historySearchRange; i++) if (textTimeStampNow == textConfig.historyTextTimestamps[htLength - i]) {
+              if (i > 1) {
+                console.log("✨ Update FuriganaText To History List At Distance:", i);
+              }
+              textConfig.furiganaTexts[htLength - i] = html;
+              textConfig.furiganaTextPos[htLength - i] = japanesePosId;
+              break;
+            }
+          })
+          .catch((error) => console.error(error));
+        }, 500);
+      }
     }
     function updateHistoryTextCurrentId(pos) {
       configs[autoSID].historyTextsCurrentId = pos;
       historyTextsIdDisplay.innerHTML = `${pos + 1}/${textConfig.historyTexts.length}`;
       saveConfigStorage();
     }
-    function pushToHistoryTexts() {
-      if (textConfig.historyTexts.length > 0 && textConfig.historyTexts[textConfig.historyTexts.length - 1][0] === texts[0].textContent) {
-          return;
-      }
-      textConfig.historyTexts.push([...texts].map(element => element.textContent));
-      textConfig.historyTextLanguages.push([...targetLanguages]);
-      while (textConfig.historyTexts.length > configs[autoSID].historyTextsMaxLength) {
-        textConfig.historyTexts.shift();
-        textConfig.historyTextLanguages.shift();
-      }
-      updateHistoryTextCurrentId(textConfig.historyTexts.length - 1);
-      saveTextConfigStorage(autoSID);
-      console.log("textConfig.historyTexts:", textConfig.historyTexts);
-    }
     function showHistoryText(index) {
-      if (index < 0 || index >= textConfig.historyTexts.length) {
-        return;
-      }
+      if (index < 0 || index >= textConfig.historyTexts.length) return;
+      console.log(`👀 showHistoryText(${index})`);
       updateHistoryTextCurrentId(index);
       for (let i = 0; i <= translationCount; i++) {
-        updateText(i, textConfig.historyTexts[index][i], false);
+        let japanesePosId = -1;
+        let willUpdateHistoryTexts = false;
+        updateText(i, textConfig.historyTexts[index][i], textConfig.historyTextTimestamps[index], japanesePosId, willUpdateHistoryTexts);
         readingSelects[i].value = textConfig.historyTextLanguages[index][i];
       }
       if (textFuriganaToggleButton.innerText === "🔰") {
-        updateFuriganaText(textConfig.furiganaTextPos[index], textConfig.furiganaTexts[index]);
+        updateFuriganaText(textConfig.furiganaTextPos[index], textConfig.furiganaTexts[index], textConfig.historyTextTimestamps[index]);
       }
     }
     function getRubyText(html) {
@@ -2461,11 +2417,12 @@
     function getRubyTextBottom(html) {
       const rubyTextBottom = html.replace(/<\/?ruby>/g, '').replace(/<rt>.*?<\/rt>/g, '');
       const rubyTextBottomTrimmed = rubyTextBottom.replace(/\s+/g, ' ');
-      console.log("rubyTextBottomTrimmed:", rubyTextBottomTrimmed);
       return rubyTextBottomTrimmed;
     }
-    function updateFuriganaText(id, htmlText) {
-      if (!htmlText || typeof htmlText === "string" && htmlText.trim() === "") {
+    function updateFuriganaText(id, htmlText, timestamp) {
+      if (id < 0 || !htmlText || typeof htmlText === "string" && htmlText.trim() === "") return;
+      if (timestamp !== displayedTextTimeStamp) {
+        console.log(`🎭 timestamp(${timestamp}) !== displayedTextTimeStamp(${displayedTextTimeStamp})`);
         return;
       }
       displayedTexts[id].innerHTML = htmlText;
@@ -2473,16 +2430,11 @@
 
       for (let layer = 0; layer < 2; layer++) {
         strokeTexts[id][layer].innerHTML = htmlText;
-        // strokeTexts[id][layer].style.zIndex = 2 - layer;
-        // strokeTexts[id][layer].position = "absolute";
-        // strokeTexts[id][layer].style.top = "0";
-        // strokeTexts[id][layer].style.bottom = "0";
         strokeTexts[id][layer].style.fontSize = displayedTexts[id].style.fontSize; // updateFontSize
         strokeTexts[id][layer].style.fontWeight = displayedTexts[id].style.fontWeight; // updateFontWeight
         strokeTexts[id][layer].style.fontFamily = displayedTexts[id].style.fontFamily; // updateFontFamily
         strokeTexts[id][layer].style.webkitTextStrokeColor = darkModeToggleButton.innerHTML !== "🌜" ? configs[autoSID].textStrokeColors[id][layer] : darkModeStrokeColor; // updateStrokeColor
         strokeTexts[id][layer].style.webkitTextStrokeWidth = darkModeToggleButton.innerHTML !== "🌜" ? configs[autoSID].textStrokeWidths[id][layer] : darkModeStrokeWidth; // updateStrokeWidth
-
       }
       saveTextConfigStorage(autoSID);
     }
@@ -2495,7 +2447,10 @@
         topRow = topTranslationCount;
       }
       for (let i = firstRow; i <= topRow; i++) {
-        updateText(i, "");
+        let existedTimestamp = -1;
+        let japanesePosId = -1;
+        let willUpdateHistoryTexts = false;
+        updateText(i, "", existedTimestamp, japanesePosId, willUpdateHistoryTexts);
       }
     }
     function defaultTexts(topRow=-1) {
@@ -2503,10 +2458,14 @@
         topRow = translationCount;
       }
       for (let i = 0; i <= topRow; i++) {
-        updateText(i, defaultConfig.texts[i], false);
+        let existedTimestamp = -1;
+        let japanesePosId = -1;
+        let willUpdateHistoryTexts = false;
+        updateText(i, defaultConfig.texts[i], existedTimestamp, japanesePosId, willUpdateHistoryTexts);
       }
       if (textFuriganaToggleButton.innerText === "🔰") {
-        updateFuriganaText(0, defaultConfig.displayedTexts[0]);
+        let textTimestamp = -1;
+        updateFuriganaText(0, defaultConfig.displayedTexts[0], textTimestamp);
       }
     }
     function updateFontColor(id, color="") {
@@ -2594,9 +2553,7 @@
     }
     function updateApiKey(id, value="") {
       if (id === 99) {
-        console.log("value:", value);
         let values = value.replace(/[^\w-,]/g, '').split(',');
-        console.log("values:", values);
         for (let i = 0; i < 4; i++) {
           if (values.length >= i + 1) updateApiKey(i, values[i]);
         }
@@ -2633,7 +2590,7 @@
       saveConfigStorage();
     }
     function saveConfig(configID) {
-      console.log(`Save Config (${configID}) ing...`);
+      console.log(`💾 Save Config (${configID}) ing...`);
       configs[configID].pageColor = pageColorPicker.value;
       configs[configID].curtainColor = curtainColorPicker.value;
       configs[configID].curtainHeight = curtainHeightSlider.value;
@@ -2660,11 +2617,9 @@
       configs[configID].historyTextsMaxLength = configs[autoSID].historyTextsMaxLength;
       configs[configID].historyTextsCurrentId = configs[autoSID].historyTextsCurrentId;
 
-      console.log("configs[configID].historyTextsCurrentId:", configs[configID].historyTextsCurrentId);
-
       saveConfigStorage();
       saveTextConfigStorage(configID);
-      console.log(`Save Config (${configID}) Finished.`);
+      console.log(`💾 Save Config (${configID}) Finished.`);
     }
     function loadConfig(configID) {
       loadConfigStorage();
@@ -2678,7 +2633,7 @@
       }
       saveTextConfigStorage(autoSID);
       loadFavoriteTextConfigStorage();
-      console.log(`Load Config (${configID}) ing...`);
+      console.log(`⏳ Load Config (${configID}) ing...`);
 
       toggleTranslationCount(configs[configID].translationCount);
       updatePageColor(configs[configID].pageColor);
@@ -2712,7 +2667,7 @@
           updateApiKey(i);
         }
       }
-      showHistoryText(configs[configID].historyTextsCurrentId, false);
+      showHistoryText(configs[configID].historyTextsCurrentId);
       if (Array.isArray(configs[configID].toggleButtonsClickedList)) {
         configs[configID].toggleButtonsClickedList.forEach((item) => {
           let key = item[0], value = item[1];
@@ -2723,7 +2678,7 @@
           }
         });
       }
-      console.log(`Load Config (${configID}) Finsihed.`);
+      console.log(`⏳ Load Config (${configID}) Finsihed.`);
     }
     function updateConfig(configID, key, value) {
       configs[configID][key] = value;
@@ -2793,7 +2748,7 @@
         return jpExp;
       }
       catch (error) {
-        console.log(`japanese_split: an error occurred: ${error}`);
+        console.log(`⚠️ scrapeJpExp: an error occurred: ${error}`);
         return "";
       }
     }
@@ -2923,7 +2878,7 @@
     </span>
 
     <span id="speechListArea" style="display:none">
-      <ul id="speechList"></ul>
+      <ul id="speechList" style="text-align: left;"></ul>
       <span id="speechListTotalCount"></span>
     </span>
   </span>
@@ -3036,7 +2991,7 @@
   <script>
     function updateScreenWidth() {
       const screenWidth = window.innerWidth || document.documentElement.clientWidth;
-      console.log("screenWidth:", screenWidth);
+      console.log("🖥️ screenWidth:", screenWidth);
     }
     window.addEventListener('resize', updateScreenWidth);
     // updateScreenWidth();
@@ -3068,14 +3023,14 @@
     // method A
     function windowOnLoad() {
       var currentTime = new Date().toLocaleTimeString();
-      console.log("windowOnLoad: Page has completely finished loading at " + currentTime);
+      console.log("🎉 windowOnLoad(): Page has completely finished loading at " + currentTime);
       // tasks: ...
     }
     window.onload = windowOnLoad;
     // method B
     document.addEventListener("DOMContentLoaded", function() {
       var currentTime = new Date().toLocaleTimeString();
-      console.log("DOM Content: page has been generally loaded at " + currentTime);
+      console.log("🎉 DOMContentLoaded(): page has been generally loaded at " + currentTime);
       // tasks:
       initSpecialLayoutButtons();
     });
