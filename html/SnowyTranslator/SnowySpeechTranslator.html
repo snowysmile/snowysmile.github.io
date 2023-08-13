@@ -205,13 +205,13 @@
       .phone-row-table tr {
         display: inline-flex;
       }
-      .reading-buttons-container,
       .reading-buttons-container select,
       .reading-buttons-container button {
-        font-size: 11px;
+        font-size: 13px;
+        height: 22px;
       }
       .reading-button-container button{
-        width:24px;
+        width:25px;
       }
       #apiKeyEditor input {
         max-width: 96%;
@@ -438,19 +438,19 @@
       <button style="margin-left:3px; font-size:11px;" title="Read All Screen Text By Microsoft." onclick="msSpeakAllScreenText()">M</button>
       <button id="ggPauseAudio-button" style="font-size:9px; width:32px; margin-left:3px; vertical-align: middle;" onclick="ggPauseAudio()">G⏯</button>
       <button id="msPauseAudio-button" style="font-size:9px; width:32px; margin-left:3px; vertical-align: middle;" onclick="msPauseAudio()">M⏯</button>
-
+    </span>
+    <span style="display:flex; justify-content: center; margin-bottom:5px;">
       <span style="margin-left:7px;"> </span>
       <button style="font-size:10px;" title="Copy text of the source language." onclick="copyText(0)">0</button>
       <button style="font-size:10px;" title="Copy text of the target1 language." onclick="copyText(1)">1</button>
       <button style="font-size:10px;" title="Copy text of the target2 language." onclick="copyText(2)">2</button>
-
       <span style="margin-left:7px;"> </span>
       <button id="previousText-button" title="Previous Texts" onclick="showHistoryText(configs[autoSID].historyTextsCurrentId-1);">◀️</button>
       <button id="historyTextsIdDisplay" style="font-size:10px;" title="Add to favorite Texts" onclick="addToFavoriteListFromScreenText()"> X/X </button>
       <button id="nextText-button" title="Next Texts" onclick="showHistoryText(configs[autoSID].historyTextsCurrentId+1);">▶️</button>
     </span>
-    <span class="reading-buttons-container">
-      <span class="reading-button-container" style="margin-left:20px;">
+    <span class="reading-buttons-container" style="display:flex; justify-content: center; margin-bottom:5px;">
+      <span class="reading-button-container" style="margin-left:16px;">
         <select id="readingSelect0">
           <option value="ja" selected>🇯🇵</option>
           <option value="en">🇺🇸</option>
@@ -459,7 +459,7 @@
         <button title="Read First Language Text By Google." onclick="ggSpeak(texts[0].textContent, this.previousElementSibling.value)">G</button>
         <button title="Read First Language Text By Microsoft." onclick="msSpeak(texts[0].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
       </span>
-      <span class="reading-button-container" style="margin-left:10px;">
+      <span class="reading-button-container" style="margin-left:8px;">
         <select id="readingSelect1">
           <option value="ja">🇯🇵</option>
           <option value="en" selected>🇺🇸</option>
@@ -468,7 +468,7 @@
         <button title="Read Second Language Text By Google." onclick="ggSpeak(texts[1].textContent, this.previousElementSibling.value)">G</button>
         <button title="Read Second Language Text By Microsoft." onclick="msSpeak(texts[1].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
       </span>
-      <span class="reading-button-container" style="margin-left:10px;">
+      <span class="reading-button-container" style="margin-left:8px;">
         <select id="readingSelect2">
           <option value="ja">🇯🇵</option>
           <option value="en">🇺🇸</option>
@@ -484,7 +484,7 @@
     <tr class="input-table-row" id="recognitionInputArea" style="display:block">
       <td class="button-title">
         <span>
-          <button id="recognize-button" onclick="toggleRecognition(this.parentNode.parentNode.querySelector('select').value)" style="width: 128px; font-size:11px;" >▶️ Start Recognizing</button>
+          <button id="recognize-button" onclick="toggleRecognition(this.parentNode.parentNode.querySelector('select').value)" style="width: 128px; font-size:10px;" >▶️ Start Recognizing</button>
             <select id="recognitionLanguageSelect" onchange="recognizeRestart(this.value)">
               <option value="ja" selected>🇯🇵</option>
               <option value="en">🇺🇸</option>
@@ -497,7 +497,7 @@
         <button class="phone-button" onclick="toggleWidgetArea('recognitionInputArea', document.getElementById('toggleRecognitionInputArea_LayoutButton'))">⛔</button>
       </td>
       <td>
-        <textarea id="recognitionResult" rows="2" cols="65"></textarea>
+        <textarea id="recognitionResult" rows="2" cols="75"></textarea>
         <div style="display:none">
         <textarea id="recognitionPreviousResult" rows="2" cols="75"></textarea>
         </div>
@@ -660,7 +660,7 @@
 
   <iframe id="jpExpWebBot" style="width:1000px; height:654px; margin-top:5px; margin-bottom:9px; display:none" src="https://ichi.moe/"></iframe>
 
-  <button id="layoutContainer_LayoutButton" style="margin-bottom:5px;" onclick="toggleWidgetArea('layoutContainer', this)">Layout Container ❌</button>
+  <button id="layoutContainer_LayoutButton" style="height: margin-bottom:5px;" onclick="toggleWidgetArea('layoutContainer', this)">Layout Container ❌</button>
 
   <div class="layouts-container" id="layoutContainer" style="margin-bottom:5px; display:none">
     <button id="toggleRecognitionInputArea_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('recognitionInputArea', this)">Recognition 🟢</button>
