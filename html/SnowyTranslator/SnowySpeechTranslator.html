@@ -182,9 +182,7 @@
       }
       textarea {
         max-width: 93%;
-        width: 96%;
-        rows: 6;
-        font-size: 20px;
+        width: 93%;
       }
       iframe {
         max-width: 100%;
@@ -196,9 +194,6 @@
       #speechTextArea {
         max-width: 95%;
         width: 95%;
-      }
-      #recognitionResult {
-        height: 120px;
       }
       .button-title {
         display: flex;
@@ -239,6 +234,15 @@
       #jpExpArea {
         max-width: 96%;
         width: 96%;
+      }
+    }
+    @media screen and (max-width: 600px) {
+      textarea {
+        rows: 6;
+        font-size: 20px;
+      }
+      #recognitionResult {
+        height: 120px;
       }
     }
     @media screen and (min-width: 1000px) {
