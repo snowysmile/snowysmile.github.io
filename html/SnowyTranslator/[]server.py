@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, url_for
 from flask_cors import CORS  # Import the CORS module
 import aiohttp
 from bs4 import BeautifulSoup
