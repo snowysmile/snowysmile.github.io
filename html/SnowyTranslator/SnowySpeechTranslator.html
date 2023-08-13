@@ -1546,6 +1546,9 @@
                 recognitionLanguageSelect.value = "ja";
                 recognizeRestart("ja");
               }
+              else if (["中止"].includes(purifiedSpeechText)) {
+
+              }
               // recognitionResult.value = recognitionPreviousResult.value + addPunctuation(speechText);
               // recognitionPreviousResult.value = recognitionResult.value;
             }
@@ -2351,8 +2354,10 @@
         }
       }
       console.log("⏰ All Texts Are Updated!");
+      console.log("existedTimestamp:", existedTimestamp);
+      console.log("displayedTextTimeStamp:", displayedTextTimeStamp);
 
-      if (existedTimestamp == -1) displayedTextTimeStamp = getRandomInteger(1, 65535);
+      if (existedTimestamp === -1) displayedTextTimeStamp = getRandomInteger(1, 65535);
       let textTimeStampNow = displayedTextTimeStamp;
 
       // pushToHistoryTexts
