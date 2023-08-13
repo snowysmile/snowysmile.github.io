@@ -1332,6 +1332,14 @@
   </script>
 
   <script>
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "ArrowLeft") {
+        showHistoryText(configs[autoSID].historyTextsCurrentId-1);
+      }
+      else if (event.key === "ArrowRight") {
+        showHistoryText(configs[autoSID].historyTextsCurrentId+1);
+      }
+    });
     function handleEnterKeyPress(textareaElement) {
       const buttonElement = textareaElement.parentNode.parentNode.querySelector('button[name="translateButton"]');
       textareaElement.addEventListener("keydown", function (event) {
@@ -1355,7 +1363,6 @@
     handleEnterKeyPress(translateInput);
     handleEnterKeyPress(jpExpInput);
     handleEnterKeyPress(readingListInputArea);
-
   </script>
 
   <script>
@@ -2386,7 +2393,7 @@
     }
     function showHistoryText(index) {
       if (index < 0 || index >= textConfig.historyTexts.length) return;
-      console.log(`👀 showHistoryText(${index})`);
+      // console.log(`👀 showHistoryText(${index})`);
       updateHistoryTextCurrentId(index);
       for (let i = 0; i <= translationCount; i++) {
         let japanesePosId = -1;
@@ -3023,12 +3030,11 @@
   </script>
   <script>
     // method A
-    function windowOnLoad() {
+    window.addEventListener("load", function() {
       var currentTime = new Date().toLocaleTimeString();
       console.log("🎉 windowOnLoad(): Page has completely finished loading at " + currentTime);
       // tasks: ...
-    }
-    window.onload = windowOnLoad;
+    });
     // method B
     document.addEventListener("DOMContentLoaded", function() {
       var currentTime = new Date().toLocaleTimeString();
