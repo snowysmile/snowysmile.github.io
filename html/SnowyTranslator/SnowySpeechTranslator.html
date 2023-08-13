@@ -2354,11 +2354,14 @@
         }
       }
       console.log("⏰ All Texts Are Updated!");
-      console.log("existedTimestamp:", existedTimestamp);
-      console.log("displayedTextTimeStamp:", displayedTextTimeStamp);
+      console.log("!existedTimestamp:", existedTimestamp);
+      console.log("!displayedTextTimeStamp:", displayedTextTimeStamp);
+      console.log("!textConfig.historyTextTimestamps:", textConfig.historyTextTimestamps);
 
       if (existedTimestamp === -1) displayedTextTimeStamp = getRandomInteger(1, 65535);
       let textTimeStampNow = displayedTextTimeStamp;
+      console.log("! ~displayedTextTimeStamp:", displayedTextTimeStamp);
+      console.log("! ~textTimeStampNow:", textTimeStampNow);
 
       // pushToHistoryTexts
       if (textConfig.historyTexts.length > 0 && textConfig.historyTexts[textConfig.historyTexts.length - 1][0] === speechText) return;
@@ -2404,7 +2407,7 @@
             }
           })
           .catch((error) => console.error(error));
-        }, 500);
+        }, 1000);
       }
     }
     function updateHistoryTextCurrentId(pos) {
