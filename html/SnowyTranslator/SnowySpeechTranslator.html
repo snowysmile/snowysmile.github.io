@@ -292,14 +292,14 @@
               // "1234567890 !@#$%^&*() abcdefg ABCDEFG",
       displayedTexts: ["<ruby> きらきら</ruby> <ruby> 光る <rt>ひかる</rt></ruby>、<ruby> お</ruby> <ruby> 空 <rt>そら</rt></ruby> <ruby> の</ruby> <ruby> 星 <rt>ほし</rt></ruby> <ruby> よ</ruby>。", "", ""],
       textFontColors: ["#000000", "#000000", "#000000"],
-      textFontSizes: [20, 17, 14], //px
+      textFontSizes: [24, 21, 18], //px
       textFontWeights: [500, 500, 500],
       textFontFamilies: ["NotoSansCJKjp", "NotoSansCJKjp", "NotoSansCJKjp"],
       textStrokeColors: [["#FFFFFF", "#FFB7C5"], ["#FFFFFF", "#FFD500"], ["#FFFFFF", "#FF0033"]], // #1FDDFF blue
       textStrokeWidths: [[0, 0], [0, 0], [0, 0]], //em
       textShadowColors: ["#FFEEBB", "#FFEEBB", "#FFEEBB"],
       textShadowBlurRadius: [0, 0, 0], //em
-      textMargins: [16, 8, 8], //px
+      textMargins: [16, 12, 12], //px
       apiKeys: ["", "", "", ""],
       speechOverInterval: 3600, //ms
       speechSplitInterval: 2000, //ms
@@ -732,6 +732,220 @@
     }
   </script>
 
+
+  <div id="layoutEditor" style="display:none; margin-bottom: 3px;">
+    <table style="margin-left: auto; margin-right: auto; margin-bottom: 3px;">
+      <tr>
+        <td>
+          <span>Page Background Color:</span>
+          <input id=pageColorPicker type="color" oninput="updatePageColor()">
+          <span id="pageColorValue"></span>
+        </td>
+        <td>
+          <span>Curtain Background Color:</span>
+          <input id=curtainColorPicker type="color" oninput="updateCurtainColor()">
+          <span id="curtainColorValue"></span>
+        </td>
+        <td>
+          <span>Curtain Background Height:</span>
+          <input id=curtainHeightSlider type="range" min="50" max="400" oninput="updateCurtainHeight()">
+          <span id="curtainHeightValue"></span>
+        </td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <td>
+          <table class="phone-row-table">
+            <tr>
+              <th colspan="3"><span>Speech Text</span></th>
+            </tr>
+            <tr>
+              <td><span>Text Color:</span></td>
+              <td><input id=textColorPicker-0 type="color" oninput="updateFontColor(0)"></td>
+              <td><span id="textColorValue-0"> </span></td>
+            </tr>
+            <tr>
+              <td><span>Font Size: </span></td>
+              <td><input id=textFontSizeSlider-0 type="range" min="0" max="40" step="1" oninput="updateFontSize(0)"></td>
+              <td><span id="textFontSizeValue-0"></span>px</td>
+            </tr>
+            <tr>
+              <td><span>Font Weight: </span></td>
+              <td><input id="textFontWeightSlider-0" type="range" min="100" max="900" step="100" oninput=" updateFontWeight(0)"></td>
+              <td><span id="textFontWeightValue-0"></span></td>
+            </tr>
+            <tr>
+              <td><span>Font Type: </span></td>
+              <td colspan="2"><select id="textFontSelect-0" onchange="updateFontFamily(0)">
+              </select> </td>
+            </tr>
+            <tr>
+              <td><span>Stroke Color (A):</span></td>
+              <td><input id=textStrokeColorPicker-0-0 type="color" oninput="updateStrokeColor(0, 0)"></td>
+              <td><span id="textStrokeColorValue-0-0"></span></td>
+            </tr>
+            <tr>
+              <td><span>Stroke Width (A): </span></td>
+              <td><input id="textStrokeWidthSlider-0-0" type="range" min="0" max="0.2" step="0.05" oninput="updateStrokeWidth(0, 0)"></td>
+              <td><span id="textStrokeWidthValue-0-0"></span>em</td>
+            </tr>
+            <tr>
+              <td><span>Stroke Color (B):</span></td>
+              <td><input id=textStrokeColorPicker-0-1 type="color" oninput="updateStrokeColor(0, 1)"></td>
+              <td><span id="textStrokeColorValue-0-1"></span></td>
+            </tr>
+            <tr>
+              <td><span>Stroke Width (B): </span></td>
+              <td><input id="textStrokeWidthSlider-0-1" type="range" min="0" max="0.8" step="0.05" oninput="updateStrokeWidth(0, 1)"></td>
+              <td><span id="textStrokeWidthValue-0-1"></span>em</td>
+            </tr>
+            <tr>
+              <td><label for="textShadowColorPicker-0">Shadow Color:</label></td>
+              <td><input id=textShadowColorPicker-0 type="color" value="#DAFFFB" oninput="updateTextShadow(0)"></td>
+              <td><span id="textShadowColorValue-0"> #DAFFFB </span></td>
+            </tr>
+            <tr>
+              <td><span>Shadow Blur Radius: </span></td>
+              <td><input id="textShadowBlurRadiusSlider-0" type="range" min="0" max="1" step="0.05" oninput="updateTextShadow(0)"></td>
+              <td><span id="textShadowBlurRadiusValue-0"></span>em</td>
+            </tr>
+            <tr>
+              <td><span>Margin To Top: </span></td>
+              <td><input id="textMarginSlider-0" type="range" min="0" max="100" step="1" oninput="updateTextMargin(0)"></td>
+              <td><span id="textMarginValue-0"></span>px</td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="phone-row-table">
+            <tr>
+              <th colspan="3"><span>Translation Text 1</span></th>
+            </tr>
+            <tr>
+              <td><span>Text Color:</span></td>
+              <td><input id=textColorPicker-1 type="color" oninput="updateFontColor(1)"></td>
+              <td><span id="textColorValue-1"> </span></td>
+            </tr>
+            <tr>
+              <td><span>Font Size: </span></td>
+              <td><input id=textFontSizeSlider-1 type="range" min="0" max="40" step="1" oninput="updateFontSize(1)"></td>
+              <td><span id="textFontSizeValue-1"></span>px</td>
+            </tr>
+            <tr>
+              <td><span>Font Weight: </span></td>
+              <td><input id="textFontWeightSlider-1" type="range" min="100" max="900" step="100" oninput=" updateFontWeight(1)"></td>
+              <td><span id="textFontWeightValue-1"></span></td>
+            </tr>
+            <tr>
+              <td><span>Font Type: </span></td>
+              <td colspan="2"><select id="textFontSelect-1" onchange="updateFontFamily(1)">
+              </select> </td>
+            </tr>
+            <tr>
+              <td><span>Stroke Color (A):</span></td>
+              <td><input id=textStrokeColorPicker-1-0 type="color" oninput="updateStrokeColor(1, 0)"></td>
+              <td><span id="textStrokeColorValue-1-0"></span></td>
+            </tr>
+            <tr>
+              <td><span>Stroke Width (A): </span></td>
+              <td><input id="textStrokeWidthSlider-1-0" type="range" min="0" max="0.2" step="0.05" oninput="updateStrokeWidth(1, 0)"></td>
+              <td><span id="textStrokeWidthValue-1-0"></span>em</td>
+            </tr>
+            <tr>
+              <td><span>Stroke Color (B):</span></td>
+              <td><input id=textStrokeColorPicker-1-1 type="color" oninput="updateStrokeColor(1, 1)"></td>
+              <td><span id="textStrokeColorValue-1-1"></span></td>
+            </tr>
+            <tr>
+              <td><span>Stroke Width (B): </span></td>
+              <td><input id="textStrokeWidthSlider-1-1" type="range" min="0" max="0.8" step="0.05" oninput="updateStrokeWidth(1, 1)"></td>
+              <td><span id="textStrokeWidthValue-1-1"></span>em</td>
+            </tr>
+            <tr>
+              <td><label for="textShadowColorPicker-1">Shadow Color:</label></td>
+              <td><input id=textShadowColorPicker-1 type="color" value="#DAFFFB" oninput="updateTextShadow(1)"></td>
+              <td><span id="textShadowColorValue-1"> #DAFFFB </span></td>
+            </tr>
+            <tr>
+              <td><span>Shadow Blur Radius: </span></td>
+              <td><input id="textShadowBlurRadiusSlider-1" type="range" min="0" max="1" step="0.05" oninput="updateTextShadow(1)"></td>
+              <td><span id="textShadowBlurRadiusValue-1"></span>em</td>
+            </tr>
+            <tr>
+              <td><span>Margin Bottom: </span></td>
+              <td><input id="textMarginSlider-1" type="range" min="0" max="100" step="1" oninput="updateTextMargin(1)"></td>
+              <td><span id="textMarginValue-1"></span>px</td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="phone-row-table">
+            <tr>
+              <th colspan="3"><span>Translation Text 2</span></th>
+            </tr>
+            <tr>
+              <td><span>Text Color:</span></td>
+              <td><input id=textColorPicker-2 type="color" oninput="updateFontColor(2)"></td>
+              <td><span id="textColorValue-2"> </span></td>
+            </tr>
+            <tr>
+              <td><span>Font Size: </span></td>
+              <td><input id=textFontSizeSlider-2 type="range" min="0" max="40" step="1" oninput="updateFontSize(2)"></td>
+              <td><span id="textFontSizeValue-2"></span>px</td>
+            </tr>
+            <tr>
+              <td><span>Font Weight: </span></td>
+              <td><input id="textFontWeightSlider-2" type="range" min="100" max="900" step="100" oninput=" updateFontWeight(2)"></td>
+              <td><span id="textFontWeightValue-2"></span></td>
+            </tr>
+            <tr>
+              <td><span>Font Type: </span></td>
+              <td colspan="2"><select id="textFontSelect-2" onchange="updateFontFamily(2)">
+              </select> </td>
+            </tr>
+            <tr>
+              <td><span>Stroke Color (A):</span></td>
+              <td><input id=textStrokeColorPicker-2-0 type="color" oninput="updateStrokeColor(2, 0)"></td>
+              <td><span id="textStrokeColorValue-2-0"></span></td>
+            </tr>
+            <tr>
+              <td><span>Stroke Width (A): </span></td>
+              <td><input id="textStrokeWidthSlider-2-0" type="range" min="0" max="0.2" step="0.05" oninput="updateStrokeWidth(2, 0)"></td>
+              <td><span id="textStrokeWidthValue-2-0"></span>em</td>
+            </tr>
+            <tr>
+              <td><span>Stroke Color (B):</span></td>
+              <td><input id=textStrokeColorPicker-2-1 type="color" oninput="updateStrokeColor(2, 1)"></td>
+              <td><span id="textStrokeColorValue-2-1"></span></td>
+            </tr>
+            <tr>
+              <td><span>Stroke Width (B): </span></td>
+              <td><input id="textStrokeWidthSlider-2-1" type="range" min="0" max="0.8" step="0.05" oninput="updateStrokeWidth(2, 1)"></td>
+              <td><span id="textStrokeWidthValue-2-1"></span>em</td>
+            </tr>
+            <tr>
+              <td><label for="textShadowColorPicker-2">Shadow Color:</label></td>
+              <td><input id=textShadowColorPicker-2 type="color" value="#DAFFFB" oninput="updateTextShadow(2)"></td>
+              <td><span id="textShadowColorValue-2"> #DAFFFB </span></td>
+            </tr>
+            <tr>
+              <td><span>Shadow Blur Radius: </span></td>
+              <td><input id="textShadowBlurRadiusSlider-2" type="range" min="0" max="1" step="0.05" oninput="updateTextShadow(2)"></td>
+              <td><span id="textShadowBlurRadiusValue-2"></span>em</td>
+            </tr>
+            <tr>
+              <td><span>Margin Bottom: </span></td>
+              <td><input id="textMarginSlider-2" type="range" min="0" max="100" step="1" oninput="updateTextMargin(2)"></td>
+              <td><span id="textMarginValue-2"></span>px</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+
   <table id="apiKeyEditor" style="display:none">
     <tr>
       <td style="width: 175px;"> Google Script API-KEY: </td>
@@ -979,219 +1193,6 @@
       </td>
     </tr>
   </table>
-
-  <div id="layoutEditor" style="display:none; margin-bottom: 3px;">
-    <table style="margin-left: auto; margin-right: auto; margin-bottom: 3px;">
-      <tr>
-        <td>
-          <span>Page Background Color:</span>
-          <input id=pageColorPicker type="color" oninput="updatePageColor()">
-          <span id="pageColorValue"></span>
-        </td>
-        <td>
-          <span>Curtain Background Color:</span>
-          <input id=curtainColorPicker type="color" oninput="updateCurtainColor()">
-          <span id="curtainColorValue"></span>
-        </td>
-        <td>
-          <span>Curtain Background Height:</span>
-          <input id=curtainHeightSlider type="range" min="50" max="400" oninput="updateCurtainHeight()">
-          <span id="curtainHeightValue"></span>
-        </td>
-      </tr>
-    </table>
-
-    <table>
-      <tr>
-        <td>
-          <table class="phone-row-table">
-            <tr>
-              <th colspan="3"><span>Speech Text</span></th>
-            </tr>
-            <tr>
-              <td><span>Text Color:</span></td>
-              <td><input id=textColorPicker-0 type="color" oninput="updateFontColor(0)"></td>
-              <td><span id="textColorValue-0"> </span></td>
-            </tr>
-            <tr>
-              <td><span>Font Size: </span></td>
-              <td><input id=textFontSizeSlider-0 type="range" min="0" max="40" step="1" oninput="updateFontSize(0)"></td>
-              <td><span id="textFontSizeValue-0"></span>px</td>
-            </tr>
-            <tr>
-              <td><span>Font Weight: </span></td>
-              <td><input id="textFontWeightSlider-0" type="range" min="100" max="900" step="100" oninput=" updateFontWeight(0)"></td>
-              <td><span id="textFontWeightValue-0"></span></td>
-            </tr>
-            <tr>
-              <td><span>Font Type: </span></td>
-              <td colspan="2"><select id="textFontSelect-0" onchange="updateFontFamily(0)">
-              </select> </td>
-            </tr>
-            <tr>
-              <td><span>Stroke Color (A):</span></td>
-              <td><input id=textStrokeColorPicker-0-0 type="color" oninput="updateStrokeColor(0, 0)"></td>
-              <td><span id="textStrokeColorValue-0-0"></span></td>
-            </tr>
-            <tr>
-              <td><span>Stroke Width (A): </span></td>
-              <td><input id="textStrokeWidthSlider-0-0" type="range" min="0" max="0.2" step="0.05" oninput="updateStrokeWidth(0, 0)"></td>
-              <td><span id="textStrokeWidthValue-0-0"></span>em</td>
-            </tr>
-            <tr>
-              <td><span>Stroke Color (B):</span></td>
-              <td><input id=textStrokeColorPicker-0-1 type="color" oninput="updateStrokeColor(0, 1)"></td>
-              <td><span id="textStrokeColorValue-0-1"></span></td>
-            </tr>
-            <tr>
-              <td><span>Stroke Width (B): </span></td>
-              <td><input id="textStrokeWidthSlider-0-1" type="range" min="0" max="0.8" step="0.05" oninput="updateStrokeWidth(0, 1)"></td>
-              <td><span id="textStrokeWidthValue-0-1"></span>em</td>
-            </tr>
-            <tr>
-              <td><label for="textShadowColorPicker-0">Shadow Color:</label></td>
-              <td><input id=textShadowColorPicker-0 type="color" value="#DAFFFB" oninput="updateTextShadow(0)"></td>
-              <td><span id="textShadowColorValue-0"> #DAFFFB </span></td>
-            </tr>
-            <tr>
-              <td><span>Shadow Blur Radius: </span></td>
-              <td><input id="textShadowBlurRadiusSlider-0" type="range" min="0" max="1" step="0.05" oninput="updateTextShadow(0)"></td>
-              <td><span id="textShadowBlurRadiusValue-0"></span>em</td>
-            </tr>
-            <tr>
-              <td><span>Margin To Top: </span></td>
-              <td><input id="textMarginSlider-0" type="range" min="0" max="100" step="1" oninput="updateTextMargin(0)"></td>
-              <td><span id="textMarginValue-0"></span>px</td>
-            </tr>
-          </table>
-        </td>
-        <td>
-          <table class="phone-row-table">
-            <tr>
-              <th colspan="3"><span>Translation Text 1</span></th>
-            </tr>
-            <tr>
-              <td><span>Text Color:</span></td>
-              <td><input id=textColorPicker-1 type="color" oninput="updateFontColor(1)"></td>
-              <td><span id="textColorValue-1"> </span></td>
-            </tr>
-            <tr>
-              <td><span>Font Size: </span></td>
-              <td><input id=textFontSizeSlider-1 type="range" min="0" max="40" step="1" oninput="updateFontSize(1)"></td>
-              <td><span id="textFontSizeValue-1"></span>px</td>
-            </tr>
-            <tr>
-              <td><span>Font Weight: </span></td>
-              <td><input id="textFontWeightSlider-1" type="range" min="100" max="900" step="100" oninput=" updateFontWeight(1)"></td>
-              <td><span id="textFontWeightValue-1"></span></td>
-            </tr>
-            <tr>
-              <td><span>Font Type: </span></td>
-              <td colspan="2"><select id="textFontSelect-1" onchange="updateFontFamily(1)">
-              </select> </td>
-            </tr>
-            <tr>
-              <td><span>Stroke Color (A):</span></td>
-              <td><input id=textStrokeColorPicker-1-0 type="color" oninput="updateStrokeColor(1, 0)"></td>
-              <td><span id="textStrokeColorValue-1-0"></span></td>
-            </tr>
-            <tr>
-              <td><span>Stroke Width (A): </span></td>
-              <td><input id="textStrokeWidthSlider-1-0" type="range" min="0" max="0.2" step="0.05" oninput="updateStrokeWidth(1, 0)"></td>
-              <td><span id="textStrokeWidthValue-1-0"></span>em</td>
-            </tr>
-            <tr>
-              <td><span>Stroke Color (B):</span></td>
-              <td><input id=textStrokeColorPicker-1-1 type="color" oninput="updateStrokeColor(1, 1)"></td>
-              <td><span id="textStrokeColorValue-1-1"></span></td>
-            </tr>
-            <tr>
-              <td><span>Stroke Width (B): </span></td>
-              <td><input id="textStrokeWidthSlider-1-1" type="range" min="0" max="0.8" step="0.05" oninput="updateStrokeWidth(1, 1)"></td>
-              <td><span id="textStrokeWidthValue-1-1"></span>em</td>
-            </tr>
-            <tr>
-              <td><label for="textShadowColorPicker-1">Shadow Color:</label></td>
-              <td><input id=textShadowColorPicker-1 type="color" value="#DAFFFB" oninput="updateTextShadow(1)"></td>
-              <td><span id="textShadowColorValue-1"> #DAFFFB </span></td>
-            </tr>
-            <tr>
-              <td><span>Shadow Blur Radius: </span></td>
-              <td><input id="textShadowBlurRadiusSlider-1" type="range" min="0" max="1" step="0.05" oninput="updateTextShadow(1)"></td>
-              <td><span id="textShadowBlurRadiusValue-1"></span>em</td>
-            </tr>
-            <tr>
-              <td><span>Margin Bottom: </span></td>
-              <td><input id="textMarginSlider-1" type="range" min="0" max="100" step="1" oninput="updateTextMargin(1)"></td>
-              <td><span id="textMarginValue-1"></span>px</td>
-            </tr>
-          </table>
-        </td>
-        <td>
-          <table class="phone-row-table">
-            <tr>
-              <th colspan="3"><span>Translation Text 2</span></th>
-            </tr>
-            <tr>
-              <td><span>Text Color:</span></td>
-              <td><input id=textColorPicker-2 type="color" oninput="updateFontColor(2)"></td>
-              <td><span id="textColorValue-2"> </span></td>
-            </tr>
-            <tr>
-              <td><span>Font Size: </span></td>
-              <td><input id=textFontSizeSlider-2 type="range" min="0" max="40" step="1" oninput="updateFontSize(2)"></td>
-              <td><span id="textFontSizeValue-2"></span>px</td>
-            </tr>
-            <tr>
-              <td><span>Font Weight: </span></td>
-              <td><input id="textFontWeightSlider-2" type="range" min="100" max="900" step="100" oninput=" updateFontWeight(2)"></td>
-              <td><span id="textFontWeightValue-2"></span></td>
-            </tr>
-            <tr>
-              <td><span>Font Type: </span></td>
-              <td colspan="2"><select id="textFontSelect-2" onchange="updateFontFamily(2)">
-              </select> </td>
-            </tr>
-            <tr>
-              <td><span>Stroke Color (A):</span></td>
-              <td><input id=textStrokeColorPicker-2-0 type="color" oninput="updateStrokeColor(2, 0)"></td>
-              <td><span id="textStrokeColorValue-2-0"></span></td>
-            </tr>
-            <tr>
-              <td><span>Stroke Width (A): </span></td>
-              <td><input id="textStrokeWidthSlider-2-0" type="range" min="0" max="0.2" step="0.05" oninput="updateStrokeWidth(2, 0)"></td>
-              <td><span id="textStrokeWidthValue-2-0"></span>em</td>
-            </tr>
-            <tr>
-              <td><span>Stroke Color (B):</span></td>
-              <td><input id=textStrokeColorPicker-2-1 type="color" oninput="updateStrokeColor(2, 1)"></td>
-              <td><span id="textStrokeColorValue-2-1"></span></td>
-            </tr>
-            <tr>
-              <td><span>Stroke Width (B): </span></td>
-              <td><input id="textStrokeWidthSlider-2-1" type="range" min="0" max="0.8" step="0.05" oninput="updateStrokeWidth(2, 1)"></td>
-              <td><span id="textStrokeWidthValue-2-1"></span>em</td>
-            </tr>
-            <tr>
-              <td><label for="textShadowColorPicker-2">Shadow Color:</label></td>
-              <td><input id=textShadowColorPicker-2 type="color" value="#DAFFFB" oninput="updateTextShadow(2)"></td>
-              <td><span id="textShadowColorValue-2"> #DAFFFB </span></td>
-            </tr>
-            <tr>
-              <td><span>Shadow Blur Radius: </span></td>
-              <td><input id="textShadowBlurRadiusSlider-2" type="range" min="0" max="1" step="0.05" oninput="updateTextShadow(2)"></td>
-              <td><span id="textShadowBlurRadiusValue-2"></span>em</td>
-            </tr>
-            <tr>
-              <td><span>Margin Bottom: </span></td>
-              <td><input id="textMarginSlider-2" type="range" min="0" max="100" step="1" oninput="updateTextMargin(2)"></td>
-              <td><span id="textMarginValue-2"></span>px</td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </table>
-  </div>
 
   <script>
     function getRandomInteger(min, max) {
