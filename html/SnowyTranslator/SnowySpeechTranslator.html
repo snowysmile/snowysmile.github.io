@@ -1456,22 +1456,22 @@
         console.log("onstart:", timeStamp);
       }
       recognition.onaudiostart = () => {
-        console.log("onaudiostart:", timeStamp);
+        // console.log("onaudiostart:", timeStamp);
       }
       recognition.onsoundstart = () => {
-        console.log("onsoundstart:", timeStamp);
+        // console.log("onsoundstart:", timeStamp);
       }
       recognition.onspeechstart = () => {
-        console.log("onspeechstart:", timeStamp);
+        // console.log("onspeechstart:", timeStamp);
       }
       recognition.onspeechend = () => {
-        console.log("onspeechend:", timeStamp);
+        // console.log("onspeechend:", timeStamp);
       }
       recognition.onsoundend = () => {
-        console.log("onsoundend:", timeStamp);
+        // console.log("onsoundend:", timeStamp);
       }
       recognition.onaudioend = () => {
-        console.log("onaudioend:", timeStamp);
+        // console.log("onaudioend:", timeStamp);
       }
       recognition.onend = () => {
         console.log("onend:", timeStamp);
@@ -1553,7 +1553,7 @@
               }
             }
             recognitionResult.value = recognitionPreviousResult.value + ' < ' + speechText + ' > ';
-            console.log("🚲 Current recognitionResult.value:", recognitionResult.value);
+            // console.log("🚲 Current recognitionResult.value:", recognitionResult.value);
           }
         }
       };
@@ -2341,6 +2341,8 @@
         textConfig.historyTexts.shift() // or textConfig.historyTexts = textConfig.historyTexts.slice(1);
         textConfig.historyTextLanguages.shift();
         textConfig.historyTextTimestamps.shift();
+        textConfig.furiganaTexts.shift();
+        textConfig.furiganaTextPos.shift();
       }
       updateHistoryTextCurrentId(textConfig.historyTexts.length - 1);
       saveTextConfigStorage(autoSID);
