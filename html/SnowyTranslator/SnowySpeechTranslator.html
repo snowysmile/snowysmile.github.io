@@ -1356,6 +1356,27 @@
       else if (event.key === "ArrowRight") {
         showHistoryText(configs[autoSID].historyTextsCurrentId+1);
       }
+      else if (event.shiftKey && event.key === "J") {
+        event.preventDefault();
+        recognitionLanguageSelect.value = "ja";
+        if (isRecognizing) {
+          recognizeRestart(sourceLanguage, "ja");
+        }
+      }
+      else if (event.shiftKey && event.key === "E") {
+        event.preventDefault();
+        recognitionLanguageSelect.value = "en";
+        if (isRecognizing) {
+          recognizeRestart(sourceLanguage, "en");
+        }
+      }
+      else if (event.shiftKey && event.key === "T") {
+        event.preventDefault();
+        recognitionLanguageSelect.value = "zh-TW";
+        if (isRecognizing) {
+          recognizeRestart(sourceLanguage, "zh-TW");
+        }
+      }
     });
     function handleEnterKeyPress(textareaElement) {
       const buttonElement = textareaElement.parentNode.parentNode.querySelector('button[name="translateButton"]');
