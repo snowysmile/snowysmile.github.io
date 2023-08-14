@@ -512,7 +512,7 @@
         <button class="phone-button" onclick="toggleWidgetArea('recognitionInputArea', document.getElementById('toggleRecognitionInputArea_LayoutButton'))">⛔</button>
       </td>
       <td>
-        <textarea id="recognitionResult" rows="2" cols="75"></textarea>
+        <textarea id="recognitionResult" rows="2" cols="65"></textarea>
         <div style="display:none">
         <textarea id="recognitionPreviousResult" rows="2" cols="75"></textarea>
         </div>
@@ -1219,7 +1219,8 @@
   <script>
     var speechListTotalCount = 0;
     function updateSpeechList(text) {
-      if (!text || !speechList.lastElementChild || speechList.lastElementChild.textContent === "") return;
+      if (!text) return;
+      if (speechList.lastElementChild && text === speechList.lastElementChild.textContent) return;
       var speechTextItem = document.createElement('li');
       speechTextItem.textContent = text;
       speechList.appendChild(speechTextItem);
@@ -1237,7 +1238,7 @@
     var textFontFamilySelects = document.querySelectorAll('[id^="textFontSelect-"]');
     var readingSelects = document.querySelectorAll('[id^="readingSelect"]');
 
-    var timeTextUpdated = fillArrayWithRandomValue([], topTranslationCount + 1, 1, 65535);
+    var timeTextUpdated;
 
     var textStrokeColorPickers = [];
     for (let i = 0; i < 3; i++) {
@@ -1474,41 +1475,42 @@
       recognition.interimResults = true;
       recognition.continuous = true;
 
-      var timeStamp = 0;
+      var recognitionTimestamp = 0;
+      var isRecognizationSuspended = false;
       recognition.onstart = () => {
-        console.log("onstart:", timeStamp);
+        console.log("onstart:", recognitionTimestamp);
       }
       recognition.onaudiostart = () => {
-        // console.log("onaudiostart:", timeStamp);
+        // console.log("onaudiostart:", recognitionTimestamp);
       }
       recognition.onsoundstart = () => {
-        // console.log("onsoundstart:", timeStamp);
+        // console.log("onsoundstart:", recognitionTimestamp);
       }
       recognition.onspeechstart = () => {
-        // console.log("onspeechstart:", timeStamp);
+        // console.log("onspeechstart:", recognitionTimestamp);
       }
       recognition.onspeechend = () => {
-        // console.log("onspeechend:", timeStamp);
+        // console.log("onspeechend:", recognitionTimestamp);
       }
       recognition.onsoundend = () => {
-        // console.log("onsoundend:", timeStamp);
+        // console.log("onsoundend:", recognitionTimestamp);
       }
       recognition.onaudioend = () => {
-        // console.log("onaudioend:", timeStamp);
+        // console.log("onaudioend:", recognitionTimestamp);
       }
       recognition.onend = () => {
-        console.log("onend:", timeStamp);
+        console.log("onend:", recognitionTimestamp);
         if (isRecognizing) {
           recognition.start();
-          timeStamp = timeStamp + 1;
+          recognitionTimestamp = recognitionTimestamp + 1;
         }
       }
       recognition.onerror = () => {
-        console.log("onerror:", timeStamp);
+        console.log("onerror:", recognitionTimestamp);
         recognition.stop();
       }
       recognition.onnomatch = () => {
-        console.log("onnomatch:", timeStamp);
+        console.log("onnomatch:", recognitionTimestamp);
         recognition.stop();
       }
       stopRecognitionControl = function() {
@@ -1534,20 +1536,39 @@
               if (["英語変更", "英語 変更", "英語を変更", "英語に変更",
               "英語變更", "英文變更", "英语变更", "英文变更"].includes(purifiedSpeechText)) {
                 recognitionLanguageSelect.value = "en";
-                recognizeRestart("en");
+                recognizeRestart(sourceLanguage, "en");
+                return;
               }
               else if (["中国語変更", "中国語 変更", "中国語を変更", "中国語に変更",
               "mandarin switch", "mandarin recognize", "chinese switch", "chinese recognize"].includes(purifiedSpeechText)) {
                 recognitionLanguageSelect.value = "zh-TW";
-                recognizeRestart("zh-TW");
+                recognizeRestart(sourceLanguage, "zh-TW");
+                return;
               }
               else if (["日語變更", "日文變更", "日语变更", "日文变更",
               "japanese switch", "japanese recognize"].includes(purifiedSpeechText)) {
                 recognitionLanguageSelect.value = "ja";
-                recognizeRestart("ja");
+                recognizeRestart(sourceLanguage, "ja");
+                return;
               }
-              else if (["中止"].includes(purifiedSpeechText)) {
-
+              else if (["認識停止", "認識 停止", "recognition stop", "認知停止"
+                      ].includes(purifiedSpeechText)) {
+                speechTranslate(speechText, sourceLanguage, false, undefined, updateHistoryTextToggleButton.innerHTML === "🎈");
+                stopRecognitionComplete(sourceLanguage);
+                return;
+              }
+              else if (["認識一時停止", "認識 一時停止", "recognition suspended", "recognition pause", "認知暫停"].includes(purifiedSpeechText)) {
+                speechTranslate(speechText, sourceLanguage, false, undefined, updateHistoryTextToggleButton.innerHTML === "🎈");
+                isRecognizationSuspended = true;
+                return;
+              }
+              else if (isRecognizationSuspended) {
+                if (["続けて", "continue", "繼續"].includes(purifiedSpeechText)) {
+                  isRecognizationSuspended = false;
+                }
+                else {
+                  return;
+                }
               }
               // recognitionResult.value = recognitionPreviousResult.value + addPunctuation(speechText);
               // recognitionPreviousResult.value = recognitionResult.value;
@@ -1563,7 +1584,7 @@
             updateSpeechList(speechText);
             speechTranslate(speechText, sourceLanguage, false, undefined, updateHistoryTextToggleButton.innerHTML === "🎈"); // await
           }
-          else { // Outcome of the process
+          else if (!isRecognizationSuspended) { // Outcome of the process
             if (speechOverInterval.value && speechOverInterval.value !== 0) {
               if (!recognitionNonStop) {
                 clearTimeout(speechOverInterval_TimeOut);
@@ -1584,7 +1605,7 @@
         }
       };
       recognition.start();
-      timeStamp = timeStamp + 1;
+      recognitionTimestamp = recognitionTimestamp + 1;
       isRecognizing = true;
       recognizeButton.innerHTML = "⏹️ Stop Recognizing";
     }
@@ -1602,33 +1623,36 @@
         isRecording = false;
         recordButton.innerHTML = "▶️ Start Recording";
       }
-      timeTextUpdated = fillArrayWithRandomValue([], topTranslationCount + 1, 1, 65535);
       if (recognitionResult.value !== texts[0].textContent) {
         updateSpeechList(recognitionResult.value);
         speechTranslate(recognitionResult.value, sourceLanguage, false, undefined, updateHistoryTextToggleButton.innerHTML === "🎈");
       }
     }
-    function toggleRecognition(sourceLanguage) {
+    function toggleRecognition(sourceLanguage, targetLanguage="") {
+      if (targetLanguage === "") {
+        targetLanguage = sourceLanguage;
+      }
       if (isRecognizing) {
         stopRecognitionComplete(sourceLanguage);
       }
       else {
-        startRecognition(sourceLanguage);
+        startRecognition(targetLanguage);
         if (!isRecording) {
           isRecording = true;
           recordButton.innerHTML = "⏹️ Stop Recording";
         }
       }
     }
-    function recognizeRestart(sourceLanguage) {
-      if (!isRecognizing) {
-        return;
+    function recognizeRestart(sourceLanguage, targetLanguage="") {
+      if (targetLanguage === "") {
+        targetLanguage = sourceLanguage;
       }
-      toggleRecognition(sourceLanguage);
-      timeTextUpdated = fillArrayWithRandomValue([], topTranslationCount + 1, 1, 65535);
-      setTimeout(function() {
-        toggleRecognition(sourceLanguage);
-      }, 1200);
+      toggleRecognition(sourceLanguage, targetLanguage);
+      if (!isRecognizing) {
+        setTimeout(function() {
+          toggleRecognition(sourceLanguage, targetLanguage);
+        }, 1200);
+      }
     }
     function toggleRecord() {
       if (isRecording) {
@@ -1653,7 +1677,6 @@
       }
       configs[autoSID].translationCount = parseInt(translationCountSelect.value, 10);
       saveConfigStorage();
-      timeTextUpdated = fillArrayWithRandomValue([], topTranslationCount + 1, 1, 65535);
     }
     var sourceLanguage = "ja";
     var targetLanguage = "en";
@@ -2203,9 +2226,10 @@
       if (!speechText) return;
       let existedTimestamp = -1;
       let japanesePosId = -1;
+      timeTextUpdated = fillArrayWithRandomValue([], topTranslationCount + 1, 1, 65535);
       updateText(0, speechText, existedTimestamp, japanesePosId, willUpdateHistoryTexts);
-      console.log("🔡 speechTranslate(): speechText=", speechText);
-      if (!sourceLanguage || isAutoDetect && gcpApiKey) {
+      console.log(`🔡 speechTranslate(): speechText = ${speechText}, sourceLanguage = ${sourceLanguage}`);
+      if (!sourceLanguage || isAutoDetect) {
         sourceLanguage = await autoDetectTranslate(speechText, languageSelect);
       }
       if (sourceLanguage === "ja") {
@@ -2338,6 +2362,7 @@
       saveConfigStorage();
     }
 
+    var globalDebugTimestamp = 0; // console.log(`[${globalDebugTimestamp += 1}]`);
     var displayedTextTimeStamp = -1;
     function updateText(id, speechText, existedTimestamp, japanesePosId, willUpdateHistoryTexts=true) {
       texts[id].innerHTML = speechText;
@@ -2349,19 +2374,13 @@
       timeTextUpdated[id] += 1;
       for (let i = 1; i <= translationCount; i++) {
         if (timeTextUpdated[i] !== timeTextUpdated[0]) {
-          // console.log("🕒 timeTextUpdated:", timeTextUpdated);
+          console.log("🕒 Texts are not synced - timeTextUpdated:", timeTextUpdated);
           return;
         }
       }
       console.log("⏰ All Texts Are Updated!");
-      console.log("!existedTimestamp:", existedTimestamp);
-      console.log("!displayedTextTimeStamp:", displayedTextTimeStamp);
-      console.log("!textConfig.historyTextTimestamps:", textConfig.historyTextTimestamps);
-
       if (existedTimestamp === -1) displayedTextTimeStamp = getRandomInteger(1, 65535);
       let textTimeStampNow = displayedTextTimeStamp;
-      console.log("! ~displayedTextTimeStamp:", displayedTextTimeStamp);
-      console.log("! ~textTimeStampNow:", textTimeStampNow);
 
       // pushToHistoryTexts
       if (textConfig.historyTexts.length > 0 && textConfig.historyTexts[textConfig.historyTexts.length - 1][0] === speechText) return;
@@ -2407,7 +2426,7 @@
             }
           })
           .catch((error) => console.error(error));
-        }, 1000);
+        }, 10);
       }
     }
     function updateHistoryTextCurrentId(pos) {
