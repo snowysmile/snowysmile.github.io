@@ -1377,6 +1377,10 @@
           recognizeRestart(sourceLanguage, "zh-TW");
         }
       }
+      else if (event.shiftKey && event.key === "S") {
+        event.preventDefault();
+        toggleRecognition(recognitionLanguageSelect.value);
+      }
     });
     function handleEnterKeyPress(textareaElement) {
       const buttonElement = textareaElement.parentNode.parentNode.querySelector('button[name="translateButton"]');
@@ -2951,7 +2955,7 @@
     </span>
 
     <span id="speechListArea" style="display:none">
-      <ul id="speechList" style="text-align: left;"></ul>
+      <ul id="speechList" style="text-align: left; list-style-type:decimal;"></ul>
       <span id="speechListTotalCount"></span>
     </span>
   </span>
