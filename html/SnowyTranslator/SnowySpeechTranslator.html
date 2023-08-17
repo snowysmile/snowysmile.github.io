@@ -1899,6 +1899,11 @@
       favTextConfig.favoriteTextLanguages = [];
       saveFavoriteTextConfigStorage();
     }
+    function clearSpeechList() {
+      while (speechList.firstChild) {
+        speechList.removeChild(speechList.firstChild);
+      }
+    }
     function chooseAzureVoice(sourceLanguage) {
       if (sourceLanguage === "ja") {
         return azureVoiceSelects[0].value;
@@ -2956,6 +2961,7 @@
 
     <span id="speechListArea" style="display:none">
       <ul id="speechList" style="text-align: left; list-style-type:decimal;"></ul>
+      <button style="margin-bottom:8px;" onclick="clearSpeechList()">Clear - Speech List 🆑</button>
       <span id="speechListTotalCount"></span>
     </span>
   </span>
