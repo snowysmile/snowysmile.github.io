@@ -699,7 +699,7 @@ audioDownload<!DOCTYPE html>
     <button id="toggleLanguageSelects_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('languageSelectsContainer', this)">Lang Selects 🟢</button>
     <button id="toggleVoiceSelects_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('VoiceSelectsContainer', this)">Voice Selects 🟢</button>
     <button id="toggleGlobalValues_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('globalValuesContainer', this)">Global Values 🟢</button>
-    <button id="toggleAudioDownloadContainer_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('audioDownloadContainer', this)">Audio Download 🟢</button>
+    <button id="toggleAudioDownloadContainer_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('audioDownloadContainer', this)">Audio Download ❌</button>
     <button id="toggleTextRecordArea_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('textRecordArea', this)">Text Record 🟢</button>
   </div>
 
@@ -2974,7 +2974,7 @@ audioDownload<!DOCTYPE html>
     }
   </style>
 
-  <span id="audioDownloadContainer">
+  <span id="audioDownloadContainer" style="display:none">
     <a id="audioDownloadWidget" download style="display:none"> MS Audio Download </a>
 
     <table style="margin-bottom:3px;">
