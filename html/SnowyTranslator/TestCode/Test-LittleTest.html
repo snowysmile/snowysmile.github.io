@@ -4,15 +4,225 @@
     <title>Responsive Table</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
-  <script>
-    const html = '<ruby> きらきら</ruby> <ruby> 光る <rt>ひかる</rt></ruby>、<ruby> お</ruby> <ruby> 空 <rt>そら</rt></ruby> <ruby> の</ruby> <ruby> 星 <rt>ほし</rt></ruby> <ruby> よ</ruby>';
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
 
-    function getRubyText(html) {
-      const cleanedText = html.replace(/<\/?ruby>/g, '').replace(/<rt>.*?<\/rt>/g, '');
-      return cleanedText.replace(/\s+/g, ' ');
+  table {
+    border-collapse: collapse;
+    width: 80%;
+    max-width: 800px;
+    border: 1px solid #ccc;
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ccc;
+  }
+</style>
+<body>
+  <table>
+    <tr>
+      <th>Header 11111111111111</th>
+      <th>Header 2</th>
+      <th>Header 3</th>
+    </tr>
+    <tr>
+      <td>Data 1</td>
+      <td>Data 2</td>
+      <td>Data 3</td>
+    </tr>
+    <tr>
+      <td>Data 4</td>
+      <td>Data 5</td>
+      <td>Data 6</td>
+    </tr>
+  </table>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <div id="audioDownloadContainer">
+    <a id="ggAudioDownload" download> GG Download Audio </a>
+    <a id="msAudioDownload" download> MS Download Audio </a>
+
+    <table style="margin-bottom:5px;">
+      <tr>
+        <td>
+          <button id="addAudioDownloadColumnButton" onclick="addAudioDownloadColumn()"> + </button>
+        </td>
+        <td>
+          <textarea id="audioDownloadInputTextArea" rows="2" cols="65"></textarea>
+        </td>
+        <td>
+          <button onclick="tableTextSplit()">GO</button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          1
+        </td>
+        <td>
+          2
+        </td>
+        <td>
+          3
+        </td>
+      </tr>
+    </table>
+
+    <table id="audioDownloadTable" >
+    </table>
+
+  </span>
+
+  <script>
+    function tableTextSplit() {
+      for (let i = 0; i < audioDownloadTopColumn; i++) {
+        audioDownloadSplitTextAreas[i].value = "";
+      }
+      var lines = audioDownloadInputTextArea.value.split('\n');
+      for (let i = 0; i < lines.length; i++) {
+        var segments = lines[i].split('\t');
+        for (let j = 0; j < segments.length; j++) {
+          audioDownloadSplitTextAreas[j].value += segments[j] + '\n';
+        }
+      }
     }
-    console.log(getRubyText(html));
+
+    const optionsByLanguage = {
+      "ja":
+      `<select id="azureVoiceSelect-Japanese" onchange="updateAzureVoice(0)">
+          <option value="ja-JP-NanamiNeural">Nanami</option>
+          <option value="ja-JP-KeitaNeural">Keita</option>
+          <option value="ja-JP-AoiNeural">Aoi</option>
+          <option value="ja-JP-DaichiNeural">Daichi</option>
+          <option value="ja-JP-MayuNeural">Mayu</option>
+          <option value="ja-JP-NaokiNeural">Naoki</option>
+          <option value="ja-JP-ShioriNeural">Shiori</option>
+        </select>
+      `,
+      "en":
+      `<select id="azureVoiceSelect-English" onchange="updateAzureVoice(1)">
+        <option value="en-US-JennyMultilingualNeural">Jenny Multilingual</option>
+        <option value="en-US-JennyNeural">Jenny</option>
+        <option value="en-US-GuyNeural">Guy</option>
+        <option value="en-US-AriaNeural">Aria</option>
+        <option value="en-US-DavisNeural">Davis</option>
+        <option value="en-US-AmberNeural">Amber</option>
+        <option value="en-US-AnaNeural">Ana</option>
+        <option value="en-US-AshleyNeural">Ashley</option>
+        <option value="en-US-BrandonNeural">Brandon</option>
+        <option value="en-US-ChristopherNeural">Christopher</option>
+        <option value="en-US-CoraNeural">Cora</option>
+        <option value="en-US-ElizabethNeural">Elizabeth</option>
+        <option value="en-US-EricNeural">Eric</option>
+        <option value="en-US-JacobNeural">Jacob</option>
+        <option value="en-US-JaneNeural">Jane</option>
+        <option value="en-US-JasonNeural">Jason</option>
+        <option value="en-US-JennyMultilingualV2Neural">Jenny Multilingual V2</option>
+        <option value="en-US-MichelleNeural">Michelle</option>
+        <option value="en-US-MonicaNeural">Monica</option>
+        <option value="en-US-NancyNeural">Nancy</option>
+        <option value="en-US-RogerNeural">Roger</option>
+        <option value="en-US-RyanMultilingualNeural">Ryan Multilingual</option>
+        <option value="en-US-SaraNeural">Sara</option>
+        <option value="en-US-SteffanNeural">Steffan</option>
+        <option value="en-US-TonyNeural">Tony</option>
+        <option value="en-US-AIGenerate1Neural">AIGenerate1</option>
+        <option value="en-US-AIGenerate2Neural">AIGenerate2</option>
+        <option value="en-US-BlueNeural">Blue</option>
+      </select>`,
+      "zh-TW":
+      `<select id="azureVoiceSelect-Chinese" onchange="updateAzureVoice(2)">
+        <option value="zh-TW-HsiaoChenNeural">HsiaoChen</option>
+        <option value="zh-TW-YunJheNeural">YunJhe</option>
+        <option value="zh-TW-HsiaoYuNeural">HsiaoYu</option>
+        <option value="zh-CN-XiaoxiaoNeural">Xiaoxiao</option>
+        <option value="zh-CN-YunxiNeural">Yunxi</option>
+        <option value="zh-CN-YunjianNeural">Yunjian</option>
+        <option value="zh-CN-XiaoyiNeural">Xiaoyi</option>
+        <option value="zh-CN-YunyangNeural">Yunyang</option>
+        <option value="zh-CN-XiaochenNeural">Xiaochen</option>
+        <option value="zh-CN-XiaohanNeural">Xiaohan</option>
+        <option value="zh-CN-XiaomengNeural">Xiaomeng</option>
+        <option value="zh-CN-XiaomoNeural">Xiaomo</option>
+        <option value="zh-CN-XiaoqiuNeural">Xiaoqiu</option>
+        <option value="zh-CN-XiaoruiNeural">Xiaorui</option>
+        <option value="zh-CN-XiaoshuangNeural">Xiaoshuang</option>
+        <option value="zh-CN-XiaoxuanNeural">Xiaoxuan</option>
+        <option value="zh-CN-XiaoyanNeural">Xiaoyan</option>
+        <option value="zh-CN-XiaoyouNeural">Xiaoyou</option>
+        <option value="zh-CN-XiaozhenNeural">Xiaozhen</option>
+        <option value="zh-CN-YunfengNeural">Yunfeng</option>
+        <option value="zh-CN-YunhaoNeural">Yunhao</option>
+        <option value="zh-CN-YunxiaNeural">Yunxia</option>
+        <option value="zh-CN-YunyeNeural">Yunye</option>
+        <option value="zh-CN-YunzeNeural">Yunze</option>
+      </select>`
+    }
+    function updateVoiceOptions(languageSelect, voiceSelect, voiceLanguage="") {
+      if (voiceLanguage) {
+        languageSelect.value = voiceLanguage;
+      }
+      voiceSelect.innerHTML = optionsByLanguage[languageSelect.value];
+    }
+    var audioDownloadTopColumn = 10;
+    var audioDownloadCurrentColumn = 0;
+    var audioDownloadColumns = [];
+    var audioDownloadLanguageSelects;
+    var audioDownloadVoiceSelects;
+    function initAudioDownloadColumns() {
+      for (let i = 0; i < audioDownloadTopColumn; i ++) {
+        const newRow = document.createElement("tr");
+        newRow.style.display = "none";
+        newRow.innerHTML = `
+          <td>
+            <select id="audioDownloadLanguageSelect${i}" onchange="updateVoiceOptions(this, this.parentNode.nextElementSibling.querySelector('select'))">
+              <option value="ja">🇯🇵</option>
+              <option value="en">🇺🇸</option>
+              <option value="zh-TW">🇹🇼</option>
+            </select>
+          </td>
+          <td>
+            <select id="audioDownloadVoiceSelect${i}">
+            </select>
+          </td>
+          <td>
+            <textarea id="audioDownloadSplitTextArea${i}" rows="2" cols="65"></textarea>
+          </td>
+        `;
+        audioDownloadTable.appendChild(newRow);
+        audioDownloadColumns.push(newRow);
+      }
+      audioDownloadLanguageSelects = document.querySelectorAll('[id^="audioDownloadLanguageSelect"]');
+      audioDownloadVoiceSelects = document.querySelectorAll('[id^="audioDownloadVoiceSelect"]');
+      audioDownloadSplitTextAreas = document.querySelectorAll('[id^="audioDownloadSplitTextArea"]');
+      audioDownloadVoiceSelects.forEach(select => {
+        select.innerHTML = optionsByLanguage["ja"];
+      });
+    }
+    function addAudioDownloadColumn(audioLanguage="") {
+      if (audioDownloadCurrentColumn + 1 >= audioDownloadTopColumn) return;
+      audioDownloadColumns[audioDownloadCurrentColumn].style.display = "table-row";
+      if (audioLanguage) {
+        updateVoiceOptions(audioDownloadLanguageSelects[audioDownloadCurrentColumn], audioDownloadVoiceSelects[audioDownloadCurrentColumn], audioLanguage);
+      }
+      audioDownloadCurrentColumn +=1;
+    }
+    initAudioDownloadColumns();
+    addAudioDownloadColumn("ja");
+    addAudioDownloadColumn("en");
+    addAudioDownloadColumn("ja");
+
   </script>
 </body>
 
