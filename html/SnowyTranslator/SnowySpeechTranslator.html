@@ -243,6 +243,9 @@
         max-width: 96%;
         width: 96%;
       }
+      .phone-only {
+        display: none;
+      }
     }
     @media screen and (max-width: 600px) {
       textarea {
@@ -699,7 +702,7 @@
     <button id="toggleLanguageSelects_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('languageSelectsContainer', this)">Lang Selects 🟢</button>
     <button id="toggleVoiceSelects_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('VoiceSelectsContainer', this)">Voice Selects 🟢</button>
     <button id="toggleGlobalValues_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('globalValuesContainer', this)">Global Values 🟢</button>
-    <button id="toggleAudioDownloadContainer_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('audioDownloadContainer', this)">Audio Download ❌</button>
+    <button class="phone-only" id="toggleAudioDownloadContainer_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('audioDownloadContainer', this)">Audio Download ❌</button>
     <button id="toggleTextRecordArea_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('textRecordArea', this)">Text Record 🟢</button>
   </div>
 
@@ -1358,6 +1361,17 @@
   </script>
 
   <script>
+    function languageShotkey(language) {
+      if (recognitionLanguageSelect.value === language) {
+        stopRecognitionComplete(language);
+      }
+      else {
+        recognitionLanguageSelect.value = language;
+        if (isRecognizing) {
+          recognizeRestart(sourceLanguage, language);
+        }
+      }
+    }
     document.addEventListener("keydown", function(event) {
       if (event.ctrlKey && event.key === "ArrowLeft") {
         event.preventDefault();
@@ -1369,24 +1383,15 @@
       }
       else if (event.shiftKey && event.key === "J") {
         event.preventDefault();
-        recognitionLanguageSelect.value = "ja";
-        if (isRecognizing) {
-          recognizeRestart(sourceLanguage, "ja");
-        }
+        languageShotkey("ja");
       }
       else if (event.shiftKey && event.key === "E") {
         event.preventDefault();
-        recognitionLanguageSelect.value = "en";
-        if (isRecognizing) {
-          recognizeRestart(sourceLanguage, "en");
-        }
+        languageShotkey("en");
       }
       else if (event.shiftKey && event.key === "T") {
         event.preventDefault();
-        recognitionLanguageSelect.value = "zh-TW";
-        if (isRecognizing) {
-          recognizeRestart(sourceLanguage, "zh-TW");
-        }
+        languageShotkey("zh-TW");
       }
       else if (event.shiftKey && event.key === "S") {
         event.preventDefault();

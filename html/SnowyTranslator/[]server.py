@@ -109,13 +109,19 @@ def eng_to_jpn(c):
         return eng_to_jpn_map[c]
     return c
 
+def str_en_to_jpn(text):
+    rtn = ""
+    for c in text:
+        rtn += eng_to_jpn(c)
+    return rtn
+
 def only_japanese(text):
     ans_text = ""
     pos = 0
     is_japanese = True
     while pos < len(text):
         c = text[pos]
-        c = eng_to_jpn(c)
+        # c = eng_to_jpn(c)
         if is_not_japanese_character(c):
             if is_japanese:
                 ans_text += " "
@@ -129,8 +135,9 @@ def only_japanese(text):
 async def ichimoe_japanese_furigana(text):
     textPos = 0
     inner_html = ""
+    text = str_en_to_jpn(text)
     try:
-        url = f"https://ichi.moe/cl/qr/?q={only_japanese(text)}"
+        url = f"https://ichi.moe/cl/qr/?q={text}"
         async with aiohttp.ClientSession() as session:
             async with session.get(url) as response:
                 soup = BeautifulSoup(await response.read(), 'html.parser')
