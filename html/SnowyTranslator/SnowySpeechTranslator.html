@@ -2552,6 +2552,7 @@ audioDownload<!DOCTYPE html>
         strokeTexts[id][layer].style.webkitTextStrokeColor = darkModeToggleButton.innerHTML !== "🌜" ? configs[autoSID].textStrokeColors[id][layer] : darkModeStrokeColor; // updateStrokeColor
         strokeTexts[id][layer].style.webkitTextStrokeWidth = darkModeToggleButton.innerHTML !== "🌜" ? configs[autoSID].textStrokeWidths[id][layer] : darkModeStrokeWidth; // updateStrokeWidth
       }
+      adjustSpeechTextAreaHeight();
       saveTextConfigStorage(autoSID);
     }
     function copyText(id) {
