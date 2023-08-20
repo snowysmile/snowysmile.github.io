@@ -9,11 +9,6 @@ import ssl
 import os
 import re
 
-IS_DEBUG = False
-def debug_print(text):
-    if IS_DEBUG:
-        print(text)
-
 # app = Flask(__name__, template_folder='.')
 app = Flask(__name__, template_folder=os.path.expanduser('~/snowy-server/html/'), static_url_path='/static', static_folder=os.path.expanduser('~/snowy-server/html/static'))
 CORS(app)
@@ -34,7 +29,7 @@ def process():
 @app.route('/furigana', methods=['POST'])
 def process_furigana():
     text = request.json.get('text')
-    print(f"process_furigana text: [{text}]")
+    print("process_furigana text:", text)
     loop = asyncio.new_event_loop()
     result = loop.run_until_complete(ichimoe_japanese_furigana(text))
     loop.close()
@@ -138,6 +133,7 @@ def only_japanese(text):
     return ans_text
 
 async def ichimoe_japanese_furigana(text):
+    textPos = 0
     inner_html = ""
     text = str_en_to_jpn(text)
     try:
@@ -147,26 +143,27 @@ async def ichimoe_japanese_furigana(text):
                 soup = BeautifulSoup(await response.read(), 'html.parser')
         row_gloss_rows = soup.find_all('div', class_='row gloss-row')
 
-        textPos = 0
         for row_gloss_row in row_gloss_rows:
             glosses = row_gloss_row.find_all('div', class_='gloss')
             for i in range(len(glosses)):
                 gloss = glosses[i]
-                word = gloss.find('dt').get_text() #.strip()
+                word = gloss.find('dt').get_text()
                 word = word.replace("1. ", "")
                 word = word.replace("【", "<rt>")
                 word = word.replace("】", "</rt>")
                 word = str_en_to_jpn(word)
-                debug_print(f"hiragana word: [{word}]")
-                debug_print(f"remanent text: [{text[textPos:]}]")
+                # print(f"hiragana word:[{word}]")
 
+                result = ""
                 wordPos = 0
                 # 1: pre_extra_string
-                result = " "
-                while textPos < len(text) and text[textPos] != word[0]: #is_not_japanese_character(text[textPos]):
-                    result += text[textPos]
-                    textPos += 1
-                debug_print(f"prefix word: [{result}]")
+                if wordPos < len(word) and not word[wordPos].isspace() and text[textPos] != word[wordPos]:
+                    # print(f"text[textPos]: {text[textPos]}; word[wordPos]: {word[wordPos]}")
+                    extra_string = ""
+                    while textPos < len(text) and text[textPos] != word[wordPos]: #is_not_japanese_character(text[textPos]):
+                        extra_string += text[textPos]
+                        textPos += 1
+                    result += extra_string
                 #2: furigana_string
                 while textPos < len(text) and wordPos < len(word) and text[textPos] == word[wordPos]:
                     textPos += 1
@@ -174,17 +171,21 @@ async def ichimoe_japanese_furigana(text):
                 # 1: only word[wordPos] is Japanese ❌
                 # 2: only text[textPos] is Japanese [word is over, go to next]
                 # 3: both are not Japanese [word is over, text is punctuation]
-                result += "<ruby> " + word + " </ruby> "
-                debug_print(f"finished word: [{result}]\n")
+                result += " <ruby> " + word + " </ruby> "
+                #3 suf_extra_string:
+                if wordPos < len(word) and not word[wordPos].isspace() and text[textPos] != word[wordPos]:
+                    # print(f"text[textPos]: {text[textPos]}; word[wordPos]: {word[wordPos]}")
+                    extra_string = ""
+                    while textPos < len(text) and text[textPos] != word[wordPos]: #is_not_japanese_character(text[textPos]):
+                        extra_string += text[textPos]
+                        textPos += 1
+                    result += extra_string + " "
+                # print("finished word:", result, "\n")
                 inner_html += result
-
-        while textPos < len(text):  # is_not_japanese_character(text[textPos]):
-            inner_html += text[textPos]
-            textPos += 1
         # print("inner_html:", inner_html)
         return inner_html
     except Exception as e:
-        return f"japanese_furigana: an error occurred: {str(e)}"
+        return f"japanese_split: an error occurred: {str(e)}"
 
 async def detect_language(text):
     print("detect_language() text:", text)

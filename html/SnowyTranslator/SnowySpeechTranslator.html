@@ -2193,6 +2193,10 @@
         if ((detectedLanguage === "zh-CN" || detectedLanguage === "zh-TW") && confidence < 0.93) {
           detectedLanguage = "ja";
         }
+        console.log("!detectedLanguage:", detectedLanguage);
+        if (detectedLanguage === "und") {
+          detectedLanguage = "en";
+        }
         return detectedLanguage;
       } catch (error) {
         console.error('ggDetectLanguage Error:', error);
