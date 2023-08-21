@@ -701,7 +701,7 @@
     <button id="toggleJpExpInputArea_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('jpExpInputArea', this)">JpExp Input ❌</button>
     <button id="toggleReadingListInputArea_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('readingListInputArea', this)">Reading Area 🟢</button>
     <button id="toggleJpExpArea_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('jpExpAreaFrame', this)">JpExp Text ❌</button>
-    <button id="toggleJpExpWebTop_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('jpExpWebTop', this)">JpExp Web (↑) ❌</button>
+    <button id="toggleJpExpWebTop_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleJpExpWebTop()">JpExp Web (↑) ❌</button>
     <button id="toggleJpExpWebBot_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('jpExpWebBot', this)">JpExp Web (↓) ❌</button>
     <button id="toggleApiKeyEditor_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('apiKeyEditor', this)">ApiKey Editor ❌‍</button>
     <button id="toggleLayoutEditor_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('layoutEditor', this)">Layout Editor ❌</button>
@@ -1822,6 +1822,15 @@
       configs[autoSID].historyTextsMaxLength = value;
       saveConfigStorage();
     }
+    function toggleJpExpWebTop() {
+      var splitPos = toggleJpExpWebTop_LayoutButton.innerHTML.lastIndexOf(' ');
+      var trigger = toggleJpExpWebTop_LayoutButton.innerHTML.substr(splitPos + 1);
+      if (trigger === "❌") {
+        window.scrollTo(0, 10);
+      }
+      toggleWidgetArea('jpExpWebTop', toggleJpExpWebTop_LayoutButton);
+    }
+
     var recognitionCountdownInterval;
     var isCountingDown;
     function recognitionCountdown() {
