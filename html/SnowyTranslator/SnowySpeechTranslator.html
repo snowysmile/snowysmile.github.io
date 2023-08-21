@@ -1724,8 +1724,11 @@
         recognitionOverInterval_S.value = configs[autoSID].recognitionOverInterval_S;
       }
     }
-    function stopRecognitionComplete(sourceLanguage) {
+    function stopRecognitionComplete(sourceLanguage = "") {
       stopRecognition();
+      if (sourceLanguage === "") {
+        sourceLanguage = readingSelect0.value;
+      }
       if (false && isRecording) {
         isRecording = false;
         recordButton.innerHTML = "▶️ Start Recording";
@@ -1826,6 +1829,12 @@
         if (h <= 0 && m <= 0 && s <= 0 || recognitionOverIntervalToggleButton.innerText === "▶️") {
           isCountingDown = false;
           clearInterval(recognitionCountdownInterval);
+          if (isRecognizing) {
+            stopRecognitionComplete();
+            updateIntegerValue(recognitionOverInterval_H, configs[autoSID].recognitionOverInterval_H);
+            updateIntegerValue(recognitionOverInterval_M, configs[autoSID].recognitionOverInterval_M);
+            updateIntegerValue(recognitionOverInterval_S, configs[autoSID].recognitionOverInterval_S);
+          }
         }
         else {
           s -= 1;
