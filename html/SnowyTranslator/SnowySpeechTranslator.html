@@ -174,6 +174,9 @@
     #readingList {
       width: 800px;
     }
+    input::-webkit-inner-spin-button {
+      display: none;
+    }
     @media screen and (max-width: 1000px) {
       body {
         background-color: #BEE2E4;
@@ -327,6 +330,9 @@
       speechOverInterval: 3600, //ms
       speechSplitInterval: 2000, //ms
       speechClearInterval: 360000, //ms
+      recognitionOverInterval_H: "00", //hour
+      recognitionOverInterval_M: "40", //minute
+      recognitionOverInterval_S: "00", //second
       translationCount: 2,
       languages: ['ja', 'en', 'zh-TW'],
       azureVoices: ['ja-JP-AoiNeural', 'en-US-AnaNeural', 'zh-CN-XiaoyouNeural'],
@@ -1192,7 +1198,7 @@
     <tr class="row-container">
       <td style="display: flex;">
         Speech Over Interval (ms):
-        <input type="text" id="speechOverInterval" size="8" oninput="updateIntegerValue('speechOverInterval');">
+        <input type="text" id="speechOverInterval" size="8" oninput="updateIntegerValue(this);">
       </td>
       <td style="display: flex;">
          History Texts Max Length:
@@ -1207,13 +1213,20 @@
           <option value=50>50</option>
         </select>
       </td>
+      <td>
+        Recognition Over Interval:
+        <input type="number" id="recognitionOverInterval_H" maxlength="2" style="width: 18px;" oninput="updateTwoDigitsIntegerValue(this);"> h
+        <input type="number" id="recognitionOverInterval_M" maxlength="2" style="width: 18px;" oninput="updateTwoDigitsIntegerValue(this);"> m
+        <input type="number" id="recognitionOverInterval_S" maxlength="2" style="width: 18px;" oninput="updateTwoDigitsIntegerValue(this);"> s
+        <button id="recognitionOverIntervalToggleButton" style="font-size: 11px;" title="▶️ To Start Recognition's Auto Stop Function; ⏹ Is Off." onclick="toggleRecognitionOverInterval()">▶️</button>
+      </td>
       <td style="display: none;">
         Speech Split Interval (ms):
-        <input type="text" id="speechSplitInterval" size="8" oninput="updateIntegerValue('speechSplitInterval');">
+        <input type="text" id="speechSplitInterval" size="8" oninput="updateIntegerValue(this);">
       </td>
       <td style="display: none;">
         Speech Clear Interval (ms):
-        <input type="text" id="speechClearInterval" size="8" oninput="updateIntegerValue('speechClearInterval');">
+        <input type="text" id="speechClearInterval" size="8" oninput="updateIntegerValue(this);">
       </td>
     </tr>
   </table>
@@ -1361,9 +1374,14 @@
   </script>
 
   <script>
-    function languageShotkey(language) {
+    function languageShortkey(language) {
       if (recognitionLanguageSelect.value === language) {
-        stopRecognitionComplete(language);
+        if (isRecognizing) {
+          stopRecognitionComplete(language);
+        }
+        else {
+          startRecognition(language);
+        }
       }
       else {
         recognitionLanguageSelect.value = language;
@@ -1383,15 +1401,15 @@
       }
       else if (event.shiftKey && event.key === "J") {
         event.preventDefault();
-        languageShotkey("ja");
+        languageShortkey("ja");
       }
       else if (event.shiftKey && event.key === "E") {
         event.preventDefault();
-        languageShotkey("en");
+        languageShortkey("en");
       }
       else if (event.shiftKey && event.key === "T") {
         event.preventDefault();
-        languageShotkey("zh-TW");
+        languageShortkey("zh-TW");
       }
       else if (event.shiftKey && event.key === "S") {
         event.preventDefault();
@@ -1518,8 +1536,12 @@
 
       var recognitionTimestamp = 0;
       var isRecognizationSuspended = false;
+
       recognition.onstart = () => {
         console.log("onstart:", recognitionTimestamp);
+        if (recognitionOverIntervalToggleButton.innerText === '⏹' && oneSentenceRecognizeToggleButton.innerHTML === '〜' && !isCountingDown) {
+          recognitionCountdown();
+        }
       }
       recognition.onaudiostart = () => {
         // console.log("onaudiostart:", recognitionTimestamp);
@@ -1648,7 +1670,7 @@
       recognition.start();
       recognitionTimestamp = recognitionTimestamp + 1;
       isRecognizing = true;
-      recognizeButton.innerHTML = "⏹️ Stop Recognizing";
+      recognizeButton.innerHTML = "⏹ Stop Recognizing";
     }
     function stopRecognition() {
       if (recognition) {
@@ -1656,11 +1678,18 @@
         console.log("🛑 stopRecognition(): isRecognizing => false");
       }
       isRecognizing = false;
-      recognizeButton.innerHTML = "▶️ Start Recognizing"
+      recognizeButton.innerHTML = "▶️ Start Recognizing";
+      if (recognitionOverIntervalToggleButton.innerText === "⏹") {
+        isCountingDown = false;
+        clearInterval(recognitionCountdownInterval);
+        recognitionOverInterval_H.value = configs[autoSID].recognitionOverInterval_H;
+        recognitionOverInterval_M.value = configs[autoSID].recognitionOverInterval_M;
+        recognitionOverInterval_S.value = configs[autoSID].recognitionOverInterval_S;
+      }
     }
     function stopRecognitionComplete(sourceLanguage) {
       stopRecognition();
-      if (isRecording) {
+      if (false && isRecording) {
         isRecording = false;
         recordButton.innerHTML = "▶️ Start Recording";
       }
@@ -1678,9 +1707,9 @@
       }
       else {
         startRecognition(targetLanguage);
-        if (!isRecording) {
+        if (false && !isRecording) {
           isRecording = true;
-          recordButton.innerHTML = "⏹️ Stop Recording";
+          recordButton.innerHTML = "⏹ Stop Recording";
         }
       }
     }
@@ -1702,7 +1731,7 @@
       }
       else {
         isRecording = true;
-        recordButton.innerHTML = "⏹️ Stop Recording";
+        recordButton.innerHTML = "⏹ Stop Recording";
       }
     }
     function toggleTextFurigana() {
@@ -1748,7 +1777,59 @@
       configs[autoSID].historyTextsMaxLength = value;
       saveConfigStorage();
     }
-
+    var recognitionCountdownInterval;
+    var isCountingDown;
+    function recognitionCountdown() {
+      isCountingDown = true;
+      let h = 0, m = 0, s = 0;
+      if (recognitionOverInterval_H.value) h = parseInt(recognitionOverInterval_H.value, 10);
+      if (recognitionOverInterval_M.value) m = parseInt(recognitionOverInterval_M.value, 10);
+      if (recognitionOverInterval_S.value) s = parseInt(recognitionOverInterval_S.value, 10);
+      recognitionCountdownInterval = setInterval(function() {
+        if (h <= 0 && m <= 0 && s <= 0 || recognitionOverIntervalToggleButton.innerText === "▶️") {
+          isCountingDown = false;
+          clearInterval(recognitionCountdownInterval);
+        }
+        else {
+          s -= 1;
+          if (s < 0) {
+            s += 60; m -= 1;
+            if (m < 0) {
+              m += 60; h -= 1;
+            }
+          }
+          recognitionOverInterval_H.value = String(h).padStart(2, "0");
+          recognitionOverInterval_M.value = String(m).padStart(2, "0");
+          recognitionOverInterval_S.value = String(s).padStart(2, "0");
+        }
+      }, 1000);
+    }
+    function toggleRecognitionOverInterval() {
+      recognitionOverIntervalToggleButton.innerText = recognitionOverIntervalToggleButton.innerText === "▶️" ? "⏹" : "▶️";
+      clearInterval(recognitionCountdownInterval);
+      if (recognitionOverIntervalToggleButton.innerText === "⏹") {
+        isCountingDown = false;
+        let h = 0, m = 0, s = 0;
+        if (recognitionOverInterval_H.value) h = parseInt(recognitionOverInterval_H.value, 10);
+        if (recognitionOverInterval_M.value) m = parseInt(recognitionOverInterval_M.value, 10);
+        if (recognitionOverInterval_S.value) s = parseInt(recognitionOverInterval_S.value, 10);
+        m += Math.floor(s / 60); s %= 60;
+        h += Math.floor(s / 60); m %= 60;
+        recognitionOverInterval_H.value = String(h).padStart(2, "0");
+        recognitionOverInterval_M.value = String(m).padStart(2, "0");
+        recognitionOverInterval_S.value = String(s).padStart(2, "0");
+        updateIntegerValue(recognitionOverInterval_H);
+        updateIntegerValue(recognitionOverInterval_M);
+        updateIntegerValue(recognitionOverInterval_S);
+      }
+    }
+    function updateTwoDigitsIntegerValue(inputArea) {
+      if (inputArea.value.length > 2) {
+        inputArea.value = inputArea.value.slice(0, 2);
+      }
+      inputArea.value = String(inputArea.value).padStart(2, "0");
+      updateIntegerValue(inputArea);
+    }
     function getFormattedTime() {
       const date = new Date();
       const year = date.getFullYear().toString().slice(-2);
@@ -1993,7 +2074,7 @@
         let msSpeakReadingListItemButton = document.createElement('button');
         msSpeakReadingListItemButton.textContent = 'M';
         let removeReadingListItemButton = document.createElement('button');
-        removeReadingListItemButton.fontSize = "99px";
+        removeReadingListItemButton.style.fontSize = "11px";
         removeReadingListItemButton.textContent = '⛔';
 
         let buttonContainer =  document.createElement('span');
@@ -2193,7 +2274,6 @@
         if ((detectedLanguage === "zh-CN" || detectedLanguage === "zh-TW") && confidence < 0.93) {
           detectedLanguage = "ja";
         }
-        console.log("!detectedLanguage:", detectedLanguage);
         if (detectedLanguage === "und") {
           detectedLanguage = "en";
         }
@@ -2703,10 +2783,9 @@
       saveConfigStorage();
     }
     function updateIntegerValue(intervalInput, value=-1) {
-      var intervalInputElement = document.getElementById(intervalInput);
-      if (value === -1) value = intervalInputElement.value;
-      else intervalInputElement.value = value;
-      configs[autoSID][intervalInputElement.id] = value;
+      if (value === -1) value = intervalInput.value;
+      else intervalInput.value = value;
+      configs[autoSID][intervalInput.id] = value;
       saveConfigStorage();
     }
     function updateLanguage(id, value="") {
@@ -2765,9 +2844,12 @@
       updatePageColor(configs[configID].pageColor);
       updateCurtainColor(configs[configID].curtainColor);
       updateCurtainHeight(configs[configID].curtainHeight);
-      updateIntegerValue("speechOverInterval", configs[configID].speechOverInterval);
-      updateIntegerValue("speechSplitInterval", configs[configID].speechSplitInterval);
-      updateIntegerValue("speechClearInterval", configs[configID].speechClearInterval);
+      updateIntegerValue(speechOverInterval, configs[configID].speechOverInterval);
+      updateIntegerValue(speechSplitInterval, configs[configID].speechSplitInterval);
+      updateIntegerValue(speechClearInterval, configs[configID].speechClearInterval);
+      updateIntegerValue(recognitionOverInterval_H, configs[configID].recognitionOverInterval_H);
+      updateIntegerValue(recognitionOverInterval_M, configs[configID].recognitionOverInterval_M);
+      updateIntegerValue(recognitionOverInterval_S, configs[configID].recognitionOverInterval_S);
       toggleTranslationCount(configs[configID].translationCount);
       toggleHistoryTextsMaxLength(configs[configID].historyTextsMaxLength);
 
@@ -3187,19 +3269,19 @@
       <button id="speechList_LayoutButton" style="margin-bottom:5px;" onclick="toggleWidgetArea('speechListArea', this)">Speech List ❌</button>
     </span>
 
-    <span id="readingListArea" style="display:none;">
-      <button style="margin-bottom:8px;" onclick="clearReadingList()">Clear - Reading List 🆑</button>
+    <span id="readingListArea" style="display:none; margin-bottom:8px;">
+      <button style="font-size: 8px; margin-bottom:8px;" onclick="clearReadingList()">Clear - Reading List 🆑</button>
       <ul id="readingList"></ul>
       <span id="readingListTotalCount"></span>
     </span>
 
-    <span id="favoriteTableArea" style="display:none;">
-      <button style="margin-bottom:8px;" onclick="clearFavoriteList()">Clear - Favorite List 🆑</button>
+    <span id="favoriteTableArea" style="display:none; margin-bottom:8px;">
+      <button style="font-size: 8px; margin-bottom:8px;" onclick="clearFavoriteList()">Clear - Favorite List 🆑</button>
       <table id="favoriteTable"></table>
     </span>
 
-    <span id="speechListArea" style="display:none">
-      <button style="margin-bottom:8px;" onclick="clearSpeechList()">Clear - Speech List 🆑</button>
+    <span id="speechListArea" style="display:none; margin-bottom:8px;">
+      <button style="font-size: 8px; margin-bottom:8px;" onclick="clearSpeechList()">Clear - Speech List 🆑</button>
       <ul id="speechList" style="text-align: left; list-style-type:decimal;"></ul>
       <span id="speechListTotalCount"></span>
     </span>
