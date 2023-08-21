@@ -517,7 +517,7 @@
       <td class="button-title">
         <span>
           <button id="recognize-button" onclick="toggleRecognition(this.parentNode.parentNode.querySelector('select').value)" style="width: 128px; font-size:10px;" >▶️ Start Recognizing</button>
-            <select id="recognitionLanguageSelect" onchange="recognizeRestart(this.value)">
+            <select id="recognitionLanguageSelect" onchange="recognizeChange(this.value)">
               <option value="ja" selected>🇯🇵</option>
               <option value="en">🇺🇸</option>
               <option value="zh-TW">🇹🇼</option>
@@ -1751,6 +1751,11 @@
           isRecording = true;
           recordButton.innerHTML = "⏹ Stop Recording";
         }
+      }
+    }
+    function recognizeChange(targetLanguage) {
+      if (isRecognizing) {
+        toggleRecognition(sourceLanguage, targetLanguage);
       }
     }
     function recognizeRestart(sourceLanguage, targetLanguage="") {
