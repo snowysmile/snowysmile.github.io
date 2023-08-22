@@ -1416,7 +1416,6 @@
         toggleRecognition(recognitionLanguageSelect.value);
       }
       else if (event.shiftKey && event.key === "~") {
-        event.preventDefault();
         toggleOneSentenceRecognize(oneSentenceRecognizeToggleButton);
       }
       else if (event.shiftKey && event.key === "G") {
@@ -1428,12 +1427,9 @@
         msSpeakAllScreenText();
       }
       else if (event.shiftKey && event.key === "!") {
-        console.log("! shift + 1");
-        event.preventDefault();
         msSpeak(texts[0].textContent, readingSelect0.value);
       }
       else if (event.shiftKey && event.key === "@") {
-        event.preventDefault();
         msSpeak(texts[1].textContent, readingSelect1.value);
       }
       else if (event.shiftKey && event.key === "A") {
@@ -1446,7 +1442,6 @@
     });
     document.addEventListener("keydown", async function(event) {
       if (event.shiftKey && event.key === "#") {
-        event.preventDefault();
         msAudioListTmp = [];
         await addToMsReadingList(msAudioListTmp, 2);
         await msSpeakReadingList(msAudioListTmp, 1);
