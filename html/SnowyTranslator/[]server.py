@@ -234,7 +234,7 @@ async def fetch_IPA(text):
             else:
                 inner_html += text[textPos]
                 textPos += 1
-        print("inner_html:", inner_html)
+        # print("inner_html:", inner_html)
         return inner_html
     except Exception as e:
         print("error:", e)
@@ -262,7 +262,7 @@ async def detect_language(text):
 if __name__ == '__main__':
     context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
 
-    running_on_server = False
+    running_on_server = True
     if running_on_server:
         current_path = os.path.abspath(__file__)
         current_dir = os.path.dirname(current_path)
