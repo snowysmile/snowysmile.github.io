@@ -278,7 +278,7 @@ async def fetch_pinyin(text):
         pinyinId = 0
         while textPos < len(text):
             if pinyinId < len(pinyins) and is_chinese_kanji(text[textPos]):
-                inner_html += f"<ruby>&nbsp;{text[textPos]}&nbsp; <rt>&nbsp;{pinyins[pinyinId]}&nbsp;</rt> </ruby>"
+                inner_html += f"<ruby>&nbsp;{text[textPos]} <rt>&nbsp;{pinyins[pinyinId]}</rt> </ruby>"
                 pinyinId += 1
                 textPos += 1
             else:
