@@ -8,6 +8,7 @@ import asyncio
 import ssl
 import os
 import re
+import unicodedata
 
 IS_DEBUG = False
 def debug_print(text):
@@ -188,42 +189,32 @@ async def ichimoe_japanese_furigana(text):
 
 
 @app.route('/englishIpa', methods=['POST'])
-def process_ipa():
+def process_english_ipa():
     text = request.json.get('text')
-    print(f"process_ipa() text: [{text}]")
+    print(f"process_english_ipa() text: [{text}]")
     loop = asyncio.new_event_loop()
-    result = loop.run_until_complete(fetch_IPA(text))
+    result = loop.run_until_complete(fetch_english_IPA(text))
     loop.close()
     return result
 
 
-async def fetch_IPA(text):
+async def fetch_english_IPA(text):
     try:
-        url = "https://tophonetics.com/"
+        url = "https://www.purpleculture.net/chinese-pinyin-converter"
         form_data = {
-            "text_to_transcribe": text,
-            "submit": "Show transcription",
-            "output_style": "inline",
-            "output_dialect": "am",
+            "wdqchs": input_text
         }
 
         async with aiohttp.ClientSession() as session:
             async with session.post(url, data=form_data) as response:
-                inner_html = ""
                 soup = BeautifulSoup(await response.read(), 'html.parser')
-                transcr_output_element = soup.find(id="transcr_output")
-                transcribed_word_elements = transcr_output_element.find_all("span", class_="transcribed_word")
-                words = []
-                ipas = []
-                for transcribed in transcribed_word_elements:
-                    parent_div = transcribed.find_parent("div", class_="inline_ipa")
-                    if parent_div:
-                        inline_orig = parent_div.find_previous_sibling("div", class_="inline_orig")
-                        if inline_orig:
-                            # print(f"{inline_orig.text.strip()}: {transcribed.text.strip()}")
-                            words.append(inline_orig.text.strip())
-                            ipas.append(transcribed.text.strip())
+                annoatedtext_element = soup.find(id="annoatedtext")
+                pinyin_elements = annoatedtext_element.find_all("span", class_="pinyin")
+                pinyins = []
+                for pinyin in pinyin_elements:
+                    pinyins.append(pinyin.text.strip())
 
+        inner_html = ""
         textPos = 0
         wordId = 0
         while textPos < len(text):
@@ -238,10 +229,60 @@ async def fetch_IPA(text):
         return inner_html
     except Exception as e:
         print("error:", e)
-        return f"fetch_IPA(): an error occurred: {str(e)}"
+        return f"fetch_english_IPA(): an error occurred: {str(e)}"
 
 
 # https://www.purpleculture.net/chinese-pinyin-converter/
+@app.route('/chinesePinyin', methods=['POST'])
+def process_pinyin():
+    text = request.json.get('text')
+    print(f"process_pinyin() text: [{text}]")
+    loop = asyncio.new_event_loop()
+    result = loop.run_until_complete(fetch_pinyin(text))
+    loop.close()
+    return result
+
+
+def is_chinese_kanji(char):
+    return 'CJK' in unicodedata.name(char, '')
+
+
+async def fetch_pinyin(text):
+    try:
+        url = "https://www.purpleculture.net/chinese-pinyin-converter"
+        form_data = {
+            "wdqchs": text,
+            "convert": "y"
+        }
+
+        async with aiohttp.ClientSession() as session:
+            async with session.post(url, data=form_data) as response:
+                soup = BeautifulSoup(await response.read(), 'html.parser')
+                annoatedtext_element = soup.find(id="annoatedtext")
+                pinyin_elements = annoatedtext_element.find_all("a", class_="pinyin")
+                pinyins = []
+                for pinyin in pinyin_elements:
+                    pinyins.append(pinyin.text.strip())
+                # print("pinyins:", pinyins)
+
+        inner_html = ""
+        textPos = 0
+        pinyinId = 0
+        while textPos < len(text):
+            if pinyinId < len(pinyins) and is_chinese_kanji(text[textPos]):
+                inner_html += f"<ruby>&nbsp;{text[textPos]}&nbsp; <rt>&nbsp;{pinyins[pinyinId]}&nbsp;</rt> </ruby>"
+                pinyinId += 1
+                textPos += 1
+            else:
+                inner_html += text[textPos]
+                textPos += 1
+        # print("inner_html:", inner_html)
+        return inner_html
+
+    except Exception as e:
+        print("error:", e)
+        return f"fetch_pinyin(): an error occurred: {str(e)}"
+
 
 async def detect_language(text):
     print("detect_language() text:", text)
@@ -262,7 +303,7 @@ async def detect_language(text):
 if __name__ == '__main__':
     context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
 
-    running_on_server = True
+    running_on_server = False
     if running_on_server:
         current_path = os.path.abspath(__file__)
         current_dir = os.path.dirname(current_path)

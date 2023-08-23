@@ -316,7 +316,9 @@
               // Up above the world so high, Like a diamond in the sky.
               // 掛在天上放光明，好像許多小眼睛。
               // "1234567890 !@#$%^&*() abcdefg ABCDEFG",
-      displayedTexts: ["<ruby> きらきら</ruby> <ruby> 光る <rt>ひかる</rt></ruby>、<ruby> お</ruby> <ruby> 空 <rt>そら</rt></ruby> <ruby> の</ruby> <ruby> 星 <rt>ほし</rt></ruby> <ruby> よ</ruby>。", "<ruby>Twinkle <rt>ˈtwɪŋkəl</rt> </ruby>, <ruby>twinkle <rt>ˈtwɪŋkəl</rt> </ruby>, <ruby>little <rt>ˈlɪtəl</rt> </ruby> <ruby>star <rt>stɑr</rt> </ruby>, <ruby>How <rt>haʊ</rt> </ruby> <ruby>I <rt>aɪ</rt> </ruby> <ruby>wonder <rt>ˈwʌndər</rt> </ruby> <ruby>what <rt>wɑt</rt> </ruby> <ruby>you <rt>ju</rt> </ruby> <ruby>are <rt>ɑr</rt> </ruby>!", ""],
+      displayedTexts: ["<ruby> きらきら</ruby> <ruby> 光る <rt>ひかる</rt></ruby>、<ruby> お</ruby> <ruby> 空 <rt>そら</rt></ruby> <ruby> の</ruby> <ruby> 星 <rt>ほし</rt></ruby> <ruby> よ</ruby>。",
+        "<ruby>Twinkle <rt>ˈtwɪŋkəl</rt> </ruby>, <ruby>twinkle <rt>ˈtwɪŋkəl</rt> </ruby>, <ruby>little <rt>ˈlɪtəl</rt> </ruby> <ruby>star <rt>stɑr</rt> </ruby>, <ruby>How <rt>haʊ</rt> </ruby> <ruby>I <rt>aɪ</rt> </ruby> <ruby>wonder <rt>ˈwʌndər</rt> </ruby> <ruby>what <rt>wɑt</rt> </ruby> <ruby>you <rt>ju</rt> </ruby> <ruby>are <rt>ɑr</rt> </ruby>!",
+        "<ruby>一 <rt>yī</rt> </ruby><ruby>閃 <rt>shǎn</rt> </ruby><ruby>一 <rt>yī</rt> </ruby><ruby>閃 <rt>shǎn</rt> </ruby><ruby>亮 <rt>liàng</rt> </ruby><ruby>晶 <rt>jīng</rt> </ruby><ruby>晶 <rt>jīng</rt> </ruby>，<ruby>滿 <rt>mǎn</rt> </ruby><ruby>天 <rt>tiān</rt> </ruby><ruby>都 <rt>dōu</rt> </ruby><ruby>是 <rt>shì</rt> </ruby><ruby>小 <rt>xiǎo</rt> </ruby><ruby>星 <rt>xīng</rt> </ruby><ruby>星 <rt>xīng</rt> </ruby>。"],
       textFontColors: ["#000000", "#000000", "#000000"],
       textFontSizes: [22, 19, 17], //px
       textFontWeights: [700, 700, 600],
@@ -349,6 +351,8 @@
       furiganaTextPos: [0, ],
       englishIpaTexts: [defaultConfig.displayedTexts[1], ],
       englishIpaTextPos: [1, ],
+      chinesePinyinTexts: [defaultConfig.displayedTexts[2], ],
+      chinesePinyinTextPos: [2, ],
     };
     defaultConfig.displayedTexts[0] = defaultConfig.texts[0];
     defaultConfig.displayedTexts[1] = defaultConfig.texts[1];
@@ -364,6 +368,8 @@
       furiganaTextPos: [],
       englishIpaTexts: [],
       englishIpaTextPos: [],
+      chinesePinyinTexts: [],
+      chinesePinyinTextPos: [],
     };
     var favTextConfig = {
       favoriteTexts: [],
@@ -472,6 +478,7 @@
     <span style="display:flex; justify-content: center; margin-bottom:5px;">
       <button id="textFuriganaToggleButton" style="font-size: 11px;" title="🔰 To Auto Mark Furigana; 💤 Is Off." onclick="toggleTextFurigana()">🔰</button>
       <button id="textEnglishIpaToggleButton" style="font-size: 11px; margin-left:3px;" title="🌱 To Auto Mark English IPA; 🍂 Is Off." onclick="toggleEnglishIpa()">🌱</button>
+      <button id="textChinesePinyinToggleButton" style="font-size: 11px; margin-left:3px;" title="🌇 To Auto Mark Chinese Pinyin; 🌃 Is Off." onclick="toggleChinesePinyin()">🌇</button>
       <button style="font-size:11px; margin-left:3px;" title="Read All Screen Text By Google." onclick="ggSpeakAllScreenText()">G</button>
       <button style="font-size:11px; margin-left:3px;" title="Read All Screen Text By Microsoft." onclick="msSpeakAllScreenText()">M</button>
       <button id="ggPauseAudio-button" style="font-size:9px; width:38px; margin-left:3px; vertical-align: middle;" onclick="ggPauseAudio()">G⏯</button>
@@ -1786,6 +1793,9 @@
     function toggleEnglishIpa() {
       textEnglishIpaToggleButton.innerText = textEnglishIpaToggleButton.innerText === "🌱" ? "🍂" : "🌱";
     }
+    function toggleChinesePinyin() {
+      textChinesePinyinToggleButton.innerText = textChinesePinyinToggleButton.innerText === "🌇" ? "🌃" : "🌇";
+    }
     function toggleTranslationCount(value=-1, clearBoolean=true) {
       if (value === -1) value = parseInt(translationCountSelect.value, 10);
       else translationCountSelect.value = value;
@@ -2442,9 +2452,9 @@
     async function speechTranslate(speechText, sourceLanguage="", isAutoDetect=false, languageSelect=undefined, willUpdateHistoryTexts=true) {
       if (!speechText) return;
       let existedTimestamp = -1;
-      let japanesePosId = -1, englishPosId = -1;
+      let japanesePosId = -1, englishPosId = -1, chinesePosId = -1;
       timeTextUpdated = fillArrayWithRandomValue([], topTranslationCount + 1, 1, 65535);
-      updateText(0, speechText, existedTimestamp, japanesePosId, englishPosId, willUpdateHistoryTexts);
+      updateText(0, speechText, existedTimestamp, japanesePosId, englishPosId, chinesePosId, willUpdateHistoryTexts);
       console.log(`🔡 speechTranslate(): speechText = ${speechText}, sourceLanguage = ${sourceLanguage}`);
       if (!sourceLanguage || isAutoDetect) {
         sourceLanguage = await autoDetectTranslate(speechText, languageSelect);
@@ -2455,6 +2465,9 @@
       }
       else if (sourceLanguage === "en") {
         englishPosId = 0;
+      }
+      else if (sourceLanguage === "zh-TW") {
+        chinesePosId = 0;
       }
       await getTargetLanguages(sourceLanguage);
       if (googleScriptKey) {
@@ -2478,7 +2491,10 @@
                   else if (targetLanguage === "en") {
                     englishPosId = i;
                   }
-                  updateText(i, xhr.responseText, existedTimestamp, japanesePosId, englishPosId, willUpdateHistoryTexts);
+                  else if (targetLanguage === "zh-TW") {
+                    chinesePosId = i;
+                  }
+                  updateText(i, xhr.responseText, existedTimestamp, japanesePosId, englishPosId, chinesePosId, willUpdateHistoryTexts);
                   resolve();
                 } else {
                   reject(new Error('Failed to finish speechTranslate()'));
@@ -2587,7 +2603,7 @@
 
     var globalDebugTimestamp = 0; // console.log(`[${globalDebugTimestamp += 1}]`);
     var displayedTextTimeStamp = -1;
-    function updateText(id, speechText, existedTimestamp, japanesePosId, englishPosId,  willUpdateHistoryTexts=true) {
+    function updateText(id, speechText, existedTimestamp, japanesePosId, englishPosId, chinesePosId, willUpdateHistoryTexts=true) {
       texts[id].innerHTML = speechText;
       configs[autoSID].texts[id] = speechText;
       updateDisplayedText(id, speechText);
@@ -2618,6 +2634,8 @@
         textConfig.furiganaTextPos.shift();
         textConfig.englishIpaTexts.shift();
         textConfig.englishIpaTextPos.shift();
+        textConfig.chinesePinyinTexts.shift();
+        textConfig.chinesePinyinTextPos.shift();
       }
       updateHistoryTextCurrentId(textConfig.historyTexts.length - 1);
       saveTextConfigStorage(autoSID);
@@ -2628,7 +2646,7 @@
         englishIpaFetchFromMyServer(texts[englishPosId].textContent)
         .then((html) => {
           console.log("🔤 Try to updateEnglishIpaText()");
-          updateEnglishIpaText(englishPosId, html, textTimeStampNow);
+          updateRubyText(englishPosId, html, textTimeStampNow);
 
           let htLength = textConfig.historyTexts.length;
           while (textConfig.englishIpaTexts.length < htLength) {
@@ -2660,7 +2678,7 @@
           japaneseExplanationFromMyServer(texts[japanesePosId].textContent)
           .then((html) => {
             console.log("🎎 Try to updateFuriganaText()");
-            updateFuriganaText(japanesePosId, html, textTimeStampNow);
+            updateRubyText(japanesePosId, html, textTimeStampNow);
 
             let htLength = textConfig.historyTexts.length;
             while (textConfig.furiganaTexts.length < htLength) {
@@ -2685,6 +2703,38 @@
           .catch((error) => console.error(error));
         }, 10);
       }
+
+      // updateChinesePinyinText
+      if (textChinesePinyinToggleButton.innerText === "🌇") {
+        // setTimeout(() => {
+        chinesePinyinFetchFromMyServer(texts[chinesePosId].textContent)
+        .then((html) => {
+          console.log("🐼 Try to updateChinesePinyinText()");
+          updateRubyText(chinesePosId, html, textTimeStampNow);
+
+          let htLength = textConfig.historyTexts.length;
+          while (textConfig.chinesePinyinTexts.length < htLength) {
+            textConfig.chinesePinyinTexts.push("");
+            textConfig.chinesePinyinTextPos.push(-1);
+          }
+          while (textConfig.chinesePinyinTexts.length > htLength) {
+            textConfig.chinesePinyinTexts.shift();
+            textConfig.chinesePinyinTextPos.shift();
+            console.log("💥chinesePinyinTexts.length > textConfig.historyTexts.length");
+          }
+          let historySearchRange = htLength > 10 ? 10 : htLength;
+          for (let i = 1; i <= historySearchRange; i++) if (textTimeStampNow == textConfig.historyTextTimestamps[htLength - i]) {
+            if (i > 1) {
+              console.log("✨ Update chinesePinyinText To History List At Distance:", i);
+            }
+            textConfig.chinesePinyinTexts[htLength - i] = html;
+            textConfig.chinesePinyinTextPos[htLength - i] = chinesePosId;
+            break;
+          }
+        })
+        .catch((error) => console.error(error));
+        // }, 10);
+      }
     }
 
     function updateHistoryTextCurrentId(pos) {
@@ -2697,16 +2747,19 @@
       // console.log(`👀 showHistoryText(${index})`);
       updateHistoryTextCurrentId(index);
       for (let i = 0; i <= translationCount; i++) {
-        let japanesePosId = -1, englishPosId = -1;
+        let japanesePosId = -1, englishPosId = -1, chinesePosId = -1;
         let willUpdateHistoryTexts = false;
-        updateText(i, textConfig.historyTexts[index][i], textConfig.historyTextTimestamps[index], japanesePosId, englishPosId, willUpdateHistoryTexts);
+        updateText(i, textConfig.historyTexts[index][i], textConfig.historyTextTimestamps[index], japanesePosId, englishPosId, chinesePosId, willUpdateHistoryTexts);
         readingSelects[i].value = textConfig.historyTextLanguages[index][i];
       }
       if (textFuriganaToggleButton.innerText === "🔰") {
-        updateFuriganaText(textConfig.furiganaTextPos[index], textConfig.furiganaTexts[index], textConfig.historyTextTimestamps[index]);
+        updateRubyText(textConfig.furiganaTextPos[index], textConfig.furiganaTexts[index], textConfig.historyTextTimestamps[index]);
       }
       if (textEnglishIpaToggleButton.innerText === "🌱") {
-        updateEnglishIpaText(textConfig.englishIpaTextPos[index], textConfig.englishIpaTexts[index], textConfig.historyTextTimestamps[index]);
+        updateRubyText(textConfig.englishIpaTextPos[index], textConfig.englishIpaTexts[index], textConfig.historyTextTimestamps[index]);
+      }
+      if (textChinesePinyinToggleButton.innerText === "🌇") {
+        updateRubyText(textConfig.chinesePinyinTextPos[index], textConfig.chinesePinyinTexts[index], textConfig.historyTextTimestamps[index]);
       }
     }
     function getRubyText(html) {
@@ -2732,30 +2785,10 @@
       const rubyTextBottomTrimmed = rubyTextBottom.replace(/\s+/g, ' ');
       return rubyTextBottomTrimmed;
     }
-    function updateFuriganaText(id, htmlText, timestamp) {
+    function updateRubyText(id, htmlText, timestamp) {
       if (id < 0 || !htmlText || typeof htmlText === "string" && htmlText.trim() === "") return;
       if (timestamp !== displayedTextTimeStamp) {
-        console.log(`🎭 timestamp(${timestamp}) !== displayedTextTimeStamp(${displayedTextTimeStamp})`);
-        return;
-      }
-      displayedTexts[id].innerHTML = htmlText;
-      displayedTexts[id].setAttribute('stroke-data', "");
-
-      for (let layer = 0; layer < 2; layer++) {
-        strokeTexts[id][layer].innerHTML = htmlText;
-        strokeTexts[id][layer].style.fontSize = displayedTexts[id].style.fontSize; // updateFontSize
-        strokeTexts[id][layer].style.fontWeight = displayedTexts[id].style.fontWeight; // updateFontWeight
-        strokeTexts[id][layer].style.fontFamily = displayedTexts[id].style.fontFamily; // updateFontFamily
-        strokeTexts[id][layer].style.webkitTextStrokeColor = darkModeToggleButton.innerHTML !== "🌜" ? configs[autoSID].textStrokeColors[id][layer] : darkModeStrokeColor; // updateStrokeColor
-        strokeTexts[id][layer].style.webkitTextStrokeWidth = darkModeToggleButton.innerHTML !== "🌜" ? configs[autoSID].textStrokeWidths[id][layer] : darkModeStrokeWidth; // updateStrokeWidth
-      }
-      adjustSpeechTextAreaHeight();
-      saveTextConfigStorage(autoSID);
-    }
-    function updateEnglishIpaText(id, htmlText, timestamp) {
-      if (id < 0 || !htmlText || typeof htmlText === "string" && htmlText.trim() === "") return;
-      if (timestamp !== displayedTextTimeStamp) {
-        console.log(`🎭 timestamp(${timestamp}) !== displayedTextTimeStamp(${displayedTextTimeStamp})`);
+        console.log(`🎭 id[${id}]: timestamp(${timestamp}) !== displayedTextTimeStamp(${displayedTextTimeStamp})`);
         return;
       }
       displayedTexts[id].innerHTML = htmlText;
@@ -2783,9 +2816,9 @@
       }
       for (let i = firstRow; i <= topRow; i++) {
         let existedTimestamp = -1;
-        let japanesePosId = -1, englishPosId = -1;
+        let japanesePosId = -1, englishPosId = -1, chinesePosId = -1;
         let willUpdateHistoryTexts = false;
-        updateText(i, "", existedTimestamp, japanesePosId, englishPosId, willUpdateHistoryTexts);
+        updateText(i, "", existedTimestamp, japanesePosId, englishPosId, chinesePosId,  willUpdateHistoryTexts);
       }
     }
     function defaultTexts(topRow=-1) {
@@ -2794,17 +2827,21 @@
       }
       for (let i = 0; i <= topRow; i++) {
         let existedTimestamp = -1;
-        let japanesePosId = -1, englishPosId = -1;
+        let japanesePosId = -1, englishPosId = -1, chinesePosId = -1;
         let willUpdateHistoryTexts = false;
-        updateText(i, defaultConfig.texts[i], existedTimestamp, japanesePosId, englishPosId, willUpdateHistoryTexts);
+        updateText(i, defaultConfig.texts[i], existedTimestamp, japanesePosId, englishPosId, chinesePosId, willUpdateHistoryTexts);
       }
       if (textFuriganaToggleButton.innerText === "🔰") {
         let textTimestamp = -1;
-        updateFuriganaText(0, defaultConfig.displayedTexts[0], textTimestamp);
+        updateRubyText(0, defaultConfig.displayedTexts[0], textTimestamp);
       }
       if (textEnglishIpaToggleButton.innerText === "🌱") {
         let textTimestamp = -1;
-        updateEnglishIpaText(1, defaultConfig.displayedTexts[1], textTimestamp);
+        updateRubyText(1, defaultConfig.displayedTexts[1], textTimestamp);
+      }
+      if (textChinesePinyinToggleButton.innerText === "🌇") {
+        let textTimestamp = -1;
+        updateRubyText(2, defaultConfig.displayedTexts[2], textTimestamp);
       }
     }
     function updateFontColor(id, color="") {
@@ -3168,6 +3205,25 @@
         return responseText;
       } catch (error) {
         console.error('englishIpaFetchFromMyServer() Error:', error);
+        return text + "🌐🚨";
+      }
+    }
+    async function chinesePinyinFetchFromMyServer(text) {
+      try {
+          const response = await fetch('http://localhost:3001/chinesePinyin', {
+          // const response = await fetch('https://snsmile.site:3001/chinesePinyin', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            text: text
+          })
+        })
+        const responseText = await response.text();
+        return responseText;
+      } catch (error) {
+        console.error('chinesePinyinFetchFromMyServer() Error:', error);
         return text + "🌐🚨";
       }
     }
