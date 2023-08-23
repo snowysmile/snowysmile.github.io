@@ -278,7 +278,7 @@ async def fetch_pinyin(text):
         pinyinId = 0
         while textPos < len(text):
             if pinyinId < len(pinyins) and is_chinese_kanji(text[textPos]):
-                inner_html += f"&nbsp;<ruby>{text[textPos]}<rt>&nbsp;{pinyins[pinyinId]}&nbsp;</rt></ruby>"
+                inner_html += f"<ruby>&nbsp;{text[textPos]}<rt>&ensp;{pinyins[pinyinId]}</rt></ruby>"
                 pinyinId += 1
                 textPos += 1
             else:
@@ -310,7 +310,7 @@ async def detect_language(text):
 if __name__ == '__main__':
     context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
 
-    running_on_server = True
+    running_on_server = False
     if running_on_server:
         current_path = os.path.abspath(__file__)
         current_dir = os.path.dirname(current_path)
