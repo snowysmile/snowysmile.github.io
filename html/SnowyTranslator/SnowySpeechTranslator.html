@@ -2831,6 +2831,7 @@
         let willUpdateHistoryTexts = false;
         updateText(i, defaultConfig.texts[i], existedTimestamp, japanesePosId, englishPosId, chinesePosId, willUpdateHistoryTexts);
       }
+      displayedTextTimeStamp = -1;
       if (textFuriganaToggleButton.innerText === "🔰") {
         let textTimestamp = -1;
         updateRubyText(0, defaultConfig.displayedTexts[0], textTimestamp);

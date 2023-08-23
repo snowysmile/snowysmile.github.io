@@ -271,7 +271,7 @@ async def fetch_pinyin(text):
                 pinyins = []
                 for pinyin in pinyin_elements:
                     pinyins.append(pinyin.text.strip())
-                print("pinyins:", pinyins)
+                # print("pinyins:", pinyins)
 
         inner_html = ""
         textPos = 0
@@ -284,7 +284,7 @@ async def fetch_pinyin(text):
             else:
                 inner_html += text[textPos]
                 textPos += 1
-        print("inner_html:", inner_html)
+        # print("inner_html:", inner_html)
         return inner_html
 
     except Exception as e:
