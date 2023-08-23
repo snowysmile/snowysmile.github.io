@@ -3154,8 +3154,8 @@
     }
     async function englishIpaFetchFromMyServer(text) {
       try {
-          const response = await fetch('http://localhost:3001/englishIpa', {
-          // const response = await fetch('https://snsmile.site:3001/englishIpa', {
+          // const response = await fetch('http://localhost:3001/englishIpa', {
+          const response = await fetch('https://snsmile.site:3001/englishIpa', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

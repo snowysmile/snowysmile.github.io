@@ -240,6 +240,9 @@ async def fetch_IPA(text):
         print("error:", e)
         return f"fetch_IPA(): an error occurred: {str(e)}"
 
+
+# https://www.purpleculture.net/chinese-pinyin-converter/
+
 async def detect_language(text):
     print("detect_language() text:", text)
 

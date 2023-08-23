@@ -1,14 +1,14 @@
 import requests
 from bs4 import BeautifulSoup
 
-"""
-url = "https://tophonetics.com/"
+url = "https://www.purpleculture.net/chinese-pinyin-converter/?session=a953d9ca8636adaaa8c5198c02c591ce/"
 response = requests.get(url)
-soup = BeautifulSoup(response.content, "html.parser")
-post_response = requests.post(url + form_action, data=form_data)
 with open("scraped_page.html", "w", encoding="utf-8") as html_file:
     html_file.write(post_response.text)
 
+"""
+soup = BeautifulSoup(response.content, "html.parser")
+post_response = requests.post(url + form_action, data=form_data)
 american_radio = soup.find("input", {"name": "output_dialect", "value": "am"})
 if american_radio:
     american_radio.parent["class"] = "btn btn-outline-secondary btn-sm active"
