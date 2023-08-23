@@ -177,6 +177,15 @@
     input::-webkit-inner-spin-button {
       display: none;
     }
+    @media screen and (max-width: 800px) {
+      textarea {
+        rows: 6;
+        font-size: 20px;
+      }
+      #recognitionResult {
+        height: 120px;
+      }
+    }
     @media screen and (max-width: 1000px) {
       body {
         background-color: #BEE2E4;
@@ -251,15 +260,6 @@
       }
       .phone-only {
         display: none;
-      }
-    }
-    @media screen and (max-width: 800px) {
-      textarea {
-        rows: 6;
-        font-size: 20px;
-      }
-      #recognitionResult {
-        height: 120px;
       }
     }
     @media screen and (min-width: 1000px) {
