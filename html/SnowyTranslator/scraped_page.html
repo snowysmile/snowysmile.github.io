@@ -1,0 +1,1324 @@
+<!DOCTYPE html><html lang="en-US"><head><meta charset="UTF-8"/>
+<script data-ezscrex='false' data-cfasync='false' data-pagespeed-no-defer>var __ez=__ez||{};__ez.stms=Date.now();__ez.evt={};__ez.script={};__ez.ck=__ez.ck||{};__ez.template={};__ez.template.isOrig=true;__ez.queue=function(){var e=0,i=0,t=[],n=!1,o=[],s=[],r=!0,a=function(e,i,n,o,s,r,a){var l=arguments.length>7&&void 0!==arguments[7]?arguments[7]:window,c=this;this.name=e,this.funcName=i,this.parameters=null===n?null:p(n)?n:[n],this.isBlock=o,this.blockedBy=s,this.deleteWhenComplete=r,this.isError=!1,this.isComplete=!1,this.isInitialized=!1,this.proceedIfError=a,this.fWindow=l,this.isTimeDelay=!1,this.process=function(){f("... func = "+e),c.isInitialized=!0,c.isComplete=!0,f("... func.apply: "+e);var i=c.funcName.split("."),n=null,o=this.fWindow||window;i.length>3||(n=3===i.length?o[i[0]][i[1]][i[2]]:2===i.length?o[i[0]][i[1]]:o[c.funcName]),null!=n&&n.apply(null,this.parameters),!0===c.deleteWhenComplete&&delete t[e],!0===c.isBlock&&(f("----- F'D: "+c.name),u())}},l=function(e,i,t,n,o,s,r){var a=arguments.length>7&&void 0!==arguments[7]?arguments[7]:window,l=this;this.name=e,this.path=i,this.async=o,this.defer=s,this.isBlock=t,this.blockedBy=n,this.isInitialized=!1,this.isError=!1,this.isComplete=!1,this.proceedIfError=r,this.fWindow=a,this.isTimeDelay=!1,this.isPath=function(e){return"/"===e[0]&&"/"!==e[1]},this.getSrc=function(e){return void 0!==window.__ezScriptHost&&this.isPath(e)?window.__ezScriptHost+e:e},this.process=function(){l.isInitialized=!0,f("... file = "+e);var i=this.fWindow?this.fWindow.document:document,t=i.createElement("script");t.src=this.getSrc(this.path),!0===o?t.async=!0:!0===s&&(t.defer=!0),t.onerror=function(){f("----- ERR'D: "+l.name),l.isError=!0,!0===l.isBlock&&u()},t.onreadystatechange=t.onload=function(){var e=t.readyState;f("----- F'D: "+l.name),e&&!/loaded|complete/.test(e)||(l.isComplete=!0,!0===l.isBlock&&u())},i.getElementsByTagName("head")[0].appendChild(t)}},c=function(e,i){this.name=e,this.path="",this.async=!1,this.defer=!1,this.isBlock=!1,this.blockedBy=[],this.isInitialized=!0,this.isError=!1,this.isComplete=i,this.proceedIfError=!1,this.isTimeDelay=!1,this.process=function(){}};function d(e){!0!==h(e)&&0!=r&&e.process()}function h(e){if(!0===e.isTimeDelay&&!1===n)return f(e.name+" blocked = TIME DELAY!"),!0;if(p(e.blockedBy))for(var i=0;i<e.blockedBy.length;i++){var o=e.blockedBy[i];if(!1===t.hasOwnProperty(o))return f(e.name+" blocked = "+o),!0;if(!0===e.proceedIfError&&!0===t[o].isError)return!1;if(!1===t[o].isComplete)return f(e.name+" blocked = "+o),!0}return!1}function f(e){var i=window.location.href,t=new RegExp("[?&]ezq=([^&#]*)","i").exec(i);"1"===(t?t[1]:null)&&console.debug(e)}function u(){++e>200||(f("let's go"),m(o),m(s))}function m(e){for(var i in e)if(!1!==e.hasOwnProperty(i)){var t=e[i];!0===t.isComplete||h(t)||!0===t.isInitialized||!0===t.isError?!0===t.isError?f(t.name+": error"):!0===t.isComplete?f(t.name+": complete already"):!0===t.isInitialized&&f(t.name+": initialized already"):t.process()}}function p(e){return"[object Array]"==Object.prototype.toString.call(e)}return window.addEventListener("load",(function(){setTimeout((function(){n=!0,f("TDELAY -----"),u()}),5e3)}),!1),{addFile:function(e,i,n,r,a,c,h,f,u){var m=new l(e,i,n,r,a,c,h,u);!0===f?o[e]=m:s[e]=m,t[e]=m,d(m)},addDelayFile:function(e,i){var n=new l(e,i,!1,[],!1,!1,!0);n.isTimeDelay=!0,f(e+" ...  FILE! TDELAY"),s[e]=n,t[e]=n,d(n)},addFunc:function(e,n,r,l,c,h,f,u,m,p){!0===h&&(e=e+"_"+i++);var y=new a(e,n,r,l,c,f,u,p);!0===m?o[e]=y:s[e]=y,t[e]=y,d(y)},addDelayFunc:function(e,i,n){var o=new a(e,i,n,!1,[],!0,!0);o.isTimeDelay=!0,f(e+" ...  FUNCTION! TDELAY"),s[e]=o,t[e]=o,d(o)},items:t,processAll:u,setallowLoad:function(e){r=e},markLoaded:function(e){if(e&&0!==e.length){if(e in t){var i=t[e];!0===i.isComplete?f(i.name+" "+e+": error loaded duplicate"):(i.isComplete=!0,i.isInitialized=!0)}else t[e]=new c(e,!0);f("markLoaded dummyfile: "+t[e].name)}},logWhatsBlocked:function(){for(var e in t)!1!==t.hasOwnProperty(e)&&h(t[e])}}}();__ez.evt.add=function(e,t,n){e.addEventListener?e.addEventListener(t,n,!1):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n()},__ez.evt.remove=function(e,t,n){e.removeEventListener?e.removeEventListener(t,n,!1):e.detachEvent?e.detachEvent("on"+t,n):delete e["on"+t]};__ez.script.add=function(e){var t=document.createElement("script");t.src=e,t.async=!0,t.type="text/javascript",document.getElementsByTagName("head")[0].appendChild(t)};__ez.dot={};__ez.queue.addFile('/detroitchicago/boise.js', '/detroitchicago/boise.js?gcb=195-0&cb=2', true, [], true, false, true, false);__ez.queue.addFile('/detroitchicago/memphis.js', '/detroitchicago/memphis.js?gcb=195-0&cb=27', true, [], true, false, true, false);__ez.queue.addFile('/detroitchicago/minneapolis.js', '/detroitchicago/minneapolis.js?gcb=195-0&cb=4', true, [], true, false, true, false);__ez.queue.addFile('/detroitchicago/rochester.js', '/detroitchicago/rochester.js?gcb=195-0&cb=17', false, ['/detroitchicago/memphis.js','/detroitchicago/minneapolis.js'], true, false, true, false);__ez.queue.addFile('/porpoiseant/et.js', '/porpoiseant/et.js?gcb=195-0&cb=1', false, [], true, false, true, false);!function(){var e;__ez.vep=(e=[],{Add:function(i,t){__ez.dot.isDefined(i)&&__ez.dot.isValid(t)&&e.push({type:"video",video_impression_id:i,domain_id:__ez.dot.getDID(),t_epoch:__ez.dot.getEpoch(0),data:__ez.dot.dataToStr(t)})},Fire:function(){if(void 0===document.visibilityState||"prerender"!==document.visibilityState){if(__ez.dot.isDefined(e)&&e.length>0)for(;e.length>0;){var i=5;i>e.length&&(i=e.length);var t=e.splice(0,i),o=__ez.dot.getURL("/detroitchicago/grapefruit.gif")+"?orig="+(!0===__ez.template.isOrig?1:0)+"&v="+btoa(JSON.stringify(t));__ez.dot.Fire(o)}e=[]}}})}();</script><script data-ezscrex='false' data-cfasync='false' data-pagespeed-no-defer>!function(){function e(i){return e="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e(i)}__ez.pel=function(){var i=[];function t(t,o,d,_,n,r,a,s){if(__ez.dot.isDefined(t)&&0!=__ez.dot.isAnyDefined(t.getSlotElementId,t.ElementId)){void 0===s&&(s=!1);var p=parseInt(__ez.dot.getTargeting(t,"ap")),f=__ez.dot.getSlotIID(t),u=__ez.dot.getAdUnit(t,s),z=parseInt(__ez.dot.getTargeting(t,"compid")),g=0,c=0,l=function(i){if("undefined"==typeof _ezim_d)return!1;var t=__ez.dot.getAdUnitPath(i).split("/").pop();if("object"===("undefined"==typeof _ezim_d?"undefined":e(_ezim_d))&&_ezim_d.hasOwnProperty(t))return _ezim_d[t];for(var o in _ezim_d)if(o.split("/").pop()===t)return _ezim_d[o];return!1}(t);"object"==e(l)&&(void 0!==l.creative_id&&(c=l.creative_id),void 0!==l.line_item_id&&(g=l.line_item_id)),__ez.dot.isDefined(f,u)&&__ez.dot.isValid(o)&&("0"===f&&!0!==s||""===u||i.push({type:"impression",impression_id:f,domain_id:__ez.dot.getDID(),unit:u,t_epoch:__ez.dot.getEpoch(0),revenue:d,est_revenue:_,ad_position:p,ad_size:"",bid_floor_filled:n,bid_floor_prev:r,stat_source_id:a,country_code:__ez.dot.getCC(),pageview_id:__ez.dot.getPageviewId(),comp_id:z,line_item_id:g,creative_id:c,data:__ez.dot.dataToStr(o),is_orig:s||__ez.template.isOrig}))}}function o(){void 0!==document.visibilityState&&"prerender"===document.visibilityState||(__ez.dot.isDefined(i)&&i.length>0&&[i.filter((function(e){return e.is_orig})),i.filter((function(e){return!e.is_orig}))].forEach((function(e){for(;e.length>0;){var i=e[0].is_orig||!1,t=5;t>e.length&&(t=e.length);var o=e.splice(0,t),d=__ez.dot.getURL("/porpoiseant/army.gif")+"?orig="+(!0===i?1:0)+"&sts="+btoa(JSON.stringify(o));(void 0!==window.isAmp&&isAmp||void 0!==window.ezWp&&ezWp)&&void 0!==window._ezaq&&_ezaq.hasOwnProperty("domain_id")&&(d+="&visit_uuid="+_ezaq.visit_uuid),__ez.dot.Fire(d)}})),i=[])}return{Add:t,AddAndFire:function(e,i){t(e,i,0,0,0,0,0),o()},AddAndFireOrig:function(e,i){t(e,i,0,0,0,0,0,!0),o()},AddById:function(e,t,o,d){var _=e.split("/");if(__ez.dot.isDefined(e)&&3===_.length&&__ez.dot.isValid(t)){var n=_[0],r={type:"impression",impression_id:_[2],domain_id:__ez.dot.getDID(),unit:n,t_epoch:__ez.dot.getEpoch(0),pageview_id:__ez.dot.getPageviewId(),data:__ez.dot.dataToStr(t),is_orig:o||__ez.template.isOrig};void 0!==d&&(r.revenue=d),i.push(r)}},Fire:o,GetPixels:function(){return i}}}()}();__ez.queue.addFile('/detroitchicago/raleigh.js', '/detroitchicago/raleigh.js?gcb=195-0&cb=6', false, ['/detroitchicago/memphis.js'], true, false, true, false);__ez.queue.addFile('/detroitchicago/vista.js', '/detroitchicago/vista.js?gcb=195-0&cb=4', false, ['/detroitchicago/memphis.js'], true, false, true, false);__ez.queue.addFile('/detroitchicago/tampa.js', '/detroitchicago/tampa.js?gcb=195-0&cb=5', false, ['/detroitchicago/memphis.js'], true, false, true, false);</script>
+<script data-ezscrex="false" data-cfasync="false">(function(){if("function"===typeof window.CustomEvent)return!1;window.CustomEvent=function(c,a){a=a||{bubbles:!1,cancelable:!1,detail:null};var b=document.createEvent("CustomEvent");b.initCustomEvent(c,a.bubbles,a.cancelable,a.detail);return b}})();</script><script data-ezscrex="false" data-cfasync="false">__ez.queue.addFile('/detroitchicago/tulsa.js', '/detroitchicago/tulsa.js?gcb=195-0&cb=7', false, [], true, false, true, false);</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+	<link rel="profile" href="http://gmpg.org/xfn/11"/>
+	<title>toPhonetics</title>
+<meta name="robots" content="max-image-preview:large"/>
+<link rel="dns-prefetch" href="//secure.gravatar.com"/>
+<link rel="dns-prefetch" href="//stats.wp.com"/>
+<link rel="dns-prefetch" href="//v0.wordpress.com"/>
+<link rel="dns-prefetch" href="//i0.wp.com"/>
+<link rel="dns-prefetch" href="//c0.wp.com"/>
+<link rel="alternate" type="application/rss+xml" title="toPhonetics » Feed" href="https://tophonetics.com/feed/"/>
+<link rel="alternate" type="application/rss+xml" title="toPhonetics » Comments Feed" href="https://tophonetics.com/comments/feed/"/>
+<link rel="alternate" type="application/rss+xml" title="toPhonetics » IPA Phonetic Transcription of English Text Comments Feed" href="https://tophonetics.com/ipa/feed/"/>
+<script>
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/tophonetics.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.3"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83e\udef1\ud83c\udffb\u200d\ud83e\udef2\ud83c\udfff","\ud83e\udef1\ud83c\udffb\u200b\ud83e\udef2\ud83c\udfff")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+</script>
+<style>
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="wp-block-library-css" href="https://c0.wp.com/c/6.3/wp-includes/css/dist/block-library/style.min.css" media="all"/>
+<style id="wp-block-library-inline-css">
+.has-text-align-justify{text-align:justify;}
+</style>
+<link rel="stylesheet" id="jetpack-videopress-video-block-view-css" href="https://tophonetics.com/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-videopress/build/block-editor/blocks/video/view.css?minify=false&amp;ver=34ae973733627b74a14e" media="all"/>
+<link rel="stylesheet" id="mediaelement-css" href="https://c0.wp.com/c/6.3/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css" media="all"/>
+<link rel="stylesheet" id="wp-mediaelement-css" href="https://c0.wp.com/c/6.3/wp-includes/js/mediaelement/wp-mediaelement.min.css" media="all"/>
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id="global-styles-inline-css">
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #fff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--blue: #007bff;--wp--preset--color--indigo: #6610f2;--wp--preset--color--purple: #5533ff;--wp--preset--color--pink: #e83e8c;--wp--preset--color--red: #dc3545;--wp--preset--color--orange: #fd7e14;--wp--preset--color--yellow: #ffc107;--wp--preset--color--green: #28a745;--wp--preset--color--teal: #20c997;--wp--preset--color--cyan: #17a2b8;--wp--preset--color--gray: #6c757d;--wp--preset--color--gray-dark: #343a40;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel="stylesheet" id="wpdiscuz-frontend-css-css" href="https://tophonetics.com/wp-content/plugins/wpdiscuz/themes/default/style.css?ver=7.6.3" media="all"/>
+<style id="wpdiscuz-frontend-css-inline-css">
+ #wpdcom .wpd-blog-administrator .wpd-comment-label{color:#ffffff;background-color:#1e73be;border:none}#wpdcom .wpd-blog-administrator .wpd-comment-author, #wpdcom .wpd-blog-administrator .wpd-comment-author a{color:#1e73be}#wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-administrator .wpd-avatar img{border-color:#1e73be}#wpdcom.wpd-layout-2 .wpd-comment.wpd-reply .wpd-comment-wrap.wpd-blog-administrator{border-left:3px solid #1e73be}#wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-administrator .wpd-avatar img{border-bottom-color:#1e73be}#wpdcom.wpd-layout-3 .wpd-blog-administrator .wpd-comment-subheader{border-top:1px dashed #1e73be}#wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-administrator .wpd-comment-right{border-left:1px solid #1e73be}#wpdcom .wpd-blog-editor .wpd-comment-label{color:#ffffff;background-color:#1e73be;border:none}#wpdcom .wpd-blog-editor .wpd-comment-author, #wpdcom .wpd-blog-editor .wpd-comment-author a{color:#1e73be}#wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-editor .wpd-avatar img{border-color:#1e73be}#wpdcom.wpd-layout-2 .wpd-comment.wpd-reply .wpd-comment-wrap.wpd-blog-editor{border-left:3px solid #1e73be}#wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-editor .wpd-avatar img{border-bottom-color:#1e73be}#wpdcom.wpd-layout-3 .wpd-blog-editor .wpd-comment-subheader{border-top:1px dashed #1e73be}#wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-editor .wpd-comment-right{border-left:1px solid #1e73be}#wpdcom .wpd-blog-author .wpd-comment-label{color:#ffffff;background-color:#1e73be;border:none}#wpdcom .wpd-blog-author .wpd-comment-author, #wpdcom .wpd-blog-author .wpd-comment-author a{color:#1e73be}#wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-author .wpd-avatar img{border-color:#1e73be}#wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-author .wpd-avatar img{border-bottom-color:#1e73be}#wpdcom.wpd-layout-3 .wpd-blog-author .wpd-comment-subheader{border-top:1px dashed #1e73be}#wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-author .wpd-comment-right{border-left:1px solid #1e73be}#wpdcom .wpd-blog-contributor .wpd-comment-label{color:#ffffff;background-color:#1e73be;border:none}#wpdcom .wpd-blog-contributor .wpd-comment-author, #wpdcom .wpd-blog-contributor .wpd-comment-author a{color:#1e73be}#wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-contributor .wpd-avatar img{border-color:#1e73be}#wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-contributor .wpd-avatar img{border-bottom-color:#1e73be}#wpdcom.wpd-layout-3 .wpd-blog-contributor .wpd-comment-subheader{border-top:1px dashed #1e73be}#wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-contributor .wpd-comment-right{border-left:1px solid #1e73be}#wpdcom .wpd-blog-subscriber .wpd-comment-label{color:#ffffff;background-color:#00B38F;border:none}#wpdcom .wpd-blog-subscriber .wpd-comment-author, #wpdcom .wpd-blog-subscriber .wpd-comment-author a{color:#00B38F}#wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-subscriber .wpd-avatar img{border-bottom-color:#00B38F}#wpdcom.wpd-layout-3 .wpd-blog-subscriber .wpd-comment-subheader{border-top:1px dashed #00B38F}#wpdcom .wpd-blog-post_author .wpd-comment-label{color:#ffffff;background-color:#1e73be;border:none}#wpdcom .wpd-blog-post_author .wpd-comment-author, #wpdcom .wpd-blog-post_author .wpd-comment-author a{color:#1e73be}#wpdcom .wpd-blog-post_author .wpd-avatar img{border-color:#1e73be}#wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-post_author .wpd-avatar img{border-color:#1e73be}#wpdcom.wpd-layout-2 .wpd-comment.wpd-reply .wpd-comment-wrap.wpd-blog-post_author{border-left:3px solid #1e73be}#wpdcom.wpd-layout-2 .wpd-comment .wpd-blog-post_author .wpd-avatar img{border-bottom-color:#1e73be}#wpdcom.wpd-layout-3 .wpd-blog-post_author .wpd-comment-subheader{border-top:1px dashed #1e73be}#wpdcom.wpd-layout-3 .wpd-reply .wpd-blog-post_author .wpd-comment-right{border-left:1px solid #1e73be}#wpdcom .wpd-blog-guest .wpd-comment-label{color:#ffffff;background-color:#00B38F;border:none}#wpdcom .wpd-blog-guest .wpd-comment-author, #wpdcom .wpd-blog-guest .wpd-comment-author a{color:#00B38F}#wpdcom.wpd-layout-3 .wpd-blog-guest .wpd-comment-subheader{border-top:1px dashed #00B38F}#comments, #respond, .comments-area, #wpdcom{}#wpdcom .ql-editor > *{color:#777777}#wpdcom .ql-editor::before{}#wpdcom .ql-toolbar{border:1px solid #DDDDDD;border-top:none}#wpdcom .ql-container{border:1px solid #DDDDDD;border-bottom:none}#wpdcom .wpd-form-row .wpdiscuz-item input[type="text"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="email"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="url"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="color"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="date"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="datetime"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="datetime-local"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="month"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="number"], #wpdcom .wpd-form-row .wpdiscuz-item input[type="time"], #wpdcom textarea, #wpdcom select{border:1px solid #DDDDDD;color:#777777}#wpdcom .wpd-form-row .wpdiscuz-item textarea{border:1px solid #DDDDDD}#wpdcom input::placeholder, #wpdcom textarea::placeholder, #wpdcom input::-moz-placeholder, #wpdcom textarea::-webkit-input-placeholder{}#wpdcom .wpd-comment-text{color:#777777}#wpdcom .wpd-thread-head .wpd-thread-info{border-bottom:2px solid #00B38F}#wpdcom .wpd-thread-head .wpd-thread-info.wpd-reviews-tab svg{fill:#00B38F}#wpdcom .wpd-thread-head .wpdiscuz-user-settings{border-bottom:2px solid #00B38F}#wpdcom .wpd-thread-head .wpdiscuz-user-settings:hover{color:#00B38F}#wpdcom .wpd-comment .wpd-follow-link:hover{color:#00B38F}#wpdcom .wpd-comment-status .wpd-sticky{color:#00B38F}#wpdcom .wpd-thread-filter .wpdf-active{color:#00B38F;border-bottom-color:#00B38F}#wpdcom .wpd-comment-info-bar{border:1px dashed #33c3a6;background:#e6f8f4}#wpdcom .wpd-comment-info-bar .wpd-current-view i{color:#00B38F}#wpdcom .wpd-filter-view-all:hover{background:#00B38F}#wpdcom .wpdiscuz-item .wpdiscuz-rating > label{color:#DDDDDD}#wpdcom .wpdiscuz-item .wpdiscuz-rating:not(:checked) > label:hover, .wpdiscuz-rating:not(:checked) > label:hover ~ label{}#wpdcom .wpdiscuz-item .wpdiscuz-rating > input ~ label:hover, #wpdcom .wpdiscuz-item .wpdiscuz-rating > input:not(:checked) ~ label:hover ~ label, #wpdcom .wpdiscuz-item .wpdiscuz-rating > input:not(:checked) ~ label:hover ~ label{color:#FFED85}#wpdcom .wpdiscuz-item .wpdiscuz-rating > input:checked ~ label:hover, #wpdcom .wpdiscuz-item .wpdiscuz-rating > input:checked ~ label:hover, #wpdcom .wpdiscuz-item .wpdiscuz-rating > label:hover ~ input:checked ~ label, #wpdcom .wpdiscuz-item .wpdiscuz-rating > input:checked + label:hover ~ label, #wpdcom .wpdiscuz-item .wpdiscuz-rating > input:checked ~ label:hover ~ label, .wpd-custom-field .wcf-active-star, #wpdcom .wpdiscuz-item .wpdiscuz-rating > input:checked ~ label{color:#FFD700}#wpd-post-rating .wpd-rating-wrap .wpd-rating-stars svg .wpd-star{fill:#DDDDDD}#wpd-post-rating .wpd-rating-wrap .wpd-rating-stars svg .wpd-active{fill:#FFD700}#wpd-post-rating .wpd-rating-wrap .wpd-rate-starts svg .wpd-star{fill:#DDDDDD}#wpd-post-rating .wpd-rating-wrap .wpd-rate-starts:hover svg .wpd-star{fill:#FFED85}#wpd-post-rating.wpd-not-rated .wpd-rating-wrap .wpd-rate-starts svg:hover ~ svg .wpd-star{fill:#DDDDDD}.wpdiscuz-post-rating-wrap .wpd-rating .wpd-rating-wrap .wpd-rating-stars svg .wpd-star{fill:#DDDDDD}.wpdiscuz-post-rating-wrap .wpd-rating .wpd-rating-wrap .wpd-rating-stars svg .wpd-active{fill:#FFD700}#wpdcom .wpd-comment .wpd-follow-active{color:#ff7a00}#wpdcom .page-numbers{color:#555;border:#555 1px solid}#wpdcom span.current{background:#555}#wpdcom.wpd-layout-1 .wpd-new-loaded-comment > .wpd-comment-wrap > .wpd-comment-right{background:#FFFAD6}#wpdcom.wpd-layout-2 .wpd-new-loaded-comment.wpd-comment > .wpd-comment-wrap > .wpd-comment-right{background:#FFFAD6}#wpdcom.wpd-layout-2 .wpd-new-loaded-comment.wpd-comment.wpd-reply > .wpd-comment-wrap > .wpd-comment-right{background:transparent}#wpdcom.wpd-layout-2 .wpd-new-loaded-comment.wpd-comment.wpd-reply > .wpd-comment-wrap{background:#FFFAD6}#wpdcom.wpd-layout-3 .wpd-new-loaded-comment.wpd-comment > .wpd-comment-wrap > .wpd-comment-right{background:#FFFAD6}#wpdcom .wpd-follow:hover i, #wpdcom .wpd-unfollow:hover i, #wpdcom .wpd-comment .wpd-follow-active:hover i{color:#00B38F}#wpdcom .wpdiscuz-readmore{cursor:pointer;color:#00B38F}.wpd-custom-field .wcf-pasiv-star, #wpcomm .wpdiscuz-item .wpdiscuz-rating > label{color:#DDDDDD}.wpd-wrapper .wpd-list-item.wpd-active{border-top:3px solid #00B38F}#wpdcom.wpd-layout-2 .wpd-comment.wpd-reply.wpd-unapproved-comment .wpd-comment-wrap{border-left:3px solid #FFFAD6}#wpdcom.wpd-layout-3 .wpd-comment.wpd-reply.wpd-unapproved-comment .wpd-comment-right{border-left:1px solid #FFFAD6}#wpdcom .wpd-prim-button{background-color:#555555;color:#FFFFFF}#wpdcom .wpd_label__check i.wpdicon-on{color:#555555;border:1px solid #aaaaaa}#wpd-bubble-wrapper #wpd-bubble-all-comments-count{color:#1DB99A}#wpd-bubble-wrapper > div{background-color:#1DB99A}#wpd-bubble-wrapper > #wpd-bubble #wpd-bubble-add-message{background-color:#1DB99A}#wpd-bubble-wrapper > #wpd-bubble #wpd-bubble-add-message::before{border-left-color:#1DB99A;border-right-color:#1DB99A}#wpd-bubble-wrapper.wpd-right-corner > #wpd-bubble #wpd-bubble-add-message::before{border-left-color:#1DB99A;border-right-color:#1DB99A}.wpd-inline-icon-wrapper path.wpd-inline-icon-first{fill:#1DB99A}.wpd-inline-icon-count{background-color:#1DB99A}.wpd-inline-icon-count::before{border-right-color:#1DB99A}.wpd-inline-form-wrapper::before{border-bottom-color:#1DB99A}.wpd-inline-form-question{background-color:#1DB99A}.wpd-inline-form{background-color:#1DB99A}.wpd-last-inline-comments-wrapper{border-color:#1DB99A}.wpd-last-inline-comments-wrapper::before{border-bottom-color:#1DB99A}.wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments{background:#1DB99A}.wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments:hover,.wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments:active,.wpd-last-inline-comments-wrapper .wpd-view-all-inline-comments:focus{background-color:#1DB99A}#wpdcom .ql-snow .ql-tooltip[data-mode="link"]::before{content:"Enter link:"}#wpdcom .ql-snow .ql-tooltip.ql-editing a.ql-action::after{content:"Save"}.comments-area{width:auto}
+</style>
+<link rel="stylesheet" id="wpdiscuz-fa-css" href="https://tophonetics.com/wp-content/plugins/wpdiscuz/assets/third-party/font-awesome-5.13.0/css/fa.min.css?ver=7.6.3" media="all"/>
+<link rel="stylesheet" id="wpdiscuz-combo-css-css" href="https://tophonetics.com/wp-content/plugins/wpdiscuz/assets/css/wpdiscuz-combo.min.css?ver=6.3" media="all"/>
+<link rel="stylesheet" id="child-understrap-styles-css" href="https://tophonetics.com/wp-content/themes/understrap-child/css/child-theme.min.css?ver=0.5.3" media="all"/>
+<link rel="stylesheet" id="transcription-css" href="https://tophonetics.com/wp-content/plugins/transcription/transcription.css?ver=1692096205" media=""/>
+<link rel="stylesheet" id="social-logos-css" href="https://c0.wp.com/p/jetpack/12.4/_inc/social-logos/social-logos.min.css" media="all"/>
+<link rel="stylesheet" id="jetpack_css-css" href="https://c0.wp.com/p/jetpack/12.4/css/jetpack.css" media="all"/>
+<script src="https://c0.wp.com/c/6.3/wp-includes/js/jquery/jquery.min.js" id="jquery-core-js"></script>
+<script src="https://c0.wp.com/c/6.3/wp-includes/js/jquery/jquery-migrate.min.js" id="jquery-migrate-js"></script>
+<script src="https://tophonetics.com/wp-content/plugins/transcription/transcription.js?ver=1573845809" id="transcription-js"></script>
+<link rel="https://api.w.org/" href="https://tophonetics.com/wp-json/"/><link rel="alternate" type="application/json" href="https://tophonetics.com/wp-json/wp/v2/pages/14"/><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://tophonetics.com/xmlrpc.php?rsd"/>
+<meta name="generator" content="WordPress 6.3"/>
+<link rel="canonical" href="https://tophonetics.com/"/>
+<link rel="shortlink" href="https://wp.me/P9mZHG-e"/>
+<link rel="alternate" type="application/json+oembed" href="https://tophonetics.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ftophonetics.com%2F"/>
+<link rel="alternate" type="text/xml+oembed" href="https://tophonetics.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ftophonetics.com%2F&amp;format=xml"/>
+	<style>img#wpstats{display:none}</style>
+		<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-title" content="toPhonetics - "/>
+<style>.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>			<style type="text/css">
+				/* If html does not have either class, do not show lazy loaded images. */
+				html:not( .jetpack-lazy-images-js-enabled ):not( .js ) .jetpack-lazy-image {
+					display: none;
+				}
+			</style>
+			<script>
+				document.documentElement.classList.add(
+					'jetpack-lazy-images-js-enabled'
+				);
+			</script>
+		<meta name="apple-itunes-app" content="app-id=791324886, affiliate-data=1l3vmfc"/><script src="https://www.google.com/recaptcha/api.js" async="" defer=""></script>
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="toPhonetics"/>
+<meta property="og:url" content="https://tophonetics.com/"/>
+<meta property="og:site_name" content="toPhonetics"/>
+<meta property="og:image" content="https://s0.wp.com/i/blank.jpg"/>
+<meta property="og:image:alt" content=""/>
+<meta property="og:locale" content="en_US"/>
+<meta name="twitter:site" content="@lingorado"/>
+<meta name="twitter:text:title" content="IPA Phonetic Transcription of English Text"/>
+<meta name="twitter:image" content="https://i0.wp.com/tophonetics.com/wp-content/uploads/2018/03/transcription-app-icon-180.png?fit=180%2C180&amp;ssl=1&amp;w=144"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:description" content="Visit the post for more."/>
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="icon" href="https://i0.wp.com/tophonetics.com/wp-content/uploads/2018/03/transcription-app-icon-180.png?fit=32%2C32&amp;ssl=1" sizes="32x32"/>
+<link rel="icon" href="https://i0.wp.com/tophonetics.com/wp-content/uploads/2018/03/transcription-app-icon-180.png?fit=180%2C180&amp;ssl=1" sizes="192x192"/>
+<link rel="apple-touch-icon" href="https://i0.wp.com/tophonetics.com/wp-content/uploads/2018/03/transcription-app-icon-180.png?fit=180%2C180&amp;ssl=1"/>
+<meta name="msapplication-TileImage" content="https://i0.wp.com/tophonetics.com/wp-content/uploads/2018/03/transcription-app-icon-180.png?fit=180%2C180&amp;ssl=1"/>
+<link rel="stylesheet" type="text/css" id="wp-custom-css" href="https://tophonetics.com/?custom-css=e78b49295f"/><script type="text/javascript">var ezouid = "1";</script><base href="https://tophonetics.com//"><script type='text/javascript'>
+var ezoTemplate = 'old_site_noads';
+if(typeof ezouid == 'undefined')
+{
+    var ezouid = 'none';
+}
+var ezoFormfactor = '1';
+var ezo_elements_to_check = Array();
+</script><!-- START EZHEAD -->
+<script data-ezscrex="false" type='text/javascript'>
+var soc_app_id = '0';
+var did = 457138;
+var ezdomain = 'tophonetics.com';
+var ezoicSearchable = 1;
+</script>
+<!--{jquery}-->
+<!-- END EZHEAD -->
+<script data-ezscrex="false" type="text/javascript" data-cfasync="false">var _ezaq = {"ab_test_id":"mod63-c","ad_cache_level":1,"ad_lazyload_version":0,"ad_load_version":0,"city":"Yonago","country":"JP","days_since_last_visit":-1,"domain_id":457138,"engaged_time_visit":0,"ezcache_level":1,"ezcache_skip_code":8,"form_factor_id":1,"framework_id":1,"is_return_visitor":false,"is_sitespeed":0,"last_page_load":"","last_pageview_id":"","lt_cache_level":0,"metro_code":0,"page_ad_positions":"","page_view_count":0,"page_view_id":"616c82a2-08bf-4eec-4ad6-4d456f798e32","position_selection_id":0,"postal_code":"683-0811","pv_event_count":0,"response_size_orig":115405,"response_time_orig":1181,"serverid":"i-042db4f233a3a04ac","state":"31","t_epoch":1692722001,"template_id":120,"time_on_site_visit":0,"url":"https://tophonetics.com//","user_id":0,"weather_precipitation":0,"weather_summary":"","weather_temperature":0,"word_count":750,"worst_bad_word_level":0};var _ezExtraQueries = "&ez_orig=1";</script>
+<script data-ezscrex='false' data-pagespeed-no-defer data-cfasync='false'>
+function create_ezolpl(pvID, rv) {
+    var d = new Date();
+    d.setTime(d.getTime() + (365*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    __ez.ck.setByCat("ezux_lpl_457138=" + new Date().getTime() + "|" + pvID + "|" + rv + "; " + expires, 3);
+}
+function attach_ezolpl(pvID, rv) {
+    if (document.readyState === "complete") {
+        create_ezolpl(pvID, rv);
+    }
+    if(window.attachEvent) {
+        window.attachEvent("onload", create_ezolpl, pvID, rv);
+    } else {
+        if(window.onload) {
+            var curronload = window.onload;
+            var newonload = function(evt) {
+                curronload(evt);
+                create_ezolpl(pvID, rv);
+            };
+            window.onload = newonload;
+        } else {
+            window.onload = create_ezolpl.bind(null, pvID, rv);
+        }
+    }
+}
+
+__ez.queue.addFunc("attach_ezolpl", "attach_ezolpl", ["616c82a2-08bf-4eec-4ad6-4d456f798e32", "false"], false, ['/detroitchicago/boise.js'], true, false, false, false);
+</script></head>
+
+<body class="home page-template page-template-page-templates page-template-page-tophonetics page-template-page-templatespage-tophonetics-php page page-id-14 wp-embed-responsive understrap-no-sidebar" itemscope="" itemtype="http://schema.org/WebSite">
+<div class="site" id="page">
+
+	<!-- ******************* The Navbar Area ******************* -->
+	<header id="wrapper-navbar">
+
+		<a class="skip-link sr-only sr-only-focusable" href="#content">
+			Skip to content		</a>
+
+		
+<nav id="main-nav" class="navbar navbar-expand-md navbar-dark bg-primary" aria-labelledby="main-nav-label">
+
+	<h2 id="main-nav-label" class="screen-reader-text">
+		Main Navigation	</h2>
+
+
+	<div class="container">
+
+		
+	
+		<a class="navbar-brand" rel="home" href="https://tophonetics.com/" itemprop="url">
+			toPhonetics		</a>
+
+	
+	
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!-- The WordPress Menu goes here -->
+		<div id="navbarNavDropdown" class="collapse navbar-collapse"><ul id="main-menu" class="navbar-nav ml-auto"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-318" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-318 nav-item"><a title="Keyboard" href="https://tophonetics.com/keyboard/" class="nav-link">Keyboard</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-178" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-178 nav-item"><a title="Blog" href="https://tophonetics.com/blog/" class="nav-link">Blog</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-114" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-114 nav-item"><a title="FAQ" href="https://tophonetics.com/faq/" class="nav-link">FAQ</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-118" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-118 nav-item"><a title="Roadmap" href="https://tophonetics.com/roadmap/" class="nav-link">Roadmap</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-128" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-128 nav-item"><a title="Donate!" href="https://tophonetics.com/donate/" class="nav-link">Donate!</a></li>
+</ul></div>
+	</div><!-- .container -->
+
+</nav><!-- #main-nav -->
+
+	</header><!-- #wrapper-navbar -->
+<div id="wrapper-navbar" itemscope="" itemtype="http://schema.org/WebSite">
+    <nav id="lang_menu" class="navbar navbar-dark">
+        <div class="menu-languages-container"><ul id="menu-languages" class="menu"><li id="menu-item-78" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-78"><a href="/" aria-current="page"><span>English</span><img src="/wp-content/plugins/transcription/languages/en.png"/></a></li>
+<li id="menu-item-77" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-77"><a href="/es/"><span>Español</span><img src="/wp-content/plugins/transcription/languages/es.png"/></a></li>
+<li id="menu-item-79" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-79"><a href="/fr/"><span>Français</span><img src="/wp-content/plugins/transcription/languages/fr.png"/></a></li>
+<li id="menu-item-80" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-80"><a href="/pt/"><span>Português</span><img src="/wp-content/plugins/transcription/languages/pt.png"/></a></li>
+<li id="menu-item-81" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-81"><a href="/ja/"><span>日本語</span><img src="/wp-content/plugins/transcription/languages/ja.png"/></a></li>
+<li id="menu-item-82" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-82"><a href="/zh/"><span>中文</span><img src="/wp-content/plugins/transcription/languages/zh.png"/></a></li>
+<li id="menu-item-195" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-195"><a href="/vi/"><span>Tiếng Việt</span><img src="/wp-content/plugins/transcription/languages/vi.png"/></a></li>
+<li id="menu-item-83" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-83"><a href="/ru/"><span>Русский</span><img src="/wp-content/plugins/transcription/languages/ru.png"/></a></li>
+</ul></div>    </nav><!-- languages end -->
+</div>
+
+<div class="wrapper" id="page-wrapper">
+
+    <div class="" id="content" tabindex="-1">
+
+        <div class="row">
+
+            <!-- Do the left sidebar check -->
+            
+<div class="col-md content-area" id="primary">
+
+            <main class="site-main" id="main">
+
+<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><div class="sd-content"><ul><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-14" class="share-facebook sd-button share-icon" href="https://tophonetics.com/?share=facebook" target="_blank" title="Click to share on Facebook"><span>Facebook</span></a></li><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-14" class="share-twitter sd-button share-icon" href="https://tophonetics.com/?share=twitter" target="_blank" title="Click to share on Twitter"><span>Twitter</span></a></li><li class="share-pinterest"><a rel="nofollow noopener noreferrer" data-shared="sharing-pinterest-14" class="share-pinterest sd-button share-icon" href="https://tophonetics.com/?share=pinterest" target="_blank" title="Click to share on Pinterest"><span>Pinterest</span></a></li><li class="share-end"></li></ul></div></div></div><div id="transcription_form">
+    <form id="transcribe" action="" method="post">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <label>Paste your English text here:</label>
+                <div class="form-group">
+                    <textarea id="text_to_transcribe" name="text_to_transcribe" required="required" autofocus="">I have a cat, I have 10 books. I have a girl</textarea>
+                                        <input type="button" value="" id="clear_button"/>
+                    <div class="btn-group btn-block" role="group">
+                        <input id="submit" class="btn btn-primary btn-block" name="submit" type="submit" value="Show transcription" title="or Ctrl+Enter while in the text area"/>
+                        <button id="options_button" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="collapse" data-target="#options" aria-expanded="true" aria-controls="options">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="options" class="row transcription_options collapse show">
+            <div class="col-sm-auto">
+                <div class="form-group">
+                    <div name="output_dialect_option" class="btn-group-vertical btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-outline-secondary btn-sm ">
+                            <input type="radio" name="output_dialect" autocomplete="off" value="br"/>British                        </label>
+                        <label class="btn btn-outline-secondary btn-sm active">
+                            <input type="radio" name="output_dialect" autocomplete="off" value="am" checked=""/>American                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-auto">
+                <div class="form-group">
+                    <div name="output_style_option" class="btn-group-vertical btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-outline-secondary btn-sm ">
+                            <input type="radio" name="output_style" autocomplete="off" value="only_tr"/>Transcription only                        </label>
+                        <label class="btn btn-outline-secondary btn-sm ">
+                            <input type="radio" name="output_style" autocomplete="off" value="columns"/>Side by side with English text                        </label>
+                        <label class="btn btn-outline-secondary btn-sm active">
+                            <input type="radio" name="output_style" autocomplete="off" value="inline" checked=""/>Line by line with English text                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-auto">
+                <div class="form-group">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="weak_forms" name="weak_forms"/>
+                        <label class="form-check-label" for="weak_forms">Show weak forms</label>
+                    </div>
+                                    </div>
+                <div class="form-group">
+                    <div class="input-group input-group-sm brackets">
+                        <input type="text" id="preBracket" name="preBracket" class="form-control" placeholder=" " value="" size="1" maxlength="1"/>
+                        <div class="input-group-append input-group-prepend">
+                            <span class="input-group-text">Parentheses</span>
+                        </div>
+                        <input type="text" id="postBracket" name="postBracket" class="form-control" placeholder=" " value="" size="1" maxlength="1"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="speech_support" name="speech_support" value="0"/>
+    </form>
+</div>
+<div class="clear_both"> </div>
+<div id="transcr_output"><div class="inline_unit"><div class="inline_orig"></div><div class="inline_ipa"></div></div><div class="inline_unit"><div class="inline_orig">I</div><div class="inline_ipa"><span class="transcribed_word">aɪ</span></div></div><div class="inline_unit"><div class="inline_orig">  </div><div class="inline_ipa">  </div></div><div class="inline_unit"><div class="inline_orig">have</div><div class="inline_ipa"><span class="transcribed_word">hæv</span></div></div><div class="inline_unit"><div class="inline_orig">  </div><div class="inline_ipa">  </div></div><div class="inline_unit"><div class="inline_orig">a</div><div class="inline_ipa"><span class="transcribed_word">ə</span></div></div><div class="inline_unit"><div class="inline_orig">  </div><div class="inline_ipa">  </div></div><div class="inline_unit"><div class="inline_orig">cat</div><div class="inline_ipa"><span class="transcribed_word">kæt</span></div></div><div class="inline_unit"><div class="inline_orig">, </div><div class="inline_ipa"><span class="nontranscriptable">, </span></div></div><div class="inline_unit"><div class="inline_orig"></div><div class="inline_ipa"></div></div><div class="inline_unit"><div class="inline_orig">I</div><div class="inline_ipa"><span class="transcribed_word">aɪ</span></div></div><div class="inline_unit"><div class="inline_orig">  </div><div class="inline_ipa">  </div></div><div class="inline_unit"><div class="inline_orig">have</div><div class="inline_ipa"><span class="transcribed_word">hæv</span></div></div><div class="inline_unit"><div class="inline_orig"> 10 </div><div class="inline_ipa"><span class="nontranscriptable"> 10 </span></div></div><div class="inline_unit"><div class="inline_orig"></div><div class="inline_ipa"></div></div><div class="inline_unit"><div class="inline_orig">books</div><div class="inline_ipa"><span class="transcribed_word">bʊks</span></div></div><div class="inline_unit"><div class="inline_orig">. </div><div class="inline_ipa"><span class="nontranscriptable">. </span></div></div><div class="inline_unit"><div class="inline_orig"></div><div class="inline_ipa"></div></div><div class="inline_unit"><div class="inline_orig">I</div><div class="inline_ipa"><span class="transcribed_word">aɪ</span></div></div><div class="inline_unit"><div class="inline_orig">  </div><div class="inline_ipa">  </div></div><div class="inline_unit"><div class="inline_orig">have</div><div class="inline_ipa"><span class="transcribed_word">hæv</span></div></div><div class="inline_unit"><div class="inline_orig">  </div><div class="inline_ipa">  </div></div><div class="inline_unit"><div class="inline_orig">a</div><div class="inline_ipa"><span class="transcribed_word">ə</span></div></div><div class="inline_unit"><div class="inline_orig">  </div><div class="inline_ipa">  </div></div><div class="inline_unit"><div class="inline_orig">girl</div><div class="inline_ipa"><span class="transcribed_word">ɡɜrl</span></div></div><div class="clear_both"> </div></div><div class="d-flex flex-row-reverse">
+<form name="edit_ipa_form" action="https://tophonetics.com/keyboard/" method="post" target="_blank">
+    <input type="hidden" name="ipa" id="ipa"/>
+    <button type="button" id="edit_ipa" class="btn btn-light btn-sm" title="Edit IPA">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"></path>
+        </svg>
+    </button>
+</form>
+</div>
+<script type="text/javascript">
+jQuery('document').ready(function() {
+    jQuery("#edit_ipa").click(function() {
+        const ipa = [...document.getElementById('transcr_output').querySelectorAll('.inline_ipa, .clear_both')].map(x => x.classList.contains('clear_both') ? '\n' : x.innerText).join('').replace(/\u00a0/g, ' ');
+        document.querySelector('form[name="edit_ipa_form"] input[name="ipa"]').value = ipa;
+        document.querySelector('form[name="edit_ipa_form"]').submit();
+        return false;
+    });
+});
+</script><hr/>
+<div class="badge_wrapper">
+    <div class="row-auto">
+    <div class="col-auto badge">
+        <a href="https://itunes.apple.com/us/app/tophonetics-converter/id791324886?mt=8&amp;uo=4&amp;at=1l3vmfc">
+        <img src="/wp-content/plugins/transcription/badges/App_Store_us.svg"/>
+    </a></div>
+    <div class="w-100"></div>
+    <div class="col-auto badge"><a href="https://play.google.com/store/apps/details?id=com.mu_sonic.tophonetics2&amp;hl=en">
+        <img src="/wp-content/plugins/transcription/badges/Google_Play_en.png"/>
+    </a></div>
+    </div>
+</div>
+
+                
+                    
+<p>Hi! Got an English text and want to see how to pronounce it? This <strong>online converter of English text to IPA phonetic transcription</strong> will translate your English text into its phonetic transcription using the International Phonetic Alphabet. Paste or type your English text in the text field above and click “Show transcription” button (or use [Ctrl+Enter] shortcut from the text input area).</p>
+<p>Features:</p>
+<ul>
+<li>Choose between British and American* pronunciation. When British option is selected the [r] sound at the end of the word is only voiced if followed by a vowel, which follows British phonetic convention.</li>
+<li>The International Phonetic Alphabet (IPA) symbols used.</li>
+<li>The structure of the text and sentences in it (line breaks, punctuation marks, etc.) is preserved in phonetic transcription output making it easier to read.</li>
+<li>An option to vary pronunciation depending on whether words are in stressed or weak position in the sentence, as in connected speech (checkbox “Show weak forms”). Weak forms are italicized in the output.</li>
+<li>Words in CAPS are interpreted as acronyms if the word is not found in the database. Acronym transcriptions will be shown with hyphens between letters.</li>
+<li>In addition to commonly used vocabulary the database contains a very substantial amount of place names (including names of countries, their capitals, US states, UK counties), nationalities and popular names.</li>
+<li>You can output the text and its phonetic transcription along each other side-by-side or line-by-line to make back-reference to the original text easier. Just tick the appropriate checkbox in the input form.</li>
+<li>Where a word has a number of different pronunciations (highlighted in blue in the output) you can select the one that agrees with the context by clicking on it. To see a popup with a list of possible pronunciations move your mouse cursor over the word.<br/>Note that different pronunciations of one word may have different meanings or may represent variations in pronunciation with the same meaning. If unsure which pronunciation is relevant in your particular case, consult a dictionary.</li>
+<li>The dictionary database is regularly amended with most popular missing words (shown in red in the output).</li>
+<li>The text can be read out loud in browsers with speech synthesis support (Safari – recommended, Chrome).</li>
+</ul>
+<div style="font-size: smaller;">*) American transcriptions are based on the open Carnegie Mellon University Pronouncing Dictionary.</div>
+<p>
+
+                        </p><div class="wpdiscuz_top_clearing"></div>
+	<div id="comments" class="comments-area"><div id="respond" style="width: 0;height: 0;clear: both;margin: 0;padding: 0;"></div>    <div id="wpdcom" class="wpdiscuz_unauth wpd-default wpd-layout-1 wpd-comments-open">
+		            <div class="wc_social_plugin_wrapper">
+				            </div>
+            <div class="wpd-form-wrap">
+                <div class="wpd-form-head">
+					                        <div class="wpd-sbs-toggle">
+                            <i class="far fa-envelope"></i> <span class="wpd-sbs-title">Subscribe</span>
+                            <i class="fas fa-caret-down"></i>
+                        </div>
+						                    <div class="wpd-auth">
+						                        <div class="wpd-login">
+							                        </div>
+                    </div>
+                </div>
+								                    <div class="wpdiscuz-subscribe-bar wpdiscuz-hidden">
+						                            <form action="https://tophonetics.com/wp-admin/admin-ajax.php?action=wpdAddSubscription" method="post" id="wpdiscuz-subscribe-form">
+                                <div class="wpdiscuz-subscribe-form-intro">Notify of </div>
+                                <div class="wpdiscuz-subscribe-form-option" style="width:40%;">
+                                    <select class="wpdiscuz_select" name="wpdiscuzSubscriptionType">
+										                                            <option value="post">new follow-up comments</option>
+																					                                            <option value="all_comment">new replies to my comments</option>
+											                                    </select>
+                                </div>
+								                                    <div class="wpdiscuz-item wpdiscuz-subscribe-form-email">
+                                        <input class="email" type="email" name="wpdiscuzSubscriptionEmail" required="required" value="" placeholder="Email"/>
+                                    </div>
+									                                <div class="wpdiscuz-subscribe-form-button">
+                                    <input id="wpdiscuz_subscription_button" class="wpd-prim-button wpd_not_clicked" type="submit" value="›" name="wpdiscuz_subscription_button"/>
+                                </div>
+								<input type="hidden" id="wpdiscuz_subscribe_form_nonce" name="wpdiscuz_subscribe_form_nonce" value="b47eb05882"/><input type="hidden" name="_wp_http_referer" value="//"/>                            </form>
+							                    </div>
+					        <div class="wpd-form wpd-form-wrapper wpd-main-form-wrapper" id="wpd-main-form-wrapper-0_0">
+						                <form method="post" enctype="multipart/form-data" data-uploading="false" class="wpd_comm_form wpd_main_comm_form">
+					                    <div class="wpd-field-comment">
+                        <div class="wpdiscuz-item wc-field-textarea">
+                            <div class="wpdiscuz-textarea-wrap ">
+																	                                    <div class="wpd-avatar">
+										<img alt="guest" src="https://secure.gravatar.com/avatar/38d375fe067430245087c62259a58abb?s=56&amp;d=identicon&amp;r=g" class="avatar avatar-56 photo jetpack-lazy-image" height="56" width="56" decoding="async" data-lazy-srcset="https://secure.gravatar.com/avatar/38d375fe067430245087c62259a58abb?s=112&amp;d=identicon&amp;r=g 2x" data-lazy-src="https://secure.gravatar.com/avatar/38d375fe067430245087c62259a58abb?s=56&amp;is-pending-load=1#038;d=identicon&amp;r=g" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/><noscript><img data-lazy-fallback="1" alt='guest' src='https://secure.gravatar.com/avatar/38d375fe067430245087c62259a58abb?s=56&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/38d375fe067430245087c62259a58abb?s=112&#038;d=identicon&#038;r=g 2x' class='avatar avatar-56 photo' height='56' width='56' loading='lazy' decoding='async' /></noscript>                                    </div>
+									            <div id="wpd-editor-wraper-0_0" style="display: none;">
+                <div id="wpd-editor-char-counter-0_0" class="wpd-editor-char-counter"></div>
+                <label style="display: none;" for="wc-textarea-0_0">Label</label>
+                <textarea id="wc-textarea-0_0" name="wc_comment" class="wc_comment wpd-field"></textarea>
+                <div id="wpd-editor-0_0"></div>
+				        <div id="wpd-editor-toolbar-0_0">
+			                <button title="Bold" class="ql-bold"></button>
+				                <button title="Italic" class="ql-italic"></button>
+				                <button title="Underline" class="ql-underline"></button>
+				                <button title="Strike" class="ql-strike"></button>
+				                <button title="Ordered List" class="ql-list" value="ordered"></button>
+				                <button title="Unordered List" class="ql-list" value="bullet"></button>
+				                <button title="Blockquote" class="ql-blockquote"></button>
+				                <button title="Code Block" class="ql-code-block"></button>
+				                <button title="Link" class="ql-link"></button>
+				                <button title="Source Code" class="ql-sourcecode" data-wpde_button_name="sourcecode">{}</button>
+				                <button title="Spoiler" class="ql-spoiler" data-wpde_button_name="spoiler">[+]</button>
+				            <div class="wpd-editor-buttons-right">
+				            </div>
+        </div>
+		            </div>
+			                            </div>
+                        </div>
+                    </div>
+                    <div class="wpd-form-foot" style="display:none;">
+                        <div class="wpdiscuz-textarea-foot">
+							                            <div class="wpdiscuz-button-actions"></div>
+                        </div>
+						        <div class="wpd-form-row">
+                    <div class="wpd-form-col-left">
+                        <div class="wpdiscuz-item wc_name-wrapper wpd-has-icon">
+                                    <div class="wpd-field-icon"><i class="fas fa-user"></i></div>
+                                    <input id="wc_name-0_0" value="" required="required" aria-required="true" class="wc_name wpd-field" type="text" name="wc_name" placeholder="Name*" maxlength="50" pattern=".{3,50}" title=""/>
+                <label for="wc_name-0_0" class="wpdlb">Name*</label>
+                            </div>
+                        <div class="wpdiscuz-item wc_email-wrapper wpd-has-icon">
+                                    <div class="wpd-field-icon"><i class="fas fa-at"></i></div>
+                                    <input id="wc_email-0_0" value="" required="required" aria-required="true" class="wc_email wpd-field" type="email" name="wc_email" placeholder="Email*"/>
+                <label for="wc_email-0_0" class="wpdlb">Email*</label>
+                            </div>
+                            <div class="wpdiscuz-item wc_website-wrapper wpd-has-icon">
+                                            <div class="wpd-field-icon"><i class="fas fa-link"></i></div>
+                                        <input id="wc_website-0_0" value="" class="wc_website wpd-field" type="text" name="wc_website" placeholder="Website"/>
+                    <label for="wc_website-0_0" class="wpdlb">Website</label>
+                                    </div>
+                        </div>
+                <div class="wpd-form-col-right">
+                    <div class="wc-field-submit">
+															                        <label class="wpd_label" wpd-tooltip="Notify of new replies to this comment">
+                            <input id="wc_notification_new_comment-0_0" class="wc_notification_new_comment-0_0 wpd_label__checkbox" value="comment" type="checkbox" name="wpdiscuz_notification_type"/>
+                            <span class="wpd_label__text">
+                                <span class="wpd_label__check">
+                                    <i class="fas fa-bell wpdicon wpdicon-on"></i>
+                                    <i class="fas fa-bell-slash wpdicon wpdicon-off"></i>
+                                </span>
+                            </span>
+                        </label>
+													            <input id="wpd-field-submit-0_0" class="wc_comm_submit wpd_not_clicked wpd-prim-button" type="submit" name="submit" value="Post Comment" aria-label="Post Comment"/>
+        </div>
+		        </div>
+                    <div class="clearfix"></div>
+        </div>
+                            </div>
+					                    <input type="hidden" class="wpdiscuz_unique_id" value="0_0" name="wpdiscuz_unique_id"/>
+					<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="eb8dc351eb"/></p><p style="display: none !important;"><label>Δ<textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js_1" name="ak_js" value="76"/><script>document.getElementById( "ak_js_1" ).setAttribute( "value", ( new Date() ).getTime() );</script></p>                </form>
+				        </div>
+		        <div id="wpdiscuz_hidden_secondary_form" style="display: none;">
+			        <div class="wpd-form wpd-form-wrapper wpd-secondary-form-wrapper" id="wpd-secondary-form-wrapper-wpdiscuzuniqueid" style="display: none;">
+			                <div class="wpd-secondary-forms-social-content"></div>
+                <div class="clearfix"></div>
+						                <form method="post" enctype="multipart/form-data" data-uploading="false" class="wpd_comm_form wpd-secondary-form-wrapper">
+					                    <div class="wpd-field-comment">
+                        <div class="wpdiscuz-item wc-field-textarea">
+                            <div class="wpdiscuz-textarea-wrap ">
+																	                                    <div class="wpd-avatar">
+										<img alt="guest" src="https://secure.gravatar.com/avatar/e66aa4d08bff2627b0198e089f339202?s=56&amp;d=identicon&amp;r=g" class="avatar avatar-56 photo jetpack-lazy-image" height="56" width="56" decoding="async" data-lazy-srcset="https://secure.gravatar.com/avatar/e66aa4d08bff2627b0198e089f339202?s=112&amp;d=identicon&amp;r=g 2x" data-lazy-src="https://secure.gravatar.com/avatar/e66aa4d08bff2627b0198e089f339202?s=56&amp;is-pending-load=1#038;d=identicon&amp;r=g" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/><noscript><img data-lazy-fallback="1" alt='guest' src='https://secure.gravatar.com/avatar/e66aa4d08bff2627b0198e089f339202?s=56&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/e66aa4d08bff2627b0198e089f339202?s=112&#038;d=identicon&#038;r=g 2x' class='avatar avatar-56 photo' height='56' width='56' loading='lazy' decoding='async' /></noscript>                                    </div>
+									            <div id="wpd-editor-wraper-wpdiscuzuniqueid" style="display: none;">
+                <div id="wpd-editor-char-counter-wpdiscuzuniqueid" class="wpd-editor-char-counter"></div>
+                <label style="display: none;" for="wc-textarea-wpdiscuzuniqueid">Label</label>
+                <textarea id="wc-textarea-wpdiscuzuniqueid" name="wc_comment" class="wc_comment wpd-field"></textarea>
+                <div id="wpd-editor-wpdiscuzuniqueid"></div>
+				        <div id="wpd-editor-toolbar-wpdiscuzuniqueid">
+			                <button title="Bold" class="ql-bold"></button>
+				                <button title="Italic" class="ql-italic"></button>
+				                <button title="Underline" class="ql-underline"></button>
+				                <button title="Strike" class="ql-strike"></button>
+				                <button title="Ordered List" class="ql-list" value="ordered"></button>
+				                <button title="Unordered List" class="ql-list" value="bullet"></button>
+				                <button title="Blockquote" class="ql-blockquote"></button>
+				                <button title="Code Block" class="ql-code-block"></button>
+				                <button title="Link" class="ql-link"></button>
+				                <button title="Source Code" class="ql-sourcecode" data-wpde_button_name="sourcecode">{}</button>
+				                <button title="Spoiler" class="ql-spoiler" data-wpde_button_name="spoiler">[+]</button>
+				            <div class="wpd-editor-buttons-right">
+				            </div>
+        </div>
+		            </div>
+			                            </div>
+                        </div>
+                    </div>
+                    <div class="wpd-form-foot" style="display:none;">
+                        <div class="wpdiscuz-textarea-foot">
+							                            <div class="wpdiscuz-button-actions"></div>
+                        </div>
+						        <div class="wpd-form-row">
+                    <div class="wpd-form-col-left">
+                        <div class="wpdiscuz-item wc_name-wrapper wpd-has-icon">
+                                    <div class="wpd-field-icon"><i class="fas fa-user"></i></div>
+                                    <input id="wc_name-wpdiscuzuniqueid" value="" required="required" aria-required="true" class="wc_name wpd-field" type="text" name="wc_name" placeholder="Name*" maxlength="50" pattern=".{3,50}" title=""/>
+                <label for="wc_name-wpdiscuzuniqueid" class="wpdlb">Name*</label>
+                            </div>
+                        <div class="wpdiscuz-item wc_email-wrapper wpd-has-icon">
+                                    <div class="wpd-field-icon"><i class="fas fa-at"></i></div>
+                                    <input id="wc_email-wpdiscuzuniqueid" value="" required="required" aria-required="true" class="wc_email wpd-field" type="email" name="wc_email" placeholder="Email*"/>
+                <label for="wc_email-wpdiscuzuniqueid" class="wpdlb">Email*</label>
+                            </div>
+                            <div class="wpdiscuz-item wc_website-wrapper wpd-has-icon">
+                                            <div class="wpd-field-icon"><i class="fas fa-link"></i></div>
+                                        <input id="wc_website-wpdiscuzuniqueid" value="" class="wc_website wpd-field" type="text" name="wc_website" placeholder="Website"/>
+                    <label for="wc_website-wpdiscuzuniqueid" class="wpdlb">Website</label>
+                                    </div>
+                        </div>
+                <div class="wpd-form-col-right">
+                    <div class="wc-field-submit">
+															                        <label class="wpd_label" wpd-tooltip="Notify of new replies to this comment">
+                            <input id="wc_notification_new_comment-wpdiscuzuniqueid" class="wc_notification_new_comment-wpdiscuzuniqueid wpd_label__checkbox" value="comment" type="checkbox" name="wpdiscuz_notification_type"/>
+                            <span class="wpd_label__text">
+                                <span class="wpd_label__check">
+                                    <i class="fas fa-bell wpdicon wpdicon-on"></i>
+                                    <i class="fas fa-bell-slash wpdicon wpdicon-off"></i>
+                                </span>
+                            </span>
+                        </label>
+													            <input id="wpd-field-submit-wpdiscuzuniqueid" class="wc_comm_submit wpd_not_clicked wpd-prim-button" type="submit" name="submit" value="Post Comment" aria-label="Post Comment"/>
+        </div>
+		        </div>
+                    <div class="clearfix"></div>
+        </div>
+                            </div>
+					                    <input type="hidden" class="wpdiscuz_unique_id" value="wpdiscuzuniqueid" name="wpdiscuz_unique_id"/>
+					<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="eb8dc351eb"/></p><p style="display: none !important;"><label>Δ<textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js_2" name="ak_js" value="202"/><script>document.getElementById( "ak_js_2" ).setAttribute( "value", ( new Date() ).getTime() );</script></p>                </form>
+				        </div>
+		        </div>
+		            </div>
+			<p class="akismet_comment_form_privacy_notice">This site uses Akismet to reduce spam. <a href="https://akismet.com/privacy/" target="_blank" rel="nofollow noopener">Learn how your comment data is processed</a>.</p>            <div id="wpd-threads" class="wpd-thread-wrapper">
+                <div class="wpd-thread-head">
+                    <div class="wpd-thread-info " data-comments-count="3213">
+						<span class="wpdtc" title="3213">3.2K</span> Comments                    </div>
+					                    <div class="wpd-space"></div>
+                    <div class="wpd-thread-filter">
+						                            <div class="wpd-filter wpdf-reacted wpd_not_clicked" wpd-tooltip="Most reacted comment">
+                                <i class="fas fa-bolt"></i></div>
+							                            <div class="wpd-filter wpdf-hottest wpd_not_clicked" wpd-tooltip="Hottest comment thread">
+                                <i class="fas fa-fire"></i></div>
+							                            <div class="wpd-filter wpdf-sorting">
+								                                        <span class="wpdiscuz-sort-button wpdiscuz-date-sort-desc wpdiscuz-sort-button-active" data-sorting="newest">Newest</span>
+										                                <i class="fas fa-sort-down"></i>
+                                <div class="wpdiscuz-sort-buttons">
+									                                        <span class="wpdiscuz-sort-button wpdiscuz-date-sort-asc" data-sorting="oldest">Oldest</span>
+										                                </div>
+                            </div>
+							                    </div>
+                </div>
+                <div class="wpd-comment-info-bar">
+                    <div class="wpd-current-view"><i class="fas fa-quote-left"></i> Inline Feedbacks                    </div>
+                    <div class="wpd-filter-view-all">View all comments</div>
+                </div>
+				                <div class="wpd-thread-list">
+					<div id="wpd-comm-4778_0" class="comment even thread-even depth-1 wpd-comment wpd_comment_level-1"><div class="wpd-comment-wrap wpd-blog-guest">
+    <div class="wpd-comment-left ">
+    <div class="wpd-avatar ">
+    <img alt="Ann" src="https://secure.gravatar.com/avatar/14e73335c412562b3d110d054c290051?s=64&amp;d=identicon&amp;r=g" class="avatar avatar-64 photo jetpack-lazy-image" height="64" width="64" decoding="async" data-lazy-srcset="https://secure.gravatar.com/avatar/14e73335c412562b3d110d054c290051?s=128&amp;d=identicon&amp;r=g 2x" data-lazy-src="https://secure.gravatar.com/avatar/14e73335c412562b3d110d054c290051?s=64&amp;is-pending-load=1#038;d=identicon&amp;r=g" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/><noscript><img data-lazy-fallback="1" alt='Ann' src='https://secure.gravatar.com/avatar/14e73335c412562b3d110d054c290051?s=64&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/14e73335c412562b3d110d054c290051?s=128&#038;d=identicon&#038;r=g 2x' class='avatar avatar-64 photo' height='64' width='64' loading='lazy' decoding='async' /></noscript>
+</div>
+    
+    
+</div>
+    <div id="comment-4778" class="wpd-comment-right">
+    <div class="wpd-comment-header">
+    <div class="wpd-comment-author ">
+    Ann
+</div>
+    <div class="wpd-comment-date" title="August 21, 2023 8:48 am">
+    <i class="far fa-clock" aria-hidden="true"></i>
+    1 day ago
+</div>
+    
+    
+    <div class="wpd-space"></div>
+    <div class="wpd-comment-link wpd-hidden">
+    <span wpd-tooltip="Comment Link" wpd-tooltip-position="left"><i class="fas fa-link" aria-hidden="true" data-wpd-clipboard="https://tophonetics.com/#comment-4778"></i></span>
+</div>
+</div>
+    
+    <div class="wpd-comment-text">
+    <p>gooddd</p>
+
+</div>
+    <div class="wpd-comment-footer">
+    
+    <div class="wpd-reply-button">
+    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+    <span>Reply</span>
+</div>
+    <div class="wpd-space"></div>
+    
+    
+</div>
+</div>
+</div><div id="wpdiscuz_form_anchor-4778_0"></div></div><div id="wpd-comm-4777_0" class="comment odd alt thread-odd thread-alt depth-1 wpd-comment wpd_comment_level-1"><div class="wpd-comment-wrap wpd-blog-guest">
+    <div class="wpd-comment-left ">
+    <div class="wpd-avatar ">
+    <img alt="tinh" src="https://secure.gravatar.com/avatar/d406548a0515cb55489b10396ed26691?s=64&amp;d=identicon&amp;r=g" class="avatar avatar-64 photo jetpack-lazy-image" height="64" width="64" decoding="async" data-lazy-srcset="https://secure.gravatar.com/avatar/d406548a0515cb55489b10396ed26691?s=128&amp;d=identicon&amp;r=g 2x" data-lazy-src="https://secure.gravatar.com/avatar/d406548a0515cb55489b10396ed26691?s=64&amp;is-pending-load=1#038;d=identicon&amp;r=g" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/><noscript><img data-lazy-fallback="1" alt='tinh' src='https://secure.gravatar.com/avatar/d406548a0515cb55489b10396ed26691?s=64&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/d406548a0515cb55489b10396ed26691?s=128&#038;d=identicon&#038;r=g 2x' class='avatar avatar-64 photo' height='64' width='64' loading='lazy' decoding='async' /></noscript>
+</div>
+    
+    
+</div>
+    <div id="comment-4777" class="wpd-comment-right">
+    <div class="wpd-comment-header">
+    <div class="wpd-comment-author ">
+    tinh
+</div>
+    <div class="wpd-comment-date" title="August 20, 2023 7:57 am">
+    <i class="far fa-clock" aria-hidden="true"></i>
+    2 days ago
+</div>
+    
+    
+    <div class="wpd-space"></div>
+    <div class="wpd-comment-link wpd-hidden">
+    <span wpd-tooltip="Comment Link" wpd-tooltip-position="left"><i class="fas fa-link" aria-hidden="true" data-wpd-clipboard="https://tophonetics.com/#comment-4777"></i></span>
+</div>
+</div>
+    
+    <div class="wpd-comment-text">
+    <p>good site for leaner</p>
+
+</div>
+    <div class="wpd-comment-footer">
+    
+    <div class="wpd-reply-button">
+    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+    <span>Reply</span>
+</div>
+    <div class="wpd-space"></div>
+    
+    
+</div>
+</div>
+</div><div id="wpdiscuz_form_anchor-4777_0"></div></div><div id="wpd-comm-4771_0" class="comment even thread-even depth-1 wpd-comment wpd_comment_level-1"><div class="wpd-comment-wrap wpd-blog-guest">
+    <div class="wpd-comment-left ">
+    <div class="wpd-avatar ">
+    <img alt="Dim Jones" src="https://secure.gravatar.com/avatar/10eeda8aef52ee94457f6618e26594f1?s=64&amp;d=identicon&amp;r=g" class="avatar avatar-64 photo jetpack-lazy-image" height="64" width="64" decoding="async" data-lazy-srcset="https://secure.gravatar.com/avatar/10eeda8aef52ee94457f6618e26594f1?s=128&amp;d=identicon&amp;r=g 2x" data-lazy-src="https://secure.gravatar.com/avatar/10eeda8aef52ee94457f6618e26594f1?s=64&amp;is-pending-load=1#038;d=identicon&amp;r=g" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/><noscript><img data-lazy-fallback="1" alt='Dim Jones' src='https://secure.gravatar.com/avatar/10eeda8aef52ee94457f6618e26594f1?s=64&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/10eeda8aef52ee94457f6618e26594f1?s=128&#038;d=identicon&#038;r=g 2x' class='avatar avatar-64 photo' height='64' width='64' loading='lazy' decoding='async' /></noscript>
+</div>
+    
+    
+</div>
+    <div id="comment-4771" class="wpd-comment-right">
+    <div class="wpd-comment-header">
+    <div class="wpd-comment-author ">
+    Dim Jones
+</div>
+    <div class="wpd-comment-date" title="August 18, 2023 11:08 am">
+    <i class="far fa-clock" aria-hidden="true"></i>
+    4 days ago
+</div>
+    
+    
+    <div class="wpd-space"></div>
+    <div class="wpd-comment-link wpd-hidden">
+    <span wpd-tooltip="Comment Link" wpd-tooltip-position="left"><i class="fas fa-link" aria-hidden="true" data-wpd-clipboard="https://tophonetics.com/#comment-4771"></i></span>
+</div>
+</div>
+    
+    <div class="wpd-comment-text">
+    <p>Есть ли возможность сделать перевод в транскрипцию минуя кнопку “показать транскрипцию”?</p>
+
+</div>
+    <div class="wpd-comment-footer">
+    
+    <div class="wpd-reply-button">
+    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+    <span>Reply</span>
+</div>
+    <div class="wpd-space"></div>
+    
+    
+</div>
+</div>
+</div><div id="wpdiscuz_form_anchor-4771_0"></div></div><div id="wpd-comm-4769_0" class="comment odd alt thread-odd thread-alt depth-1 wpd-comment wpd_comment_level-1"><div class="wpd-comment-wrap wpd-blog-guest">
+    <div class="wpd-comment-left ">
+    <div class="wpd-avatar ">
+    <img alt="claudio" src="https://secure.gravatar.com/avatar/87e1100ade4d378fc3bede8a15d2f880?s=64&amp;d=identicon&amp;r=g" class="avatar avatar-64 photo jetpack-lazy-image" height="64" width="64" decoding="async" data-lazy-srcset="https://secure.gravatar.com/avatar/87e1100ade4d378fc3bede8a15d2f880?s=128&amp;d=identicon&amp;r=g 2x" data-lazy-src="https://secure.gravatar.com/avatar/87e1100ade4d378fc3bede8a15d2f880?s=64&amp;is-pending-load=1#038;d=identicon&amp;r=g" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/><noscript><img data-lazy-fallback="1" alt='claudio' src='https://secure.gravatar.com/avatar/87e1100ade4d378fc3bede8a15d2f880?s=64&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/87e1100ade4d378fc3bede8a15d2f880?s=128&#038;d=identicon&#038;r=g 2x' class='avatar avatar-64 photo' height='64' width='64' loading='lazy' decoding='async' /></noscript>
+</div>
+    
+    
+</div>
+    <div id="comment-4769" class="wpd-comment-right">
+    <div class="wpd-comment-header">
+    <div class="wpd-comment-author ">
+    claudio
+</div>
+    <div class="wpd-comment-date" title="August 16, 2023 10:41 am">
+    <i class="far fa-clock" aria-hidden="true"></i>
+    6 days ago
+</div>
+    
+    
+    <div class="wpd-space"></div>
+    <div class="wpd-comment-link wpd-hidden">
+    <span wpd-tooltip="Comment Link" wpd-tooltip-position="left"><i class="fas fa-link" aria-hidden="true" data-wpd-clipboard="https://tophonetics.com/#comment-4769"></i></span>
+</div>
+</div>
+    
+    <div class="wpd-comment-text">
+    <p>thanks to put loop button</p>
+
+</div>
+    <div class="wpd-comment-footer">
+    
+    <div class="wpd-reply-button">
+    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+    <span>Reply</span>
+</div>
+    <div class="wpd-space"></div>
+    
+    
+</div>
+</div>
+</div><div id="wpdiscuz_form_anchor-4769_0"></div></div><div id="wpd-comm-4768_0" class="comment even thread-even depth-1 wpd-comment wpd_comment_level-1"><div class="wpd-comment-wrap wpd-blog-guest">
+    <div class="wpd-comment-left ">
+    <div class="wpd-avatar ">
+    <img alt="acacia" src="https://secure.gravatar.com/avatar/50faa237b8f6f38a79623aea5a9ee1d5?s=64&amp;d=identicon&amp;r=g" class="avatar avatar-64 photo jetpack-lazy-image" height="64" width="64" decoding="async" data-lazy-srcset="https://secure.gravatar.com/avatar/50faa237b8f6f38a79623aea5a9ee1d5?s=128&amp;d=identicon&amp;r=g 2x" data-lazy-src="https://secure.gravatar.com/avatar/50faa237b8f6f38a79623aea5a9ee1d5?s=64&amp;is-pending-load=1#038;d=identicon&amp;r=g" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/><noscript><img data-lazy-fallback="1" alt='acacia' src='https://secure.gravatar.com/avatar/50faa237b8f6f38a79623aea5a9ee1d5?s=64&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/50faa237b8f6f38a79623aea5a9ee1d5?s=128&#038;d=identicon&#038;r=g 2x' class='avatar avatar-64 photo' height='64' width='64' loading='lazy' decoding='async' /></noscript>
+</div>
+    
+    
+</div>
+    <div id="comment-4768" class="wpd-comment-right">
+    <div class="wpd-comment-header">
+    <div class="wpd-comment-author ">
+    acacia
+</div>
+    <div class="wpd-comment-date" title="August 15, 2023 6:58 pm">
+    <i class="far fa-clock" aria-hidden="true"></i>
+    6 days ago
+</div>
+    
+    
+    <div class="wpd-space"></div>
+    <div class="wpd-comment-link wpd-hidden">
+    <span wpd-tooltip="Comment Link" wpd-tooltip-position="left"><i class="fas fa-link" aria-hidden="true" data-wpd-clipboard="https://tophonetics.com/#comment-4768"></i></span>
+</div>
+</div>
+    
+    <div class="wpd-comment-text">
+    <p>nice</p>
+
+</div>
+    <div class="wpd-comment-footer">
+    
+    <div class="wpd-reply-button">
+    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+    <span>Reply</span>
+</div>
+    <div class="wpd-space"></div>
+    
+    
+</div>
+</div>
+</div><div id="wpdiscuz_form_anchor-4768_0"></div></div><div id="wpd-comm-4765_0" class="comment odd alt thread-odd thread-alt depth-1 wpd-comment wpd_comment_level-1"><div class="wpd-comment-wrap wpd-blog-guest">
+    <div class="wpd-comment-left ">
+    <div class="wpd-avatar ">
+    <img alt="Tommy" src="https://secure.gravatar.com/avatar/92cb6b1501048c396d995df05eb6130d?s=64&amp;d=identicon&amp;r=g" class="avatar avatar-64 photo jetpack-lazy-image" height="64" width="64" decoding="async" data-lazy-srcset="https://secure.gravatar.com/avatar/92cb6b1501048c396d995df05eb6130d?s=128&amp;d=identicon&amp;r=g 2x" data-lazy-src="https://secure.gravatar.com/avatar/92cb6b1501048c396d995df05eb6130d?s=64&amp;is-pending-load=1#038;d=identicon&amp;r=g" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/><noscript><img data-lazy-fallback="1" alt='Tommy' src='https://secure.gravatar.com/avatar/92cb6b1501048c396d995df05eb6130d?s=64&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/92cb6b1501048c396d995df05eb6130d?s=128&#038;d=identicon&#038;r=g 2x' class='avatar avatar-64 photo' height='64' width='64' loading='lazy' decoding='async' /></noscript>
+</div>
+    
+    
+</div>
+    <div id="comment-4765" class="wpd-comment-right">
+    <div class="wpd-comment-header">
+    <div class="wpd-comment-author ">
+    Tommy
+</div>
+    <div class="wpd-comment-date" title="August 13, 2023 12:17 pm">
+    <i class="far fa-clock" aria-hidden="true"></i>
+    9 days ago
+</div>
+    
+    
+    <div class="wpd-space"></div>
+    <div class="wpd-comment-link wpd-hidden">
+    <span wpd-tooltip="Comment Link" wpd-tooltip-position="left"><i class="fas fa-link" aria-hidden="true" data-wpd-clipboard="https://tophonetics.com/#comment-4765"></i></span>
+</div>
+</div>
+    
+    <div class="wpd-comment-text">
+    <p>how can I download the voice?</p>
+
+</div>
+    <div class="wpd-comment-footer">
+    
+    <div class="wpd-reply-button">
+    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+    <span>Reply</span>
+</div>
+    <div class="wpd-space"></div>
+    
+    <div class="wpd-toggle wpd-hidden wpd_not_clicked" wpd-tooltip="Hide Replies" wpd-tooltip-position="left">
+    <i class="fas fa-chevron-up"></i>
+</div>
+</div>
+</div>
+</div><div id="wpdiscuz_form_anchor-4765_0"></div><div id="wpd-comm-4776_4765" class="comment byuser comment-author-musonic bypostauthor even depth-2 wpd-comment wpd-reply wpd_comment_level-2"><div class="wpd-comment-wrap wpd-blog-user wpd-blog-administrator wpd-blog-user wpd-blog-post_author">
+    <div class="wpd-comment-left ">
+    <div class="wpd-avatar ">
+    <a href="https://tophonetics.com/author/musonic/" target="_blank" rel="noreferrer ugc"><img alt="toPhonetics" src="https://secure.gravatar.com/avatar/7a53592f4c6b087dd41811e75d276aa6?s=64&amp;d=identicon&amp;r=g" class="avatar avatar-64 photo jetpack-lazy-image" height="64" width="64" decoding="async" data-lazy-srcset="https://secure.gravatar.com/avatar/7a53592f4c6b087dd41811e75d276aa6?s=128&amp;d=identicon&amp;r=g 2x" data-lazy-src="https://secure.gravatar.com/avatar/7a53592f4c6b087dd41811e75d276aa6?s=64&amp;is-pending-load=1#038;d=identicon&amp;r=g" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/><noscript><img data-lazy-fallback="1" alt='toPhonetics' src='https://secure.gravatar.com/avatar/7a53592f4c6b087dd41811e75d276aa6?s=64&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/7a53592f4c6b087dd41811e75d276aa6?s=128&#038;d=identicon&#038;r=g 2x' class='avatar avatar-64 photo' height='64' width='64' loading='lazy' decoding='async' /></noscript></a>
+</div>
+    
+    
+</div>
+    <div id="comment-4776" class="wpd-comment-right">
+    <div class="wpd-comment-header">
+    <div class="wpd-comment-author ">
+    <a href="http://toPhonetics.com" rel="noreferrer ugc nofollow" target="_blank">toPhonetics</a>
+</div>
+    <div class="wpd-comment-date" title="August 19, 2023 11:42 am">
+    <i class="far fa-clock" aria-hidden="true"></i>
+    3 days ago
+</div>
+    
+    
+    <div class="wpd-space"></div>
+    <div class="wpd-comment-link wpd-hidden">
+    <span wpd-tooltip="Comment Link" wpd-tooltip-position="left"><i class="fas fa-link" aria-hidden="true" data-wpd-clipboard="https://tophonetics.com/#comment-4776"></i></span>
+</div>
+</div>
+    <div class="wpd-reply-to">
+    <i class="far fa-comments"></i>
+    Reply to 
+    <a href="#comment-4765">
+        Tommy
+    </a>
+</div>
+    <div class="wpd-comment-text">
+    <p><a href="https://tophonetics.com/faq/#audio" rel="ugc">https://tophonetics.com/faq/#audio</a></p>
+
+</div>
+    <div class="wpd-comment-footer">
+    
+    <div class="wpd-reply-button">
+    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+    <span>Reply</span>
+</div>
+    <div class="wpd-space"></div>
+    
+    
+</div>
+</div>
+</div><div id="wpdiscuz_form_anchor-4776_4765"></div></div></div><div id="wpd-comm-4763_0" class="comment odd alt thread-even depth-1 wpd-comment wpd_comment_level-1"><div class="wpd-comment-wrap wpd-blog-guest">
+    <div class="wpd-comment-left ">
+    <div class="wpd-avatar ">
+    <img alt="eli" src="https://secure.gravatar.com/avatar/6020086223b5e00f9859bbe579c347ae?s=64&amp;d=identicon&amp;r=g" class="avatar avatar-64 photo jetpack-lazy-image" height="64" width="64" decoding="async" data-lazy-srcset="https://secure.gravatar.com/avatar/6020086223b5e00f9859bbe579c347ae?s=128&amp;d=identicon&amp;r=g 2x" data-lazy-src="https://secure.gravatar.com/avatar/6020086223b5e00f9859bbe579c347ae?s=64&amp;is-pending-load=1#038;d=identicon&amp;r=g" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/><noscript><img data-lazy-fallback="1" alt='eli' src='https://secure.gravatar.com/avatar/6020086223b5e00f9859bbe579c347ae?s=64&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/6020086223b5e00f9859bbe579c347ae?s=128&#038;d=identicon&#038;r=g 2x' class='avatar avatar-64 photo' height='64' width='64' loading='lazy' decoding='async' /></noscript>
+</div>
+    
+    
+</div>
+    <div id="comment-4763" class="wpd-comment-right">
+    <div class="wpd-comment-header">
+    <div class="wpd-comment-author ">
+    eli
+</div>
+    <div class="wpd-comment-date" title="August 13, 2023 12:26 am">
+    <i class="far fa-clock" aria-hidden="true"></i>
+    9 days ago
+</div>
+    
+    
+    <div class="wpd-space"></div>
+    <div class="wpd-comment-link wpd-hidden">
+    <span wpd-tooltip="Comment Link" wpd-tooltip-position="left"><i class="fas fa-link" aria-hidden="true" data-wpd-clipboard="https://tophonetics.com/#comment-4763"></i></span>
+</div>
+</div>
+    
+    <div class="wpd-comment-text">
+    <p>hello!!! what are nasal consonants</p>
+
+</div>
+    <div class="wpd-comment-footer">
+    
+    <div class="wpd-reply-button">
+    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+    <span>Reply</span>
+</div>
+    <div class="wpd-space"></div>
+    
+    
+</div>
+</div>
+</div><div id="wpdiscuz_form_anchor-4763_0"></div></div><div id="wpd-comm-4758_0" class="comment even thread-odd thread-alt depth-1 wpd-comment wpd_comment_level-1"><div class="wpd-comment-wrap wpd-blog-guest">
+    <div class="wpd-comment-left ">
+    <div class="wpd-avatar ">
+    <img alt="robert" src="https://secure.gravatar.com/avatar/bbcf5a26cec428155b15b549f4903ea1?s=64&amp;d=identicon&amp;r=g" class="avatar avatar-64 photo jetpack-lazy-image" height="64" width="64" decoding="async" data-lazy-srcset="https://secure.gravatar.com/avatar/bbcf5a26cec428155b15b549f4903ea1?s=128&amp;d=identicon&amp;r=g 2x" data-lazy-src="https://secure.gravatar.com/avatar/bbcf5a26cec428155b15b549f4903ea1?s=64&amp;is-pending-load=1#038;d=identicon&amp;r=g" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/><noscript><img data-lazy-fallback="1" alt='robert' src='https://secure.gravatar.com/avatar/bbcf5a26cec428155b15b549f4903ea1?s=64&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/bbcf5a26cec428155b15b549f4903ea1?s=128&#038;d=identicon&#038;r=g 2x' class='avatar avatar-64 photo' height='64' width='64' loading='lazy' decoding='async' /></noscript>
+</div>
+    
+    
+</div>
+    <div id="comment-4758" class="wpd-comment-right">
+    <div class="wpd-comment-header">
+    <div class="wpd-comment-author ">
+    robert
+</div>
+    <div class="wpd-comment-date" title="August 11, 2023 3:48 am">
+    <i class="far fa-clock" aria-hidden="true"></i>
+    11 days ago
+</div>
+    
+    
+    <div class="wpd-space"></div>
+    <div class="wpd-comment-link wpd-hidden">
+    <span wpd-tooltip="Comment Link" wpd-tooltip-position="left"><i class="fas fa-link" aria-hidden="true" data-wpd-clipboard="https://tophonetics.com/#comment-4758"></i></span>
+</div>
+</div>
+    
+    <div class="wpd-comment-text">
+    <p>very good</p>
+
+</div>
+    <div class="wpd-comment-footer">
+    
+    <div class="wpd-reply-button">
+    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+    <span>Reply</span>
+</div>
+    <div class="wpd-space"></div>
+    
+    
+</div>
+</div>
+</div><div id="wpdiscuz_form_anchor-4758_0"></div></div><div id="wpd-comm-4755_0" class="comment odd alt thread-even depth-1 wpd-comment wpd_comment_level-1"><div class="wpd-comment-wrap wpd-blog-guest">
+    <div class="wpd-comment-left ">
+    <div class="wpd-avatar ">
+    <img alt="Lorenzo" src="https://secure.gravatar.com/avatar/9d520a0604e88eb0367c6dadf884957a?s=64&amp;d=identicon&amp;r=g" class="avatar avatar-64 photo jetpack-lazy-image" height="64" width="64" decoding="async" data-lazy-srcset="https://secure.gravatar.com/avatar/9d520a0604e88eb0367c6dadf884957a?s=128&amp;d=identicon&amp;r=g 2x" data-lazy-src="https://secure.gravatar.com/avatar/9d520a0604e88eb0367c6dadf884957a?s=64&amp;is-pending-load=1#038;d=identicon&amp;r=g" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/><noscript><img data-lazy-fallback="1" alt='Lorenzo' src='https://secure.gravatar.com/avatar/9d520a0604e88eb0367c6dadf884957a?s=64&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/9d520a0604e88eb0367c6dadf884957a?s=128&#038;d=identicon&#038;r=g 2x' class='avatar avatar-64 photo' height='64' width='64' loading='lazy' decoding='async' /></noscript>
+</div>
+    
+    
+</div>
+    <div id="comment-4755" class="wpd-comment-right">
+    <div class="wpd-comment-header">
+    <div class="wpd-comment-author ">
+    Lorenzo
+</div>
+    <div class="wpd-comment-date" title="July 31, 2023 3:30 pm">
+    <i class="far fa-clock" aria-hidden="true"></i>
+    22 days ago
+</div>
+    
+    
+    <div class="wpd-space"></div>
+    <div class="wpd-comment-link wpd-hidden">
+    <span wpd-tooltip="Comment Link" wpd-tooltip-position="left"><i class="fas fa-link" aria-hidden="true" data-wpd-clipboard="https://tophonetics.com/#comment-4755"></i></span>
+</div>
+</div>
+    
+    <div class="wpd-comment-text">
+    <p>In words like “four, wall, war” and the like, we get the vowel <span>ɔ in the </span>transcription, but the symbol clearly refers to the open-mid vowel in IPA. There is an overwhelming confusion in the symbols in every <span>course, </span>textbook or website. It looks like somebody just wants to add new symbols or new uses of symbols instead of shedding some light on the matters.</p>
+
+</div>
+    <div class="wpd-comment-footer">
+    
+    <div class="wpd-reply-button">
+    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+    <span>Reply</span>
+</div>
+    <div class="wpd-space"></div>
+    
+    <div class="wpd-toggle wpd-hidden wpd_not_clicked" wpd-tooltip="Hide Replies" wpd-tooltip-position="left">
+    <i class="fas fa-chevron-up"></i>
+</div>
+</div>
+</div>
+</div><div id="wpdiscuz_form_anchor-4755_0"></div><div id="wpd-comm-4772_4755" class="comment even depth-2 wpd-comment wpd-reply wpd_comment_level-2"><div class="wpd-comment-wrap wpd-blog-guest">
+    <div class="wpd-comment-left ">
+    <div class="wpd-avatar ">
+    <img alt="Linda" src="https://secure.gravatar.com/avatar/984f85bca529023cee8e270e89a7dd8e?s=64&amp;d=identicon&amp;r=g" class="avatar avatar-64 photo jetpack-lazy-image" height="64" width="64" decoding="async" data-lazy-srcset="https://secure.gravatar.com/avatar/984f85bca529023cee8e270e89a7dd8e?s=128&amp;d=identicon&amp;r=g 2x" data-lazy-src="https://secure.gravatar.com/avatar/984f85bca529023cee8e270e89a7dd8e?s=64&amp;is-pending-load=1#038;d=identicon&amp;r=g" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/><noscript><img data-lazy-fallback="1" alt='Linda' src='https://secure.gravatar.com/avatar/984f85bca529023cee8e270e89a7dd8e?s=64&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/984f85bca529023cee8e270e89a7dd8e?s=128&#038;d=identicon&#038;r=g 2x' class='avatar avatar-64 photo' height='64' width='64' loading='lazy' decoding='async' /></noscript>
+</div>
+    
+    
+</div>
+    <div id="comment-4772" class="wpd-comment-right">
+    <div class="wpd-comment-header">
+    <div class="wpd-comment-author ">
+    Linda
+</div>
+    <div class="wpd-comment-date" title="August 19, 2023 9:33 am">
+    <i class="far fa-clock" aria-hidden="true"></i>
+    3 days ago
+</div>
+    
+    
+    <div class="wpd-space"></div>
+    <div class="wpd-comment-link wpd-hidden">
+    <span wpd-tooltip="Comment Link" wpd-tooltip-position="left"><i class="fas fa-link" aria-hidden="true" data-wpd-clipboard="https://tophonetics.com/#comment-4772"></i></span>
+</div>
+</div>
+    <div class="wpd-reply-to">
+    <i class="far fa-comments"></i>
+    Reply to 
+    <a href="#comment-4755">
+        Lorenzo
+    </a>
+</div>
+    <div class="wpd-comment-text">
+    <p>Hmm…  I just tried it and with the British transcription I got:  “<span>fɔː</span>, <span>wɔːl</span>, <span>wɔː</span>” with the vowel <span>ɔː  Perfect!</span></p>
+
+</div>
+    <div class="wpd-comment-footer">
+    
+    <div class="wpd-reply-button">
+    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+    <span>Reply</span>
+</div>
+    <div class="wpd-space"></div>
+    
+    <div class="wpd-toggle wpd-hidden wpd_not_clicked" wpd-tooltip="Hide Replies" wpd-tooltip-position="left">
+    <i class="fas fa-chevron-up"></i>
+</div>
+</div>
+</div>
+</div><div id="wpdiscuz_form_anchor-4772_4755"></div><div id="wpd-comm-4774_4772" class="comment odd alt depth-3 wpd-comment wpd-reply wpd_comment_level-3"><div class="wpd-comment-wrap wpd-blog-guest">
+    <div class="wpd-comment-left ">
+    <div class="wpd-avatar ">
+    <img alt="English with Liz" src="https://secure.gravatar.com/avatar/8bef36b475be4db51494d3c32e74feaa?s=64&amp;d=identicon&amp;r=g" class="avatar avatar-64 photo jetpack-lazy-image" height="64" width="64" decoding="async" data-lazy-srcset="https://secure.gravatar.com/avatar/8bef36b475be4db51494d3c32e74feaa?s=128&amp;d=identicon&amp;r=g 2x" data-lazy-src="https://secure.gravatar.com/avatar/8bef36b475be4db51494d3c32e74feaa?s=64&amp;is-pending-load=1#038;d=identicon&amp;r=g" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/><noscript><img data-lazy-fallback="1" alt='English with Liz' src='https://secure.gravatar.com/avatar/8bef36b475be4db51494d3c32e74feaa?s=64&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/8bef36b475be4db51494d3c32e74feaa?s=128&#038;d=identicon&#038;r=g 2x' class='avatar avatar-64 photo' height='64' width='64' loading='lazy' decoding='async' /></noscript>
+</div>
+    
+    
+</div>
+    <div id="comment-4774" class="wpd-comment-right">
+    <div class="wpd-comment-header">
+    <div class="wpd-comment-author ">
+    <a href="https://www.youtube.com/@EnglishwithLiz" rel="noreferrer ugc nofollow" target="_blank">English with Liz</a>
+</div>
+    <div class="wpd-comment-date" title="August 19, 2023 11:32 am">
+    <i class="far fa-clock" aria-hidden="true"></i>
+    3 days ago
+</div>
+    
+    
+    <div class="wpd-space"></div>
+    <div class="wpd-comment-link wpd-hidden">
+    <span wpd-tooltip="Comment Link" wpd-tooltip-position="left"><i class="fas fa-link" aria-hidden="true" data-wpd-clipboard="https://tophonetics.com/#comment-4774"></i></span>
+</div>
+</div>
+    <div class="wpd-reply-to">
+    <i class="far fa-comments"></i>
+    Reply to 
+    <a href="#comment-4772">
+        Linda
+    </a>
+</div>
+    <div class="wpd-comment-text">
+    <p>I think he’s referring to the American transcription</p>
+
+</div>
+    <div class="wpd-comment-footer">
+    
+    <div class="wpd-reply-button">
+    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+    <span>Reply</span>
+</div>
+    <div class="wpd-space"></div>
+    
+    
+</div>
+</div>
+</div><div id="wpdiscuz_form_anchor-4774_4772"></div></div></div></div><div id="wpd-comm-4751_0" class="comment even thread-odd thread-alt depth-1 wpd-comment wpd_comment_level-1"><div class="wpd-comment-wrap wpd-blog-guest">
+    <div class="wpd-comment-left ">
+    <div class="wpd-avatar ">
+    <img alt="Eralp" src="https://secure.gravatar.com/avatar/08cb9c132bcacc8a58a63eb559935a6f?s=64&amp;d=identicon&amp;r=g" class="avatar avatar-64 photo jetpack-lazy-image" height="64" width="64" decoding="async" data-lazy-srcset="https://secure.gravatar.com/avatar/08cb9c132bcacc8a58a63eb559935a6f?s=128&amp;d=identicon&amp;r=g 2x" data-lazy-src="https://secure.gravatar.com/avatar/08cb9c132bcacc8a58a63eb559935a6f?s=64&amp;is-pending-load=1#038;d=identicon&amp;r=g" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/><noscript><img data-lazy-fallback="1" alt='Eralp' src='https://secure.gravatar.com/avatar/08cb9c132bcacc8a58a63eb559935a6f?s=64&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/08cb9c132bcacc8a58a63eb559935a6f?s=128&#038;d=identicon&#038;r=g 2x' class='avatar avatar-64 photo' height='64' width='64' loading='lazy' decoding='async' /></noscript>
+</div>
+    
+    
+</div>
+    <div id="comment-4751" class="wpd-comment-right">
+    <div class="wpd-comment-header">
+    <div class="wpd-comment-author ">
+    <a href="http://gmail" rel="noreferrer ugc nofollow" target="_blank">Eralp</a>
+</div>
+    <div class="wpd-comment-date" title="July 28, 2023 6:48 pm">
+    <i class="far fa-clock" aria-hidden="true"></i>
+    24 days ago
+</div>
+    
+    
+    <div class="wpd-space"></div>
+    <div class="wpd-comment-link wpd-hidden">
+    <span wpd-tooltip="Comment Link" wpd-tooltip-position="left"><i class="fas fa-link" aria-hidden="true" data-wpd-clipboard="https://tophonetics.com/#comment-4751"></i></span>
+</div>
+</div>
+    
+    <div class="wpd-comment-text">
+    <p>i cant find lowercase at both british and american</p>
+
+</div>
+    <div class="wpd-comment-footer">
+    
+    <div class="wpd-reply-button">
+    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+    <span>Reply</span>
+</div>
+    <div class="wpd-space"></div>
+    
+    <div class="wpd-toggle wpd-hidden wpd_not_clicked" wpd-tooltip="Hide Replies" wpd-tooltip-position="left">
+    <i class="fas fa-chevron-up"></i>
+</div>
+</div>
+</div>
+</div><div id="wpdiscuz_form_anchor-4751_0"></div><div id="wpd-comm-4754_4751" class="comment odd alt depth-2 wpd-comment wpd-reply wpd_comment_level-2"><div class="wpd-comment-wrap wpd-blog-guest">
+    <div class="wpd-comment-left ">
+    <div class="wpd-avatar ">
+    <img alt="Eralp" src="https://secure.gravatar.com/avatar/08cb9c132bcacc8a58a63eb559935a6f?s=64&amp;d=identicon&amp;r=g" class="avatar avatar-64 photo jetpack-lazy-image" height="64" width="64" decoding="async" data-lazy-srcset="https://secure.gravatar.com/avatar/08cb9c132bcacc8a58a63eb559935a6f?s=128&amp;d=identicon&amp;r=g 2x" data-lazy-src="https://secure.gravatar.com/avatar/08cb9c132bcacc8a58a63eb559935a6f?s=64&amp;is-pending-load=1#038;d=identicon&amp;r=g" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/><noscript><img data-lazy-fallback="1" alt='Eralp' src='https://secure.gravatar.com/avatar/08cb9c132bcacc8a58a63eb559935a6f?s=64&#038;d=identicon&#038;r=g' srcset='https://secure.gravatar.com/avatar/08cb9c132bcacc8a58a63eb559935a6f?s=128&#038;d=identicon&#038;r=g 2x' class='avatar avatar-64 photo' height='64' width='64' loading='lazy' decoding='async' /></noscript>
+</div>
+    
+    
+</div>
+    <div id="comment-4754" class="wpd-comment-right">
+    <div class="wpd-comment-header">
+    <div class="wpd-comment-author ">
+    <a href="http://gmail" rel="noreferrer ugc nofollow" target="_blank">Eralp</a>
+</div>
+    <div class="wpd-comment-date" title="July 29, 2023 12:06 pm">
+    <i class="far fa-clock" aria-hidden="true"></i>
+    24 days ago
+</div>
+    
+    
+    <div class="wpd-space"></div>
+    <div class="wpd-comment-link wpd-hidden">
+    <span wpd-tooltip="Comment Link" wpd-tooltip-position="left"><i class="fas fa-link" aria-hidden="true" data-wpd-clipboard="https://tophonetics.com/#comment-4754"></i></span>
+</div>
+</div>
+    <div class="wpd-reply-to">
+    <i class="far fa-comments"></i>
+    Reply to 
+    <a href="#comment-4751">
+        Eralp
+    </a>
+</div>
+    <div class="wpd-comment-text">
+    <p>i mean the word lowercase</p>
+
+</div>
+    <div class="wpd-comment-footer">
+    
+    <div class="wpd-reply-button">
+    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+    <span>Reply</span>
+</div>
+    <div class="wpd-space"></div>
+    
+    
+</div>
+</div>
+</div><div id="wpdiscuz_form_anchor-4754_4751"></div></div></div><!-- // From wpDiscuz's Caches // -->                    <div class="wpdiscuz-comment-pagination">
+						                            <div class="wpd-load-more-submit-wrap">
+                                <button name="submit" data-lastparentid="4751" class="wpd-load-more-submit wpd-loaded wpd-prim-button">
+									Load More Comments									                                </button>
+                            </div>
+                            <span id="wpdiscuzHasMoreComments" data-is_show_load_more="1"></span>
+							                    </div>
+                </div>
+            </div>
+			    </div>
+	    </div>
+    <div id="wpdiscuz-loading-bar" class="wpdiscuz-loading-bar-unauth"></div>
+    <div id="wpdiscuz-comment-message" class="wpdiscuz-comment-message-unauth"></div>
+	
+                
+            </main><!-- #main -->
+
+            <!-- Do the right sidebar check -->
+            </div><!-- #primary -->
+
+
+        </div><!-- .row -->
+
+    </div><!-- #content -->
+
+</div><!-- #page-wrapper -->
+
+
+
+
+	<!-- ******************* The Footer Full-width Widget Area ******************* -->
+
+	<div class="wrapper" id="wrapper-footer-full" role="complementary">
+
+		<div class="container" id="footer-full-content" tabindex="-1">
+
+			<div class="row">
+
+				<div id="block-3" class="footer-widget widget_block widget_text widget-count-1 col-md-12">
+<p></p>
+</div><!-- .footer-widget -->
+			</div>
+
+		</div>
+
+	</div><!-- #wrapper-footer-full -->
+
+	
+</div><!-- #page we need this extra closing tag here -->
+
+<a nofollow="" noindex="" href="javascript:void(0);" id="wpdUserContentInfoAnchor" style="display:none;" rel="#wpdUserContentInfo" data-wpd-lity="">wpDiscuz</a><div id="wpdUserContentInfo" style="overflow:auto;background:#FDFDF6;padding:20px;width:600px;max-width:100%;border-radius:6px;" class="lity-hide"></div><div id="wpd-editor-source-code-wrapper-bg"></div><div id="wpd-editor-source-code-wrapper"><textarea id="wpd-editor-source-code"></textarea><button id="wpd-insert-source-code">Insert</button><input type="hidden" id="wpd-editor-uid"/></div>	<div style="display:none">
+			<div class="grofile-hash-map-38d375fe067430245087c62259a58abb">
+		</div>
+		<div class="grofile-hash-map-e66aa4d08bff2627b0198e089f339202">
+		</div>
+		</div>
+		
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/tophonetics.com\/":14};
+	</script>
+						<script src="https://tophonetics.com/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-image-cdn/dist/image-cdn.js?minify=false&amp;ver=132249e245926ae3e188" id="jetpack-photon-js"></script>
+<script id="wpdiscuz-combo-js-js-extra">
+var wpdiscuzAjaxObj = {"wc_hide_replies_text":"Hide Replies","wc_show_replies_text":"View Replies","wc_msg_required_fields":"Please fill out required fields","wc_invalid_field":"Some of field value is invalid","wc_error_empty_text":"please fill out this field to comment","wc_error_url_text":"url is invalid","wc_error_email_text":"email address is invalid","wc_invalid_captcha":"Invalid Captcha Code","wc_login_to_vote":"You Must Be Logged In To Vote","wc_deny_voting_from_same_ip":"You are not allowed to vote for this comment","wc_self_vote":"You cannot vote for your comment","wc_vote_only_one_time":"You've already voted for this comment","wc_voting_error":"Voting Error","wc_comment_edit_not_possible":"Sorry, this comment is no longer possible to edit","wc_comment_not_updated":"Sorry, the comment was not updated","wc_comment_not_edited":"You've not made any changes","wc_msg_input_min_length":"Input is too short","wc_msg_input_max_length":"Input is too long","wc_spoiler_title":"Spoiler Title","wc_cannot_rate_again":"You cannot rate again","wc_not_allowed_to_rate":"You're not allowed to rate here","wc_follow_user":"Follow this user","wc_unfollow_user":"Unfollow this user","wc_follow_success":"You started following this comment author","wc_follow_canceled":"You stopped following this comment author.","wc_follow_email_confirm":"Please check your email and confirm the user following request.","wc_follow_email_confirm_fail":"Sorry, we couldn't send confirmation email.","wc_follow_login_to_follow":"Please login to follow users.","wc_follow_impossible":"We are sorry, but you can't follow this user.","wc_follow_not_added":"Following failed. Please try again later.","is_user_logged_in":"","commentListLoadType":"0","commentListUpdateType":"0","commentListUpdateTimer":"30","liveUpdateGuests":"0","wordpressThreadCommentsDepth":"5","wordpressIsPaginate":"","commentTextMaxLength":"0","replyTextMaxLength":"0","commentTextMinLength":"1","replyTextMinLength":"1","storeCommenterData":"100000","socialLoginAgreementCheckbox":"0","enableFbLogin":"0","fbUseOAuth2":"0","enableFbShare":"0","facebookAppID":"","facebookUseOAuth2":"0","enableGoogleLogin":"0","googleClientID":"","googleClientSecret":"","cookiehash":"bcac879c0a68e39e283e61b14076e6fa","isLoadOnlyParentComments":"0","scrollToComment":"1","commentFormView":"collapsed","enableDropAnimation":"0","isNativeAjaxEnabled":"1","enableBubble":"0","bubbleLiveUpdate":"0","bubbleHintTimeout":"45","bubbleHintHideTimeout":"10","cookieHideBubbleHint":"wpdiscuz_hide_bubble_hint","bubbleShowNewCommentMessage":"1","bubbleLocation":"content_left","firstLoadWithAjax":"0","wc_copied_to_clipboard":"Copied to clipboard!","inlineFeedbackAttractionType":"blink","loadRichEditor":"1","wpDiscuzReCaptchaSK":"","wpDiscuzReCaptchaTheme":"light","wpDiscuzReCaptchaVersion":"2.0","wc_captcha_show_for_guest":"0","wc_captcha_show_for_members":"0","wpDiscuzIsShowOnSubscribeForm":"0","wmuEnabled":"0","wmuInput":"wmu_files","wmuMaxFileCount":"1","wmuMaxFileSize":"2097152","wmuPostMaxSize":"67108864","wmuIsLightbox":"1","wmuMimeTypes":{"jpg":"image\/jpeg","jpeg":"image\/jpeg","jpe":"image\/jpeg","gif":"image\/gif","png":"image\/png","bmp":"image\/bmp","tiff":"image\/tiff","tif":"image\/tiff","ico":"image\/x-icon"},"wmuPhraseConfirmDelete":"Are you sure you want to delete this attachment?","wmuPhraseNotAllowedFile":"Not allowed file type","wmuPhraseMaxFileCount":"Maximum number of uploaded files is 1","wmuPhraseMaxFileSize":"Maximum upload file size is 2MB","wmuPhrasePostMaxSize":"Maximum post size is 64MB","wmuPhraseDoingUpload":"Uploading in progress! Please wait.","msgEmptyFile":"File is empty. Please upload something more substantial. This error could also be caused by uploads being disabled in your php.ini or by post_max_size being defined as smaller than upload_max_filesize in php.ini.","msgPostIdNotExists":"Post ID not exists","msgUploadingNotAllowed":"Sorry, uploading not allowed for this post","msgPermissionDenied":"You do not have sufficient permissions to perform this action","wmuKeyImages":"images","wmuSingleImageWidth":"auto","wmuSingleImageHeight":"200","version":"7.6.3","wc_post_id":"14","isCookiesEnabled":"1","loadLastCommentId":"0","dataFilterCallbacks":[],"phraseFilters":[],"scrollSize":"32","is_email_field_required":"1","url":"https:\/\/tophonetics.com\/wp-admin\/admin-ajax.php","customAjaxUrl":"https:\/\/tophonetics.com\/wp-content\/plugins\/wpdiscuz\/utils\/ajax\/wpdiscuz-ajax.php","bubbleUpdateUrl":"https:\/\/tophonetics.com\/wp-json\/wpdiscuz\/v1\/update","restNonce":"e1d6893542","validateNonceForGuests":""};
+var wpdiscuzUCObj = {"msgConfirmDeleteComment":"Are you sure you want to delete this comment?","msgConfirmCancelSubscription":"Are you sure you want to cancel this subscription?","msgConfirmCancelFollow":"Are you sure you want to cancel this follow?","additionalTab":"0"};
+</script>
+<script id="wpdiscuz-combo-js-js-before">
+var wpdiscuzEditorOptions = {
+        modules: {
+        toolbar: "",
+        counter: {
+        uniqueID: "",
+        commentmaxcount : 0,
+        replymaxcount : 0,
+        commentmincount : 1,
+        replymincount : 1,
+        },
+                },
+        wc_be_the_first_text: "Be the First to Comment!",
+        wc_comment_join_text: "Join the discussion",
+        theme: 'snow',
+        debug: 'error'
+        };
+</script>
+<script src="https://tophonetics.com/wp-content/plugins/wpdiscuz/assets/js/wpdiscuz-combo.min.js?ver=7.6.3" id="wpdiscuz-combo-js-js"></script>
+<script src="https://secure.gravatar.com/js/gprofiles.js?ver=202334" id="grofiles-cards-js"></script>
+<script id="wpgroho-js-extra">
+var WPGroHo = {"my_hash":""};
+</script>
+<script src="https://c0.wp.com/p/jetpack/12.4/modules/wpgroho.js" id="wpgroho-js"></script>
+<script src="https://tophonetics.com/wp-content/themes/understrap-child/js/child-theme.min.js?ver=0.5.3" id="child-understrap-scripts-js"></script>
+<script src="https://c0.wp.com/c/6.3/wp-includes/js/comment-reply.min.js" id="comment-reply-js"></script>
+<script src="https://tophonetics.com/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-lazy-images/dist/intersection-observer.js?minify=false&amp;ver=83ec8aa758f883d6da14" id="jetpack-lazy-images-polyfill-intersectionobserver-js"></script>
+<script id="jetpack-lazy-images-js-extra">
+var jetpackLazyImagesL10n = {"loading_warning":"Images are still loading. Please cancel your print and try again."};
+</script>
+<script src="https://tophonetics.com/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-lazy-images/dist/lazy-images.js?minify=false&amp;ver=2e29137590434abf5fbe" id="jetpack-lazy-images-js"></script>
+<script defer="" src="https://stats.wp.com/e-202334.js" id="jetpack-stats-js"></script>
+<script id="jetpack-stats-js-after">
+_stq = window._stq || [];
+_stq.push([ "view", {v:'ext',blog:'138467432',post:'14',tz:'0',srv:'tophonetics.com',j:'1:12.4'} ]);
+_stq.push([ "clickTrackerInit", "138467432", "14" ]);
+</script>
+<script defer="" src="https://tophonetics.com/wp-content/plugins/akismet/_inc/akismet-frontend.js?ver=1687382996" id="akismet-frontend-js"></script>
+<script id="sharing-js-js-extra">
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+</script>
+<script src="https://c0.wp.com/p/jetpack/12.4/_inc/build/sharedaddy/sharing.min.js" id="sharing-js-js"></script>
+<script id="sharing-js-js-after">
+var windowOpen;
+			( function () {
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-facebook' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-facebook' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+						return false;
+					}
+				} );
+			} )();
+var windowOpen;
+			( function () {
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-twitter' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-twitter' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+						return false;
+					}
+				} );
+			} )();
+</script>
+
+
+
+
+
+<script type='text/javascript' style='display:none;' async>
+__ez.queue.addFile('/detroitchicago/edmonton.webp', '/detroitchicago/edmonton.webp?a=a&cb=0&shcb=34', true, ['/detroitchicago/minneapolis.js'], true, false, false, false);
+__ez.queue.addFile('/porpoiseant/jellyfish.webp', '/porpoiseant/jellyfish.webp?a=a&cb=0&shcb=34', false, [], true, false, false, false);
+</script>
+
+<script>__ez.queue.addFile('/tardisrocinante/vitals.js', '/tardisrocinante/vitals.js?gcb=0&cb=3', false, ['/detroitchicago/minneapolis.js'], true, false, true, false);</script>
+<script type="text/javascript" data-cfasync="false"></script>
+<script>var _audins_dom="tophonetics_com",_audins_did=457138;__ez.queue.addDelayFunc("audins.js","__ez.script.add", "//go.ezodn.com/detroitchicago/audins.js?cb=195-0");</script><noscript><div style="display:none;"><img src="//pixel.quantserve.com/pixel/p-31iz6hfFutd16.gif?labels=Domain.tophonetics_com,DomainId.457138" border="0" height="1" width="1" alt="Quantcast"/></div></noscript>
+<script>__ez.queue.addFile('/beardeddragon/drake.js', '/beardeddragon/drake.js?gcb=0&cb=4', false, [], true, false, true, false);</script></body></html>

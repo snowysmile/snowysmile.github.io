@@ -34,7 +34,7 @@ def process():
 @app.route('/furigana', methods=['POST'])
 def process_furigana():
     text = request.json.get('text')
-    print(f"process_furigana text: [{text}]")
+    print(f"process_furigana text(): [{text}]")
     loop = asyncio.new_event_loop()
     result = loop.run_until_complete(ichimoe_japanese_furigana(text))
     loop.close()
@@ -80,7 +80,7 @@ async def ichimoe_japanese_split(text):
         # return jsonify({'text': inner_html})
         return inner_html
     except Exception as e:
-        return f"japanese_split: an error occurred: {str(e)}"
+        return f"japanese_split(): an error occurred: {str(e)}"
 
 def is_not_japanese_character(char):
     code_point = ord(char)
@@ -184,7 +184,61 @@ async def ichimoe_japanese_furigana(text):
         # print("inner_html:", inner_html)
         return inner_html
     except Exception as e:
-        return f"japanese_furigana: an error occurred: {str(e)}"
+        return f"japanese_furigana(): an error occurred: {str(e)}"
+
+
+@app.route('/englishIpa', methods=['POST'])
+def process_ipa():
+    text = request.json.get('text')
+    print(f"process_ipa() text: [{text}]")
+    loop = asyncio.new_event_loop()
+    result = loop.run_until_complete(fetch_IPA(text))
+    loop.close()
+    return result
+
+
+async def fetch_IPA(text):
+    try:
+        url = "https://tophonetics.com/"
+        form_data = {
+            "text_to_transcribe": text,
+            "submit": "Show transcription",
+            "output_style": "inline",
+            "output_dialect": "am",
+        }
+
+        async with aiohttp.ClientSession() as session:
+            async with session.post(url, data=form_data) as response:
+                inner_html = ""
+                soup = BeautifulSoup(await response.read(), 'html.parser')
+                transcr_output_element = soup.find(id="transcr_output")
+                transcribed_word_elements = transcr_output_element.find_all("span", class_="transcribed_word")
+                words = []
+                ipas = []
+                for transcribed in transcribed_word_elements:
+                    parent_div = transcribed.find_parent("div", class_="inline_ipa")
+                    if parent_div:
+                        inline_orig = parent_div.find_previous_sibling("div", class_="inline_orig")
+                        if inline_orig:
+                            # print(f"{inline_orig.text.strip()}: {transcribed.text.strip()}")
+                            words.append(inline_orig.text.strip())
+                            ipas.append(transcribed.text.strip())
+
+        textPos = 0
+        wordId = 0
+        while textPos < len(text):
+            if wordId < len(words) and text[textPos: textPos + len(words[wordId])] == words[wordId]:
+                inner_html += f"<ruby>{words[wordId]} <rt>{ipas[wordId]}</rt> </ruby>"
+                textPos += len(words[wordId])
+                wordId += 1
+            else:
+                inner_html += text[textPos]
+                textPos += 1
+        print("inner_html:", inner_html)
+        return inner_html
+    except Exception as e:
+        print("error:", e)
+        return f"fetch_IPA(): an error occurred: {str(e)}"
 
 async def detect_language(text):
     print("detect_language() text:", text)
@@ -205,7 +259,7 @@ async def detect_language(text):
 if __name__ == '__main__':
     context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
 
-    running_on_server = True
+    running_on_server = False
     if running_on_server:
         current_path = os.path.abspath(__file__)
         current_dir = os.path.dirname(current_path)
