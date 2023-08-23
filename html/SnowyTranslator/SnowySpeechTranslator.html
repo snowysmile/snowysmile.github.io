@@ -347,7 +347,7 @@
       historyTexts: [[...defaultConfig.texts], ],
       historyTextLanguages: [[...defaultConfig.languages], ],
       historyTextTimestamps: [-1, ],
-      furiganaTexts: [defaultConfig.displayedTexts[0], ],
+      furiganaTexts: [defaultCozxnfig.displayedTexts[0], ],
       furiganaTextPos: [0, ],
       englishIpaTexts: [defaultConfig.displayedTexts[1], ],
       englishIpaTextPos: [1, ],
@@ -3210,8 +3210,8 @@
     }
     async function chinesePinyinFetchFromMyServer(text) {
       try {
-          const response = await fetch('http://localhost:3001/chinesePinyin', {
-          // const response = await fetch('https://snsmile.site:3001/chinesePinyin', {
+          // const response = await fetch('http://localhost:3001/chinesePinyin', {
+          const response = await fetch('https://snsmile.site:3001/chinesePinyin', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

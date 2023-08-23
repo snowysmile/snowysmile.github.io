@@ -200,19 +200,29 @@ def process_english_ipa():
 
 async def fetch_english_IPA(text):
     try:
-        url = "https://www.purpleculture.net/chinese-pinyin-converter"
+        url = "https://tophonetics.com/"
         form_data = {
-            "wdqchs": input_text
+            "text_to_transcribe": text,
+            "submit": "Show transcription",
+            "output_style": "inline",
+            "output_dialect": "am",
         }
 
         async with aiohttp.ClientSession() as session:
             async with session.post(url, data=form_data) as response:
                 soup = BeautifulSoup(await response.read(), 'html.parser')
-                annoatedtext_element = soup.find(id="annoatedtext")
-                pinyin_elements = annoatedtext_element.find_all("span", class_="pinyin")
-                pinyins = []
-                for pinyin in pinyin_elements:
-                    pinyins.append(pinyin.text.strip())
+                transcr_output_element = soup.find(id="transcr_output")
+                transcribed_word_elements = transcr_output_element.find_all("span", class_="transcribed_word")
+                words = []
+                ipas = []
+                for transcribed in transcribed_word_elements:
+                    parent_div = transcribed.find_parent("div", class_="inline_ipa")
+                    if parent_div:
+                        inline_orig = parent_div.find_previous_sibling("div", class_="inline_orig")
+                        if inline_orig:
+                            # print(f"{inline_orig.text.strip()}: {transcribed.text.strip()}")
+                            words.append(inline_orig.text.strip())
+                            ipas.append(transcribed.text.strip())
 
         inner_html = ""
         textPos = 0
@@ -229,7 +239,7 @@ async def fetch_english_IPA(text):
         return inner_html
     except Exception as e:
         print("error:", e)
-        return f"fetch_english_IPA(): an error occurred: {str(e)}"
+        return f"fetch_IPA(): an error occurred: {str(e)}"
 
 
 # https://www.purpleculture.net/chinese-pinyin-converter/
@@ -242,10 +252,8 @@ def process_pinyin():
     loop.close()
     return result
 
-
 def is_chinese_kanji(char):
     return 'CJK' in unicodedata.name(char, '')
-
 
 async def fetch_pinyin(text):
     try:
@@ -263,7 +271,7 @@ async def fetch_pinyin(text):
                 pinyins = []
                 for pinyin in pinyin_elements:
                     pinyins.append(pinyin.text.strip())
-                # print("pinyins:", pinyins)
+                print("pinyins:", pinyins)
 
         inner_html = ""
         textPos = 0
@@ -276,13 +284,12 @@ async def fetch_pinyin(text):
             else:
                 inner_html += text[textPos]
                 textPos += 1
-        # print("inner_html:", inner_html)
+        print("inner_html:", inner_html)
         return inner_html
 
     except Exception as e:
         print("error:", e)
         return f"fetch_pinyin(): an error occurred: {str(e)}"
-
 
 async def detect_language(text):
     print("detect_language() text:", text)
