@@ -177,15 +177,6 @@
     input::-webkit-inner-spin-button {
       display: none;
     }
-    @media screen and (max-width: 800px) {
-      textarea {
-        rows: 6;
-        font-size: 20px;
-      }
-      #recognitionResult {
-        height: 120px;
-      }
-    }
     @media screen and (max-width: 1000px) {
       body {
         background-color: #BEE2E4;
@@ -210,6 +201,13 @@
         display: block;
         height: auto;
         margin: 0 auto;
+      }
+      textarea {
+        rows: 6;
+        font-size: 20px;
+      }
+      #recognitionResult {
+        height: 120px;
       }
       #speechTextArea {
         max-width: 95%;
@@ -380,7 +378,7 @@
     }
     var autoSID = 0;
     configs[autoSID] = copyConfig(defaultConfig);
-    var LOCAL_TEST = 0 ? true : false;
+    var LOCAL_TEST;
   </script>
   <title>Snowy Speech Translator</title>
 </head>
@@ -2856,9 +2854,12 @@
         readingSelects[i].value = textConfig.historyTextLanguages[index][i];
       }
       if (textFuriganaToggleButton.innerText === "🔰") {
+        console.log("! textFuriganaToggleButton.innerText === 🔰");
         updateRubyText(textConfig.furiganaTextPos[index], textConfig.furiganaTexts[index], textConfig.historyTextTimestamps[index]);
       }
-      if (textEnglishIpaToggleButton.innerText === "🌱") {
+      console.log("! textEnglishIpaToggleButton.innerHTML:", textEnglishIpaToggleButton.innerHTML);
+      if (textEnglishIpaToggleButton.innerHTML === "🌱") {
+        console.log("! textEnglishIpaToggleButton.innerHTML === 🌱");
         updateRubyText(textConfig.englishIpaTextPos[index], textConfig.englishIpaTexts[index], textConfig.historyTextTimestamps[index]);
       }
       if (textChinesePinyinToggleButton.innerText === "🌇") {
@@ -3722,7 +3723,8 @@
   </script>
 
   <script> // Start
-    var clearConfigs = false;
+    LOCAL_TEST = 0 ? true : false
+    var clearConfigs = true;
     if (clearConfigs) {
       localStorage.removeItem('snowyTranslatorConfig');
       for (let configID = 0; configID <= 2; configID++) {
