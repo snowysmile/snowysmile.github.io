@@ -2854,12 +2854,9 @@
         readingSelects[i].value = textConfig.historyTextLanguages[index][i];
       }
       if (textFuriganaToggleButton.innerText === "🔰") {
-        console.log("! textFuriganaToggleButton.innerText === 🔰");
         updateRubyText(textConfig.furiganaTextPos[index], textConfig.furiganaTexts[index], textConfig.historyTextTimestamps[index]);
       }
-      console.log("! textEnglishIpaToggleButton.innerHTML:", textEnglishIpaToggleButton.innerHTML);
-      if (textEnglishIpaToggleButton.innerHTML === "🌱") {
-        console.log("! textEnglishIpaToggleButton.innerHTML === 🌱");
+      if (textEnglishIpaToggleButton.innerText === "🌱") {
         updateRubyText(textConfig.englishIpaTextPos[index], textConfig.englishIpaTexts[index], textConfig.historyTextTimestamps[index]);
       }
       if (textChinesePinyinToggleButton.innerText === "🌇") {
@@ -3150,7 +3147,6 @@
           updateApiKey(i);
         }
       }
-      showHistoryText(configs[configID].historyTextsCurrentId);
       if (Array.isArray(configs[configID].toggleButtonsClickedList)) {
         configs[configID].toggleButtonsClickedList.forEach((item) => {
           let key = item[0], value = item[1];
@@ -3161,6 +3157,7 @@
           }
         });
       }
+      showHistoryText(configs[configID].historyTextsCurrentId);
       console.log(`⏳ Load Config (${configID}) Finsihed.`);
     }
     function updateConfig(configID, key, value) {
@@ -3723,8 +3720,8 @@
   </script>
 
   <script> // Start
-    LOCAL_TEST = 0 ? true : false
-    var clearConfigs = true;
+    LOCAL_TEST = 0 ? true : false;
+    var clearConfigs = 0 ? true : false;
     if (clearConfigs) {
       localStorage.removeItem('snowyTranslatorConfig');
       for (let configID = 0; configID <= 2; configID++) {
