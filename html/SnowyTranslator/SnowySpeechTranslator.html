@@ -1664,7 +1664,7 @@
           var recognitionNonStop = oneSentenceRecognizeToggleButton.innerHTML === '〜';
           if (event.results[i].isFinal) {
             if (recognitionNonStop) {
-              recognitionResult.value = speechText;
+              recognitionResult.value = addPunctuation(speechText);;
               console.log("✅🏁 Non Stop Final Text:", speechText);
               let purifiedSpeechText = purifySpeechText(speechText);
               if (["英語変更", "英語 変更", "英語を変更", "英語に変更",
