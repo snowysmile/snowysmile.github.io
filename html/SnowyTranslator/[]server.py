@@ -10,8 +10,8 @@ import os
 import re
 import unicodedata
 
-LOCAL_TEST = True
-DEBUG_MODE = False
+#LOCAL_TEST = False
+#DEBUG_MODE = False
 
 # *args: This syntax allows a function to accept any number of positional arguments.
 # **kwargs: This syntax allows a function to accept any number of keyword arguments.
@@ -34,7 +34,7 @@ def index():
 @app.route('/formatJpExp', methods=['POST'])
 def process():
     text = request.json.get('text')
-    print("process text:", text)
+    lprint("process() text:", text)
     loop = asyncio.new_event_loop()
     try:
         result = loop.run_until_complete(ichimoe_japanese_split(text))
@@ -45,7 +45,7 @@ def process():
 @app.route('/furigana', methods=['POST'])
 def process_furigana():
     text = request.json.get('text')
-    print(f"process_furigana text(): [{text}]")
+    lprint(f"process_furigana() text: [{text}]")
     loop = asyncio.new_event_loop()
     try:
         result = loop.run_until_complete(ichimoe_japanese_furigana(text))
@@ -56,7 +56,7 @@ def process_furigana():
 @app.route('/detect-language', methods=['POST'])
 def process_detect_language():
     text = request.json.get('text')
-    print("process_detect_language text:", text)
+    lprint("process_detect_language() text:", text)
     loop = asyncio.new_event_loop()
     try:
         language = loop.run_until_complete(detect_language(text))
@@ -92,7 +92,6 @@ async def ichimoe_japanese_split(text):
                 romaji_str += romaji
                 inner_html += f"{word}"
             inner_html += f" | {romaji_str}】<br> "
-        # return jsonify({'text': inner_html})
         return inner_html
     except Exception as e:
         return f"japanese_split(): an error occurred: {str(e)}"
@@ -196,7 +195,7 @@ async def ichimoe_japanese_furigana(text):
         while textPos < len(text):  # is_not_japanese_character(text[textPos]):
             inner_html += text[textPos]
             textPos += 1
-        # print("inner_html:", inner_html)
+        lprint("inner_html:", inner_html)
         return inner_html
     except Exception as e:
         return f"japanese_furigana(): an error occurred: {str(e)}"
@@ -205,10 +204,13 @@ async def ichimoe_japanese_furigana(text):
 @app.route('/englishIpa', methods=['POST'])
 def process_english_ipa():
     text = request.json.get('text')
-    print(f"process_english_ipa() text: [{text}]")
+    lprint(f"process_english_ipa() text: [{text}]")
     loop = asyncio.new_event_loop()
     try:
-        result = loop.run_until_complete(fetch_english_IPA(text)) # fetch_english_IPA_ejoy
+        if not IS_BANNED:
+            result = loop.run_until_complete(fetch_english_IPA(text))
+        else:
+            result = loop.run_until_complete(fetch_english_IPA_toipa(text))
     finally:
         loop.close()
     return result
@@ -233,7 +235,7 @@ async def fetch_english_IPA(text):
                     response_text = await response.read()
                     soup = BeautifulSoup(response_text, 'html.parser')
                     transcr_output_element = soup.find(id="transcr_output")
-                    # print("transcr_output_element123:", transcr_output_element)
+                    dprint("transcr_output_element123:", transcr_output_element)
 
                     transcribed_word_elements = transcr_output_element.find_all("span", class_="transcribed_word")
                     words = []
@@ -243,12 +245,11 @@ async def fetch_english_IPA(text):
                         if parent_div:
                             inline_orig = parent_div.find_previous_sibling("div", class_="inline_orig")
                             if inline_orig:
-                                # print(f"{inline_orig.text.strip()}: {transcribed.text.strip()}")
+                                dprint(f"{inline_orig.text.strip()}: {transcribed.text.strip()}")
                                 words.append(inline_orig.text.strip())
                                 ipas.append(transcribed.text.strip())
                 else:
                     print(f"Non-200 response: {response.status}")
-
 
         inner_html = ""
         textPos = 0
@@ -261,48 +262,42 @@ async def fetch_english_IPA(text):
             else:
                 inner_html += text[textPos]
                 textPos += 1
-        # print("inner_html:", inner_html)
+        lprint("inner_html:", inner_html)
         return inner_html
     except Exception as e:
         print("error:", e)
         return f"fetch_english_IPA(): an error occurred: {str(e)}"
 
 
-
-# https://glotdojo.com/phonetic
-async def fetch_english_IPA_ejoy(text):
+# https://dictionary.cambridge.org/help/phonetics.html
+# https://learn.microsoft.com/en-us/azure/ai-services/speech-service/speech-ssml-phonetic-sets
+async def fetch_english_IPA_toipa(text):
     try:
-        url = "https://glotdojo.com/phonetic"
-        form_data = {
-            "text_to_transcribe": text,
-            "submit": "Show transcription",
-            "output_style": "inline",
-            "output_dialect": "am",
-        }
+        pure_english_text = re.sub(r'[^a-zA-Z\s]', '', text)
+        url = f"https://toipa.org/AmE/{pure_english_text}"
         headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3",
+            "Referer": "https://toipa.org/"
         }
         async with aiohttp.ClientSession(headers=headers) as session:
-            async with session.post(url, data=form_data) as response:
+            async with session.get(url) as response:
                 if response.status == 200:
                     soup = BeautifulSoup(await response.read(), 'html.parser')
-                    transcr_output_element = soup.find(id="transcr_output")
-                    print("transcr_output_element:", transcr_output_element)
-
-                    transcribed_word_elements = transcr_output_element.find_all("span", class_="transcribed_word")
+                    word_elements = soup.find_all("a", class_="source")
                     words = []
                     ipas = []
-                    for transcribed in transcribed_word_elements:
-                        parent_div = transcribed.find_parent("div", class_="inline_ipa")
-                        if parent_div:
-                            inline_orig = parent_div.find_previous_sibling("div", class_="inline_orig")
-                            if inline_orig:
-                                # print(f"{inline_orig.text.strip()}: {transcribed.text.strip()}")
-                                words.append(inline_orig.text.strip())
-                                ipas.append(transcribed.text.strip())
+                    for word_element in word_elements:
+                        word = word_element.get_text().strip()
+                        ipa_element = word_element.find_next(["span", "div"], class_=["pronunciation", "text-base"])
+                        if ipa_element:
+                            ipa = ipa_element.get_text().strip()
+                            words.append(word)
+                            ipas.append(ipa[1:-1])
+                    for word, ipa in zip(words, ipas):
+                        lprint(f"{word}: {ipa}", end=";  ")
+                    lprint()
                 else:
                     print(f"Non-200 response: {response.status}")
-
 
         inner_html = ""
         textPos = 0
@@ -315,18 +310,18 @@ async def fetch_english_IPA_ejoy(text):
             else:
                 inner_html += text[textPos]
                 textPos += 1
-        # print("inner_html:", inner_html)
+        lprint("inner_html:", inner_html)
         return inner_html
     except Exception as e:
         print("error:", e)
-        return f"fetch_english_IPA(): an error occurred: {str(e)}"
+        return f"fetch_english_IPA___(): an error occurred: {str(e)}"
 
 
 # https://www.purpleculture.net/chinese-pinyin-converter/
 @app.route('/chinesePinyin', methods=['POST'])
 def process_pinyin():
     text = request.json.get('text')
-    print(f"process_pinyin() text: [{text}]")
+    lprint(f"process_pinyin() text: [{text}]")
     loop = asyncio.new_event_loop()
     try:
         result = loop.run_until_complete(fetch_pinyin(text))
@@ -374,7 +369,7 @@ async def fetch_pinyin(text):
         return f"fetch_pinyin(): an error occurred: {str(e)}"
 
 async def detect_language(text):
-    print("detect_language() text:", text)
+    dprint("detect_language() text:", text)
 
     # from langdetect import detect
     # lang = detect(text)
@@ -391,7 +386,10 @@ async def detect_language(text):
 
 if __name__ == '__main__':
     context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
-    
+
+    LOCAL_TEST = True if 0 else False
+    DEBUG_MODE = True if 0 else False
+    IS_BANNED = True if 1 else False
     if LOCAL_TEST:
         app.run(debug=True, threaded=True, port=3001, host='localhost', use_reloader=False)
     else:

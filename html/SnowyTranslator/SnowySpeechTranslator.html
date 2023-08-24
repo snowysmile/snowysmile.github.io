@@ -380,7 +380,7 @@
     }
     var autoSID = 0;
     configs[autoSID] = copyConfig(defaultConfig);
-    var LOCAL_TEST = true;
+    var LOCAL_TEST = 0 ? true : false;
   </script>
   <title>Snowy Speech Translator</title>
 </head>
@@ -489,14 +489,14 @@
       <button id="showFuriganaButton" style="font-size: 7px; width:22px; display: flex; justify-content: center; margin-left:3px;" title="Click 🍥 To Show Japanese Furigana;" onclick="showFurigana()">🍥Jp</button>
       <button id="showEnglishIpaButton" style="font-size: 7px; width:22px; display: flex; justify-content: center; margin-left:3px;" title="Click 🍼 To Show English IPA;" onclick="showEnglishIpa()">🍼En</button>
       <button id="showChinesePinyinButton" style="font-size: 7px; width:22px; display: flex; justify-content: center; margin-left:3px;" title="Click 🐣 To Show Chinese Pinyin;" onclick="showChinesePinyin()">🐣Cn</button>
-
       <button style="font-size:11px; margin-left:3px;" title="Read All Screen Text By Google." onclick="ggSpeakAllScreenText()">G</button>
       <button style="font-size:11px; margin-left:3px;" title="Read All Screen Text By Microsoft." onclick="msSpeakAllScreenText()">M</button>
-      <button id="ggPauseAudio-button" style="font-size:9px; width:38px; margin-left:3px; vertical-align: middle;" onclick="ggPauseAudio()">G⏯</button>
-      <button id="msPauseAudio-button" style="font-size:9px; width:38px; margin-left:3px; vertical-align: middle;" onclick="msPauseAudio()">M⏯</button>
     </span>
     <span class="phone-new_line" style="display:none"><br></span>
     <span style="display:flex; justify-content: center; margin-bottom:5px;">
+      <span style="margin-left:4px;"> </span>
+      <button id="ggPauseAudio-button" style="font-size:9px; width:38px; margin-left:3px; vertical-align: middle;" onclick="ggPauseAudio()">G⏯</button>
+      <button id="msPauseAudio-button" style="font-size:9px; width:38px; margin-left:3px; vertical-align: middle;" onclick="msPauseAudio()">M⏯</button>
       <span style="margin-left:7px;"> </span>
       <button style="font-size:10px;" title="Copy text of the source language." onclick="copyText(0)">0</button>
       <button style="font-size:10px;" title="Copy text of the target1 language." onclick="copyText(1)">1</button>
@@ -1415,6 +1415,7 @@
         }
       }
     }
+    // https://css-tricks.com/snippets/javascript/javascript-keycodes/
     document.addEventListener("keydown", function(event) {
       if (event.ctrlKey && event.key === "ArrowLeft") {
         event.preventDefault();
@@ -1463,6 +1464,21 @@
         msSpeakAudio.pause();
         // ggPauseAudio();
         // msPauseAudio();
+      }
+      else if (event.shiftKey && event.key === "O") { // Oo
+        loadConfig(-1);
+      }
+      else if (event.ctrlKey && event.altKey && event.key === "1") {
+        console.log("1");
+        showRuby(0);
+      }
+      else if (event.ctrlKey && event.altKey && event.key === "2") {
+        console.log("2");
+        showRuby(1);
+      }
+      else if (event.ctrlKey && event.altKey && event.key === "3") {
+        console.log("3");
+        showRuby(2);
       }
     });
     document.addEventListener("keydown", async function(event) {
@@ -1866,7 +1882,21 @@
         break;
       }
     }
+    var showEnglishIpaClickTimestamp = 0;
+    var showEnglishIpaClickCooldownDuration = 4000;
     function showEnglishIpa() {
+      var currentTime = new Date().getTime();
+      if (currentTime - showEnglishIpaClickTimestamp >= showEnglishIpaClickCooldownDuration) {
+        showEnglishIpaClickTimestamp = currentTime;
+        showEnglishIpaButton.disabled = true;
+        setTimeout(function() {
+            showEnglishIpaButton.disabled = false;
+        }, showEnglishIpaClickCooldownDuration);
+      }
+      else {
+        console.log(`⏳ showEnglishIpa() Time not ready: ${currentTime - showEnglishIpaClickTimestamp} ms left`);
+        return;
+      }
       for (let i = 0; i <= topTranslationCount; i++) if (readingSelects[i].value === "en") {
         var englishPosId = i;
         console.log(`🔤 showEnglishIpa(): pos=${englishPosId}`);
@@ -1877,6 +1907,7 @@
         .catch((error) => console.error(error));
       }
     }
+
     function updateChinesePinyinText(chinesePosId, html, textTimeStampNow) {
       console.log("🐼 Try to updateChinesePinyinText()");
       updateRubyText(chinesePosId, html, textTimeStampNow);
@@ -1900,7 +1931,21 @@
         break;
       }
     }
+    var showChinesePinyinClickTimestamp = 0;
+    var showChinesePinyinClickCooldownDuration = 4000;
     function showChinesePinyin() {
+      var currentTime = new Date().getTime();
+      if (currentTime - showChinesePinyinClickTimestamp >= showChinesePinyinClickCooldownDuration) {
+        showChinesePinyinClickTimestamp = currentTime;
+        showChinesePinyinButton.disabled = true;
+        setTimeout(function() {
+            showChinesePinyinButton.disabled = false;
+        }, showChinesePinyinClickCooldownDuration);
+      }
+      else {
+        console.log(`⏳ showChinesePinyin() Time not ready: ${currentTime - showChinesePinyinClickTimestamp} ms left`);
+        return;
+      }
       for (let i = 0; i <= topTranslationCount; i++) if (readingSelects[i].value === "zh-TW") {
         var chinesePosId = i;
         console.log(`🐼 showChinesePinyin(): pos=${chinesePosId}`);
@@ -1909,6 +1954,18 @@
           updateChinesePinyinText(chinesePosId, html, displayedTextTimeStamp);
         })
         .catch((error) => console.error(error));
+      }
+    }
+
+    function showRuby(id) {
+      if (readingSelects[id].value === "ja") {
+        showFurigana();
+      }
+      else if (readingSelects[id].value === "en") {
+        showEnglishIpa();
+      }
+      else if(readingSelects[id].value === "zh-TW") {
+        showChinesePinyin();
       }
     }
 
