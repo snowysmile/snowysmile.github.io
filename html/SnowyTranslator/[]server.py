@@ -273,7 +273,7 @@ async def fetch_english_IPA(text):
 # https://learn.microsoft.com/en-us/azure/ai-services/speech-service/speech-ssml-phonetic-sets
 async def fetch_english_IPA_toipa(text):
     try:
-        pure_english_text = re.sub(r'[^a-zA-Z\s]', '', text)
+        pure_english_text = re.sub(r'[^a-zA-Z\s\']', '', text)
         url = f"https://toipa.org/AmE/{pure_english_text}"
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3",

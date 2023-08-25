@@ -2004,7 +2004,15 @@
       configs[autoSID].historyTextsMaxLength = value;
       saveConfigStorage();
     }
+    function JpExpWebTopLayoutAdjust() {
+      var splitPos = toggleJpExpWebTop_LayoutButton.innerHTML.lastIndexOf(' ');
+      var trigger = toggleJpExpWebTop_LayoutButton.innerHTML.substr(splitPos + 1);
+      if (trigger === "❌") {
+        window.scrollTo(0, 7);
+      }
+    }
     function toggleJpExpWebTop() {
+      JpExpWebTopLayoutAdjust();
       var splitPos = toggleJpExpWebTop_LayoutButton.innerHTML.lastIndexOf(' ');
       var trigger = toggleJpExpWebTop_LayoutButton.innerHTML.substr(splitPos + 1);
       if (trigger === "❌") {
@@ -3154,6 +3162,7 @@
           }
         });
       }
+      JpExpWebTopLayoutAdjust();
       showHistoryText(configs[configID].historyTextsCurrentId);
       console.log(`⏳ Load Config (${configID}) Finsihed.`);
     }
