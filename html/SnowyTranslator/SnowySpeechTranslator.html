@@ -1241,7 +1241,7 @@
         <input type="number" id="recognitionOverInterval_H" maxlength="2" style="width: 18px;" oninput="updateTwoDigitsIntegerValue(this);"> h
         <input type="number" id="recognitionOverInterval_M" maxlength="2" style="width: 18px;" oninput="updateTwoDigitsIntegerValue(this);"> m
         <input type="number" id="recognitionOverInterval_S" maxlength="2" style="width: 18px;" oninput="updateTwoDigitsIntegerValue(this);"> s
-        <button id="recognitionOverIntervalToggleButton" style="font-size: 11px;" title="▶️ To Start Recognition's Auto Stop Function; ⏹ Is Off." onclick="toggleRecognitionOverInterval()">▶️</button>
+        <button id="recognitionOverIntervalToggleButton" style="font-size: 11px;" title="▶️ To Start Recognition's Auto Stop Function; ⏹ Is Off." onclick="toggleRecognitionOverInterval()">⏹</button>
       </td>
       <td style="display: none;">
         Speech Split Interval (ms):
@@ -1660,9 +1660,10 @@
           var recognitionNonStop = oneSentenceRecognizeToggleButton.innerHTML === '〜';
           if (event.results[i].isFinal) {
             if (recognitionNonStop) {
-              recognitionResult.value = addPunctuation(speechText);;
-              console.log("✅🏁 Non Stop Final Text:", speechText);
               let purifiedSpeechText = purifySpeechText(speechText);
+              speechText = addPunctuation(speechText);
+              recognitionResult.value = speechText;
+              console.log("✅🏁 Non Stop Final Text:", speechText);
               if (["英語変更", "英語 変更", "英語を変更", "英語に変更",
               "英語變更", "英文變更", "英语变更", "英文变更"].includes(purifiedSpeechText)) {
                 recognitionLanguageSelect.value = "en";
@@ -1705,11 +1706,11 @@
             }
             else { // One Sentence
               console.log("❌🏁 One Sentence Final Text:", speechText);
-              recognitionResult.value = recognitionPreviousResult.value + addPunctuation(speechText);
+              recognitionResult.value = recognitionPreviousResult.value + speechText;
               recognitionPreviousResult.value = recognitionResult.value;
             }
             if (isRecording) {
-              recordResult.value = recordResult.value + addPunctuation(speechText);
+              recordResult.value = recordResult.value + speechText;
             }
             updateSpeechList(speechText);
             speechTranslate(speechText, sourceLanguage, false, undefined, updateHistoryTextToggleButton.innerHTML === "🎈"); // await
