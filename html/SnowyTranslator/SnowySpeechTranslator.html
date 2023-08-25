@@ -1426,31 +1426,25 @@
       else if (event.ctrlKey && event.key === "ArrowUp") {
         toggleJpExpWebTop();
       }
-      else if (event.shiftKey && event.key === "J") {
-        event.preventDefault();
+      else if (event.shiftKey && (event.key === "J") {
         languageShortkey("ja");
       }
       else if (event.shiftKey && event.key === "E") {
-        event.preventDefault();
         languageShortkey("en");
       }
       else if (event.shiftKey && event.key === "T") {
-        event.preventDefault();
         languageShortkey("zh-TW");
       }
       else if (event.shiftKey && event.key === "S") {
-        event.preventDefault();
         toggleRecognition(recognitionLanguageSelect.value);
       }
       else if (event.shiftKey && event.key === "~") {
         toggleOneSentenceRecognize(oneSentenceRecognizeToggleButton);
       }
       else if (event.shiftKey && event.key === "G") {
-        event.preventDefault();
         ggSpeakAllScreenText();
       }
       else if (event.shiftKey && event.key === "M") {
-        event.preventDefault();
         msSpeakAllScreenText();
       }
       else if (event.shiftKey && event.key === "!") {
@@ -1460,7 +1454,6 @@
         msSpeak(texts[1].textContent, readingSelect1.value);
       }
       else if (event.shiftKey && event.key === "A") {
-        event.preventDefault();
         ggSpeakAudio.pause();
         msSpeakAudio.pause();
         // ggPauseAudio();
