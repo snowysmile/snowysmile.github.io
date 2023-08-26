@@ -2036,9 +2036,7 @@
       jpExpWebUpdate(texts[languagePosIdMap[sourceLanguage]].textContent);
     }
     function CopyJpExp() {
-      console.log();
       var rubyText = displayedTexts[languagePosIdMap[sourceLanguage]].innerHTML;
-      console.log("rubyText:", rubyText);
       rubyText = rubyText
       .replace(/<ruby>.*?<\/ruby>/g, match => match.replace(/\s+/g, ''))
       .replace(/<ruby>(.*?)<\/ruby>/g, '$1')
