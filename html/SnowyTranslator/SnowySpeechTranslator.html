@@ -305,6 +305,11 @@
     }
     const topTranslationCount = 2;
     var translationCount = 2; // Make it an integer, otherwise it will be a string
+    var languagePosIdMap = {
+      "ja": 0,
+      "en": 1,
+      "zh-TW": 2,
+    };
     var configCounts = 3;
     var defaultConfig = {
       pageColor: "#FFFAFA", // #E8E8E8 (grey)
@@ -340,7 +345,7 @@
       languages: ['ja', 'en', 'zh-TW'],
       azureVoices: ['ja-JP-AoiNeural', 'en-US-AnaNeural', 'zh-CN-XiaoyouNeural'],
       toggleButtonsClickedList: [],
-      historyTextsMaxLength: 20,
+      historyTextsMaxLength: 50,
       historyTextsCurrentId: 0,
       timestamp: -1,
     }
@@ -531,6 +536,9 @@
         </select>
         <button title="Read Third Language Text By Google." onclick="ggSpeak(texts[2].textContent, this.previousElementSibling.value)">G</button>
         <button title="Read Third Language Text By Microsoft." onclick="msSpeak(texts[2].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
+        <span style="margin-left:4px;"> </span>
+        <button title="Update Japanese Explaination Above." onclick="turnOnJpExpWebTop()">🍓</button>
+        <button title="Copy Japanese Text With Furigana." onclick="CopyJpExp()">🎏</button>
       </span>
     </span>
   </div>
@@ -1231,9 +1239,10 @@
           <option value=3>3</option>
           <option value=5>5</option>
           <option value=10>10</option>
-          <option value=20 selected>20</option>
+          <option value=20>20</option>
           <option value=30>30</option>
-          <option value=50>50</option>
+          <option value=50 selected>50</option>
+          <option value=30>99</option>
         </select>
       </td>
       <td>
@@ -1659,9 +1668,9 @@
           }
           var recognitionNonStop = oneSentenceRecognizeToggleButton.innerHTML === '〜';
           if (event.results[i].isFinal) {
+            let purifiedSpeechText = purifySpeechText(speechText);
+            speechText = addPunctuation(speechText);
             if (recognitionNonStop) {
-              let purifiedSpeechText = purifySpeechText(speechText);
-              speechText = addPunctuation(speechText);
               recognitionResult.value = speechText;
               console.log("✅🏁 Non Stop Final Text:", speechText);
               if (["英語変更", "英語 変更", "英語を変更", "英語に変更",
@@ -2007,18 +2016,36 @@
     function JpExpWebTopLayoutAdjust() {
       var splitPos = toggleJpExpWebTop_LayoutButton.innerHTML.lastIndexOf(' ');
       var trigger = toggleJpExpWebTop_LayoutButton.innerHTML.substr(splitPos + 1);
-      if (trigger === "❌") {
-        window.scrollTo(0, 7);
+      if (trigger === "🟢") {
+        // console.log("🍓JpExpWebTopLayoutAdjust()");
+        setTimeout(() => {
+          window.scrollTo(0, 674);
+        }, 10);
       }
     }
     function toggleJpExpWebTop() {
+      toggleWidgetArea('jpExpWebTop', toggleJpExpWebTop_LayoutButton);
       JpExpWebTopLayoutAdjust();
+    }
+    function turnOnJpExpWebTop() {
       var splitPos = toggleJpExpWebTop_LayoutButton.innerHTML.lastIndexOf(' ');
       var trigger = toggleJpExpWebTop_LayoutButton.innerHTML.substr(splitPos + 1);
       if (trigger === "❌") {
-        window.scrollTo(0, 7);
+        toggleJpExpWebTop();
       }
-      toggleWidgetArea('jpExpWebTop', toggleJpExpWebTop_LayoutButton);
+      jpExpWebUpdate(texts[languagePosIdMap[sourceLanguage]].textContent);
+    }
+    function CopyJpExp() {
+      console.log();
+      var rubyText = displayedTexts[languagePosIdMap[sourceLanguage]].innerHTML;
+      console.log("rubyText:", rubyText);
+      rubyText = rubyText
+      .replace(/<ruby>.*?<\/ruby>/g, match => match.replace(/\s+/g, ''))
+      .replace(/<ruby>(.*?)<\/ruby>/g, '$1')
+      .replace(/<rt>(.*?)<\/rt>/g, '($1)')
+      .replace(/\)\s+/g, ")");
+      // .replace(/&nbsp;/g, '');
+      navigator.clipboard.writeText(rubyText);
     }
 
     var recognitionCountdownInterval;
@@ -2645,6 +2672,7 @@
       else if (sourceLanguage === "zh-TW") {
         chinesePosId = 0;
       }
+      languagePosIdMap[sourceLanguage] = 0;
       await getTargetLanguages(sourceLanguage);
       if (googleScriptKey) {
         const requestsPromises = [];
@@ -2670,6 +2698,7 @@
                   else if (targetLanguage === "zh-TW") {
                     chinesePosId = i;
                   }
+                  languagePosIdMap[targetLanguage] = i;
                   updateText(i, xhr.responseText, existedTimestamp, japanesePosId, englishPosId, chinesePosId, willUpdateHistoryTexts);
                   resolve();
                 } else {
@@ -2857,6 +2886,7 @@
         let willUpdateHistoryTexts = false;
         updateText(i, textConfig.historyTexts[index][i], textConfig.historyTextTimestamps[index], japanesePosId, englishPosId, chinesePosId, willUpdateHistoryTexts);
         readingSelects[i].value = textConfig.historyTextLanguages[index][i];
+        languagePosIdMap[readingSelects[i].value] = i;
       }
       if (textFuriganaToggleButton.innerText === "🔰") {
         updateRubyText(textConfig.furiganaTextPos[index], textConfig.furiganaTexts[index], textConfig.historyTextTimestamps[index]);
