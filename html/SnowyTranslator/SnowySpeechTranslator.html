@@ -256,12 +256,14 @@
         max-width: 96%;
         width: 96%;
       }
-      .phone-only {
+    }
+    @media screen and (max-width: 600px) {
+      .phone-invisible {
         display: none;
       }
     }
     @media screen and (min-width: 1000px) {
-      .phone-button {
+      .phone-only {
         display: none;
       }
     }
@@ -335,7 +337,7 @@
       textShadowBlurRadius: [0, 0, 0], //em
       textMargins: [16, 12, 12], //px
       apiKeys: ["", "", "", ""],
-      speechOverInterval: 3600, //ms
+      speechOverInterval: 2800, //ms
       speechSplitInterval: 2000, //ms
       speechClearInterval: 360000, //ms
       recognitionOverInterval_H: "00", //hour
@@ -537,8 +539,8 @@
         <button title="Read Third Language Text By Google." onclick="ggSpeak(texts[2].textContent, this.previousElementSibling.value)">G</button>
         <button title="Read Third Language Text By Microsoft." onclick="msSpeak(texts[2].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
         <span style="margin-left:4px;"> </span>
-        <button title="Update Japanese Explaination Above." onclick="turnOnJpExpWebTop()">🍓</button>
-        <button title="Copy Japanese Text With Furigana." onclick="CopyJpExp()">🎏</button>
+        <button class="phone-invisible" title="Update Japanese Explaination Above." onclick="turnOnJpExpWebTop()">🍓</button>
+        <button class="phone-invisible" title="Copy Japanese Text With Furigana." onclick="CopyJpExp()">🎏</button>
       </span>
     </span>
   </div>
@@ -557,7 +559,7 @@
             <button id="oneSentenceRecognizeToggleButton" title="① To Recognize A Single Sentence; 〜 Is Nonstop Detection." onclick="toggleOneSentenceRecognize(this)">①</button>
             <button id="updateHistoryTextToggleButton" title="🕳️ To Not Push to History Text; 🎈 Is To Push." onclick="toggleUpdateHistoryText(this)">🎈</button>
         </span>
-        <button class="phone-button" onclick="toggleWidgetArea('recognitionInputArea', document.getElementById('toggleRecognitionInputArea_LayoutButton'))">⛔</button>
+        <button class="phone-only" onclick="toggleWidgetArea('recognitionInputArea', document.getElementById('toggleRecognitionInputArea_LayoutButton'))">⛔</button>
       </td>
       <td>
         <textarea id="recognitionResult" rows="2" cols="65"></textarea>
@@ -568,7 +570,7 @@
       <td>
         <button name="translateButton" title="Translate For Textarea." onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', recognitionLanguageSelect)">🔤</button>
         <button title="Copy From Textarea." onclick="copyTextArea(this)">📑</button>
-        <button class="phone-button" onclick="pasteToTextArea(this)">📥</button>
+        <button class="phone-only" onclick="pasteToTextArea(this)">📥</button>
         <button title="Clear Textarea." onclick="clearTextArea(this)">🆑</button>
         <span class="readButtonContainer">
           <button onclick="ggSpeak(this.parentNode.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.parentNode.querySelector('select').value)">G🔊</button>
@@ -588,7 +590,7 @@
           </select>
           <button name="languageDetectButton" id="recordLangDetectToggleButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">🤔</button>
         </span>
-        <button class="phone-button" onclick="toggleWidgetArea('recordInputArea', document.getElementById('toggleRecordInputArea_LayoutButton'))">⛔</button>
+        <button class="phone-only" onclick="toggleWidgetArea('recordInputArea', document.getElementById('toggleRecordInputArea_LayoutButton'))">⛔</button>
       </td>
       <td>
         <textarea id="recordResult" rows="2" cols="75"></textarea>
@@ -615,7 +617,7 @@
           </select>
           <button name="languageDetectButton" id="translateLangDetectToggleButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">🤔</button>
         </span>
-        <button class="phone-button" onclick="toggleWidgetArea('translationInputArea', document.getElementById('toggleTranslationInputArea_LayoutButton'))">⛔</button>
+        <button class="phone-only" onclick="toggleWidgetArea('translationInputArea', document.getElementById('toggleTranslationInputArea_LayoutButton'))">⛔</button>
       </td>
       <td>
         <textarea id="translateInput" rows="2" cols="75"></textarea>
@@ -640,7 +642,7 @@
             <option value="ja" selected>🇯🇵</option>
           </select>
         </span>
-        <button class="phone-button" onclick="toggleWidgetArea('jpExpInputArea', document.getElementById('toggleJpExpInputArea_LayoutButton'))">⛔</button>
+        <button class="phone-only" onclick="toggleWidgetArea('jpExpInputArea', document.getElementById('toggleJpExpInputArea_LayoutButton'))">⛔</button>
       </td>
       <td>
         <textarea id="jpExpInput" rows="2" cols="80"></textarea>
@@ -669,7 +671,7 @@
           </select>
           <button name="languageDetectButton" id="readLangDetectToggleButton" title="🤔 To Auto Detect Text Language; 😴 Is Off." onclick="toggleAutoLangaugeDetect(this)">🤔</button>
         </span>
-        <button class="phone-button" onclick="toggleWidgetArea('readingListInputArea', document.getElementById('toggleReadingListInputArea_LayoutButton'))">⛔</button>
+        <button class="phone-only" onclick="toggleWidgetArea('readingListInputArea', document.getElementById('toggleReadingListInputArea_LayoutButton'))">⛔</button>
       </td>
       <td>
         <textarea id="readingListInput" rows="2" cols="70"></textarea>
@@ -678,7 +680,7 @@
         <button name="translateButton" title="Translate For Textarea."
           onclick="speechTranslate(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelector('select').value, this.parentNode.parentNode.querySelector('button[name=\'languageDetectButton\']').innerHTML === '🤔', translationLanguageSelect)">🔤</button>
         <button title="Copy From Textarea." onclick="copyTextArea(this)">📑</button>
-        <button class="phone-button" onclick="pasteToTextArea(this)">📥</button>
+        <button class="phone-only" onclick="pasteToTextArea(this)">📥</button>
         <button title="Clear Textarea." onclick="clearTextArea(this)">🆑</button>
         <span class="readButtonContainer">
           <select id="repeatTimeSelect" style="width: 40px;">
@@ -739,7 +741,7 @@
     <button id="toggleLanguageSelects_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('languageSelectsContainer', this)">Lang Selects 🟢</button>
     <button id="toggleVoiceSelects_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('VoiceSelectsContainer', this)">Voice Selects 🟢</button>
     <button id="toggleGlobalValues_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('globalValuesContainer', this)">Global Values 🟢</button>
-    <button class="phone-only" id="toggleAudioDownloadContainer_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('audioDownloadContainer', this)">Audio Download ❌</button>
+    <button class="phone-invisible" id="toggleAudioDownloadContainer_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('audioDownloadContainer', this)">Audio Download ❌</button>
     <button id="toggleTextRecordArea_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('textRecordArea', this)">Text Record 🟢</button>
   </div>
 
@@ -3409,9 +3411,8 @@
     }
   </style>
 
-  <span id="audioDownloadContainer" style="display:none">
+  <span id="audioDownloadContainer" class="phone-invisible" style="display:none">
     <a id="audioDownloadWidget" download style="display:none"> MS Audio Download </a>
-
     <table style="margin-bottom:3px;">
       <tr>
         <td>
@@ -3424,10 +3425,8 @@
         </td>
       </tr>
     </table>
-
     <table id="audioDownloadTable">
     </table>
-
   </span>
 
   <script>
