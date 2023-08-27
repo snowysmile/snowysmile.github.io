@@ -727,7 +727,10 @@
 
   <iframe id="jpExpWebBot" style="width:1000px; height:654px; margin-top:5px; margin-bottom:9px; display:none" src="https://ichi.moe/"></iframe>
 
-  <button id="layoutContainer_LayoutButton" style="margin-bottom:5px;" onclick="toggleWidgetArea('layoutContainer', this)">Layout Container ❌</button>
+  <div>
+    <button id="layoutContainer_LayoutButton" style="margin-bottom:5px;" onclick="toggleWidgetArea('layoutContainer', this)">Layout Container ❌</button>
+    <button id="minimalistThemeButton" style="margin-bottom:5px;" onclick="minimalistTheme()">Minimalist Theme 🪟</button>
+  </div>
 
   <div class="layouts-container" id="layoutContainer" style="margin-bottom:5px; display:none">
     <button id="toggleRecognitionInputArea_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('recognitionInputArea', this)">Recognition 🟢</button>
@@ -2736,6 +2739,20 @@
         configs[autoSID].toggleButtonsClickedList.push([buttonText, 1]);
       }
       saveConfigStorage();
+    }
+
+    const excludedButtonNames = ["Recognition", "Reading Area", "Text Record"];
+    function minimalistTheme() {
+      const buttons = layoutContainer.querySelectorAll('button');
+      buttons.forEach(button => {
+        var splitPos = button.innerHTML.lastIndexOf(' ');
+        var trigger = button.innerHTML.substr(splitPos + 1);
+        var name = button.innerHTML.substr(0, splitPos);
+        if (!excludedButtonNames.includes(name) && trigger === "🟢") {
+          button.click();
+          console.log(button.textContent);
+        }
+      });
     }
     function saveConfigStorage() {
       var configJSON = JSON.stringify(configs);
