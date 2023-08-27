@@ -10,6 +10,7 @@
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   <style>
     html, body {
       display: flex;
@@ -541,6 +542,7 @@
         <span style="margin-left:4px;"> </span>
         <button class="phone-invisible" style="font-size: 10px; height:21px; vertical-align: middle;" title="Update Japanese Explaination Above." onclick="turnOnJpExpWebTop()">🍓</button>
         <button class="phone-invisible" style="font-size: 10px; height:21px; vertical-align: middle;" title="Copy Japanese Text With Furigana." onclick="CopyJpExp()">🎏</button>
+        <button id="captureAndSaveImageButton" style="font-size: 10px; height:21px; width:28px; vertical-align: middle;" title="Capture and Save as Image." onclick="captureAndSaveImage()">📸</button>
       </span>
     </span>
   </div>
@@ -2115,15 +2117,17 @@
       const hours = date.getHours().toString().padStart(2, '0');
       const minutes = date.getMinutes().toString().padStart(2, '0');
       const seconds = date.getSeconds().toString().padStart(2, '0');
-      const milliseconds = date.getMilliseconds().toString().padStart(3, '0');
-      return `[${year}${month}${day}-${hours}${minutes}${seconds}-${milliseconds}]`;
+      const milliseconds = date.getMilliseconds().toString().padStart(2, '0');
+      return `(${year}${month}${day}-${hours}${minutes}${seconds}-${milliseconds})`;
     }
 
     function sanitizeForWindowsFileName(inputString) {
-      const illegalCharsRegex = /[\/:*?"<>|]/g;
+      const illegalCharsRegex = /[\/:*?"|]/g;
       const sanitizedString = inputString.replace(illegalCharsRegex, "_");
       if (sanitizedString.trim() === "") { }
-      const finalFileName = sanitizedString.trim().replace(/^\.+|\.+$/g, "");
+      console.log("")
+      const finalFileName = sanitizedString.trim()
+        .replace(/^\.+|\.+$/g, "").replace(/<[^>]+>/g, '').replace(/[<>]/g, '');
       const maxLength = 100; // 255
       return finalFileName.substring(0, maxLength);
     }
@@ -3419,9 +3423,10 @@
           <button style="display:block; font-size: 11px; width:120px; margin-bottom:8px;" id="addAudioDownloadColumnButton" onclick="addAudioDownloadColumn()"> 🌱New Column </button>
           <button style="display:block; font-size: 11px; width:120px; margin-bottom:8px;" title="Split Text of a Table to Multiple Columns." onclick="tableTextSplit()">✂️Split Texts</button>
           <button style="display:block; font-size: 11px; width:120px; margin-bottom:8px;" title="Split Text of a Table to Multiple Columns." onclick="allAudioDownload()">⬇️Download Audio</button>
+          <button style="display:block; font-size: 11px; width:120px; margin-bottom:8px;" title="Split Text of a Table to Multiple Columns." onclick="tableTextShowUp()">📊Show Up Texts</button>
         </td>
         <td>
-          <textarea id="audioDownloadInputTextArea" rows="5" cols="101"></textarea>
+          <textarea id="audioDownloadInputTextArea" rows="6" cols="101"></textarea>
         </td>
       </tr>
     </table>
@@ -3440,6 +3445,15 @@
         for (let j = 0; j < segments.length; j++) {
           audioDownloadSplitTextAreas[j].value += segments[j] + '\n';
         }
+      }
+    }
+
+    function tableTextShowUp() {
+      var lines = audioDownloadInputTextArea.value.split('\t');
+      for (let i = 0; i < lines.length; i++) {
+        let existedTimestamp = -1;
+        let willUpdateHistoryTexts = false;
+        updateText(i, lines[i], existedTimestamp, 0, 1, 2, willUpdateHistoryTexts);
       }
     }
 
@@ -3595,11 +3609,23 @@
             const audioBlob = new Blob([audioData], { type: 'audio/mpeg' });
 
             audioDownloadWidget.href = URL.createObjectURL(audioBlob);
-            audioDownloadWidget.download = getFormattedTime() + sanitizeForWindowsFileName(text);
+            audioDownloadWidget.download = `${voice}[${sanitizeForWindowsFileName(text)}] ${getFormattedTime()}`;
             audioDownloadWidget.click();
           }
         }
       }
+    }
+
+    // TODO
+    function captureAndSaveImage() {
+      const elementToCapture = document.getElementById("speechTextArea");
+      html2canvas(elementToCapture).then(function(canvas) {
+        const dataURL = canvas.toDataURL("image/png");
+        const downloadLink = document.createElement("a");
+        downloadLink.href = dataURL;
+        downloadLink.download = "captured_image.png";
+        downloadLink.click();
+      });
     }
   </script>
 
@@ -3738,7 +3764,9 @@
   <script>
     function updateScreenWidth() {
       const screenWidth = window.innerWidth || document.documentElement.clientWidth;
-      console.log("🖥️ screenWidth:", screenWidth);
+      if (screenWidth % 100 === 0) {
+        console.log("🖥️ screenWidth:", screenWidth);
+      }
     }
     window.addEventListener('resize', updateScreenWidth);
     // updateScreenWidth();

@@ -1,95 +1,38 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>HTML to Image</title>
+    <style>
+        #capture {
+            background-color: #9ACD32;
+            padding: 20px;
+            border: 1px solid #000000;
+        }
+        #captureButton {
+            margin-top: 10px;
+        }
+    </style>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
 <body>
-	<style>
-		p {
-		color: green;
-		}
-	</style>
-	<p>
-		How to trigger a file download when
-		clicking an HTML button or JavaScript?
-	<p>
-	<textarea id="text">
-		Welcome to GeeksforGeeks
-	</textarea>
-	<br/>
-	<input type="button" id="btn" value="Download" />
-
-  <div style="margin-top:6px; margin-bottom:6px;">
-    <table style="border: 0px solid black; padding:10px;">
-      <tr>
-        <td>
-          <span style="vertical-align: middle;">G</span>
-          <audio id="ggSpeakAudio" controls style="height:25px; width:315px; vertical-align: middle; padding:1px;"></audio>
-        </td>
-        <td>
-          <span style="vertical-align: middle;">M</span>
-          <audio id="msSpeakAudio" controls style="height:25px; width:315px; vertical-align: middle; padding:1px;"></audio>
-        </td>
-      <tr>
-    </table>
+  <div id="capture">
+    <h1>Hello, this is the content to capture!</h1>
+    <p>This is some text that you want to include in the image. Test 11111111111111111111111111111111111111111111</p>
   </div>
 
-	<script>
-    function getFormattedTime() {
-      const date = new Date();
-      const year = date.getFullYear().toString().slice(-2);
-      const month = (date.getMonth() + 1).toString().padStart(2, '0');
-      const day = date.getDate().toString().padStart(2, '0');
-      const hours = date.getHours().toString().padStart(2, '0');
-      const minutes = date.getMinutes().toString().padStart(2, '0');
-      const seconds = date.getSeconds().toString().padStart(2, '0');
-      const milliseconds = date.getMilliseconds().toString().padStart(3, '0');
-      return `${year}${month}${day}-${hours}${minutes}${seconds}-${milliseconds}`;
-    }
-    console.log(getFormattedTime());
+  <button id="captureButton" onclick="captureAndSaveImage()">Capture and Save as Image</button>
 
-    function autoDownloadAudio(source, filename="") {
-      if (filename === "") {
-        filename = getFormattedTime();
-      }
-      const ggAudioDownload = document.createElement('a');
-      console.log("autoDownloadAudio() filename:", filename);
-      ggAudioDownload.href = source;
-      // ggAudioDownload.download = filename;
-      ggAudioDownload.setAttribute('download', filename);
-      document.body.appendChild(ggAudioDownload);
-      ggAudioDownload.click();
-      document.body.removeChild(ggAudioDownload);
+  <script>
+		function captureAndSaveImage() {
+      const elementToCapture = document.getElementById("capture");
+      html2canvas(elementToCapture).then(function(canvas) {
+        const dataURL = canvas.toDataURL("image/png");
+        const downloadLink = document.createElement("a");
+        downloadLink.href = dataURL;
+        downloadLink.download = "captured_image.png";
+        downloadLink.click();
+      });
     }
-    function ggSpeak(text, sourceLanguage = "") {
-      console.log("🔊 ggSpeak text:", text);
-      if (!text) return;
-      if (sourceLanguage === "") {
-        sourceLanguage = "ja";
-      }
-      if (ggSpeakAudio) {
-        ggSpeakAudio.pause();
-      }
-      ggSpeakAudio.src = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" +
-        sourceLanguage +  "&client=tw-ob&q=" + encodeURIComponent(text);
-      ggSpeakAudio.play();
-      autoDownloadAudio(ggSpeakAudio.src, text);
-    }
-    ggSpeak("おはよう");
-
-		function download(file, text) {
-			var element = document.createElement('a');
-			element.setAttribute('href',
-			'data:text/plain;charset=utf-8, '
-			+ encodeURIComponent(text));
-			element.setAttribute('download', file);
-			document.body.appendChild(element);
-			element.click();
-			document.body.removeChild(element);
-		}
-		document.getElementById("btn")
-		.addEventListener("click", function() {
-			var text = document.getElementById("text").value;
-			var filename = "GFG.txt";
-			download(filename, text);
-		}, false);
-	</script>
+  </script>
 </body>
 </html>
