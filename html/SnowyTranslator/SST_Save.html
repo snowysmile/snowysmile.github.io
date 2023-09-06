@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,7 +43,7 @@
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
-      max-width: 600px;
+      width: 600px;
     }
     .layouts-container button {
       justify-content: center;
@@ -87,10 +88,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-left: 20px;
-      padding-right: 20px;
-      height: 223px; /* Mainly Need to in update another place for the height */
+      padding: 20px;
       width: 1000px;
+      height: 169px; /* Also Need to in update another place for the height */
       overflow-y: auto;
     }
     #audioDownloadContainer {
@@ -122,21 +122,18 @@
     .stroke-text {
       z-index: 3;
       position: relative;
-      line-height: 2;
     }
     .stroke-text-before {
       z-index: 2;
       position: absolute;
       top: 0;
       bottom: 0;
-      line-height: 2;
     }
     .stroke-text-after {
       z-index: 1;
       position: absolute;
       top: 0;
       bottom: 0;
-      line-height: 2;
     }
     .stroke-text:before {
       content: attr(stroke-data);
@@ -321,8 +318,7 @@
     var defaultConfig = {
       pageColor: "#FFFAFA", // #E8E8E8 (grey)
       curtainColor: "#9ACD32",
-      curtainHeight: "223", // Config of speechTextArea's Height
-      curtainWidth: "1000", // Config of speechTextArea's Width
+      curtainHeight: "169",
       texts: ["きらきら光る、お空の星よ。",  // きらきらひかる、おそらのほしよ。
               "Twinkle, twinkle, little star, How I wonder what you are! ",
               "一閃一閃亮晶晶，滿天都是小星星。"],
@@ -335,20 +331,19 @@
         "&nbsp;<ruby>一<rt>&nbsp;yī&nbsp;</rt></ruby>&nbsp;<ruby>閃<rt>&nbsp;shǎn&nbsp;</rt></ruby>&nbsp;<ruby>一<rt>&nbsp;yī&nbsp;</rt></ruby>&nbsp;<ruby>閃<rt>&nbsp;shǎn&nbsp;</rt></ruby>&nbsp;<ruby>亮<rt>&nbsp;liàng&nbsp;</rt></ruby>&nbsp;<ruby>晶<rt>&nbsp;jīng&nbsp;</rt></ruby>&nbsp;<ruby>晶<rt>&nbsp;jīng&nbsp;</rt></ruby>，&nbsp;<ruby>滿<rt>&nbsp;mǎn&nbsp;</rt></ruby>&nbsp;<ruby>天<rt>&nbsp;tiān&nbsp;</rt></ruby>&nbsp;<ruby>都<rt>&nbsp;dōu&nbsp;</rt></ruby>&nbsp;<ruby>是<rt>&nbsp;shì&nbsp;</rt></ruby>&nbsp;<ruby>小<rt>&nbsp;xiǎo&nbsp;</rt></ruby>&nbsp;<ruby>星<rt>&nbsp;xīng&nbsp;</rt></ruby>&nbsp;<ruby>星<rt>&nbsp;xīng&nbsp;</rt></ruby>。"],
       textFontColors: ["#000000", "#000000", "#000000"],
       textFontSizes: [22, 19, 17], //px
-      textFontWeights: [500, 500, 500],
+      textFontWeights: [700, 700, 600],
       textFontFamilies: ["NotoSansCJKjp", "NotoSansCJKjp", "NotoSansCJKjp"],
       textStrokeColors: [["#FFFFFF", "#FFB7C5"], ["#FFFFFF", "#FFD500"], ["#FFFFFF", "#FF0033"]], // #1FDDFF blue
       textStrokeWidths: [[0, 0], [0, 0], [0, 0]], //em // [0.2, 0.6], [0.2, 0.6], [0.2, 0.6]
       textShadowColors: ["#FFEEBB", "#FFEEBB", "#FFEEBB"],
       textShadowBlurRadius: [0, 0, 0], //em
       textMargins: [16, 12, 12], //px
-      textMarginBottom: 16, //px
       apiKeys: ["", "", "", ""],
       speechOverInterval: 2800, //ms
       speechSplitInterval: 2000, //ms
       speechClearInterval: 360000, //ms
       recognitionOverInterval_H: "00", //hour
-      recognitionOverInterval_M: "20", //minute
+      recognitionOverInterval_M: "40", //minute
       recognitionOverInterval_S: "00", //second
       translationCount: 2,
       languages: ['ja', 'en', 'zh-TW'],
@@ -393,7 +388,6 @@
     var autoSID = 0;
     configs[autoSID] = copyConfig(defaultConfig);
     var LOCAL_TEST;
-    var DEBUG_MODE;
   </script>
   <title>Snowy Speech Translator</title>
 </head>
@@ -439,8 +433,6 @@
       <div class="stroke-text-before" id="displayedStrokeText_2_0"> </div>
       <div class="stroke-text-after" id="displayedStrokeText_2_1"> </div>
     </div>
-
-    <div id="textMarginBottom"> </div>
   </div>
 
   <div class="hiddenTexts" style="display:none">
@@ -455,8 +447,6 @@
         touchAction: 'none',
         handles: 'se',
         resize: function(event, ui) {
-          updateCurtainHeight(ui.size.height);
-          updateCurtainWidth(ui.size.width);
         }
       });
     });
@@ -525,7 +515,7 @@
     </span>
     <span class="reading-buttons-container" style="display:flex; justify-content: center; margin-bottom:5px;">
       <span class="reading-button-container" style="margin-left:16px;">
-        <select id="displayedTextLanguageSelect0">
+        <select id="readingSelect0">
           <option value="ja" selected>🇯🇵</option>
           <option value="en">🇺🇸</option>
           <option value="zh-TW">🇹🇼</option>
@@ -534,7 +524,7 @@
         <button title="Read First Language Text By Microsoft." onclick="msSpeak(texts[0].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
       </span>
       <span class="reading-button-container" style="margin-left:8px;">
-        <select id="displayedTextLanguageSelect1">
+        <select id="readingSelect1">
           <option value="ja">🇯🇵</option>
           <option value="en" selected>🇺🇸</option>
           <option value="zh-TW">🇹🇼</option>
@@ -543,7 +533,7 @@
         <button title="Read Second Language Text By Microsoft." onclick="msSpeak(texts[1].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
       </span>
       <span class="reading-button-container" style="margin-left:8px;">
-        <select id="displayedTextLanguageSelect2">
+        <select id="readingSelect2">
           <option value="ja">🇯🇵</option>
           <option value="en">🇺🇸</option>
           <option value="zh-TW" selected>🇹🇼</option>
@@ -553,7 +543,7 @@
         <span style="margin-left:4px;"> </span>
         <button class="phone-invisible" style="font-size: 10px; height:21px; vertical-align: middle;" title="Update Japanese Explaination Above." onclick="turnOnJpExpWebTop()">🍓</button>
         <button class="phone-invisible" style="font-size: 10px; height:21px; vertical-align: middle;" title="Copy Japanese Text With Furigana." onclick="CopyJpExp()">🎏</button>
-        <button class="phone-invisible" id="captureAndSaveImageButton" style="font-size: 10px; height:21px; width:28px; vertical-align: middle;" title="Capture and Save as Image." onclick="captureAndSaveImage()">📸</button>
+        <button id="captureAndSaveImageButton" style="font-size: 10px; height:21px; width:28px; vertical-align: middle;" title="Capture and Save as Image." onclick="captureAndSaveImage()">📸</button>
       </span>
     </span>
   </div>
@@ -758,7 +748,6 @@
     <button id="toggleVoiceSelects_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('VoiceSelectsContainer', this)">Voice Selects 🟢</button>
     <button id="toggleGlobalValues_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('globalValuesContainer', this)">Global Values 🟢</button>
     <button class="phone-invisible" id="toggleAudioDownloadContainer_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('audioDownloadContainer', this)">Audio Download ❌</button>
-    <button class="phone-invisible" id="toggleRubyConverter_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('rubyConverterContainer', this)">Ruby Converter ❌</button>
     <button id="toggleTextRecordArea_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('textRecordArea', this)">Text Record 🟢</button>
   </div>
 
@@ -827,31 +816,11 @@
           <span id="curtainColorValue"></span>
         </td>
         <td>
-          <button id="fixedHeightToggleButton" style="width:28px; font-size:10px;" title="⚽️ Means Fixed Height With Auto Adjusted Font; 🏀 Means Auto Adjusted Height" onclick="toggleFixedHeight()">🏀</button>
-          <button style="width:28px;" title="+ To add fonts sizes of each by 5" onclick="changeFontSizes(5)">+</button>
-          <button style="width:28px;" title="- To substract fonts sizes of each by 5" onclick="changeFontSizes(-5)">-</button>
+          <span>Curtain Background Height:</span>
+          <input id=curtainHeightSlider type="range" min="50" max="400" oninput="updateCurtainHeight()">
+          <span id="curtainHeightValue"></span>
         </td>
       </tr>
-    </table>
-    <table style="margin-left: auto; margin-right: auto; margin-bottom: 3px;">
-      <tr>
-        <td>
-          <button id="curtainLockToggleButton" style="width:28px; font-size:11px" title="🔐 To Lock The Curtain' Size Completely; 🔓 To Unlock." onclick="toggleCurtainLock()">🔓</button>
-          <span>Curtain Height:</span>
-          <input id=curtainHeightSlider type="range" min="50" max="1080" oninput="updateCurtainHeight()">
-          <input type="number" id="curtainHeightValue" style="width: 50px;" oninput="updateCurtainHeight(curtainHeightValue.value)"> px
-        </td>
-        <td style="text-align: right;">
-          <span>Curtain Width:</span>
-          <input id=curtainWidthSlider type="range" min="200" max="1920" oninput="updateCurtainWidth()">
-          <input type="number" id="curtainWidthValue" style="width: 50px;" oninput="updateCurtainWidth(curtainWidthValue.value)"> px
-        </td>
-        <td>
-          <span>Margin To Bottom:</span>
-          <input id=textMarginBottomSlider type="range" min="0" max="120" oninput="updateTextMarginBottom()">
-          <span id="textMarginBottomValue"></span>px
-        </td>
-      </td>
     </table>
 
     <table>
@@ -868,7 +837,7 @@
             </tr>
             <tr>
               <td><span>Font Size: </span></td>
-              <td><input id=textFontSizeSlider-0 type="range" min="1" max="99" step="1" oninput="updateFontSize(0)"></td>
+              <td><input id=textFontSizeSlider-0 type="range" min="0" max="40" step="1" oninput="updateFontSize(0)"></td>
               <td><span id="textFontSizeValue-0"></span>px</td>
             </tr>
             <tr>
@@ -888,7 +857,7 @@
             </tr>
             <tr>
               <td><span>Stroke Width (A): </span></td>
-              <td><input id="textStrokeWidthSlider-0-0" type="range" min="0" max="0.3" step="0.05" oninput="updateStrokeWidth(0, 0)"></td>
+              <td><input id="textStrokeWidthSlider-0-0" type="range" min="0" max="0.2" step="0.05" oninput="updateStrokeWidth(0, 0)"></td>
               <td><span id="textStrokeWidthValue-0-0"></span>em</td>
             </tr>
             <tr>
@@ -913,7 +882,7 @@
             </tr>
             <tr>
               <td><span>Margin To Top: </span></td>
-              <td><input id="textMarginSlider-0" type="range" min="0" max="200" step="1" oninput="updateTextMargin(0)"></td>
+              <td><input id="textMarginSlider-0" type="range" min="0" max="100" step="1" oninput="updateTextMargin(0)"></td>
               <td><span id="textMarginValue-0"></span>px</td>
             </tr>
           </table>
@@ -930,7 +899,7 @@
             </tr>
             <tr>
               <td><span>Font Size: </span></td>
-              <td><input id=textFontSizeSlider-1 type="range" min="1" max="99" step="1" oninput="updateFontSize(1)"></td>
+              <td><input id=textFontSizeSlider-1 type="range" min="0" max="40" step="1" oninput="updateFontSize(1)"></td>
               <td><span id="textFontSizeValue-1"></span>px</td>
             </tr>
             <tr>
@@ -950,7 +919,7 @@
             </tr>
             <tr>
               <td><span>Stroke Width (A): </span></td>
-              <td><input id="textStrokeWidthSlider-1-0" type="range" min="0" max="0.3" step="0.05" oninput="updateStrokeWidth(1, 0)"></td>
+              <td><input id="textStrokeWidthSlider-1-0" type="range" min="0" max="0.2" step="0.05" oninput="updateStrokeWidth(1, 0)"></td>
               <td><span id="textStrokeWidthValue-1-0"></span>em</td>
             </tr>
             <tr>
@@ -974,8 +943,8 @@
               <td><span id="textShadowBlurRadiusValue-1"></span>em</td>
             </tr>
             <tr>
-              <td><span>Margin To Top: </span></td>
-              <td><input id="textMarginSlider-1" type="range" min="0" max="120" step="1" oninput="updateTextMargin(1)"></td>
+              <td><span>Margin Bottom: </span></td>
+              <td><input id="textMarginSlider-1" type="range" min="0" max="100" step="1" oninput="updateTextMargin(1)"></td>
               <td><span id="textMarginValue-1"></span>px</td>
             </tr>
           </table>
@@ -992,7 +961,7 @@
             </tr>
             <tr>
               <td><span>Font Size: </span></td>
-              <td><input id=textFontSizeSlider-2 type="range" min="1" max="99" step="1" oninput="updateFontSize(2)"></td>
+              <td><input id=textFontSizeSlider-2 type="range" min="0" max="40" step="1" oninput="updateFontSize(2)"></td>
               <td><span id="textFontSizeValue-2"></span>px</td>
             </tr>
             <tr>
@@ -1012,7 +981,7 @@
             </tr>
             <tr>
               <td><span>Stroke Width (A): </span></td>
-              <td><input id="textStrokeWidthSlider-2-0" type="range" min="0" max="0.3" step="0.05" oninput="updateStrokeWidth(2, 0)"></td>
+              <td><input id="textStrokeWidthSlider-2-0" type="range" min="0" max="0.2" step="0.05" oninput="updateStrokeWidth(2, 0)"></td>
               <td><span id="textStrokeWidthValue-2-0"></span>em</td>
             </tr>
             <tr>
@@ -1036,8 +1005,8 @@
               <td><span id="textShadowBlurRadiusValue-2"></span>em</td>
             </tr>
             <tr>
-              <td><span>Margin To Top: </span></td>
-              <td><input id="textMarginSlider-2" type="range" min="0" max="120" step="1" oninput="updateTextMargin(2)"></td>
+              <td><span>Margin Bottom: </span></td>
+              <td><input id="textMarginSlider-2" type="range" min="0" max="100" step="1" oninput="updateTextMargin(2)"></td>
               <td><span id="textMarginValue-2"></span>px</td>
             </tr>
           </table>
@@ -1116,7 +1085,6 @@
         <button id="defaultText-button" title="Default Texts 🛠️" onclick="defaultTexts();">Default Texts</button>
         <button id="darkModeToggleButton" style="margin-left:5px;" onclick="toggleDarkMode()">🌞</button>
         <button id="specialLayoutToggle3Button" style="margin-left:5px;" onclick="toggleSpecialLayout()">🔄</button>
-        <button id="fontSizeToggleButton" style="margin-left:5px;" title="👘 Means Bold Font; 👚 Means Thin Font" onclick="togglefontSize()">👘</button>
       </td>
     </tr>
   </table>
@@ -1333,9 +1301,9 @@
     var textFontWeightSliders = document.querySelectorAll('[id^="textFontWeightSlider-"]');
     var textFontWeightValues = document.querySelectorAll('[id^="textFontWeightValue-"]');
     var textFontFamilySelects = document.querySelectorAll('[id^="textFontSelect-"]');
-    var displayedTextLanguageSelects = document.querySelectorAll('[id^="displayedTextLanguageSelect"]');
+    var readingSelects = document.querySelectorAll('[id^="readingSelect"]');
 
-    var timeTextUpdated = [-99, -99, -99];
+    var timeTextUpdated;
 
     var textStrokeColorPickers = [];
     for (let i = 0; i < 3; i++) {
@@ -1422,7 +1390,6 @@
     'XiaoheSimplifySans',
     'XiaoheSimplifySerif',
     'AdvocateAncientMono',
-    'NotoSans',
     'NotoSansCJK',
     'NotoSansCJKjp',
     'KosugiMaru',
@@ -1443,6 +1410,7 @@
       });
     });
   }
+  generateAllFontAreaCode();
   </script>
 
   <script>
@@ -1473,52 +1441,7 @@
         showHistoryText(configs[autoSID].historyTextsCurrentId+1);
       }
       else if (event.ctrlKey && event.key === "ArrowUp") {
-        event.preventDefault();
-        turnOnJpExpWebTop();
-      }
-      else if (event.ctrlKey && event.key === "ArrowDown") {
-        event.preventDefault();
-        captureAndSaveImage();
-        allAudioDownload();
-      }
-      else if (event.ctrlKey && event.altKey && event.key === "1") {
-        showRuby(0);
-      }
-      else if (event.ctrlKey && event.altKey && event.key === "2") {
-        showRuby(1);
-      }
-      else if (event.ctrlKey && event.altKey && event.key === "3") {
-        showRuby(2);
-      }
-      else if (event.shiftKey && event.key === "P") {
-        captureAndSaveImage();
-      }
-      else if (event.ctrlKey && event.shiftKey && event.key === "!") {
-        event.preventDefault();
-        CopyJpExp(0);
-      }
-      else if (event.ctrlKey && event.shiftKey && event.key === "@") {
-        event.preventDefault();
-        CopyJpExp(1);
-      }
-      else if (event.ctrlKey && event.shiftKey && event.key === "#") {
-        event.preventDefault();
-        CopyJpExp(2);
-      }
-      else if (event.ctrlKey && event.shiftKey && event.key === "$") {
-        event.preventDefault();
-        // CopyJpExp(0, 1);
-        copyText(0);
-      }
-      else if (event.ctrlKey && event.shiftKey && event.key === "%") {
-        event.preventDefault();
-        // CopyJpExp(1, 1);
-        copyText(1);
-      }
-      else if (event.ctrlKey && event.shiftKey && event.key === "^") {
-        event.preventDefault();
-        // CopyJpExp(2, 1);
-        copyText(2);
+        toggleJpExpWebTop();
       }
       else if (event.shiftKey && event.key === "J") {
         languageShortkey("ja");
@@ -1528,12 +1451,6 @@
       }
       else if (event.shiftKey && event.key === "T") {
         languageShortkey("zh-TW");
-      }
-      else if (event.shiftKey && event.key === "<") {
-        changeFontSizes(-5);
-      }
-      else if (event.shiftKey && event.key === ">") {
-        changeFontSizes(5);
       }
       else if (event.shiftKey && event.key === "S") {
         toggleRecognition(recognitionLanguageSelect.value);
@@ -1548,13 +1465,10 @@
         msSpeakAllScreenText();
       }
       else if (event.shiftKey && event.key === "!") {
-        msSpeak(texts[0].textContent, displayedTextLanguageSelect0.value);
+        msSpeak(texts[0].textContent, readingSelect0.value);
       }
       else if (event.shiftKey && event.key === "@") {
-        msSpeak(texts[1].textContent, displayedTextLanguageSelect1.value);
-      }
-      else if (event.shiftKey && event.key === "#") {
-        msSpeak(texts[2].textContent, displayedTextLanguageSelect2.value);
+        msSpeak(texts[1].textContent, readingSelect1.value);
       }
       else if (event.shiftKey && event.key === "A") {
         ggSpeakAudio.pause();
@@ -1565,9 +1479,21 @@
       else if (event.shiftKey && event.key === "O") { // Oo
         loadConfig(-1);
       }
+      else if (event.ctrlKey && event.altKey && event.key === "1") {
+        console.log("1");
+        showRuby(0);
+      }
+      else if (event.ctrlKey && event.altKey && event.key === "2") {
+        console.log("2");
+        showRuby(1);
+      }
+      else if (event.ctrlKey && event.altKey && event.key === "3") {
+        console.log("3");
+        showRuby(2);
+      }
     });
     document.addEventListener("keydown", async function(event) {
-      if (event.shiftKey && event.key === "%") {
+      if (event.shiftKey && event.key === "#") {
         msAudioListTmp = [];
         await addToMsReadingList(msAudioListTmp, 2);
         await msSpeakReadingList(msAudioListTmp, 1);
@@ -1849,7 +1775,7 @@
     function stopRecognitionComplete(sourceLanguage = "") {
       stopRecognition();
       if (sourceLanguage === "") {
-        sourceLanguage = displayedTextLanguageSelect0.value;
+        sourceLanguage = readingSelect0.value;
       }
       if (false && isRecording) {
         isRecording = false;
@@ -1911,9 +1837,9 @@
       textChinesePinyinToggleButton.innerText = textChinesePinyinToggleButton.innerText === "🌇" ? "🌃" : "🌇";
     }
 
-    function updateFuriganaText(japanesePosId, html, textTimestamp) {
+    function updateFuriganaText(japanesePosId, html, textTimeStampNow) {
       console.log("🎎 Try to updateFuriganaText()");
-      updateRubyText(japanesePosId, html, textTimestamp);
+      updateRubyText(japanesePosId, html, textTimeStampNow);
       let htLength = textConfig.historyTexts.length;
       while (textConfig.furiganaTexts.length < htLength) {
         textConfig.furiganaTexts.push("");
@@ -1925,7 +1851,7 @@
         console.log("💥 furiganaTexts.length > textConfig.historyTexts.length");
       }
       let historySearchRange = htLength > 10 ? 10 : htLength;
-      for (let i = 1; i <= historySearchRange; i++) if (textTimestamp == textConfig.historyTextTimestamps[htLength - i]) {
+      for (let i = 1; i <= historySearchRange; i++) if (textTimeStampNow == textConfig.historyTextTimestamps[htLength - i]) {
         if (i > 1) {
           console.log("✨ Update FuriganaText To History List At Distance:", i);
         }
@@ -1933,29 +1859,21 @@
         textConfig.furiganaTextPos[htLength - i] = japanesePosId;
         break;
       }
-      saveTextConfigStorage(autoSID);
     }
     function showFurigana() {
-      let textTimestamp = textTimestampNow;
-      for (let i = 0; i <= topTranslationCount; i++) if (displayedTextLanguageSelects[i].value === "ja") {
+      for (let i = 0; i <= topTranslationCount; i++) if (readingSelects[i].value === "ja") {
         var japanesePosId = i;
         console.log(`🔤 showFurigna(): pos=${japanesePosId}`);
         furiganaFetchFromMyServer(texts[japanesePosId].textContent)
         .then((html) => {
-          updateFuriganaText(japanesePosId, html, textTimestamp);
+          updateFuriganaText(japanesePosId, html, displayedTextTimeStamp);
         })
         .catch((error) => console.error(error));
       }
     }
-    function updateEnglishIpaText(englishPosId, html, textTimestamp) {
+    function updateEnglishIpaText(englishPosId, html, textTimeStampNow) {
       console.log("🔤 Try to updateEnglishIpaText()");
-
-      if (textTimestamp == -123) {
-        html = html.replace(/^<ruby>to<rt>(.*?)<\/rt>(<\/ruby>)/g, '<ruby>to$2');
-        html = html.replace(/, <ruby>to<rt>(.*?)<\/rt>(<\/ruby>)/g, ', <ruby>to$2');
-      }
-
-      updateRubyText(englishPosId, html, textTimestamp);
+      updateRubyText(englishPosId, html, textTimeStampNow);
       let htLength = textConfig.historyTexts.length;
       while (textConfig.englishIpaTexts.length < htLength) {
         textConfig.englishIpaTexts.push("");
@@ -1967,7 +1885,7 @@
         console.log("💥 englishIpaTexts.length > textConfig.historyTexts.length");
       }
       let historySearchRange = htLength > 10 ? 10 : htLength;
-      for (let i = 1; i <= historySearchRange; i++) if (textTimestamp == textConfig.historyTextTimestamps[htLength - i]) {
+      for (let i = 1; i <= historySearchRange; i++) if (textTimeStampNow == textConfig.historyTextTimestamps[htLength - i]) {
         if (i > 1) {
           console.log("✨ Update englishIpaText To History List At Distance:", i);
         }
@@ -1975,12 +1893,10 @@
         textConfig.englishIpaTextPos[htLength - i] = englishPosId;
         break;
       }
-      saveTextConfigStorage(autoSID);
     }
     var showEnglishIpaClickTimestamp = 0;
-    var showEnglishIpaClickCooldownDuration = 8000;
+    var showEnglishIpaClickCooldownDuration = 4000;
     function showEnglishIpa() {
-      let textTimestamp = textTimestampNow;
       var currentTime = new Date().getTime();
       if (currentTime - showEnglishIpaClickTimestamp >= showEnglishIpaClickCooldownDuration) {
         showEnglishIpaClickTimestamp = currentTime;
@@ -1993,20 +1909,20 @@
         console.log(`⏳ showEnglishIpa() Time not ready: ${currentTime - showEnglishIpaClickTimestamp} ms left`);
         return;
       }
-      for (let i = 0; i <= topTranslationCount; i++) if (displayedTextLanguageSelects[i].value === "en") {
+      for (let i = 0; i <= topTranslationCount; i++) if (readingSelects[i].value === "en") {
         var englishPosId = i;
         console.log(`🔤 showEnglishIpa(): pos=${englishPosId}`);
         englishIpaFetchFromMyServer(texts[englishPosId].textContent)
         .then((html) => {
-          updateEnglishIpaText(englishPosId, html, textTimestamp);
+          updateEnglishIpaText(englishPosId, html, displayedTextTimeStamp);
         })
         .catch((error) => console.error(error));
       }
     }
 
-    function updateChinesePinyinText(chinesePosId, html, textTimestamp) {
+    function updateChinesePinyinText(chinesePosId, html, textTimeStampNow) {
       console.log("🐼 Try to updateChinesePinyinText()");
-      updateRubyText(chinesePosId, html, textTimestamp);
+      updateRubyText(chinesePosId, html, textTimeStampNow);
       let htLength = textConfig.historyTexts.length;
       while (textConfig.chinesePinyinTexts.length < htLength) {
         textConfig.chinesePinyinTexts.push("");
@@ -2018,7 +1934,7 @@
         console.log("💥chinesePinyinTexts.length > textConfig.historyTexts.length");
       }
       let historySearchRange = htLength > 10 ? 10 : htLength;
-      for (let i = 1; i <= historySearchRange; i++) if (textTimestamp == textConfig.historyTextTimestamps[htLength - i]) {
+      for (let i = 1; i <= historySearchRange; i++) if (textTimeStampNow == textConfig.historyTextTimestamps[htLength - i]) {
         if (i > 1) {
           console.log("✨ Update chinesePinyinText To History List At Distance:", i);
         }
@@ -2026,12 +1942,10 @@
         textConfig.chinesePinyinTextPos[htLength - i] = chinesePosId;
         break;
       }
-      saveTextConfigStorage(autoSID);
     }
     var showChinesePinyinClickTimestamp = 0;
     var showChinesePinyinClickCooldownDuration = 4000;
     function showChinesePinyin() {
-      let textTimestamp = textTimestampNow;
       var currentTime = new Date().getTime();
       if (currentTime - showChinesePinyinClickTimestamp >= showChinesePinyinClickCooldownDuration) {
         showChinesePinyinClickTimestamp = currentTime;
@@ -2044,25 +1958,25 @@
         console.log(`⏳ showChinesePinyin() Time not ready: ${currentTime - showChinesePinyinClickTimestamp} ms left`);
         return;
       }
-      for (let i = 0; i <= topTranslationCount; i++) if (displayedTextLanguageSelects[i].value === "zh-TW") {
+      for (let i = 0; i <= topTranslationCount; i++) if (readingSelects[i].value === "zh-TW") {
         var chinesePosId = i;
         console.log(`🐼 showChinesePinyin(): pos=${chinesePosId}`);
         chinesePinyinFetchFromMyServer(texts[chinesePosId].textContent)
         .then((html) => {
-          updateChinesePinyinText(chinesePosId, html, textTimestamp);
+          updateChinesePinyinText(chinesePosId, html, displayedTextTimeStamp);
         })
         .catch((error) => console.error(error));
       }
     }
 
     function showRuby(id) {
-      if (displayedTextLanguageSelects[id].value === "ja") {
+      if (readingSelects[id].value === "ja") {
         showFurigana();
       }
-      else if (displayedTextLanguageSelects[id].value === "en") {
+      else if (readingSelects[id].value === "en") {
         showEnglishIpa();
       }
-      else if(displayedTextLanguageSelects[id].value === "zh-TW") {
+      else if(readingSelects[id].value === "zh-TW") {
         showChinesePinyin();
       }
     }
@@ -2078,8 +1992,6 @@
       configs[autoSID].translationCount = parseInt(translationCountSelect.value, 10);
       saveConfigStorage();
     }
-
-    /*
     var sourceLanguage = "ja";
     var targetLanguage = "en";
     function inputLanguageSwitch() {
@@ -2094,8 +2006,6 @@
         button.innerHTML = "JP🔤"
       }
     }
-    */
-
     function toggleAutoLangaugeDetect(button) {
       button.innerText = button.innerText === "🤔" ? "😴" : "🤔";
     }
@@ -2112,7 +2022,6 @@
       saveConfigStorage();
     }
     function JpExpWebTopLayoutAdjust() {
-      console.log("📜 JpExpWebTopLayoutAdjust()");
       var splitPos = toggleJpExpWebTop_LayoutButton.innerHTML.lastIndexOf(' ');
       var trigger = toggleJpExpWebTop_LayoutButton.innerHTML.substr(splitPos + 1);
       if (trigger === "🟢") {
@@ -2124,7 +2033,7 @@
     }
     function toggleJpExpWebTop() {
       toggleWidgetArea('jpExpWebTop', toggleJpExpWebTop_LayoutButton);
-      // JpExpWebTopLayoutAdjust();
+      JpExpWebTopLayoutAdjust();
     }
     function turnOnJpExpWebTop() {
       var splitPos = toggleJpExpWebTop_LayoutButton.innerHTML.lastIndexOf(' ');
@@ -2132,44 +2041,17 @@
       if (trigger === "❌") {
         toggleJpExpWebTop();
       }
-      jpExpWebUpdate(texts[languagePosIdMap["ja"]].textContent);
+      jpExpWebUpdate(texts[languagePosIdMap[sourceLanguage]].textContent);
     }
-    function CopyJpExp(languagePos=-1, completeCopy=-1) {
-      if (languagePos === -1) {
-        languagePos = languagePosIdMap["ja"];
-      }
-      var rubyText = displayedTexts[languagePos].innerHTML;
-      rubyText = rubyConvert(rubyText, completeCopy);
+    function CopyJpExp() {
+      var rubyText = displayedTexts[languagePosIdMap[sourceLanguage]].innerHTML;
+      rubyText = rubyText
+      .replace(/<ruby>.*?<\/ruby>/g, match => match.replace(/\s+/g, ''))
+      .replace(/<ruby>(.*?)<\/ruby>/g, '$1')
+      .replace(/<rt>(.*?)<\/rt>/g, '($1)')
+      .replace(/\)\s+/g, ")");
+      // .replace(/&nbsp;/g, '');
       navigator.clipboard.writeText(rubyText);
-      return;
-
-      if (completeCopy != -1) {
-        navigator.clipboard.writeText(rubyText);
-        return;
-      }
-      var rtnText = "";
-      var isBeforeBracket = false;
-      for (let i = rubyText.length - 1; i >= 0; i--) {
-        if (rubyText[i] === '(') {
-          isBeforeBracket = true;
-        }
-        else if (rubyText[i] === ' ') {
-          if (!isBeforeBracket) {
-            continue;
-          }
-          else {
-            isBeforeBracket = false;
-          }
-        }
-        else if (rubyText[i] === ')'){
-          if (isBeforeBracket) {
-          rtnText = ' ' + rtnText;
-            isBeforeBracket = false;
-          }
-        }
-        rtnText = rubyText[i] + rtnText;
-      }
-      navigator.clipboard.writeText(rtnText);
     }
 
     var recognitionCountdownInterval;
@@ -2239,7 +2121,7 @@
       const hours = date.getHours().toString().padStart(2, '0');
       const minutes = date.getMinutes().toString().padStart(2, '0');
       const seconds = date.getSeconds().toString().padStart(2, '0');
-      const milliseconds = date.getMilliseconds().toString().substring(0, 2).padStart(2, '0');
+      const milliseconds = date.getMilliseconds().toString().padStart(2, '0');
       return `(${year}${month}${day}-${hours}${minutes}${seconds}-${milliseconds})`;
     }
 
@@ -2247,6 +2129,7 @@
       const illegalCharsRegex = /[\/:*?"|]/g;
       const sanitizedString = inputString.replace(illegalCharsRegex, "_");
       if (sanitizedString.trim() === "") { }
+      console.log("")
       const finalFileName = sanitizedString.trim()
         .replace(/^\.+|\.+$/g, "").replace(/<[^>]+>/g, '').replace(/[<>]/g, '');
       const maxLength = 100; // 255
@@ -2310,7 +2193,6 @@
 		const MSTTS_region = "southeastasia";
 		const MSTTS_endpoint1 = `https://${MSTTS_region}.api.cognitive.microsoft.com/sts/v1.0/issuetoken`;
 		const MSTTS_endpoint2 = `https://${MSTTS_region}.tts.speech.microsoft.com/cognitiveservices/v1`;
-    var MSTTS_accessToken = "";
     function getMsttsAccessToken() {
       return new Promise((resolve, reject) => {
         var xhr1 = new XMLHttpRequest();
@@ -2320,8 +2202,8 @@
         xhr1.onreadystatechange = function() {
           if (xhr1.readyState === 4) {
             if (xhr1.status === 200) {
-              MSTTS_accessToken = xhr1.responseText;
-              resolve(MSTTS_accessToken);
+              var accessToken = xhr1.responseText;
+              resolve(accessToken);
             } else {
               reject(new Error(`Failed to get Azure Access Token. Status code: ${xhr1.status}`));
             }
@@ -2332,11 +2214,11 @@
         };
       });
     }
-    async function getMsAudioData(text, sourceLanguage, voiceName) {
+    async function getMsAudioData(text, sourceLanguage, MSTTS_voiceName, accessToken) {
       return new Promise((resolve, reject) => {
         const xhr2 = new XMLHttpRequest();
         const headers = {
-          "Authorization": `Bearer ${MSTTS_accessToken}`,
+          "Authorization": `Bearer ${accessToken}`,
           "Content-Type": "application/ssml+xml",
           "X-Microsoft-OutputFormat": "audio-16khz-128kbitrate-mono-mp3"
         };
@@ -2345,7 +2227,7 @@
           xhr2.setRequestHeader(key, value);
         }
         xhr2.responseType = 'arraybuffer';
-        const requestBody = `<speak version='1.0' xml:lang='en-US'><voice name='${voiceName}'>${text}</voice></speak>`;
+        const requestBody = `<speak version='1.0' xml:lang='en-US'><voice name='${MSTTS_voiceName}'>${text}</voice></speak>`;
         xhr2.onload = function() {
           if (xhr2.status >= 200 && xhr2.status < 300) {
             resolve(xhr2.response);
@@ -2365,21 +2247,20 @@
       configs[autoSID].azureVoices[id] = value;
       saveConfigStorage();
     }
-    async function msSpeak(text, sourceLanguage = "", voiceName = "") {
-      console.log(`🔊 msSpeak-text: ${text}; sourceLanguage: ${sourceLanguage}; voiceName: ${voiceName}`);
+    async function msSpeak(text, sourceLanguage = "") {
+      console.log("🔊 msSpeak-text:", text);
       if (!text) return;
-      if (!voiceName) {
-        if (sourceLanguage === "ja") {
-          voiceName = azureVoiceSelects[0].value;
-        } else if (sourceLanguage === "en") {
-          voiceName = azureVoiceSelects[1].value;
-        } else if (sourceLanguage === "zh-TW") {
-          voiceName = azureVoiceSelects[2].value;
-        }
+      var MSTTS_voiceName;
+      if (sourceLanguage === "ja") {
+        MSTTS_voiceName = azureVoiceSelects[0].value;
+      } else if (sourceLanguage === "en") {
+        MSTTS_voiceName = azureVoiceSelects[1].value;
+      } else if (sourceLanguage === "zh-TW") {
+        MSTTS_voiceName = azureVoiceSelects[2].value;
       }
       try {
-        await getMsttsAccessToken();
-        const audioData = await getMsAudioData(text, sourceLanguage, voiceName);
+        const accessToken = await getMsttsAccessToken();
+        const audioData = await getMsAudioData(text, sourceLanguage, MSTTS_voiceName, accessToken);
         const audioBlob = new Blob([audioData], { type: 'audio/mpeg' });
         msSpeakAudio.src = URL.createObjectURL(audioBlob);
         msSpeakAudio.play();
@@ -2439,17 +2320,17 @@
     }
     async function addToGgReadingList(ggAudioList, lines=1) {
       for (let i = 0; i < lines; i++) {
-        var url = await ggSpeakUrlGet(texts[i].textContent, displayedTextLanguageSelects[i].value);
+        var url = await ggSpeakUrlGet(texts[i].textContent, readingSelects[i].value);
         ggAudioList.push(url);
       }
       console.log("🗃️ ggAudioList:", ggAudioList);
     }
     async function addToMsReadingList(msAudioList, lines = 1) {
       try {
-        await getMsttsAccessToken();
+        const accessToken = await getMsttsAccessToken();
         for (let i = 0; i < lines; i++) {
-          var voiceName = chooseAzureVoice(displayedTextLanguageSelects[i].value);
-          const audioData = await getMsAudioData(texts[i].textContent, displayedTextLanguageSelects[i].value, voiceName);
+          var MSTTS_voiceName = chooseAzureVoice(readingSelects[i].value);
+          const audioData = await getMsAudioData(texts[i].textContent, readingSelects[i].value, MSTTS_voiceName, accessToken);
           msAudioList.push(audioData);
         }
         console.log("🗃️ msAudioList:", msAudioList);
@@ -2471,7 +2352,7 @@
       for (let i = 0; i < lines; i++) {
 
         let readingListItem = document.createElement('li');
-        readingListItem.textContent = texts[i].textContent + ` - [${displayedTextLanguageSelects[i].value}]`;
+        readingListItem.textContent = texts[i].textContent + ` - [${readingSelects[i].value}]`;
 
         let ggSpeakReadingListItemButton = document.createElement('button');
         ggSpeakReadingListItemButton.textContent = 'G';
@@ -2518,13 +2399,13 @@
     }
     function addToFavoriteListFromScreenText() {
       favTextConfig.favoriteTexts.push([...texts].map(element => element.textContent));
-      favTextConfig.favoriteTextLanguages.push([...displayedTextLanguageSelects].map(element => element.value));
+      favTextConfig.favoriteTextLanguages.push([...readingSelects].map(element => element.value));
       while (favTextConfig.favoriteTexts.length > 150) {
         favTextConfig.favoriteTexts.shift();
         favTextConfig.favoriteTextLanguages.shift();
       }
       saveFavoriteTextConfigStorage();
-      addToFavoriteList([...texts].map(element => element.textContent), [...displayedTextLanguageSelects].map(element => element.value), translationCount + 1);
+      addToFavoriteList([...texts].map(element => element.textContent), [...readingSelects].map(element => element.value), translationCount + 1);
     }
     function removeFromFavoriteTextConfig(index) {
       favTextConfig.favoriteTexts.splice(index, 1);
@@ -2711,19 +2592,19 @@
       console.log(`🔍 autoDetectTranslate(${text})`);
       var sourceLanguage;
       if (gcpApiKey) {
-        var sourceLanguage = await ggDetectLanguage(text);
+        sourceLanguage = await ggDetectLanguage(text);
         console.log("👁️‍🗨️ ggDetectLanguage():", sourceLanguage);
       }
       else {
-        var sourceLanguage = await detectLanguageFromMyServer(text);
+        sourceLanguage = await detectLanguageFromMyServer(text);
         console.log("🦉 detectLanguageFromMyServer():", sourceLanguage);
       }
       if (!sourceLanguage) {
         if (languageSelect) {
-          var sourceLanguage = languageSelect.value;
+          sourceLanguage = languageSelect.value;
         }
         else {
-          var sourceLanguage = languageSelects[0].value;
+          sourceLanguage = languageSelects[0].value;
         }
       }
       if (languageSelect !== undefined) {
@@ -2762,7 +2643,7 @@
         if (languageSelects[i].value != sourceLanguage) {
           targetLanguages.push(languageSelects[i].value);
         }
-        displayedTextLanguageSelects[i].value = targetLanguages[i];
+        readingSelects[i].value = targetLanguages[i];
       }
     }
 
@@ -2779,18 +2660,25 @@
         }
       }
     }
-    var textTimestampNow = -1;
     async function speechTranslate(speechText, sourceLanguage="", isAutoDetect=false, languageSelect=undefined, willUpdateHistoryTexts=true) {
       if (!speechText) return;
+      let existedTimestamp = -1;
+      let japanesePosId = -1, englishPosId = -1, chinesePosId = -1;
+      timeTextUpdated = fillArrayWithRandomValue([], topTranslationCount + 1, 1, 65535);
+      updateText(0, speechText, existedTimestamp, japanesePosId, englishPosId, chinesePosId, willUpdateHistoryTexts);
+      console.log(`🔡 speechTranslate(): speechText = ${speechText}, sourceLanguage = ${sourceLanguage}`);
       if (!sourceLanguage || isAutoDetect) {
         sourceLanguage = await autoDetectTranslate(speechText, languageSelect);
       }
-      textTimestampNow = getRandomInteger(1, 65535);
-      let textTimestamp = textTimestampNow;
-      updateText(0, speechText, textTimestamp, willUpdateHistoryTexts, sourceLanguage);
-      console.log(`🔡 speechTranslate(): speechText = ${speechText}, sourceLanguage = ${sourceLanguage}`);
       if (sourceLanguage === "ja") {
         jpExpWebUpdate(speechText);
+        japanesePosId = 0;
+      }
+      else if (sourceLanguage === "en") {
+        englishPosId = 0;
+      }
+      else if (sourceLanguage === "zh-TW") {
+        chinesePosId = 0;
       }
       languagePosIdMap[sourceLanguage] = 0;
       await getTargetLanguages(sourceLanguage);
@@ -2810,9 +2698,16 @@
                 if (xhr.status === 200) {
                   if (targetLanguage === "ja") {
                     jpExpWebUpdate(xhr.responseText);
+                    japanesePosId = i;
+                  }
+                  else if (targetLanguage === "en") {
+                    englishPosId = i;
+                  }
+                  else if (targetLanguage === "zh-TW") {
+                    chinesePosId = i;
                   }
                   languagePosIdMap[targetLanguage] = i;
-                  updateText(i, xhr.responseText, textTimestamp, willUpdateHistoryTexts, targetLanguage);
+                  updateText(i, xhr.responseText, existedTimestamp, japanesePosId, englishPosId, chinesePosId, willUpdateHistoryTexts);
                   resolve();
                 } else {
                   reject(new Error('Failed to finish speechTranslate()'));
@@ -2846,11 +2741,8 @@
       }
       saveConfigStorage();
     }
-    function toggleFixedHeight() {
-      fixedHeightToggleButton.innerHTML = fixedHeightToggleButton.innerHTML === "⚽️" ? "🏀" : "⚽️";
-    }
 
-    const excludedButtonNames = ["Recognition", "Text Record"];
+    const excludedButtonNames = ["Recognition", "Reading Area", "Text Record"];
     function minimalistTheme() {
       const buttons = layoutContainer.querySelectorAll('button');
       buttons.forEach(button => {
@@ -2859,6 +2751,7 @@
         var name = button.innerHTML.substr(0, splitPos);
         if (!excludedButtonNames.includes(name) && trigger === "🟢") {
           button.click();
+          console.log(button.textContent);
         }
       });
     }
@@ -2867,7 +2760,6 @@
       localStorage.setItem('snowyTranslatorConfig', configJSON);
     }
     function saveTextConfigStorage(configID) {
-      // console.log(`🗃️ saveTextConfigStorage`);
       var configJSON = JSON.stringify(textConfig);
       localStorage.setItem(`snowyTranslatorTextConfig[${configID}]`, configJSON);
     }
@@ -2917,42 +2809,13 @@
       configs[autoSID].curtainColor = color;
       saveConfigStorage();
     }
-    function updateCurtainHeightPre(value="") {
-      if (value === "") value = curtainHeightSlider.value;
-      else {
-        value = Math.min(value, 2000);
-        curtainHeightSlider.value = value;
-      }
-      let sum = parseInt(textMarginBottomSlider.value, 10) + 10;
-      for (let i = 0; i <= translationCount; i++) sum += parseInt(textMarginSliders[i].value, 10);
-      if (sum > value) {
-        value = sum;
-        curtainHeightSlider.value = value;
-      }
-      curtainHeightValue.value = value;
-      configs[autoSID].curtainHeight = value;
-    }
     function updateCurtainHeight(value="") {
-      updateCurtainHeightPre(value);
+      if (value === "") value = curtainHeightSlider.value;
+      else curtainHeightSlider.value = value;
+      curtainHeightValue.innerHTML = value + "px";
+      configs[autoSID].curtainHeight = value;
       saveConfigStorage();
       adjustSpeechTextAreaHeight();
-    }
-    function updateCurtainWidthPre(value="") {
-      if (value === "") value = curtainWidthSlider.value;
-      else {
-        value = Math.min(value, 2000);
-        curtainWidthSlider.value = value;
-      }
-      curtainWidthValue.value = value;
-      const screenWidth = window.innerWidth || document.documentElement.clientWidth;
-      if (screenWidth >= 1001 || screenWidth >= value) {
-        speechTextArea.style.width = value + "px";
-      }
-      configs[autoSID].curtainWidth = value;
-    }
-    function updateCurtainWidth(value="") {
-      updateCurtainWidthPre(value)
-      saveConfigStorage();
     }
     function updateDisplayedText(id, speechText) {
       for (let j = 0; j < 2; j++) {
@@ -2960,74 +2823,74 @@
       }
       displayedTexts[id].textContent = speechText;
       displayedTexts[id].setAttribute('stroke-data', speechText);
-      if (speechText) adjustSpeechTextAreaHeight();
+      adjustSpeechTextAreaHeight();
       configs[autoSID].displayedTexts[id] = speechText;
       saveConfigStorage();
     }
 
     var globalDebugTimestamp = 0; // console.log(`[${globalDebugTimestamp += 1}]`);
-    function updateText(id, speechText, textTimestamp, willUpdateHistoryTexts=true, language="") {
-      if (textTimestamp == textTimestampNow) {
-        texts[id].innerHTML = speechText;
-        configs[autoSID].texts[id] = speechText;
-        updateDisplayedText(id, speechText);
+    var displayedTextTimeStamp = -1;
+    function updateText(id, speechText, existedTimestamp, japanesePosId, englishPosId, chinesePosId, willUpdateHistoryTexts=true) {
+      texts[id].innerHTML = speechText;
+      configs[autoSID].texts[id] = speechText;
+      updateDisplayedText(id, speechText);
+      displayedTextTimeStamp = existedTimestamp;
+      if (speechText.trim() === "" || !willUpdateHistoryTexts) return;
+
+      timeTextUpdated[id] += 1;
+      for (let i = 1; i <= translationCount; i++) {
+        if (timeTextUpdated[i] !== timeTextUpdated[0]) {
+          console.log("🕒 Texts are not synced - timeTextUpdated:", timeTextUpdated);
+          return;
+        }
       }
-      if (speechText.trim() === "") return;
+      console.log("⏰ All Texts Are Updated!");
+      if (existedTimestamp === -1) displayedTextTimeStamp = getRandomInteger(1, 65535);
+      let textTimeStampNow = displayedTextTimeStamp;
 
-      if (willUpdateHistoryTexts) {
-        timeTextUpdated[id] = textTimestamp;
-        for (let i = 1; i <= translationCount; i++) {
-          if (timeTextUpdated[i] !== timeTextUpdated[0]) {
-            // console.log("🕒 Texts are not synced - timeTextUpdated:", timeTextUpdated);
-            return;
-          }
-        }
-        console.log(`⏰ All Texts Are Updated: ${timeTextUpdated}`);
+      // pushToHistoryTexts
+      if (textConfig.historyTexts.length > 0 && textConfig.historyTexts[textConfig.historyTexts.length - 1][0] === speechText) return;
+      textConfig.historyTexts.push([...texts].map(element => element.textContent));
+      textConfig.historyTextLanguages.push([...targetLanguages]);
+      textConfig.historyTextTimestamps.push(displayedTextTimeStamp);
+      while (textConfig.historyTexts.length > configs[autoSID].historyTextsMaxLength) {
+        textConfig.historyTexts.shift() // or textConfig.historyTexts = textConfig.historyTexts.slice(1);
+        textConfig.historyTextLanguages.shift();
+        textConfig.historyTextTimestamps.shift();
+        textConfig.furiganaTexts.shift();
+        textConfig.furiganaTextPos.shift();
+        textConfig.englishIpaTexts.shift();
+        textConfig.englishIpaTextPos.shift();
+        textConfig.chinesePinyinTexts.shift();
+        textConfig.chinesePinyinTextPos.shift();
+      }
+      updateHistoryTextCurrentId(textConfig.historyTexts.length - 1);
+      saveTextConfigStorage(autoSID);
 
-        for (let i = 0; i <= topTranslationCount; i++) {
-          if (!isRecognizing && textTimestamp != -1 && displayedTextLanguageSelects[i].value === "en" && textEnglishIpaToggleButton.innerText === "🌱") {
-            englishIpaFetchFromMyServer(texts[i].textContent)
-            .then((html) => {
-              updateEnglishIpaText(i, html, textTimestamp);
-            })
-            .catch((error) => console.error(error));
-          }
-          if (!isRecognizing && textTimestamp != -1 && displayedTextLanguageSelects[i].value === "zh-TW" && textChinesePinyinToggleButton.innerText === "🌇") {
-            chinesePinyinFetchFromMyServer(texts[i].textContent)
-            .then((html) => {
-              updateChinesePinyinText(i, html, textTimestamp);
-            })
-            .catch((error) => console.error(error));
-          }
-          if (textTimestamp != -1 && displayedTextLanguageSelects[i].value === "ja" && textFuriganaToggleButton.innerText === "🔰") {
-            setTimeout(() => {
-              furiganaFetchFromMyServer(texts[i].textContent)
-              .then((html) => {
-                updateFuriganaText(i, html, textTimestamp);
-              })
-              .catch((error) => console.error(error));
-            }, 10);
-          }
-        }
+      if (!isRecognizing && textEnglishIpaToggleButton.innerText === "🌱") {
+        englishIpaFetchFromMyServer(texts[englishPosId].textContent)
+        .then((html) => {
+          updateEnglishIpaText(englishPosId, html, textTimeStampNow);
+        })
+        .catch((error) => console.error(error));
+      }
 
-        // pushToHistoryTexts
-        if (textConfig.historyTexts.length > 0 && textConfig.historyTexts[textConfig.historyTexts.length - 1][0] === speechText) return;
-        textConfig.historyTexts.push([...texts].map(element => element.textContent));
-        textConfig.historyTextLanguages.push([...targetLanguages]);
-        textConfig.historyTextTimestamps.push(textTimestamp);
-        while (textConfig.historyTexts.length > configs[autoSID].historyTextsMaxLength) {
-          textConfig.historyTexts.shift() // or textConfig.historyTexts = textConfig.historyTexts.slice(1);
-          textConfig.historyTextLanguages.shift();
-          textConfig.historyTextTimestamps.shift();
-          textConfig.furiganaTexts.shift();
-          textConfig.furiganaTextPos.shift();
-          textConfig.englishIpaTexts.shift();
-          textConfig.englishIpaTextPos.shift();
-          textConfig.chinesePinyinTexts.shift();
-          textConfig.chinesePinyinTextPos.shift();
-        }
-        updateHistoryTextCurrentId(textConfig.historyTexts.length - 1);
-        saveTextConfigStorage(autoSID);
+      if (!isRecognizing && textChinesePinyinToggleButton.innerText === "🌇") {
+        chinesePinyinFetchFromMyServer(texts[chinesePosId].textContent)
+        .then((html) => {
+          updateChinesePinyinText(chinesePosId, html, textTimeStampNow);
+        })
+        .catch((error) => console.error(error));
+      }
+
+      if (textFuriganaToggleButton.innerText === "🔰") {
+        setTimeout(() => {
+          furiganaFetchFromMyServer(texts[japanesePosId].textContent)
+          .then((html) => {
+            updateFuriganaText(japanesePosId, html, textTimeStampNow);
+          })
+          .catch((error) => console.error(error));
+        }, 10);
       }
     }
 
@@ -3040,13 +2903,12 @@
       if (index < 0 || index >= textConfig.historyTexts.length) return;
       // console.log(`👀 showHistoryText(${index})`);
       updateHistoryTextCurrentId(index);
-      textTimestampNow = textConfig.historyTextTimestamps[index];
       for (let i = 0; i <= translationCount; i++) {
+        let japanesePosId = -1, englishPosId = -1, chinesePosId = -1;
         let willUpdateHistoryTexts = false;
-        updateText(i, textConfig.historyTexts[index][i], textConfig.historyTextTimestamps[index], willUpdateHistoryTexts);
-
-        displayedTextLanguageSelects[i].value = textConfig.historyTextLanguages[index][i];
-        languagePosIdMap[displayedTextLanguageSelects[i].value] = i;
+        updateText(i, textConfig.historyTexts[index][i], textConfig.historyTextTimestamps[index], japanesePosId, englishPosId, chinesePosId, willUpdateHistoryTexts);
+        readingSelects[i].value = textConfig.historyTextLanguages[index][i];
+        languagePosIdMap[readingSelects[i].value] = i;
       }
       if (textFuriganaToggleButton.innerText === "🔰") {
         updateRubyText(textConfig.furiganaTextPos[index], textConfig.furiganaTexts[index], textConfig.historyTextTimestamps[index]);
@@ -3083,8 +2945,8 @@
     }
     function updateRubyText(id, htmlText, timestamp) {
       if (id < 0 || !htmlText || typeof htmlText === "string" && htmlText.trim() === "") return;
-      if (timestamp !== textTimestampNow) {
-        console.log(`🎭 id[${id}]: timestamp(${timestamp}) !== textTimestampNow(${textTimestampNow})`);
+      if (timestamp !== displayedTextTimeStamp) {
+        console.log(`🎭 id[${id}]: timestamp(${timestamp}) !== displayedTextTimeStamp(${displayedTextTimeStamp})`);
         return;
       }
       displayedTexts[id].innerHTML = htmlText;
@@ -3110,34 +2972,34 @@
       if (topRow === -1) {
         topRow = topTranslationCount;
       }
-      textTimestampNow = -1;
-      let textTimestamp = -1;
-      let willUpdateHistoryTexts = false;
       for (let i = firstRow; i <= topRow; i++) {
-        updateText(i, "", textTimestamp, willUpdateHistoryTexts);
-        displayedTextLanguageSelects[i].value = defaultConfig.languages[i];
+        let existedTimestamp = -1;
+        let japanesePosId = -1, englishPosId = -1, chinesePosId = -1;
+        let willUpdateHistoryTexts = false;
+        updateText(i, "", existedTimestamp, japanesePosId, englishPosId, chinesePosId,  willUpdateHistoryTexts);
       }
-      targetLanguages = [...defaultConfig.languages];
     }
     function defaultTexts(topRow=-1) {
       if (topRow === -1) {
         topRow = translationCount;
       }
-      textTimestampNow = -1;
-      let textTimestamp = -1;
-      let willUpdateHistoryTexts = false;
       for (let i = 0; i <= topRow; i++) {
-        updateText(i, defaultConfig.texts[i], textTimestamp, willUpdateHistoryTexts, defaultConfig.languages[i]);
-        displayedTextLanguageSelects[i].value = defaultConfig.languages[i];
+        let existedTimestamp = -1;
+        let japanesePosId = -1, englishPosId = -1, chinesePosId = -1;
+        let willUpdateHistoryTexts = false;
+        updateText(i, defaultConfig.texts[i], existedTimestamp, japanesePosId, englishPosId, chinesePosId, willUpdateHistoryTexts);
       }
-      targetLanguages = [...defaultConfig.languages];
+      displayedTextTimeStamp = -1;
       if (textFuriganaToggleButton.innerText === "🔰") {
+        let textTimestamp = -1;
         updateRubyText(0, defaultConfig.displayedTexts[0], textTimestamp);
       }
       if (textEnglishIpaToggleButton.innerText === "🌱") {
+        let textTimestamp = -1;
         updateRubyText(1, defaultConfig.displayedTexts[1], textTimestamp);
       }
       if (textChinesePinyinToggleButton.innerText === "🌇") {
+        let textTimestamp = -1;
         updateRubyText(2, defaultConfig.displayedTexts[2], textTimestamp);
       }
     }
@@ -3152,10 +3014,7 @@
     }
     function updateFontSize(id, value="") {
       if (value === "") value = textFontSizeSliders[id].value;
-      else {
-        value = Math.max(value, 1);
-        textFontSizeSliders[id].value = value;
-      }
+      else textFontSizeSliders[id].value = value;
       textFontSizeValues[id].innerHTML = value;
       displayedTexts[id].style.fontSize = value + 'px';
       for (let layer = 0; layer < 2; layer++) {
@@ -3163,11 +3022,6 @@
       }
       configs[autoSID].textFontSizes[id] = value;
       saveConfigStorage();
-    }
-    function changeFontSizes(value) {
-      for (let i = 0; i <= translationCount; i++) {
-        updateFontSize(i, parseInt(textFontSizeSliders[i].value, 10) + value);
-      }
     }
     function updateFontWeight(id, value="") {
       if (value === "") value = textFontWeightSliders[id].value;
@@ -3230,16 +3084,6 @@
       textMarginValues[id].innerHTML = value;
       textMargins[id].style.marginTop = value + "px";
       configs[autoSID].textMargins[id] = value;
-      adjustSpeechTextAreaHeight();
-      saveConfigStorage();
-    }
-    function updateTextMarginBottom(value="") {
-      if (value === "") value = textMarginBottomSlider.value;
-      else textMarginBottomSlider.value = value;
-      textMarginBottomValue.innerHTML = value;
-      textMarginBottom.style.marginBottom = value + "px";
-      configs[autoSID].textMarginBottom = value;
-      adjustSpeechTextAreaHeight();
       saveConfigStorage();
     }
     function updateApiKey(id, value="") {
@@ -3284,7 +3128,6 @@
       configs[configID].pageColor = pageColorPicker.value;
       configs[configID].curtainColor = curtainColorPicker.value;
       configs[configID].curtainHeight = curtainHeightSlider.value;
-      configs[configID].curtainWidth = curtainWidthSlider.value;
       configs[configID].texts = [...texts].map(element => element.innerHTML);
       configs[configID].displayedTexts = [...displayedTexts].map(element => element.innerHTML);
       configs[configID].textFontColors = [...textColorValues].map(element => element.innerHTML);
@@ -3296,7 +3139,6 @@
       configs[configID].textShadowBlurRadius = [...textShadowBlurRadiusValues].map(element => element.innerHTML);
       configs[configID].textShadowColors = [...textShadowColorValues].map(element => element.innerHTML);
       configs[configID].textMargins = [...textMarginValues].map(element => element.innerHTML);
-      configs[configID].textMarginBottom = textMarginBottomValue.innerHTML;
       configs[configID].apiKeys = [...apiKeyInputs].map(element => element.value);
       configs[configID].speechOverInterval = speechOverInterval.value;
       configs[configID].speechSplitInterval = speechSplitInterval.value;
@@ -3331,7 +3173,6 @@
       updatePageColor(configs[configID].pageColor);
       updateCurtainColor(configs[configID].curtainColor);
       updateCurtainHeight(configs[configID].curtainHeight);
-      updateCurtainWidth(configs[configID].curtainWidth);
       updateIntegerValue(speechOverInterval, configs[configID].speechOverInterval);
       updateIntegerValue(speechSplitInterval, configs[configID].speechSplitInterval);
       updateIntegerValue(speechClearInterval, configs[configID].speechClearInterval);
@@ -3355,7 +3196,6 @@
         updateLanguage(i, configs[configID].languages[i]);
         updateAzureVoice(i, configs[configID].azureVoices[i]);
       }
-      updateTextMarginBottom(configs[configID].textMarginBottom);
       for (let i = 0; i < apiKeyInputs.length; i++) {
         if (configs[configID].apiKeys[i]) {
           updateApiKey(i, configs[configID].apiKeys[i]);
@@ -3374,11 +3214,7 @@
           }
         });
       }
-      var currentScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
-      if (currentScrollY < 674) {
-        console.log(`currentScrollY${currentScrollY} < 674`);
-        JpExpWebTopLayoutAdjust();
-      }
+      JpExpWebTopLayoutAdjust();
       showHistoryText(configs[configID].historyTextsCurrentId);
       console.log(`⏳ Load Config (${configID}) Finsihed.`);
     }
@@ -3533,7 +3369,6 @@
       }
     }
     async function chinesePinyinFetchFromMyServer(text) {
-      console.log("chinesePinyinFetchFromMyServer");
       try {
         var server_destination = LOCAL_TEST ? "http://localhost:3001/chinesePinyin" : "https://snsmile.site:3001/chinesePinyin";
         const response = await fetch(server_destination, {
@@ -3602,87 +3437,22 @@
     <a id="audioDownloadWidget" download style="display:none"> MS Audio Download </a>
     <table style="margin-bottom:3px;">
       <tr>
-        <td style="display: table-cell;">
-          <button style="font-size: 11px; width:120px; margin-bottom:8px;" id="addAudioDownloadColumnButton" onclick="addAudioDownloadColumn()"> 🌱New Column </button>
+        <td>
+          <button style="display:block; font-size: 11px; width:120px; margin-bottom:8px;" id="addAudioDownloadColumnButton" onclick="addAudioDownloadColumn()"> 🌱New Column </button>
           <button style="display:block; font-size: 11px; width:120px; margin-bottom:8px;" title="Split Text of a Table to Multiple Columns." onclick="tableTextSplit()">✂️Split Texts</button>
-          <button style="display:block; font-size: 11px; width:120px; margin-bottom:8px;" title="Split Text of a Table to Multiple Columns." onclick="tableTextShowUp()">📊Show Up Texts</button>
           <button style="display:block; font-size: 11px; width:120px; margin-bottom:8px;" title="Split Text of a Table to Multiple Columns." onclick="allAudioDownload()">⬇️Download Audio</button>
+          <button style="display:block; font-size: 11px; width:120px; margin-bottom:8px;" title="Split Text of a Table to Multiple Columns." onclick="tableTextShowUp()">📊Show Up Texts</button>
         </td>
-        <td style="display: table-cell;">
-          <textarea id="audioDownloadInputTextArea" rows="6" cols="113"></textarea>
+        <td>
+          <textarea id="audioDownloadInputTextArea" rows="6" cols="101"></textarea>
         </td>
       </tr>
     </table>
-    <table id="audioDownloadTable" style="margin-bottom:5px;">
+    <table id="audioDownloadTable">
     </table>
-
-    <span id="elementTextReplacement" class="phone-invisible">
-      <table style="margin-bottom:3px;">
-        <tr>
-          <td style="display: table-cell;">
-            <span> Input Text: </span>
-            <textarea id="replacementInputTextArea" rows="1" cols="40"></textarea>
-          </td>
-          <td style="display: table-cell;">
-            <span> Output Text:  </span>
-            <textarea id="replacementOutputTextArea" rows="1" cols="40"></textarea>
-          </td>
-          <td style="display: table-cell;">
-            <button id="replacementButton" onclick="elementTextReplace()">Replace Text</button>
-          </td>
-        </tr>
-      </table>
-    </span>
-  </span>
-
-  <span id="rubyConverterContainer" class="phone-invisible" style="display:none">
-    <span>
-      <table style="margin-bottom:3px;">
-        <tr>
-          <td style="display:table-cell;">
-            <span style="display: block; font-size: 14px; width:40px; white-space: normal; word-wrap: break-word;"> Input Text: </span>
-          </td>
-          <td style="display:table-cell;">
-            <textarea id="rubyConvertInputTextArea" rows="6" cols="40"></textarea>
-          </td>
-          <td style="display:table-cell;">
-          <span style="display: block; font-size: 14px; width:40px; white-space: normal; word-wrap: break-word;"> Output Text:  </span>
-          </td>
-          <td style="display:table-cell;">
-            <textarea id="rubyConvertOutputTextArea" rows="6" cols="40"></textarea>
-          </td>
-          <td style="display:table-cell;">
-            <button id="rubyConvertButton" style="display: block; width:70px; white-space: normal; word-wrap: break-word; margin-bottom: 5px;" onclick="rubyConvertToTextArea()">Full Convert </button>
-            <button id="rubyConvertButton" style="display: block; width:70px; white-space: normal; word-wrap: break-word;" onclick="rubyConvertToTextArea(0)">Clean Convert </button>
-          </td>
-          <td>
-          </td>
-        </tr>
-      </table>
-    </span>
   </span>
 
   <script>
-    function rubyConvert(textInput, code=-1) {
-      let textOutput = textInput.replace(/<\/?rb>/g, '').replace(/&nbsp;/g, ''); // remove <rb> and </rb> and
-      // textOutput = textOutput.replace(/\s/g, '').replace(/<\/ruby>\s*/g, "</ruby> "); // remove all spaces and reserve exact one space followed;
-      textOutput = textOutput.replace(/<ruby>.*?<\/ruby>/g, match => match.replace(/\s+/g, '')) // remove space in <ruby> </ruby>
-      console.log("textOutput0:", textOutput);
-      textOutput = textOutput.replace(/<\/?ruby>/g, ''); // remove <ruby> and </ruby>
-      console.log("textOutput1:", textOutput);
-      const rubyRegex = /<rt>(.*?)<\/rt>/g;
-      textOutput = textOutput.replace(rubyRegex, (match, furigana) => {
-        return code === -1 ? `(${furigana})` : ``;
-      });
-      console.log("textOutput2:", textOutput);
-      textOutput = textOutput.replace(/<[^>]+>/g, '');
-      return textOutput;
-    }
-    function rubyConvertToTextArea(code=-1) {
-      const textInput = rubyConvertInputTextArea.value;
-      const textOutput = rubyConvert(textInput, code);
-      rubyConvertOutputTextArea.value = textOutput;
-    }
     function tableTextSplit() {
       for (let i = 0; i < audioDownloadTopColumn; i++) {
         audioDownloadSplitTextAreas[i].value = "";
@@ -3697,20 +3467,12 @@
     }
 
     function tableTextShowUp() {
-      clearTexts();
-      console.log(`📊 tableTextShowUp()`)
       var lines = audioDownloadInputTextArea.value.split('\t');
-      textTimestampNow = -123;
-      let textTimestamp = -123;
-      timeTextUpdated = [-99, -99, -99];
-      let willUpdateHistoryTexts = true;
       for (let i = 0; i < lines.length; i++) {
-        updateText(i, lines[i], textTimestamp, willUpdateHistoryTexts, defaultConfig.languages[i]);
-        audioDownloadSplitTextAreas[i].value = lines[i];
+        let existedTimestamp = -1;
+        let willUpdateHistoryTexts = false;
+        updateText(i, lines[i], existedTimestamp, 0, 1, 2, willUpdateHistoryTexts);
       }
-      audioDownloadSplitTextAreas[1].value = lines[1].replace(/^to /, '').replace(/, to /g, ', ');
-      audioDownloadSplitTextAreas[3].value = lines[0];
-      turnOnJpExpWebTop();
     }
 
     const optionsByLanguage = {
@@ -3800,22 +3562,16 @@
         const newRow = document.createElement("tr");
         newRow.style.display = "none";
         newRow.innerHTML = `
-          <td style="display: table-cell;">
+          <td>
             <select id="audioDownloadLanguageSelect${i}" onchange="updateVoiceOptions(this, this.parentNode.nextElementSibling.querySelector('select'))">
               <option value="ja">🇯🇵</option>
               <option value="en">🇺🇸</option>
               <option value="zh-TW">🇹🇼</option>
             </select>
           </td>
-          <td style="display: table-cell;">
+          <td>
             <select id="audioDownloadVoiceSelect${i}">
             </select>
-          </td>
-          <td>
-            <button onclick="msSpeak(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, this.parentNode.parentNode.querySelectorAll('select')[1].value)">🎶</button>
-          </td>
-          <td>
-            <button onclick="audioDownload(this.parentNode.parentNode.querySelector('textarea').value, this.parentNode.parentNode.querySelectorAll('select')[0].value, this.parentNode.parentNode.querySelectorAll('select')[1].value)">⬇️</button>
           </td>
           <td>
             <textarea id="audioDownloadSplitTextArea${i}" rows="2" cols="90"></textarea>
@@ -3831,10 +3587,9 @@
         select.innerHTML = optionsByLanguage["ja"];
       });
 
-      addAudioDownloadColumn(languageSelects[0].value, 'ja-JP-AoiNeural');
-      addAudioDownloadColumn(languageSelects[1].value, 'en-US-AshleyNeural');
-      addAudioDownloadColumn(languageSelects[2].value, 'zh-TW-HsiaoChenNeural'); // 'zh-CN-XiaochenNeural', 'zh-TW-HsiaoChenNeural', 'zh-CN-XiaoyouNeural'
-      addAudioDownloadColumn(languageSelects[0].value, 'ja-JP-MayuNeural');
+      addAudioDownloadColumn(languageSelects[0].value, azureVoiceSelects[0].value);
+      addAudioDownloadColumn(languageSelects[1].value, azureVoiceSelects[1].value);
+      addAudioDownloadColumn(languageSelects[2].value, azureVoiceSelects[2].value);
     }
     function addAudioDownloadColumn(audioLanguage="", audioVoice="") {
       if (audioDownloadCurrentColumn + 1 >= audioDownloadTopColumn) return;
@@ -3848,69 +3603,47 @@
       audioDownloadCurrentColumn +=1;
     }
 
-    async function audioDownload(text, sourceLanguage, voice) {
-      // console.log(`text:, ${text}; sourceLanguage: ${sourceLanguage}; voice: ${voice}`);
-      if (!MSTTS_accessToken) {
-        await getMsttsAccessToken();
-      }
-      const audioData = await getMsAudioData(text, sourceLanguage, voice);
-      const audioBlob = new Blob([audioData], { type: 'audio/mpeg' });
-      audioDownloadWidget.href = URL.createObjectURL(audioBlob);
-      audioDownloadWidget.download = `${voice}[${sanitizeForWindowsFileName(text)}] ${getFormattedTime()}`;
-      audioDownloadWidget.click();
-    }
     async function allAudioDownload() {
       var audioDownloadTexts = [];
       for (let i = 0; i < audioDownloadCurrentColumn; i++) {
+        console.log("audioDownloadSplitTextAreas[i]:", audioDownloadSplitTextAreas[i]);
         audioDownloadTexts[i] = audioDownloadSplitTextAreas[i].value.split('\n');
       }
       var topLines = audioDownloadTexts[0].length;
-      await getMsttsAccessToken();
+      const accessToken = await getMsttsAccessToken();
+      console.log("audioDownloadLanguageSelects0:", audioDownloadLanguageSelects[0].value);
+      console.log("audioDownloadLanguageSelects1:", audioDownloadLanguageSelects[1].value);
+      console.log("audioDownloadLanguageSelects2:", audioDownloadLanguageSelects[2].value);
       for (let j = 0; j < topLines; j++) {
         for (let i = 0; i < audioDownloadCurrentColumn; i++) {
           if (audioDownloadTexts[i][j]) {
             let text = audioDownloadTexts[i][j];
             let sourceLanguage = audioDownloadLanguageSelects[i].value;
             let voice = audioDownloadVoiceSelects[i].value;
-            await audioDownload(text, sourceLanguage, voice);
-            await new Promise(resolve => setTimeout(resolve, 1500));
+            console.log("text:", text);
+            console.log("sourceLanguage:", sourceLanguage);
+            console.log("voice:", voice);
+            const audioData = await getMsAudioData(text, sourceLanguage, voice, accessToken);
+            const audioBlob = new Blob([audioData], { type: 'audio/mpeg' });
+
+            audioDownloadWidget.href = URL.createObjectURL(audioBlob);
+            audioDownloadWidget.download = `${voice}[${sanitizeForWindowsFileName(text)}] ${getFormattedTime()}`;
+            audioDownloadWidget.click();
           }
         }
       }
     }
 
+    // TODO
     function captureAndSaveImage() {
-      // For Firefox Browser:
-      for (let i = 0; i <= translationCount; i++) if (displayedTextLanguageSelects[i].value === "en") {
-        var htmlText = displayedTexts[i].innerHTML;
-        console.log("captureAndSaveImage1:", htmlText);
-        htmlText = htmlText.replace(/ˈ/g, "'"); // ′
-        htmlText = htmlText.replace(/<rt>/g, "<rt>&nbsp;");
-        htmlText = htmlText.replace(/<\/rt>/g, "&nbsp;</rt>");
-        console.log("captureAndSaveImage2:", htmlText);
-        displayedTexts[i].innerHTML = htmlText;
-        for (let layer = 0; layer < 2; layer++) {
-          strokeTexts[i][layer].innerHTML = htmlText;
-        }
-      }
-
       const elementToCapture = document.getElementById("speechTextArea");
       html2canvas(elementToCapture).then(function(canvas) {
         const dataURL = canvas.toDataURL("image/png");
         const downloadLink = document.createElement("a");
         downloadLink.href = dataURL;
-        downloadLink.download = `[${sanitizeForWindowsFileName(texts[0].textContent)}] ${getFormattedTime()}`;
+        downloadLink.download = "captured_image.png";
         downloadLink.click();
       });
-    }
-
-    function elementTextReplace() {
-      const inputTextArea = document.getElementById('replacementInputTextArea');
-      const outputTextArea = document.getElementById('replacementOutputTextArea');
-      const replaceFrom = inputTextArea.value;
-      const replaceTo = outputTextArea.value;
-      const regex = new RegExp(replaceFrom, 'g');
-      speechTextArea.innerHTML = speechTextArea.innerHTML.replace(regex, replaceTo);
     }
   </script>
 
@@ -3975,8 +3708,8 @@
         speechTextArea.style.background = darkModeCurtainColor;
         for (let i = 0; i <= topTranslationCount; i++) {
           displayedTexts[i].style.color = darkModeTextColor;
-          displayedTexts[i].style.setProperty(`--stroke-color-layer-${darkModeStrokeColor}`);
-          displayedTexts[i].style.setProperty(`--stroke-width-layer-${darkModeStrokeWidth}`);
+          displayedTexts[i].style.setProperty(`--stroke-color-layer-${0}`, darkModeStrokeColor);
+          displayedTexts[i].style.setProperty(`--stroke-width-layer-${0}`, darkModeStrokeWidth);
           strokeTexts[i][0].style.webkitTextStrokeColor = darkModeStrokeColor; // updateStrokeColor
           strokeTexts[i][0].style.webkitTextStrokeWidth = darkModeStrokeWidth; // updateStrokeWidth
         }
@@ -4030,38 +3763,20 @@
           displayedTexts[i].style.color = specialLayoutTextColor[index];
           let color = specialLayoutStrokeColor[index][i %  specialLayoutStrokeColor[index].length];
           let width = specialLayoutStrokeWidth[index][i %  specialLayoutStrokeWidth[index].length];
-          displayedTexts[i].style.setProperty(`--stroke-color-layer-${color}`);
-          displayedTexts[i].style.setProperty(`--stroke-width-layer-${width}`);
+          displayedTexts[i].style.setProperty(`--stroke-color-layer-${0}`, color);
+          displayedTexts[i].style.setProperty(`--stroke-width-layer-${0}`, width);
           strokeTexts[i][0].style.webkitTextStrokeColor = color; // updateStrokeColor
           strokeTexts[i][0].style.webkitTextStrokeWidth = width; // updateStrokeWidth
           if (specialLayoutStrokeWidthOut[index]) {
             let color = specialLayoutStrokeColorOut[index][i %  specialLayoutStrokeColorOut[index].length];
             let width = specialLayoutStrokeWidthOut[index][i %  specialLayoutStrokeWidthOut[index].length];
-            displayedTexts[i].style.setProperty(`--stroke-color-layer-${color}`);
-            displayedTexts[i].style.setProperty(`--stroke-width-layer-${width}`);
+            displayedTexts[i].style.setProperty(`--stroke-color-layer-${1}`, color);
+            displayedTexts[i].style.setProperty(`--stroke-width-layer-${1}`, width);
             strokeTexts[i][1].style.webkitTextStrokeColor = color; // updateStrokeColor
             strokeTexts[i][1].style.webkitTextStrokeWidth = width; // updateStrokeWidth
           }
         }
       }
-    }
-    function togglefontSize() {
-      fontSizeToggleButton.innerHTML = fontSizeToggleButton.innerHTML === "👘" ? "👚" : "👘";
-      if (fontSizeToggleButton.innerHTML === "👘") {
-        var boldFontWeights = [700, 700, 600];
-        for (let i = 0; i <= translationCount; i++) {
-          updateFontWeight(i, boldFontWeights[i]);
-        }
-      }
-      else {
-        for (let i = 0; i <= translationCount; i++) {
-          updateFontWeight(i, defaultConfig.textFontWeights[i]);
-        }
-      }
-    }
-    function toggleCurtainLock() {
-      curtainLockToggleButton.innerHTML = curtainLockToggleButton.innerHTML === "🔓"
-      ? "🔐" : "🔓";
     }
   </script>
   <script>
@@ -4070,60 +3785,21 @@
       if (screenWidth % 100 === 0) {
         console.log("🖥️ screenWidth:", screenWidth);
       }
-      if (screenWidth < speechTextArea.style.width.replace("px", "")) {
-        speechTextArea.style.maxWidth = "95%";
-        speechTextArea.style.width = "95%";
-      }
     }
     window.addEventListener('resize', updateScreenWidth);
     // updateScreenWidth();
   </script>
   <script>
     function adjustSpeechTextAreaHeight() {
-      if (curtainLockToggleButton.innerHTML === "🔐") return;
-      speechTextArea.style.height = curtainHeightValue.value + "px";
-      if (!texts[0].textContent) return;
-      if (fixedHeightToggleButton.innerHTML === "⚽️") {
-        var fixedStyleHeight = parseInt(speechTextArea.style.height.replace("px", ""), 10);
-        if (DEBUG_MODE) console.log(`⚽️ [~] scrollHeight: [${speechTextArea.scrollHeight}]; fixedStyleHeight: [${fixedStyleHeight}]`);
-        var fontSizes = [];
-        for (let i = 0; i <= topTranslationCount; i++) {
-          fontSizes[i] = parseInt(displayedTexts[i].style.fontSize.replace("px", ""), 10);
-        }
-        fontSizes[0] = Math.max(10, fontSizes[0]);
-        while (speechTextArea.scrollHeight <= fixedStyleHeight) {
-          if (DEBUG_MODE) console.log(`⚽️ [<=] scrollHeight: [${speechTextArea.scrollHeight}]; fixedStyleHeight: [${fixedStyleHeight}]; fontsize=${fontSizes[0]}`);
-          for (let i = 0; i <= topTranslationCount; i++) {
-            fontSizes[i] = Math.ceil(fontSizes[i] * 1.05);
-            updateFontSize(i, fontSizes[i]);
-            /* displayedTexts[i].style.fontSize = fontSizes[i] + "px";
-            for (let layer = 0; layer < 2; layer++) {
-              strokeTexts[i][layer].style.fontSize = fontSizes[i] + "px";
-            }*/
-          }
-          if (speechTextArea.scrollHeight > fixedStyleHeight) break;
-        }
-        while (speechTextArea.scrollHeight >= fixedStyleHeight) {
-          if (DEBUG_MODE) console.log(`[>=] scrollHeight: [${speechTextArea.scrollHeight}]; fixedStyleHeight: [${fixedStyleHeight}]; fontsize=${fontSizes[0]}`);
-          for (let i = 0; i <= topTranslationCount; i++) {
-            fontSizes[i] = Math.floor(fontSizes[i] * 0.95);
-            updateFontSize(i, fontSizes[i]);
-            /* displayedTexts[i].style.fontSize = fontSizes[i] + "px";
-            for (let layer = 0; layer < 2; layer++) {
-              strokeTexts[i][layer].style.fontSize = fontSizes[i] + "px";
-            } */
-          }
-          if (speechTextArea.scrollHeight <= fixedStyleHeight) break;
-        }
-      }
-      speechTextArea.style.height = (parseInt(speechTextArea.scrollHeight, 10) + 15) + 'px';
+      speechTextArea.style.height = curtainHeightValue.innerHTML;
+      var maxHeight = speechTextArea.scrollHeight;
+      speechTextArea.style.height = (maxHeight + 15) + 'px';
     }
     adjustSpeechTextAreaHeight();
   </script>
 
   <script> // Start
     LOCAL_TEST = 0 ? true : false;
-    DEBUG_MODE = 0 ? true : false;
     var clearConfigs = 0 ? true : false;
     if (clearConfigs) {
       localStorage.removeItem('snowyTranslatorConfig');
@@ -4133,7 +3809,6 @@
       localStorage.removeItem(`snowyTranslatorFavoriteTextConfig`);
       // localStorage.clear();
     }
-    generateAllFontAreaCode();
     initLayoutButtons();
     initToggleButtons();
     loadConfig(autoSID);
@@ -4144,7 +3819,6 @@
     window.addEventListener("load", function() {
       var currentTime = new Date().toLocaleTimeString();
       console.log("🎉 windowOnLoad(): Page has completely finished loading at " + currentTime);
-      updateTextMarginBottom(); // To fix the margin loading issue
       // tasks: ...
     });
     // method B
@@ -4160,7 +3834,7 @@
     <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">Web HTML Study</a>
     <a href="https://www.tamasoft.co.jp/en/general-info/unicode.html" target="_blank">All Unicode Table</a>
     <a href="https://www.ssec.wisc.edu/~tomw/java/unicode.html" target="_blank">All Unicode Explaination</a>
-    textId = 2023-0906-0604;
+    textId = 2023-0819-0604;
   </span>
 </body>
 </html>

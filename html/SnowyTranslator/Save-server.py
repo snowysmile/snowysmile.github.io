@@ -10,7 +10,8 @@ import os
 import re
 import unicodedata
 
-# event_loop = asyncio.get_event_loop()
+#LOCAL_TEST = False
+#DEBUG_MODE = False
 
 # *args: This syntax allows a function to accept any number of positional arguments.
 # **kwargs: This syntax allows a function to accept any number of keyword arguments.
@@ -30,36 +31,37 @@ CORS(app)
 def index():
     return render_template('SnowySpeechTranslator.html')
 
-@app.route('/new-test')
-def new_test_page():
-    return render_template('TestCode/Test-NewTest.html')
-
-@app.route('/chatgpt')
-def chat_gpt_page():
-    return render_template('TestCode/Test-ChatGPT.html')
-
 @app.route('/formatJpExp', methods=['POST'])
-async def process():
+def process():
     text = request.json.get('text')
     lprint("process() text:", text)
-    # result = event_loop.run_until_complete(ichimoe_japanese_split(text))
-    result = await ichimoe_japanese_split(text)
+    loop = asyncio.new_event_loop()
+    try:
+        result = loop.run_until_complete(ichimoe_japanese_split(text))
+    finally:
+        loop.close()
     return jsonify(result=result)
 
 @app.route('/furigana', methods=['POST'])
-async def process_furigana():
+def process_furigana():
     text = request.json.get('text')
     lprint(f"process_furigana() text: [{text}]")
-    # result = event_loop.run_until_complete(ichimoe_japanese_furigana(text))
-    result = await ichimoe_japanese_furigana(text)
+    loop = asyncio.new_event_loop()
+    try:
+        result = loop.run_until_complete(ichimoe_japanese_furigana(text))
+    finally:
+        loop.close()
     return jsonify(result=result)
 
 @app.route('/detect-language', methods=['POST'])
-async def process_detect_language():
+def process_detect_language():
     text = request.json.get('text')
     lprint("process_detect_language() text:", text)
-    # language = event_loop.run_until_complete(detect_language(text))
-    language = await detect_language(text)
+    loop = asyncio.new_event_loop()
+    try:
+        language = loop.run_until_complete(detect_language(text))
+    finally:
+        loop.close()
     return jsonify(language=language)
 
 async def ichimoe_japanese_split(text):
@@ -166,8 +168,8 @@ async def ichimoe_japanese_furigana(text):
                 gloss = glosses[i]
                 word = gloss.find('dt').get_text() #.strip()
                 word = word.replace("1. ", "")
-                word = word.replace("【", "<rt>") # TODO ( ISSUE
-                word = word.replace("】", "</rt>") # TODO ) ISSUE
+                word = word.replace("【", "<rt>")
+                word = word.replace("】", "</rt>")
                 word = str_en_to_jpn(word)
                 dprint(f"hiragana word: [{word}]")
                 dprint(f"remanent text: [{text[textPos:]}]")
@@ -187,7 +189,7 @@ async def ichimoe_japanese_furigana(text):
                 # 2: only text[textPos] is Japanese [word is over, go to next]
                 # 3: both are not Japanese [word is over, text is punctuation]
                 # result += " <ruby> " + word + " </ruby> "  # TODO
-                result += "<ruby> " + word + "</ruby> " # TODO
+                result += "<ruby>" + word + "</ruby> " # TODO
                 dprint(f"finished word: [{result}]\n")
                 inner_html += result
 
@@ -201,17 +203,18 @@ async def ichimoe_japanese_furigana(text):
 
 
 @app.route('/englishIpa', methods=['POST'])
-async def process_english_ipa():
+def process_english_ipa():
     text = request.json.get('text')
     lprint(f"process_english_ipa() text: [{text}]")
-    if not IS_BANNED:
-        # result = event_loop.run_until_complete(fetch_english_IPA(text))
-        result = await fetch_english_IPA(text)
-    else:
-        # result = event_loop.run_until_complete(fetch_english_IPA_toipa(text))
-        result = await fetch_english_IPA_toipa(text)
+    loop = asyncio.new_event_loop()
+    try:
+        if not IS_BANNED:
+            result = loop.run_until_complete(fetch_english_IPA(text))
+        else:
+            result = loop.run_until_complete(fetch_english_IPA_toipa(text))
+    finally:
+        loop.close()
     return result
-
 
 
 # https://tophonetics.com/
@@ -233,7 +236,7 @@ async def fetch_english_IPA(text):
                     response_text = await response.read()
                     soup = BeautifulSoup(response_text, 'html.parser')
                     transcr_output_element = soup.find(id="transcr_output")
-                    dprint("transcr_output_element:", transcr_output_element)
+                    dprint("transcr_output_element123:", transcr_output_element)
 
                     transcribed_word_elements = transcr_output_element.find_all("span", class_="transcribed_word")
                     words = []
@@ -254,8 +257,7 @@ async def fetch_english_IPA(text):
         wordId = 0
         while textPos < len(text):
             if wordId < len(words) and text[textPos: textPos + len(words[wordId])] == words[wordId]:
-                # inner_html += f"<ruby>{words[wordId]} <rt>{ipas[wordId]}</rt> </ruby>"
-                inner_html += f"<ruby>{words[wordId]}<rt>{ipas[wordId]}</rt></ruby>"
+                inner_html += f"<ruby>{words[wordId]} <rt>{ipas[wordId]}</rt> </ruby>"
                 textPos += len(words[wordId])
                 wordId += 1
             else:
@@ -303,8 +305,7 @@ async def fetch_english_IPA_toipa(text):
         wordId = 0
         while textPos < len(text):
             if wordId < len(words) and text[textPos: textPos + len(words[wordId])] == words[wordId]:
-                # inner_html += f"<ruby>{words[wordId]} <rt>{ipas[wordId]}</rt> </ruby>"
-                inner_html += f"<ruby>{words[wordId]}<rt>{ipas[wordId]}</rt></ruby>"
+                inner_html += f"<ruby>{words[wordId]} <rt>{ipas[wordId]}</rt> </ruby>"
                 textPos += len(words[wordId])
                 wordId += 1
             else:
@@ -319,11 +320,14 @@ async def fetch_english_IPA_toipa(text):
 
 # https://www.purpleculture.net/chinese-pinyin-converter/
 @app.route('/chinesePinyin', methods=['POST'])
-async def process_pinyin():
+def process_pinyin():
     text = request.json.get('text')
     lprint(f"process_pinyin() text: [{text}]")
-    # result = event_loop.run_until_complete(fetch_pinyin(text))
-    result = await fetch_pinyin(text)
+    loop = asyncio.new_event_loop()
+    try:
+        result = loop.run_until_complete(fetch_pinyin(text))
+    finally:
+        loop.close()
     return result
 
 def is_chinese_kanji(char):
@@ -352,9 +356,7 @@ async def fetch_pinyin(text):
         pinyinId = 0
         while textPos < len(text):
             if pinyinId < len(pinyins) and is_chinese_kanji(text[textPos]):
-                # inner_html += f"<ruby>&nbsp;{text[textPos]}<rt>&ensp;{pinyins[pinyinId]}</rt></ruby>"
-                inner_html += f" <ruby>{text[textPos]}<rt>{pinyins[pinyinId]}</rt></ruby> "
-                # TODO
+                inner_html += f"<ruby>&nbsp;{text[textPos]}<rt>&ensp;{pinyins[pinyinId]}</rt></ruby>"
                 pinyinId += 1
                 textPos += 1
             else:
@@ -386,8 +388,8 @@ async def detect_language(text):
 if __name__ == '__main__':
     context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
 
-    LOCAL_TEST = True if 0 else False
-    DEBUG_MODE = True if 0 else False
+    LOCAL_TEST = True if 1 else False
+    DEBUG_MODE = True if 1 else False
     IS_BANNED = True if 0 else False
     if LOCAL_TEST:
         app.run(debug=True, threaded=True, port=3001, host='localhost', use_reloader=False)
@@ -396,12 +398,3 @@ if __name__ == '__main__':
         current_dir = os.path.dirname(current_path)
         context.load_cert_chain(current_dir + '/fullchain.pem', current_dir + '/privkey.pem')
         app.run(debug=True, threaded=True, port=3001, host='0.0.0.0', use_reloader=False, ssl_context=context)
-
-# Worked:
-# pip install Flask[async]
-
-# Failed:
-# pip install gunicorn
-# pip install gevent
-# cd /home/ubuntu/snowy-server/py;
-# gunicorn -w 6 -b 0.0.0.0:3001 -k gevent server:app
