@@ -1409,6 +1409,7 @@
     var gcpApiKey;
     var azureSpeechSubscriptionKey;
     var azureTranslateSubscriptionKey;
+    var chatGptApiKey;
 
     function initSpecialLayoutButtons() {
       if (!googleScriptKey || googleScriptKey == "") {
@@ -3048,15 +3049,17 @@
           chatGptEmojiFetchFromMyServer(texts[0].textContent)
           .then((html) => {
             updateEmojiText(html, textTimestamp);
-            all_texts += ` | ${html}`;
           })
           .catch((error) => console.error(error));
         }
 
         setTimeout(() => {
           var all_texts = `${displayedTexts[0].innerHTML} | ${displayedTexts[1].innerHTML} | ${displayedTexts[2].innerHTML}`;
+          if (textChatgptEmojiToggleButton.innerText === "🥰") {
+            all_texts += ` | ${emojiText.innerHTML}`;
+          }
           updateSpeechList(all_texts);
-        }, 4000);
+        }, 5000);
 
         // pushToHistoryTexts
         if (textConfig.historyTexts.length > 0 && textConfig.historyTexts[textConfig.historyTexts.length - 1][0] === speechText) return;
@@ -3294,8 +3297,8 @@
     function updateApiKey(id, value="") {
       if (id === 99) {
         let values = value.replace(/[^\w-,]/g, '').split(',');
-        for (let i = 0; i < 4; i++) {
-          if (values.length >= i + 1) updateApiKey(i, values[i]);
+        for (let i = 0; i < 5; i++) {
+          if (i < values.length) updateApiKey(i, values[i]);
         }
         return;
       }
@@ -3312,6 +3315,9 @@
         azureSpeechSubscriptionKey = value;
       }
       else if (id === 3) {
+        chatGptApiKey = value;
+      }
+      else if (id === 4) {
         azureTranslateSubscriptionKey = value;
       }
       saveConfigStorage();
@@ -3609,13 +3615,16 @@
     async function chatGptEmojiFetchFromMyServer(text) {
       try {
         var server_destination = LOCAL_TEST_CHATGPT ? "http://localhost:3002/chatgpt-emoji" : "https://snsmile.site:3002/chatgpt-emoji";
+
+        console.log("chatGptApiKey:", chatGptApiKey);
         const response = await fetch(server_destination, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            text: text
+            text: text,
+            apikey: chatGptApiKey
           })
         })
         const responseText = await response.text();
@@ -4195,7 +4204,7 @@
   <script> // Start
     LOCAL_TEST = 0 ? true : false;
     DEBUG_MODE = 0 ? true : false;
-    LOCAL_TEST_CHATGPT = 0 ? true : false;
+    LOCAL_TEST_CHATGPT = 1 ? true : false;
     var clearConfigs = 0 ? true : false;
     if (clearConfigs) {
       localStorage.removeItem('snowyTranslatorConfig');
