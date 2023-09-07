@@ -3616,7 +3616,6 @@
       try {
         var server_destination = LOCAL_TEST_CHATGPT ? "http://localhost:3002/chatgpt-emoji" : "https://snsmile.site:3002/chatgpt-emoji";
 
-        console.log("chatGptApiKey:", chatGptApiKey);
         const response = await fetch(server_destination, {
           method: 'POST',
           headers: {

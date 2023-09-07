@@ -59,11 +59,11 @@ def chatgpt_emoji():
         return jsonify({'error': str(e)})
 
 if __name__ == '__main__':
-    LOCAL_TEST_CHATGPT = True if 0 else False
+    LOCAL_TEST = True if 0 else False
     DEBUG_MODE = True if 0 else False
     IS_BANNED = True if 0 else False
 
-    if LOCAL_TEST_CHATGPT:
+    if LOCAL_TEST:
         print("LOCAL_TEST")
         app.run(debug=DEBUG_MODE, threaded=True, port=3002, host='localhost', use_reloader=False)
     else:
