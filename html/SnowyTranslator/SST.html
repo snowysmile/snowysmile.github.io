@@ -558,7 +558,7 @@
         <button title="Read Third Language Text By Microsoft. [ShortKey: Shift + 3]" onclick="msSpeak(texts[2].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
         <span style="margin-left:4px;"> </span>
         <button class="phone-invisible" style="font-size: 10px; height:21px; vertical-align: middle;" title="Update Japanese Explaination Above. [ShortKey: Ctrl + UpArrow]" onclick="turnOnJpExpWebTop()">🍓</button>
-        <button class="phone-invisible" style="font-size: 10px; height:21px; vertical-align: middle;" title="Copy Japanese Text With Furigana." onclick="CopyJpExp()">🎏</button>
+        <button class="phone-invisible" style="font-size: 10px; height:21px; vertical-align: middle;" title="Copy Japanese Text With Furigana." onclick="CopyRubyText()">🎏</button>
         <button class="phone-invisible" id="captureAndSaveImageButton" style="font-size: 10px; height:21px; width:28px; vertical-align: middle;" title="Capture and Save as Image." onclick="captureAndSaveImage()">📸</button>
       </span>
     </span>
@@ -1089,7 +1089,7 @@
     <tr>
       <td style="width: 175px;"> ChatGPT Api Key: </td>
       <td>
-        <input type="password" id="apiKeyInput-3" size="50" placeholder="🤖 This api key is to use Microsoft AI voice." oninput="updateApiKey(3)">
+        <input type="password" id="apiKeyInput-3" size="50" placeholder="🤖 This api key is to use the service of ChatGPT." oninput="updateApiKey(3)">
       </td>
       <td>
         <button ontouchstart="showApiKey(3, this)" ontouchend="hideApiKey(3, this)"
@@ -1332,13 +1332,23 @@
   </script>
   <script>
     var speechListTotalCount = 0;
+    var isLastorder = false;
     function updateSpeechList(text) {
       if (!text) return;
-      if (speechList.lastElementChild && text === speechList.lastElementChild.textContent) return;
-      var speechTextItem = document.createElement('li');
-      speechTextItem.innerHTML = text;
-      speechList.appendChild(speechTextItem);
-      speechListTotalCount.innerHTML = `Total Count: ${speechList.childNodes.length}`;
+      if (isLastorder) {
+        if (speechList.lastElementChild && text === speechList.lastElementChild.textContent) return;
+        var speechTextItem = document.createElement('li');
+        speechTextItem.innerHTML = text;
+        speechList.appendChild(speechTextItem);
+        speechListTotalCount.innerHTML = `Total Count: ${speechList.childNodes.length}`;
+      }
+      else {
+        if (speechList.firstElementChild && text === speechList.firstElementChild.textContent) return;
+        var speechTextItem = document.createElement('li');
+        speechTextItem.innerHTML = text;
+        speechList.insertBefore(speechTextItem, speechList.firstElementChild);
+        speechListTotalCount.innerHTML = `Total Count: ${speechList.childNodes.length}`;
+      }
     }
 
     var texts = document.querySelectorAll('[id^="text-"]');
@@ -1527,15 +1537,15 @@
       }
       else if (event.ctrlKey && event.shiftKey && event.key === "$") {
         event.preventDefault();
-        CopyJpExp(0);
+        CopyRubyText(0);
       }
       else if (event.ctrlKey && event.shiftKey && event.key === "%") {
         event.preventDefault();
-        CopyJpExp(1);
+        CopyRubyText(1);
       }
       else if (event.ctrlKey && event.shiftKey && event.key === "^") {
         event.preventDefault();
-        CopyJpExp(2);
+        CopyRubyText(2);
       }
       else if (event.shiftKey && event.key === "J") {
         languageShortkey("ja");
@@ -1820,7 +1830,7 @@
             if (isRecording) {
               recordResult.value = recordResult.value + speechText;
             }
-            updateSpeechList(speechText);
+            // updateSpeechList(speechText);
             speechTranslate(speechText, sourceLanguage, false, undefined, updateHistoryTextToggleButton.innerHTML === "🎈"); // await
           }
           else if (!isRecognizationSuspended) { // Outcome of the process
@@ -2178,42 +2188,17 @@
       }
       jpExpWebUpdate(texts[languagePosIdMap["ja"]].textContent);
     }
-    function CopyJpExp(languagePos=-1, completeCopy=-1) {
+    function CopyRubyText(languagePos=-1, justReturnText=false, completeCopy=-1) {
       if (languagePos === -1) {
         languagePos = languagePosIdMap["ja"];
       }
       var rubyText = displayedTexts[languagePos].innerHTML;
       rubyText = rubyConvert(rubyText, completeCopy);
+      if (justReturnText) {
+        return rubyText;
+      }
       navigator.clipboard.writeText(rubyText);
-      return;
-
-      if (completeCopy != -1) {
-        navigator.clipboard.writeText(rubyText);
-        return;
-      }
-      var rtnText = "";
-      var isBeforeBracket = false;
-      for (let i = rubyText.length - 1; i >= 0; i--) {
-        if (rubyText[i] === '(') {
-          isBeforeBracket = true;
-        }
-        else if (rubyText[i] === ' ') {
-          if (!isBeforeBracket) {
-            continue;
-          }
-          else {
-            isBeforeBracket = false;
-          }
-        }
-        else if (rubyText[i] === ')'){
-          if (isBeforeBracket) {
-          rtnText = ' ' + rtnText;
-            isBeforeBracket = false;
-          }
-        }
-        rtnText = rubyText[i] + rtnText;
-      }
-      navigator.clipboard.writeText(rtnText);
+      return "";
     }
 
     var recognitionCountdownInterval;
@@ -3063,9 +3048,15 @@
           chatGptEmojiFetchFromMyServer(texts[0].textContent)
           .then((html) => {
             updateEmojiText(html, textTimestamp);
+            all_texts += ` | ${html}`;
           })
           .catch((error) => console.error(error));
         }
+
+        setTimeout(() => {
+          var all_texts = `${displayedTexts[0].innerHTML} | ${displayedTexts[1].innerHTML} | ${displayedTexts[2].innerHTML}`;
+          updateSpeechList(all_texts);
+        }, 4000);
 
         // pushToHistoryTexts
         if (textConfig.historyTexts.length > 0 && textConfig.historyTexts[textConfig.historyTexts.length - 1][0] === speechText) return;
@@ -3161,6 +3152,7 @@
 
     function copyText(id) {
       var text = document.getElementById(`text-${id}`).textContent;
+      text = text.replace(/^\s+/g, '').replace(/\s+/g, ' ');
       navigator.clipboard.writeText(text);
     }
     function clearTexts(firstRow=0, topRow=-1) {
@@ -3616,7 +3608,7 @@
     }
     async function chatGptEmojiFetchFromMyServer(text) {
       try {
-        var server_destination = LOCAL_TEST_CHATGPT ? "http://localhost:3002/chatgpt-emoji" : "https://snsmile.site:3001/chatgpt-emoji";
+        var server_destination = LOCAL_TEST_CHATGPT ? "http://localhost:3002/chatgpt-emoji" : "https://snsmile.site:3002/chatgpt-emoji";
         const response = await fetch(server_destination, {
           method: 'POST',
           headers: {
@@ -3748,15 +3740,13 @@
       let textOutput = textInput.replace(/<\/?rb>/g, '').replace(/&nbsp;/g, ''); // remove <rb> and </rb> and
       // textOutput = textOutput.replace(/\s/g, '').replace(/<\/ruby>\s*/g, "</ruby> "); // remove all spaces and reserve exact one space followed;
       textOutput = textOutput.replace(/<ruby>.*?<\/ruby>/g, match => match.replace(/\s+/g, '')) // remove space in <ruby> </ruby>
-      console.log("textOutput0:", textOutput);
       textOutput = textOutput.replace(/<\/?ruby>/g, ''); // remove <ruby> and </ruby>
-      console.log("textOutput1:", textOutput);
       const rubyRegex = /<rt>(.*?)<\/rt>/g;
       textOutput = textOutput.replace(rubyRegex, (match, furigana) => {
         return code === -1 ? `(${furigana})` : ``;
       });
-      console.log("textOutput2:", textOutput);
       textOutput = textOutput.replace(/<[^>]+>/g, '');
+      textOutput = textOutput.replace(/^\s+/g, '').replace(/\s+/g, ' ');
       return textOutput;
     }
     function rubyConvertToTextArea(code=-1) {
@@ -4205,7 +4195,7 @@
   <script> // Start
     LOCAL_TEST = 0 ? true : false;
     DEBUG_MODE = 0 ? true : false;
-    LOCAL_TEST_CHATGPT = 1 ? true : false;
+    LOCAL_TEST_CHATGPT = 0 ? true : false;
     var clearConfigs = 0 ? true : false;
     if (clearConfigs) {
       localStorage.removeItem('snowyTranslatorConfig');
