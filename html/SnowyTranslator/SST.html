@@ -341,7 +341,7 @@
       textStrokeWidths: [[0, 0], [0, 0], [0, 0]], //em // [0.2, 0.6], [0.2, 0.6], [0.2, 0.6]
       textShadowColors: ["#FFEEBB", "#FFEEBB", "#FFEEBB"],
       textShadowBlurRadius: [0, 0, 0], //em
-      textMargins: [16, 12, 12], //px
+      textMargins: [30, 12, 12], //px
       textMarginBottom: 16, //px
       apiKeys: ["", "", "", ""],
       speechOverInterval: 2800, //ms
@@ -441,6 +441,10 @@
     </div>
 
     <div id="textMarginBottom"> </div>
+
+    <div id="emojiArea" style="position: absolute; bottom: 16px;">
+      <div id="emojiText"> </div>
+    </div>
   </div>
 
   <div class="hiddenTexts" style="display:none">
@@ -500,12 +504,14 @@
       <button id="textFuriganaToggleButton" style="font-size: 11px; width:18px; display: flex; justify-content: center;" title="🔰 To Auto Mark Furigana; 💤 Is Off." onclick="toggleTextFurigana()">🔰</button>
       <button id="textEnglishIpaToggleButton" style="font-size: 11px; width:18px; display: flex; justify-content: center; margin-left:3px;" title="🌱 To Auto Mark English IPA; 🍂 Is Off." onclick="toggleEnglishIpa()">🍂</button>
       <button id="textChinesePinyinToggleButton" style="font-size: 11px; width:18px; display: flex; justify-content: center; margin-left:3px;" title="🌇 To Auto Mark Chinese Pinyin; 🌃 Is Off." onclick="toggleChinesePinyin()">🌃</button>
+      <button id="textChatgptEmojiToggleButton" style="font-size: 11px; width:18px; display: flex; justify-content: center; margin-left:3px;" title="🥰 To Translate to emojis from chatGPT; 😐 Is Off." onclick="toggleEmojiText()">😐</button>
 
       <span style="margin-left:5px;"> </span>
 
       <button id="showFuriganaButton" style="font-size: 7px; width:22px; display: flex; justify-content: center; margin-left:3px;" title="Click 🍥 To Show Japanese Furigana; [ShortKey->1st Line: Ctrl + Alt + 1]" onclick="showFurigana()">🍥Jp</button>
       <button id="showEnglishIpaButton" style="font-size: 7px; width:22px; display: flex; justify-content: center; margin-left:3px;" title="Click 🍼 To Show English IPA; [ShortKey->2nd Line: Ctrl + Alt + 2]" onclick="showEnglishIpa()">🍼En</button>
       <button id="showChinesePinyinButton" style="font-size: 7px; width:22px; display: flex; justify-content: center; margin-left:3px;" title="Click 🐣 To Show Chinese Pinyin; [ShortKey->3rd Line: Ctrl + Alt + 3]" onclick="showChinesePinyin()">🐣Cn</button>
+      <button id="showChatGptEmojiButton" style="font-size: 7px; width:22px; display: flex; justify-content: center; margin-left:3px;" title="Click 🥳 To Show ChatGPT Emoji; [ShortKey->3rd Line: Ctrl + Alt + 4]" onclick="showChatGptEmoji()">🥳Emj</button>
       <button style="font-size:11px; margin-left:3px;" title="Read All Screen Text By Google. [ShortKey: Shift + G]" onclick="ggSpeakAllScreenText()">G</button>
       <button style="font-size:11px; margin-left:3px;" title="Read All Screen Text By Microsoft. [ShortKey: Shift + M]" onclick="msSpeakAllScreenText()">M</button>
     </span>
@@ -827,9 +833,9 @@
           <span id="curtainColorValue"></span>
         </td>
         <td>
-          <button id="fixedHeightToggleButton" style="width:28px; font-size:10px;" title="⚽️ Means Fixed Height With Auto Adjusted Font; 🏀 Means Auto Adjusted Height" onclick="toggleFixedHeight()">🏀</button>
-          <button style="width:28px; font-size:10px;" title="+ To add fonts sizes of each by 5" onclick="changeFontSizes(5)">+</button>
-          <button style="width:28px; font-size:10px;" title="- To substract fonts sizes of each by 5" onclick="changeFontSizes(-5)">-</button>
+          <button id="fixedHeightToggleButton" style="width:30px; height:22px; font-size:10px;" title="⚽️ Means Fixed Height With Auto Adjusted Font; 🏀 Means Auto Adjusted Height" onclick="toggleFixedHeight()">🏀</button>
+          <button style="width:28px; height:22px; font-size:12px;" title="+ To add fonts sizes of each by 5" onclick="changeFontSizes(5)">+</button>
+          <button style="width:28px; height:22px; font-size:12px;" title="- To substract fonts sizes of each by 5" onclick="changeFontSizes(-5)">-</button>
         </td>
       </tr>
     </table>
@@ -1080,15 +1086,26 @@
         <button title="Copy From Textarea." onclick="copyApiKey(2, this)">📑</button>
       </td>
     </tr>
-    <tr style="display:none;">
-      <td style="width: 175px;"> Azure Translate Key: </td>
+    <tr>
+      <td style="width: 175px;"> ChatGPT Api Key: </td>
       <td>
-        <input type="password" id="apiKeyInput-3" size="50" oninput="updateApiKey(3)">
+        <input type="password" id="apiKeyInput-3" size="50" placeholder="🤖 This api key is to use Microsoft AI voice." oninput="updateApiKey(3)">
       </td>
       <td>
         <button ontouchstart="showApiKey(3, this)" ontouchend="hideApiKey(3, this)"
             onmousedown="showApiKey(3, this)" onmouseup="hideApiKey(3, this)">👁️</button> &nbsp;
         <button title="Copy From Textarea." onclick="copyApiKey(3, this)">📑</button>
+      </td>
+    </tr>
+    <tr style="display:none;">
+      <td style="width: 175px;"> Azure Translate Key: </td>
+      <td>
+        <input type="password" id="apiKeyInput-4" size="50" oninput="updateApiKey(4)">
+      </td>
+      <td>
+        <button ontouchstart="showApiKey(4, this)" ontouchend="hideApiKey(4, this)"
+            onmousedown="showApiKey(4, this)" onmouseup="hideApiKey(4, this)">👁️</button> &nbsp;
+        <button title="Copy From Textarea." onclick="copyApiKey(4, this)">📑</button>
       </td>
     </tr>
     <tr>
@@ -1489,6 +1506,9 @@
       }
       else if (event.ctrlKey && event.altKey && event.key === "3") {
         showRuby(2);
+      }
+      else if (event.ctrlKey && event.altKey && event.key === "4") {
+        showChatGptEmoji();
       }
       else if (event.shiftKey && event.key === "P") {
         captureAndSaveImage();
@@ -1907,6 +1927,9 @@
     function toggleChinesePinyin() {
       textChinesePinyinToggleButton.innerText = textChinesePinyinToggleButton.innerText === "🌇" ? "🌃" : "🌇";
     }
+    function toggleEmojiText() {
+      textChatgptEmojiToggleButton.innerHTML = textChatgptEmojiToggleButton.innerText === "🥰" ? "😐" : "🥰";
+    }
 
     function updateFuriganaText(japanesePosId, html, textTimestamp) {
       console.log("🎎 Try to updateFuriganaText()");
@@ -2050,6 +2073,30 @@
         })
         .catch((error) => console.error(error));
       }
+    }
+
+    var showChatGptEmojiClickTimestamp = 0;
+    var showChatGptEmojiClickCooldownDuration = 4000;
+    function showChatGptEmoji() {
+      let textTimestamp = textTimestampNow;
+      var currentTime = new Date().getTime();
+      if (currentTime - showChatGptEmojiClickTimestamp >= showChatGptEmojiClickCooldownDuration) {
+        showChatGptEmojiClickTimestamp = currentTime;
+        showChatGptEmojiButton.disabled = true;
+        setTimeout(function() {
+            showChatGptEmojiButton.disabled = false;
+        }, showChatGptEmojiClickCooldownDuration);
+      }
+      else {
+        console.log(`⏳ showChatGptEmoji() Time not ready: ${currentTime - showChatGptEmojiClickTimestamp} ms left`);
+        return;
+      }
+      console.log(`🥳 showChatGptEmoji()`);
+      chatGptEmojiFetchFromMyServer(texts[0].textContent)
+      .then((html) => {
+        updateEmojiText(html, textTimestamp);
+      })
+      .catch((error) => console.error(error));
     }
 
     function showRuby(id) {
@@ -2961,6 +3008,12 @@
       configs[autoSID].displayedTexts[id] = speechText;
       saveConfigStorage();
     }
+    function updateEmojiText(speechText, textTimestamp) {
+      if (textTimestamp == textTimestampNow) {
+        emojiText.textContent = speechText;
+        if (speechText) adjustSpeechTextAreaHeight();
+      }
+    }
 
     var globalDebugTimestamp = 0; // console.log(`[${globalDebugTimestamp += 1}]`);
     function updateText(id, speechText, textTimestamp, willUpdateHistoryTexts=true, language="") {
@@ -3005,6 +3058,13 @@
               .catch((error) => console.error(error));
             }, 10);
           }
+        }
+        if (textTimestamp != -1 && textChatgptEmojiToggleButton.innerText === "🥰") {
+          chatGptEmojiFetchFromMyServer(texts[0].textContent)
+          .then((html) => {
+            updateEmojiText(html, textTimestamp);
+          })
+          .catch((error) => console.error(error));
         }
 
         // pushToHistoryTexts
@@ -3327,6 +3387,10 @@
       toggleTranslationCount(configs[configID].translationCount);
       updatePageColor(configs[configID].pageColor);
       updateCurtainColor(configs[configID].curtainColor);
+      for (let i = 0; i <= translationCount; i++) {
+        updateTextMargin(i, configs[configID].textMargins[i]);
+      }
+      updateTextMarginBottom(configs[configID].textMarginBottom);
       updateCurtainHeight(configs[configID].curtainHeight);
       updateCurtainWidth(configs[configID].curtainWidth);
       updateIntegerValue(speechOverInterval, configs[configID].speechOverInterval);
@@ -3352,7 +3416,6 @@
         updateLanguage(i, configs[configID].languages[i]);
         updateAzureVoice(i, configs[configID].azureVoices[i]);
       }
-      updateTextMarginBottom(configs[configID].textMarginBottom);
       for (let i = 0; i < apiKeyInputs.length; i++) {
         if (configs[configID].apiKeys[i]) {
           updateApiKey(i, configs[configID].apiKeys[i]);
@@ -3373,13 +3436,12 @@
       }
       var currentScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
       if (currentScrollY < 674) {
-        console.log(`currentScrollY${currentScrollY} < 674`);
         JpExpWebTopLayoutAdjust();
       }
       recognitionOverInterval_H.value = configs[autoSID].recognitionOverInterval_H;
       recognitionOverInterval_M.value = configs[autoSID].recognitionOverInterval_M;
       recognitionOverInterval_S.value = configs[autoSID].recognitionOverInterval_S;
-    
+
       showHistoryText(configs[configID].historyTextsCurrentId);
       console.log(`⏳ Load Config (${configID}) Finsihed.`);
     }
@@ -3534,7 +3596,6 @@
       }
     }
     async function chinesePinyinFetchFromMyServer(text) {
-      console.log("chinesePinyinFetchFromMyServer");
       try {
         var server_destination = LOCAL_TEST ? "http://localhost:3001/chinesePinyin" : "https://snsmile.site:3001/chinesePinyin";
         const response = await fetch(server_destination, {
@@ -3550,6 +3611,25 @@
         return responseText;
       } catch (error) {
         console.error('chinesePinyinFetchFromMyServer() Error:', error);
+        return text + "🌐🚨";
+      }
+    }
+    async function chatGptEmojiFetchFromMyServer(text) {
+      try {
+        var server_destination = LOCAL_TEST_CHATGPT ? "http://localhost:3002/chatgpt-emoji" : "https://snsmile.site:3001/chatgpt-emoji";
+        const response = await fetch(server_destination, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            text: text
+          })
+        })
+        const responseText = await response.text();
+        return responseText;
+      } catch (error) {
+        console.error('chatGptEmojiFetchFromMyServer() Error:', error);
         return text + "🌐🚨";
       }
     }
@@ -4125,6 +4205,7 @@
   <script> // Start
     LOCAL_TEST = 0 ? true : false;
     DEBUG_MODE = 0 ? true : false;
+    LOCAL_TEST_CHATGPT = 1 ? true : false;
     var clearConfigs = 0 ? true : false;
     if (clearConfigs) {
       localStorage.removeItem('snowyTranslatorConfig');
