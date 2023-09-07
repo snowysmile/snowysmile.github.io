@@ -28,8 +28,8 @@ def chatgpt_emoji():
         }]
         input_text = request.json['text']
         openai.api_key = request.json['apikey']
-        print("input_text:", input_text)
-        print("openai.api_key:", openai.api_key)
+        lprint("input_text:", input_text)
+        dprint("openai.api_key:", openai.api_key)
 
         lprint("input_text:", input_text)
         messages.append({"role": "user", "content": input_text})
@@ -59,8 +59,8 @@ def chatgpt_emoji():
         return jsonify({'error': str(e)})
 
 if __name__ == '__main__':
-    LOCAL_TEST_CHATGPT = True if 1 else False
-    DEBUG_MODE = True if 1 else False
+    LOCAL_TEST_CHATGPT = True if 0 else False
+    DEBUG_MODE = True if 0 else False
     IS_BANNED = True if 0 else False
 
     if LOCAL_TEST_CHATGPT:
