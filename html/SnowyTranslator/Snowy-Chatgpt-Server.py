@@ -136,8 +136,8 @@ def chatgpt():
         return jsonify({'error': str(e)})
 
 if __name__ == '__main__':
-    LOCAL_TEST = True if 1 else False
-    DEBUG_MODE = True if 1 else False
+    LOCAL_TEST = True if 0 else False
+    DEBUG_MODE = True if 0 else False
 
     if LOCAL_TEST:
         print("LOCAL_TEST")
