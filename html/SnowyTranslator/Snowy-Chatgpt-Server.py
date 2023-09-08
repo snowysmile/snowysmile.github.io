@@ -22,22 +22,19 @@ def lprint(*args, **kwargs):
 @app.route('/chatgpt-emoji', methods=['POST'])
 def chatgpt_emoji():
     try:
-        messages = [{
-            "role": "system",
-            "content": "Please translate the input to many many many emojis as many as you can. Do your best with only emojis only."
-        }]
         input_text = request.json['text']
         openai.api_key = request.json['apikey']
         lprint("input_text:", input_text)
-        dprint("openai.api_key:", openai.api_key)
 
-        lprint("input_text:", input_text)
-        messages.append({"role": "user", "content": input_text})
+        messages = [{
+            "role": "system",
+            "content": "Please translate my input to many many many emojis as many as you can. Do your best with only emojis only."
+        }, {"role": "user", "content": input_text}]
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=messages,
             temperature=0.8,
-            max_tokens=50,
+            max_tokens=60,
         )
         response_text = response.choices[0].message['content']
         lprint("response_text:", response_text)
@@ -58,10 +55,89 @@ def chatgpt_emoji():
         print('error:', str(e))
         return jsonify({'error': str(e)})
 
+
+@app.route('/chatgpt-cute_japanese', methods=['POST'])
+def chatgpt_cute_japanese():
+    try:
+        input_text = request.json['text']
+        openai.api_key = request.json['apikey']
+        lprint("input_text:", input_text)
+
+        messages = [{
+            "role": "system",
+            "content": "Please translate/convert my input sentence to happy, friendly, and positive Japanese. Make my Japanese grammar correct and don't return extra things."
+        }, {"role": "user", "content": input_text}]
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=messages,
+            temperature=0.8,
+            max_tokens=160,
+        )
+        response_text = response.choices[0].message['content']
+        lprint("response_text:", response_text)
+        lprint("response:", response.usage)
+
+        return response_text
+
+    except Exception as e:
+        print('error:', str(e))
+        return jsonify({'error': str(e)})
+
+@app.route('/chatgpt', methods=['POST'])
+def chatgpt():
+    try:
+        input_text = request.json['text']
+        openai.api_key = request.json['apikey']
+        query_type = request.json['query']
+        lprint("input_text:", input_text)
+        lprint("query_type:", query_type)
+
+        messages = []
+        if query_type == "related-emojis":
+            messages.append({
+                "role": "system",
+                "content": "Please convert input to related emojis, answer me with as many different emojis as you can."
+            })
+        elif query_type == "sentence-emojis":
+            messages.append({
+                "role": "system",
+                "content": "Please add many 顔文字 to my input sentence to make it cute and interesting. Don't do other things."
+            })
+        else:
+            print("wrong query type")
+            return "wrong query type"
+
+        messages.append({"role": "user", "content": input_text})
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=messages,
+            temperature=0.8,
+            max_tokens=160,
+        )
+        response_text = response.choices[0].message['content']
+        lprint("response_text:", response_text)
+        lprint("response:", response.usage)
+
+        if query_type == "related-emojis":
+            emoji_list = []
+            demoji_text = emoji.demojize(response_text)
+            matches = re.findall(r':[^:]*:', demoji_text)
+            for word in matches:
+                the_emoji = emoji.emojize(word)
+                if the_emoji not in emoji_list:
+                    emoji_list.append(the_emoji)
+            emoji_text = ' '.join(emoji_list)
+            return emoji_text
+        else:
+            return response_text
+
+    except Exception as e:
+        print('error:', str(e))
+        return jsonify({'error': str(e)})
+
 if __name__ == '__main__':
-    LOCAL_TEST = True if 0 else False
-    DEBUG_MODE = True if 0 else False
-    IS_BANNED = True if 0 else False
+    LOCAL_TEST = True if 1 else False
+    DEBUG_MODE = True if 1 else False
 
     if LOCAL_TEST:
         print("LOCAL_TEST")

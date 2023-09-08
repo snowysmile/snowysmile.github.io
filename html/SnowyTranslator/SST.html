@@ -93,7 +93,8 @@
       width: 1000px;
       overflow-y: auto;
     }
-    #audioDownloadContainer {
+    #audioDownloadContainer,
+    #chatGptArea {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -101,6 +102,9 @@
     }
     #audioDownloadContainer td {
       border: 2px double #ccc;
+    }
+    #chatGptArea td {
+      border: 1px double #555;
     }
     .svg-stroke-text{
       font-size:50px;
@@ -182,6 +186,8 @@
     input::-webkit-inner-spin-button {
       display: none;
     }
+
+
     @media screen and (max-width: 1000px) {
       body {
         background-color: #BEE2E4;
@@ -234,15 +240,15 @@
       .phone-new_line {
         display: block;
       }
-      .reading-button-container {
+      .top-button-container {
         margin-left: 4px;
       }
-      .reading-buttons-container select,
-      .reading-buttons-container button {
+      .top-buttons-container select,
+      .top-buttons-container button {
         font-size: 11px;
         height: 22px;
       }
-      .reading-buttons-container button{
+      .top-buttons-container button{
         width:27px;
       }
       #apiKeyEditor input {
@@ -499,7 +505,7 @@
     }
   </script>
 
-  <div class="row-container" style="margin-top:10px; margin-bottom:5px;">
+  <div class="row-container" style="margin-top:10px;">
     <span style="display:flex; justify-content: center; margin-bottom:5px;">
       <button id="textFuriganaToggleButton" style="font-size: 11px; width:18px; display: flex; justify-content: center;" title="🔰 To Auto Mark Furigana; 💤 Is Off." onclick="toggleTextFurigana()">🔰</button>
       <button id="textEnglishIpaToggleButton" style="font-size: 11px; width:18px; display: flex; justify-content: center; margin-left:3px;" title="🌱 To Auto Mark English IPA; 🍂 Is Off." onclick="toggleEnglishIpa()">🍂</button>
@@ -529,8 +535,8 @@
       <button id="historyTextsIdDisplay" style="font-size:10px;" title="Add to favorite Texts" onclick="addToFavoriteListFromScreenText()"> X/X </button>
       <button id="nextText-button" title="Next Texts; [ShortKey: Ctrl + RightArrow]" onclick="showHistoryText(configs[autoSID].historyTextsCurrentId+1);">▶️</button>
     </span>
-    <span class="reading-buttons-container" style="display:flex; justify-content: center; margin-bottom:5px;">
-      <span class="reading-button-container" style="margin-left:16px;">
+    <span class="top-buttons-container" style="display:flex; justify-content: center; margin-bottom:5px;">
+      <span class="top-button-container" style="margin-left:16px;">
         <select id="displayedTextLanguageSelect0">
           <option value="ja" selected>🇯🇵</option>
           <option value="en">🇺🇸</option>
@@ -539,7 +545,7 @@
         <button title="Read First Language Text By Google." onclick="ggSpeak(texts[0].textContent, this.previousElementSibling.value)">G</button>
         <button title="Read First Language Text By Microsoft. [ShortKey: Shift + 1]" onclick="msSpeak(texts[0].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
       </span>
-      <span class="reading-button-container" style="margin-left:8px;">
+      <span class="top-button-container" style="margin-left:8px;">
         <select id="displayedTextLanguageSelect1">
           <option value="ja">🇯🇵</option>
           <option value="en" selected>🇺🇸</option>
@@ -548,7 +554,7 @@
         <button title="Read Second Language Text By Google." onclick="ggSpeak(texts[1].textContent, this.previousElementSibling.value)">G</button>
         <button title="Read Second Language Text By Microsoft. [ShortKey: Shift + 2]" onclick="msSpeak(texts[1].textContent, this.previousElementSibling.previousElementSibling.value)">M</button>
       </span>
-      <span class="reading-button-container" style="margin-left:8px;">
+      <span class="top-button-container" style="margin-left:8px;">
         <select id="displayedTextLanguageSelect2">
           <option value="ja">🇯🇵</option>
           <option value="en">🇺🇸</option>
@@ -564,6 +570,33 @@
     </span>
   </div>
 
+  <table id="chatGptArea" style="display: none; margin-bottom: 3px;">
+    <tr>
+      <td style="display:table-cell;">
+        <span style="display: flex; font-size: 14px; width:40px; white-space: normal;"> Input Text: </span>
+      </td>
+      <td style="display: table-cell;">
+        <textarea class="two-column-textarea" id="chatGptInputTextArea" style="font-size: 18px; width: 96%;" rows="4" cols="40"></textarea>
+      </td>
+      <td style="display:table-cell;">
+        <span style="display: flex; font-size: 14px; width:40px; white-space: normal;"> Output Text: </span>
+      </td>
+      <td style="display: table-cell;">
+        <textarea class="two-column-textarea" id="chatGptOutputTextArea" style="font-size: 18px; width: 96%;" rows="4" cols="40"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        <button style="font-size: 15px; height: 25px; vertical-align: middle;" title="Make my Japanese cute." onclick="chatGptCuteJapaneseFetchFromMyServer()">😺</button>
+        <button style="font-size: 15px; height: 25px; vertical-align: middle;" title="Get related emojis" onclick="chatGptQueryFetchFromMyServer('related-emojis')">🍭</button>
+        <button style="font-size: 15px; height: 25px; vertical-align: middle;" title="Get my sentence full with emojis." onclick="chatGptQueryFetchFromMyServer('sentence-emojis')">🎨</button>
+
+        <button style="font-size: 15px; height: 25px; vertical-align: middle;" onclick="toggleWidgetArea('chatGptArea', document.getElementById('togglechatGptArea_LayoutButton'))">⛔</button>
+      </td>
+    </tr>
+  </table>
+
+  <span style="margin-bottom:5px;"> </span>
   <table class="input-table">
     <tr class="input-table-row" id="recognitionInputArea" style="display:block">
       <td class="button-title">
@@ -755,6 +788,7 @@
     <button id="toggleTranslationInputArea_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('translationInputArea', this)">Translation ❌</button>
     <button id="toggleJpExpInputArea_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('jpExpInputArea', this)">JpExp Input ❌</button>
     <button id="toggleReadingListInputArea_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('readingListInputArea', this)">Reading Area 🟢</button>
+    <button id="togglechatGptArea_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('chatGptArea', this)">ChatGPT Area ❌</button>
     <button id="toggleJpExpArea_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('jpExpAreaFrame', this)">JpExp Text ❌</button>
     <button id="toggleJpExpWebTop_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleJpExpWebTop()">JpExp Web (↑) ❌</button>
     <button id="toggleJpExpWebBot_LayoutButton" style="margin-right:3px; margin-bottom:2px;" onclick="toggleWidgetArea('jpExpWebBot', this)">JpExp Web (↓) ❌</button>
@@ -3052,6 +3086,9 @@
           })
           .catch((error) => console.error(error));
         }
+        else {
+          emojiText.textContent = "";
+        }
 
         setTimeout(() => {
           var all_texts = `${displayedTexts[0].innerHTML} | ${displayedTexts[1].innerHTML} | ${displayedTexts[2].innerHTML}`;
@@ -3633,6 +3670,50 @@
         return text + "🌐🚨";
       }
     }
+    async function chatGptCuteJapaneseFetchFromMyServer() {
+      try {
+        var server_destination = LOCAL_TEST_CHATGPT ? "http://localhost:3002/chatgpt-cute_japanese" : "https://snsmile.site:3002/chatgpt-cute_japanese";
+
+        const response = await fetch(server_destination, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            text: chatGptInputTextArea.value,
+            apikey: chatGptApiKey
+          })
+        })
+        const responseText = await response.text();
+        chatGptOutputTextArea.value = responseText;
+        return responseText;
+      } catch (error) {
+        console.error('chatGptCuteJapaneseFetchFromMyServer() Error:', error);
+        return text + "🌐🚨";
+      }
+    }
+    async function chatGptQueryFetchFromMyServer(queryType) {
+      try {
+        var server_destination = LOCAL_TEST_CHATGPT ? "http://localhost:3002/chatgpt" : "https://snsmile.site:3002/chatgpt";
+        const response = await fetch(server_destination, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            text: chatGptInputTextArea.value,
+            apikey: chatGptApiKey,
+            query: queryType
+          })
+        })
+        const responseText = await response.text();
+        chatGptOutputTextArea.value = responseText;
+        return responseText;
+      } catch (error) {
+        console.error('chatGptQueryFetchFromMyServer() Error:', error);
+        return text + "🌐🚨";
+      }
+    }
   </script>
 
   <style>
@@ -3676,6 +3757,9 @@
       #favoriteTable {
         width: 98%;
       }
+      .two-column-textarea {
+        width: 96%;
+      }
     }
   </style>
 
@@ -3702,11 +3786,11 @@
         <tr>
           <td style="display: table-cell;">
             <span> Input Text: </span>
-            <textarea id="replacementInputTextArea" rows="1" cols="40"></textarea>
+            <textarea id="replacementInputTextArea" rows="1" cols="45"></textarea>
           </td>
           <td style="display: table-cell;">
             <span> Output Text:  </span>
-            <textarea id="replacementOutputTextArea" rows="1" cols="40"></textarea>
+            <textarea id="replacementOutputTextArea" rows="1" cols="45"></textarea>
           </td>
           <td style="display: table-cell;">
             <button id="replacementButton" onclick="elementTextReplace()">Replace Text</button>
@@ -4203,7 +4287,7 @@
   <script> // Start
     LOCAL_TEST = 0 ? true : false;
     DEBUG_MODE = 0 ? true : false;
-    LOCAL_TEST_CHATGPT = 0 ? true : false;
+    LOCAL_TEST_CHATGPT = 1 ? true : false;
     var clearConfigs = 0 ? true : false;
     if (clearConfigs) {
       localStorage.removeItem('snowyTranslatorConfig');
