@@ -107,7 +107,12 @@ def chatgpt():
         elif query_type == "lovely-ja":
             messages.append({
                 "role": "system",
-                "content": "You will be provided with statements, and your task is to translate them to lovely and friendly Japanese with 顔文字. (Don't make the texts much longer than before)"
+                "content": "You will be provided with statements, and your task is to translate them to considerate, lovely and friendly Japanese with cute and fun 顔文字. (Don't make the texts much longer than before)"
+            })
+        elif query_type == "casual-ja":
+            messages.append({
+                "role": "system",
+                "content": "Please translate my input text to casual, relaxing and natural Japanese."
             })
         else:
             print("wrong query type")
