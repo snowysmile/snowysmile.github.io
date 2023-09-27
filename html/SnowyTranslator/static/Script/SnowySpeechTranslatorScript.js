@@ -1,4 +1,3 @@
-<script>
   async function ggSpeakUrlGet(text, sourceLanguage) {
     if (window.location.protocol === "file:") {
       var ggTranslateUrl = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" +
@@ -7,7 +6,13 @@
     }
     else {
       try {
-        const response = await fetch('https://snsmile.site:3000/text-to-speech', {
+        var baseUrl;
+        if (window.location.protocol === 'file:') {
+            baseUrl = 'https://snsmile.site:3000';
+        } else {
+            baseUrl = '';
+        }
+        const response = await fetch('${baseUrl}/text-to-speech', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -29,4 +34,3 @@
       }
     }
   }
-</script>
