@@ -61,7 +61,7 @@ def chatgpt():
         input_text = request.json['text']
         openai.api_key = request.json['apikey']
         query_type = request.json['query']
-        max_token = 280
+        max_token = 420
 
         lprint("input_text:", input_text)
         lprint("query_type:", query_type)
@@ -98,6 +98,11 @@ def chatgpt():
             messages.append({
                 "role": "system",
                 "content": "You will be provided with statements, and your task is to translate them to decent, natural, and standard Traditional Chinese."
+            })
+        elif query_type == "no-katanana-ja":
+            messages.append({
+                "role": "system",
+                "content": "You will be provided with statements, and your task is to translate them to decent, natural, and standard Japanese. Meantime, minimize the use of katakana vocabulary (カタカナ語を似た意味の漢字語に置き換えてみましょう！例えば：アルゴリズム->算法; クラブ->倶楽部)."
             })
         elif query_type == "cute-ja":
             messages.append({
@@ -147,8 +152,8 @@ def chatgpt():
         return jsonify({'error': str(e)})
 
 if __name__ == '__main__':
-    LOCAL_TEST = True if 0 else False
-    DEBUG_MODE = True if 0 else False
+    LOCAL_TEST = True if 1 else False
+    DEBUG_MODE = True if 1 else False
 
     if LOCAL_TEST:
         print("LOCAL_TEST")
