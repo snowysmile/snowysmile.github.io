@@ -62,6 +62,8 @@ def chatgpt():
         openai.api_key = request.json['apikey']
         query_type = request.json['query']
         max_token = 420
+        temperature = 0.75 # not used here yet
+        model = "gpt-3.5-turbo"
 
         lprint("input_text:", input_text)
         lprint("query_type:", query_type)
@@ -71,38 +73,6 @@ def chatgpt():
             messages.append({
                 "role": "system",
                 "content": "Please translate/convert my input sentence to happy, friendly, and positive Japanese. Make my Japanese grammar correct and don't return extra things."
-            })
-        elif query_type == "related-emojis":
-            messages.append({
-                "role": "system",
-                "content": "Please convert input to related emojis, answer me with as many different emojis as you can."
-            })
-            max_token = 160
-        elif query_type == "sentence-emojis":
-            messages.append({
-                "role": "system",
-                "content": "Please add many 顔文字 to my input sentence to make it cute and interesting. Don't do other things."
-            })
-            max_token = 160
-        elif query_type == "translate-ja":
-            messages.append({
-                "role": "system",
-                "content": "You will be provided with statements, and your task is to translate them to decent, natural, and standard Japanese."
-            })
-        elif query_type == "translate-en":
-            messages.append({
-                "role": "system",
-                "content": "You will be provided with statements, and your task is to translate them to decent, natural, and standard English."
-            })
-        elif query_type == "translate-cn":
-            messages.append({
-                "role": "system",
-                "content": "You will be provided with statements, and your task is to translate them to decent, natural, and standard Traditional Chinese."
-            })
-        elif query_type == "no-katanana-ja":
-            messages.append({
-                "role": "system",
-                "content": "You will be provided with statements, and your task is to translate them to decent, natural, and standard Japanese. Meantime, minimize the use of katakana vocabulary (カタカナ語を似た意味の漢字語に置き換えてみましょう！例えば：アルゴリズム->算法; クラブ->倶楽部)."
             })
         elif query_type == "cute-ja":
             messages.append({
@@ -119,16 +89,69 @@ def chatgpt():
                 "role": "system",
                 "content": "Please translate my input text to casual, relaxing and natural Japanese."
             })
+        elif query_type == "no-katanana-ja":
+            messages.append({
+                "role": "system",
+                "content": "You will be provided with statements, and your task is to translate them to decent, natural, and standard Japanese. Meantime, minimize the use of katakana vocabulary (カタカナ語を似た意味の漢字語に置き換えてみましょう！例えば：アルゴリズム->算法; クラブ->倶楽部)."
+            })
+        elif query_type == "translate-ja":
+            messages.append({
+                "role": "system",
+                "content": "You will be provided with statements, and your task is to translate them to decent, natural, and standard Japanese."
+            })
+        elif query_type == "translate-en":
+            messages.append({
+                "role": "system",
+                "content": "You will be provided with statements, and your task is to translate them to decent, natural, and standard English."
+            })
+        elif query_type == "translate-cn":
+            messages.append({
+                "role": "system",
+                "content": "You will be provided with statements, and your task is to translate them to decent, natural, and standard Traditional Chinese."
+            })
+        elif query_type == "sentence-emojis":
+            messages.append({
+                "role": "system",
+                "content": "Please add many 顔文字 to my input sentence to make it cute and interesting. Don't do other things."
+            })
+        elif query_type == "related-emojis":
+            messages.append({
+                "role": "system",
+                "content": "Please convert input to related emojis, answer me with as many different emojis as you can."
+            })
+            max_token = max_token // 2
+        elif query_type == "grammar-fix":
+            messages.append({
+                "role": "system",
+                "content": f"Please be my decent language teacher. You will be provided with statements, please check the grammar mistakes seriously and and fix it. Make your reply succinct."
+            })
+        elif query_type == "grammar-check":
+            messages.append({
+                "role": "system",
+                "content": f"Please be my decent language teacher. You will be provided with statements, please check the grammar mistakes seriously and list them clearly with bullet points. If it has any mistakes, also tell me a best decent way to express it in its same language(En or Jp). Make your reply succinct." + "Please explain it nicely."
+            })
+        elif query_type == "grammar-fix-gpt4":
+            messages.append({
+                "role": "system",
+                "content": f"Please be my decent language teacher. You will be provided with statements, please check the grammar mistakes seriously and and fix it. Make your reply succinct."
+            })
+            model = "gpt-4"; max_token = max_token // 2
+        elif query_type == "grammar-check-gpt4":
+            messages.append({
+                "role": "system",
+                "content": f"Please be my decent language teacher. You will be provided with statements, please check the grammar mistakes seriously and list them clearly with bullet points. If it has any mistakes, also tell me a best decent way to express it in its same language(En or Jp). Make your reply succinct." + "Please explain it nicely."
+            })
+            model = "gpt-4"; max_token = max_token // 2
         else:
             print("wrong query type")
             return "wrong query type"
 
         messages.append({"role": "user", "content": input_text})
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+            model=model,
             messages=messages,
             temperature=0.8,
-            max_tokens=160,
+            max_tokens=max_token,
         )
         response_text = response.choices[0].message['content']
         lprint("response_text:", response_text)
