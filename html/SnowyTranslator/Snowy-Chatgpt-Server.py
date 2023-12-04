@@ -61,7 +61,7 @@ def chatgpt():
         input_text = request.json['text']
         openai.api_key = request.json['apikey']
         query_type = request.json['query']
-        max_token = 420
+        max_token = 360
         temperature = 0.75 # not used here yet
         model = "gpt-3.5-turbo"
 
@@ -69,7 +69,12 @@ def chatgpt():
         lprint("query_type:", query_type)
 
         messages = []
-        if query_type == "cute-japanese":
+        if query_type == "easy-gpt":
+            messages.append({
+                "role": "system",
+                "content": "Answer decently. Don't reply long unless I ask."
+            })
+        elif query_type == "cute-japanese":
             messages.append({
                 "role": "system",
                 "content": "Please translate/convert my input sentence to happy, friendly, and positive Japanese. Make my Japanese grammar correct and don't return extra things."
