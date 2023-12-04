@@ -1,11 +1,12 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import requests
-import openai
+from openai import OpenAI
 import emoji
 import ssl
 import os
 import re
+import asyncio
 emojis = emoji.UNICODE_EMOJI["en"].keys()
 
 app = Flask(__name__)
@@ -56,10 +57,12 @@ def chatgpt_emoji():
         return jsonify({'error': str(e)})
 
 @app.route('/chatgpt', methods=['POST'])
-def chatgpt():
+async def chatgpt():
     try:
+        client = OpenAI(
+            api_key=request.json['apikey'],
+        )
         input_text = request.json['text']
-        openai.api_key = request.json['apikey']
         query_type = request.json['query']
         max_token = 360
         temperature = 0.75 # not used here yet
@@ -152,13 +155,23 @@ def chatgpt():
             return "wrong query type"
 
         messages.append({"role": "user", "content": input_text})
-        response = openai.ChatCompletion.create(
-            model=model,
-            messages=messages,
-            temperature=0.8,
-            max_tokens=max_token,
-        )
-        response_text = response.choices[0].message['content']
+
+        try:
+            loop = asyncio.get_running_loop()
+            response = await loop.run_in_executor(
+                None,
+                lambda: client.chat.completions.create(
+                    messages=messages,
+                    max_tokens=max_token,
+                    model=model,
+                )
+            )
+        except asyncio.TimeoutError:
+            print("chatGPT(): The request timed out!")
+
+        response_text = response.choices[0].message.content
+        response_token = response.usage.total_tokens
+
         lprint("response_text:", response_text)
         lprint("response:", response.usage)
 
