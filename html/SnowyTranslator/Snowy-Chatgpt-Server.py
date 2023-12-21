@@ -21,24 +21,32 @@ def lprint(*args, **kwargs):
         print(*args, **kwargs)
 
 @app.route('/chatgpt-emoji', methods=['POST'])
-def chatgpt_emoji():
+async def chatgpt_emoji():
     try:
+        client = OpenAI(
+            api_key=request.json['apikey'],
+        )
         input_text = request.json['text']
-        openai.api_key = request.json['apikey']
         lprint("input_text:", input_text)
-
         messages = [{
             "role": "system",
             "content": "Please translate my input to many many many emojis as many as you can. Do your best with only emojis only."
         }, {"role": "user", "content": input_text}]
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=messages,
-            temperature=0.8,
-            max_tokens=60,
-        )
-        response_text = response.choices[0].message['content']
-        lprint("response_text:", response_text)
+
+        try:
+            loop = asyncio.get_running_loop()
+            response = await loop.run_in_executor(
+                None,
+                lambda: client.chat.completions.create(
+                    model="gpt-3.5-turbo",
+                    messages=messages,
+                    max_tokens=80,
+                )
+            )
+        except asyncio.TimeoutError:
+            print("chatGPT(): The request timed out!")
+
+        response_text = response.choices[0].message.content
 
         emoji_list = []
         demoji_text = emoji.demojize(response_text)
@@ -80,7 +88,7 @@ async def chatgpt():
         elif query_type == "cute-japanese":
             messages.append({
                 "role": "system",
-                "content": "Please translate/convert my input sentence to happy, friendly, and positive Japanese. Make my Japanese grammar correct and don't return extra things."
+                "content": "Please translate my input sentence to happy, friendly, and gramatically correct Japanese. ONLY translate, DON'T change my meaning."
             })
         elif query_type == "cute-ja":
             messages.append({
